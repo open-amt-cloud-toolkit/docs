@@ -1,0 +1,2239 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
+    
+    
+      
+        <title>Webpack Configuration - Open Active Management Technology Cloud Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.358818c7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-header-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit">
+      
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Webpack Configuration
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/open-amt-cloud-toolkit/mps/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-amt-cloud-toolkit/mps
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Local/overview/" class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Microservices/MPS/securityMPS/" class="md-tabs__link">
+          Microservices
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Controls/auditLogControl/" class="md-tabs__link">
+          UI Toolkit
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Docker/dockerCloud/" class="md-tabs__link">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../APIs/indexMPS/" class="md-tabs__link">
+          APIs
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../Topics/staticIP/" class="md-tabs__link">
+          Topics
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit">
+      
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+
+    </a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/open-amt-cloud-toolkit/mps/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-amt-cloud-toolkit/mps
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Install
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Install" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        Install
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1">
+    
+    <label class="md-nav__link" for="nav-2-1-1">
+      Setup Manually
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup Manually" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        <span class="md-nav__icon md-icon"></span>
+        Setup Manually
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/installMPS/" class="md-nav__link">
+      Install MPS Locally
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/installRPS/" class="md-nav__link">
+      Install RPS Locally
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2">
+    
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup with Docker*
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup with Docker*" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup with Docker*
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/dockerLocal/" class="md-nav__link">
+      Build Docker* Images
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Configure
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Configure" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        Configure
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/loginToRPS/" class="md-nav__link">
+      Login to RPS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/createCIRAConfig/" class="md-nav__link">
+      Create a CIRA Config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2-3" type="checkbox" id="nav-2-2-3">
+    
+    <label class="md-nav__link" for="nav-2-2-3">
+      Create an AMT Profile
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Create an AMT Profile" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Create an AMT Profile
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/createProfileCCM/" class="md-nav__link">
+      Create a Profile with CCM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/createProfileACM/" class="md-nav__link">
+      Create a Profile with ACM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Connect
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Connect" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
+        Connect
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/buildRPC/" class="md-nav__link">
+      Build & Run RPC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/manageDevice/" class="md-nav__link">
+      Manage AMT Device
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Microservices
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Microservices" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Microservices
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Managed Presence Server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Managed Presence Server" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        Managed Presence Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/MPS/securityMPS/" class="md-nav__link">
+      Security Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Remote Provisioning Server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        Remote Provisioning Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
+      Security Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Remote Provisioning Client
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Remote Provisioning Client" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Remote Provisioning Client
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../General/buildRPC_GithubActions/" class="md-nav__link">
+      Build & Run RPC (GitHub Actions)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      UI Toolkit
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="UI Toolkit" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        UI Toolkit
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      Controls
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Controls" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        Controls
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/auditLogControl/" class="md-nav__link">
+      Audit Log
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/ciraConfigControl/" class="md-nav__link">
+      Cira Config
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/deviceGridControl/" class="md-nav__link">
+      Device Grid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/domainControl/" class="md-nav__link">
+      Domain
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/kvmControl/" class="md-nav__link">
+      Keyboard, Video, Mouse (KVM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/profileControl/" class="md-nav__link">
+      Profile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Controls/serialOverLANControl/" class="md-nav__link">
+      Serial Over LAN (SOL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      React Bundles
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="React Bundles" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon"></span>
+        React Bundles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/auditLog/" class="md-nav__link">
+      Audit Logs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/CIRAConfigs/" class="md-nav__link">
+      Cira Configs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/DeviceGrid/" class="md-nav__link">
+      Device Grid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/Domains/" class="md-nav__link">
+      Domains
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/kvm/" class="md-nav__link">
+      Keyboard, Video, Mouse (KVM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/Profiles/" class="md-nav__link">
+      Profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Bundles/SerialOverLAN/" class="md-nav__link">
+      Serial Over LAN (SOL)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../localization/" class="md-nav__link">
+      Localization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Webpack Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Webpack Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entry" class="md-nav__link">
+    Entry:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loaders" class="md-nav__link">
+    Loaders:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-webpack" class="md-nav__link">
+    Installing Webpack:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-development-enviroment" class="md-nav__link">
+    Configuring Webpack for development enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-typescript" class="md-nav__link">
+    Adding Typescript:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-typescript-configuration-to-webpack" class="md-nav__link">
+    Add Typescript configuration to Webpack:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-styles" class="md-nav__link">
+    Add Styles :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-html" class="md-nav__link">
+    Adding HTML:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-api-keys-as-environmental-variables" class="md-nav__link">
+    Adding API keys as Environmental variables:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-server" class="md-nav__link">
+    Development Server:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-production-enviroment" class="md-nav__link">
+    Configuring Webpack for production enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson_1" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-external-enviroment" class="md-nav__link">
+    Configuring Webpack for external enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-webpack-node-externals" class="md-nav__link">
+    Add webpack-node-externals :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson_2" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tutorials
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/dockerCloud/" class="md-nav__link">
+      Docker* Images on the Cloud
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/uitoolkit/" class="md-nav__link">
+      UI Toolkit KVM Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/apiTutorial/" class="md-nav__link">
+      REST API Call
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/addDatabase/" class="md-nav__link">
+      Databases
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/addVault/" class="md-nav__link">
+      Secret Storage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/allowlist/" class="md-nav__link">
+      Allowlists
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      APIs
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="APIs" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        APIs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
+    
+    <label class="md-nav__link" for="nav-6-1">
+      Management Presence Server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Management Presence Server" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-1">
+        <span class="md-nav__icon md-icon"></span>
+        Management Presence Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/indexMPS/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1-2" type="checkbox" id="nav-6-1-2">
+    
+    <label class="md-nav__link" for="nav-6-1-2">
+      Admin Methods
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Admin Methods" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Admin Methods
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/alldevices/" class="md-nav__link">
+      AllDevices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/connecteddevices/" class="md-nav__link">
+      ConnectedDevices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/disconnect/" class="md-nav__link">
+      Disconnect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/mescript/" class="md-nav__link">
+      MEScript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/rootcertificate/" class="md-nav__link">
+      RootCertificate
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1-3" type="checkbox" id="nav-6-1-3">
+    
+    <label class="md-nav__link" for="nav-6-1-3">
+      AMT Methods
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="AMT Methods" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-1-3">
+        <span class="md-nav__icon md-icon"></span>
+        AMT Methods
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/auditlog/" class="md-nav__link">
+      AuditLog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/eventlog/" class="md-nav__link">
+      EventLog
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/generalsettings/" class="md-nav__link">
+      GeneralSettings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/getamtfeatures/" class="md-nav__link">
+      GetAMTFeatures
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/hardwareinfo/" class="md-nav__link">
+      HardwareInfo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/poweraction/" class="md-nav__link">
+      PowerAction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/powercapabilities/" class="md-nav__link">
+      PowerCapabilities
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/powerstate/" class="md-nav__link">
+      PowerState
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/setamtfeatures/" class="md-nav__link">
+      SetAMTFeatures
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/MPSmethods/version/" class="md-nav__link">
+      Version
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Remote Provisioning Server
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        Remote Provisioning Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/indexRPS/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/RPSmethods/ciraconfig/" class="md-nav__link">
+      CIRA Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/RPSmethods/domains/" class="md-nav__link">
+      Intel AMT Domains
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/RPSmethods/profiles/" class="md-nav__link">
+      Intel AMT Profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../APIs/RPSmethods/networkconfig/" class="md-nav__link">
+      Network Configurations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Topics
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Topics" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Topics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Topics/staticIP/" class="md-nav__link">
+      Static and Dynamic IPs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Topics/guids/" class="md-nav__link">
+      GUIDs in Intel AMT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+    
+    <label class="md-nav__link" for="nav-7-3">
+      Intel&reg MEBX
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-3">
+        <span class="md-nav__icon md-icon"></span>
+        Intel&reg MEBX
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Topics/MEBX/dnsSuffix/" class="md-nav__link">
+      DNS Suffix
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Topics/MEBX/unprovision/" class="md-nav__link">
+      Unprovisioning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../license/" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entry" class="md-nav__link">
+    Entry:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loaders" class="md-nav__link">
+    Loaders:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    Plugins:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-webpack" class="md-nav__link">
+    Installing Webpack:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-development-enviroment" class="md-nav__link">
+    Configuring Webpack for development enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-typescript" class="md-nav__link">
+    Adding Typescript:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-typescript-configuration-to-webpack" class="md-nav__link">
+    Add Typescript configuration to Webpack:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-styles" class="md-nav__link">
+    Add Styles :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-html" class="md-nav__link">
+    Adding HTML:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-api-keys-as-environmental-variables" class="md-nav__link">
+    Adding API keys as Environmental variables:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-server" class="md-nav__link">
+    Development Server:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-production-enviroment" class="md-nav__link">
+    Configuring Webpack for production enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson_1" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-webpack-for-external-enviroment" class="md-nav__link">
+    Configuring Webpack for external enviroment :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-webpack-node-externals" class="md-nav__link">
+    Add webpack-node-externals :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-packagejson_2" class="md-nav__link">
+    update Package.json
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/open-amt-cloud-toolkit/mps/edit/master/docs/UIToolkit/Webpack-Configuration.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Webpack Configuration</h1>
+                
+                <p>As stated in the documentation getting started is quite easy, as you only need to understand its core concepts — Entry, Output, Loaders, and plugins.</p>
+<h2 id="entry">Entry:<a class="headerlink" href="#entry" title="Permanent link">&para;</a></h2>
+<p>The entry point such as /src/index.js which is the default for Webpack 4 is what Webpack will use to start building out/resolving its dependencies.</p>
+<h2 id="output">Output:<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<p>Output: The output property such as ./dist (default for Webpack 4) tells Webpack where to output the bundles it creates and how to name them.</p>
+<h2 id="loaders">Loaders:<a class="headerlink" href="#loaders" title="Permanent link">&para;</a></h2>
+<p>Since Webpack only understands native Javascript code, these loaders enable it to process different types of imported files and convert them into valid modules when it encounters a specific type of file. Loaders have 2 properties in the configuration file
+The test property which identifies which file or files should be transformed
+The use property which indicates which loader can be used to do the transforming</p>
+<h2 id="plugins">Plugins:<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<p>This allows you to extend Webpack capabilities to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables. You can check out some of the plugins provided by Webpack here.</p>
+<h2 id="installing-webpack">Installing Webpack:<a class="headerlink" href="#installing-webpack" title="Permanent link">&para;</a></h2>
+<p>install webpack and webpack cli as dev dependencies.</p>
+<p>npm i webpack webpack-cli -D webpack-dev-server.</p>
+<h2 id="configuring-webpack-for-development-enviroment">Configuring Webpack for development enviroment :<a class="headerlink" href="#configuring-webpack-for-development-enviroment" title="Permanent link">&para;</a></h2>
+<p>Create a Webpack config file webpack.config.dev.js in the root of our project folder.</p>
+<p>const path = require('path');
+module.exports = {
+     mode: "development",
+     entry: './src/reactjs/components/DeviceGrid/index.tsx', // entry points can be multiple</p>
+<p>}</p>
+<h2 id="adding-typescript">Adding Typescript:<a class="headerlink" href="#adding-typescript" title="Permanent link">&para;</a></h2>
+<p>Install Typescript’s dependencies.</p>
+<p>npm i awesome-typescript-loader -D</p>
+<h2 id="add-typescript-configuration-to-webpack">Add Typescript configuration to Webpack:<a class="headerlink" href="#add-typescript-configuration-to-webpack" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>const path = require(&#39;path&#39;);
+module.exports = {
+ ....
+resolve: {
+    extensions: [&quot;.tsx&quot;, &quot;.ts&quot;, &quot;.js&quot;]
+  },
+  module: {
+    rules: [
+      { 
+        test: /\.tsx?$/, 
+        loader: &#39;awesome-typescript-loader&#39;
+      }
+    ]
+  }
+}
+</code></pre></div>
+<p>Here we are telling Webpack to:
+Resolve file extensions with .tsx, .ts and .js
+All files with the extension .tsx or .ts should be processed by awesome-typescript-loader</p>
+<h2 id="add-styles">Add Styles :<a class="headerlink" href="#add-styles" title="Permanent link">&para;</a></h2>
+<p>Install Styles dependencies.</p>
+<p>npm i style-loader css-loader sass-loader -D</p>
+<p>update the webpack config file:</p>
+<div class="highlight"><pre><span></span><code>module.exports = {
+ ....
+
+  module: {
+    rules: [
+        ...
+       {
+        test: /\.(sc|sa|c)ss$/,
+        use: [&#39;style-loader&#39;, &#39;css-loader&#39;, &#39;sass-loader&#39;],
+      }
+    ]
+  }
+}
+</code></pre></div>
+<h2 id="adding-html">Adding HTML:<a class="headerlink" href="#adding-html" title="Permanent link">&para;</a></h2>
+<p>we need to use a Webpack plugin html-webpack-plugin which helps simplifies the creation of HTML files to help serve our Webpack bundles.</p>
+<p>npm i html-webpack-plugin -D.</p>
+<p>Update the Webpack config file:</p>
+<div class="highlight"><pre><span></span><code>const path = require(&#39;path&#39;);
+const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+
+module.exports = {
+ ....
+  plugins: [
+   new HtmlWebpackPlugin({
+      filename: &#39;device.htm&#39;,
+      template: &#39;./src/sample/sampleDG.htm&#39;,
+      inject: true,
+      chunks: [&quot;device&quot;]
+    }),
+  ]
+}
+</code></pre></div>
+<h2 id="adding-api-keys-as-environmental-variables">Adding API keys as Environmental variables:<a class="headerlink" href="#adding-api-keys-as-environmental-variables" title="Permanent link">&para;</a></h2>
+<p>Environmental variables can be setup using the DefinePlugin option in webpack.</p>
+<div class="highlight"><pre><span></span><code>  const path = require(&#39;path&#39;);
+  const webpack = require(&#39;webpack&#39;);
+
+  module.exports = {
+    ...
+    plugins: [
+      new webpack.DefinePlugin({
+      &#39;process.env&#39;: {
+        &#39;API_KEY_RPS&#39;: JSON.stringify(&#39;&lt;Provide RPS api key&gt;&#39;),
+        &#39;API_KEY_MPS&#39;: JSON.stringify(&#39;&lt;Provide MPS api key&gt;&#39;)
+      }
+    })
+    ]
+  }
+</code></pre></div>
+<p>These environmental variables can be used inside the code as below,</p>
+<div class="highlight"><pre><span></span><code>const data = {
+  rpsKey: process.env.API_KEY_RPS,
+  mpsKey: process.env.API_KEY_MPS
+}
+</code></pre></div>
+<h2 id="development-server">Development Server:<a class="headerlink" href="#development-server" title="Permanent link">&para;</a></h2>
+<p>we are going to set up a development server using the webpack-dev-server which will open up a default browser when we do npm start and also provide us with live reloading on the fly.</p>
+<p>npm i webpack-dev-server --D</p>
+<h2 id="update-packagejson">update Package.json<a class="headerlink" href="#update-packagejson" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&quot;scripts&quot;: { 
+  &quot;start&quot;: &quot;webpack-dev-server --config webpack.config.dev.js&quot;
+}
+</code></pre></div>
+<p>Sample usage :</p>
+<div class="codehilite"><pre><span></span><code>    1)open command prompt
+    2)Run npm start command
+</code></pre></div>
+
+<h2 id="configuring-webpack-for-production-enviroment">Configuring Webpack for production enviroment :<a class="headerlink" href="#configuring-webpack-for-production-enviroment" title="Permanent link">&para;</a></h2>
+<p>Create a Webpack config file webpack.config.prod.js in the root of our project folder.</p>
+<div class="highlight"><pre><span></span><code>const path = require(&#39;path&#39;);
+
+module.exports = {
+     mode: &quot;production&quot;,
+     entry: &#39;./src/reactjs/components/DeviceGrid/index.tsx&#39;, // entry points can be multiple
+    output: {
+        filename: &quot;[name].core.min.js&quot;,
+        path: path.resolve(__dirname, &quot;./dist&quot;)
+    },
+  ....
+}
+</code></pre></div>
+<h2 id="update-packagejson_1">update Package.json<a class="headerlink" href="#update-packagejson_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&quot;scripts&quot;: { 
+ &quot;build&quot;: &quot;webpack --config webpack.config.prod.js&quot;,
+}
+</code></pre></div>
+<p>Sample usage:</p>
+<div class="codehilite"><pre><span></span><code>1)open command prompt
+2)Run npm run build command
+</code></pre></div>
+
+<h2 id="configuring-webpack-for-external-enviroment">Configuring Webpack for external enviroment :<a class="headerlink" href="#configuring-webpack-for-external-enviroment" title="Permanent link">&para;</a></h2>
+<p>Create a Webpack config file webpack.config.externals.js in the root of our project folder.</p>
+<h2 id="add-webpack-node-externals">Add webpack-node-externals :<a class="headerlink" href="#add-webpack-node-externals" title="Permanent link">&para;</a></h2>
+<p>Install webpack-node-externals dependencies.</p>
+<p>npm install webpack-node-externals -D</p>
+<p>webpack-node-externals library creates an externals function that ignores node_modules when bundling in Webpack.</p>
+<div class="highlight"><pre><span></span><code> const path = require(&quot;path&quot;); //No ES6 in webpack config 
+ const nodeExternals = require(&#39;webpack-node-externals&#39;);
+
+module.exports = {
+   ....
+  externals: [nodeExternals()],
+
+};
+</code></pre></div>
+<h2 id="update-packagejson_2">update Package.json<a class="headerlink" href="#update-packagejson_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&quot;scripts&quot;: { 
+ &quot;build-ext&quot;: &quot;webpack --config webpack.config.externals.js&quot;,
+}
+</code></pre></div>
+<p>Sample usage:</p>
+<div class="codehilite"><pre><span></span><code>1)open command prompt
+2)Run npm run build-ext command
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Intel Corporation
+          </div>
+        
+        Made with
+        <a
+          href="https://squidfunk.github.io/mkdocs-material/"
+          target="_blank" rel="noopener"
+        >
+          Material for MkDocs
+        </a>
+      </div>
+
+      <!-- Social links -->
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
