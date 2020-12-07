@@ -1778,8 +1778,8 @@
         <span class="k">this</span><span class="p">.</span><span class="nx">logger</span> <span class="o">=</span> <span class="nx">logger</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="nx">async</span> <span class="nx">connect</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">connectionString</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useNewUrlParser</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="k">async</span> <span class="nx">connect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">connectionString</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useNewUrlParser</span><span class="o">:</span> <span class="kc">true</span> <span class="p">});</span>
         <span class="kd">let</span> <span class="nx">database</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">databaseName</span><span class="p">);</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">collection</span> <span class="o">=</span> <span class="nx">database</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">collectionName</span><span class="p">);</span>
     <span class="p">}</span>
@@ -1790,13 +1790,13 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kr">public</span> <span class="nx">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+                <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
             <span class="p">}</span>
 
-            <span class="kd">let</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">InsertOneWriteOpResult</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">device</span><span class="p">);</span>
+            <span class="kd">let</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">InsertOneWriteOpResult</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">device</span><span class="p">);</span>
             <span class="k">return</span> <span class="o">!!</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ok</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`exception inserting record: </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
