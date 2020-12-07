@@ -48,7 +48,7 @@ Example Input:
 
 ## Get a Profile
 
-* Endpoint: **/api/v1/admin/profiles/{testprofile}*
+* Endpoint: **/api/v1/admin/profiles/{profileName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
 
@@ -158,7 +158,7 @@ Example Input:
 
 ## Delete a Profile
 
-* Endpoint: **/api/v1/admin/profiles/profile1*
+* Endpoint: **/api/v1/admin/profiles/{profileName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
 

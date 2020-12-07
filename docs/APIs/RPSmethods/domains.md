@@ -33,7 +33,7 @@ Example Input:
 }
 ```
 
-???+ success:
+???+ success
     Domain amtDomain successfully inserted
 
 ???+ failure
@@ -41,7 +41,7 @@ Example Input:
 
 ## Get a Domain
 
-* Endpoint: **/api/v1/admin/domains/domain1*
+* Endpoint: **/api/v1/admin/domains/{domainName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
 
@@ -134,7 +134,7 @@ Example Input:
 
 # Delete a Domain
 
-* Endpoint: **/api/v1/admin/domains/domain1*
+* Endpoint: **/api/v1/admin/domains/{domainName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
 
