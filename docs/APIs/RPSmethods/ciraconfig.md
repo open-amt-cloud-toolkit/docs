@@ -1,18 +1,20 @@
-# Creating a CIRA Configuration
-
-* Endpoint: */api/v1/ciraconfigs/create*
+# CIRA Configurations
 
 ## Developer mode (Vault and DB disabled)
 
 In developer mode, all profiles and configurations are written to the file private/data.json.
 
-## Prod mode (With Vault and DB enabled)
+## Prod mode (With Vault and Database enabled)
 
 In production mode, all profiles and CIRA configurations are written to the database, and secrets are stored in Vault.
 
 The inputs below for both CIRA Config and AMT Profile creation will work in either Developer or Prod mode.
 
 ## Create a CIRA Configuration
+
+* Endpoint: */api/v1/admin/ciraconfigs/*
+* Method Type: POST
+* Headers: *X-RPS-API-Key*
 
 proxyDetails is an optional field. 
 
@@ -44,7 +46,7 @@ Output:
 
 ## Get all CIRA configurations
 
-* Endpoint: */api/v1/ciraconfigs/*
+* Endpoint: */api/v1/admin/ciraconfigs/*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
 
@@ -81,7 +83,7 @@ Sample Response:
 
 ## Get a CIRA configuration
 
-* Endpoint: */api/v1/ciraconfigs/{ciraconfigname}*
+* Endpoint: */api/v1/admin/ciraconfigs/{ciraconfigName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
 
@@ -103,6 +105,10 @@ Sample Response:
 ```
 
 ## Edit a CIRA Configuration
+
+* Endpoint: */api/v1/admin/ciraconfigs/edit*
+* Method Type: POST
+* Headers: *X-RPS-API-Key*
 
 ONLY proxyDetails is optional. 
 
@@ -133,7 +139,7 @@ Output:
 
 ## Delete a CIRA configuration
 
-* Endpoint: */api/v1/ciraconfigs/{ciraconfigname}*
+* Endpoint: */api/v1/admin/ciraconfigs/{ciraconfigName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
 
