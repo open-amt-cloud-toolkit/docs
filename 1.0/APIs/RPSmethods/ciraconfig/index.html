@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-a-cira-configuration" class="md-skip">
+        <a href="#cira-configurations" class="md-skip">
           Skip to content
         </a>
       
@@ -1533,8 +1533,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prod-mode-with-vault-and-db-enabled" class="md-nav__link">
-    Prod mode (With Vault and DB enabled)
+  <a href="#prod-mode-with-vault-and-database-enabled" class="md-nav__link">
+    Prod mode (With Vault and Database enabled)
   </a>
   
 </li>
@@ -1782,8 +1782,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prod-mode-with-vault-and-db-enabled" class="md-nav__link">
-    Prod mode (With Vault and DB enabled)
+  <a href="#prod-mode-with-vault-and-database-enabled" class="md-nav__link">
+    Prod mode (With Vault and Database enabled)
   </a>
   
 </li>
@@ -1840,16 +1840,18 @@
                   </a>
                 
                 
-                <h1 id="creating-a-cira-configuration">Creating a CIRA Configuration<a class="headerlink" href="#creating-a-cira-configuration" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Endpoint: <em>/api/v1/ciraconfigs/create</em></li>
-</ul>
+                <h1 id="cira-configurations">CIRA Configurations<a class="headerlink" href="#cira-configurations" title="Permanent link">&para;</a></h1>
 <h2 id="developer-mode-vault-and-db-disabled">Developer mode (Vault and DB disabled)<a class="headerlink" href="#developer-mode-vault-and-db-disabled" title="Permanent link">&para;</a></h2>
 <p>In developer mode, all profiles and configurations are written to the file private/data.json.</p>
-<h2 id="prod-mode-with-vault-and-db-enabled">Prod mode (With Vault and DB enabled)<a class="headerlink" href="#prod-mode-with-vault-and-db-enabled" title="Permanent link">&para;</a></h2>
+<h2 id="prod-mode-with-vault-and-database-enabled">Prod mode (With Vault and Database enabled)<a class="headerlink" href="#prod-mode-with-vault-and-database-enabled" title="Permanent link">&para;</a></h2>
 <p>In production mode, all profiles and CIRA configurations are written to the database, and secrets are stored in Vault.</p>
 <p>The inputs below for both CIRA Config and AMT Profile creation will work in either Developer or Prod mode.</p>
 <h2 id="create-a-cira-configuration">Create a CIRA Configuration<a class="headerlink" href="#create-a-cira-configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/</em></li>
+<li>Method Type: POST</li>
+<li>Headers: <em>X-RPS-API-Key</em></li>
+</ul>
 <p>proxyDetails is an optional field. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1873,7 +1875,7 @@
 </details>
 <h2 id="get-all-cira-configurations">Get all CIRA configurations<a class="headerlink" href="#get-all-cira-configurations" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: <em>/api/v1/ciraconfigs/</em></li>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
 </ul>
@@ -1907,7 +1909,7 @@
 </code></pre></div>
 <h2 id="get-a-cira-configuration">Get a CIRA configuration<a class="headerlink" href="#get-a-cira-configuration" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: <em>/api/v1/ciraconfigs/{ciraconfigname}</em></li>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/{ciraconfigName}</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
 </ul>
@@ -1926,6 +1928,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="edit-a-cira-configuration">Edit a CIRA Configuration<a class="headerlink" href="#edit-a-cira-configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/edit</em></li>
+<li>Method Type: POST</li>
+<li>Headers: <em>X-RPS-API-Key</em></li>
+</ul>
 <p>ONLY proxyDetails is optional. </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1949,7 +1956,7 @@
 </details>
 <h2 id="delete-a-cira-configuration">Delete a CIRA configuration<a class="headerlink" href="#delete-a-cira-configuration" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: <em>/api/v1/ciraconfigs/{ciraconfigname}</em></li>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/{ciraconfigName}</em></li>
 <li>Method Type: DELETE</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
 </ul>
