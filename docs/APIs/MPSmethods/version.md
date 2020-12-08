@@ -7,7 +7,7 @@ Click [here](types.md) for supported input and output types.
 ## Example: Request Body
 
 !!! note
-	The following code block is an example of what would be the data sent as part of the POST request. 
+    The following code block is an example of what would be the data sent as part of the POST request. 
 
 ``` yaml
 
