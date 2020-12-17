@@ -3,7 +3,7 @@ site_name: 'Open Active Management Technology Cloud Toolkit'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/mps'
 repo_name: 'open-amt-cloud-toolkit/mps'
 copyright: 'Copyright &copy; 2020 Intel Corporation'
-site_dir: site/1.0
+site_dir: site/1.1
 google_analytics:
   - 'UA-185750581-1'
   - 'auto'
