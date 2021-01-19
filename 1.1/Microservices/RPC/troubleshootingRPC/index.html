@@ -1697,6 +1697,10 @@
                   <h1>Troubleshooting</h1>
                 
                 <p>The table below details possible errors that may occur when activating or de-activating managed devices along with some potential solutions.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If your device has more than one ethernet port, ensure your ethernet cable is plugged into the port that is connected to vPro. You can double check this by ensuring the link status reports "up" when running <code>./rpc --amtinfo all</code>. If you have network access, but show a link status of "down". It is likely the cable is plugged into the wrong port.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1736,6 +1740,10 @@
 <tr>
 <td>Unable to connect to websocket server. Please check url.</td>
 <td>After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address.</td>
+</tr>
+<tr>
+<td>Error while activating the AMT in admin mode.</td>
+<td>Check the logs on the RPS server.</td>
 </tr>
 </tbody>
 </table>

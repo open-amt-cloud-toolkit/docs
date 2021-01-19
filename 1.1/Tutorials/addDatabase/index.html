@@ -1761,13 +1761,13 @@
 </ol>
 <p>This module will need to implement the MongoDB types from mongodb and ILogger, AMTDeviceDTO, and IAMTDeviceWriter from RPS.  Below is an example of how this could be implemented:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// we imported all types from mongodb driver, to use in code</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">MongoClient</span><span class="p">,</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">Collection</span><span class="p">,</span> <span class="nx">InsertOneWriteOpResult</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mongodb&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">ILogger</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../interfaces/ILogger&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">AMTDeviceDTO</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./dto/AmtDeviceDTO&#39;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./interfaces/IAMTDeviceWriter&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoClient</span><span class="p">,</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">Collection</span><span class="p">,</span> <span class="nx">InsertOneWriteOpResult</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;mongodb&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ILogger</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../interfaces/ILogger&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AMTDeviceDTO</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./dto/AmtDeviceDTO&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./interfaces/IAMTDeviceWriter&#39;</span><span class="p">;</span>
 
 <span class="c1">// that class only can be extended</span>
-<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AmtDeviceMongoDbRepository</span> <span class="kr">implements</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AmtDeviceMongoDbRepository</span> <span class="nx">implements</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">{</span>
     <span class="kr">private</span> <span class="nx">collection</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
     <span class="kr">private</span> <span class="nx">client</span><span class="o">:</span> <span class="nx">Client</span><span class="p">;</span>
     <span class="kr">private</span> <span class="nx">connectionString</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -1794,7 +1794,7 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="kr">public</span> <span class="k">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="k">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
@@ -1812,7 +1812,7 @@
 <ol>
 <li>Edit the file index.ts in \RPS_MicroServer\src\ and import the implementation of database module. For example:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kr">import</span> <span class="p">{</span><span class="nx">AmtDeviceMongoDbRepository</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./repositories/AmtDeviceMongoDbRepository&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span><span class="nx">AmtDeviceMongoDbRepository</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./repositories/AmtDeviceMongoDbRepository&#39;</span><span class="p">;</span>
 </code></pre></div>
 <ol>
 <li>Edit the file index.ts in \RPS_MicroServer\src\ and set the amtDeviceWriter object to an instance of the repository (under configurator.isAMTDeviceWriterEnabled() located in line 35). For example:</li>
