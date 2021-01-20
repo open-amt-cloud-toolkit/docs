@@ -6,16 +6,19 @@ Figure 1 illustrates where MPS fits into the overall [microservice architecture.
 
 **Figure 1: Deploy Management Presence Server (MPS) on a development system.**
 
-## Clone the Repository
+## Clone OpenAMT Cloud Toolkit
 
-**To clone a repository:**
+**To clone the repositories:**
 
-1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development. 
+Note: Skip this step if the repositories are already cloned.
 
-2. Clone the MPS repository and navigate to it with the following commands:
-
+1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
 ``` bash
-git clone https://github.com/open-amt-cloud-toolkit/mps.git && cd mps
+git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+```
+2. Navigate to the mps directory
+``` bash
+cd open-amt-cloud-toolkit\mps
 ```
 
 ## Modify MPS Configuration File
