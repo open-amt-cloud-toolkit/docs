@@ -21,7 +21,7 @@ Get more information about Docker images and containers at [Docker resources.](h
 1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
 
 ``` bash
-git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
 ```
   
 ## Set the Environment Variables  
