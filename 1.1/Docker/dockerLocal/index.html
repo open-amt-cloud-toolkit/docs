@@ -518,15 +518,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone-the-mps-and-rps-repositories" class="md-nav__link">
-    Clone the MPS and RPS Repositories
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-the-docker-images" class="md-nav__link">
-    Build the Docker Images
+  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
+    Clone OpenAMT Cloud Toolkit
   </a>
   
 </li>
@@ -539,8 +532,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-docker-compose" class="md-nav__link">
-    Run docker-compose
+  <a href="#build-and-run-the-docker-images" class="md-nav__link">
+    Build and Run the Docker Images
   </a>
   
 </li>
@@ -1781,15 +1774,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone-the-mps-and-rps-repositories" class="md-nav__link">
-    Clone the MPS and RPS Repositories
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-the-docker-images" class="md-nav__link">
-    Build the Docker Images
+  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
+    Clone OpenAMT Cloud Toolkit
   </a>
   
 </li>
@@ -1802,8 +1788,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-docker-compose" class="md-nav__link">
-    Run docker-compose
+  <a href="#build-and-run-the-docker-images" class="md-nav__link">
+    Build and Run the Docker Images
   </a>
   
 </li>
@@ -1837,65 +1823,23 @@
 <h2 id="why-docker">Why Docker*?<a class="headerlink" href="#why-docker" title="Permanent link">&para;</a></h2>
 <p>A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the usual problems that occur with software deployment on varying platforms. </p>
 <p>Get more information about Docker images and containers at <a href="https://www.docker.com/resources/what-container">Docker resources.</a></p>
-<h2 id="clone-the-mps-and-rps-repositories">Clone the MPS and RPS Repositories<a class="headerlink" href="#clone-the-mps-and-rps-repositories" title="Permanent link">&para;</a></h2>
+<h2 id="clone-openamt-cloud-toolkit">Clone OpenAMT Cloud Toolkit<a class="headerlink" href="#clone-openamt-cloud-toolkit" title="Permanent link">&para;</a></h2>
 <p><strong>To clone the repositories:</strong></p>
-<p>1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.</p>
-<p><div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/mps.git
-</code></pre></div>
-2. Repeat to clone the RPS repository to the same parent directory as MPS.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/rps.git
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Do not nest a microservice directory inside another microservice directory. The source code contains relative paths. The correct directory structure appears below, where <em>parent</em> is your installation directory.</p>
-</div>
-<div class="highlight"><pre><span></span><code>📦parent
- ┣ 📂mps
- ┗ 📂rps
-</code></pre></div>
-<h2 id="build-the-docker-images">Build the Docker Images<a class="headerlink" href="#build-the-docker-images" title="Permanent link">&para;</a></h2>
-<p>Build the MPS and RPS Docker images from their respective directories with the <code>build -t</code> command, giving the image a name and tag:</p>
-<p><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build . -t [name:tag]</a>  </p>
-<p><strong>Create name and tags that:</strong></p>
-<ul>
-<li>Contain lowercase letters, digits, and separators (i.e., underscores, periods, and dashes).</li>
-<li>Do not end with a separator.</li>
-<li>Contain up to 128 characters.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Building a fresh Docker image may take several minutes.</p>
-</div>
-<p><strong>To build MPS:</strong></p>
 <ol>
-<li>Navigate to MPS folder and build the Docker image. </li>
+<li>Open a Command Prompt or Terminal and navigate to a directory of your choice for development.</li>
 </ol>
-<p><div class="highlight"><pre><span></span><code>cd ../mps
-docker build . -t mps:v1
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
 </code></pre></div>
-<img alt="Image of MPS Build Completion" src="../../assets/images/MPSBuild.png" /> </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On completion, a security warning is normal during local setup with the default values for developer testing environments.</p>
-</div>
-<p><strong>To build RPS:</strong></p>
-<p>2. Navigate to the RPS folder and build the Docker image.</p>
-<p><div class="highlight"><pre><span></span><code>cd ..
-cd rps
-docker build . -t rps:v1
-</code></pre></div>
-<img alt="Image of RPS Build Completion" src="../../assets/images/RPSBuild.png" /> </p>
 <h2 id="set-the-environment-variables">Set the Environment Variables<a class="headerlink" href="#set-the-environment-variables" title="Permanent link">&para;</a></h2>
 <p><strong>To set the environment variables:</strong></p>
-<p>1. After building the new MPS and RPS images, navigate to the <code>mps\scripts\docker-compose</code> folder and copy the .env.template file to <code>.env</code>. </p>
-<div class="highlight"><pre><span></span><code>cd ..
-cd mps/scripts/docker-compose
-</code></pre></div>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
+<ol>
+<li>
+<p>Create a copy the of the <code>.env.template</code> file to <code>.env</code>. This file is used by docker to set environment variables. </p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows (cmd)</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>copy .env.template .env
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux/Powershell</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>cp .env.template .env
 </code></pre></div>
 </div>
@@ -1905,77 +1849,51 @@ cd mps/scripts/docker-compose
 <p><strong>Preserve the .env.template file.</strong></p>
 <p>This file is very important to maintain. Always copy to a new file. </p>
 </div>
-<p>2. Open the .env file in a text editor. Set the image-related environment variables within the .env file.</p>
-<p>Change the following fields:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Field</th>
-<th align="left">Change to</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><strong>RPS_IMAGE</strong></td>
-<td align="left">rps:v1</td>
-</tr>
-<tr>
-<td align="left"><strong>MPS_IMAGE</strong></td>
-<td align="left">mps:v1</td>
-</tr>
-<tr>
-<td align="left"><strong>MPS_COMMON_NAME</strong></td>
-<td align="left">Your development system's IP address</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition tip">
-<p class="admonition-title">Forgot the name and tag from the build?</p>
-<p>The <strong>docker images</strong> command lists repository names, tags, image IDs, and sizes. </p>
-<div class="highlight"><pre><span></span><code>docker images
+</li>
+<li>
+<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. You can use a text editor to modify the .env file or replace YOURIPADDRESS in the command below to use the command line:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
 </code></pre></div>
-<p><img alt="Image of docker images command" src="../../assets/images/DICommands.png" /></p>
 </div>
-<!-- 5. Set the proper proxy values if behind a proxy.
-
-   HTTP_PROXY=http://[your-proxy-server]:[your-proxy-server-port]
-   HTTPS_PROXY=http://[your-proxy-server]:[your-proxy-server-port]
-
-   <div class="highlight"><pre><span></span><code>HTTP_PROXY=http://10.16.01.01:3030
-HTTPS_PROXY=http://10.16.01.01:3030
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
 </code></pre></div>
-
-   > **NOTE: Behind a Corporate Proxy?**
-   >
-   > To download images and install npm packages inside a container on start, modify settings in ~/docker/config.json to reflect the correct proxy address. 
-   >
-   > For more information about how to modify the proxy settings, see [Configure Docker Client](https://docs.docker.com/network/proxy/#configure-the-docker-client).
-   > -->
-
-<h2 id="run-docker-compose">Run docker-compose<a class="headerlink" href="#run-docker-compose" title="Permanent link">&para;</a></h2>
-<p>The environment file .env now contains the MPS and RPS environment variables to pass to the Docker engine. </p>
-<ol>
-<li>
-<p>Navigate to the the <code>mps/scripts/docker-compose</code> directory. </p>
-</li>
-<li>
-<p>Run the <code>docker-compose up</code> command, which starts the containers. approximately 2-3 minutes to start the containers.
-      <div class="highlight"><pre><span></span><code>docker-compose up
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Important</strong>: While the <code>docker-compose up</code> command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
+</div>
+</div>
 </li>
 </ol>
+<h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
+<p>The environment file (<code>.env</code>) now contains the MPS and RPS environment variables to pass to the Docker engine.</p>
+<ol>
+<li>Build the MPS, RPS, and Sample UI Docker images and launch the stack</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker-compose -f <span class="s2">&quot;docker-compose.yml&quot;</span> up -d --build
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On completion, a security warning is normal during local setup with the default values for developer testing environments.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>While the <code>docker-compose up</code> command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
 <p><img alt="Image of filesharing" src="../../assets/images/DockerFileSharing.png" /></p>
+</div>
 <div class="admonition success">
-<p class="admonition-title">Success</p>
-<p><img alt="Image of docker compose command" src="../../assets/images/DockerCompose.png" /></p>
+<p class="admonition-title">Success<div class="highlight"><pre><span></span><code>IMAGE                             STATUS
+samplewebui                       Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_webui_1
+rps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rps_1
+mps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_mps_1
+vault                             Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_vault_1
+postgres                          Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rpsdb_1
+</code></pre></div>
+</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Since the vault is running in a dev mode, you will not be able to restart the vault and maintain the secrets stored since they are not persisted. You will need to recreate profiles and configs again. Be sure and run <code>docker-compose down -v</code> when bringing down the stack so as to remove the volumes and start fresh upon <code>docker-compose up</code>.  You may follow the guide <a href="../dockerLocal_prodVault/">here</a> to run vault in production mode.</p>
 </div>
+<p>If any of the above containers report that it is not running. Try walking through the steps again, or filing a github issue <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues">here</a>.</p>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../../General/loginToRPS/"><strong>Login to RPS</strong></a></p>
                 
