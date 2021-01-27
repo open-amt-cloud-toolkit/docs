@@ -81,7 +81,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Open Active Management Technology (Open AMT) Cloud Toolkit:** An open source software architecture consisting of modular microservices and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features. [See more about Open AMT Cloud Toolkit features.](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
 
-**out-of-band (OOB) manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up as system that is currently powered down. 
+**out-of-band (OOB) manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up a system that is currently powered down. 
 
 ## P
 
