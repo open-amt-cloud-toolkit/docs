@@ -1,7 +1,7 @@
 # Project information
 site_name: 'Open Active Management Technology Cloud Toolkit'
-repo_url: 'https://github.com/open-amt-cloud-toolkit/mps'
-repo_name: 'open-amt-cloud-toolkit/mps'
+repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
+repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2020 Intel Corporation'
 site_dir: site/1.1
 google_analytics:
