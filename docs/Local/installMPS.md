@@ -5,7 +5,7 @@ The Open Active Management Technology (AMT) Cloud Toolkit repository includes:
 - [UI Toolkit](../Glossary.md#u)
 - [Remote Provisioning Client (RPC)](../Glossary.md#r)
 
-Find details about architectural details, security issues, and more in [Microservices](../Microservices/MPS/overview.md).
+Find details about architectural details, security issues, and more in [Microservices](../Microservices/overview.md).
 
 ## Network, Hardware, and Software Prerequisites
 
