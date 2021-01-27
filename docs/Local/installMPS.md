@@ -1,4 +1,3 @@
-The Open Active Management Technology (AMT) Cloud Toolkit repository includes: 
 
 - [Management Presence Server (MPS)](../Glossary.md#m)
 - [Remote Provisioning Server (RPS)](../Glossary.md#r)
@@ -75,7 +74,7 @@ app-configure [RPS ip address] [MPS ip address]
     npm install
     ```
 !!! Info
-    This installs both MPS and RPS. Find information about them [here](../Microservices/MPS/overview.md). 
+    This installs both MPS and RPS. Find information about them [here](../Microservices/overview.md). 
 
 ## Start the MPS and RPS
 Start the MPS and RPS in two separate command line terminals. 
