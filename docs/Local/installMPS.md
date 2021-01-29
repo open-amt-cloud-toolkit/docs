@@ -1,4 +1,3 @@
-
 - [Management Presence Server (MPS)](../Glossary.md#m)
 - [Remote Provisioning Server (RPS)](../Glossary.md#r)
 - [UI Toolkit](../Glossary.md#u)
@@ -110,4 +109,6 @@ Start the MPS and RPS in two separate command line terminals.
 
 
 ## Next up
+
 [**Login to RPS**](../General/loginToRPS.md)
+
