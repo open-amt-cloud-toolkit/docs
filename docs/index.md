@@ -25,6 +25,7 @@ As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of
 2. **RPS** - A microservice that activates Intel® AMT platforms using predefined profiles and connects them to the MPS for manageability use cases.
 3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
 4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
+5. **Sample Web UI** - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
    
 Integrate the Open AMT Cloud Toolkit into new and existing management consoles, software solutions, and more.
 

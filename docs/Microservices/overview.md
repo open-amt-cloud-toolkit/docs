@@ -9,6 +9,7 @@ As shown in Figure 1, the architecture consists of four components:
 2. **RPS** - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the MPS for manageability use cases.
 3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
 4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
+5. **Sample Web UI** - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
 
 
 ## Out-of-band (OOB) Management 
@@ -21,19 +22,19 @@ CIRA enables OOB connections between Intel® AMT platforms and administrative de
 
 The [following steps](https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server) occur via a CIRA channel:
 
-1\. A remote Intel vPro® platform featuring Intel® AMT is provisioned with CIRA enabled. The remote platform is referred to as the managed device. 
+1. A remote Intel vPro® platform featuring Intel® AMT is provisioned with CIRA enabled. The remote platform is referred to as the managed device. 
 
-2\. The managed device sends a secure connection request via Transport Layer Security (TLS) to the MPS on the development system.
+2. The managed device sends a secure connection request via Transport Layer Security (TLS) to the MPS on the development system.
 
-3\. After authentication, Intel vPro® platform information is stored in a database and sent to the management console.
+3. After authentication, Intel vPro® platform information is stored in a database and sent to the management console.
 
-4\. On the development system, the management console sends a command to the MPS.
+4. On the development system, the management console sends a command to the MPS.
 
-5\. When an action is triggered on the development system, such as *power up*, the management console sends that command to the MPS. Both power control messages and keyboard, video and mouse (KVM) control messages are supported.
+5. When an action is triggered on the development system, such as *power up*, the management console sends that command to the MPS. Both power control messages and keyboard, video and mouse (KVM) control messages are supported.
 
-6\. The MPS creates the WSMan message to the managed device.
+6. The MPS creates the WSMan message to the managed device.
 
-7\. The managed device sends a *keep-alive* message to the MPS to maintain the connection. This message persists regardless of the state of the operating system, in-band or OOB.
+7. The managed device sends a *keep-alive* message to the MPS to maintain the connection. This message persists regardless of the state of the operating system, in-band or OOB.
 
 
 ### AMT Profile
