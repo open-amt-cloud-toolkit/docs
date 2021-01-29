@@ -1,141 +1,114 @@
-The [Management Presence Server (MPS)](../Glossary.md#m) is a cloud-agnostic microservice that enables platforms featuring Intel® AMT to be managed over the internet. This section details how to set up the MPS on a development system.
+- [Management Presence Server (MPS)](../Glossary.md#m)
+- [Remote Provisioning Server (RPS)](../Glossary.md#r)
+- [UI Toolkit](../Glossary.md#u)
+- [Remote Provisioning Client (RPC)](../Glossary.md#r)
 
-Figure 1 illustrates where MPS fits into the overall [microservice architecture.](../Glossary.md#m)
+Find details about architectural details, security issues, and more in [Microservices](../Microservices/overview.md).
 
-[![MPS](../assets/images/MPSDeployment.png)](../assets/images/MPSDeployment.png)
+## Network, Hardware, and Software Prerequisites
 
-**Figure 1: Deploy Management Presence Server (MPS) on a development system.**
+**Before installing the toolkit, prepare the environment:**
 
-## Clone OpenAMT Cloud Toolkit
+1. Configure a network that includes:
 
-**To clone the repositories:**
+    -  A development system running Windows® 10 or Ubuntu* 18.04 or newer 
+    -  One or more [Intel vPro®](https://www.intel.com/content/www/us/en/architecture-and-technology/vpro/what-is-vpro.html) device(s) to manage
 
-Note: Skip this step if the repositories are already cloned.
+    !!! tip
+        A **flash drive** or equivalent means of transfer is necessary to copy the RPC to the managed device.
 
-1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
-``` bash
-git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
-```
-2. Navigate to the mps directory
-``` bash
-cd open-amt-cloud-toolkit\mps
-```
+    !!! Info
+        Both development systems and managed devices must use a **wired (i.e., cable) connection** on the same network.
 
-## Modify MPS Configuration File
-**To modify the MPS configuration file:**
+2. Install the prerequisite software on the development system:
 
-1. Open the `.mpsrc` file, within the `mps` directory, using a text editor of your choice to configure settings, such as Notepad on Windows* or Text Editor on Linux*.
+    | Prerequisite Software | Purpose |
+    | :----------- |  :--|
+    | [Chrome* Browser](https://www.google.com/chrome) | Runs the WebUI console for configuring profiles and connecting devices | 
+    | [git](https://git-scm.com/downloads)| Downloads the OpenAMT Cloud Toolkit repository | 
+    | [Node.js* LTS 12.x.x or newer](https://nodejs.org/) | Installs the software | 
 
-2. Configure the following settings:
+## Download and Configure Software
 
-| Field       |  Change to    | Description |
-| :----------- | :-------------- | :- |
-| `use_allowlist` | false |A value of false disables the allowlist functionality. For information about allowlist, see the allowlist [tutorial](../Tutorials/allowlist.md) |
-| `common_name` | Development system's IP address. <br> **Note:** For this guide, you **cannot** use localhost because the managed device would be unable to reach the MPS and RPS servers. | For this guide, the address will be used in a self-signed certificate. It may be an IP address or FQDN in real world deployment.|
+**To download the Open AMT Cloud Toolkit repository on the development system:**
 
+1. Open a Powershell command prompt (Windows) or Terminal (Linux) and navigate to a directory of your choice for development. 
 
-3. Save and close the file.
-
-!!! example
-    Example .mpsrc file:
-
-    ```json hl_lines="2 3"
-      {
-          "use_allowlist" : false,
-          "common_name": "192.168.0.8",
-          "port": 4433,
-          "username": "standalone",
-          "pass": "G@ppm0ym",
-          "use_global_mps_credentials": true,
-          "country": "US",
-          "company": "NoCorp",
-          "debug": true,
-          "listen_any": true,
-          "https": true,
-          "tls_offload": false,
-          "web_port" : 3000,
-          "generate_certificates": true,
-          "logger_off":false,
-          "web_admin_user": "standalone",
-          "web_admin_password": "G@ppm0ym",
-          "vault_address": "http://localhost:8200",
-          "vault_token": "myroot",
-          "use_vault": true,
-          "secrets_path": "secret/data/",
-          "cert_format" : "file",
-          "data_path" : "../private/data.json",
-          "cert_path": "../private",
-          "mpsxapikey": "APIKEYFORMPS123!",
-          "mps_tls_config" : {
-            "key": "../private/mpsserver-cert-private.key",
-            "cert": "../private/mpsserver-cert-public.crt",
-            "requestCert": true,
-            "rejectUnauthorized": false,
-            "minVersion": "TLSv1",
-            "ciphers": null,
-            "secureOptions": ["SSL_OP_NO_SSLv2", "SSL_OP_NO_SSLv3"]
-          },
-          "web_tls_config" : {
-            "key": "../private/mpsserver-cert-private.key",
-            "cert": "../private/mpsserver-cert-public.crt",
-            "ca": ["../private/root-cert-public.crt"],
-            "secureOptions": ["SSL_OP_NO_SSLv2", "SSL_OP_NO_SSLv3", "SSL_OP_NO_COMPRESSION", "SSL_OP_CIPHER_SERVER_PREFERENCE","SSL_OP_NO_TLSv1", "SSL_OP_NO_TLSv11"]
-          }
-      }
-
-    ```
-
-## Configure the WebUI
-**To configure the WebUI:**
-
-1. Navigate to the `src` directory in `.\mps\webui\src\`
-
+2. Clone the repository.
     ``` bash
-    cd webui/src
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
     ```
 
-2. Open the `app.config.js` file using a text editor to configure IP Address settings.
-3. Replace the localhost for both `rpsServerIP` and `serverIP` with your development system's IP Address. Save and close the file.
+3. Build and Install the services. Run the following script which will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install necessary dependencies. For more information on all available configuration options for MPS see [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
 
-    !!! Example
-        ```javascript hl_lines="4 5"
-          const validExtensions = ['.png', '.jpeg', '.jpg', '.svg'];
-          const port = process.env.REACT_APP_MPS_WEB_PORT? process.env.REACT_APP_MPS_WEB_PORT : 3000;
-          const rpsPort = process.env.REACT_APP_RPS_WEB_PORT ? process.env.REACT_APP_RPS_WEB_PORT : 8081;
-          const rpsServerIP = process.env.REACT_APP_RPS_SERVER ? process.env.REACT_APP_RPS_SERVER : '192.168.0.8';
-          const serverIP = process.env.REACT_APP_MPS_SERVER ? process.env.REACT_APP_MPS_SERVER : '192.168.0.8';
-          const mpsAPIKey = process.env.REACT_APP_MPSXAPIKEY ? process.env.REACT_APP_MPSXAPIKEY : 'APIKEYFORMPS123!';
-          const rpsAPIKey = process.env.REACT_APP_RPSXAPIKEY ? process.env.REACT_APP_RPSXAPIKEY : 'APIKEYFORRPS123!'
-          const Config = {
-            ...
-        };
+    === "Windows (Powershell)"
+        ``` powershell
+        ./build.ps1
+        ```
+    === "Linux"
+        ``` bash
+        make build
         ```
 
-4. Navigate back to the `./mps` base installation directory.
-5. Run the install commands to install all required dependencies.
+
+All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click [here](../Microservices/overview.md). 
+## Start the MPS and RPS
+Start the MPS and RPS in two separate command line terminals. 
+
+**To start the MPS:**
+
+1. Open a new Command Prompt or Terminal and navigate to a directory to the `mps` directory. 
     ``` bash
-    npm install
+    npm run dev
+    ```
+2. Figure 1 demonstrates successful deployment. The web server (api) runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.
+
+    !!! Success
+        The development system's IP Address will be used to connect to the web server.
+
+    [![mps](../assets/images/MPS_npmrundev.png)](../assets/images/MPS_npmrundev.png)
+
+    **Figure 1: MPS reports successful deployment.**
+
+    !!! Note
+        Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory.
+
+**To start the RPS:**
+
+1. Open a new Command Prompt or Terminal and navigate to a directory to the `rps` directory. 
+
+2. Then, start the server. By default, the RPS web port is 8080.
+
+    ``` bash
+    npm run dev
     ```
 
-## Start the MPS Server
-**To start the MPS server:**
+    !!! note
+        Warning messages are okay and expected for optional dependencies.
 
-1. Run the the following command:
-``` bash
-npm run dev
-```
-2. Figure 2 demonstrates successful deployment. The web server runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.
+    Example Output:
 
-!!! Note
-    The development system's IP Address will be used to connect to the web server.
 
-[![mps](../assets/images/MPS_npmrundev.png)](../assets/images/MPS_npmrundev.png)
+    
+[![RPS Output](../assets/images/RPS_npmrundev.png)](../assets/images/RPS_npmrundev.png)
 
-**Figure 2: MPS reports successful deployment.**
+**Figure 2: RPS reports successful deployment.**
 
-!!! Note
-    Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory.
+**To start the Sample Web UI:**
+
+1. Open a new Command Prompt or Terminal and navigate to a directory to the `sample-web-ui` directory. 
+
+2. Then, start the server. You may be prompted to use another port if one is already in use. Enter 'y' if prompted and note the port that is chosen, this is where the UI will be running.
+
+    ``` bash
+    npm start
+    ```
+
+    !!! note
+        Warning messages are okay and expected for optional dependencies.
+
 
 ## Next up
-**[Install RPS Locally](installRPS.md)**
+
+[**Login to RPS**](../General/loginToRPS.md)
 

@@ -26,13 +26,9 @@ nav:
   - Home: index.md
   - Getting Started:
     - Install:
-      - Setup Manually:
-        - Overview: Local/overview.md
-        - Install MPS Locally: Local/installMPS.md
-        - Install RPS Locally: Local/installRPS.md
-      - Setup with Docker*:
-        - Overview: Docker/overview.md
-        - Build Docker* Images: Docker/dockerLocal.md
+      - Local:
+        - Express Manual Setup: Local/installMPS.md
+        - Express Docker Setup: Docker/dockerLocal.md
     - Configure:
       - Login to RPS: General/loginToRPS.md
       - Create a CIRA Config: General/createCIRAConfig.md
@@ -43,9 +39,12 @@ nav:
       - Build & Run RPC: General/buildRPC.md
       - Manage AMT Device: General/manageDevice.md
   - Microservices:
+    - Overview: Microservices/overview.md
     - Managed Presence Server:
+      - Configuration: Microservices/MPS/configuration.md
       - Security Information: Microservices/MPS/securityMPS.md
     - Remote Provisioning Server:
+      - Configuration: Microservices/RPS/configuration.md
       - Security Information: Microservices/RPS/securityRPS.md
     - Remote Provisioning Client :
       - Build & Run RPC (GitHub Actions): General/buildRPC_GithubActions.md
