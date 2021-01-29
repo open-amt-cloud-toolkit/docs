@@ -14,7 +14,7 @@
     
     
       
-        <title>Install MPS Locally - Open Active Management Technology Cloud Toolkit</title>
+        <title>Express Manual Setup - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clone-openamt-cloud-toolkit" class="md-skip">
+        <a href="#network-hardware-and-software-prerequisites" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Install MPS Locally
+              Express Manual Setup
             
           </span>
         </div>
@@ -181,7 +181,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           Getting Started
         </a>
       
@@ -196,19 +196,13 @@
         
   
   
-    
-    
-  
-  
     <li class="md-tabs__item">
       
-        <a href="../../Microservices/MPS/securityMPS/" class="md-tabs__link">
+        <a href="../../Microservices/overview/" class="md-tabs__link">
           Microservices
         </a>
       
     </li>
-  
-
   
 
       
@@ -389,28 +383,16 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" checked>
     
     <label class="md-nav__link" for="nav-2-1-1">
-      Setup Manually
+      Local
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Setup Manually" data-md-level="3">
+    <nav class="md-nav" aria-label="Local" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Setup Manually
+        Local
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../overview/" class="md-nav__link">
-      Overview
-    </a>
-  </li>
-
         
           
           
@@ -425,12 +407,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Install MPS Locally
+        Express Manual Setup
         <span class="md-nav__icon md-icon"></span>
       </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Install MPS Locally
+      Express Manual Setup
     </a>
     
       
@@ -445,29 +427,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
-    Clone OpenAMT Cloud Toolkit
+  <a href="#network-hardware-and-software-prerequisites" class="md-nav__link">
+    Network, Hardware, and Software Prerequisites
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#modify-mps-configuration-file" class="md-nav__link">
-    Modify MPS Configuration File
+  <a href="#download-and-configure-software" class="md-nav__link">
+    Download and Configure Software
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-the-webui" class="md-nav__link">
-    Configure the WebUI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-the-mps-server" class="md-nav__link">
-    Start the MPS Server
+  <a href="#start-the-mps-and-rps" class="md-nav__link">
+    Start the MPS and RPS
   </a>
   
 </li>
@@ -492,58 +467,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../installRPS/" class="md-nav__link">
-      Install RPS Locally
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2">
-    
-    <label class="md-nav__link" for="nav-2-1-2">
-      Setup with Docker*
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Setup with Docker*" data-md-level="3">
-      <label class="md-nav__title" for="nav-2-1-2">
-        <span class="md-nav__icon md-icon"></span>
-        Setup with Docker*
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Docker/overview/" class="md-nav__link">
-      Overview
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Docker/dockerLocal/" class="md-nav__link">
-      Build Docker* Images
+      Express Docker Setup
     </a>
   </li>
 
@@ -739,21 +664,45 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="../../Microservices/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
     
-    <label class="md-nav__link" for="nav-3-1">
+    <label class="md-nav__link" for="nav-3-2">
       Managed Presence Server
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Managed Presence Server" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
+      <label class="md-nav__title" for="nav-3-2">
         <span class="md-nav__icon md-icon"></span>
         Managed Presence Server
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/MPS/configuration/" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
         
           
           
@@ -779,19 +728,31 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
     
-    <label class="md-nav__link" for="nav-3-2">
+    <label class="md-nav__link" for="nav-3-3">
       Remote Provisioning Server
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-2">
+      <label class="md-nav__title" for="nav-3-3">
         <span class="md-nav__icon md-icon"></span>
         Remote Provisioning Server
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPS/configuration/" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
         
           
           
@@ -817,14 +778,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
     
-    <label class="md-nav__link" for="nav-3-3">
+    <label class="md-nav__link" for="nav-3-4">
       Remote Provisioning Client
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Remote Provisioning Client" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
+      <label class="md-nav__title" for="nav-3-4">
         <span class="md-nav__icon md-icon"></span>
         Remote Provisioning Client
       </label>
@@ -1761,29 +1722,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
-    Clone OpenAMT Cloud Toolkit
+  <a href="#network-hardware-and-software-prerequisites" class="md-nav__link">
+    Network, Hardware, and Software Prerequisites
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#modify-mps-configuration-file" class="md-nav__link">
-    Modify MPS Configuration File
+  <a href="#download-and-configure-software" class="md-nav__link">
+    Download and Configure Software
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-the-webui" class="md-nav__link">
-    Configure the WebUI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-the-mps-server" class="md-nav__link">
-    Start the MPS Server
+  <a href="#start-the-mps-and-rps" class="md-nav__link">
+    Start the MPS and RPS
   </a>
   
 </li>
@@ -1812,159 +1766,140 @@
                   </a>
                 
                 
-                  <h1>Install MPS Locally</h1>
+                  <h1>Express Manual Setup</h1>
                 
-                <p>The <a href="../../Glossary/#m">Management Presence Server (MPS)</a> is a cloud-agnostic microservice that enables platforms featuring Intel® AMT to be managed over the internet. This section details how to set up the MPS on a development system.</p>
-<p>Figure 1 illustrates where MPS fits into the overall <a href="../../Glossary/#m">microservice architecture.</a></p>
-<p><a href="../../assets/images/MPSDeployment.png"><img alt="MPS" src="../../assets/images/MPSDeployment.png" /></a></p>
-<p><strong>Figure 1: Deploy Management Presence Server (MPS) on a development system.</strong></p>
-<h2 id="clone-openamt-cloud-toolkit">Clone OpenAMT Cloud Toolkit<a class="headerlink" href="#clone-openamt-cloud-toolkit" title="Permanent link">&para;</a></h2>
-<p><strong>To clone the repositories:</strong></p>
-<p>Note: Skip this step if the repositories are already cloned.</p>
-<ol>
-<li>Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
-<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
-</code></pre></div></li>
-<li>Navigate to the mps directory
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> open-amt-cloud-toolkit<span class="se">\m</span>ps
-</code></pre></div></li>
-</ol>
-<h2 id="modify-mps-configuration-file">Modify MPS Configuration File<a class="headerlink" href="#modify-mps-configuration-file" title="Permanent link">&para;</a></h2>
-<p><strong>To modify the MPS configuration file:</strong></p>
+                <ul>
+<li><a href="../../Glossary/#m">Management Presence Server (MPS)</a></li>
+<li><a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a></li>
+<li><a href="../../Glossary/#u">UI Toolkit</a></li>
+<li><a href="../../Glossary/#r">Remote Provisioning Client (RPC)</a></li>
+</ul>
+<p>Find details about architectural details, security issues, and more in <a href="../../Microservices/overview/">Microservices</a>.</p>
+<h2 id="network-hardware-and-software-prerequisites">Network, Hardware, and Software Prerequisites<a class="headerlink" href="#network-hardware-and-software-prerequisites" title="Permanent link">&para;</a></h2>
+<p><strong>Before installing the toolkit, prepare the environment:</strong></p>
 <ol>
 <li>
-<p>Open the <code>.mpsrc</code> file, within the <code>mps</code> directory, using a text editor of your choice to configure settings, such as Notepad on Windows<em> or Text Editor on Linux</em>.</p>
+<p>Configure a network that includes:</p>
+<ul>
+<li>A development system running Windows® 10 or Ubuntu* 18.04 or newer </li>
+<li>One or more <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/vpro/what-is-vpro.html">Intel vPro®</a> device(s) to manage</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A <strong>flash drive</strong> or equivalent means of transfer is necessary to copy the RPC to the managed device.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Both development systems and managed devices must use a <strong>wired (i.e., cable) connection</strong> on the same network.</p>
+</div>
 </li>
 <li>
-<p>Configure the following settings:</p>
-</li>
-</ol>
+<p>Install the prerequisite software on the development system:</p>
 <table>
 <thead>
 <tr>
-<th align="left">Field</th>
-<th align="left">Change to</th>
-<th align="left">Description</th>
+<th align="left">Prerequisite Software</th>
+<th align="left">Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>use_allowlist</code></td>
-<td align="left">false</td>
-<td align="left">A value of false disables the allowlist functionality. For information about allowlist, see the allowlist <a href="../../Tutorials/allowlist/">tutorial</a></td>
+<td align="left"><a href="https://www.google.com/chrome">Chrome* Browser</a></td>
+<td align="left">Runs the WebUI console for configuring profiles and connecting devices</td>
 </tr>
 <tr>
-<td align="left"><code>common_name</code></td>
-<td align="left">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the MPS and RPS servers.</td>
-<td align="left">For this guide, the address will be used in a self-signed certificate. It may be an IP address or FQDN in real world deployment.</td>
+<td align="left"><a href="https://git-scm.com/downloads">git</a></td>
+<td align="left">Downloads the OpenAMT Cloud Toolkit repository</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nodejs.org/">Node.js* LTS 12.x.x or newer</a></td>
+<td align="left">Installs the software</td>
 </tr>
 </tbody>
 </table>
-<ol>
-<li>Save and close the file.</li>
+</li>
 </ol>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example .mpsrc file:</p>
-<div class="highlight"><pre><span></span><code>  <span class="p">{</span>
-<span class="hll">      <span class="nt">&quot;use_allowlist&quot;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class="hll">      <span class="nt">&quot;common_name&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.8&quot;</span><span class="p">,</span>
-</span>      <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">4433</span><span class="p">,</span>
-      <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;pass&quot;</span><span class="p">:</span> <span class="s2">&quot;G@ppm0ym&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;use_global_mps_credentials&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;company&quot;</span><span class="p">:</span> <span class="s2">&quot;NoCorp&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;debug&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;listen_any&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;https&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;tls_offload&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="nt">&quot;web_port&quot;</span> <span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
-      <span class="nt">&quot;generate_certificates&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;logger_off&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
-      <span class="nt">&quot;web_admin_user&quot;</span><span class="p">:</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;web_admin_password&quot;</span><span class="p">:</span> <span class="s2">&quot;G@ppm0ym&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;vault_address&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8200&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;vault_token&quot;</span><span class="p">:</span> <span class="s2">&quot;myroot&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;use_vault&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;secrets_path&quot;</span><span class="p">:</span> <span class="s2">&quot;secret/data/&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cert_format&quot;</span> <span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;data_path&quot;</span> <span class="p">:</span> <span class="s2">&quot;../private/data.json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cert_path&quot;</span><span class="p">:</span> <span class="s2">&quot;../private&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;mpsxapikey&quot;</span><span class="p">:</span> <span class="s2">&quot;APIKEYFORMPS123!&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;mps_tls_config&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;../private/mpsserver-cert-private.key&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cert&quot;</span><span class="p">:</span> <span class="s2">&quot;../private/mpsserver-cert-public.crt&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;requestCert&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;rejectUnauthorized&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;minVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;TLSv1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ciphers&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;secureOptions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;SSL_OP_NO_SSLv2&quot;</span><span class="p">,</span> <span class="s2">&quot;SSL_OP_NO_SSLv3&quot;</span><span class="p">]</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;web_tls_config&quot;</span> <span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;../private/mpsserver-cert-private.key&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cert&quot;</span><span class="p">:</span> <span class="s2">&quot;../private/mpsserver-cert-public.crt&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ca&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;../private/root-cert-public.crt&quot;</span><span class="p">],</span>
-        <span class="nt">&quot;secureOptions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;SSL_OP_NO_SSLv2&quot;</span><span class="p">,</span> <span class="s2">&quot;SSL_OP_NO_SSLv3&quot;</span><span class="p">,</span> <span class="s2">&quot;SSL_OP_NO_COMPRESSION&quot;</span><span class="p">,</span> <span class="s2">&quot;SSL_OP_CIPHER_SERVER_PREFERENCE&quot;</span><span class="p">,</span><span class="s2">&quot;SSL_OP_NO_TLSv1&quot;</span><span class="p">,</span> <span class="s2">&quot;SSL_OP_NO_TLSv11&quot;</span><span class="p">]</span>
-      <span class="p">}</span>
-  <span class="p">}</span>
+<h2 id="download-and-configure-software">Download and Configure Software<a class="headerlink" href="#download-and-configure-software" title="Permanent link">&para;</a></h2>
+<p><strong>To download the Open AMT Cloud Toolkit repository on the development system:</strong></p>
+<ol>
+<li>
+<p>Open a Powershell command prompt (Windows) or Terminal (Linux) and navigate to a directory of your choice for development. </p>
+</li>
+<li>
+<p>Clone the repository.
+    <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+</code></pre></div></p>
+</li>
+<li>
+<p>Build and Install the services. Run the following script which will update the <code>./mps/.mpsrc</code> file and the <code>./sample-web-ui/src/app.config.js</code> file with the IP address you enter. It will also run <code>npm install</code> for each service to install necessary dependencies. For more information on all available configuration options for MPS see <a href="../../Microservices/MPS/configuration/">click here</a> and for RPS <a href="../../Microservices/RPS/configuration/">click here</a>.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">ps1</span>
 </code></pre></div>
 </div>
-<h2 id="configure-the-webui">Configure the WebUI<a class="headerlink" href="#configure-the-webui" title="Permanent link">&para;</a></h2>
-<p><strong>To configure the WebUI:</strong></p>
-<ol>
-<li>
-<p>Navigate to the <code>src</code> directory in <code>.\mps\webui\src\</code></p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> webui/src
-</code></pre></div>
-</li>
-<li>
-<p>Open the <code>app.config.js</code> file using a text editor to configure IP Address settings.</p>
-</li>
-<li>
-<p>Replace the localhost for both <code>rpsServerIP</code> and <code>serverIP</code> with your development system's IP Address. Save and close the file.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>  <span class="kd">const</span> <span class="nx">validExtensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;.jpeg&#39;</span><span class="p">,</span> <span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;.svg&#39;</span><span class="p">];</span>
-  <span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPS_WEB_PORT</span><span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPS_WEB_PORT</span> <span class="o">:</span> <span class="mf">3000</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">rpsPort</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPS_WEB_PORT</span> <span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPS_WEB_PORT</span> <span class="o">:</span> <span class="mf">8081</span><span class="p">;</span>
-<span class="hll">  <span class="kd">const</span> <span class="nx">rpsServerIP</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPS_SERVER</span> <span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPS_SERVER</span> <span class="o">:</span> <span class="s1">&#39;192.168.0.8&#39;</span><span class="p">;</span>
-</span><span class="hll">  <span class="kd">const</span> <span class="nx">serverIP</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPS_SERVER</span> <span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPS_SERVER</span> <span class="o">:</span> <span class="s1">&#39;192.168.0.8&#39;</span><span class="p">;</span>
-</span>  <span class="kd">const</span> <span class="nx">mpsAPIKey</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPSXAPIKEY</span> <span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_MPSXAPIKEY</span> <span class="o">:</span> <span class="s1">&#39;APIKEYFORMPS123!&#39;</span><span class="p">;</span>
-  <span class="kd">const</span> <span class="nx">rpsAPIKey</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPSXAPIKEY</span> <span class="o">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REACT_APP_RPSXAPIKEY</span> <span class="o">:</span> <span class="s1">&#39;APIKEYFORRPS123!&#39;</span>
-  <span class="kd">const</span> <span class="nx">Config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">...</span>
-<span class="p">};</span>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>make build
 </code></pre></div>
 </div>
+</div>
 </li>
-<li>
-<p>Navigate back to the <code>./mps</code> base installation directory.</p>
-</li>
-<li>Run the install commands to install all required dependencies.
-    <div class="highlight"><pre><span></span><code>npm install
-</code></pre></div></li>
 </ol>
-<h2 id="start-the-mps-server">Start the MPS Server<a class="headerlink" href="#start-the-mps-server" title="Permanent link">&para;</a></h2>
-<p><strong>To start the MPS server:</strong></p>
+<p>All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click <a href="../../Microservices/overview/">here</a>. </p>
+<h2 id="start-the-mps-and-rps">Start the MPS and RPS<a class="headerlink" href="#start-the-mps-and-rps" title="Permanent link">&para;</a></h2>
+<p>Start the MPS and RPS in two separate command line terminals. </p>
+<p><strong>To start the MPS:</strong></p>
 <ol>
-<li>Run the the following command:
-<div class="highlight"><pre><span></span><code>npm run dev
+<li>Open a new Command Prompt or Terminal and navigate to a directory to the <code>mps</code> directory. 
+    <div class="highlight"><pre><span></span><code>npm run dev
 </code></pre></div></li>
-<li>Figure 2 demonstrates successful deployment. The web server runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<li>
+<p>Figure 1 demonstrates successful deployment. The web server (api) runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <p>The development system's IP Address will be used to connect to the web server.</p>
 </div>
 <p><a href="../../assets/images/MPS_npmrundev.png"><img alt="mps" src="../../assets/images/MPS_npmrundev.png" /></a></p>
-<p><strong>Figure 2: MPS reports successful deployment.</strong></p>
+<p><strong>Figure 1: MPS reports successful deployment.</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Because the <code>generateCertificates</code> field is set to true in the <code>.mpsrc</code> file, certificates will be generated and stored in the <code>../mps/private</code> directory.</p>
 </div>
+</li>
+</ol>
+<p><strong>To start the RPS:</strong></p>
+<ol>
+<li>
+<p>Open a new Command Prompt or Terminal and navigate to a directory to the <code>rps</code> directory. </p>
+</li>
+<li>
+<p>Then, start the server. By default, the RPS web port is 8080.</p>
+<div class="highlight"><pre><span></span><code>npm run dev
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Warning messages are okay and expected for optional dependencies.</p>
+</div>
+<p>Example Output:</p>
+</li>
+</ol>
+<p><a href="../../assets/images/RPS_npmrundev.png"><img alt="RPS Output" src="../../assets/images/RPS_npmrundev.png" /></a></p>
+<p><strong>Figure 2: RPS reports successful deployment.</strong></p>
+<p><strong>To start the Sample Web UI:</strong></p>
+<ol>
+<li>
+<p>Open a new Command Prompt or Terminal and navigate to a directory to the <code>sample-web-ui</code> directory. </p>
+</li>
+<li>
+<p>Then, start the server. You may be prompted to use another port if one is already in use. Enter 'y' if prompted and note the port that is chosen, this is where the UI will be running.</p>
+<div class="highlight"><pre><span></span><code>npm start
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Warning messages are okay and expected for optional dependencies.</p>
+</div>
+</li>
+</ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><strong><a href="../installRPS/">Install RPS Locally</a></strong></p>
+<p><a href="../../General/loginToRPS/"><strong>Login to RPS</strong></a></p>
                 
               
               

@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-and-command-reference" class="md-skip">
+        <a href="#out-of-band-oob-management" class="md-skip">
           Skip to content
         </a>
       
@@ -198,7 +198,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Microservices/overview/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           Microservices
         </a>
       
@@ -247,7 +247,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" class="md-tabs__link md-tabs__link--active">
+        <a href="../../APIs/indexMPS/" class="md-tabs__link">
           APIs
         </a>
       
@@ -581,10 +581,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Microservices
@@ -602,11 +604,86 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../Microservices/overview/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overview
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Overview
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#out-of-band-oob-management" class="md-nav__link">
+    Out-of-band (OOB) Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Out-of-band (OOB) Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cira-configuration" class="md-nav__link">
+    CIRA Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amt-profile" class="md-nav__link">
+    AMT Profile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-control" class="md-nav__link">
+    Power Control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kvm-control" class="md-nav__link">
+    KVM Control
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -637,7 +714,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Microservices/MPS/configuration/" class="md-nav__link">
+    <a href="../MPS/configuration/" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -649,7 +726,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Microservices/MPS/securityMPS/" class="md-nav__link">
+    <a href="../MPS/securityMPS/" class="md-nav__link">
       Security Information
     </a>
   </li>
@@ -687,7 +764,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Microservices/RPS/configuration/" class="md-nav__link">
+    <a href="../RPS/configuration/" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -699,7 +776,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
+    <a href="../RPS/securityRPS/" class="md-nav__link">
       Security Information
     </a>
   </li>
@@ -749,7 +826,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+    <a href="../RPC/troubleshootingRPC/" class="md-nav__link">
       Troubleshooting
     </a>
   </li>
@@ -1137,12 +1214,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       APIs
@@ -1160,12 +1235,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-1" type="checkbox" id="nav-6-1">
     
     <label class="md-nav__link" for="nav-6-1">
       Management Presence Server
@@ -1183,96 +1256,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Overview
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../APIs/indexMPS/" class="md-nav__link">
       Overview
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-the-rest-api" class="md-nav__link">
-    How to Use the REST API
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Use the REST API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#request-url" class="md-nav__link">
-    Request URL
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#base-paths" class="md-nav__link">
-    Base paths
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-calls" class="md-nav__link">
-    API Calls
-  </a>
-  
-    <nav class="md-nav" aria-label="API Calls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#admin-methods" class="md-nav__link">
-    Admin Methods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#amt-methods" class="md-nav__link">
-    AMT Methods
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1303,7 +1291,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/alldevices/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/alldevices/" class="md-nav__link">
       AllDevices
     </a>
   </li>
@@ -1315,7 +1303,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/connecteddevices/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/connecteddevices/" class="md-nav__link">
       ConnectedDevices
     </a>
   </li>
@@ -1327,7 +1315,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/disconnect/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/disconnect/" class="md-nav__link">
       Disconnect
     </a>
   </li>
@@ -1339,7 +1327,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/mescript/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/mescript/" class="md-nav__link">
       MEScript
     </a>
   </li>
@@ -1351,7 +1339,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/rootcertificate/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/rootcertificate/" class="md-nav__link">
       RootCertificate
     </a>
   </li>
@@ -1389,7 +1377,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/auditlog/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/auditlog/" class="md-nav__link">
       AuditLog
     </a>
   </li>
@@ -1401,7 +1389,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/eventlog/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/eventlog/" class="md-nav__link">
       EventLog
     </a>
   </li>
@@ -1413,7 +1401,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/generalsettings/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/generalsettings/" class="md-nav__link">
       GeneralSettings
     </a>
   </li>
@@ -1425,7 +1413,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/getamtfeatures/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/getamtfeatures/" class="md-nav__link">
       GetAMTFeatures
     </a>
   </li>
@@ -1437,7 +1425,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/hardwareinfo/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/hardwareinfo/" class="md-nav__link">
       HardwareInfo
     </a>
   </li>
@@ -1449,7 +1437,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/poweraction/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/poweraction/" class="md-nav__link">
       PowerAction
     </a>
   </li>
@@ -1461,7 +1449,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/powercapabilities/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/powercapabilities/" class="md-nav__link">
       PowerCapabilities
     </a>
   </li>
@@ -1473,7 +1461,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/powerstate/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/powerstate/" class="md-nav__link">
       PowerState
     </a>
   </li>
@@ -1485,7 +1473,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/setamtfeatures/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/setamtfeatures/" class="md-nav__link">
       SetAMTFeatures
     </a>
   </li>
@@ -1497,7 +1485,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../MPSmethods/version/" class="md-nav__link">
+    <a href="../../APIs/MPSmethods/version/" class="md-nav__link">
       Version
     </a>
   </li>
@@ -1540,7 +1528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../indexRPS/" class="md-nav__link">
+    <a href="../../APIs/indexRPS/" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -1552,7 +1540,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../RPSmethods/ciraconfig/" class="md-nav__link">
+    <a href="../../APIs/RPSmethods/ciraconfig/" class="md-nav__link">
       CIRA Configuration
     </a>
   </li>
@@ -1564,7 +1552,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../RPSmethods/domains/" class="md-nav__link">
+    <a href="../../APIs/RPSmethods/domains/" class="md-nav__link">
       Intel AMT Domains
     </a>
   </li>
@@ -1576,7 +1564,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../RPSmethods/profiles/" class="md-nav__link">
+    <a href="../../APIs/RPSmethods/profiles/" class="md-nav__link">
       Intel AMT Profiles
     </a>
   </li>
@@ -1588,7 +1576,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../RPSmethods/networkconfig/" class="md-nav__link">
+    <a href="../../APIs/RPSmethods/networkconfig/" class="md-nav__link">
       Network Configurations
     </a>
   </li>
@@ -1742,8 +1730,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1752,23 +1738,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-the-rest-api" class="md-nav__link">
-    How to Use the REST API
+  <a href="#out-of-band-oob-management" class="md-nav__link">
+    Out-of-band (OOB) Management
   </a>
   
-    <nav class="md-nav" aria-label="How to Use the REST API">
+    <nav class="md-nav" aria-label="Out-of-band (OOB) Management">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#request-url" class="md-nav__link">
-    Request URL
+  <a href="#cira-configuration" class="md-nav__link">
+    CIRA Configuration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#base-paths" class="md-nav__link">
-    Base paths
+  <a href="#amt-profile" class="md-nav__link">
+    AMT Profile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    Domains
   </a>
   
 </li>
@@ -1779,29 +1772,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api-calls" class="md-nav__link">
-    API Calls
-  </a>
-  
-    <nav class="md-nav" aria-label="API Calls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#admin-methods" class="md-nav__link">
-    Admin Methods
+  <a href="#power-control" class="md-nav__link">
+    Power Control
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#amt-methods" class="md-nav__link">
-    AMT Methods
+      
+        <li class="md-nav__item">
+  <a href="#kvm-control" class="md-nav__link">
+    KVM Control
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1817,119 +1797,68 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/APIs/indexMPS.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Microservices/overview.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="api-and-command-reference">API and Command Reference<a class="headerlink" href="#api-and-command-reference" title="Permanent link">&para;</a></h1>
-<p>This section is a reference to the MPS API methods available in the Open AMT Cloud Toolkit, and to some commands it provides. </p>
-<p>There are two types of method paths for the MPS Server:</p>
+                  <h1>Overview</h1>
+                
+                <p>Figure 1 illustrates the high-level architecture of Open Active Management Technology (AMT) Cloud Toolkit <a href="../../Glossary/#m">microservice architecture</a>.</p>
+<p><a href="../../assets/images/AEHighLevelArch.png"><img alt="ManualDeploymentWorkflow.png" src="../../assets/images/AEHighLevelArch.png" /></a>
+<strong>Figure 1: Deploy Management Presence Server (MPS) and the Remote Provisioning Server (RPS) on a development system.</strong></p>
+<p>As shown in Figure 1, the architecture consists of four components:</p>
+<ol>
+<li><strong>MPS</strong> - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, and Mouse (KVM) control.</li>
+<li><strong>RPS</strong> - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the MPS for manageability use cases.</li>
+<li><strong>RPC</strong> - A lightweight client application that communicates with the RPS server to activate Intel® AMT.</li>
+<li><strong>UI Toolkit</strong> - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. </li>
+<li><strong>Sample Web UI</strong> - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.</li>
+</ol>
+<h2 id="out-of-band-oob-management">Out-of-band (OOB) Management<a class="headerlink" href="#out-of-band-oob-management" title="Permanent link">&para;</a></h2>
+<p>Open AMT Cloud Toolkit uses remote management technology, also known as out-of-band (OOB) management, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.   </p>
+<h3 id="cira-configuration">CIRA Configuration<a class="headerlink" href="#cira-configuration" title="Permanent link">&para;</a></h3>
+<p>CIRA enables OOB connections between Intel® AMT platforms and administrative development systems running Open AMT on the same network. </p>
+<p>The <a href="https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server">following steps</a> occur via a CIRA channel:</p>
+<ol>
+<li>
+<p>A remote Intel vPro® platform featuring Intel® AMT is provisioned with CIRA enabled. The remote platform is referred to as the managed device. </p>
+</li>
+<li>
+<p>The managed device sends a secure connection request via Transport Layer Security (TLS) to the MPS on the development system.</p>
+</li>
+<li>
+<p>After authentication, Intel vPro® platform information is stored in a database and sent to the management console.</p>
+</li>
+<li>
+<p>On the development system, the management console sends a command to the MPS.</p>
+</li>
+<li>
+<p>When an action is triggered on the development system, such as <em>power up</em>, the management console sends that command to the MPS. Both power control messages and keyboard, video and mouse (KVM) control messages are supported.</p>
+</li>
+<li>
+<p>The MPS creates the WSMan message to the managed device.</p>
+</li>
+<li>
+<p>The managed device sends a <em>keep-alive</em> message to the MPS to maintain the connection. This message persists regardless of the state of the operating system, in-band or OOB.</p>
+</li>
+</ol>
+<h3 id="amt-profile">AMT Profile<a class="headerlink" href="#amt-profile" title="Permanent link">&para;</a></h3>
+<p>[TBD] Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<h3 id="domains">Domains<a class="headerlink" href="#domains" title="Permanent link">&para;</a></h3>
+<p>[TBD] At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
+<h2 id="power-control">Power Control<a class="headerlink" href="#power-control" title="Permanent link">&para;</a></h2>
+<p>With the established CIRA channel, Open AMT Cloud Toolkit enables the administrator to manage remote devices and trigger power actions to:</p>
 <ul>
-<li>AMT path methods - Allow you to send device-specific calls for things such as power actions or audit logs. Utilize these methods by setting the path to <strong>amt</strong> in your API call.</li>
-<li>Admin path methods - Allow you to send calls for info for all devices or for MPS configuration information. Utilize these methods by setting the path to <strong>admin</strong> in your API call.</li>
+<li>power up</li>
+<li>power down</li>
+<li>power up to BIOS</li>
+<li>reset</li>
+<li>reset to BIOS</li>
 </ul>
-<p>Steps on how to create your own Rest API call can be found in the <a href="../../Tutorials/apiTutorial/">Construct a Rest API Call</a> tutorial.</p>
-<h2 id="how-to-use-the-rest-api">How to Use the REST API<a class="headerlink" href="#how-to-use-the-rest-api" title="Permanent link">&para;</a></h2>
-<h3 id="request-url">Request URL<a class="headerlink" href="#request-url" title="Permanent link">&para;</a></h3>
-<p>The request URL is assembled using your MPS server's IP Address, the port, and the base path for the method you would like to run. The tables below explore what methods are accessible for each base path.</p>
-<div class="highlight"><pre><span></span><code>Example url: https://localhost:3000/amt
-</code></pre></div>
-<h3 id="base-paths">Base paths<a class="headerlink" href="#base-paths" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/amt/</span>
-<span class="l l-Scalar l-Scalar-Plain">/admin/</span>
-</code></pre></div>
-<h2 id="api-calls">API Calls<a class="headerlink" href="#api-calls" title="Permanent link">&para;</a></h2>
-<p>The sections below list methods for MPS. </p>
-<p>The MPS API includes Admin and AMT methods.</p>
-<p><br></p>
-<h3 id="admin-methods">Admin Methods<a class="headerlink" href="#admin-methods" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th align="left">Method</th>
-<th align="left">Description/Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/alldevices/">AllDevices</a></strong></td>
-<td align="left">Lists all devices known to MPS, regardless of connected status</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/connecteddevices/">ConnectedDevices</a></strong></td>
-<td align="left">Lists all devices currently connected to MPS</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/disconnect/">Disconnect</a></strong></td>
-<td align="left">Disconnects the CIRA connection for a specified guid</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/mescript/">MEScript</a></strong></td>
-<td align="left">Downloads the cira_setup.mescript from MPS</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/rootcertificate/">RootCertificate</a></strong></td>
-<td align="left">Download the MPS Root Certificate</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="amt-methods">AMT Methods<a class="headerlink" href="#amt-methods" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>These methods are 1:1 device-specific.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th align="left">Method</th>
-<th align="left">Description/Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/auditlog/">AuditLog</a></strong></td>
-<td align="left">Returns a requested amount or time range of Intel® AMT Audit Log data for a specified guid</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/eventlog/">EventLog</a></strong></td>
-<td align="left">Return sensor and hardware event data</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/generalsettings/">GeneralSettings</a></strong></td>
-<td align="left">View general network settings</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/getamtfeatures/">GetAMTFeatures</a></strong></td>
-<td align="left">View what AMT out-of-band features are enabled/disabled</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/hardwareinfo/">HardwareInfo</a></strong></td>
-<td align="left">Retrieve hardware information such as processor or storage</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/poweraction/">PowerAction</a></strong></td>
-<td align="left">Perform an OOB power action</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/powercapabilities/">PowerCapabilities</a></strong></td>
-<td align="left">View what OOB power actions are available for that device</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/powerstate/">PowerState</a></strong></td>
-<td align="left">Retrieve current state of AMT device, returns a number that maps to the <a href="../MPSmethods/poweraction/">PowerActions</a> table</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/setamtfeatures/">SetAMTFeatures</a></strong></td>
-<td align="left">Enable/Disable AMT features such as KVM, SOL, and IDE-R</td>
-</tr>
-<tr>
-<td align="left"><strong><a href="../MPSmethods/version/">Version</a></strong></td>
-<td align="left">Retrieve AMT version of device</td>
-</tr>
-</tbody>
-</table>
+<p>For more information about power states and REST APIs, see Power States for more details. </p>
+<h2 id="kvm-control">KVM Control<a class="headerlink" href="#kvm-control" title="Permanent link">&para;</a></h2>
+<p>[TBD] Et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
                 
               
               
