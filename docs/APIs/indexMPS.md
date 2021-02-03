@@ -48,7 +48,8 @@ The MPS API includes Admin and AMT methods.
 
 ### AMT Methods
 
-**Note:** These methods are 1:1 device-specific.
+!!! note
+    These methods are 1:1 device-specific.
 
    | Method       |  Description/Usage |
    | :----------- | :------------------------ |   

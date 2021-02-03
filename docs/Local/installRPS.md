@@ -6,17 +6,22 @@ Figure 1 illustrates where RPS fits into the overall [microservice architecture.
 
 **Figure 1: Deploy Remote Provisioning Server (RPS) on a development system.**
 
-## Clone the Repository
 
-**To clone the repository:**
+## Clone OpenAMT Cloud Toolkit
 
-1. Open a new Command Prompt or a Terminal. The MPS server will continue to run in your previous Command Prompt or Terminal.
+**To clone the repositories:**
 
-2. Clone the RPS repository to the same parent directory where the mps directory is located. 
+Note: Skip this step if the repositories are already cloned.
 
+1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
+``` bash
+git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
 ```
-git clone https://github.com/open-amt-cloud-toolkit/rps.git && cd rps
+2. Navigate to the rps directory
+``` bash
+cd open-amt-cloud-toolkit\rps
 ```
+
 
 !!! Warning
     Do not nest a microservice directory inside another microservice directory. The source code contains relative paths. The correct directory structure appears below, where *parent* is your installation directory.
