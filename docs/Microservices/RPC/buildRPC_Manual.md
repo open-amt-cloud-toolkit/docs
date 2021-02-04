@@ -1,7 +1,15 @@
 In addition to using GitHub Actions to obtain a binary, the RPC binary can also be manually built. The steps below walk through how to build RPC on Windows 10, Ubuntu (18.04 or 20.04), and CentOS7/8.
 
-<!-- The Remote Provisioning Client (RPC) communicates with the Manageability Engine Interface (MEI) and RPS interfaces. The MEI uses the ME Driver to talk to Intel AMT. By running RPC, we will activate Intel AMT into Client Control Mode (CCM), or ACM based on the created profile, as well as configure the CIRA connection of the AMT device to the MPS. After successfully running, the AMT device will be ready to be managed remotely using the web interface! -->
+### Required Software
 
+- [git](https://git-scm.com/downloads)
+
+Additionally, if using Windows 10:
+
+- [Microsoft Visual Studio*](https://visualstudio.microsoft.com/): 2019 or newer version of Visual Studio Community/Professional
+    - Make sure to install the **Desktop development with C++** package at time of installation or via the 'Get tools and extensions' menu within Microsoft Visual Studio*.
+
+<br>
 
 The steps below assume the following directory structure where rpc is the clone of the [rpc repository](https://github.com/open-amt-cloud-toolkit/rpc), vcpkg is a clone of the VCPKG tool source and build is the RPC build directory. Both vcpkg and build directories will be created in later steps.
 
@@ -42,7 +50,7 @@ The steps below assume the following directory structure where rpc is the clone 
     bootstrap-vcpkg.bat
     ```
         
-    3. Install C++ REST SDK.
+    3. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
     ``` bash
     vcpkg install cpprestsdk[websockets]:x64-windows-static
     ```
@@ -56,7 +64,7 @@ The steps below assume the following directory structure where rpc is the clone 
     
     2. Generate the CMake config.
     ``` bash
-    cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=/rpc/vcpkg/scripts/buildsystems/vcpkg.cmake ..
+    cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
     ```
 
     3. Build the RPC executable.
@@ -103,7 +111,7 @@ The steps below assume the following directory structure where rpc is the clone 
     ./bootstrap-vcpkg.sh
     ```
         
-    4. Install C++ REST SDK.
+    4. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
     ``` bash
     ./vcpkg install cpprestsdk[websockets]
     ```
@@ -117,23 +125,18 @@ The steps below assume the following directory structure where rpc is the clone 
     
     2. Generate the CMake config.
     ``` bash
-    cmake -DCMAKE_TOOLCHAIN_FILE=/rpc/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release ..
     ```
 
         !!! note
             RPC can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
             ```
-            cmake -DCMAKE_TOOLCHAIN_FILE=/rpc/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
+            cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
             ```
 
     3. Build the RPC executable.
     ```bash
     cmake --build .
-    ```
-
-    4. Change to `build` directory.
-    ``` bash
-    cd build
     ```
 
 === "CentOS7"
@@ -176,7 +179,7 @@ The steps below assume the following directory structure where rpc is the clone 
     ./bootstrap-vcpkg.sh
     ```
         
-    4. Install C++ REST SDK.
+    4. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
     ``` bash
     ./vcpkg install cpprestsdk[websockets]
     ```
@@ -190,13 +193,13 @@ The steps below assume the following directory structure where rpc is the clone 
     
     2. Generate the CMake config
     ``` bash
-    cmake -DCMAKE_TOOLCHAIN_FILE=/rpc/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release -DNO_SELECT=ON ..
+    cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release -DNO_SELECT=ON ..
     ```
 
         !!! note
             RPC can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
             ```
-            cmake -DCMAKE_TOOLCHAIN_FILE=/rpc/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
+            cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
             ```
 
     3. Build the RPC executable
@@ -204,12 +207,7 @@ The steps below assume the following directory structure where rpc is the clone 
     cmake --build .
     ```
 
-    4. Change to `build` directory
-    ``` bash
-    cd build
-    ```
-
-### Run RPC to Activate and Connect an AMT Device
+### Run RPC
 
 For additional information on possible arguments when invoking RPC, see [Command Examples](../commandsRPC.md).
 
@@ -217,7 +215,7 @@ The following example command shows how to activate and configure an Intel AMT d
 
 === "Windows"
     ```
-    rpc.exe --url wss://localhost:8080 --cmd "-t activate --profile profile1"
+    rpc --url wss://localhost:8080 --cmd "-t activate --profile profile1"
     ```
 === "Linux"
     ``` bash
