@@ -209,7 +209,7 @@ The steps below assume the following directory structure where rpc is the clone 
 
 ### Run RPC
 
-For additional information on possible arguments when invoking RPC, see [Command Examples](../commandsRPC.md).
+For additional information on possible arguments when invoking RPC, see [Command Examples](commandsRPC.md).
 
 The following example command shows how to activate and configure an Intel AMT device using a pre-defined profile on your local network.
 
@@ -225,4 +225,4 @@ The following example command shows how to activate and configure an Intel AMT d
 
 Example Success Output:
 
-[![RPC Success](../../assets/images/RPC_Success.png)](../assets/images/RPC_Success.png)
+[![RPC Success](../../assets/images/RPC_Success.png)](../../assets/images/RPC_Success.png)
