@@ -14,7 +14,7 @@ As shown in Figure 1, the architecture consists of five components:
 
 ## Out-of-band Management (OOBM)
 
-Open AMT Cloud Toolkit uses remote management technology, also known as [out-of-band management (OOBM)](Glossary.md#o), to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
+Open AMT Cloud Toolkit uses remote management technology, also known as [out-of-band management (OOBM)](../Glossary.md#o), to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
 
 Remote management can offer potential cost-savings by decreasing the need for in-person technician visits to remote IT sites and reducing downtime.
 
