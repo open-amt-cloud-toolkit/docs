@@ -24,88 +24,112 @@ Find details about architectural details, security issues, and more in [Microser
 
     | Prerequisite Software | Purpose |
     | :----------- |  :--|
-    | [Chrome* Browser](https://www.google.com/chrome) | Runs the WebUI console for configuring profiles and connecting devices | 
+    | [Chrome* Browser](https://www.google.com/chrome) | View the WebUI console for configuring profiles and connecting devices | 
     | [git](https://git-scm.com/downloads)| Downloads the OpenAMT Cloud Toolkit repository | 
-    | [Node.js* LTS 12.x.x or newer](https://nodejs.org/) | Installs the software | 
+    | [Node.js* LTS 12.x.x or newer](https://nodejs.org/) | Installs and runs the software | 
 
 ## Download and Configure Software
 
 **To download the Open AMT Cloud Toolkit repository on the development system:**
 
-1. Open a Powershell command prompt (Windows) or Terminal (Linux) and navigate to a directory of your choice for development. 
+1. Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. 
 
 2. Clone the repository.
     ``` bash
     git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
     ```
 
-3. Build and Install the services. Run the following script which will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install necessary dependencies. For more information on all available configuration options for MPS see [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
+3. Run the following script to build and install the services. 
 
-    === "Windows (Powershell)"
-        ``` powershell
-        ./build.ps1
-        ```
     === "Linux"
         ``` bash
         make build
         ```
 
+    === "Windows (Powershell)"
+        ``` powershell
+        ./build.ps1
+        ```
 
-All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click [here](../Microservices/overview.md). 
-## Start the MPS and RPS
-Start the MPS and RPS in two separate command line terminals. 
+4. Provide the IP Address of your development system and press Enter. 
 
-**To start the MPS:**
-
-1. Open a new Command Prompt or Terminal and navigate to a directory to the `mps` directory. 
-    ``` bash
-    npm run dev
-    ```
-2. Figure 1 demonstrates successful deployment. The web server (api) runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.
-
-    !!! Success
-        The development system's IP Address will be used to connect to the web server.
-
-    [![mps](../assets/images/MPS_npmrundev.png)](../assets/images/MPS_npmrundev.png)
-
-    **Figure 1: MPS reports successful deployment.**
-
-    !!! Note
-        Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory.
-
-**To start the RPS:**
-
-1. Open a new Command Prompt or Terminal and navigate to a directory to the `rps` directory. 
-
-2. Then, start the server. By default, the RPS web port is 8080.
-
-    ``` bash
-    npm run dev
-    ```
+    !!! info
+        The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
 
     !!! note
         Warning messages are okay and expected for optional dependencies.
 
-    Example Output:
+    All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click [here](../Microservices/overview.md).
+
+## Start the MPS, RPS, and Sample Web UI
+
+Start the MPS, RPS, and Sample Web UI in three separate command line terminals. 
+
+**To start the MPS:**
+
+1. Open a new Terminal or Command Prompt and navigate to the `mps` directory inside the `open-amt-cloud-toolkit` directory. 
+
+2. Start the MPS server. It may take approximately 2-3 minutes to start.
+
+    === "Linux"
+        ``` bash
+        npm run devx
+        ```
+
+    === "Windows (Powershell)"
+        ``` powershell
+        npm run dev
+        ```
+
+    !!! Success
+        The development system's IP Address will be used to connect to the web server. By default, the web server (api) runs on port 3000 and the MPS Server listens on port 4433.
+
+        [![mps](../assets/images/MPS_npmrundev.png)](../assets/images/MPS_npmrundev.png)
+
+    **Figure 1: MPS reports successful deployment.**
+
+    <!-- !!! Note
+        Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory. -->
+
+<br>
+
+**To start the RPS:**
+
+1. Open a new Terminal or Command Prompt and navigate to the `rps` directory inside the `open-amt-cloud-toolkit` directory. 
+
+2. Start the RPS server.
+
+    === "Linux"
+        ``` bash
+        npm run devx
+        ```
+
+    === "Windows (Powershell)"
+        ``` powershell
+        npm run dev
+        ```
 
 
-    
-[![RPS Output](../assets/images/RPS_npmrundev.png)](../assets/images/RPS_npmrundev.png)
+    !!! Success
+        By default, the RPS web port is 8080 and the RPS Server listens on port 8081.
+
+        [![RPS Output](../assets/images/RPS_npmrundev.png)](../assets/images/RPS_npmrundev.png)
 
 **Figure 2: RPS reports successful deployment.**
 
+<br>
+
 **To start the Sample Web UI:**
 
-1. Open a new Command Prompt or Terminal and navigate to a directory to the `sample-web-ui` directory. 
+1. Open a new Terminal or Command Prompt and navigate to the `sample-web-ui` directory inside the `open-amt-cloud-toolkit` directory.
 
-2. Then, start the server. You may be prompted to use another port if one is already in use. Enter 'y' if prompted and note the port that is chosen, this is where the UI will be running.
+2. Start the server.
 
     ``` bash
     npm start
     ```
 
-    !!! note
-        Warning messages are okay and expected for optional dependencies.
+3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
 
 
 ## Next up

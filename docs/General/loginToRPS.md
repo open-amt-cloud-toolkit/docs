@@ -1,17 +1,17 @@
 
-The web portal is available for login after the deployment of [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r). Make sure both are running before attempting to login.
+The web portal is available for login after the deployment of the [Management Presence Server (MPS)](../Glossary.md#m), [Remote Provisioning Server (RPS)](../Glossary.md#r), and [Sample Web UI](../Glossary.md#s). Make sure both are running before attempting to login.
 
 **To login:**
 
-1. Open Chrome* browser and navigate to the web server using your development system's IP address on port 3000.
+1. Open a Chrome* browser and navigate to the web server using your development system's IP address on the port of the Sample Web UI. Typically, port 3001.
 
     ```
-    https://[Development-IP-Address]:3000
+    http://[Development-IP-Address]:3001
     ```
 
     !!! important
         Use your development system's IP Address to connect to the web server.
-        ** Using `localhost` will not work.**
+        **Using `localhost` will not work.** Google Chrome is currently the **only** supported browser for the Sample Web UI.
 
 2. Using a self-signed certificate will prompt a warning screen. Click **Advanced** and then **Proceed** to continue to connect to the webserver.
 
@@ -20,7 +20,7 @@ The web portal is available for login after the deployment of [Management Presen
     **Default credentials:**
 
     | Field       |  Value    |
-    | :----------- | :-------------- |
+    | :-----------| :-------------- |
     | **Username**| standalone |
     | **Password**| G@ppm0ym |
 

@@ -24,13 +24,14 @@ A CIRA Configuration provides the Remote Provisioning Client (RPC) the required 
     | **Password**  | G@ppm0ym   |
 
 
-7. Provide your development system's IP address as the **Common Name** to generate the self-signed certificate by the MPS server.
+7. Provide your development system's IP address as the **Cert. Hostname(CN)** to generate the self-signed certificate by the MPS server.
 
-8. Do not modify the default value of **Auto Load** for the **MPS root certificate format.**
+    !!! important
+        Do not modify the default value of **Auto Load** for the **MPS root certificate format.**
 
-9. Click **Load** under MPS Root Certificate.
+8. Click **Load** under MPS Root Certificate.
 
-10. Click **Create.**
+9. Click **Create.**
     
     !!! example
         Example CIRA Config:
