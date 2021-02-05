@@ -3,18 +3,26 @@ Figure 1 illustrates the high-level architecture of Open Active Management Techn
 [![ManualDeploymentWorkflow.png](../assets/images/AEHighLevelArch.png)](../assets/images/AEHighLevelArch.png)
 **Figure 1: Deploy Management Presence Server (MPS) and the Remote Provisioning Server (RPS) on a development system.**
 
-As shown in Figure 1, the architecture consists of four components:
+As shown in Figure 1, the architecture consists of five components:
 
 1. **MPS** - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, and Mouse (KVM) control.
 2. **RPS** - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the MPS for manageability use cases.
 3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
 4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
-5. **Sample Web UI** - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
+5. **Sample Web UI** - A web based UI that demonstrates how to use the UI Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
 
 
-## Out-of-band (OOB) Management 
+## Out-of-band Management (OOBM)
 
-Open AMT Cloud Toolkit uses remote management technology, also known as out-of-band (OOB) management, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.   
+Open AMT Cloud Toolkit uses remote management technology, also known as [out-of-band management (OOBM)](Glossary.md#o), to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
+
+Remote management can offer potential cost-savings by decreasing the need for in-person technician visits to remote IT sites and reducing downtime.
+
+## What's the difference between in-band and out-of-band management?
+
+Remote monitoring and management software solutions often require the managed devices to be in the powered on state. The IT administrator connects to and updates the managed device while it is in the powered on state.
+
+With out-of-band management, the administrator can connect to the device when it has been powered down or it is unresponsive. 
 
 ### CIRA Configuration
 
@@ -22,28 +30,39 @@ CIRA enables OOB connections between Intel® AMT platforms and administrative de
 
 The [following steps](https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server) occur via a CIRA channel:
 
-1. A remote Intel vPro® platform featuring Intel® AMT is provisioned with CIRA enabled. The remote platform is referred to as the managed device. 
+1. A remote Intel vPro® platform featuring Intel® AMT is is activated and a CIRA configuration is applied. The remote platform is referred to as the managed device. 
 
-2. The managed device sends a secure connection request via Transport Layer Security (TLS) to the MPS on the development system.
+2. The managed device connects to the MPS and establishes an encrypted connection using Transport Layer Security (TLS) 
 
-3. After authentication, Intel vPro® platform information is stored in a database and sent to the management console.
+3. The Intel vPro® platform maintains a long standing connection with the MPS through the use of small *keep-alive* messages to the MPS.
 
-4. On the development system, the management console sends a command to the MPS.
+4. A management console sends a command to the MPS, via provided RESTful interfaces, with the command indicating the managed device should take some action.
 
-5. When an action is triggered on the development system, such as *power up*, the management console sends that command to the MPS. Both power control messages and keyboard, video and mouse (KVM) control messages are supported.
+5. The MPS authenticates the RESTful command and proxies the command for the management console to the managed device.  
 
-6. The MPS creates the WSMan message to the managed device.
+The MPS handles the authentication process with the managed device. 
 
-7. The managed device sends a *keep-alive* message to the MPS to maintain the connection. This message persists regardless of the state of the operating system, in-band or OOB.
+### Control Mode Profile
 
+Managed devices featuring Intel® AMT support two control modes: 
 
-### AMT Profile
+- [**Admin Control Mode (ACM): **](../Glossary.md#a)
+In this mode, there are no limitations to Intel® AMT functionality. This reflects the higher level of trust associated with these setup methods. No user consent is required.
 
-[TBD] Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+- [**Client Control Mode (CCM):**](../Glossary.md#c) This mode limits some of Intel® AMT functionality, reflecting the lower level of trust.
+
+    Features requiring User Consent:
+
+    - Keyboard, Video, Mouse (KVM) Control
+    - IDE-Redirection for sharing and mounting images remotely
+
 
 ### Domains
 
-[TBD] At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+In addition to a CIRA Config and an ACM AMT Profile, ACM requires the creation of a Domain profile.
+
+Intel® AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware. Intel® AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
+
 
 ## Power Control 
 
@@ -55,9 +74,9 @@ With the established CIRA channel, Open AMT Cloud Toolkit enables the administra
 - reset
 - reset to BIOS
 
-For more information about power states and REST APIs, see Power States for more details. 
+For more information about power states and REST APIs, see [Intel® AMT Implementation and Reference Guide](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm) for more details. 
 
-## KVM Control
+## Keyboard, Video, Mouse (KVM) Control
 
-[TBD] Et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+Intel® AMT enables remote management of a device, even when the OS isn't running, through KVM over IP support. No additional equipment is needed for this feature.  With KVM control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote KVM switches and other hardware. 
 
