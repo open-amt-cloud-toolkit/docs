@@ -86,7 +86,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         [![mps](../assets/images/MPS_npmrundev.png)](../assets/images/MPS_npmrundev.png)
 
-    **Figure 1: MPS reports successful deployment.**
+        **Figure 1: MPS reports successful deployment.**
 
     <!-- !!! Note
         Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory. -->
@@ -115,7 +115,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         [![RPS Output](../assets/images/RPS_npmrundev.png)](../assets/images/RPS_npmrundev.png)
 
-**Figure 2: RPS reports successful deployment.**
+        **Figure 2: RPS reports successful deployment.**
 
 <br>
 
