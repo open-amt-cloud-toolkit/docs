@@ -25,11 +25,17 @@ If you prefer to build manually on the command line, read more about how to buil
 
 2. Click on **Actions**, the tab at the top, and select **Build RPC (Native) Debug/Release**.
 
-3. Click the **Run Workflow** dropdown, select **Branch:master**, and click the **Run Workflow** button.
+3. Click the **Run Workflow** dropdown. 
 
-4. The build time ranges from 15 to 20 minutes.
+4. Select the branch or tagged release from the **Use workflow from** dropdown. 
 
-5. Once complete, click the completed job, and download the appropriate RPC for your OS under the **Artifacts** section.
+5. Choose **debug** or **release**.  
+
+6. Click the **Run Workflow** button.
+
+7. The build time ranges from 15 to 20 minutes.
+
+8. Once complete, click the completed job, and download the appropriate RPC for your OS under the **Artifacts** section.
 
 
 ### Run RPC to Activate and Connect the AMT Device
