@@ -27,7 +27,7 @@ If you prefer to build manually on the command line, read more about how to buil
 
 3. Click the **Run Workflow** dropdown, select **Branch:master**, and click the **Run Workflow** button.
 
-4. Grab a coffee, as the build for Windows will take roughly 30 minutes and the build for Linux will take roughly 5 minutes.
+4. The build time ranges from 15 to 20 minutes.
 
 5. Once complete, click the completed job, and download the appropriate RPC for your OS under the **Artifacts** section.
 
