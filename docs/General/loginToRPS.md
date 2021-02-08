@@ -1,5 +1,5 @@
 
-The web portal is available for login after the deployment of the [Management Presence Server (MPS)](../Glossary.md#m), [Remote Provisioning Server (RPS)](../Glossary.md#r), and [Sample Web UI](../Glossary.md#s). Make sure both are running before attempting to login.
+The web portal is available for login after the deployment of the [Management Presence Server (MPS)](../Glossary.md#m), [Remote Provisioning Server (RPS)](../Glossary.md#r), and [Sample Web UI](../Glossary.md#s). Make sure all three are successfully running before attempting to login.
 
 **To login:**
 
