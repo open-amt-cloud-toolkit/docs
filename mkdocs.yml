@@ -47,7 +47,7 @@ nav:
       - Configuration: Microservices/RPS/configuration.md
       - Security Information: Microservices/RPS/securityRPS.md
     - Remote Provisioning Client :
-      - Build & Run RPC (GitHub Actions): General/buildRPC_GithubActions.md
+      # - Build & Run RPC (GitHub Actions): General/buildRPC_GithubActions.md
       - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
       - Command Examples: Microservices/RPC/commandsRPC.md
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md

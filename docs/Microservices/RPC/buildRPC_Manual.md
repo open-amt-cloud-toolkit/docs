@@ -1,10 +1,10 @@
-In addition to using GitHub Actions to obtain a binary, the RPC binary can also be manually built. The steps below walk through how to build RPC on Windows 10, Ubuntu (18.04 or 20.04), and CentOS7/8.
+In addition to using GitHub Actions to obtain a binary, the RPC binary can also be manually built. The steps below walk through how to build RPC on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.
 
 ### Required Software
 
 - [git](https://git-scm.com/downloads)
 
-Additionally, if using Windows 10:
+Additionally, if using Windows® 10:
 
 - [Microsoft Visual Studio*](https://visualstudio.microsoft.com/): 2019 or newer version of Visual Studio Community/Professional
     - Make sure to install the **Desktop development with C++** package at time of installation or via the 'Get tools and extensions' menu within Microsoft Visual Studio*.
@@ -27,13 +27,13 @@ The steps below assume the following directory structure where rpc is the clone 
 2. Clone the RPC repository.
 
     ``` bash
-    git clone https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
+    git clone --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
     ```
 
 ### Install Prerequisites and Build RPC
 
 === "Windows"
-    Open 'x64 Native Tools Command Prompt for VS 20XX' as Administrator on your development system.  **This is NOT a regular Windows Command Prompt.**  This specific tool is used for compiling the RPC executable.
+    Open 'x64 Native Tools Command Prompt for VS 20XX' on your development system.  **This is NOT a regular Windows Command Prompt.**  This specific tool is used for compiling the RPC executable.
     
     ![NTCP](../../assets/images/x64NativeToolsCP.png)
 
@@ -84,7 +84,7 @@ The steps below assume the following directory structure where rpc is the clone 
     ```
 
 
-=== "Ubuntu/CentOS8"
+=== "Ubuntu/CentOS 8"
     The following steps are for Ubuntu 18.04, Ubuntu 20.04, or CentOS8.
 
     **Build VCPKG and C++ REST SDK**
@@ -139,13 +139,13 @@ The steps below assume the following directory structure where rpc is the clone 
     cmake --build .
     ```
 
-=== "CentOS7"
+=== "CentOS 7"
     !!! important
-        **The "export PATH=..." (for CMake and Git), and "scl enable devtoolset-7 bash" (for GCC) must be executed in in the Terminal you are building from; i.e. these are temporary changes which only affect the current Terminal session.**
+        **All commands should be executed in the same Terminal. The "export PATH=..." (for CMake and Git), and "scl enable devtoolset-7 bash" (for GCC) are temporary changes which only affect the current Terminal session.**
 
     **Install Dependencies**
 
-    1. Download CMake.
+    1. Download CMake. CMake binaries are available [here](https://cmake.org/download/).
     ``` bash
     ./cmake-3.10.2-Linux-x86_64.sh
     export PATH=/home/user/Downloads/cmake-3.10.2-Linux-x86_64/bin:$PATH
@@ -215,13 +215,16 @@ The following example command shows how to activate and configure an Intel AMT d
 
 === "Windows"
     ```
-    rpc --url wss://localhost:8080 --cmd "-t activate --profile profile1"
+    rpc --url wss://localhost:8080 --nocertcheck --cmd "-t activate --profile profile1"
     ```
+    !!! note
+        On a Windows® 10 system, the Command Prompt must be ran as Adminstrator.
 === "Linux"
     ``` bash
-    sudo ./rpc --url wss://localhost:8080 --cmd "-t activate --profile profile1"
+    sudo ./rpc --url wss://localhost:8080 --nocertcheck --cmd "-t activate --profile profile1"
     ```
-
+!!! note
+    The **--nocertcheck** flag allows for the use of self-signed certificates for development purposes. Find more information [here](commandsRPC.md#optional)
 
 Example Success Output:
 

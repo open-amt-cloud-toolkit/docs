@@ -1,5 +1,5 @@
 
-RPC is primarily used for communicating with the Remote Provision Server (RPS) for activating and/or deactivating AMT devices. Additional optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.
+RPC is primarily used for communicating with the Remote Provision Server (RPS) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.
 
 All currently available arguments and their definitions are listed below along with example commands. 
 
@@ -13,7 +13,7 @@ rpc <informational>
 On Linux:
 ``` bash
 sudo ./rpc <required> [optional]
-./rpc <informational>
+sudo ./rpc <informational>
 ```
 
 ### RPC Arguments
@@ -37,12 +37,12 @@ rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd"
 ```
 
 !!! note
-	The --password nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.
+	The **--password** nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.
 
 
 <br>
 
-#### Optional
+#### Optional <a name="optional"></a>
 
 | Argument&emsp;&emsp;&emsp;&emsp; | Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   | Description |
 | :------------------------- | :----------------------- | :---------- |
@@ -72,7 +72,7 @@ rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd" -p http://pro
 | :------------------------- | :--------------------- | :---------- |
 | --help                     | Help text              | Display help menu in-line |
 | --version                  | Version                | Current version of RPC |
-| --amtinfo &lt;item&gt;     | AMT info               | View available information<br><br>**Possible Parameters:**<br>all - View all items<br>ver - BIOS version<br>bld - Build number<br>sku - Product SKU<br>uuid - [Device's Unique Identifier](../../Topics/guids.md)<br>mode - Current Control Mode, ACM or CCM<br>dns - Domain Name Suffix from AMT and from OS<br>fqdn - Fully aualified domain name and device hostname from OS<br>cert - Certificate hashes<br>ras - Remote access status<br>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses     |
+| --amtinfo &lt;item&gt;     | AMT info               | View available information<br><br>**Possible &lt;item&gt; Parameters:**<br>all - View all items<br>ver - BIOS version<br>bld - Build number<br>sku - Product SKU<br>uuid - [Device's Unique Identifier](../../Topics/guids.md)<br>mode - Current Control Mode, ACM or CCM<br>dns - Domain Name Suffix from AMT and from OS<br>fqdn - Fully aualified domain name and device hostname from OS<br>cert - Certificate hashes<br>ras - Remote access status<br>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses     |
 
 ##### Examples
 
