@@ -145,7 +145,7 @@ The steps below assume the following directory structure where rpc is the clone 
 
     **Install Dependencies**
 
-    1. Download CMake. CMake binaries are available [here](https://cmake.org/download/).
+    1. Download CMake. CMake 3.10.2 is recommended and can be downloaded from [here](https://cmake.org/files/v3.10/). Other CMake binary versions are available [here](https://cmake.org/download/).
     ``` bash
     ./cmake-3.10.2-Linux-x86_64.sh
     export PATH=/home/user/Downloads/cmake-3.10.2-Linux-x86_64/bin:$PATH
