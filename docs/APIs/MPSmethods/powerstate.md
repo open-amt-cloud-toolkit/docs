@@ -4,15 +4,15 @@ This AMT method retrieves the current state of the Intel&reg; AMT device, and re
 
 Click [here](types.md) for supported input and output types.
 
-## Example: Request Body
+!!! note
+	More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).
 
->**Important Note:** More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).
+* Endpoint: */amt*
+* Method Type: POST
+* Headers: *X-MPS-API-Key*
+* Body:
 
->**Note:** The following code block is an example of what would be the data sent as part of the POST request. 
-
-``` yaml
-//amt method
-
+``` json
 {  
    "method":"PowerState",
    "payload":{  
@@ -20,16 +20,17 @@ Click [here](types.md) for supported input and output types.
    }
 }
 ```
-## Example : Success ResponseBody
 
-``` yaml
+Example Outputs:
 
-'200':
-    {
-      "ResponseBody":{
-		"powerState" : 2
-	}
+!!! success
 
-```
+	``` json
+	'200':
+	    {
+	      "ResponseBody":{
+			"powerState" : 2
+		}
+	```
 
 Return to [MPS Methods](../indexMPS.md)
