@@ -94,10 +94,11 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 11. Click **Create.**
 
+!!! example
+    Example ACM Profile:
+    [![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
 
-[![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
-
-**Figure 2: Create an ACM AMT profile. **
+    **Figure 2: Create an ACM AMT profile. **
 
 ### Create a Domain Profile
 
