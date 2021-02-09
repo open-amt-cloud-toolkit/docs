@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#remote-provisioning-client" class="md-skip">
+        <a href="#build-rpc" class="md-skip">
           Skip to content
         </a>
       
@@ -580,43 +580,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remote-provisioning-client" class="md-nav__link">
-    Remote Provisioning Client
-  </a>
-  
-    <nav class="md-nav" aria-label="Remote Provisioning Client">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    Clone the Repository
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-prerequisites" class="md-nav__link">
-    Install Prerequisites
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#build-rpc" class="md-nav__link">
     Build RPC
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#run-rpc-to-activate-and-connect-the-amt-device" class="md-nav__link">
     Run RPC to Activate and Connect the AMT Device
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1740,43 +1713,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remote-provisioning-client" class="md-nav__link">
-    Remote Provisioning Client
-  </a>
-  
-    <nav class="md-nav" aria-label="Remote Provisioning Client">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    Clone the Repository
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-prerequisites" class="md-nav__link">
-    Install Prerequisites
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#build-rpc" class="md-nav__link">
     Build RPC
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#run-rpc-to-activate-and-connect-the-amt-device" class="md-nav__link">
     Run RPC to Activate and Connect the AMT Device
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1806,129 +1752,78 @@
                 
                   <h1>Build & Run RPC</h1>
                 
-                <p>Estimated completion time:</p>
-<ul>
-<li>30 minutes on Windows 10 devices (20-25 minutes are required installation time estimates)</li>
-<li>15 minutes on Linux devices</li>
-</ul>
-<h2 id="remote-provisioning-client">Remote Provisioning Client<a class="headerlink" href="#remote-provisioning-client" title="Permanent link">&para;</a></h2>
+                <!-- [![RPC](../assets/animations/forkandbuild.gif)](../assets/animations/forkandbuild.gif =500x) -->
+
 <p>The Remote Provisioning Client (RPC) communicates with the Manageability Engine Interface (MEI) and RPS interfaces. The MEI uses the ME Driver to talk to Intel AMT. By running RPC, we will activate Intel AMT into Client Control Mode (CCM), or ACM based on the created profile, as well as configure the CIRA connection of the AMT device to the MPS. After successfully running, the AMT device will be ready to be managed remotely using the web interface!</p>
 <div class="admonition tip">
 <p class="admonition-title">Production Environment<p>In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.</p>
 </p>
 </div>
 <p><a href="../../assets/images/RPC_Overview.png"><img alt="RPC" src="../../assets/images/RPC_Overview.png" /></a></p>
-<h3 id="clone-the-repository">Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>On your development system, navigate to a directory of your choice to clone and build RPC.</p>
-</li>
-<li>
-<p>Clone the RPC repository.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/rpc.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> rpc
-</code></pre></div>
-</li>
-</ol>
-<h3 id="install-prerequisites">Install Prerequisites<a class="headerlink" href="#install-prerequisites" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
-<p>Open 'x64 Native Tools Command Prompt for VS 20XX' as Administrator on your development system.  <strong>This is NOT a regular Windows Command Prompt.</strong>  This specific tool is used for compiling the RPC executable.</p>
-<p><img alt="NTCP" src="../../assets/images/x64NativeToolsCP.png" /></p>
-<p>Build VCPKG</p>
-<ol>
-<li>
-<p>In the <code>rpc</code> directory, clone the Vcpkg repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it <a href="https://github.com/microsoft/vcpkg">here</a>.</p>
-<div class="highlight"><pre><span></span><code>git clone --branch <span class="m">2020</span>.01 https://github.com/microsoft/vcpkg.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> vcpkg
-</code></pre></div>
-</li>
-<li>
-<p>Build <code>vcpkg.exe</code> using the following command:</p>
-<div class="highlight"><pre><span></span><code>bootstrap-vcpkg.bat
-</code></pre></div>
-</li>
-<li>
-<p>Set up user-wide integration in order to allow Vcpkg to work with Visual Studio. </p>
-<div class="highlight"><pre><span></span><code>vcpkg integrate install
-</code></pre></div>
-</li>
-</ol>
-<p>Build CPPRestSDK</p>
-<ol>
-<li>
-<p>Make sure you are still in the ../vcpkg directory.</p>
-</li>
-<li>
-<p>Install the C++ REST SDK package using Vcpkg. C++ REST SDK is a library for cloud-based client-server communication with modern API design.  Find out more about it <a href="https://github.com/microsoft/cpprestsdk">here</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note<p>This will take 15–25 minutes, depending on download speeds.</p>
-</p>
-</div>
-<p><div class="highlight"><pre><span></span><code>vcpkg install cpprestsdk:x64-windows-static
-</code></pre></div>
-3. Navigate back to the <code>./rpc</code> directory</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
-</code></pre></div>
-</li>
-</ol>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
-<ol>
-<li>
-<p>To install the required dependencies; enter the following command:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install git cmake build-essential libboost-system-dev libboost-thread-dev libboost-random-dev libboost-regex-dev  libboost-filesystem-dev libssl-dev zlib1g-dev
-</code></pre></div>
-</li>
-</ol>
-</div>
-</div>
 <h3 id="build-rpc">Build RPC<a class="headerlink" href="#build-rpc" title="Permanent link">&para;</a></h3>
+<p>We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions <a href="./">here</a>.</p>
+<p>Read more about GitHub Actions <a href="https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.">here</a></p>
+<p><img src="../../assets/animations/forkandbuild.gif" width="500"  /></p>
+<p><strong>To build the RPC with Github Actions:</strong></p>
 <ol>
 <li>
-<p>Create a new directory called <code>build</code> within the <code>./rpc</code> directory and change to it.</p>
-<div class="highlight"><pre><span></span><code>mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-</code></pre></div>
+<p>Create a fork of the repository.</p>
+<p><a class="md-button md-button--primary" href="https://github.com/open-amt-cloud-toolkit/rpc/fork">Fork rpc on github</a></p>
 </li>
 <li>
-<p>Run the following commands to build RPC.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows</label><div class="tabbed-content">
-<p>Generate the CMake config
-<div class="highlight"><pre><span></span><code>cmake .. -DVCPKG_TARGET_TRIPLET<span class="o">=</span>x64-windows-static -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake
-</code></pre></div></p>
-<p>Build the RPC executable
-<div class="highlight"><pre><span></span><code>cmake --build . --config Debug
-</code></pre></div></p>
-<p>Change to Debug directory
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Debug
-</code></pre></div></p>
-<p>Save the rpc.exe file to a flash drive or other means to transfer to the managed device.</p>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug ..
-cmake --build .
-</code></pre></div>
-<p>Save the new 'rpc' file in the Build directory to a flash drive or other means to transfer to the managed device.</p>
-</div>
-</div>
+<p>Click on <strong>Actions</strong>, the tab at the top, and select <strong>Build RPC (Native) Debug/Release</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Run Workflow</strong> dropdown. </p>
+</li>
+<li>
+<p>Select the <strong>branch: Master</strong> or a tagged release, such as <strong>v1.0.0</strong>, from the <strong>Use workflow from</strong> dropdown. </p>
+</li>
+<li>
+<p>Type <strong>debug</strong> or <strong>release</strong>.  </p>
+</li>
+<li>
+<p>Click the <strong>Run Workflow</strong> button.</p>
+</li>
+<li>
+<p>The build time ranges from 15 to 20 minutes.</p>
+</li>
+<li>
+<p>Once the download is complete, click the completed job, which will feature a green checkmark, and download the appropriate RPC for your managed device's OS under the <strong>Artifacts</strong> section.</p>
+</li>
+</ol>
+<p><strong>To delete your workflow run:</strong></p>
+<ol>
+<li>
+<p>Click the <strong>...</strong> menu for the workflow. </p>
+</li>
+<li>
+<p>Choose the <strong>Delete workflow run</strong> option.</p>
 </li>
 </ol>
 <h3 id="run-rpc-to-activate-and-connect-the-amt-device">Run RPC to Activate and Connect the AMT Device<a class="headerlink" href="#run-rpc-to-activate-and-connect-the-amt-device" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Using a Flash Drive or other method, transfer the Debug folder to the managed device.</p>
-</li>
-<li>
-<p>On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.</p>
-</li>
-<li>
-<p>Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running</p>
-</li>
+<p><strong>To run the application and connect the managed device:</strong></p>
+<p>1. On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.</p>
+<ul>
+<li>Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running</li>
 <li>Replace [profile-name] with your created profile from the Web Server.</li>
-</ol>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Windows</label><div class="tabbed-content">
+</ul>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>rpc.exe -u wss://[Development-IP-Address]:8080 -c &quot;-t activate --profile [profile-name]&quot;
 </code></pre></div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Linux</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo ./rpc -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>:8080 -c <span class="s2">&quot;-t activate --profile [profile-name]&quot;</span>
+</code></pre></div>
+</div>
+</div>
+<p>2. Optionally, it is possible to cancel the check for a CA signed certificate and use a self-signed certificate with the <strong>--nocertcheck</strong> flag. </p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c &quot;-t activate --profile [profile-name]&quot;
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>:8080 --nocertcheck -c <span class="s2">&quot;-t activate --profile [profile-name]&quot;</span>
 </code></pre></div>
 </div>
 </div>
