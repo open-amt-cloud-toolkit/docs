@@ -15,13 +15,13 @@ import '../node_modules/ui-toolkit/i18n.ts'
 
 function App() {
   const data = {
-    rpsKey: '<RPS API key>'
+    rpsKey: '<RPS API key>',
+    mpsKey: '<MPS API key>'
   };
   return (
     <div>
       <RpsProvider data={data}>
-        <CiraEditor
-        rpsServer="https://<192.168.1.38>:8081"/>
+        <CiraEditor rpsServer="https://<192.168.1.38>:8081" mpsServer="https://<192.168.1.38>:3000"/>
       </RpsProvider>
     </div>
   );
