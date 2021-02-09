@@ -13,8 +13,6 @@ We leverage GitHub Actions as a means to build RPC automatically leveraging Gith
 
 Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.)
 
-If you prefer to build manually on the command line, read more about how to build [here](../Microservices/RPC/buildRPC_Manual.md).
-
 <img src="../../assets/animations/forkandbuild.gif" width="500"  />
 
 **To build the RPC with Github Actions:**
