@@ -27,20 +27,25 @@ If you prefer to build manually on the command line, read more about how to buil
 
 3. Click the **Run Workflow** dropdown. 
 
-4. Select the branch or tagged release from the **Use workflow from** dropdown. 
+4. Select the **branch: Master** or a tagged release, such as **v1.0.0**, from the **Use workflow from** dropdown. 
 
-5. Choose **debug** or **release**.  
+5. Type **debug** or **release**.  
 
 6. Click the **Run Workflow** button.
 
 7. The build time ranges from 15 to 20 minutes.
 
-8. Once complete, click the completed job, and download the appropriate RPC for your OS under the **Artifacts** section.
+8. Once the download is complete, click the completed job, which will feature a green checkmark, and download the appropriate RPC for your managed device's OS under the **Artifacts** section.
 
+**To delete your workflow run:**
+
+1. Click the **...** menu for the workflow. 
+
+2. Choose the **Delete workflow run** option.
 
 ### Run RPC to Activate and Connect the AMT Device
 
-**To run the application and connect the managed device: **
+**To run the application and connect the managed device:**
 
 1\. On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
 
