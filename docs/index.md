@@ -1,6 +1,6 @@
 # Overview
 
- [**Open Active Management Technology (Open AMT) Cloud Toolkit**](Glossary.md#o) provides open-source, modular microservices and libraries for integration of hardware provisioning, [out-of-band (OOB) manageability](Glossary.md#o), and other [Intel® Active Management Technology (Intel® AMT)](Glossary.md#i). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize out-of-band management solutions for [Intel vPro® platforms](Glossary.md#i).
+ [**Open Active Management Technology (Open AMT) Cloud Toolkit**](Glossary.md#o) provides open-source, modular microservices and libraries for integration of [Intel® Active Management Technology (Intel® AMT)](Glossary.md#i). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize [out-of-band management (OOB)](Glossary.md#o) solutions for [Intel vPro® platforms](Glossary.md#i).
 
 ![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
 
