@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#addmodify-guidsjson" class="md-skip">
+        <a href="#addmodify-datajson" class="md-skip">
           Skip to content
         </a>
       
@@ -262,7 +262,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Topics/staticIP/" class="md-tabs__link">
+        <a href="../../Topics/guids/" class="md-tabs__link">
           Topics
         </a>
       
@@ -699,6 +699,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../Microservices/RPS/networkConfig/" class="md-nav__link">
+      Network Profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
       Security Information
     </a>
@@ -1110,30 +1122,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../addDatabase/" class="md-nav__link">
-      Databases
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../addVault/" class="md-nav__link">
-      Secret Storage
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -1163,8 +1151,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#addmodify-guidsjson" class="md-nav__link">
-    Add/Modify guids.json
+  <a href="#addmodify-datajson" class="md-nav__link">
+    Add/Modify data.json
   </a>
   
 </li>
@@ -1541,18 +1529,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../APIs/RPSmethods/networkconfig/" class="md-nav__link">
-      Network Configurations
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1590,18 +1566,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Topics/staticIP/" class="md-nav__link">
-      Static and Dynamic IPs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
       GUIDs in Intel AMT
     </a>
@@ -1615,14 +1579,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-7-3">
+    <label class="md-nav__link" for="nav-7-2">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-3">
+      <label class="md-nav__title" for="nav-7-2">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1709,8 +1673,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#addmodify-guidsjson" class="md-nav__link">
-    Add/Modify guids.json
+  <a href="#addmodify-datajson" class="md-nav__link">
+    Add/Modify data.json
   </a>
   
 </li>
@@ -1734,26 +1698,60 @@
                 
                   <h1>Allowlists</h1>
                 
-                <h2 id="addmodify-guidsjson">Add/Modify guids.json<a class="headerlink" href="#addmodify-guidsjson" title="Permanent link">&para;</a></h2>
-<p>If <code>use_allowlist</code> is set to <code>true</code> in the <code>config.json</code> file, add a <code>guids.json</code> file in the <em>private</em> directory to allowlist those Intel&reg; AMT GUIDs that are allowed to connect to MPS. </p>
-<p>Use <strong>guids.json.example</strong> as a reference to create the guids.json and populate it with guids to allowlist. This file is used to simulate allowlisting based on Intel&reg; AMT GUIDs.</p>
-<p>For information on how to obtain GUIDs, see <a href="#guids-in-intel-amt">GUIDs in Intel&reg; AMT</a>.</p>
+                <h2 id="addmodify-datajson">Add/Modify data.json<a class="headerlink" href="#addmodify-datajson" title="Permanent link">&para;</a></h2>
+<p>If <code>use_allowlist</code> is set to <code>true</code> in the <code>.mpsrc</code> file within the <code>mps</code> directory, edit the <code>data.json</code> file in the <code>private</code> directory to allowlist Intel&reg; AMT GUIDs to connect to MPS. </p>
+<p>For information on how to obtain GUIDs, see <a href="../../Topics/guids/">GUIDs in Intel&reg; AMT</a>.</p>
 <ol>
-<li>Navigate to the ~/MPS/private directory.</li>
+<li>
+<p>Navigate to the <code>/mps/private</code> directory.</p>
+</li>
+<li>
+<p>Open the <code>data.json</code> file in a text editor of choice.</p>
+</li>
+<li>
+<p>Append the <strong>allowlist_guids</strong> section to include the GUIDs of your allowed AMT devices.</p>
+</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/MPS/private
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Example <code>data.json</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;12345678-9abc-def1-2345-123456789000&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample-Device&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpsuser&quot;</span><span class="p">:</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpspass&quot;</span><span class="p">:</span> <span class="s2">&quot;G@ppm0ym&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtuser&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtpass&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpsuser&quot;</span><span class="p">:</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpspass&quot;</span><span class="p">:</span> <span class="s2">&quot;G@ppm0ym&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtuser&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtpass&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mebxpass&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpsuser&quot;</span><span class="p">:</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mpspass&quot;</span><span class="p">:</span> <span class="s2">&quot;G@ppm0ym&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtuser&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;amtpass&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mebxpass&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;allowlist_guids&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;12345678-9abc-def1-2345-123456789000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;allowlist_orgs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;12345678901234567890123456789012&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>Create the <code>guids.json</code> file.</li>
-</ol>
-<div class="highlight"><pre><span></span><code>copy guids.json.example guids.json
-</code></pre></div>
-<ol>
-<li>Open the <code>guids.json</code> file. Edit this file to include the GUIDs of your AMT devices. You can find specific GUIDs using <a href="#guids-in-intel-amt">MeshCmd</a> on the AMT device.</li>
-</ol>
-<p>Example <code>guids.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">&quot;8dad96cb-c3db-11e6-9c43-bc0000d20000&quot;</span><span class="p">,</span><span class="s2">&quot;12345678-9abc-def1-2345-123456789000&quot;</span><span class="p">]</span>
-</code></pre></div>
+</div>
                 
               
               

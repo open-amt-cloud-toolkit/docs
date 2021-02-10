@@ -14,7 +14,7 @@
     
     
       
-        <title>Databases - Open Active Management Technology Cloud Toolkit</title>
+        <title>addDatabase - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Databases
+              addDatabase
             
           </span>
         </div>
@@ -152,16 +152,14 @@
         
           
 
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
         Home
       </a>
     
@@ -230,7 +228,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Docker/dockerCloud/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../Docker/dockerCloud/" class="md-tabs__link">
           Tutorials
         </a>
       
@@ -262,7 +260,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Topics/staticIP/" class="md-tabs__link">
+        <a href="../../Topics/guids/" class="md-tabs__link">
           Topics
         </a>
       
@@ -699,6 +697,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../Microservices/RPS/networkConfig/" class="md-nav__link">
+      Network Profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
       Security Information
     </a>
@@ -1051,12 +1061,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Tutorials
@@ -1102,64 +1110,6 @@
   <li class="md-nav__item">
     <a href="../apiTutorial/" class="md-nav__link">
       REST API Call
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Databases
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Databases
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dbconfig-configure-the-database" class="md-nav__link">
-    DbConfig: Configure the Database
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../addVault/" class="md-nav__link">
-      Secret Storage
     </a>
   </li>
 
@@ -1541,18 +1491,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../APIs/RPSmethods/networkconfig/" class="md-nav__link">
-      Network Configurations
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1590,18 +1528,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Topics/staticIP/" class="md-nav__link">
-      Static and Dynamic IPs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
       GUIDs in Intel AMT
     </a>
@@ -1615,14 +1541,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-7-3">
+    <label class="md-nav__link" for="nav-7-2">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-3">
+      <label class="md-nav__title" for="nav-7-2">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1732,7 +1658,7 @@
                   </a>
                 
                 
-                  <h1>Databases</h1>
+                  <h1>addDatabase</h1>
                 
                 <p>RPS has the option to output device configuration information to a database so that other software components with access to this database can lookup and use the AMT credentials stored there.  Since there are many database options available, RPS takes a flexible approach that allows a developer to implement a simple module in RPS that will allow RPS to then send data to the database implementation of choice.</p>
 <p>The following example uses MongoDB as the example database, but the same concepts could be used for other database implementations.</p>

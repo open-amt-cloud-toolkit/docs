@@ -262,7 +262,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Topics/staticIP/" class="md-tabs__link">
+        <a href="../../Topics/guids/" class="md-tabs__link">
           Topics
         </a>
       
@@ -771,6 +771,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../Microservices/RPS/networkConfig/" class="md-nav__link">
+      Network Profiles
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
       Security Information
     </a>
@@ -1182,30 +1194,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Tutorials/addDatabase/" class="md-nav__link">
-      Databases
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Tutorials/addVault/" class="md-nav__link">
-      Secret Storage
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Tutorials/allowlist/" class="md-nav__link">
       Allowlists
     </a>
@@ -1577,18 +1565,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../APIs/RPSmethods/networkconfig/" class="md-nav__link">
-      Network Configurations
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -1626,18 +1602,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Topics/staticIP/" class="md-nav__link">
-      Static and Dynamic IPs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
       GUIDs in Intel AMT
     </a>
@@ -1651,14 +1615,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
     
-    <label class="md-nav__link" for="nav-7-3">
+    <label class="md-nav__link" for="nav-7-2">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-3">
+      <label class="md-nav__title" for="nav-7-2">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1815,29 +1779,24 @@
 <ol>
 <li>
 <p>Create a copy the of the <code>.env.template</code> file to <code>.env</code>. This file is used by docker to set environment variables. </p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows (cmd)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>copy .env.template .env
-</code></pre></div>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux/Powershell</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux/Powershell</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>cp .env.template .env
 </code></pre></div>
 </div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (cmd)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>copy .env.template .env
+</code></pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>Preserve the .env.template file.</strong></p>
-<p>This file is very important to maintain. Always copy to a new file. </p>
 </div>
 </li>
 <li>
 <p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. You can use a text editor to modify the .env file or replace YOURIPADDRESS in the command below to use the command line:</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
 </code></pre></div>
 </div>
 </div>
@@ -1846,29 +1805,36 @@
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
 <p>The environment file (<code>.env</code>) now contains the MPS and RPS environment variables to pass to the Docker engine.</p>
 <ol>
-<li>Build the MPS, RPS, and Sample UI Docker images and launch the stack</li>
-</ol>
+<li>
+<p>Build the MPS, RPS, and Sample UI Docker images and launch the stack</p>
 <div class="highlight"><pre><span></span><code>docker-compose -f <span class="s2">&quot;docker-compose.yml&quot;</span> up -d --build
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On completion, a security warning is normal during local setup with the default values for developer testing environments.</p>
-</div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>While the <code>docker-compose up</code> command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
 <p><img alt="Image of filesharing" src="../../assets/images/DockerFileSharing.png" /></p>
 </div>
+</li>
+<li>
+<p>To check all containers are up and running run the following command.</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span>docker ps --format <span class="s1">&#39;table{{.Image}}\t{{.Status}}\t{{.Names}}&#39;</span><span class="sb">`</span>
+</code></pre></div>
 <div class="admonition success">
-<p class="admonition-title">Success<div class="highlight"><pre><span></span><code>IMAGE                             STATUS
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>IMAGE                             STATUS
 samplewebui                       Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_webui_1
 rps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rps_1
 mps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_mps_1
 vault                             Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_vault_1
 postgres                          Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rpsdb_1
 </code></pre></div>
-</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On completion, a security warning is normal during local setup with the default values for developer testing environments.</p>
 </div>
+</div>
+</li>
+</ol>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Since the vault is running in a dev mode, you will not be able to restart the vault and maintain the secrets stored since they are not persisted. You will need to recreate profiles and configs again. Be sure and run <code>docker-compose down -v</code> when bringing down the stack so as to remove the volumes and start fresh upon <code>docker-compose up</code>.  You may follow the guide <a href="../dockerLocal_prodVault/">here</a> to run vault in production mode.</p>
