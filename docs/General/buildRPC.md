@@ -9,7 +9,7 @@ The Remote Provisioning Client (RPC) communicates with the Manageability Engine 
 
 ### Build RPC
 
-We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](./buildRPC.md).
+We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](../Microservices/RPC/buildRPC_Manual.md).
 
 Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.)
 
@@ -25,9 +25,9 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 3. Click the **Run Workflow** dropdown. 
 
-4. Select the **branch: Master** or a tagged release, such as **v1.0.0**, from the **Use workflow from** dropdown. 
+4. Select the **branch: v1.1.0** from the **Use workflow from** dropdown. 
 
-5. Type **debug** or **release**.  
+5. By default, the Build Type should be **release**.  
 
 6. Click the **Run Workflow** button.
 
@@ -50,42 +50,35 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 - Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running
 - Replace [profile-name] with your created profile from the Web Server.
 
-
-=== "Windows"
-    ```
-    rpc.exe -u wss://[Development-IP-Address]:8080 -c "-t activate --profile [profile-name]"
-    ```
-=== "Linux"
-    ``` bash
-    sudo ./rpc -u wss://[Development-IP-Address]:8080 -c "-t activate --profile [profile-name]"
-    ```
-
-2\. Optionally, it is possible to cancel the check for a CA signed certificate and use a self-signed certificate with the **--nocertcheck** flag. 
-
-=== "Windows"
-    ```
-    rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
-    ```
 === "Linux"
     ``` bash
     sudo ./rpc -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
     ```
+=== "Windows"
+    ```
+    rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
+    ```
 
-Example Success Output:
+!!! note
+    Because we are using a self-signed certificate for easier development testing, we need to supply the **--nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the flag and other arguments [here](../Microservices/RPC/commandsRPC.md).
 
-[![RPC Success](../assets/images/RPC_Success.png)](../assets/images/RPC_Success.png)
+
+!!! success
+    Example Output after Activating and Configuring a device into ACM:
+
+    [![RPC Success](../assets/images/RPC_Success.png)](../assets/images/RPC_Success.png)
 
 
-!!! tip "Production Environment"
+    !!! tip "Production Environment"
         In a production environment, an in-band agent would invoke this command with the parameters rather than a manual command.
 
 !!! note "Troubleshooting"
-        The rpc.exe generates this message:
-                Unable to get activation info. Try again later or check AMT configuration.
-        Verify that the x64 Native Tools Command Prompt for VS 20XX is running in **Administrator mode** on the managed device.
+        RPC generates this message: Unable to get activation info. 
+        
+        Try again later or check AMT configuration. Verify that you are running RPC with elevated privileges in Terminal or Command Prompt on the managed device .
          
         
-!!! note
+<!-- !!! note
     If you do not remember your created profile's name, you can navigate to the *Profiles* tab on the web server hosted at `https://[Development-IP-Address]:3000`
 
     **Default login credentials:**
@@ -93,11 +86,8 @@ Example Success Output:
     | Field       |  Value    |
     | :----------- | :-------------- |
     | **Username**| standalone |
-    | **Password**| G@ppm0ym |
+    | **Password**| G@ppm0ym | -->
 
 
 ## Next up
-
-After successfully building RPC activating the managed device, continue to MPS Device Management.
-
-Continue here: [MPS Device Management](../General/manageDevice.md)
+[Manage AMT Device](../General/manageDevice.md)
