@@ -105,7 +105,7 @@ nav:
       - Intel AMT Profiles: APIs/RPSmethods/profiles.md
       # - Network Configurations: APIs/RPSmethods/networkconfig.md
   - Topics:
-    - Static and Dynamic IPs: Topics/staticIP.md
+    # - Static and Dynamic IPs: Topics/staticIP.md
     - GUIDs in Intel AMT: Topics/guids.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
