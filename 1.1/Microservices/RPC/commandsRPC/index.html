@@ -14,7 +14,7 @@
     
     
       
-        <title>Domains - Open Active Management Technology Cloud Toolkit</title>
+        <title>Command Examples - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quickstart-to-bundle-domain-control" class="md-skip">
+        <a href="#rpc-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Domains
+              Command Examples
             
           </span>
         </div>
@@ -198,7 +198,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../Microservices/overview/" class="md-tabs__link">
+        <a href="../../overview/" class="md-tabs__link md-tabs__link--active">
           Microservices
         </a>
       
@@ -215,7 +215,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../Controls/auditLogControl/" class="md-tabs__link">
+        <a href="../../../UIToolkit/Controls/auditLogControl/" class="md-tabs__link">
           UI Toolkit
         </a>
       
@@ -581,10 +581,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Microservices
@@ -604,7 +606,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/overview/" class="md-nav__link">
+    <a href="../../overview/" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -637,7 +639,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/MPS/configuration/" class="md-nav__link">
+    <a href="../../MPS/configuration/" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -649,7 +651,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/MPS/securityMPS/" class="md-nav__link">
+    <a href="../../MPS/securityMPS/" class="md-nav__link">
       Security Information
     </a>
   </li>
@@ -687,7 +689,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/RPS/configuration/" class="md-nav__link">
+    <a href="../../RPS/configuration/" class="md-nav__link">
       Configuration
     </a>
   </li>
@@ -699,7 +701,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/RPS/securityRPS/" class="md-nav__link">
+    <a href="../../RPS/securityRPS/" class="md-nav__link">
       Security Information
     </a>
   </li>
@@ -714,10 +716,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
     
     <label class="md-nav__link" for="nav-3-4">
       Remote Provisioning Client
@@ -737,7 +741,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
+    <a href="../buildRPC_Manual/" class="md-nav__link">
       Build & Run RPC (Manual)
     </a>
   </li>
@@ -747,11 +751,118 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../Microservices/RPC/commandsRPC/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Command Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Command Examples
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-usage" class="md-nav__link">
+    RPC Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-arguments" class="md-nav__link">
+    RPC Arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    Required
+  </a>
+  
+    <nav class="md-nav" aria-label="Required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    Optional 
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples_1" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informational" class="md-nav__link">
+    Informational
+  </a>
+  
+    <nav class="md-nav" aria-label="Informational">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples_2" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -761,7 +872,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+    <a href="../troubleshootingRPC/" class="md-nav__link">
       Troubleshooting
     </a>
   </li>
@@ -781,12 +892,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       UI Toolkit
@@ -827,7 +936,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/auditLogControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/auditLogControl/" class="md-nav__link">
       Audit Log
     </a>
   </li>
@@ -839,7 +948,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/ciraConfigControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/ciraConfigControl/" class="md-nav__link">
       Cira Config
     </a>
   </li>
@@ -851,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/deviceGridControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/deviceGridControl/" class="md-nav__link">
       Device Grid
     </a>
   </li>
@@ -863,7 +972,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/domainControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/domainControl/" class="md-nav__link">
       Domain
     </a>
   </li>
@@ -875,7 +984,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/kvmControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/kvmControl/" class="md-nav__link">
       Keyboard, Video, Mouse (KVM)
     </a>
   </li>
@@ -887,7 +996,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/profileControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/profileControl/" class="md-nav__link">
       Profile
     </a>
   </li>
@@ -899,7 +1008,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Controls/serialOverLANControl/" class="md-nav__link">
+    <a href="../../../UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
       Serial Over LAN (SOL)
     </a>
   </li>
@@ -914,12 +1023,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
       React Bundles
@@ -939,7 +1046,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../auditLog/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/auditLog/" class="md-nav__link">
       Audit Logs
     </a>
   </li>
@@ -951,7 +1058,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CIRAConfigs/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/CIRAConfigs/" class="md-nav__link">
       Cira Configs
     </a>
   </li>
@@ -963,7 +1070,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../DeviceGrid/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/DeviceGrid/" class="md-nav__link">
       Device Grid
     </a>
   </li>
@@ -973,91 +1080,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Domains
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../UIToolkit/Bundles/Domains/" class="md-nav__link">
       Domains
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-and-install-ui-toolkit" class="md-nav__link">
-    Download and Install UI Toolkit
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customize-the-control" class="md-nav__link">
-    Customize the control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-bundle-for-domain" class="md-nav__link">
-    Create Bundle for Domain
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to sample html page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-the-sample-page" class="md-nav__link">
-    Test the sample page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-new-language-for-internationalization" class="md-nav__link">
-    Add a new Language for Internationalization
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1067,7 +1094,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../kvm/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/kvm/" class="md-nav__link">
       Keyboard, Video, Mouse (KVM)
     </a>
   </li>
@@ -1079,7 +1106,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Profiles/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/Profiles/" class="md-nav__link">
       Profiles
     </a>
   </li>
@@ -1091,7 +1118,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../SerialOverLAN/" class="md-nav__link">
+    <a href="../../../UIToolkit/Bundles/SerialOverLAN/" class="md-nav__link">
       Serial Over LAN (SOL)
     </a>
   </li>
@@ -1108,7 +1135,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../localization/" class="md-nav__link">
+    <a href="../../../UIToolkit/localization/" class="md-nav__link">
       Localization
     </a>
   </li>
@@ -1120,7 +1147,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Webpack-Configuration/" class="md-nav__link">
+    <a href="../../../UIToolkit/Webpack-Configuration/" class="md-nav__link">
       Webpack Configuration
     </a>
   </li>
@@ -1749,8 +1776,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1759,51 +1784,82 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#rpc-usage" class="md-nav__link">
+    RPC Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#download-and-install-ui-toolkit" class="md-nav__link">
-    Download and Install UI Toolkit
+  <a href="#rpc-arguments" class="md-nav__link">
+    RPC Arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    Required
+  </a>
+  
+    <nav class="md-nav" aria-label="Required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#customize-the-control" class="md-nav__link">
-    Customize the control
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    Optional 
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples_1" class="md-nav__link">
+    Examples
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-bundle-for-domain" class="md-nav__link">
-    Create Bundle for Domain
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#informational" class="md-nav__link">
+    Informational
+  </a>
+  
+    <nav class="md-nav" aria-label="Informational">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples_2" class="md-nav__link">
+    Examples
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to sample html page
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#test-the-sample-page" class="md-nav__link">
-    Test the sample page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-new-language-for-internationalization" class="md-nav__link">
-    Add a new Language for Internationalization
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1819,71 +1875,133 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/UIToolkit/Bundles/Domains.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Microservices/RPC/commandsRPC.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="quickstart-to-bundle-domain-control">Quickstart - To Bundle Domain Control<a class="headerlink" href="#quickstart-to-bundle-domain-control" title="Permanent link">&para;</a></h1>
-<p>This document shows how to bundle Domain control and display it on a sample html page for testing.</p>
-<ul>
-<li>how to customize the control</li>
-<li>how to create a bundle for Domain control</li>
-<li>how to add to sample html</li>
-<li>how to add a new language for Internalization </li>
-</ul>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to deploy and make changes, the following tools and application has to be installed on your development machine
--   <a href="https://git-scm.com/">Git</a>
--   <a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE 
--   <a href="https://nodejs.org/">Node.js</a>
--   <a href="https://github.com/open-amt-cloud-toolkit/rps">RPS</a> stands for <strong>R</strong>emote <strong>P</strong>rovisioning <strong>S</strong>erver
--   Build and deploy RPS MicroService locally
--   Intel AMT device is configured and connected to RPS. See the <a href="https://github.com/open-amt-cloud-toolkit/rps">RPS</a> for documentation.
--   Chrome </p>
-<h2 id="download-and-install-ui-toolkit">Download and Install UI Toolkit<a class="headerlink" href="#download-and-install-ui-toolkit" title="Permanent link">&para;</a></h2>
-<p>At a command prompt, run the following commands:
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit
-cd ui-toolkit
-npm install
+                  <h1>Command Examples</h1>
+                
+                <p>RPC is primarily used for communicating with the Remote Provision Server (RPS) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.</p>
+<p>All currently available arguments and their definitions are listed below along with example commands. </p>
+<h3 id="rpc-usage">RPC Usage<a class="headerlink" href="#rpc-usage" title="Permanent link">&para;</a></h3>
+<p>On Windows:
+<div class="highlight"><pre><span></span><code>rpc &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
+rpc &lt;informational&gt;
 </code></pre></div></p>
-<h2 id="customize-the-control">Customize the control<a class="headerlink" href="#customize-the-control" title="Permanent link">&para;</a></h2>
-<p>To add new changes and test the changes  instantly before bundling the control, webpack dev server can be used</p>
-<p>After making  the changes, open a command prompt and navigate to the root of ui-toolkit, run the below command.</p>
-<div class="highlight"><pre><span></span><code>npm start
-</code></pre></div>
-<p>Open the browser and navigate to following URL</p>
-<div class="highlight"><pre><span></span><code>http://localhost:8080/domain.htm?server=&lt;protocol&gt;://&lt;rps IPaddress&gt;:&lt;rps port&gt;
-</code></pre></div>
-<p><strong>Note:</strong> By default webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on  the next immediate available port</p>
-<h2 id="create-bundle-for-domain">Create Bundle for Domain<a class="headerlink" href="#create-bundle-for-domain" title="Permanent link">&para;</a></h2>
-<p>At a command prompt navigate to the root of ui-toolkit, run the below command.</p>
-<blockquote>
-<p><strong>Note:</strong> Remove or rename the existing <strong>domain.core.min.js</strong>  in <strong>dist/</strong>
-<div class="highlight"><pre><span></span><code>npm run build
-</code></pre></div>
-A new <strong>domain.core.min.js</strong> will be created in <strong>dist/</strong> directory.</p>
-</blockquote>
-<p>To bundle the domain control without node_modules,  run the below command in a command prompt on the root of ui-toolkit,</p>
-<div class="highlight"><pre><span></span><code>npm run build-ext
-</code></pre></div>
-<p><strong>Note</strong>: The bundle generated using build-ext command can be used in react apps as an independent control</p>
-<h2 id="add-to-sample-html-page">Add to sample html page<a class="headerlink" href="#add-to-sample-html-page" title="Permanent link">&para;</a></h2>
-<p>To display the Domain control on a sample web page, update following changes to the existing <strong>src/sample/sampleDomain.htm</strong> page.</p>
-<div class="highlight"><pre><span></span><code>&lt;body&gt;
-&lt;div id=&quot;domainroot&quot;&gt;&lt;/div&gt;
-&lt;script src=&quot;../../dist/domain.core.min.js&quot; crossorigin&gt;&lt;/script&gt;
-&lt;/body&gt;
-</code></pre></div>
-<h2 id="test-the-sample-page">Test the sample page<a class="headerlink" href="#test-the-sample-page" title="Permanent link">&para;</a></h2>
-<p>At a command prompt navigate to the root of ui-toolkit, run the below command.
-<div class="highlight"><pre><span></span><code>npx serve
-</code></pre></div>
-Open Chrome browser, navigate to the following url
-<div class="highlight"><pre><span></span><code>http://&lt;localhost&gt;:5000/src/sample/sampleDomains.htm?server=&lt;rps IPaddress&gt;:&lt;rps port&gt;
+<p>On Linux:
+<div class="highlight"><pre><span></span><code>sudo ./rpc &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
+sudo ./rpc &lt;informational&gt;
 </code></pre></div></p>
-<h2 id="add-a-new-language-for-internationalization">Add a new Language for Internationalization<a class="headerlink" href="#add-a-new-language-for-internationalization" title="Permanent link">&para;</a></h2>
-<p>Please refer to <a href="../../localization/">Localization</a> docs</p>
+<h3 id="rpc-arguments">RPC Arguments<a class="headerlink" href="#rpc-arguments" title="Permanent link">&para;</a></h3>
+<h4 id="required">Required<a class="headerlink" href="#required" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th align="left">Argument&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+<th align="left">Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-c, --cmd &lt;command&gt;</td>
+<td align="left">Server Command</td>
+<td align="left">Activate or Deactivate command for AMT device. See example commands below.</td>
+</tr>
+<tr>
+<td align="left">-u, --url &lt;url&gt;</td>
+<td align="left">Websocket Server</td>
+<td align="left">Address and Port of the RPS server, wss://localhost:8080. By default, RPS runs on port 8080.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h5>
+<p>Activate a Device:
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost:8080 --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
+</code></pre></div></p>
+<p>Deactivate a Device:
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost:8080 -c <span class="s2">&quot;-t deactivate --password P@ssw0rd&quot;</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>--password</strong> nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.</p>
+</div>
+<p><br></p>
+<h4 id="optional">Optional <a name="optional"></a><a class="headerlink" href="#optional" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th align="left">Argument&emsp;&emsp;&emsp;&emsp;</th>
+<th align="left">Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">-d, --dns &lt;dns&gt;</td>
+<td align="left">DNS Suffix Override</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">-n, --nocertcheck</td>
+<td align="left">Certificate Verification</td>
+<td align="left">Disable certificate verification. Allows for the use of self-signed certificates during development testing. Not valid for production. Otherwise, a TLS Certificate from a trusted Certificate Authority provider is required.</td>
+</tr>
+<tr>
+<td align="left">-p, --proxy &lt;addr&gt;</td>
+<td align="left">Proxy Address and Port</td>
+<td align="left">Allow for connection through a network proxy, http://proxy.com:1000</td>
+</tr>
+<tr>
+<td align="left">-v, --verbose</td>
+<td align="left">Verbose Output</td>
+<td align="left">Display WSMan communication with RPS when executing RPC</td>
+</tr>
+</tbody>
+</table>
+<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
+<p>Override DNS detection and Activate device:
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost:8080 --cmd &quot;-t activate --profile profile1&quot; --dns corp.com
+</code></pre></div></p>
+<p>Connect through proxy and Deactivate device:
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost:8080 -c &quot;-t deactivate --password P@ssw0rd&quot; -p http://proxy.com:1000
+</code></pre></div></p>
+<p><br></p>
+<h4 id="informational">Informational<a class="headerlink" href="#informational" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th align="left">Argument</th>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">--help</td>
+<td align="left">Help text</td>
+<td align="left">Display help menu in-line</td>
+</tr>
+<tr>
+<td align="left">--version</td>
+<td align="left">Version</td>
+<td align="left">Current version of RPC</td>
+</tr>
+<tr>
+<td align="left">--amtinfo &lt;item&gt;</td>
+<td align="left">AMT info</td>
+<td align="left">View available information<br><br><strong>Possible &lt;item&gt; Parameters:</strong><br>all - View all items<br>ver - BIOS version<br>bld - Build number<br>sku - Product SKU<br>uuid - <a href="../../../Topics/guids/">Device's Unique Identifier</a><br>mode - Current Control Mode, ACM or CCM<br>dns - Domain Name Suffix from AMT and from OS<br>fqdn - Fully aualified domain name and device hostname from OS<br>cert - Certificate hashes<br>ras - Remote access status<br>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses</td>
+</tr>
+</tbody>
+</table>
+<h5 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h5>
+<p>View All Information Items:
+<div class="highlight"><pre><span></span><code>rpc --amtinfo all
+</code></pre></div></p>
+<p>Find Current Device's GUID:
+<div class="highlight"><pre><span></span><code>rpc --amtinfo uuid
+</code></pre></div></p>
                 
               
               
