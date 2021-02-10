@@ -441,8 +441,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-the-mps-and-rps" class="md-nav__link">
-    Start the MPS and RPS
+  <a href="#start-the-mps-rps-and-sample-web-ui" class="md-nav__link">
+    Start the MPS, RPS, and Sample Web UI
   </a>
   
 </li>
@@ -1736,8 +1736,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-the-mps-and-rps" class="md-nav__link">
-    Start the MPS and RPS
+  <a href="#start-the-mps-rps-and-sample-web-ui" class="md-nav__link">
+    Start the MPS, RPS, and Sample Web UI
   </a>
   
 </li>
@@ -1806,7 +1806,7 @@
 <tbody>
 <tr>
 <td align="left"><a href="https://www.google.com/chrome">Chrome* Browser</a></td>
-<td align="left">Runs the WebUI console for configuring profiles and connecting devices</td>
+<td align="left">View the WebUI console for configuring profiles and connecting devices</td>
 </tr>
 <tr>
 <td align="left"><a href="https://git-scm.com/downloads">git</a></td>
@@ -1814,7 +1814,7 @@
 </tr>
 <tr>
 <td align="left"><a href="https://nodejs.org/">Node.js* LTS 12.x.x or newer</a></td>
-<td align="left">Installs the software</td>
+<td align="left">Installs and runs the software</td>
 </tr>
 </tbody>
 </table>
@@ -1824,79 +1824,104 @@
 <p><strong>To download the Open AMT Cloud Toolkit repository on the development system:</strong></p>
 <ol>
 <li>
-<p>Open a Powershell command prompt (Windows) or Terminal (Linux) and navigate to a directory of your choice for development. </p>
+<p>Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. </p>
 </li>
 <li>
 <p>Clone the repository.
-    <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+    <div class="highlight"><pre><span></span><code>git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
 </code></pre></div></p>
 </li>
 <li>
-<p>Build and Install the services. Run the following script which will update the <code>./mps/.mpsrc</code> file and the <code>./sample-web-ui/src/app.config.js</code> file with the IP address you enter. It will also run <code>npm install</code> for each service to install necessary dependencies. For more information on all available configuration options for MPS see <a href="../../Microservices/MPS/configuration/">click here</a> and for RPS <a href="../../Microservices/RPS/configuration/">click here</a>.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">ps1</span>
-</code></pre></div>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
+<p>Run the following script to build and install the services. </p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>make build
 </code></pre></div>
 </div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+</div>
 </div>
 </li>
-</ol>
-<p>All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click <a href="../../Microservices/overview/">here</a>. </p>
-<h2 id="start-the-mps-and-rps">Start the MPS and RPS<a class="headerlink" href="#start-the-mps-and-rps" title="Permanent link">&para;</a></h2>
-<p>Start the MPS and RPS in two separate command line terminals. </p>
-<p><strong>To start the MPS:</strong></p>
-<ol>
-<li>Open a new Command Prompt or Terminal and navigate to a directory to the <code>mps</code> directory. 
-    <div class="highlight"><pre><span></span><code>npm run dev
-</code></pre></div></li>
 <li>
-<p>Figure 1 demonstrates successful deployment. The web server (api) runs on port 3000 by default, and the MPS Server listens on port 4433. It will take approximately 2-3 minutes to start.</p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>The development system's IP Address will be used to connect to the web server.</p>
+<p>Provide the IP Address of your development system and press Enter. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The script will update the <code>./mps/.mpsrc</code> file and the <code>./sample-web-ui/src/app.config.js</code> file with the IP address you enter. It will also run <code>npm install</code> for each service to install the necessary dependencies. For more information on all available configuration options for MPS <a href="../../Microservices/MPS/configuration/">click here</a> and for RPS <a href="../../Microservices/RPS/configuration/">click here</a>.</p>
 </div>
-<p><a href="../../assets/images/MPS_npmrundev.png"><img alt="mps" src="../../assets/images/MPS_npmrundev.png" /></a></p>
-<p><strong>Figure 1: MPS reports successful deployment.</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Because the <code>generateCertificates</code> field is set to true in the <code>.mpsrc</code> file, certificates will be generated and stored in the <code>../mps/private</code> directory.</p>
+<p>Warning messages are okay and expected for optional dependencies.</p>
 </div>
+<p>All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click <a href="../../Microservices/overview/">here</a>.</p>
 </li>
 </ol>
+<h2 id="start-the-mps-rps-and-sample-web-ui">Start the MPS, RPS, and Sample Web UI<a class="headerlink" href="#start-the-mps-rps-and-sample-web-ui" title="Permanent link">&para;</a></h2>
+<p>Start the MPS, RPS, and Sample Web UI in three separate command line terminals. </p>
+<p><strong>To start the MPS:</strong></p>
+<ol>
+<li>
+<p>Open a new Terminal or Command Prompt and navigate to the <code>mps</code> directory inside the <code>open-amt-cloud-toolkit</code> directory. </p>
+</li>
+<li>
+<p>Start the MPS server. It may take approximately 2-3 minutes to start.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>npm run devx
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>The development system's IP Address will be used to connect to the web server. By default, the web server (api) runs on port 3000 and the MPS Server listens on port 4433.</p>
+<p><a href="../../assets/images/MPS_npmrundev.png"><img alt="mps" src="../../assets/images/MPS_npmrundev.png" /></a></p>
+<p><strong>Figure 1: MPS reports successful deployment.</strong></p>
+</div>
+<!-- !!! Note
+    Because the <code>generateCertificates</code> field is set to true in the <code>.mpsrc</code> file, certificates will be generated and stored in the <code>../mps/private</code> directory. -->
+</li>
+</ol>
+<p><br></p>
 <p><strong>To start the RPS:</strong></p>
 <ol>
 <li>
-<p>Open a new Command Prompt or Terminal and navigate to a directory to the <code>rps</code> directory. </p>
+<p>Open a new Terminal or Command Prompt and navigate to the <code>rps</code> directory inside the <code>open-amt-cloud-toolkit</code> directory. </p>
 </li>
 <li>
-<p>Then, start the server. By default, the RPS web port is 8080.</p>
-<div class="highlight"><pre><span></span><code>npm run dev
+<p>Start the RPS server.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>npm run devx
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Warning messages are okay and expected for optional dependencies.</p>
 </div>
-<p>Example Output:</p>
-</li>
-</ol>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>By default, the RPS web port is 8080 and the RPS Server listens on port 8081.</p>
 <p><a href="../../assets/images/RPS_npmrundev.png"><img alt="RPS Output" src="../../assets/images/RPS_npmrundev.png" /></a></p>
 <p><strong>Figure 2: RPS reports successful deployment.</strong></p>
+</div>
+</li>
+</ol>
+<p><br></p>
 <p><strong>To start the Sample Web UI:</strong></p>
 <ol>
 <li>
-<p>Open a new Command Prompt or Terminal and navigate to a directory to the <code>sample-web-ui</code> directory. </p>
+<p>Open a new Terminal or Command Prompt and navigate to the <code>sample-web-ui</code> directory inside the <code>open-amt-cloud-toolkit</code> directory.</p>
 </li>
 <li>
-<p>Then, start the server. You may be prompted to use another port if one is already in use. Enter 'y' if prompted and note the port that is chosen, this is where the UI will be running.</p>
+<p>Start the server.</p>
 <div class="highlight"><pre><span></span><code>npm start
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Warning messages are okay and expected for optional dependencies.</p>
-</div>
+</li>
+<li>
+<p>If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.</p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>

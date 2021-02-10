@@ -1767,10 +1767,11 @@
 </table>
 </li>
 <li>
-<p>Provide your development system's IP address as the <strong>Common Name</strong> to generate the self-signed certificate by the MPS server.</p>
-</li>
-<li>
+<p>Provide your development system's IP address as the <strong>Cert. Hostname(CN)</strong> to generate the self-signed certificate by the MPS server.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Do not modify the default value of <strong>Auto Load</strong> for the <strong>MPS root certificate format.</strong></p>
+</div>
 </li>
 <li>
 <p>Click <strong>Load</strong> under MPS Root Certificate.</p>
@@ -1787,8 +1788,8 @@
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p>Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC). Profiles also distinguish between activating in: </p>
-<p><strong><a href="../createProfileCCM/">Create a Profile in Client Control Mode (CCM):</a></strong> This mode offers nearly all manageability features. However, it does not currently support Keyboard, Video, Mouse Control. For other features, such as Serial-Over-LAN or Storage Redirection (IDE-R, USB-R), <strong>user consent is required</strong>.</p>
-<p><strong><a href="../createProfileACM/">Create a Profile in Admin Control Mode (ACM):</a></strong> ACM mode supports the same CCM features in addition to Keyboard, Video, Mouse (KVM) or Redirection <strong>without user consent</strong>. This means it is <strong>not necessary</strong> to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.</p>
+<p><strong><a href="../createProfileCCM/">Client Control Mode (CCM):</a></strong> This mode offers nearly all manageability features. However, it does not currently support Keyboard, Video, Mouse Control. For other features, such as Serial-Over-LAN or Storage Redirection (IDE-R, USB-R), <strong>user consent is required</strong>.</p>
+<p><strong><a href="../createProfileACM/">Admin Control Mode (ACM):</a></strong> ACM mode supports the same CCM features in addition to Keyboard, Video, Mouse (KVM) or Redirection <strong>without user consent</strong>. This means it is <strong>not necessary</strong> to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.</p>
                 
               
               

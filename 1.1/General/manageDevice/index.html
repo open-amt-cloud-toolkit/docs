@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manage-the-intel-amt-device-using-mps" class="md-skip">
+        <a href="#next-steps" class="md-skip">
           Skip to content
         </a>
       
@@ -590,13 +590,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#manage-the-intel-amt-device-using-mps" class="md-nav__link">
-    Manage the Intel&reg; AMT Device using MPS
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
@@ -1733,13 +1726,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#manage-the-intel-amt-device-using-mps" class="md-nav__link">
-    Manage the Intel&reg; AMT Device using MPS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     Next steps
   </a>
@@ -1792,11 +1778,14 @@
                 
                   <h1>Manage AMT Device</h1>
                 
-                <p>Estimated completion time: 5 minutes</p>
-<h2 id="manage-the-intel-amt-device-using-mps">Manage the Intel&reg; AMT Device using MPS<a class="headerlink" href="#manage-the-intel-amt-device-using-mps" title="Permanent link">&para;</a></h2>
-<p>1. On your development system, browse to the web server using the development system's IP Address.</p>
-<p><strong>Example URL:</strong> https://[Development-IP-Address]:3000</p>
-<p>2. Log in with the default credentials below.</p>
+                <ol>
+<li>
+<p>On your development system, browse to the web server in Chrome* using the development system's IP Address.</p>
+<div class="highlight"><pre><span></span><code>http://[Development-IP-Address]:3001
+</code></pre></div>
+</li>
+<li>
+<p>Log in with the default credentials below.</p>
 <p><strong>Default credentials:</strong></p>
 <table>
 <thead>
@@ -1816,21 +1805,35 @@
 </tr>
 </tbody>
 </table>
-<p>3. After logging in, click on Management Presence Server. If already logged in, click the Home icon in the top left corner.</p>
+</li>
+<li>
+<p>After logging in, click on Management Presence Server. If already logged in, click the Home icon in the top left corner.</p>
 <p><a href="../../assets/images/WebUI_HomeMPS.png"><img alt="WebUI" src="../../assets/images/WebUI_HomeMPS.png" /></a></p>
-<p><br></p>
-<p>4. Click the devices tab from the menu on the left, or click <em>Connected</em> in the default homepage.</p>
-<blockquote>
-<p><strong>Note:</strong> If the activated device is not listed or if it is listed as unconnected, unplug and then plug back in the power of the AMT device. After succesfully restarting the device, refresh the WebUI to see if the <em>Status</em> changes to <em>Connected</em> and turns green.</p>
-</blockquote>
+</li>
+<li>
+<p>Click the devices tab from the menu on the left, or click <em>Connected</em> in the default homepage.</p>
 <p><a href="../../assets/images/MPS_ConnectedDevice.png"><img alt="mps" src="../../assets/images/MPS_ConnectedDevice.png" /></a></p>
-<p>5. Select the checkbox by the connected device you want to manage.</p>
-<p>6. Select an action to perform from the options on the right.</p>
-<blockquote>
-<p><strong>Note:</strong> Since the device was activated in Client Control Mode(CCM), the KVM feature will not function in this current release. To use KVM, follow the <a href="../createProfileACM/">ACM Activation Tutorial</a> to see how to configure a device into Admin Control Mode.</p>
-<p><strong>Note:</strong> Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command and be able to view and make live changes to BIOS settings.</p>
-</blockquote>
+<div class="admonition troubleshooting">
+<p class="admonition-title">Troubleshooting</p>
+<p>If the activated device is not listed or if it is listed as unconnected, unplug and then plug back in the power of the AMT device. After succesfully restarting the device, refresh the WebUI to see if the <em>Status</em> changes to <em>Connected</em> and turns green.</p>
+</div>
+</li>
+<li>
+<p>Select the checkbox by the connected device you want to manage.</p>
+</li>
+<li>
+<p>Select an action to perform from the options on the right.</p>
 <p><a href="../../assets/images/MPS_ManageDevice.png"><img alt="mps" src="../../assets/images/MPS_ManageDevice.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the device was activated in Client Control Mode(CCM), the KVM feature will    not function in this current release. To use KVM, follow the <a href="../createProfileACM/">ACM Activation   Tutorial</a> to see how to configure a device into Admin Control    Mode.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM)   feature to remotely view and control the AMT device.  Issue a Reset to BIOS command   and be able to view and make live changes to BIOS settings.</p>
+</div>
+</li>
+</ol>
 <p><br></p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After successfully deploying the Open AMT Cloud Toolkit microservices and client, explore other tools and topics in the Open AMT Cloud Toolkit architecture:</p>
