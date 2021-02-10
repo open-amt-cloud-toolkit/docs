@@ -103,11 +103,13 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 ## S
 
+**Sample Web UI:** A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.
+
 ## T
 
 ## U
 
-**UI Toolkit:** A modular, REST-based API consisting of code snippets administrators can use to add Web services to the reference implementation console. 
+**UI Toolkit:** A modular, REST-based API consisting of code snippets developers can use to implement AMT features and services to their manageability console. 
 
 ## V
 
