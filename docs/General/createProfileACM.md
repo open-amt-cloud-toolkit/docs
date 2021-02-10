@@ -132,11 +132,9 @@ Intel AMT checks the network DNS suffix against the provisioning certificate as 
         [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
         **Figure 4: Add Provisioning Certificate. **
 
-        After successfully creating the domain, continue with the activation process by building and running the Remote Provisioning Client (RPC).
-
 
 ## Next Up
 
-**[Build RPC on a Managed Device](../General/buildRPC.md)**
+**[Build & Run RPC](../General/buildRPC.md)**
 
 

@@ -52,10 +52,10 @@ Intel® AMT devices are capable of being activated into two modes:
 11. Click **Create.**
 
     !!! example
-        Example Profile:
+        Example CCM Profile:
 
         [![RPS](../assets/images/RPS_CreateProfile.png)](../assets/images/RPS_CreateProfile.png)
 
 ## Next up
-**[Build RPC](buildRPC.md)**
+**[Build & Run RPC](buildRPC.md)**
 

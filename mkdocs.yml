@@ -45,6 +45,7 @@ nav:
       - Security Information: Microservices/MPS/securityMPS.md
     - Remote Provisioning Server:
       - Configuration: Microservices/RPS/configuration.md
+      - Network Profiles: Microservices/RPS/networkConfig.md
       - Security Information: Microservices/RPS/securityRPS.md
     - Remote Provisioning Client :
       # - Build & Run RPC (GitHub Actions): General/buildRPC_GithubActions.md
@@ -74,8 +75,8 @@ nav:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
-    - Databases: Tutorials/addDatabase.md
-    - Secret Storage: Tutorials/addVault.md
+    # - Databases: Tutorials/addDatabase.md
+    # - Secret Storage: Tutorials/addVault.md
     - Allowlists: Tutorials/allowlist.md
   - APIs:
     - Management Presence Server:
@@ -102,9 +103,9 @@ nav:
       - CIRA Configuration: APIs/RPSmethods/ciraconfig.md
       - Intel AMT Domains: APIs/RPSmethods/domains.md
       - Intel AMT Profiles: APIs/RPSmethods/profiles.md
-      - Network Configurations: APIs/RPSmethods/networkconfig.md
+      # - Network Configurations: APIs/RPSmethods/networkconfig.md
   - Topics:
-    - Static and Dynamic IPs: Topics/staticIP.md
+    # - Static and Dynamic IPs: Topics/staticIP.md
     - GUIDs in Intel AMT: Topics/guids.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md

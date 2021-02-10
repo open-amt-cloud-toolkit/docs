@@ -135,6 +135,15 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
 
+    !!! Success
+        Because MPS runs on port 3000, the Sample Web UI may prompt to use port 3001 instead.
+
+        [![Sample UI Output](../assets/images/SampleUI_npmstart.png)](../assets/images/SampleUI_npmstart.png)
+
+        **Figure 3: Sample UI reports successful deployment.**
+
+        !!! note
+            A number of warnings display when compiled, this is OK. The Sample Web UI will be successfully running.
 
 ## Next up
 
