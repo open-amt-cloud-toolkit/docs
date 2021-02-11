@@ -1486,6 +1486,46 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-to-use-the-rest-api" class="md-nav__link">
+    How to Use the REST API
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Use the REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-url" class="md-nav__link">
+    Request URL
+  </a>
+  
+    <nav class="md-nav" aria-label="Request URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-path" class="md-nav__link">
+    Base Path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-path" class="md-nav__link">
+    Profile Path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rps-api" class="md-nav__link">
     RPS API
   </a>
@@ -1681,6 +1721,46 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-to-use-the-rest-api" class="md-nav__link">
+    How to Use the REST API
+  </a>
+  
+    <nav class="md-nav" aria-label="How to Use the REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-url" class="md-nav__link">
+    Request URL
+  </a>
+  
+    <nav class="md-nav" aria-label="Request URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-path" class="md-nav__link">
+    Base Path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-path" class="md-nav__link">
+    Profile Path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rps-api" class="md-nav__link">
     RPS API
   </a>
@@ -1707,7 +1787,32 @@
                 <h1 id="api-and-command-reference">API and Command Reference<a class="headerlink" href="#api-and-command-reference" title="Permanent link">&para;</a></h1>
 <p>This section is a reference to the RPS API methods available in the Open AMT Cloud Toolkit, and to some commands it provides.</p>
 <p>RPS APIs allow you to get, create, and delete things such as CIRA Configs, Domains, and Profiles that are used in the remote configuration of Intel AMT devices.</p>
-<h3 id="rps-api">RPS API<a class="headerlink" href="#rps-api" title="Permanent link">&para;</a></h3>
+<p>RPS can be configured to run in two different modes, Developer and Production.</p>
+<ul>
+<li>In developer mode, all profiles and configurations are written to the file private/data.json.</li>
+<li>In production mode, all profiles and CIRA configurations are written to the database, and secrets are stored in Vault.</li>
+</ul>
+<h2 id="how-to-use-the-rest-api">How to Use the REST API<a class="headerlink" href="#how-to-use-the-rest-api" title="Permanent link">&para;</a></h2>
+<h3 id="request-url">Request URL<a class="headerlink" href="#request-url" title="Permanent link">&para;</a></h3>
+<p>The request URL is assembled using your RPS server's IP Address, the port, the base path, and profile path with applicable parameters for the API you'd like to call.</p>
+<h4 id="base-path">Base Path<a class="headerlink" href="#base-path" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/api/v1/admin/</span>
+</code></pre></div>
+<h4 id="profile-path">Profile Path<a class="headerlink" href="#profile-path" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/ciraconfigs/</span>
+<span class="l l-Scalar l-Scalar-Plain">/domains/</span>
+<span class="l l-Scalar l-Scalar-Plain">/profiles/</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Example URL for Profile Creation:
+  <div class="highlight"><pre><span></span><code>https://localhost:8081/api/v1/admin/profiles/create
+</code></pre></div>
+  Example URL for Domain Deletion:
+  <div class="highlight"><pre><span></span><code>https://localhost:8081/api/v1/admin/domains/mydomain
+</code></pre></div></p>
+</div>
+<h2 id="rps-api">RPS API<a class="headerlink" href="#rps-api" title="Permanent link">&para;</a></h2>
 <p>The following APIs are available in RPS: </p>
 <table>
 <thead>
@@ -1730,8 +1835,9 @@
 <td align="left">Creating, Editing, Deleting, and Retrieving an Intel&reg; AMT profile</td>
 </tr>
 <tr>
-<td align="left"><strong><a href="../RPSmethods/networkconfig/">Network Configuration</a></strong></td>
-<td align="left">Creating, Editing, Deleting, and Retrieving a Network Configuration</td>
+<td align="left"><!-- | **[Network Configuration](./RPSmethods/networkconfig.md)** | Creating, Editing, Deleting, and Retrieving a Network Configuration | -->
+</td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>

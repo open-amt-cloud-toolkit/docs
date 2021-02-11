@@ -1350,45 +1350,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        GetAMTFeatures
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
     <a href="./" class="md-nav__link md-nav__link--active">
       GetAMTFeatures
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-request-body" class="md-nav__link">
-    Example: Request Body
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-success-responsebody" class="md-nav__link">
-    Example : Success ResponseBody
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -1683,28 +1647,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-request-body" class="md-nav__link">
-    Example: Request Body
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-success-responsebody" class="md-nav__link">
-    Example : Success ResponseBody
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1723,32 +1665,38 @@
                 <h1 id="getamtfeatures">GetAMTFeatures<a class="headerlink" href="#getamtfeatures" title="Permanent link">&para;</a></h1>
 <p>This AMT method returns the enabled/disabled settings for AMT out-of-band features. </p>
 <p>Click <a href="../types/">here</a> for supported input and output types.</p>
-<h2 id="example-request-body">Example: Request Body<a class="headerlink" href="#example-request-body" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>Important Note:</strong> More information on obtaining an AMT device's GUID can be found <a href="../../../Topics/guids/">here</a>.</p>
-<p><strong>Note:</strong> The following code block is an example of what would be the data sent as part of the POST request. </p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">//amt method</span>
-
-<span class="l l-Scalar l-Scalar-Plain">{</span>  
-   <span class="l l-Scalar l-Scalar-Plain">&quot;method&quot;:&quot;GetAMTFeatures&quot;,</span>
-   <span class="l l-Scalar l-Scalar-Plain">&quot;payload&quot;:{</span>  
-      <span class="l l-Scalar l-Scalar-Plain">&quot;guid&quot;:&quot;038d0240-045c-05f4-7706-980700080009&quot; //Replace with an AMT Device&#39;s GUID</span>
-   <span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More information on obtaining an AMT device's GUID can be found <a href="../../../Topics/guids/">here</a>.</p>
+</div>
+<ul>
+<li>Endpoint: <em>/amt</em></li>
+<li>Method Type: POST</li>
+<li>Headers: <em>X-MPS-API-Key</em></li>
+<li>Body:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>  
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;GetAMTFeatures&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;payload&quot;</span><span class="p">:{</span>  
+      <span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="err">//Replace</span> <span class="err">wi</span><span class="kc">t</span><span class="err">h</span> <span class="err">a</span><span class="kc">n</span> <span class="err">AMT</span> <span class="err">Device&#39;s</span> <span class="err">GUID</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h2 id="example-success-responsebody">Example : Success ResponseBody<a class="headerlink" href="#example-success-responsebody" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">{</span>
-      <span class="s">&quot;ResponseBody&quot;</span><span class="p p-Indicator">:{</span>
-        <span class="s">&quot;userConsent&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span><span class="p p-Indicator">,</span>
-        <span class="s">&quot;redirection&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-        <span class="s">&quot;KVM&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-        <span class="s">&quot;SOL&quot;</span><span class="p p-Indicator">:</span> <span class="nv">false</span><span class="p p-Indicator">,</span>
-        <span class="s">&quot;IDER&quot;</span><span class="p p-Indicator">:</span> <span class="nv">false</span>
-      <span class="p p-Indicator">}</span>
-    <span class="p p-Indicator">}</span>
+<p>Example Outputs:</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="mi">200</span><span class="err">&#39;</span><span class="p">:</span>
+  <span class="p">{</span>
+      <span class="nt">&quot;ResponseBody&quot;</span><span class="p">:{</span>
+          <span class="nt">&quot;userConsent&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;redirection&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;KVM&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;SOL&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nt">&quot;IDER&quot;</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
 </code></pre></div>
+</div>
 <p>Return to <a href="../../indexMPS/">MPS Methods</a></p>
                 
               

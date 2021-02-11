@@ -1763,35 +1763,78 @@
                 <h1 id="intel-amt-profiles">Intel AMT Profiles<a class="headerlink" href="#intel-amt-profiles" title="Permanent link">&para;</a></h1>
 <h2 id="create-a-profile">Create a Profile<a class="headerlink" href="#create-a-profile" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/profiles/create</em></li>
+<li>Endpoint: <em>/api/v1/admin/profiles/create</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;payload&quot;</span> <span class="p">:</span>  
-    <span class="p">{</span>
-        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;[amt-profile-name]&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span><span class="s2">&quot;[strong-AMT-password]&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;[acmactivate/ccmactivate]&quot;</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;[amt-profile-name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;AMTPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;[strong-AMT-password]&quot;</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domPassword</span> <span class="err">is</span> <span class="kc">false</span>
+        <span class="nt">&quot;MEBxPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;[strong-MEBx-password]&quot;</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domMEBxPassword</span> <span class="err">is</span> <span class="kc">false</span>
+        <span class="nt">&quot;GenerateRandomMEBxPassword&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">true</span><span class="err">/</span><span class="kc">false</span><span class="p">],</span>
+        <span class="nt">&quot;RandomMEBxPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domMEBxPassword</span> <span class="err">is</span> <span class="kc">true</span>
+        <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">true</span><span class="err">/</span><span class="kc">false</span><span class="p">],</span>
+        <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domPassword</span> <span class="err">is</span> <span class="kc">true</span>
+        <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;[CIRA-config-name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;[acmactivate/ccmactivate]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;NetworkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;[dhcp_enabled/dhcp_disabled]&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Example Input:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>ACM Profile using Static Passwords
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;payload&quot;</span><span class="p">:</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span><span class="s2">&quot;testProfile1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span><span class="s2">&quot;STRONGPASSWORD&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;activation&quot;</span><span class="p">:</span><span class="s2">&quot;ccmactivate&quot;</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;ACM-Static-profile&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;StrongP@ssw0rd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mebxPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;StrongP@ssw0rd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;acmactivate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;networkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>ACM Profile using Random Generated Passwords
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;ACM-Random-profile&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;generateRandomMEBxPassword&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;mebxPasswordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;acmactivate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;networkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>CCM Profile using Random Generated Password
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;CCM-Random-Profile&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;ccmactivate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;networkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An MEBx password is not required when activating into Client Control Mode.</p>
+</div>
+</div>
+<p>Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>Profile testProfile1 successfully inserted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Profile insertion failed for testProfile1. Profile already exists. </p>
@@ -1800,46 +1843,51 @@
 </details>
 <h2 id="get-a-profile">Get a Profile<a class="headerlink" href="#get-a-profile" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/profiles/{profileName}</em></li>
+<li>Endpoint: <em>/api/v1/admin/profiles/{profileName}</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The profile to get is provided in the URL as a query parameter.</li>
 </ul>
-<p>Example Input:</p>
-<div class="highlight"><pre><span></span><code>N/A (test profile to retrieve provided in URL as query parameter)
-</code></pre></div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;testProfile1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;ccm-Profile&quot;</span><span class="p">,</span>
     <span class="nt">&quot;AMTPassword&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;ConfigurationScript&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;MEBxPassword&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;GenerateRandomMEBxPassword&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;RandomMEBxPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;ccmactivate&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig1&quot;</span>
+    <span class="nt">&quot;NetworkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The API will not return the AMTPassword or MEBxpassword. These must be retrieved from Vault or other storage.</p>
+</div>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Profile testProfile1 not found</p>
 </details>
 <h2 id="get-all-profiles">Get All Profiles<a class="headerlink" href="#get-all-profiles" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/profiles/</em></li>
+<li>Endpoint: <em>/api/v1/admin/profiles/</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. No query parameter in URL retrieves all profiles.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>NA
-</code></pre></div>
-<p>Example Input:</p>
-<div class="highlight"><pre><span></span><code>NA (no query parameter in the URL retrieves all profiles)
-</code></pre></div>
 <details class="success" open="open"><summary>Success</summary><div class="highlight"><pre><span></span><code><span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;testProfile1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;ccm-Profile&quot;</span><span class="p">,</span>
         <span class="nt">&quot;AMTPassword&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;ConfigurationScript&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;MEBxPassword&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;GenerateRandomMEBxPassword&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;RandomMEBxPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;ccmactivate&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig1&quot;</span>
+        <span class="nt">&quot;NetworkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
@@ -1848,35 +1896,40 @@
 </details>
 <h2 id="edit-a-profile">Edit a Profile<a class="headerlink" href="#edit-a-profile" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/profiles/edit</em></li>
+<li>Endpoint: <em>/api/v1/admin/profiles/edit</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;payload&quot;</span> <span class="p">:</span>  
-    <span class="p">{</span>
-        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;[amt-profile-name]&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span><span class="s2">&quot;[strong-AMT-password]&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;[acmactivate/ccmactivate]&quot;</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;[amt-profile-name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;AMTPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;[strong-AMT-password]&quot;</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domPassword</span> <span class="err">is</span> <span class="kc">false</span>
+        <span class="nt">&quot;MEBxPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;[strong-MEBx-password]&quot;</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domMEBxPassword</span> <span class="err">is</span> <span class="kc">false</span>
+        <span class="nt">&quot;GenerateRandomMEBxPassword&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">true</span><span class="err">/</span><span class="kc">false</span><span class="p">],</span>
+        <span class="nt">&quot;RandomMEBxPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domMEBxPassword</span> <span class="err">is</span> <span class="kc">true</span>
+        <span class="nt">&quot;GenerateRandomPassword&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">true</span><span class="err">/</span><span class="kc">false</span><span class="p">],</span>
+        <span class="nt">&quot;RandomPasswordLength&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="err">//required</span> <span class="err">i</span><span class="kc">f</span> <span class="err">Ge</span><span class="kc">nerate</span><span class="err">Ra</span><span class="kc">n</span><span class="err">domPassword</span> <span class="err">is</span> <span class="kc">true</span>
+        <span class="nt">&quot;CIRAConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;[CIRA-config-name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;[acmactivate/ccmactivate]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;NetworkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;[dhcp_enabled/dhcp_disabled]&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Example Input:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;payload&quot;</span><span class="p">:</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span><span class="s2">&quot;testProfile1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span><span class="s2">&quot;STRONGPASSWORD&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;generateRandomPassword&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;passwordLength&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;testconfig&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;activation&quot;</span><span class="p">:</span><span class="s2">&quot;ccmactivate&quot;</span>
+    <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;profileName&quot;</span><span class="p">:</span> <span class="s2">&quot;testProfile1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;amtPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;StrongP@ssw0rd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;mebxPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;StrongP@ssw0rd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;activation&quot;</span><span class="p">:</span> <span class="s2">&quot;acmactivate&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ciraConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;ciraconfig&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;networkConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
 <details class="success" open="open"><summary>Success</summary><p>Profile testProfile1 successfully updated.</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Referenced CIRA Config testconfig58 not found.</p>
@@ -1885,15 +1938,11 @@
 </details>
 <h2 id="delete-a-profile">Delete a Profile<a class="headerlink" href="#delete-a-profile" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/profiles/{profileName}</em></li>
+<li>Endpoint: <em>/api/v1/admin/profiles/{profileName}</em></li>
 <li>Method Type: DELETE</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The profile to delete is provided in the URL as a query parameter.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>NA
-</code></pre></div>
-<p>Example Input:</p>
-<div class="highlight"><pre><span></span><code>NA (profile to delete provided as query parameter in url &#39;profile1&#39;)
-</code></pre></div>
 <details class="success" open="open"><summary>Success</summary><p>Profile testProfile1 successfully deleted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Profile not found.</p>

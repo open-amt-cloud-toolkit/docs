@@ -1228,12 +1228,18 @@
     Request URL
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Request URL">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#base-paths" class="md-nav__link">
     Base paths
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1740,12 +1746,18 @@
     Request URL
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Request URL">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#base-paths" class="md-nav__link">
     Base paths
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1809,16 +1821,19 @@
 <h2 id="how-to-use-the-rest-api">How to Use the REST API<a class="headerlink" href="#how-to-use-the-rest-api" title="Permanent link">&para;</a></h2>
 <h3 id="request-url">Request URL<a class="headerlink" href="#request-url" title="Permanent link">&para;</a></h3>
 <p>The request URL is assembled using your MPS server's IP Address, the port, and the base path for the method you would like to run. The tables below explore what methods are accessible for each base path.</p>
-<div class="highlight"><pre><span></span><code>Example url: https://localhost:3000/amt
-</code></pre></div>
-<h3 id="base-paths">Base paths<a class="headerlink" href="#base-paths" title="Permanent link">&para;</a></h3>
+<h4 id="base-paths">Base paths<a class="headerlink" href="#base-paths" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/amt/</span>
 <span class="l l-Scalar l-Scalar-Plain">/admin/</span>
 </code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Example URL for an AMT method:
+  <div class="highlight"><pre><span></span><code>https://localhost:3000/amt
+</code></pre></div></p>
+</div>
 <h2 id="api-calls">API Calls<a class="headerlink" href="#api-calls" title="Permanent link">&para;</a></h2>
 <p>The sections below list methods for MPS. </p>
 <p>The MPS API includes Admin and AMT methods.</p>
-<p><br></p>
 <h3 id="admin-methods">Admin Methods<a class="headerlink" href="#admin-methods" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1850,7 +1865,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
 <h3 id="amt-methods">AMT Methods<a class="headerlink" href="#amt-methods" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

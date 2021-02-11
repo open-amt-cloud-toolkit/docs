@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#amtversion" class="md-skip">
+        <a href="#version" class="md-skip">
           Skip to content
         </a>
       
@@ -1422,45 +1422,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Version
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
     <a href="./" class="md-nav__link md-nav__link--active">
       Version
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-request-body" class="md-nav__link">
-    Example: Request Body
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-success-responsebody" class="md-nav__link">
-    Example : Success ResponseBody
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -1683,28 +1647,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#example-request-body" class="md-nav__link">
-    Example: Request Body
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-success-responsebody" class="md-nav__link">
-    Example : Success ResponseBody
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1720,105 +1662,112 @@
                   </a>
                 
                 
-                <h1 id="amtversion">AMTVersion<a class="headerlink" href="#amtversion" title="Permanent link">&para;</a></h1>
+                <h1 id="version">Version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h1>
 <p>This AMT method retrieves the Intel&reg; AMT version running on the specified device.</p>
 <p>Click <a href="../types/">here</a> for supported input and output types.</p>
-<h2 id="example-request-body">Example: Request Body<a class="headerlink" href="#example-request-body" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The following code block is an example of what would be the data sent as part of the POST request. </p>
+<p>More information on obtaining an AMT device's GUID can be found <a href="../../../Topics/guids/">here</a>.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>  
-   <span class="s">&quot;apiKey&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">,</span>
-   <span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">,</span>
-   <span class="s">&quot;payload&quot;</span><span class="p p-Indicator">:{</span>  
-      <span class="s">&quot;guid&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span>
-   <span class="p p-Indicator">}</span>
-<span class="p p-Indicator">}</span>
+<ul>
+<li>Endpoint: <em>/amt</em></li>
+<li>Method Type: POST</li>
+<li>Headers: <em>X-MPS-API-Key</em></li>
+<li>Body:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>  
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;Version&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;payload&quot;</span><span class="p">:{</span>  
+      <span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h2 id="example-success-responsebody">Example : Success ResponseBody<a class="headerlink" href="#example-success-responsebody" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">{</span>
-      <span class="s">&quot;ResponseBody&quot;</span><span class="p p-Indicator">:{</span>
-        <span class="s">&quot;CIM_SoftwareIdentity&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
-        <span class="s">&quot;responses&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Flash&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Netstack&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AMTApps&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AMT&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Sku&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="nv">16392</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;VendorID&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="nv">8086</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Build</span><span class="nv"> </span><span class="s">Number&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="nv">3425</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Recovery</span><span class="nv"> </span><span class="s">Version&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Recovery</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">Num&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="nv">3425</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Legacy</span><span class="nv"> </span><span class="s">Mode&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;False&quot;</span>
-            <span class="p p-Indicator">},</span>
-            <span class="p p-Indicator">{</span>
-            <span class="s">&quot;instanceID&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AMT</span><span class="nv"> </span><span class="s">FW</span><span class="nv"> </span><span class="s">Core</span><span class="nv"> </span><span class="s">Version&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;isEntity&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;versionString&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;11.8.50&quot;</span>
-            <span class="p p-Indicator">}</span>
-          <span class="p p-Indicator">],</span>
-          <span class="s">&quot;status&quot;</span><span class="p p-Indicator">:</span> <span class="nv">200</span>
-        <span class="p p-Indicator">},</span>
-        <span class="s">&quot;AMT_SetupAndConfigurationService&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
-            <span class="s">&quot;response&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
-            <span class="s">&quot;creationClassName&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AMT_SetupAndConfigurationService&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;elementName&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Intel(r)</span><span class="nv"> </span><span class="s">AMT</span><span class="nv"> </span><span class="s">Setup</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Configuration</span><span class="nv"> </span><span class="s">Service&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;enabledState&quot;</span><span class="p p-Indicator">:</span> <span class="nv">5</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Intel(r)</span><span class="nv"> </span><span class="s">AMT</span><span class="nv"> </span><span class="s">Setup</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Configuration</span><span class="nv"> </span><span class="s">Service&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;passwordModel&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;provisioningMode&quot;</span><span class="p p-Indicator">:</span> <span class="nv">1</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;provisioningServerOTP&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;provisioningState&quot;</span><span class="p p-Indicator">:</span> <span class="nv">2</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;requestedState&quot;</span><span class="p p-Indicator">:</span> <span class="nv">12</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;systemCreationClassName&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;CIM_ComputerSystem&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;systemName&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Intel(r)</span><span class="nv"> </span><span class="s">AMT&quot;</span><span class="p p-Indicator">,</span>
-            <span class="s">&quot;zeroTouchConfigurationEnabled&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span>
-            <span class="p p-Indicator">},</span>
-            <span class="s">&quot;status&quot;</span><span class="p p-Indicator">:</span> <span class="nv">200</span>
-        <span class="p p-Indicator">}</span>
-    <span class="p p-Indicator">}</span>
+<p>Example Outputs:</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code><span class="err">&#39;</span><span class="mi">200</span><span class="err">&#39;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;ResponseBody&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;CIM_SoftwareIdentity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;responses&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Flash&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Netstack&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;AMTApps&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;AMT&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Sku&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="mi">16392</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;VendorID&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="mi">8086</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Build Number&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="mi">3425</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Recovery Version&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Recovery Build Num&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="mi">3425</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;Legacy Mode&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+            <span class="nt">&quot;instanceID&quot;</span><span class="p">:</span> <span class="s2">&quot;AMT FW Core Version&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;isEntity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;versionString&quot;</span><span class="p">:</span> <span class="s2">&quot;11.8.50&quot;</span>
+            <span class="p">}</span>
+          <span class="p">],</span>
+          <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;AMT_SetupAndConfigurationService&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;creationClassName&quot;</span><span class="p">:</span> <span class="s2">&quot;AMT_SetupAndConfigurationService&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;elementName&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(r) AMT Setup and Configuration Service&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabledState&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(r) AMT Setup and Configuration Service&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;passwordModel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;provisioningMode&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;provisioningServerOTP&quot;</span><span class="p">:</span> <span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;provisioningState&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;requestedState&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+            <span class="nt">&quot;systemCreationClassName&quot;</span><span class="p">:</span> <span class="s2">&quot;CIM_ComputerSystem&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;systemName&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(r) AMT&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;zeroTouchConfigurationEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="mi">200</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 </code></pre></div>
+</div>
 <p>Return to <a href="../../indexMPS/">MPS Methods</a></p>
                 
               

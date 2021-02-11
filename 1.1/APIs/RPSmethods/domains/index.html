@@ -1749,70 +1749,72 @@
                 <h1 id="intel-amt-domains">Intel AMT Domains<a class="headerlink" href="#intel-amt-domains" title="Permanent link">&para;</a></h1>
 <h2 id="create-a-domain">Create A Domain<a class="headerlink" href="#create-a-domain" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/domains/create</em></li>
+<li>Endpoint: <em>/api/v1/admin/domains/create</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> 
     <span class="p">{</span> 
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;domain1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span><span class="s2">&quot;d1.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span> <span class="err">//Ca</span><span class="kc">n</span> <span class="kc">t</span><span class="err">his</span> <span class="err">be</span> <span class="err">a</span> <span class="err">direc</span><span class="kc">t</span><span class="err">ory</span> <span class="err">pa</span><span class="kc">t</span><span class="err">h</span> <span class="kc">f</span><span class="err">or</span> <span class="kc">t</span><span class="err">he</span> <span class="err">api</span> <span class="err">call</span> <span class="err">or</span> <span class="err">has</span> <span class="kc">t</span><span class="err">o</span> <span class="err">be</span> <span class="kc">flat</span> <span class="kc">te</span><span class="err">x</span><span class="kc">t</span> <span class="err">like</span> <span class="err">DX</span><span class="mi">1</span><span class="err">?</span>
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;[Domain-Name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span><span class="s2">&quot;[Domain-Suffix]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertStorageFormat&quot;</span><span class="p">:</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span><span class="s2">&quot;[P@ssw0rd]&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Example Input:
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> 
     <span class="p">{</span> 
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;amtDomain&quot;</span><span class="p">,</span>
         <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span><span class="s2">&quot;amtDomain.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span> <span class="err">//Ca</span><span class="kc">n</span> <span class="kc">t</span><span class="err">his</span> <span class="err">be</span> <span class="err">a</span> <span class="err">direc</span><span class="kc">t</span><span class="err">ory</span> <span class="err">pa</span><span class="kc">t</span><span class="err">h</span> <span class="kc">f</span><span class="err">or</span> <span class="kc">t</span><span class="err">he</span> <span class="err">api</span> <span class="err">call</span> <span class="err">or</span> <span class="err">has</span> <span class="kc">t</span><span class="err">o</span> <span class="err">be</span> <span class="kc">flat</span> <span class="kc">te</span><span class="err">x</span><span class="kc">t</span> <span class="err">like</span> <span class="err">DX</span><span class="mi">1</span><span class="err">?</span>
+        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertStorageFormat&quot;</span><span class="p">:</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span><span class="s2">&quot;P@ssw0rd&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
+</div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>Domain amtDomain successfully inserted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Duplicate Domain. Domain already exists.</p>
 </details>
 <h2 id="get-a-domain">Get a Domain<a class="headerlink" href="#get-a-domain" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/domains/{domainName}</em></li>
+<li>Endpoint: <em>/api/v1/admin/domains/{domainName}</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The domain to get is provided in the URL as a query parameter.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>input domain1 provided in the URL
-</code></pre></div>
-<p>Example output:</p>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;domain1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span> <span class="s2">&quot;vprodemo.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span> <span class="s2">&quot;domain1.com&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
     <span class="nt">&quot;ProvisioningCertStorageFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span> <span class="kc">null</span>
 <span class="p">}</span>
 </code></pre></div>
 </details>
-<details class="failure" open="open"><summary>Failure</summary><p>Domain not found</p>
+<details class="failure" open="open"><summary>Failure</summary><p>Domain domain12 not found</p>
 </details>
 <h2 id="get-all-domains">Get ALL Domains<a class="headerlink" href="#get-all-domains" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/domains/</em></li>
+<li>Endpoint: <em>/api/v1/admin/domains/</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. No query parameter in URL retrieves all domains.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>input  provided in the URL
-</code></pre></div>
-<p>Example output:</p>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><div class="highlight"><pre><span></span><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;domain1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span> <span class="s2">&quot;vprodemo.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span> <span class="s2">&quot;domain1.com&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertStorageFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span> <span class="kc">null</span>
@@ -1824,22 +1826,24 @@
 </details>
 <h2 id="edit-a-domain">Edit A Domain<a class="headerlink" href="#edit-a-domain" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/domains/edit</em></li>
+<li>Endpoint: <em>/api/v1/admin/domains/edit</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> 
     <span class="p">{</span> 
-        <span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;domain1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span><span class="s2">&quot;d1.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span> 
+        <span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;[Domain-Name]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;DomainSuffix&quot;</span><span class="p">:</span><span class="s2">&quot;[Domain-Suffix]&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ProvisioningCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Your_ProvisioningCert_Text]&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertStorageFormat&quot;</span><span class="p">:</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
         <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span><span class="s2">&quot;[P@ssw0rd]&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Example Input:
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> 
     <span class="p">{</span> 
@@ -1850,20 +1854,21 @@
         <span class="nt">&quot;ProvisioningCertPassword&quot;</span><span class="p">:</span><span class="s2">&quot;P@ssw0rd&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></p>
+</code></pre></div>
+</div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>Domain amtDomain successfully updated</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Domain domain1 not found</p>
 </details>
 <h1 id="delete-a-domain">Delete a Domain<a class="headerlink" href="#delete-a-domain" title="Permanent link">&para;</a></h1>
 <ul>
-<li>Endpoint: *<em>/api/v1/admin/domains/{domainName}</em></li>
+<li>Endpoint: <em>/api/v1/admin/domains/{domainName}</em></li>
 <li>Method Type: DELETE</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The domain to delete is provided in the URL as a query parameter.</li>
 </ul>
-<p>Example Input:</p>
-<div class="highlight"><pre><span></span><code>NA (domain to delete provided as query parameter in url &#39;domain1&#39;)
-</code></pre></div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>Domain domain1 successfully deleted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>Domain not found.</p>

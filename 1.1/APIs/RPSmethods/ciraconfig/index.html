@@ -1498,20 +1498,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#developer-mode-vault-and-db-disabled" class="md-nav__link">
-    Developer mode (Vault and DB disabled)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prod-mode-with-vault-and-database-enabled" class="md-nav__link">
-    Prod mode (With Vault and Database enabled)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#create-a-cira-configuration" class="md-nav__link">
     Create a CIRA Configuration
   </a>
@@ -1519,15 +1505,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-all-cira-configurations" class="md-nav__link">
-    Get all CIRA configurations
+  <a href="#get-a-cira-configuration" class="md-nav__link">
+    Get a CIRA configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-a-cira-configuration" class="md-nav__link">
-    Get a CIRA configuration
+  <a href="#get-all-cira-configurations" class="md-nav__link">
+    Get all CIRA configurations
   </a>
   
 </li>
@@ -1723,20 +1709,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#developer-mode-vault-and-db-disabled" class="md-nav__link">
-    Developer mode (Vault and DB disabled)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prod-mode-with-vault-and-database-enabled" class="md-nav__link">
-    Prod mode (With Vault and Database enabled)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#create-a-cira-configuration" class="md-nav__link">
     Create a CIRA Configuration
   </a>
@@ -1744,15 +1716,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-all-cira-configurations" class="md-nav__link">
-    Get all CIRA configurations
+  <a href="#get-a-cira-configuration" class="md-nav__link">
+    Get a CIRA configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-a-cira-configuration" class="md-nav__link">
-    Get a CIRA configuration
+  <a href="#get-all-cira-configurations" class="md-nav__link">
+    Get all CIRA configurations
   </a>
   
 </li>
@@ -1789,18 +1761,31 @@
                 
                 
                 <h1 id="cira-configurations">CIRA Configurations<a class="headerlink" href="#cira-configurations" title="Permanent link">&para;</a></h1>
-<h2 id="developer-mode-vault-and-db-disabled">Developer mode (Vault and DB disabled)<a class="headerlink" href="#developer-mode-vault-and-db-disabled" title="Permanent link">&para;</a></h2>
-<p>In developer mode, all profiles and configurations are written to the file private/data.json.</p>
-<h2 id="prod-mode-with-vault-and-database-enabled">Prod mode (With Vault and Database enabled)<a class="headerlink" href="#prod-mode-with-vault-and-database-enabled" title="Permanent link">&para;</a></h2>
-<p>In production mode, all profiles and CIRA configurations are written to the database, and secrets are stored in Vault.</p>
-<p>The inputs below for both CIRA Config and AMT Profile creation will work in either Developer or Prod mode.</p>
 <h2 id="create-a-cira-configuration">Create a CIRA Configuration<a class="headerlink" href="#create-a-cira-configuration" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Endpoint: <em>/api/v1/admin/ciraconfigs/</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload:</li>
 </ul>
 <p>proxyDetails is an optional field. </p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+        <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;configName&quot;</span><span class="p">:</span> <span class="s2">&quot;[CIRA-Config-Name]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mpsServerAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mpsPort&quot;</span><span class="p">:</span> <span class="mi">4433</span><span class="p">,</span>
+            <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="err">//mps</span> <span class="err">user</span><span class="kc">na</span><span class="err">me</span>
+            <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span><span class="p">,</span> <span class="err">//mps</span> <span class="err">password</span>
+            <span class="nt">&quot;commonName&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serverAddressFormat&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
+            <span class="nt">&quot;mpsRootCertificate&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;proxyDetails&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;authMethod&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;configName&quot;</span><span class="p">:</span> <span class="s2">&quot;config1&quot;</span><span class="p">,</span>
@@ -1816,18 +1801,49 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Output:</p>
+</div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>CIRA Config config1 successfully inserted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>CIRA Config insertion failed for config1. CIRA Config already exists.</p>
 </details>
+<h2 id="get-a-cira-configuration">Get a CIRA configuration<a class="headerlink" href="#get-a-cira-configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Endpoint: <em>/api/v1/admin/ciraconfigs/{ciraconfigName}</em></li>
+<li>Method Type: GET</li>
+<li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The cira config to get is provided in the URL as a query parameter.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;ConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;config1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MPSServerAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MPSPort&quot;</span><span class="p">:</span> <span class="mi">4433</span><span class="p">,</span>
+    <span class="nt">&quot;Username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;CommonName&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ServerAddressFormat&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
+    <span class="nt">&quot;AuthMethod&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;MPSRootCertificate&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ProxyDetails&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>CIRA Config config2 not found</p>
+</div>
 <h2 id="get-all-cira-configurations">Get all CIRA configurations<a class="headerlink" href="#get-all-cira-configurations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Endpoint: <em>/api/v1/admin/ciraconfigs/</em></li>
 <li>Method Type: GET</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. No query parameter in URL retrieves all profiles.</li>
 </ul>
-<p>Sample Response:</p>
+<p>Example Outputs:</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;ConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;config1&quot;</span><span class="p">,</span>
@@ -1855,33 +1871,36 @@
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div>
-<h2 id="get-a-cira-configuration">Get a CIRA configuration<a class="headerlink" href="#get-a-cira-configuration" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Endpoint: <em>/api/v1/admin/ciraconfigs/{ciraconfigName}</em></li>
-<li>Method Type: GET</li>
-<li>Headers: <em>X-RPS-API-Key</em></li>
-</ul>
-<p>Sample Response:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;ConfigName&quot;</span><span class="p">:</span> <span class="s2">&quot;config1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MPSServerAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MPSPort&quot;</span><span class="p">:</span> <span class="mi">4433</span><span class="p">,</span>
-    <span class="nt">&quot;Username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;CommonName&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ServerAddressFormat&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
-    <span class="nt">&quot;AuthMethod&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;MPSRootCertificate&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ProxyDetails&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
+</div>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>No CIRA configs found.</p>
+</div>
 <h2 id="edit-a-cira-configuration">Edit a CIRA Configuration<a class="headerlink" href="#edit-a-cira-configuration" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Endpoint: <em>/api/v1/admin/ciraconfigs/edit</em></li>
 <li>Method Type: POST</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: </li>
 </ul>
-<p>ONLY proxyDetails is optional. </p>
+<p>proxyDetails is an optional field.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+        <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;configName&quot;</span><span class="p">:</span> <span class="s2">&quot;[CIRA-Config-Name]&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mpsServerAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mpsPort&quot;</span><span class="p">:</span> <span class="mi">4433</span><span class="p">,</span>
+            <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="err">//mps</span> <span class="err">user</span><span class="kc">na</span><span class="err">me</span>
+            <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;P@ssw0rd&quot;</span><span class="p">,</span> <span class="err">//mps</span> <span class="err">password</span>
+            <span class="nt">&quot;commonName&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;serverAddressFormat&quot;</span><span class="p">:</span> <span class="mi">201</span><span class="p">,</span>
+            <span class="nt">&quot;mpsRootCertificate&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;proxyDetails&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+            <span class="nt">&quot;authMethod&quot;</span><span class="p">:</span> <span class="mi">2</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;configName&quot;</span><span class="p">:</span> <span class="s2">&quot;config1&quot;</span><span class="p">,</span>
@@ -1897,7 +1916,8 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Output:</p>
+</div>
+<p>Example Outputs:</p>
 <details class="success" open="open"><summary>Success</summary><p>CIRA Config config1 successfully inserted</p>
 </details>
 <details class="failure" open="open"><summary>Failure</summary><p>CIRA Config config11 not found</p>
@@ -1907,6 +1927,7 @@
 <li>Endpoint: <em>/api/v1/admin/ciraconfigs/{ciraconfigName}</em></li>
 <li>Method Type: DELETE</li>
 <li>Headers: <em>X-RPS-API-Key</em></li>
+<li>Payload: Not required. The cira config to delete is provided in the URL as a query parameter.</li>
 </ul>
 <details class="success" open="open"><summary>Success</summary><p>CIRA Config config1 successfully deleted</p>
 </details>
