@@ -12,18 +12,18 @@ Open `src/App.js`, add the following code as show below:
 
 ```javascript hl_lines="12 13"
 import React from "react";
-import { SOL, MpsProvider } from "ui-toolkit";
+import { Sol, MpsProvider } from "ui-toolkit";
 import '../node_modules/ui-toolkit/i18n.ts'
 
-const App() = () => {
+const App = () => {
   const data = {
     mpsKey: '<MPS API key>'
   };
   return (
     <div>
       <MpsProvider data={data}>
-        <SOL deviceId="038d0240-045c-05f4-7706-980700080009"
-        mpsServer="<192.168.1.38>:3000"></SOL>
+        <Sol deviceId="038d0240-045c-05f4-7706-980700080009"
+        mpsServer="<192.168.1.38>:3000"></Sol>
       </MpsProvider>
     </div>
   );
