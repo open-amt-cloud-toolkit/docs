@@ -5,8 +5,6 @@
 The Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) provide support for deploying the microservices as [Docker*](../Glossary.md#d) images, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 
-
-
 ## Why Docker*?
 
 A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the usual problems that occur with software deployment on varying platforms. 
@@ -30,31 +28,27 @@ git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-t
 
 1. Create a copy the of the `.env.template` file to `.env`. This file is used by docker to set environment variables. 
 
+    === "Linux/Powershell"
+        ```
+        cp .env.template .env
+        ```
+    
     === "Windows (cmd)"
         ```
         copy .env.template .env
         ```
 
-    === "Linux/Powershell"
-        ```
-        cp .env.template .env
-        ```
-
-    !!! note 
-        **Preserve the .env.template file.**
-
-        This file is very important to maintain. Always copy to a new file. 
-
 2. Set `MPS_COMMON_NAME` to your development system's IP Address. You can use a text editor to modify the .env file or replace YOURIPADDRESS in the command below to use the command line:
 
-    === "Windows (Powershell)"
-        ``` powershell
-        (Get-Content -Path './.env') -replace 'MPS_COMMON_NAME=localhost', 'MPS_COMMON_NAME=YOURIPADDRESS' | Set-Content -Path './.env'
-        ```
     === "Linux"
         ``` bash
         sed -i "s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g" .env
         ```
+    === "Windows (Powershell)"
+        ``` powershell
+        (Get-Content -Path './.env') -replace 'MPS_COMMON_NAME=localhost', 'MPS_COMMON_NAME=YOURIPADDRESS' | Set-Content -Path './.env'
+        ```
+
 
 ## Build and Run the Docker Images
 
@@ -62,20 +56,24 @@ The environment file (`.env`) now contains the MPS and RPS environment variables
 
 1.  Build the MPS, RPS, and Sample UI Docker images and launch the stack
 
-``` bash    
-docker-compose -f "docker-compose.yml" up -d --build
-```
+    ``` bash    
+    docker-compose -f "docker-compose.yml" up -d --build
+    ```
 
-!!! note
-    On completion, a security warning is normal during local setup with the default values for developer testing environments.
+    !!! important
+        While the `docker-compose up` command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
 
-!!! important
-    While the `docker-compose up` command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
+        ![Image of filesharing](../assets/images/DockerFileSharing.png)
 
-    ![Image of filesharing](../assets/images/DockerFileSharing.png)
 
-2. DONE! To check all containers are up and running run `docker ps --format 'table{{.Image}}\t{{.Status}}\t{{.Names}}'`. You should see the following:
-!!! success
+
+2. To check all containers are up and running run the following command.
+
+    ```bash
+    `docker ps --format 'table{{.Image}}\t{{.Status}}\t{{.Names}}'`
+    ```
+
+    !!! success
         ``` bash    
         IMAGE                             STATUS
         samplewebui                       Up 6 seconds    open-amt-cloud-toolkit_webui_1
@@ -84,7 +82,9 @@ docker-compose -f "docker-compose.yml" up -d --build
         vault                             Up 6 seconds    open-amt-cloud-toolkit_vault_1
         postgres                          Up 6 seconds    open-amt-cloud-toolkit_rpsdb_1
         ```
-
+    
+        !!! note
+            On completion, a security warning is normal during local setup with the default values for developer testing environments.
 
 
 
