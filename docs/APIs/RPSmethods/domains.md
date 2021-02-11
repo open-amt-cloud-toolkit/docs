@@ -2,36 +2,39 @@
 
 ## Create A Domain
 
-* Endpoint: **/api/v1/admin/domains/create*
+* Endpoint: */api/v1/admin/domains/create*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 ```json
 {
     "payload": 
     { 
-        "Name":"domain1",
-        "DomainSuffix":"d1.com",
-        "ProvisioningCert":"[Your_ProvisioningCert_Text]", //Can this be a directory path for the api call or has to be flat text like DX1?
+        "Name":"[Domain-Name]",
+        "DomainSuffix":"[Domain-Suffix]",
+        "ProvisioningCert":"[Your_ProvisioningCert_Text]",
         "ProvisioningCertStorageFormat":"raw",
         "ProvisioningCertPassword":"[P@ssw0rd]"
     }
 }
 ```
 
-Example Input:
-```json
-{
-    "payload": 
-    { 
-        "Name":"amtDomain",
-        "DomainSuffix":"amtDomain.com",
-        "ProvisioningCert":"[Your_ProvisioningCert_Text]", //Can this be a directory path for the api call or has to be flat text like DX1?
-        "ProvisioningCertStorageFormat":"raw",
-        "ProvisioningCertPassword":"P@ssw0rd"
+!!! example
+    ```json
+    {
+        "payload": 
+        { 
+            "Name":"amtDomain",
+            "DomainSuffix":"amtDomain.com",
+            "ProvisioningCert":"[Your_ProvisioningCert_Text]",
+            "ProvisioningCertStorageFormat":"raw",
+            "ProvisioningCertPassword":"P@ssw0rd"
+        }
     }
-}
-```
+    ```
+
+Example Outputs:
 
 ???+ success
     Domain amtDomain successfully inserted
@@ -41,21 +44,18 @@ Example Input:
 
 ## Get a Domain
 
-* Endpoint: **/api/v1/admin/domains/{domainName}*
+* Endpoint: */api/v1/admin/domains/{domainName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The domain to get is provided in the URL as a query parameter.
 
-```
-input domain1 provided in the URL
-```
-
-Example output:
+Example Outputs:
 
 ???+ success
     ```json
     {
         "Name": "domain1",
-        "DomainSuffix": "vprodemo.com",
+        "DomainSuffix": "domain1.com",
         "ProvisioningCert": null,
         "ProvisioningCertStorageFormat": "string",
         "ProvisioningCertPassword": null
@@ -63,26 +63,23 @@ Example output:
     ```
 
 ???+ failure
-    Domain not found
+    Domain domain12 not found
 
 ## Get ALL Domains
 
-* Endpoint: **/api/v1/admin/domains/*
+* Endpoint: */api/v1/admin/domains/*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. No query parameter in URL retrieves all domains.
 
-```
-input  provided in the URL
-```
-
-Example output:
+Example Outputs:
 
 ???+ success
     ```json
     [
         {
             "Name": "domain1",
-            "DomainSuffix": "vprodemo.com",
+            "DomainSuffix": "domain1.com",
             "ProvisioningCert": null,
             "ProvisioningCertStorageFormat": "string",
             "ProvisioningCertPassword": null
@@ -95,36 +92,39 @@ Example output:
 
 ## Edit A Domain
 
-* Endpoint: **/api/v1/admin/domains/edit*
+* Endpoint: */api/v1/admin/domains/edit*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload: 
 
 ```json
 {
     "payload": 
     { 
-        "Name":"domain1",
-        "DomainSuffix":"d1.com",
-        "ProvisioningCert":"[Your_ProvisioningCert_Text]", 
+        "Name":"[Domain-Name]",
+        "DomainSuffix":"[Domain-Suffix]",
+        "ProvisioningCert":"[Your_ProvisioningCert_Text]",
         "ProvisioningCertStorageFormat":"raw",
         "ProvisioningCertPassword":"[P@ssw0rd]"
     }
 }
 ```
 
-Example Input:
-```json
-{
-    "payload": 
-    { 
-        "Name":"amtDomain",
-        "DomainSuffix":"amtDomain.com",
-        "ProvisioningCert":"[Your_ProvisioningCert_Text]", 
-        "ProvisioningCertStorageFormat":"raw",
-        "ProvisioningCertPassword":"P@ssw0rd"
+!!! example
+    ```json
+    {
+        "payload": 
+        { 
+            "Name":"amtDomain",
+            "DomainSuffix":"amtDomain.com",
+            "ProvisioningCert":"[Your_ProvisioningCert_Text]", 
+            "ProvisioningCertStorageFormat":"raw",
+            "ProvisioningCertPassword":"P@ssw0rd"
+        }
     }
-}
-```
+    ```
+
+Example Outputs:
 
 ???+ success
     Domain amtDomain successfully updated
@@ -134,16 +134,13 @@ Example Input:
 
 # Delete a Domain
 
-* Endpoint: **/api/v1/admin/domains/{domainName}*
+* Endpoint: */api/v1/admin/domains/{domainName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The domain to delete is provided in the URL as a query parameter.
 
+Example Outputs:
 
-Example Input:
-
-```
-NA (domain to delete provided as query parameter in url 'domain1')
-```
 ???+ success
     Domain domain1 successfully deleted
 

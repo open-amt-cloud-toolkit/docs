@@ -3,39 +3,79 @@
 ## Create a Profile
 
 
-* Endpoint: **/api/v1/admin/profiles/create*
+* Endpoint: */api/v1/admin/profiles/create*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 ```json
 {
-	"payload" :  
-    {
-        "profileName": "[amt-profile-name]",
-        "amtPassword":"[strong-AMT-password]",
-        "generateRandomPassword": "false",
-        "passwordLength": 8,
-        "ciraConfigName": "testconfig",
-        "activation": "[acmactivate/ccmactivate]"
+    "payload": {
+        "ProfileName": "[amt-profile-name]",
+        "AMTPassword": "[strong-AMT-password]", //required if GenerateRandomPassword is false
+        "MEBxPassword": "[strong-MEBx-password]", //required if GenerateRandomMEBxPassword is false
+        "GenerateRandomMEBxPassword": [true/false],
+        "RandomMEBxPasswordLength": null, //required if GenerateRandomMEBxPassword is true
+        "GenerateRandomPassword": [true/false],
+        "RandomPasswordLength": null, //required if GenerateRandomPassword is true
+        "CIRAConfigName": "[CIRA-config-name]",
+        "Activation": "[acmactivate/ccmactivate]",
+        "NetworkConfigName": "[dhcp_enabled/dhcp_disabled]"
     }
 }
 ```
 
-Example Input:
-
-```json
-{
-    "payload":
+!!! example
+    ACM Profile using Static Passwords
+    ``` json
     {
-        "profileName":"testProfile1",
-        "amtPassword":"STRONGPASSWORD",
-        "generateRandomPassword":false,
-        "passwordLength":null,
-        "ciraConfigName": "testconfig",
-        "activation":"ccmactivate"
+        "payload": {
+            "profileName": "ACM-Static-profile",
+            "amtPassword": "StrongP@ssw0rd",
+            "mebxPassword": "StrongP@ssw0rd",
+            "activation": "acmactivate",
+            "ciraConfigName": "ciraconfig",
+            "networkConfigName": "dhcp_enabled"
+        }
     }
-}
-```
+    ```
+
+!!! example
+    ACM Profile using Random Generated Passwords
+    ``` json
+    {
+        "payload": {
+            "profileName": "ACM-Random-profile",
+            "generateRandomPassword": true,
+            "passwordLength": 8,
+            "generateRandomMEBxPassword": true,
+            "mebxPasswordLength": 8,
+            "activation": "acmactivate",
+            "ciraConfigName": "ciraconfig",
+            "networkConfigName": "dhcp_enabled"
+        }
+    }
+    ```
+
+!!! example
+    CCM Profile using Random Generated Password
+    ``` json
+    {
+        "payload": {
+            "profileName": "CCM-Random-Profile",
+            "generateRandomPassword": true,
+            "passwordLength": 8,
+            "activation": "ccmactivate",
+            "ciraConfigName": "ciraconfig",
+            "networkConfigName": "dhcp_enabled"
+        }
+    }
+    ```
+
+    !!! note
+        An MEBx password is not required when activating into Client Control Mode.
+
+Outputs:
 
 ???+ success
     Profile testProfile1 successfully inserted
@@ -48,60 +88,56 @@ Example Input:
 
 ## Get a Profile
 
-* Endpoint: **/api/v1/admin/profiles/{profileName}*
+* Endpoint: */api/v1/admin/profiles/{profileName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The profile to get is provided in the URL as a query parameter.
 
-
-Example Input:
-
-```
-N/A (test profile to retrieve provided in URL as query parameter)
-```
+Example Outputs:
 
 ???+ success
     ```json
     {
-        "ProfileName": "testProfile1",
+        "ProfileName": "ccm-Profile",
         "AMTPassword": null,
-        "GenerateRandomPassword": false,
-        "RandomPasswordLength": null,
-        "ConfigurationScript": null,
+        "MEBxPassword": null,
+        "GenerateRandomMEBxPassword": false,
+        "RandomMEBxPasswordLength": null,
+        "GenerateRandomPassword": true,
+        "RandomPasswordLength": 8,
+        "CIRAConfigName": "ciraconfig",
         "Activation": "ccmactivate",
-        "CIRAConfigName": "testconfig1"
+        "NetworkConfigName": "dhcp_enabled"
     }
     ```
+    
+    !!! note
+        The API will not return the AMTPassword or MEBxpassword. These must be retrieved from Vault or other storage.
 
 ???+ failure
     Profile testProfile1 not found
 
 ## Get All Profiles
 
-* Endpoint: **/api/v1/admin/profiles/*
+* Endpoint: */api/v1/admin/profiles/*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
-
-```
-NA
-```
-
-Example Input:
-
-```
-NA (no query parameter in the URL retrieves all profiles)
-```
+* Payload: Not required. No query parameter in URL retrieves all profiles.
 
 ???+ success
     ```json
     [
         {
-            "ProfileName": "testProfile1",
+            "ProfileName": "ccm-Profile",
             "AMTPassword": null,
-            "GenerateRandomPassword": false,
-            "RandomPasswordLength": null,
-            "ConfigurationScript": null,
+            "MEBxPassword": null,
+            "GenerateRandomMEBxPassword": false,
+            "RandomMEBxPasswordLength": null,
+            "GenerateRandomPassword": true,
+            "RandomPasswordLength": 8,
+            "CIRAConfigName": "ciraconfig",
             "Activation": "ccmactivate",
-            "CIRAConfigName": "testconfig1"
+            "NetworkConfigName": "dhcp_enabled"
         }
     ]
     ```
@@ -112,40 +148,41 @@ NA (no query parameter in the URL retrieves all profiles)
 
 ## Edit a Profile
 
-
-* Endpoint: **/api/v1/admin/profiles/edit*
+* Endpoint: */api/v1/admin/profiles/edit*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 ```json
 {
-	"payload" :  
-    {
-        "profileName": "[amt-profile-name]",
-        "amtPassword":"[strong-AMT-password]",
-        "generateRandomPassword": "false",
-        "passwordLength": 8,
-        "ciraConfigName": "testconfig",
-        "activation": "[acmactivate/ccmactivate]"
+    "payload": {
+        "ProfileName": "[amt-profile-name]",
+        "AMTPassword": "[strong-AMT-password]", //required if GenerateRandomPassword is false
+        "MEBxPassword": "[strong-MEBx-password]", //required if GenerateRandomMEBxPassword is false
+        "GenerateRandomMEBxPassword": [true/false],
+        "RandomMEBxPasswordLength": null, //required if GenerateRandomMEBxPassword is true
+        "GenerateRandomPassword": [true/false],
+        "RandomPasswordLength": null, //required if GenerateRandomPassword is true
+        "CIRAConfigName": "[CIRA-config-name]",
+        "Activation": "[acmactivate/ccmactivate]",
+        "NetworkConfigName": "[dhcp_enabled/dhcp_disabled]"
     }
 }
 ```
 
-Example Input:
-
-```json
-{
-    "payload":
+!!! example
+    ``` json
     {
-        "profileName":"testProfile1",
-        "amtPassword":"STRONGPASSWORD",
-        "generateRandomPassword":false,
-        "passwordLength":null,
-        "ciraConfigName": "testconfig",
-        "activation":"ccmactivate"
+        "payload": {
+            "profileName": "testProfile1",
+            "amtPassword": "StrongP@ssw0rd",
+            "mebxPassword": "StrongP@ssw0rd",
+            "activation": "acmactivate",
+            "ciraConfigName": "ciraconfig",
+            "networkConfigName": "dhcp_enabled"
+        }
     }
-}
-```
+    ```
 
 ???+ success
     Profile testProfile1 successfully updated.
@@ -158,19 +195,10 @@ Example Input:
 
 ## Delete a Profile
 
-* Endpoint: **/api/v1/admin/profiles/{profileName}*
+* Endpoint: */api/v1/admin/profiles/{profileName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
-
-```
-NA
-```
-
-Example Input:
-
-```
-NA (profile to delete provided as query parameter in url 'profile1')
-```
+* Payload: Not required. The profile to delete is provided in the URL as a query parameter.
 
 ???+ success
     Profile testProfile1 successfully deleted
