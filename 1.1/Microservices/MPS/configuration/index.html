@@ -1726,12 +1726,12 @@
 <td align="left"></td>
 </tr>
 <tr>
-<td align="left">MPS_USER</td>
+<td align="left">MPS_USERNAME</td>
 <td align="left">standalone</td>
 <td align="left">Specifies the username client devices use to connect to MPS</td>
 </tr>
 <tr>
-<td align="left">MPS_PASSWORD</td>
+<td align="left">MPS_PASS</td>
 <td align="left">G@ppm0ym</td>
 <td align="left">Specifies the password client devices use to connect to MPS</td>
 </tr>
@@ -1766,7 +1766,7 @@
 <td align="left">Specifies whether or not to enable https</td>
 </tr>
 <tr>
-<td align="left">MPS_XAPIKEY</td>
+<td align="left">MPS_MPSXAPIKEY</td>
 <td align="left">APIKEYFORMPS123!</td>
 <td align="left">RESTful API Header Key. This header must be present on all RESTful calls made against MPS</td>
 </tr>
@@ -1794,6 +1794,26 @@
 <td align="left">MPS_AUTH_ENABLED</td>
 <td align="left">false</td>
 <td align="left"></td>
+</tr>
+<tr>
+<td align="left">MPS_CORS_ORIGIN</td>
+<td align="left">http://localhost:3001</td>
+<td align="left">The domain/origin that is allowed to make requests against this service</td>
+</tr>
+<tr>
+<td align="left">MPS_CORS_HEADERS</td>
+<td align="left">Origin, X-Requested-With, Accept, X-MPS-API-Key,x-rps-api-key, Content-Type, csrf-token, authorization</td>
+<td align="left">List of accepted HTTP Headers</td>
+</tr>
+<tr>
+<td align="left">MPS_CORS_METHODS</td>
+<td align="left">*</td>
+<td align="left">List of HTTP Methods that are allowed</td>
+</tr>
+<tr>
+<td align="left">MPS_CORS_ALLOW_CREDENTIALS</td>
+<td align="left">true</td>
+<td align="left">Controls whether or not session credentials can be send</td>
 </tr>
 </tbody>
 </table>
