@@ -57,7 +57,7 @@ The React app can be created in any preferred development directory. The MPS can
 
     ``` bash
     npm uninstall react react-dom --save 
-    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git react@16.13.1 react-dom@16.13.1 --save
+    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.1.0 react@16.13.1 react-dom@16.13.1 --save
     ```
 
 2. Run the following commands to start the web UI locally:
@@ -68,15 +68,13 @@ The React app can be created in any preferred development directory. The MPS can
 
 By default, React apps run on port `3000`. If port `3000` is already used by the MPS server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.
 
-    Sample Output:
+!!! success
 
-    ```
-    You can now view my-app in the browser.
-    Local: http://localhost:3001
-    On Your Network: http://172.16.17.4:3001
-    ```
+    [![UI Toolkit start](../assets/images/UIToolkit_npmstart.png)](../assets/images/UIToolkit_npmstart.png)
 
-!!! note
+    **Figure 2: React reports successful deployment.**
+
+!!! important
     By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
     When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
 
