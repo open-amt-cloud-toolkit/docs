@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   var xhr = new XMLHttpRequest();
   // Lightbus note: Again, we make assumptions about the path
-  xhr.open("GET", "/versions.json");
+  xhr.open("GET", "/docs/versions.json");
   xhr.onload = function () {
     var versions = JSON.parse(this.responseText);
 
