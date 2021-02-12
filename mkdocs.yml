@@ -111,6 +111,7 @@ nav:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
       - Unprovisioning: Topics/MEBX/unprovision.md
     # - Proxies: Topics/proxies.md
+  - Letter From The Devs: letter.md
   - Release notes: release-notes.md
   - License: license.md
   

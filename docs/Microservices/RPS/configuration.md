@@ -24,6 +24,10 @@
 | RPS_WEB_TLS_CERT             | ../private/mpsserver-cert-public.crt  | Path to public certificate           |                                           
 | RPS_WEB_TLS_CERT_KEY         | ../private/mpsserver-cert-private.key | Path to private key                  |                                            
 | RPS_ROOT_CA_CERT             | ../private/root-cert-public.crt       | Path to public root cert             |                                      
-| RPS_MPS_USER                 | standalone                            | If RPS is aware of MPS. This is the username used to log into MPS. This should match the value provided for MPS_USER     |                 
-| RPS_MPS_PASSWORD             | G@ppm0ym                              | If RPS is aware of MPS. This is the password used to log into MPS. This should match the value provided for MPS_PASSWORD |               
+| RPS_USER                 | standalone                            | If RPS is aware of MPS. This is the username used to log into MPS. This should match the value provided for MPS_USER     |                 
+| RPS_PASSWORD             | G@ppm0ym                              | If RPS is aware of MPS. This is the password used to log into MPS. This should match the value provided for MPS_PASSWORD |               
 | RPS_LOG_LEVEL                | info                                  | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug` |  
+| RPS_CORS_ORIGIN |  http://localhost:3001 | The domain/origin that is allowed to make requests against this service |
+| RPS_CORS_HEADERS |  Origin, X-Requested-With, Accept, X-MPS-API-Key,x-rps-api-key, Content-Type, csrf-token, authorization | List of accepted HTTP Headers |
+| RPS_CORS_METHODS |  * | List of HTTP Methods that are allowed |
+| RPS_CORS_ALLOW_CREDENTIALS |  true | Controls whether or not session credentials can be send |

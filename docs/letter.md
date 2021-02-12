@@ -1,0 +1,12 @@
+## Hello Everyone! 
+
+We are excited to announce v1.1.0 release of the Open AMT Cloud Toolkit. First, let me introduce myself, I am Mike Johanson, recent lead developer for the Open AMT Cloud Toolkit. Hopefully, you have noticed some changes in how we are developing this project. We have added changelogs to each microservice to add better clarity in every change that goes into each service – generated from our commit messages by following [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).  We have added Github Actions automation for increased code reliability by adding automated unit tests and API testing to each Pull Request (PR), and will continue to expand this across all services. One of our most notable changes is the increase in transparency for our project. Previously, we would develop internally and move our code externally when we were ready to release. This is not how open source is intended to work and have since moved our development entirely into the public eye. We encourage you to take a look at our branches, see what is coming next, and provide feedback either on PRs or via Github Issues. As we make this transition and transform our team into a well-oiled machine, I want to ensure that our processes are clear and the expectations are set. 
+
+While we strive to follow best practices that many other open source projects follow, we still have some maturing to do with respect to meeting some common expectations. First, we have **NOT YET** adopted semantic versioning, meaning there may very well be **BREAKING CHANGES** in a dot release. We will call this out in our release notes, however, **DO NOT** expect v1.1.0 to work with v1.0.0 components/services. That said, our goal is to adopt semantic versioning by our Long Term Support (LTS) release. Secondly, as these releases (v1, v1.1) are **NOT LTS**, it is important to realize that once a new release is available, the previous version is no longer supported. We are aiming to have a 6 months LTS Release cycle beginning in mid 2021. Until then, please understand that the changes we make are to enhance our usability, and to provide a stable, manageable codebase. 
+
+So, with all of that said, please bear with us as we grow and mature the Open AMT Cloud toolkit into a project that you will be excited to share and a community you will be proud to be a part of. We have exciting new changes coming over the course of the new few release from the UI being revamped, simplified configurations, and scalability improvements. 
+
+
+Stay tuned!
+
+\- Mike
