@@ -4,21 +4,26 @@ This Admin method downloads the MPS Root Certificate.
 
 Click [here](types.md) for supported input and output types.
 
-## Example: Request Body
+* Endpoint: */admin*
+* Method Type: POST
+* Headers: *X-MPS-API-Key*
+* Body:
 
->**Note:** The following code block is an example of what would be the data sent as part of the POST request. 
-
-``` yaml
-//admin method
-
+``` json
 {  
    "method":"MPSRootCertificate",
    "payload":{}
 }
-	
 ```
-## ResponseBody
 
-Downloads MPS root certificate.
+Example Outputs:
+
+!!! success
+    ```
+    -----BEGIN CERTIFICATE-----
+    Your MPS Root Certificate String
+    -----END CERTIFICATE-----
+    ```
+
 
 Return to [MPS Methods](../indexMPS.md)

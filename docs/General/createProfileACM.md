@@ -34,22 +34,23 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
  **To set the DNS suffix: **
 
-1. Manually modify it MEBX on the managed device. Find instructions [here](../Topics/MEBX/dnsSuffix.md)
+1. Manually set it using MEBX on the managed device. Find instructions [here](../Topics/MEBX/dnsSuffix.md)
+
 2. Alternately, change the DHCP Option 15 to DNS Suffix within the Router settings.
 
 **To find the the DNS suffix, use the following command: **
 
-=== "Windows"
-    ```
-    ipconfig /all
-    ```
 === "Linux"
     ``` bash
     ifconfig
     ```
 
-<br>
+=== "Windows"
+    ```
+    ipconfig /all
+    ```
 
+<br>
 
 ### Create a Profile
 
@@ -67,13 +68,15 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 3. Specify a **Profile Name** of your choice.
 
-4. Uncheck **Generate Random Password.**
+4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
+5. Leave **Generate Random AMT Password** unchecked.
+   
     !!! tip "Production Environment"
         In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.
 
-5. Provide a strong AMT Password. 
-    
+6. Provide a strong **AMT Password**.
+
     !!! important
         This password must meet standard, **strong** password requirements:
 
@@ -81,16 +84,21 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
         - One uppercase, one lowercase, one numerical digit, one special character
 
-6. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+7. Leave **Generate Random MEBX Password** unchecked.
+   
+8. Provide a strong **MEBX Password**.
 
-7. Under Activation, select **Admin Control Mode** from the dropdown menu.
+9. Select DHCP as **Network Configuration**.
 
-8. Click **Create.**
+10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
+11. Click **Create.**
 
-[![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
+!!! example
+    Example ACM Profile:
+    [![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
 
-**Figure 2: Create an ACM AMT profile. **
+    **Figure 2: Create an ACM AMT profile. **
 
 ### Create a Domain Profile
 
@@ -124,11 +132,9 @@ Intel AMT checks the network DNS suffix against the provisioning certificate as 
         [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
         **Figure 4: Add Provisioning Certificate. **
 
-        After successfully creating the domain, continue with the activation process by building and running the Remote Provisioning Client (RPC).
-
 
 ## Next Up
 
-**[Build RPC on a Managed Device](../General/buildRPC.md)**
+**[Build & Run RPC](../General/buildRPC.md)**
 
 

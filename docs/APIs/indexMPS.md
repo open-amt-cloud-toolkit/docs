@@ -15,24 +15,24 @@ Steps on how to create your own Rest API call can be found in the [Construct a R
 
 The request URL is assembled using your MPS server's IP Address, the port, and the base path for the method you would like to run. The tables below explore what methods are accessible for each base path.
 
-```
-Example url: https://localhost:3000/amt
-```
-
-### Base paths
+#### Base paths
 
 ``` yaml
 /amt/
 /admin/
 ```
 
+!!! example
+      Example URL for an AMT method:
+      ```
+      https://localhost:3000/amt
+      ```
+
 ## API Calls
 
 The sections below list methods for MPS. 
 
 The MPS API includes Admin and AMT methods.
-
-<br>
 
 ### Admin Methods
   
@@ -43,8 +43,6 @@ The MPS API includes Admin and AMT methods.
    | **[Disconnect](./MPSmethods/disconnect.md)** | Disconnects the CIRA connection for a specified guid |
    | **[MEScript](./MPSmethods/mescript.md)** | Downloads the cira_setup.mescript from MPS |
    | **[RootCertificate](./MPSmethods/rootcertificate.md)** | Download the MPS Root Certificate |
-
-<br>
 
 ### AMT Methods
 

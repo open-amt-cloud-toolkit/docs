@@ -27,16 +27,15 @@ Possible actions are listed in the following table:
    | **401** | Power on to PXE |
 
 
+!!! note
+	More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).
 
-## Example: Request Body
+* Endpoint: */amt*
+* Method Type: POST
+* Headers: *X-MPS-API-Key*
+* Body:
 
->**Important Note:** More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).
-
->**Note:** The following code block is an example of what would be the data sent as part of the POST request. 
-
-``` yaml
-//amt method
-
+``` json
 {  
    "method":"PowerAction",
    "payload":{  
@@ -44,20 +43,19 @@ Possible actions are listed in the following table:
       "action":2
    }
 }
-	
 ```
 
-## Example : Success ResponseBody
+Example Outputs:
 
-``` yaml
+!!! success
 
-'200':
-    {
-      "ResponseBody":{
-		"returnValue":0,
-		"returnValueStr":"SUCCESS"
-	}
-
-```
+    ``` json
+    '200':
+        {
+          "ResponseBody":{
+    		"returnValue":0,
+    		"returnValueStr":"SUCCESS"
+    	}
+    ```
 
 Return to [MPS Methods](../indexMPS.md)

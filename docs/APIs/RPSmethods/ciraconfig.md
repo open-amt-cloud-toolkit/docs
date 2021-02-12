@@ -1,41 +1,52 @@
 # CIRA Configurations
 
-## Developer mode (Vault and DB disabled)
-
-In developer mode, all profiles and configurations are written to the file private/data.json.
-
-## Prod mode (With Vault and Database enabled)
-
-In production mode, all profiles and CIRA configurations are written to the database, and secrets are stored in Vault.
-
-The inputs below for both CIRA Config and AMT Profile creation will work in either Developer or Prod mode.
 
 ## Create a CIRA Configuration
 
 * Endpoint: */api/v1/admin/ciraconfigs/*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 proxyDetails is an optional field. 
 
 ```json
 {
-	"payload": {
-		"configName": "config1",
-		"mpsServerAddress": "localhost",
-		"mpsPort": 4433,
-		"username": "admin",
-		"password": "P@ssw0rd",
-		"commonName": "localhost",
-		"serverAddressFormat": 201,
-		"mpsRootCertificate": "",
-		"proxyDetails": "", 
-		"authMethod": 2
-	}
-}
+    	"payload": {
+    		"configName": "[CIRA-Config-Name]",
+    		"mpsServerAddress": "localhost",
+    		"mpsPort": 4433,
+    		"username": "admin", //mps username
+    		"password": "P@ssw0rd", //mps password
+    		"commonName": "localhost",
+    		"serverAddressFormat": 201,
+    		"mpsRootCertificate": "",
+    		"proxyDetails": "", 
+    		"authMethod": 2
+    	}
+    }
 ```
 
-Output:
+
+!!! example
+    ```json
+    {
+    	"payload": {
+    		"configName": "config1",
+    		"mpsServerAddress": "localhost",
+    		"mpsPort": 4433,
+    		"username": "admin",
+    		"password": "P@ssw0rd",
+    		"commonName": "localhost",
+    		"serverAddressFormat": 201,
+    		"mpsRootCertificate": "",
+    		"proxyDetails": "", 
+    		"authMethod": 2
+    	}
+    }
+    ```
+
+Example Outputs:
 
 ???+ success
     CIRA Config config1 successfully inserted
@@ -44,30 +55,19 @@ Output:
 ???+ failure
     CIRA Config insertion failed for config1. CIRA Config already exists.
 
-## Get all CIRA configurations
 
-* Endpoint: */api/v1/admin/ciraconfigs/*
+## Get a CIRA configuration
+
+* Endpoint: */api/v1/admin/ciraconfigs/{ciraconfigName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The cira config to get is provided in the URL as a query parameter.
 
-Sample Response:
 
-```json
-[
+!!! success
+    ```json
     {
         "ConfigName": "config1",
-        "MPSServerAddress": "13.64.233.163",
-        "MPSPort": 4433,
-        "Username": "admin",
-        "Password": null,
-        "CommonName": "13.64.233.163",
-        "ServerAddressFormat": 201,
-        "AuthMethod": 2,
-        "MPSRootCertificate": "null",
-        "ProxyDetails": "null"
-    },
-    {
-        "ConfigName": "config2",
         "MPSServerAddress": "localhost",
         "MPSPort": 4433,
         "Username": "admin",
@@ -78,58 +78,99 @@ Sample Response:
         "MPSRootCertificate": "",
         "ProxyDetails": ""
     }
-]
-```
+    ```
 
-## Get a CIRA configuration
+!!! failure
+    CIRA Config config2 not found
 
-* Endpoint: */api/v1/admin/ciraconfigs/{ciraconfigName}*
+## Get all CIRA configurations
+
+* Endpoint: */api/v1/admin/ciraconfigs/*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. No query parameter in URL retrieves all profiles.
 
-Sample Response:
+Example Outputs:
 
-```json
-{
-    "ConfigName": "config1",
-    "MPSServerAddress": "localhost",
-    "MPSPort": 4433,
-    "Username": "admin",
-    "Password": null,
-    "CommonName": "localhost",
-    "ServerAddressFormat": 201,
-    "AuthMethod": 2,
-    "MPSRootCertificate": "",
-    "ProxyDetails": ""
-}
-```
+!!! success
+    ```json
+    [
+        {
+            "ConfigName": "config1",
+            "MPSServerAddress": "13.64.233.163",
+            "MPSPort": 4433,
+            "Username": "admin",
+            "Password": null,
+            "CommonName": "13.64.233.163",
+            "ServerAddressFormat": 201,
+            "AuthMethod": 2,
+            "MPSRootCertificate": "null",
+            "ProxyDetails": "null"
+        },
+        {
+            "ConfigName": "config2",
+            "MPSServerAddress": "localhost",
+            "MPSPort": 4433,
+            "Username": "admin",
+            "Password": null,
+            "CommonName": "localhost",
+            "ServerAddressFormat": 201,
+            "AuthMethod": 2,
+            "MPSRootCertificate": "",
+            "ProxyDetails": ""
+        }
+    ]
+    ```
+
+!!! failure
+    No CIRA configs found.
 
 ## Edit a CIRA Configuration
 
 * Endpoint: */api/v1/admin/ciraconfigs/edit*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload: 
 
-ONLY proxyDetails is optional. 
+proxyDetails is an optional field.
 
 ```json
 {
-	"payload": {
-		"configName": "config1",
-		"mpsServerAddress": "localhost",
-		"mpsPort": 4434,
-		"username": "admin",
-		"password": "P@ssw0rd",
-		"commonName": "localhost",
-		"serverAddressFormat": 201,
-		"mpsRootCertificate": "",
-		"proxyDetails": "", 
-		"authMethod": 2
-	}
-}
+    	"payload": {
+    		"configName": "[CIRA-Config-Name]",
+    		"mpsServerAddress": "localhost",
+    		"mpsPort": 4433,
+    		"username": "admin", //mps username
+    		"password": "P@ssw0rd", //mps password
+    		"commonName": "localhost",
+    		"serverAddressFormat": 201,
+    		"mpsRootCertificate": "",
+    		"proxyDetails": "", 
+    		"authMethod": 2
+    	}
+    }
 ```
 
-Output:
+!!! example
+    ```json
+    {
+    	"payload": {
+    		"configName": "config1",
+    		"mpsServerAddress": "localhost",
+    		"mpsPort": 4434,
+    		"username": "admin",
+    		"password": "P@ssw0rd",
+    		"commonName": "localhost",
+    		"serverAddressFormat": 201,
+    		"mpsRootCertificate": "",
+    		"proxyDetails": "", 
+    		"authMethod": 2
+    	}
+    }
+    ```
+
+
+Example Outputs:
 
 ???+ success
     CIRA Config config1 successfully inserted
@@ -142,6 +183,7 @@ Output:
 * Endpoint: */api/v1/admin/ciraconfigs/{ciraconfigName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The cira config to delete is provided in the URL as a query parameter.
 
 ???+ success
     CIRA Config config1 successfully deleted
