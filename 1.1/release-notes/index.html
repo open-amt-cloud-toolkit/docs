@@ -1626,11 +1626,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-feature-changes-for-10" class="md-nav__link">
-    Key Feature Changes for 1.0
+  <a href="#key-feature-changes-for-11" class="md-nav__link">
+    Key Feature Changes for 1.1
   </a>
   
-    <nav class="md-nav" aria-label="Key Feature Changes for 1.0">
+    <nav class="md-nav" aria-label="Key Feature Changes for 1.1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1683,6 +1683,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rpc_1" class="md-nav__link">
+    RPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mps_1" class="md-nav__link">
     MPS
   </a>
@@ -1700,28 +1707,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resolved-issues" class="md-nav__link">
-    Resolved Issues
-  </a>
-  
-    <nav class="md-nav" aria-label="Resolved Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mps_2" class="md-nav__link">
-    MPS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#known-defects-in-10" class="md-nav__link">
-    Known Defects in 1.0
+  <a href="#known-issues-in-11" class="md-nav__link">
+    Known Issues in 1.1
   </a>
   
 </li>
@@ -1769,11 +1756,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-feature-changes-for-10" class="md-nav__link">
-    Key Feature Changes for 1.0
+  <a href="#key-feature-changes-for-11" class="md-nav__link">
+    Key Feature Changes for 1.1
   </a>
   
-    <nav class="md-nav" aria-label="Key Feature Changes for 1.0">
+    <nav class="md-nav" aria-label="Key Feature Changes for 1.1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1826,6 +1813,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rpc_1" class="md-nav__link">
+    RPC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mps_1" class="md-nav__link">
     MPS
   </a>
@@ -1843,28 +1837,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resolved-issues" class="md-nav__link">
-    Resolved Issues
-  </a>
-  
-    <nav class="md-nav" aria-label="Resolved Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mps_2" class="md-nav__link">
-    MPS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#known-defects-in-10" class="md-nav__link">
-    Known Defects in 1.0
+  <a href="#known-issues-in-11" class="md-nav__link">
+    Known Issues in 1.1
   </a>
   
 </li>
@@ -1887,62 +1861,60 @@
                 
                 
                 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
-<h2 id="key-feature-changes-for-10">Key Feature Changes for 1.0<a class="headerlink" href="#key-feature-changes-for-10" title="Permanent link">&para;</a></h2>
-<p>This section outlines key features changes between versions .9 and 1.0 for <a href="../Glossary/#o">Open Active Management Technology (Open AMT) Cloud Toolkit.</a> </p>
+<h2 id="key-feature-changes-for-11">Key Feature Changes for 1.1<a class="headerlink" href="#key-feature-changes-for-11" title="Permanent link">&para;</a></h2>
+<p>This section outlines key features changes between versions 1.0 and 1.1 for <a href="../Glossary/#o">Open Active Management Technology (Open AMT) Cloud Toolkit.</a> </p>
 <h3 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><a href="../Glossary/#r">RPS</a><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Configuration of CIRA on Intel® AMT managed devices:</strong> Enables managed devices to connect to the MPS.</li>
-<li><strong>Un-configuration Intel® AMT devices:</strong> Removes all Intel® AMT configuration settings and resets Intel AMT to an <a href="../Glossary/#p">*nprovisioned</a> state.</li>
-<li><strong>REST APIs:</strong> Includes Create, Read, Update, Delete AMT Profiles, Domain Profiles, and CIRA Profiles.</li>
+<li><strong>Network Configuration on Intel&reg; AMT devices:</strong> Added feature to AMT Profiles to select configuring Intel&reg; AMT devices to use DHCP or Static IP.  When set for static IP, Intel&reg; AMT will sync with the Host OS static IP address.  Static IP Address is not supported with CIRA profiles.</li>
+<li><strong>MEBx Password configuration:</strong> The AMT Profile now supports configuration options for setting either a defined or randomized MEBx password on Intel&reg; AMT devices.</li>
+<li><strong>CORS support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
 </ul>
 <h4 id="rpc"><a href="../Glossary/#r">RPC</a><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>microLMS in the RPC executable:</strong> Eliminates the need to run a separate LMS when trying to configure Intel® AMT.</li>
-<li><strong>CentOS*:</strong> Enables CentOS on RPC. Linux build environment is still Ubuntu* 18.04.</li>
-<li><strong>Intel® AMT information commands:</strong>  Provide feedback to the local command prompt showing status information of the Intel® AMT device.</li>
+<li><strong>Added/updated getting metadata from Intel&reg; AMT device:</strong> Improved getting DNS Suffix (OS), Hostname (OS), FQDN (AMT), and DNS Suffix (AMT) from Host OS and Intel&reg; AMT.</li>
+<li><strong>CentOS 7 Support:</strong> Build steps added to support CentOS 7.</li>
+<li><strong>--nocertcheck option:</strong> Option added to skip the TLS cert check for Websocket connections. This is to aid testing in development environments where self-signed TLS certificates are used.</li>
 </ul>
 <h4 id="mps"><a href="../Glossary/#m">MPS</a><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>REST APIs:</strong> Enables Intel® AMT Audit Log, Serial-Over-LAN features as well as functionality to toggle Intel® AMT Redirection Port, KVM Enable, and User Consent settings.</li>
+<li><strong>CORS Support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
 </ul>
 <h4 id="ui-toolkit"><a href="../Glossary/#u">UI Toolkit</a><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Profile Creator REACT module:</strong> Enables new RPS Profile APIs.</li>
-<li><strong>Audit Log REACT module:</strong> Enables MPS Audit Log APIs.</li>
-<li><strong>Serial-Over-LAN REACT module:</strong>  Enables MPS Serial-Over-LAN APIs.</li>
-<li><strong>KVM REACT module checkbox:</strong> Enables KVM. Checking this also enables Redirection Port. User Consent will be disabled if the Intel® AMT device is in Admin Control Mode (ACM).</li>
+<li><strong>CORS support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
+<li><strong>MEBx Password option added to Profile Editor:</strong> Provides the ability to set a MEBx password when activating Intel&reg; AMT devices.</li>
+<li><strong>Network Setting option added to Profile Editor:</strong> Provides the ability to set either DHCP or Static IP setting when activating Intel&reg; AMT devices.</li>
+<li><strong>Edit feature added to Profile Editor:</strong> Added ability to edit AMT, CIRA, and Domain profiles in the Profile Editor.</li>
 </ul>
 <h3 id="modifications-and-removals">Modifications and Removals<a class="headerlink" href="#modifications-and-removals" title="Permanent link">&para;</a></h3>
+<h4 id="rpc_1"><a href="../Glossary/#r">RPC</a><a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Improved Link Status when using --amtinfo:</strong> Fixed link status not being set.</li>
+<li><strong>Improved build scripts for Windows and Linux:</strong>  Build scripts have been updated so that the build time and executable size is more consistent between Windows and Linux.</li>
+<li><strong>Release/Debug build changes:</strong> Release and Debug build options now have the exact same functionality.  The only difference is that debug symbols are included in Debug version.</li>
+</ul>
 <h4 id="mps_1"><a href="../Glossary/#m">MPS</a><a class="headerlink" href="#mps_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>
-<p><strong>Migration to Typescript<em> from node.js</em>:</strong>  Modifies all REST APIs. Currently there are four end points which are categorized based on the functionality:</p>
-<p><strong>/admin -</strong> for all the admin user operations like downloading mescript, root certificate, disconnected device, etc.</p>
-<p><strong>/amt -</strong> for all AMT operations.</p>
-<p><strong>/relay -</strong> for KVM operations.</p>
-<p><strong>/notifications -</strong> for updating the device connections.</p>
-</li>
+<li><strong>Moved SampleUI into it's own repository:</strong> We have some big changes planned for the Sample UI.  Stay tuned!</li>
+<li><strong>Default allowList setting changed:</strong> Changed the default setting to false.  This is one less configuration change to make if you are not using Vault.  Recommend that this is set to true when running MPS in a production environment.</li>
 </ul>
-<h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">&para;</a></h2>
-<h3 id="mps_2">MPS<a class="headerlink" href="#mps_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Modified handling of APF protocol:</strong> Resolves issue in which multiple WS-Man* commands sent to Intel® AMT device in rapid succession cause a time-out error to be issued by Intel® AMT.</li>
-<li><strong>Periodic power polling calls during KVM and SOL sessions:</strong> Resolves issue in which rapid keyboard inputs to Intel® AMT cause a hang on Intel® AMT 11 devices. Hangs can still occur, but system will become responsive again after the power poll (every 10 seconds).</li>
-</ul>
-<h2 id="known-defects-in-10">Known Defects in 1.0<a class="headerlink" href="#known-defects-in-10" title="Permanent link">&para;</a></h2>
+<h2 id="known-issues-in-11">Known Issues in 1.1<a class="headerlink" href="#known-issues-in-11" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Vault Deployment:</strong> Current docker build scripts deploy Vault in developer mode. When the Vault container is brought down in this mode, all data stored in Vault is lost. For production deployments, deploy Vault in production mode and follow best security practices for unsealing Vault and handling access to Vault. For details, see <a href="https://learn.hashicorp.com/tutorials/vault/deployment-guide">Hashicorp* Vault Deployment Guide</a>. With Vault running in production mode, the data that RPS stores in Vault is retained when the container is brought down.</li>
-<li><strong>Intel® AMT Connecting to MPS:</strong> After a successful configuration, Intel® AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:<ol>
+<li><strong>Intel® AMT Connecting to MPS:</strong> After a successful configuration, Intel® AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:</li>
+<li><strong>Intel&reg; AMT Connecting to MPS:</strong> After a successful configuration, Intel&reg; AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:<ol>
 <li>Unplug and re-plug the network cable</li>
-<li>Reboot the Intel® AMT device</li>
+<li>Reboot the Intel&reg; AMT device</li>
 </ol>
 </li>
-<li><strong>Intel® AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:</strong> If the MPS goes down for more than 2 days, Intel® AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:<ol>
+<li><strong>Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:</strong> If the MPS goes down for more than 2 days, Intel&reg; AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:<ol>
 <li>Unplug and re-plug the network cable</li>
-<li>Reboot the Intel® AMT device</li>
+<li>Reboot the Intel&reg; AMT device</li>
 </ol>
 </li>
+<li><strong>KVM freeze intermittently</strong> Viewing a remote desktop with high amount of screen changes (video playback), the KVM session can intermittently freeze.</li>
+<li>A full list of current open issues can be found in the issues page for each repository</li>
 </ul>
                 
               
