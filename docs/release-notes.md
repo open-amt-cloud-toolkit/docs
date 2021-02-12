@@ -1,53 +1,45 @@
 # Release Notes
-
-## Key Feature Changes for 1.0
-This section outlines key features changes between versions .9 and 1.0 for [Open Active Management Technology (Open AMT) Cloud Toolkit.](Glossary.md#o) 
+## Key Feature Changes for 1.1
+This section outlines key features changes between versions 1.0 and 1.1 for [Open Active Management Technology (Open AMT) Cloud Toolkit.](Glossary.md#o) 
 
 ### Additions
-
 #### [RPS](Glossary.md#r)
-- **Configuration of CIRA on Intel® AMT managed devices:** Enables managed devices to connect to the MPS.
-- **Un-configuration Intel® AMT devices:** Removes all Intel® AMT configuration settings and resets Intel AMT to an [*nprovisioned](Glossary.md#p) state.
-- **REST APIs:** Includes Create, Read, Update, Delete AMT Profiles, Domain Profiles, and CIRA Profiles.
+- **Network Configuration on Intel&reg; AMT devices:** Added feature to AMT Profiles to select configuring Intel&reg; AMT devices to use DHCP or Static IP.  When set for static IP, Intel&reg; AMT will sync with the Host OS static IP address.  Static IP Address is not supported with CIRA profiles.
+- **MEBx Password configuration:** The AMT Profile now supports configuration options for setting either a defined or randomized MEBx password on Intel&reg; AMT devices.
+- **CORS support:** Added support for Cross-Origin Resource Sharing (CORS).
 
 #### [RPC](Glossary.md#r)
-- **microLMS in the RPC executable:** Eliminates the need to run a separate LMS when trying to configure Intel® AMT.
-- **CentOS*:** Enables CentOS on RPC. Linux build environment is still Ubuntu* 18.04.
-- **Intel® AMT information commands:**  Provide feedback to the local command prompt showing status information of the Intel® AMT device.
-  
+- **Added/updated getting metadata from Intel&reg; AMT device:** Improved getting DNS Suffix (OS), Hostname (OS), FQDN (AMT), and DNS Suffix (AMT) from Host OS and Intel&reg; AMT.
+- **CentOS 7 Support:** Build steps added to support CentOS 7.
+- **--nocertcheck option:** Option added to skip the TLS cert check for Websocket connections. This is to aid testing in development environments where self-signed TLS certificates are used.
+
 #### [MPS](Glossary.md#m)
-- **REST APIs:** Enables Intel® AMT Audit Log, Serial-Over-LAN features as well as functionality to toggle Intel® AMT Redirection Port, KVM Enable, and User Consent settings.
+- **CORS Support:** Added support for Cross-Origin Resource Sharing (CORS).
 
 #### [UI Toolkit](Glossary.md#u)
-- **Profile Creator REACT module:** Enables new RPS Profile APIs.
-- **Audit Log REACT module:** Enables MPS Audit Log APIs.
-- **Serial-Over-LAN REACT module:**  Enables MPS Serial-Over-LAN APIs.
-- **KVM REACT module checkbox:** Enables KVM. Checking this also enables Redirection Port. User Consent will be disabled if the Intel® AMT device is in Admin Control Mode (ACM).
+- **CORS support:** Added support for Cross-Origin Resource Sharing (CORS).
+- **MEBx Password option added to Profile Editor:** Provides the ability to set a MEBx password when activating Intel&reg; AMT devices.
+- **Network Setting option added to Profile Editor:** Provides the ability to set either DHCP or Static IP setting when activating Intel&reg; AMT devices.
+- **Edit feature added to Profile Editor:** Added ability to edit AMT, CIRA, and Domain profiles in the Profile Editor.
 
 ### Modifications and Removals
+#### [RPC](Glossary.md#r)
+- **Improved Link Status when using --amtinfo:** Fixed link status not being set.
+- **Improved build scripts for Windows and Linux:**  Build scripts have been updated so that the build time and executable size is more consistent between Windows and Linux.
+- **Release/Debug build changes:** Release and Debug build options now have the exact same functionality.  The only difference is that debug symbols are included in Debug version.
+
 #### [MPS](Glossary.md#m)
-- **Migration to Typescript* from node.js*:**  Modifies all REST APIs. Currently there are four end points which are categorized based on the functionality:
+- **Moved SampleUI into it's own repository:** We have some big changes planned for the Sample UI.  Stay tuned!
+- **Default allowList setting changed:** Changed the default setting to false.  This is one less configuration change to make if you are not using Vault.  Recommend that this is set to true when running MPS in a production environment.
 
-    **/admin -** for all the admin user operations like downloading mescript, root certificate, disconnected device, etc.
-
-    **/amt -** for all AMT operations.
-
-    **/relay -** for KVM operations.
-
-    **/notifications -** for updating the device connections.
-
-## Resolved Issues
-
-### MPS
-
-- **Modified handling of APF protocol:** Resolves issue in which multiple WS-Man* commands sent to Intel® AMT device in rapid succession cause a time-out error to be issued by Intel® AMT.
-- **Periodic power polling calls during KVM and SOL sessions:** Resolves issue in which rapid keyboard inputs to Intel® AMT cause a hang on Intel® AMT 11 devices. Hangs can still occur, but system will become responsive again after the power poll (every 10 seconds).
-
-## Known Defects in 1.0
+## Known Issues in 1.1
 - **Vault Deployment:** Current docker build scripts deploy Vault in developer mode. When the Vault container is brought down in this mode, all data stored in Vault is lost. For production deployments, deploy Vault in production mode and follow best security practices for unsealing Vault and handling access to Vault. For details, see [Hashicorp* Vault Deployment Guide](https://learn.hashicorp.com/tutorials/vault/deployment-guide). With Vault running in production mode, the data that RPS stores in Vault is retained when the container is brought down.
 - **Intel® AMT Connecting to MPS:** After a successful configuration, Intel® AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:
+- **Intel&reg; AMT Connecting to MPS:** After a successful configuration, Intel&reg; AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:
     1.	Unplug and re-plug the network cable
-    2.	Reboot the Intel® AMT device
-- **Intel® AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:** If the MPS goes down for more than 2 days, Intel® AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:
+    2.	Reboot the Intel&reg; AMT device
+- **Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:** If the MPS goes down for more than 2 days, Intel&reg; AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:
     1.	Unplug and re-plug the network cable
-    2.	Reboot the Intel® AMT device
+    2.	Reboot the Intel&reg; AMT device
+- **KVM freeze intermittently** Viewing a remote desktop with high amount of screen changes (video playback), the KVM session can intermittently freeze.
+- A full list of current open issues can be found in the issues page for each repository
