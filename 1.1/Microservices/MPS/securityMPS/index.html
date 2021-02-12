@@ -706,8 +706,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-device-allowlisting-list-of-uuids" class="md-nav__link">
-    3. Device Allowlisting (List of UUIDs)
+  <a href="#3-device-allowlist-list-of-uuids" class="md-nav__link">
+    3. Device Allowlist (List of UUIDs)
   </a>
   
 </li>
@@ -1792,8 +1792,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-device-allowlisting-list-of-uuids" class="md-nav__link">
-    3. Device Allowlisting (List of UUIDs)
+  <a href="#3-device-allowlist-list-of-uuids" class="md-nav__link">
+    3. Device Allowlist (List of UUIDs)
   </a>
   
 </li>
@@ -1883,23 +1883,23 @@
                 
                 
                 <h1 id="mps-security-considerations">MPS Security Considerations<a class="headerlink" href="#mps-security-considerations" title="Permanent link">&para;</a></h1>
-<p>Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel&reg; AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel&amp;reg AMT devices using REST APIs, MPS uses secrets. There are six key assets that must be protected:</p>
+<p>Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel&reg; AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel&reg; AMT devices using REST APIs, MPS uses secrets. There are six key assets that must be protected:</p>
 <ul>
 <li>Intel&reg; AMT credentials</li>
 <li>Intel&reg; MPS credentials</li>
-<li>Device Allowlisting (List of UUIDs)</li>
+<li>Device Allowlist (List of UUIDs)</li>
 <li>APIKey</li>
 <li>Server Configuration</li>
 <li>Web User Credentials</li>
 </ul>
-<p>In addition to the above assets, there are best practices that are recommened to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.</p>
+<p>In addition to the above assets, there are best practices that are recommended to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.</p>
 <h2 id="security-assets">Security Assets<a class="headerlink" href="#security-assets" title="Permanent link">&para;</a></h2>
 <h3 id="1-intel-amt-credentials">1. Intel&reg; AMT credentials<a class="headerlink" href="#1-intel-amt-credentials" title="Permanent link">&para;</a></h3>
-<p>AMT credentials allows a user to remotely control Intel&reg; AMT device and these credentials are configured in AMT Firmware. When user performs an action on the device using REST API, MPS then fetches corresponding credentials of that device from Vault/Database and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.</p>
+<p>AMT credentials allows a user to remotely control Intel&reg; AMT device and these credentials are configured in AMT Firmware. When user performs an action on the device using REST API, MPS then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.</p>
 <h3 id="2-intel-mps-credentials">2. Intel&reg; MPS credentials<a class="headerlink" href="#2-intel-mps-credentials" title="Permanent link">&para;</a></h3>
 <p>Every Intel&reg; device needs to be authenticated prior to successful connection to MPS. MPS credentials are used to authenticate every Intel&reg; device. After establishing TLS connection with MPS, device sends it's username and password, which will then be used to authenticate. It is highly recommended that every device use a unique username and password.</p>
-<h3 id="3-device-allowlisting-list-of-uuids">3. Device Allowlisting (List of UUIDs)<a class="headerlink" href="#3-device-allowlisting-list-of-uuids" title="Permanent link">&para;</a></h3>
-<p>Each Intel&reg; AMT device has a unique identifier (UUID) assigned to it and this UUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by MPS using MPS credentials. But even before validating credentials, only allowlisted Intel&reg; AMT devices can be allowed to connect to make it more secure and this is being done using the allowlisted UUID.</p>
+<h3 id="3-device-allowlist-list-of-uuids">3. Device Allowlist (List of UUIDs)<a class="headerlink" href="#3-device-allowlist-list-of-uuids" title="Permanent link">&para;</a></h3>
+<p>Each Intel&reg; AMT device has a unique identifier (UUID) assigned to it and this UUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by MPS using MPS credentials. But even before validating credentials, only allowlist Intel&reg; AMT devices can be allowed to connect to make it more secure and this is being done using the allowlist UUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.</p>
 <h3 id="4-apikey">4. APIKey<a class="headerlink" href="#4-apikey" title="Permanent link">&para;</a></h3>
 <p>Every client/user needs to be authenticated before allowing them to perform an action using REST API call. APIKey will be used by MPS to authenticate a client/user.</p>
 <h3 id="5-server-configuration">5. Server Configuration<a class="headerlink" href="#5-server-configuration" title="Permanent link">&para;</a></h3>
@@ -1910,15 +1910,15 @@
 <h3 id="1-enable-tls-on-network-connections">1. Enable TLS on network connections<a class="headerlink" href="#1-enable-tls-on-network-connections" title="Permanent link">&para;</a></h3>
 <p>There are three potential places where TLS should be enabled to protect the security assets:</p>
 <ul>
-<li>HTTP/WS connection between client and MPS</li>
-<li>Connection between MPS and Vault/Database</li>
-<li>Connection between MPS and Intel&reg; AMT device</li>
+<li>HTTP/WS connection between Web UI and MPS</li>
+<li>Connection between MPS and Vault</li>
+<li>Connection between MPS and Intel&reg; AMT device (This is done automatically with default deployments)</li>
 </ul>
 <p>Encrypting these communication will help prevent network based attacks attempting to control Intel&reg; AMT device. It is recommended that the most modern version of TLS be used to protect these connections.</p>
 <h3 id="2-secure-and-isolate-execution-environment">2. Secure and isolate execution environment<a class="headerlink" href="#2-secure-and-isolate-execution-environment" title="Permanent link">&para;</a></h3>
-<p>MPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated VM or container. Deploying into a hardened execution environment eases the burden of individually securing the assets.</p>
+<p>MPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated VM or container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.</p>
 <h3 id="3-utilize-vault-for-storing-credentials">3. Utilize Vault for storing Credentials<a class="headerlink" href="#3-utilize-vault-for-storing-credentials" title="Permanent link">&para;</a></h3>
-<p>Vault is a tool used to secure, store and tightly control access to secrets. Utilizing Vault to store passwords used by MPS will greatly increase the security of these assets.</p>
+<p>Vault is a tool used to secure, store, and tightly control access to secrets. Utilizing Vault to store passwords used by MPS will greatly increase the security of these assets.</p>
 <h3 id="4-utilize-kubernetes-secrets-for-storing-dynamic-configuration-values-like-environment-variables">4. Utilize Kubernetes Secrets for storing dynamic configuration values (like environment variables)<a class="headerlink" href="#4-utilize-kubernetes-secrets-for-storing-dynamic-configuration-values-like-environment-variables" title="Permanent link">&para;</a></h3>
 <p>Kubernetes Secrets help you to store and manage sensitive information like Tokens. Use Kubernetes secrets for storing environment variables required for configuring MPS rather than putting them in the image/pod. Vault token, Session secret key, and Server configuration assets required for MPS should be stored in Kubernetes secrets.</p>
 <p><br></p>
