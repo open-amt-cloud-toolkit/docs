@@ -2,30 +2,32 @@
 
 ## Create a Network Configuration
 
-* Endpoint: **/api/v1/admin/networkconfigs/create*
+* Endpoint: */api/v1/admin/networkconfigs/create*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 ```json
 {
 	"payload" :  
     {
-        "profileName": "[network-profile-name]",
-        "dhcpEnabled": "false"
+        "profileName": "[Network-Profile-Name]",
+        "dhcpEnabled": [true/false]
     }
 }
 ```
 
-Example Input:
+!!! example
+    ```json
+    {
+    	"payload": {
+    		"profileName": "profile1",
+            "dhcpEnabled": "false"
+    	}
+    }
+    ```
 
-```json
-{
-	"payload": {
-		"profileName": "profile1",
-        "dhcpEnabled": "false"
-	}
-}
-```
+Example Outputs:
 
 ???+ success
     NETWORK Config profile1 successfully inserted
@@ -35,15 +37,12 @@ Example Input:
 
 ## Get a Network Configuration
 
-* Endpoint: **/api/v1/admin/networkconfigs/{testnetworkconfig}*
+* Endpoint: */api/v1/admin/networkconfigs/{networkconfigName}*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The network confid to get is provided in the URL as a query parameter.
 
-Example Input:
-
-```
-N/A (test profile to retrieve provided in URL as query parameter)
-```
+Example Outputs:
 
 ???+ success 
     ```json
@@ -59,19 +58,12 @@ N/A (test profile to retrieve provided in URL as query parameter)
 
 ## Get All Network Configuration
 
-* Endpoint: **/api/v1/admin/networkconfigs/*
+* Endpoint: */api/v1/admin/networkconfigs/*
 * Method Type: GET
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. No query parameter in URL retrieves all network configs.
 
-```
-NA
-```
-
-Example Input:
-
-```
-NA (no query parameter in the URL retrieves all profiles)
-```
+Example Outputs:
 
 ???+ success
     ```json
@@ -90,31 +82,31 @@ NA (no query parameter in the URL retrieves all profiles)
 
 ## Edit a Network Configuration
 
-
-* Endpoint: **/api/v1/admin/networkconfigs/edit*
+* Endpoint: */api/v1/admin/networkconfigs/edit*
 * Method Type: POST
 * Headers: *X-RPS-API-Key*
+* Payload:
 
 ```json
 {
 	"payload" :  
     {
-        "profileName": "profile1",
-        "dhcpEnabled": "[false]"
+        "profileName": "[Network-Profile-Name]",
+        "dhcpEnabled": [true/false]
     }
 }
 ```
 
-Example Input:
+!!! example
 
-```json
-{
-	"payload": {
-		"profileName": "profile1",
-        "dhcpEnabled": "true"
-	}
-}
-```
+    ```json
+    {
+    	"payload": {
+    		"profileName": "profile1",
+            "dhcpEnabled": "true"
+    	}
+    }
+    ```
 
 ???+ success
     UPDATE Successful for NETWORK Config: profile1
@@ -124,22 +116,15 @@ Example Input:
 
 ## Delete a Network Configuration
 
-* Endpoint: **/api/v1/admin/networkconfigs/profile1*
+* Endpoint: */api/v1/admin/networkconfigs/{networkconfigName}*
 * Method Type: DELETE
 * Headers: *X-RPS-API-Key*
+* Payload: Not required. The network config to delete is provided in the URL as a query parameter.
 
-```
-NA
-```
-
-Example Input:
-
-```
-NA (Network Configuration to delete provided as query parameter in url 'profile1')
-```
+Example Outputs:
 
 ???+ success
-NETWORK Config profile1 successfully deleted
+    NETWORK Config profile1 successfully deleted
 
 ???+ failure
     NETWORK Config profile11 not found

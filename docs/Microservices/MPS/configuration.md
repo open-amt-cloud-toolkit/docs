@@ -13,17 +13,21 @@
 | MPS_USE_ALLOWLIST          | true                 | A value of false disables the allowlist functionality. For information about allowlist, see the allowlist [tutorial](../../Tutorials/allowlist.md)  |
 | MPS_PORT                   | 4433                 | |
 | MPS_WEB_PORT               | 3000                 | |
-| MPS_USER                   | standalone           | Specifies the username client devices use to connect to MPS   |
-| MPS_PASSWORD               | G@ppm0ym             | Specifies the password client devices use to connect to MPS  |
+| MPS_USERNAME                   | standalone           | Specifies the username client devices use to connect to MPS   |
+| MPS_PASS               | G@ppm0ym             | Specifies the password client devices use to connect to MPS  |
 | MPS_USE_GLOBAL_CREDENTIALS | true                 | Each device can have its own MPS username and password. If this flag is enabled in MPS, it will use the same username and password as specified my MPS_USER and MPS_PASSWORD for all devices |
 | MPS_ENABLE_LOGGING         | true                 | |
 | MPS_DEBUG                  | true                 | |
 | MPS_WEB_ADMIN_USER         | standalone           | Specifies the username for API authentication |
 | MPS_WEB_ADMIN_PASSWORD     | G@ppm0ym             | Specifies the password for API authentication |
 | MPS_HTTPS                  | true                 | Specifies whether or not to enable https      |
-| MPS_XAPIKEY                | APIKEYFORMPS123!     | RESTful API Header Key. This header must be present on all RESTful calls made against MPS |
+| MPS_MPSXAPIKEY                | APIKEYFORMPS123!     | RESTful API Header Key. This header must be present on all RESTful calls made against MPS |
 | MPS_LISTEN_ANY             | true                 | |
 | MPS_TLS_OFFLOAD            | false                | |
 | MPS_SESSION_ENCRYPTION_KEY | <YourStrongSessionEncryptionKey123!> | |
 | MPS_LOG_LEVEL              | info                 | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`  |
 | MPS_AUTH_ENABLED           | false                | |
+| MPS_CORS_ORIGIN |  http://localhost:3001 | The domain/origin that is allowed to make requests against this service |
+| MPS_CORS_HEADERS |  Origin, X-Requested-With, Accept, X-MPS-API-Key,x-rps-api-key, Content-Type, csrf-token, authorization | List of accepted HTTP Headers |
+| MPS_CORS_METHODS |  * | List of HTTP Methods that are allowed |
+| MPS_CORS_ALLOW_CREDENTIALS |  true | Controls whether or not session credentials can be send |
