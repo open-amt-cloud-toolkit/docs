@@ -1,4 +1,6 @@
 # Release Notes
+
+If you haven't had a chance - checkout the [Letter From Devs](./letter.md) for a message from our development team.
 ## Key Feature Changes for 1.1
 This section outlines key features changes between versions 1.0 and 1.1 for [Open Active Management Technology (Open AMT) Cloud Toolkit.](Glossary.md#o) 
 
