@@ -15,5 +15,4 @@ The table below details possible errors that may occur when activating or de-act
 | Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00 | Ensure you have provided the `--password` flag for the `--cmd/-c` you are trying to execute, and that it is the password you used when provisioning the device. |
 | Unable to connect to websocket server. Please check url. | After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address. |
 | Error while activating the AMT in admin mode. | Check the logs on the RPS server. | 
-
-
+| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../../Topics/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [Command Examples](commandsRPC.md) | 
