@@ -71,7 +71,7 @@ Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 2. Check that all containers are running:
 
     ```bash
-    `docker ps --format 'table{{.Image}}\t{{.Status}}\t{{.Names}}'`
+    docker ps --format table{{.Image}}\t{{.Status}}\t{{.Names}}
     ```
 
     !!! success
