@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-and-deploy-docker-images-for-mps-and-rps-locally" class="md-skip">
+        <a href="#why-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -421,8 +421,6 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
-    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Express Docker Setup
@@ -436,8 +434,6 @@
       
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -454,15 +450,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
-    Clone OpenAMT Cloud Toolkit
+  <a href="#get-the-toolkit" class="md-nav__link">
+    Get the Toolkit
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-the-environment-variables" class="md-nav__link">
-    Set the Environment Variables
+  <a href="#set-environment-variables" class="md-nav__link">
+    Set Environment Variables
   </a>
   
 </li>
@@ -1717,8 +1713,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1734,15 +1728,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
-    Clone OpenAMT Cloud Toolkit
+  <a href="#get-the-toolkit" class="md-nav__link">
+    Get the Toolkit
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-the-environment-variables" class="md-nav__link">
-    Set the Environment Variables
+  <a href="#set-environment-variables" class="md-nav__link">
+    Set Environment Variables
   </a>
   
 </li>
@@ -1778,51 +1772,51 @@
                   </a>
                 
                 
-                <h1 id="build-and-deploy-docker-images-for-mps-and-rps-locally">Build and Deploy Docker* Images for MPS and RPS Locally<a class="headerlink" href="#build-and-deploy-docker-images-for-mps-and-rps-locally" title="Permanent link">&para;</a></h1>
-<p>The Open AMT Cloud Toolkit's <a href="../../Glossary/#m">Management Presence Server (MPS)</a> and <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a> provide support for deploying the microservices as <a href="../../Glossary/#d">Docker*</a> images, standardized packages containing an application's source code, libraries, environment, and dependencies. </p>
+                  <h1>Express Docker Setup</h1>
+                
+                <p>The Open Active Management Technology (Open AMT) Cloud Toolkit's <a href="../../Glossary/#m">Management Presence Server (MPS)</a> and <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a> provide support for deploying the microservices as <a href="../../Glossary/#d">Docker*</a> images, standardized packages containing an application's source code, libraries, environment, and dependencies. </p>
 <h2 id="why-docker">Why Docker*?<a class="headerlink" href="#why-docker" title="Permanent link">&para;</a></h2>
-<p>A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the usual problems that occur with software deployment on varying platforms. </p>
+<p>A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. </p>
 <p>Get more information about Docker images and containers at <a href="https://www.docker.com/resources/what-container">Docker resources.</a></p>
-<h2 id="clone-openamt-cloud-toolkit">Clone OpenAMT Cloud Toolkit<a class="headerlink" href="#clone-openamt-cloud-toolkit" title="Permanent link">&para;</a></h2>
+<h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">&para;</a></h2>
 <p><strong>To clone the repositories:</strong></p>
 <ol>
-<li>Open a Command Prompt or Terminal and navigate to a directory of your choice for development.</li>
+<li>Open a Command Prompt or Terminal and navigate to a directory of your choice for development:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
 </code></pre></div>
-<h2 id="set-the-environment-variables">Set the Environment Variables<a class="headerlink" href="#set-the-environment-variables" title="Permanent link">&para;</a></h2>
+<h2 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">&para;</a></h2>
+<p>The  <code>.env.template</code> file is used by docker to set environment variables.</p>
 <p><strong>To set the environment variables:</strong></p>
-<ol>
-<li>
-<p>Create a copy the of the <code>.env.template</code> file to <code>.env</code>. This file is used by docker to set environment variables. </p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux/Powershell</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>cp .env.template .env
+<p>1.\ Copy the <code>.env.template</code> file to <code>.env</code>:</p>
+<div class="codehilite"><pre><span></span><code>=== &quot;Linux/Powershell&quot;
+    ```
+    cp .env.template .env
+    ```
+
+=== &quot;Windows (cmd)&quot;
+    ```
+    copy .env.template .env
+    ```
 </code></pre></div>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (cmd)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>copy .env.template .env
+
+<p>2.\ Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Use a text editor to modify the <code>.env</code> file or replace YOURIPADDRESS in the command below to use the command line:</p>
+<div class="codehilite"><pre><span></span><code>=== &quot;Linux&quot;
+    ``` bash
+    sed -i &quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot; .env
+    ```
+=== &quot;Windows (Powershell)&quot;
+    ``` powershell
+    (Get-Content -Path &#39;./.env&#39;) -replace &#39;MPS_COMMON_NAME=localhost&#39;, &#39;MPS_COMMON_NAME=YOURIPADDRESS&#39; | Set-Content -Path &#39;./.env&#39;
+    ```
 </code></pre></div>
-</div>
-</div>
-</li>
-<li>
-<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. You can use a text editor to modify the .env file or replace YOURIPADDRESS in the command below to use the command line:</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
-</code></pre></div>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</li>
-</ol>
+
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
-<p>The environment file (<code>.env</code>) now contains the MPS and RPS environment variables to pass to the Docker engine.</p>
+<p>Build the MPS, RPS, and Sample UI Docker images and launch the stack.</p>
+<p><strong>To build:</strong></p>
 <ol>
 <li>
-<p>Build the MPS, RPS, and Sample UI Docker images and launch the stack</p>
+<p>Use docker-compose:</p>
 <div class="highlight"><pre><span></span><code>docker-compose -f <span class="s2">&quot;docker-compose.yml&quot;</span> up -d --build
 </code></pre></div>
 <div class="admonition important">
@@ -1832,8 +1826,8 @@
 </div>
 </li>
 <li>
-<p>To check all containers are up and running run the following command.</p>
-<div class="highlight"><pre><span></span><code><span class="sb">`</span>docker ps --format <span class="s1">&#39;table{{.Image}}\t{{.Status}}\t{{.Names}}&#39;</span><span class="sb">`</span>
+<p>Check that all containers are running:</p>
+<div class="highlight"><pre><span></span><code>docker ps --format table<span class="o">{{</span>.Image<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Status<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Names<span class="o">}}</span>
 </code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -1851,11 +1845,11 @@ postgres                          Up <span class="m">6</span> seconds    open-am
 </div>
 </li>
 </ol>
+<p>If any of the above containers are not running, walk through the steps again or file a github issue <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues">here</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Since the vault is running in a dev mode, you will not be able to restart the vault and maintain the secrets stored since they are not persisted. You will need to recreate profiles and configs again. Be sure and run <code>docker-compose down -v</code> when bringing down the stack so as to remove the volumes and start fresh upon <code>docker-compose up</code>.  You may follow the guide <a href="../dockerLocal_prodVault/">here</a> to run vault in production mode.</p>
+<p>Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run <code>docker-compose down -v</code> when bringing down the stack, which removes the volumes, and start fresh upon <code>docker-compose up</code>.  To run vault in production mode, follow the guide <a href="../dockerLocal_prodVault/">here</a>.</p>
 </div>
-<p>If any of the above containers report that it is not running. Try walking through the steps again, or filing a github issue <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues">here</a>.</p>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../../General/loginToRPS/"><strong>Login to RPS</strong></a></p>
                 

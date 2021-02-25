@@ -1680,7 +1680,7 @@
                 
                 <h1 id="poweraction">PowerAction<a class="headerlink" href="#poweraction" title="Permanent link">&para;</a></h1>
 <p>This AMT method lets you perform an out-of-band power action.</p>
-<p>Actions are specified by number. Use the <a href="../powercapabilities/">PowerCapabilities</a> method to return the actions availabl for a specific device.</p>
+<p>Actions are specified by number. Use the <a href="../powercapabilities/">PowerCapabilities</a> method to return the actions available for a specific device. Use the [PowerState][powerstate.md] method to obtain the current power state.</p>
 <p>Possible actions are listed in the following table:</p>
 <table>
 <thead>
@@ -1760,6 +1760,13 @@
 </tr>
 </tbody>
 </table>
+<p>Consider the current state of the system when implementing a possible action. For example: </p>
+<ul>
+<li>Reset to BIOS implies that the current system state is on or powered up.</li>
+<li>Power up to BIOS implies that current system state is off or powered down.</li>
+<li>Hibernate implies that the current system state is powered up. </li>
+</ul>
+<p>If the system is already powered up, choosing to Power Up to BIOS will not have any effect on the system. A better choice is Reset to BIOS.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>More information on obtaining an AMT device's GUID can be found <a href="../../../Topics/guids/">here</a>.</p>
