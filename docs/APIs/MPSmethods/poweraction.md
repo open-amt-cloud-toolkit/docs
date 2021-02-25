@@ -2,7 +2,7 @@
 
 This AMT method lets you perform an out-of-band power action.
 
-Actions are specified by number. Use the [PowerCapabilities](powercapabilities.md) method to return the actions availabl for a specific device.
+Actions are specified by number. Use the [PowerCapabilities](powercapabilities.md) method to return the actions available for a specific device. Use the [PowerState][powerstate.md] method to obtain the current power state.
 
 Possible actions are listed in the following table:
 
@@ -26,6 +26,13 @@ Possible actions are listed in the following table:
    | **400** | Reset to PXE |
    | **401** | Power on to PXE |
 
+Consider the current state of the system when implementing a possible action. For example: 
+
+* Reset to BIOS implies that the current system state is on or powered up.
+* Power up to BIOS implies that current system state is off or powered down.
+* Hibernate implies that the current system state is powered up. 
+
+If the system is already powered up, choosing to Power Up to BIOS will not have any effect on the system. A better choice is Reset to BIOS.
 
 !!! note
 	More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).

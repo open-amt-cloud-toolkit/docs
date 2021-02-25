@@ -1,32 +1,31 @@
-# Build and Deploy Docker* Images for MPS and RPS Locally
-
-
-
-The Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) provide support for deploying the microservices as [Docker*](../Glossary.md#d) images, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+ 
+The Open Active Management Technology (Open AMT) Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) provide support for deploying the microservices as [Docker*](../Glossary.md#d) images, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 
 ## Why Docker*?
 
-A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the usual problems that occur with software deployment on varying platforms. 
+A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. 
 
 Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)
 
 
-## Clone OpenAMT Cloud Toolkit
+## Get the Toolkit
 
 **To clone the repositories:**
 
-1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development.
+1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development:
 
 ``` bash
 git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
 ```
   
-## Set the Environment Variables  
+## Set Environment Variables  
+
+The  `.env.template` file is used by docker to set environment variables.
 
 **To set the environment variables:**
 
-1. Create a copy the of the `.env.template` file to `.env`. This file is used by docker to set environment variables. 
+1.\ Copy the `.env.template` file to `.env`:
 
     === "Linux/Powershell"
         ```
@@ -38,7 +37,7 @@ git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-t
         copy .env.template .env
         ```
 
-2. Set `MPS_COMMON_NAME` to your development system's IP Address. You can use a text editor to modify the .env file or replace YOURIPADDRESS in the command below to use the command line:
+2.\ Set `MPS_COMMON_NAME` to your development system's IP Address. Use a text editor to modify the `.env` file or replace YOURIPADDRESS in the command below to use the command line:
 
     === "Linux"
         ``` bash
@@ -52,9 +51,11 @@ git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-t
 
 ## Build and Run the Docker Images
 
-The environment file (`.env`) now contains the MPS and RPS environment variables to pass to the Docker engine.
+Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 
-1.  Build the MPS, RPS, and Sample UI Docker images and launch the stack
+**To build:**
+
+1.  Use docker-compose:
 
     ``` bash    
     docker-compose -f "docker-compose.yml" up -d --build
@@ -67,10 +68,10 @@ The environment file (`.env`) now contains the MPS and RPS environment variables
 
 
 
-2. To check all containers are up and running run the following command.
+2. Check that all containers are running:
 
     ```bash
-    `docker ps --format 'table{{.Image}}\t{{.Status}}\t{{.Names}}'`
+    docker ps --format table{{.Image}}\t{{.Status}}\t{{.Names}}
     ```
 
     !!! success
@@ -86,12 +87,10 @@ The environment file (`.env`) now contains the MPS and RPS environment variables
         !!! note
             On completion, a security warning is normal during local setup with the default values for developer testing environments.
 
-
+If any of the above containers are not running, walk through the steps again or file a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
 
 !!! important
-    Since the vault is running in a dev mode, you will not be able to restart the vault and maintain the secrets stored since they are not persisted. You will need to recreate profiles and configs again. Be sure and run `docker-compose down -v` when bringing down the stack so as to remove the volumes and start fresh upon `docker-compose up`.  You may follow the guide [here](./dockerLocal_prodVault.md) to run vault in production mode.
-
-If any of the above containers report that it is not running. Try walking through the steps again, or filing a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+    Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
 
 ## Next up
 [**Login to RPS**](../General/loginToRPS.md)
