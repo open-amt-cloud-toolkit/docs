@@ -74,6 +74,14 @@ By default, React apps run on port `3000`. If port `3000` is already used by the
 
     **Figure 2: React reports successful deployment.**
 
+    !!! note
+
+        It is possible to see the below error after running `npm start`. This is okay and will be automatically resolved in the next section.
+
+        [![UI Toolkit err](../assets/images/UIToolkit_npmstart_err.png)](../assets/images/UIToolkit_npmstart_err.png)
+
+        **Figure 3: React reports failed compilation.**
+
 !!! important
     By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
     When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.

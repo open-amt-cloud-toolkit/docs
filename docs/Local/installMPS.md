@@ -142,8 +142,6 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         **Figure 3: Sample UI reports successful deployment.**
 
-        !!! note
-            A number of warnings display when compiled, this is OK. The Sample Web UI will be successfully running.
 
 ## Next up
 
