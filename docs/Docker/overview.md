@@ -26,20 +26,15 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 
 - [Docker* Desktop](https://www.docker.com/products/docker-desktop) for Windows* or Linux*
   
-!!! Info
-    **Docker Configuration Details: **
-    (1) The Docker for Windows installer defaults to enable all the required settings for this tutorial.
-    (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
-    (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/).
+    !!! Info
+        **Docker Configuration Details: **
+        (1) The Docker for Windows installer defaults to enable all the required settings for this tutorial.
+        (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
+        (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/).
 
 - [Chrome* Browser](https://www.google.com/chrome)
 - [git](https://git-scm.com/downloads)
-
-**If running Windows on the development system, also install:**
-    
-- [Microsoft Visual Studio*](https://visualstudio.microsoft.com/): 2019 or newer version of Visual Studio Community/Professional
-
-      
+     
 
 ## What You'll Do
 

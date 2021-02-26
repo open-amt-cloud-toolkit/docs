@@ -25,7 +25,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 **To set the environment variables:**
 
-1.\ Copy the `.env.template` file to `.env`:
+1. Copy the `.env.template` file to `.env`:
 
     === "Linux/Powershell"
         ```
@@ -37,7 +37,7 @@ The  `.env.template` file is used by docker to set environment variables.
         copy .env.template .env
         ```
 
-2.\ Set `MPS_COMMON_NAME` to your development system's IP Address. Use a text editor to modify the `.env` file or replace YOURIPADDRESS in the command below to use the command line:
+2. Set `MPS_COMMON_NAME` to your development system's IP Address. Use a text editor to modify the `.env` file or replace YOURIPADDRESS in the command below to use the command line:
 
     === "Linux"
         ``` bash
