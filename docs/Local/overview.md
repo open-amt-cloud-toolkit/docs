@@ -28,17 +28,6 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 - [git](https://git-scm.com/downloads)
 - [Node.js* LTS 12.x.x or newer](https://nodejs.org/)
   
-### Intel vPro® Managed Device Software
-
-**Before Remote Provisioning Client (RPC) installation, install the following software:**
-
-- [git](https://git-scm.com/downloads)
-- [Microsoft Visual Studio*](https://visualstudio.microsoft.com/): 2019 or newer version of Visual Studio Community/Professional
-
-!!! note
-    Running Microsoft Visual Studio* on a managed device to build the RPC is for demo purposes. This is not typical for production environments.
-
-
 
 ## What You'll Do
 
