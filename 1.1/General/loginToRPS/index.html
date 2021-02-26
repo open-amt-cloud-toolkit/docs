@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#next-up" class="md-skip">
+        <a href="#before-logging-in" class="md-skip">
           Skip to content
         </a>
       
@@ -482,6 +482,20 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-logging-in" class="md-nav__link">
+    Before Logging In
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-in" class="md-nav__link">
+    Log In
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#next-up" class="md-nav__link">
@@ -1691,6 +1705,20 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#before-logging-in" class="md-nav__link">
+    Before Logging In
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-in" class="md-nav__link">
+    Log In
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-up" class="md-nav__link">
     Next up
   </a>
@@ -1717,10 +1745,25 @@
                   <h1>Login to RPS</h1>
                 
                 <p>The web portal is available for login after the deployment of the <a href="../../Glossary/#m">Management Presence Server (MPS)</a>, <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a>, and <a href="../../Glossary/#s">Sample Web UI</a>. Make sure all three are successfully running before attempting to login.</p>
-<p><strong>To login:</strong></p>
+<h2 id="before-logging-in">Before Logging In<a class="headerlink" href="#before-logging-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open a Chrome* browser and navigate to the web server using your development system's IP address on the port of the Sample Web UI. Typically, port 3001.</p>
+<p>Open a Chrome* browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.</p>
+<div class="highlight"><pre><span></span><code>https://[Development-IP-Address]:3000
+</code></pre></div>
+</li>
+<li>
+<p>A warning screen will prompt. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the MPS webserver.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><a href="../../assets/images/selfSignedConnect.png"><img alt="MPS Warning" src="../../assets/images/selfSignedConnect.png" /></a></p>
+</div>
+</li>
+</ol>
+<h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Open a new tab on the Chrome* browser and navigate to the Sample Web UI using your development system's IP address on the port of the Sample Web UI. Typically, this is port 3001.</p>
 <div class="highlight"><pre><span></span><code>http://[Development-IP-Address]:3001
 </code></pre></div>
 <div class="admonition important">
@@ -1728,9 +1771,6 @@
 <p>Use your development system's IP Address to connect to the web server.
 <strong>Using <code>localhost</code> will not work.</strong> Google Chrome is currently the <strong>only</strong> supported browser for the Sample Web UI.</p>
 </div>
-</li>
-<li>
-<p>Using a self-signed certificate will prompt a warning screen. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the webserver.</p>
 </li>
 <li>
 <p>Log in to the web portal with the credentials below.</p>
@@ -1756,10 +1796,10 @@
 </li>
 <li>
 <p>Select <strong>Remote Provisioning Server</strong> on the web portal.</p>
-</li>
-</ol>
 <p><a href="../../assets/images/WebUI_HomeRPS.png"><img alt="WebUI" src="../../assets/images/WebUI_HomeRPS.png" /></a></p>
 <p><strong>Figure 1: Choose Remote Provisioning Server.</strong></p>
+</li>
+</ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><strong><a href="../createCIRAConfig/">Create a CIRA Config</a></strong></p>
                 

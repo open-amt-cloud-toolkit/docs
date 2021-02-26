@@ -1788,29 +1788,32 @@
 <h2 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">&para;</a></h2>
 <p>The  <code>.env.template</code> file is used by docker to set environment variables.</p>
 <p><strong>To set the environment variables:</strong></p>
-<p>1.\ Copy the <code>.env.template</code> file to <code>.env</code>:</p>
-<div class="codehilite"><pre><span></span><code>=== &quot;Linux/Powershell&quot;
-    ```
-    cp .env.template .env
-    ```
-
-=== &quot;Windows (cmd)&quot;
-    ```
-    copy .env.template .env
-    ```
+<ol>
+<li>
+<p>Copy the <code>.env.template</code> file to <code>.env</code>:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux/Powershell</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>cp .env.template .env
 </code></pre></div>
-
-<p>2.\ Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Use a text editor to modify the <code>.env</code> file or replace YOURIPADDRESS in the command below to use the command line:</p>
-<div class="codehilite"><pre><span></span><code>=== &quot;Linux&quot;
-    ``` bash
-    sed -i &quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot; .env
-    ```
-=== &quot;Windows (Powershell)&quot;
-    ``` powershell
-    (Get-Content -Path &#39;./.env&#39;) -replace &#39;MPS_COMMON_NAME=localhost&#39;, &#39;MPS_COMMON_NAME=YOURIPADDRESS&#39; | Set-Content -Path &#39;./.env&#39;
-    ```
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (cmd)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>copy .env.template .env
 </code></pre></div>
-
+</div>
+</div>
+</li>
+<li>
+<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Use a text editor to modify the <code>.env</code> file or replace YOURIPADDRESS in the command below to use the command line:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</li>
+</ol>
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
 <p>Build the MPS, RPS, and Sample UI Docker images and launch the stack.</p>
 <p><strong>To build:</strong></p>
