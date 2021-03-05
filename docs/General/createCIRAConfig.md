@@ -1,6 +1,17 @@
-[Client Initiated Remote Access (CIRA)](../Glossary.md#c) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS rather than the MPS initiating contact with the edge device.  This enables access to edge devices that might be harder to reach behind a firewall or a firewall process, such as network address translation (NAT).
+Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access [Intel® Active Management Technology (Intel® AMT)](../Glossary.md#i) devices at a hardware level, beneath the operating system. This is accomplished with [Client Initiated Remote Access (CIRA)](../Glossary.md#c), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS.
 
-A CIRA Configuration provides the Remote Provisioning Client (RPC) the required information to establish the edge device's CIRA connection to the MPS Server during the activation process. 
+With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
+
+* Reboot
+* Reset
+* Power on and power up
+* Power off and power down
+* Boot to BIOS 
+* Reset to BIOS
+
+Intel AMT supports these actions and more.
+
+As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. 
 
 **To create a CIRA Config:**
 
@@ -46,3 +57,6 @@ Profiles provide configuration information to the AMT Firmware during the activa
 **[Client Control Mode (CCM):](createProfileCCM.md)** This mode offers nearly all manageability features. However, it does not currently support Keyboard, Video, Mouse Control. For other features, such as Serial-Over-LAN or Storage Redirection (IDE-R, USB-R), **user consent is required**.
 
 **[Admin Control Mode (ACM):](createProfileACM.md)** ACM mode supports the same CCM features in addition to Keyboard, Video, Mouse (KVM) or Redirection **without user consent**. This means it is **not necessary** to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.
+
+
+

@@ -38,9 +38,9 @@ Find details about architectural details, security issues, and more in [Microser
 
 1. Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. 
 
-2. Clone the repository.
+2. Clone the repository and navigate to the open-amt-cloud-toolkit directory.
     ``` bash
-    git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+    git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit && cd open-amt-cloud-toolkit
     ```
 
 3. Run the following script to build and install the services. 
@@ -55,7 +55,7 @@ Find details about architectural details, security issues, and more in [Microser
         ./build.ps1
         ```
 
-4. Provide the IP Address of your development system and press Enter. 
+4. Provide the IP Address of your **development system** and press Enter. 
 
     !!! info
         The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
@@ -71,18 +71,16 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the MPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `mps` directory inside the `open-amt-cloud-toolkit` directory. 
-
-2. Start the MPS server. It may take approximately 2-3 minutes to start.
+1. Navigate to the `mps` directory. Start the MPS server. It may take approximately 2-3 minutes to start.
 
     === "Linux"
         ``` bash
-        npm run devx
+        cd mps && npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        npm run dev
+        cd mps && npm run dev
         ```
 
     !!! Success
@@ -99,18 +97,16 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the RPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `rps` directory inside the `open-amt-cloud-toolkit` directory. 
-
-2. Start the RPS server.
+1. Open a new Terminal or Command Prompt and navigate to the `open-amt-cloud-toolkit/rps` directory. Start the RPS server.
 
     === "Linux"
         ``` bash
-        npm run devx
+        cd rps && npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        npm run dev
+        cd rps && npm run dev
         ```
 
 
@@ -125,12 +121,10 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the Sample Web UI:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `sample-web-ui` directory inside the `open-amt-cloud-toolkit` directory.
-
-2. Start the server.
+1. Open a new Terminal or Command Prompt. Navigate to the `open-amt-cloud-toolkit/sample-web-ui` directory, and start the server.
 
     ``` bash
-    npm start
+     cd sample-web-ui && npm start
     ```
 
 3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
