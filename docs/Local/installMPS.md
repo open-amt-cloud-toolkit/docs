@@ -47,15 +47,17 @@ Find details about architectural details, security issues, and more in [Microser
 
     === "Linux"
         ``` bash
+        cd open-amt-cloud-toolkit
         make build
         ```
 
     === "Windows (Powershell)"
         ``` powershell
+        cd open-amt-cloud-toolkit
         ./build.ps1
         ```
 
-4. Provide the IP Address of your development system and press Enter. 
+4. Provide the IP Address of your **development system** and press Enter. 
 
     !!! info
         The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
@@ -71,17 +73,17 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the MPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `mps` directory inside the `open-amt-cloud-toolkit` directory. 
-
-2. Start the MPS server. It may take approximately 2-3 minutes to start.
+1. Open a new Terminal or Command Prompt and navigate to the `mps` directory inside the `open-amt-cloud-toolkit` directory. Start the MPS server. It may take approximately 2-3 minutes to start.
 
     === "Linux"
         ``` bash
+        cd mps
         npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
+        cd mps
         npm run dev
         ```
 
@@ -99,17 +101,17 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the RPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `rps` directory inside the `open-amt-cloud-toolkit` directory. 
-
-2. Start the RPS server.
+1. Open a new Terminal or Command Prompt and navigate to the `rps` directory inside the `open-amt-cloud-toolkit` directory. Start the RPS server.
 
     === "Linux"
         ``` bash
+        cd ../rps
         npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
+        cd ..\rps
         npm run dev
         ```
 

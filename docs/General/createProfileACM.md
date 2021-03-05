@@ -1,13 +1,4 @@
-Intel® AMT devices are capable of being activated into two modes:
-
-- [**Admin Control Mode (ACM):**](../Glossary.md#a) In this mode, there are no limitations to Intel AMT functionality. This reflects the higher level of trust associated with these setup methods. No user consent is required.
-
-- [**Client Control Mode (CCM):**](../Glossary.md#c) This mode limits some of Intel AMT functionality, reflecting the lower level of trust.
-
-    Features requiring User Consent:
-
-    - Keyboard, Video, Mouse (KVM) Control
-    - IDE-Redirection for sharing and mounting images remotely
+[Admin Control Mode (ACM)](../Glossary.md#a) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. No user consent is required.
 
 ![assets/images/Profiles.png](../assets/images/Profiles.png)
 

@@ -1,21 +1,28 @@
 # Overview
 
- [**Open Active Management Technology (Open AMT) Cloud Toolkit**](Glossary.md#o) provides open-source, modular microservices and libraries for integration of [Intel® Active Management Technology (Intel® AMT)](Glossary.md#i). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize [out-of-band management (OOB)](Glossary.md#o) solutions for [Intel vPro® platforms](Glossary.md#i).
+ [**Open Active Management Technology (Open AMT) Cloud Toolkit**](Glossary.md#o) provides open-source, modular microservices and libraries for integration of [Intel® Active Management Technology (Intel® AMT)](Glossary.md#i). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize [out-of-band (OOB) management](Glossary.md#o) solutions for [Intel vPro® platforms](Glossary.md#i).
 
 ![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
 
  **Figure 1: Open AMT Cloud Toolkit features out-of-band (OOB) management.**
  
+ Intel® AMT supports remote manageability with: 
+
+ **OOB Management:** This hardware-based remote management solution operates below the operating system.
+
+**Call Home:** This capability enables administrators to control, update, and modify remote clients with OOB Management.
+
+ 
 ## Goals
 The toolkit guide provides instructions to:
 
 - Deploy the [Management Presence Server (MPS)](Glossary.md#m) and [Remote Provisioning Server (RPS)](Glossary.md#r) on the development system.
-- Build and run [Remote Provisioning Client (RPC)](Glossary.md#r)on the managed device.
+- Build and run [Remote Provisioning Client (RPC)](Glossary.md#r) on the managed device.
 - Connect the managed device (edge device)
 
 Additional sections provide guidance on the reference implementation UI Toolkit, REST API usage, asset security, and more. 
 
-![assets/images/AEHighLevelArch.png](assets/images/AEHighLevelArch.png)
+![assets/images/AEHighLevelArch.png](assets/images/HiLevelArchitecture.png)
 
  **Figure 2: High-level architecture consists of four major software components.**
 
