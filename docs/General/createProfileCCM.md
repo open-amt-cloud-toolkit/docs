@@ -4,6 +4,7 @@ These features require user consent:
 
 - Keyboard, Video, Mouse (KVM) Control
 - IDE-Redirection for sharing and mounting images remotely
+- Serial-over-LAN (SOL)
 
 ![assets/images/Profiles.png](../assets/images/Profiles.png)
 
