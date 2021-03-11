@@ -121,12 +121,10 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the Sample Web UI:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `sample-web-ui` directory inside the `open-amt-cloud-toolkit` directory.
-
-2. Start the server.
+1. Open a new Terminal or Command Prompt. Navigate to the `sample-web-ui` directory inside the `open-amt-cloud-toolkit` directory, and start the server.
 
     ``` bash
-    npm start
+     cd ..\sample-web-ui && npm start
     ```
 
 3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
