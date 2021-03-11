@@ -38,22 +38,20 @@ Find details about architectural details, security issues, and more in [Microser
 
 1. Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. 
 
-2. Clone the repository.
+2. Clone the repository and navigate to the open-amt-cloud-toolkit directory.
     ``` bash
-    git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+    git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit && cd open-amt-cloud-toolkit
     ```
 
 3. Run the following script to build and install the services. 
 
     === "Linux"
         ``` bash
-        cd open-amt-cloud-toolkit
         make build
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        cd open-amt-cloud-toolkit
         ./build.ps1
         ```
 
