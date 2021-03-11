@@ -75,14 +75,12 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
     === "Linux"
         ``` bash
-        cd mps
-        npm run devx
+        cd mps && npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        cd mps
-        npm run dev
+        cd mps && npm run dev
         ```
 
     !!! Success
@@ -103,14 +101,12 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
     === "Linux"
         ``` bash
-        cd ../rps
-        npm run devx
+        cd ../rps && npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        cd ..\rps
-        npm run dev
+        cd ..\rps && npm run dev
         ```
 
 
