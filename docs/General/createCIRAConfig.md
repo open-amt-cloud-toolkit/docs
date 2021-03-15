@@ -2,12 +2,12 @@ Out-of-band (OOB) manageability is a separate channel of remote management that 
 
 With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
 
-* reboot
-* reset
-* power on and power up
-* power off and power down
-* boot to BIOS 
-* reset to BIOS
+* Reboot
+* Reset
+* Power on and power up
+* Power off and power down
+* Boot to BIOS 
+* Reset to BIOS
 
 Intel AMT supports these actions and more.
 
