@@ -71,7 +71,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the MPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `mps` directory inside the `open-amt-cloud-toolkit` directory. Start the MPS server. It may take approximately 2-3 minutes to start.
+1. Navigate to the `mps` directory. Start the MPS server. It may take approximately 2-3 minutes to start.
 
     === "Linux"
         ``` bash
@@ -97,16 +97,16 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the RPS:**
 
-1. Open a new Terminal or Command Prompt and navigate to the `rps` directory inside the `open-amt-cloud-toolkit` directory. Start the RPS server.
+1. Open a new Terminal or Command Prompt and navigate to the `open-amt-cloud-toolkit/rps` directory. Start the RPS server.
 
     === "Linux"
         ``` bash
-        cd ../rps && npm run devx
+        cd rps && npm run devx
         ```
 
     === "Windows (Powershell)"
         ``` powershell
-        cd ..\rps && npm run dev
+        cd rps && npm run dev
         ```
 
 
@@ -121,10 +121,10 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
 **To start the Sample Web UI:**
 
-1. Open a new Terminal or Command Prompt. Navigate to the `sample-web-ui` directory inside the `open-amt-cloud-toolkit` directory, and start the server.
+1. Open a new Terminal or Command Prompt. Navigate to the `open-amt-cloud-toolkit/sample-web-ui` directory, and start the server.
 
     ``` bash
-     cd ..\sample-web-ui && npm start
+     cd sample-web-ui && npm start
     ```
 
 3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
