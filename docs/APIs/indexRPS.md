@@ -8,7 +8,7 @@ The Remote Provisioning Server (RPS) REST API provides methods to create, modify
 
 These configurations and settings are used in the remote configuration of Intel vPro® platforms featuring Intel® Active Management Technology (Intel® AMT). 
 
-We've documented the RPS API with Swagger*.
+We've documented the RPS REST API with Swagger*.
 
 [Get Started with RPS REST API](https://app.swaggerhub.com/apis-docs/rsdmike/RPS/1.2.0){: .md-button .md-button--primary target="_blank"}
 
