@@ -1716,8 +1716,18 @@
                 
                   <h1>Create a CIRA Config</h1>
                 
-                <p><a href="../../Glossary/#c">Client Initiated Remote Access (CIRA)</a> enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS rather than the MPS initiating contact with the edge device.  This enables access to edge devices that might be harder to reach behind a firewall or a firewall process, such as network address translation (NAT).</p>
-<p>A CIRA Configuration provides the Remote Provisioning Client (RPC) the required information to establish the edge device's CIRA connection to the MPS Server during the activation process. </p>
+                <p>Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS.</p>
+<p>With this persistent connection, administrators can execute various system actions on the remotely managed device, including:</p>
+<ul>
+<li>Reboot</li>
+<li>Reset</li>
+<li>Power on and power up</li>
+<li>Power off and power down</li>
+<li>Boot to BIOS </li>
+<li>Reset to BIOS</li>
+</ul>
+<p>Intel AMT supports these actions and more.</p>
+<p>As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. </p>
 <p><strong>To create a CIRA Config:</strong></p>
 <ol>
 <li>

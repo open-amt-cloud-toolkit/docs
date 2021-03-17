@@ -1819,8 +1819,8 @@
 <p>Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. </p>
 </li>
 <li>
-<p>Clone the repository.
-    <div class="highlight"><pre><span></span><code>git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+<p>Clone the repository and navigate to the open-amt-cloud-toolkit directory.
+    <div class="highlight"><pre><span></span><code>git clone --recursive --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit <span class="o">&amp;&amp;</span> <span class="nb">cd</span> open-amt-cloud-toolkit
 </code></pre></div></p>
 </li>
 <li>
@@ -1836,7 +1836,7 @@
 </div>
 </li>
 <li>
-<p>Provide the IP Address of your development system and press Enter. </p>
+<p>Provide the IP Address of your <strong>development system</strong> and press Enter. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The script will update the <code>./mps/.mpsrc</code> file and the <code>./sample-web-ui/src/app.config.js</code> file with the IP address you enter. It will also run <code>npm install</code> for each service to install the necessary dependencies. For more information on all available configuration options for MPS <a href="../../Microservices/MPS/configuration/">click here</a> and for RPS <a href="../../Microservices/RPS/configuration/">click here</a>.</p>
@@ -1853,16 +1853,13 @@
 <p><strong>To start the MPS:</strong></p>
 <ol>
 <li>
-<p>Open a new Terminal or Command Prompt and navigate to the <code>mps</code> directory inside the <code>open-amt-cloud-toolkit</code> directory. </p>
-</li>
-<li>
-<p>Start the MPS server. It may take approximately 2-3 minutes to start.</p>
+<p>Navigate to the <code>mps</code> directory. Start the MPS server. It may take approximately 2-3 minutes to start.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>npm run devx
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> mps <span class="o">&amp;&amp;</span> npm run devx
 </code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">mps</span> <span class="p">&amp;&amp;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
 </code></pre></div>
 </div>
 </div>
@@ -1880,16 +1877,13 @@
 <p><strong>To start the RPS:</strong></p>
 <ol>
 <li>
-<p>Open a new Terminal or Command Prompt and navigate to the <code>rps</code> directory inside the <code>open-amt-cloud-toolkit</code> directory. </p>
-</li>
-<li>
-<p>Start the RPS server.</p>
+<p>Open a new Terminal or Command Prompt and navigate to the <code>open-amt-cloud-toolkit/rps</code> directory. Start the RPS server.</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>npm run devx
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> rps <span class="o">&amp;&amp;</span> npm run devx
 </code></pre></div>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
+<div class="highlight"><pre><span></span><code><span class="nb">cd </span><span class="n">rps</span> <span class="p">&amp;&amp;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">dev</span>
 </code></pre></div>
 </div>
 </div>
@@ -1905,11 +1899,8 @@
 <p><strong>To start the Sample Web UI:</strong></p>
 <ol>
 <li>
-<p>Open a new Terminal or Command Prompt and navigate to the <code>sample-web-ui</code> directory inside the <code>open-amt-cloud-toolkit</code> directory.</p>
-</li>
-<li>
-<p>Start the server.</p>
-<div class="highlight"><pre><span></span><code>npm start
+<p>Open a new Terminal or Command Prompt. Navigate to the <code>open-amt-cloud-toolkit/sample-web-ui</code> directory, and start the server.</p>
+<div class="highlight"><pre><span></span><code> <span class="nb">cd</span> sample-web-ui <span class="o">&amp;&amp;</span> npm start
 </code></pre></div>
 </li>
 <li>
