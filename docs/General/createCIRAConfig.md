@@ -1,4 +1,4 @@
-Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access [Intel® Active Management Technology (Intel® AMT)](../Glossary.md#i) devices at a hardware level, beneath the operating system. This is accomplished with [Client Initiated Remote Access (CIRA)](../Glossary.md#c), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS.
+Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS.
 
 With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
 
