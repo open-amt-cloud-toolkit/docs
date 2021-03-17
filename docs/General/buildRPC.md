@@ -7,15 +7,16 @@ The Remote Provisioning Client (RPC) communicates with the Manageability Engine 
 
 [![RPC](../assets/images/RPC_Overview.png)](../assets/images/RPC_Overview.png)
 
-### Build RPC
+## Build RPC
 
-We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](../Microservices/RPC/buildRPC_Manual.md).
+We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](../Microservices/RPC/buildRPC_Manual.md). Optionally, to build RPC with Docker, skip to [Docker Build](#docker-build).
 
 Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.)
 
 <img src="../../assets/animations/forkandbuild.gif" width="500"  />
 
-**To build the RPC with Github Actions:**
+### Github Actions
+#### To Build the RPC with Github Actions
 
 1. Create a fork of the repository.
 
@@ -35,29 +36,41 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 8. Once the download is complete, click the completed job, which will feature a green checkmark, and download the appropriate RPC for your managed device's OS under the **Artifacts** section.
 
-**To delete your workflow run:**
+#### To Delete your workflow run
 
 1. Click the **...** menu for the workflow. 
 
 2. Choose the **Delete workflow run** option.
 
-### Run RPC to Activate and Connect the AMT Device
+### Docker Build
+
+To build RPC w/ Docker, use the following command from the root directory of the open-amt-cloud-toolkit:
+
+``` bash
+cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
+```  
+
+## Run RPC to Activate and Connect the AMT Device
 
 **To run the application and connect the managed device:**
 
-1\. On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
+1. On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
 
-- Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running
-- Replace [profile-name] with your created profile from the Web Server.
+    - Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running
+    - Replace [profile-name] with your created profile from the Web Server.
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
-    ```
-=== "Windows"
-    ```
-    rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
-    ```
+    === "Linux"
+        ``` bash
+        sudo ./rpc -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
+        ```
+    === "Docker"
+        ``` bash
+        sudo docker run --device=/dev/mei0 rpc:latest --url wss://[Development-IP-Address]:8080 --nocertcheck -c "activate --profile [profile-name]"
+        ```
+    === "Windows"
+        ```
+        rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
+        ```
 
 !!! note
     Because we are using a self-signed certificate for easier development testing, we need to supply the **--nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the flag and other arguments [here](../Microservices/RPC/commandsRPC.md).
