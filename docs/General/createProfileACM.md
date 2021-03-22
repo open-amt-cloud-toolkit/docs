@@ -1,4 +1,4 @@
-[Admin Control Mode (ACM)](../Glossary.md#a) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. No user consent is required.
+[Admin Control Mode (ACM)](../Glossary.md#a) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.
 
 ![assets/images/Profiles.png](../assets/images/Profiles.png)
 
@@ -14,6 +14,10 @@ By purchasing a certificate, you'll be able to remotely activate an Intel AMT de
 - [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
 - [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
 - [GoDaddy](https://www.intel.com/content/dam/support/us/en/documents/software/software-applications/how_to_purchase_and_install_godaddy_certificates_for_setup_and_configuration.pdf)
+
+!!! Important
+    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+
 
 #### DNS Suffix
 The [DNS suffix](../Glossary.md#d) encompasses the [domain suffix](../Glossary.md#d) (e.g., .com) and follows the hostname. Consider the following DNS Name example:
@@ -61,10 +65,10 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. Leave **Generate Random AMT Password** unchecked.
+5. In order to facilitate quick set up,  leave **Generate Random AMT Password** unchecked. 
    
     !!! tip "Production Environment"
-        In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.
+        In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random passwords, be aware of the risks. **If the SQL database is lost or corrupted, all randomly generated credentials will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
 
 6. Provide a strong **AMT Password**.
 
@@ -79,7 +83,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
    
 8. Provide a strong **MEBX Password**.
 
-9. Select DHCP as **Network Configuration**.
+9.  Select DHCP as **Network Configuration**.
 
 10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 

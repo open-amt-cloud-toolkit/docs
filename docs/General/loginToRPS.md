@@ -8,6 +8,8 @@ The web portal is available for login after the deployment of the [Management Pr
     ```
     https://[Development-IP-Address]:3000
     ```
+    !!! Important
+        Do not skip this step. It enables the MPS in the Sample Web UI.
 
 2.  A warning screen will prompt. Click **Advanced** and then **Proceed** to continue to connect to the MPS webserver.
 
