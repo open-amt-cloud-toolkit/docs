@@ -16,12 +16,17 @@ sudo ./rpc <required> [optional]
 sudo ./rpc <informational>
 ```
 
+On Docker:
+``` bash
+sudo docker run --device=/dev/mei0 rpc:latest <required> [optional]
+sudo docker run --device=/dev/mei0 rpc:latest <informational>
+```
 ### RPC Arguments
 
 #### Required
 
 | Argument&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Description |
-| :------------------------- | :--------------------- | :---------- |
+| -------------------------- | ---------------------- | ----------- |
 | -c, --cmd &lt;command&gt;  | Server Command         | Activate or Deactivate command for AMT device. See example commands below. |
 | -u, --url &lt;url&gt;      | Websocket Server       | Address and Port of the RPS server, wss://localhost:8080. By default, RPS runs on port 8080. |
 
@@ -45,7 +50,7 @@ rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd"
 #### Optional <a name="optional"></a>
 
 | Argument&emsp;&emsp;&emsp;&emsp; | Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   | Description |
-| :------------------------- | :----------------------- | :---------- |
+| -------------------------- | ------------------------ | ----------- |
 | -d, --dns &lt;dns&gt;      | DNS Suffix Override      | |
 | -n, --nocertcheck          | Certificate Verification | Disable certificate verification. Allows for the use of self-signed certificates during development testing. Not valid for production. Otherwise, a TLS Certificate from a trusted Certificate Authority provider is required. |
 | -p, --proxy &lt;addr&gt;   | Proxy Address and Port   | Allow for connection through a network proxy, http://proxy.com:1000 |
@@ -69,7 +74,7 @@ rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd" -p http://pro
 #### Informational
 
 | Argument                   | Name                   | Description |
-| :------------------------- | :--------------------- | :---------- |
+| -------------------------- | ---------------------- | ----------- |
 | --help                     | Help text              | Display help menu in-line |
 | --version                  | Version                | Current version of RPC |
 | --amtinfo &lt;item&gt;     | AMT info               | View available information<br><br>**Possible &lt;item&gt; Parameters:**<br>all - View all items<br>ver - BIOS version<br>bld - Build number<br>sku - Product SKU<br>uuid - [Device's Unique Identifier](../../Topics/guids.md)<br>mode - Current Control Mode, ACM or CCM<br>dns - Domain Name Suffix from AMT and from OS<br>fqdn - Fully aualified domain name and device hostname from OS<br>cert - Certificate hashes<br>ras - Remote access status<br>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses     |
