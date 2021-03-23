@@ -31,3 +31,4 @@
 | RPS_CORS_HEADERS |  Origin, X-Requested-With, Accept, X-MPS-API-Key,x-rps-api-key, Content-Type, csrf-token, authorization | List of accepted HTTP Headers |
 | RPS_CORS_METHODS |  * | List of HTTP Methods that are allowed |
 | RPS_CORS_ALLOW_CREDENTIALS |  true | Controls whether or not session credentials can be send |
+| RPS_DELAY_TIMER |  12 | Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, RPS sends heartbeats to RPC to keep the connection alive.  |
