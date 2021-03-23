@@ -3,7 +3,7 @@
 
 ## Local Development (docker) (recommended):
 
-`docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:6.1.4`
+`docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:6.1.7`
 
 ## Local Development (native)
 
