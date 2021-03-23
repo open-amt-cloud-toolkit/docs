@@ -1,8 +1,4 @@
-# PowerAction
-
-This AMT method lets you perform an out-of-band power action.
-
-Actions are specified by number. Use the [PowerCapabilities](powercapabilities.md) method to return the actions available for a specific device. Use the [PowerState][powerstate.md] method to obtain the current power state.
+Actions are specified by number. Use the [PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt) method to return the actions available for a specific device. Use the [PowerState][https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt] method to obtain the current power state.
 
 Possible actions are listed in the following table:
 
@@ -35,34 +31,4 @@ Consider the current state of the system when implementing a possible action. Fo
 If the system is already powered up, choosing to Power Up to BIOS will not have any effect on the system. A better choice is Reset to BIOS.
 
 !!! note
-	More information on obtaining an AMT device's GUID can be found [here](../../Topics/guids.md).
-
-* Endpoint: */amt*
-* Method Type: POST
-* Headers: *X-MPS-API-Key*
-* Body:
-
-``` json
-{  
-   "method":"PowerAction",
-   "payload":{  
-      "guid":"038d0240-045c-05f4-7706-980700080009", //Replace with an AMT Device's GUID
-      "action":2
-   }
-}
-```
-
-Example Outputs:
-
-!!! success
-
-    ``` json
-    '200':
-        {
-          "ResponseBody":{
-    		"returnValue":0,
-    		"returnValueStr":"SUCCESS"
-    	}
-    ```
-
-Return to [MPS Methods](../indexMPS.md)
+	More information on obtaining an AMT device's GUID can be found [here](./guids.md).

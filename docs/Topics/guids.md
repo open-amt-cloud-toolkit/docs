@@ -5,17 +5,17 @@ Each Intel&reg; AMT device has a Global Unique Identifier (GUID) assigned to it 
 There are a number of ways to obtain the GUID on the Intel&reg; AMT device:
 
 - WebUI of the Management Presence Server within the Open AMT Cloud Toolkit 
-- [ConnectedDevices API Method](../APIs/MPSmethods/connecteddevices.md)
+- [ConnectedDevices API Method](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/Admin/post_admin)
 
 
 
 ## Via WebUI
 
-1\. Login to your Management Presence Server through the WebUI.
+1. Login to your Management Presence Server through the WebUI.
 
-2\. Navigate to the Devices tab.
+2. Navigate to the Devices tab.
 
-3\. Your AMT device's GUID is listed in the 2nd column.
+3. Your AMT device's GUID is listed in the 2nd column.
 
 [![GUID](../assets/images/GUID_WebUI.png)](../assets/images/GUID_WebUI.png)
 
@@ -31,7 +31,6 @@ Example ConnectedDevices Output:
     "host": "d12428be-9fa1-4226-9784-54b2038beab6",
     "amtuser": "admin",
     "mpsuser": "standalone",
-    "icon": 1,
     "conn": 1,
     "name": "d12428be-9fa1-4226-9784-54b2038beab6"
 }]
