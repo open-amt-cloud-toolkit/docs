@@ -68,7 +68,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 5. In order to facilitate quick set up,  leave **Generate Random AMT Password** unchecked. 
    
     !!! tip "Production Environment"
-        In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random passwords, be aware of the risks. **If the SQL database is lost or corrupted, all randomly generated credentials will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
+        In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random    passwords, be aware of the risks. **If the Vault database is lost or corrupted, all randomly generated credentials will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
 
 6. Provide a strong **AMT Password**.
 
