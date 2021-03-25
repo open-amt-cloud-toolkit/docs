@@ -22,8 +22,8 @@ function App() {
   return (
     <div className="App">
       <MpsProvider data={data}>
-        <KVM deviceId="038d0240-045c-05f4-7706-980700080009"
-        mpsServer="<192.168.1.38>:3000/relay"
+        <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //The AMT Device's GUID
+        mpsServer="[MPS-Server-IP-Address]:3000/relay"
         mouseDebounceTime="200"
         canvasHeight="100%"
         canvasWidth="100%"></KVM>

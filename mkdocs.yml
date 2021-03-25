@@ -54,20 +54,20 @@ nav:
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - UI Toolkit:
     - Controls:
-      - Audit Log: UIToolkit/Controls/auditLogControl.md
-      - Cira Config: UIToolkit/Controls/ciraConfigControl.md
-      - Device Grid: UIToolkit/Controls/deviceGridControl.md
-      - Domain: UIToolkit/Controls/domainControl.md
+      # - Audit Log: UIToolkit/Controls/auditLogControl.md
+      # - Cira Config: UIToolkit/Controls/ciraConfigControl.md
+      # - Device Grid: UIToolkit/Controls/deviceGridControl.md
+      # - Domain: UIToolkit/Controls/domainControl.md
       - Keyboard, Video, Mouse (KVM): UIToolkit/Controls/kvmControl.md
-      - Profile: UIToolkit/Controls/profileControl.md
+      # - Profile: UIToolkit/Controls/profileControl.md
       - Serial Over LAN (SOL): UIToolkit/Controls/serialOverLANControl.md
     - React Bundles:
-      - Audit Logs: UIToolkit/Bundles/auditLog.md
-      - Cira Configs: UIToolkit/Bundles/CIRAConfigs.md
-      - Device Grid: UIToolkit/Bundles/DeviceGrid.md
-      - Domains: UIToolkit/Bundles/Domains.md
+      # - Audit Logs: UIToolkit/Bundles/auditLog.md
+      # - Cira Configs: UIToolkit/Bundles/CIRAConfigs.md
+      # - Device Grid: UIToolkit/Bundles/DeviceGrid.md
+      # - Domains: UIToolkit/Bundles/Domains.md
       - Keyboard, Video, Mouse (KVM): UIToolkit/Bundles/kvm.md
-      - Profiles: UIToolkit/Bundles/Profiles.md
+      # - Profiles: UIToolkit/Bundles/Profiles.md
       - Serial Over LAN (SOL): UIToolkit/Bundles/SerialOverLAN.md
     - Localization: UIToolkit/localization.md
     - Webpack Configuration: UIToolkit/Webpack-Configuration.md
