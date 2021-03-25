@@ -39,7 +39,7 @@ AMT methods allow you to send device-specific calls for things such as power act
    | **HardwareInfo** | Retrieve hardware information such as processor or storage  |
    | **PowerAction** | Perform an OOB power action |
    | **PowerCapabilities** | View what OOB power actions are available for that device |
-   | **PowerState** | Retrieve current state of AMT device, returns a number that maps to the PowerActions .md) table |
+   | **PowerState** | Retrieve current state of AMT device, returns a number that maps to an [AMT Power State](../Topics/powerstates.md) |
    | **SetAMTFeatures** | Enable/Disable AMT features such as KVM, SOL, and IDE-R |
    | **Version** | Retrieve AMT version of device |
  

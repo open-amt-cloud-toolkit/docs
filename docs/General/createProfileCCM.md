@@ -20,16 +20,19 @@ These features require user consent:
 
 2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
 
+    [![RPS](../assets/images/RPS_NewProfile.png)](../assets/images/RPS_NewProfile.png)
+    **Figure 1: Create a new profile.**
+
 3. Specify a **Profile Name** of your choice.
 
-4. Under **Activation**, select **Client Control Mode** from the dropdown menu.
+4. Under **Activation Mode**, select **Client Control Mode** from the dropdown menu.
 
 5. Leave **Generate Random AMT Password** unchecked.
    
     !!! tip "Production Environment"
         In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.
 
-6. Provide a strong **AMT Password**.
+6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
 
     !!! important
         This password must meet standard, **strong** password requirements:
@@ -37,23 +40,22 @@ These features require user consent:
         - 8 to 32 characters
 
         - One uppercase, one lowercase, one numerical digit, one special character
-
-7. Leave **Generate Random MEBX Password** unchecked.
    
-8. Provide a strong **MEBX Password**.
+7. An **MEBX Password** is not required for CCM activation.
 
-9. Select DHCP as **Network Configuration**.
+8. Select DHCP as **Network Configuration**.
 
-10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+9. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+10. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-13. Click **Create.**
+11. Click **Save.**
 
     !!! example
         Example CCM Profile:
 
         [![RPS](../assets/images/RPS_CreateProfile.png)](../assets/images/RPS_CreateProfile.png)
+        **Figure 2: Example CCM profile.**
 
 ## Next up
 **[Build & Run RPC](buildRPC.md)**

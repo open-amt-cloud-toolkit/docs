@@ -1,4 +1,4 @@
-Actions are specified by number. Use the [PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt) method to return the actions available for a specific device. Use the [PowerState][https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt] method to obtain the current power state.
+Actions are specified by number. Use the [PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt) method to return the actions available for a specific device. Use the [PowerState](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/AMT/post_amt) method to obtain the current power state.
 
 Possible actions are listed in the following table:
 
@@ -29,6 +29,3 @@ Consider the current state of the system when implementing a possible action. Fo
 * Hibernate implies that the current system state is powered up. 
 
 If the system is already powered up, choosing to Power Up to BIOS will not have any effect on the system. A better choice is Reset to BIOS.
-
-!!! note
-	More information on obtaining an AMT device's GUID can be found [here](./guids.md).
