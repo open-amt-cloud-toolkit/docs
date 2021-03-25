@@ -53,7 +53,7 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 1\. On the managed device, open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to the directory containing the RPC application. Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
 
-- Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running
+- Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running.
 - Replace [profile-name] with your created profile from the Web Server. The RPC application command line parameters are case sensitive.
 
 === "Linux"
