@@ -23,8 +23,8 @@ function App() {
     <div className="App">
       <MpsProvider data={data}>
         <AuditLog
-        deviceId="038d0240-045c-05f4-7706-980700080009"
-        mpsServer="<192.168.1.38>:3000"></AuditLog>
+        deviceId="038d0240-045c-05f4-7706-980700080009" //The AMT Device's GUID
+        mpsServer="[MPS-Server-IP-Address]:3000"></AuditLog>
       </MpsProvider>
     </div>
   );

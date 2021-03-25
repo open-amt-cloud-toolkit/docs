@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <RpsProvider data={data}>
-        <Profile rpsServer="https://<192.168.1.38>:8081" mpsServer="https://<192.168.1.38>:3000"/>
+        <Profile rpsServer="https://[RPS-Server-IP-Address]:8081" mpsServer="https://[MPS-Server-IP-Address]:3000"/>
       </RpsProvider>
     </div>
   );

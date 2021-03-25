@@ -22,7 +22,7 @@ function App() {
     <div>
       <RpsProvider data={data}>
         <DomainEditor
-        rpsServer="https://<192.168.1.38>:8081"/>
+        rpsServer="https://[RPS-Server-IP-Address]:8081"/>
       </RpsProvider>
     </div>
   );

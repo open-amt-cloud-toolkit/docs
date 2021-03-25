@@ -2,9 +2,9 @@
 
 This document shows how to:
 
- - Run the KVM control in development enviroment
- - Create a bundle for KVM control
- - Add bundle to a sample html file 
+- Run the KVM control in development enviroment
+- Create a bundle for KVM control
+- Add bundle to a sample HTML file 
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ In order to deploy and make changes, the following tools and application has to 
 - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
-- [An MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
+- [A MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
 
 
 ## Download and Install UI Toolkit
@@ -36,7 +36,7 @@ In order to deploy and make changes, the following tools and application has to 
 	npm install
 	```
 
-## Run KVM in Development Enviroment
+## Run in Development Enviroment
 
 To add and test new changes before bundling the control, a webpack dev server can be used.
 
@@ -47,14 +47,14 @@ To add and test new changes before bundling the control, a webpack dev server ca
 
 2. Open a Chrome* browser and navigate to the following link to see changes.
 	```
-	http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&mpsServer=[MPS-Server-IP-Address]:3000
+	http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
 
 	!!! note
 		By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.
 
 
-## Create Bundle for KVM
+## Create Bundle
 
 1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
 
@@ -95,7 +95,7 @@ To add and test new changes before bundling the control, a webpack dev server ca
 
 4. Open a new Chrome* browser and navigate to the following url:
 	```
-	http://localhost:5000/src/sample/sampleKVM.htm?deviceId=[AMT-Device-GUID]&mpsServer=[MPS-Server-IP-Address]:3000
+	http://localhost:5000/src/sample/sampleKVM.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
 
 You will see the errors in the following scenarios: 

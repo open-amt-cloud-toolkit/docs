@@ -10,33 +10,33 @@ This document shows how to:
 
 In order to deploy and make changes, the following tools and application has to be installed on your development machine
 
--   [Git](https://git-scm.com/)
--   [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
--   [Node.js](https://nodejs.org/)
--   [Chrome* Browser](https://www.google.com/chrome)
--   [An MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
+- [Node.js](https://nodejs.org/)
+- [Chrome* Browser](https://www.google.com/chrome)
+- [A MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
 
 
 ## Download and Install UI Toolkit
 
-1. Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development.
+1. Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.
 
 2. Clone the UI-Toolkit Repository.
-  ```
-  git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit#v1.2.0
-  ```
+	```
+	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit#v1.2.0
+	```
 
 3. Change to the `ui-toolkit` directory.
-  ```
-  cd ui_toolkit
-  ```
+	```
+	cd ui_toolkit
+	```
 
 4. Install the dependencies.
-  ```
-  npm install
-  ```
+	```
+	npm install
+	```
 
-## Run SOL in Development Enviroment
+## Run in Development Enviroment
 
 To add and test new changes before bundling the control, a webpack dev server can be used.
 
@@ -46,14 +46,14 @@ To add and test new changes before bundling the control, a webpack dev server ca
 	```
 
 2. Open a Chrome* browser and navigate to the following link to see changes.
-  ```
-  http://localhost:8080/sol.htm?deviceId=[AMT-Device-GUID]&mpsServer=[MPS-Server-IP-Address]:3000
-  ```
+	```
+	http://localhost:8080/sol.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
+	```
 
 	!!! note
 		By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.
 
-## Create Bundle for SOL
+## Create Bundle
 
 1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
 
@@ -95,7 +95,7 @@ To add and test new changes before bundling the control, a webpack dev server ca
 
 4. Open a new Chrome* browser and navigate to the following url:
 	```
-	http://localhost:5000/src/sample/sampleSOL.htm?deviceId=[AMT-Device-GUID]&mpsServer=[MPS-Server-IP-Address]:3000
+	http://localhost:5000/src/sample/sampleSOL.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
 
 You will see the errors in the following scenarios: 

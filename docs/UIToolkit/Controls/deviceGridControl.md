@@ -23,7 +23,7 @@ function App() {
     <div>
       <MpsProvider data={data}>
         <DeviceGrid
-          mpsServer="<192.168.1.38>:3000"></DeviceGrid>
+          mpsServer="[MPS-Server-IP-Address]:3000"></DeviceGrid>
       </MpsProvider>
     </div>
   );

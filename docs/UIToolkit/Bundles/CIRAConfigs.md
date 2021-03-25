@@ -1,91 +1,100 @@
-# Quickstart - To Bundle CIRA configs Control  
+# Quickstart - Bundle CIRA Config Control
 
-This document shows how to bundle CIRA configs control and display it on a sample html page for testing.
+This document shows how to:
 
-  - how to customize the control
-  - how to create a bundle for CIRA configs control
-  - how to add to sample html
-  - how to add a new language for Internalization 
-
+- Run the CIRA Config control in development enviroment
+- Create a bundle for CIRA Config control
+- Add bundle to a sample HTML file 
 
 ## Prerequisites
 
 In order to deploy and make changes, the following tools and application has to be installed on your development machine
--   [Git](https://git-scm.com/)
--   [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
--   [Node.js](https://nodejs.org/)
--   [RPS](https://github.com/open-amt-cloud-toolkit/rps) stands for **R**emote **P**rovisioning **S**erver
--   Build and deploy RPS MicroService locally
--	Intel AMT device is configured and connected to RPS. See the [RPS](https://github.com/open-amt-cloud-toolkit/rps) for documentation.
--   Chrome 
+
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
+- [Node.js](https://nodejs.org/)
+- [Chrome* Browser](https://www.google.com/chrome)
+- [A MPS and RPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
+
 
 ## Download and Install UI Toolkit
 
-At a command prompt, run the following commands:
-```
-git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit
-cd ui-toolkit
-npm install
-```
+1. Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.
 
-## Customize the control
+2. Clone the UI Toolkit Repository.
+	```
+	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit#v1.2.0
+	```
 
-To add new changes and test the changes  instantly before bundling the control, webpack dev server can be used
+3. Change to the `ui-toolkit` directory.
+	```
+	cd ui_toolkit
+	```
 
-After making  the changes, open a command prompt and navigate to the root of ui-toolkit, run the below command.
+4. Install the dependencies.
+	```
+	npm install
+	```
 
-```
-npm start
-```
+## Run in Development Enviroment
 
-Open the browser and navigate to following URL
+To add and test new changes before bundling the control, a webpack dev server can be used.
 
-```
-http://localhost:8080/cira.htm?server=<protocol>://<rps IPaddress>:<rps port>
-```
+1. Start the server.
+	```
+	npm start
+	```
 
-**Note:** By default webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on  the next immediate available port
+2. Open a Chrome* browser and navigate to the following link to see changes.
+	```
+	http://localhost:8082/cira.htm?rpsServer=https://[RPS-Server-IP-Address]:8080
+	```
 
-## Create Bundle for CIRA configs
-At a command prompt navigate to the root of ui-toolkit, run the below command.
-> **Note:** Remove or rename the existing **cira.core.min.js**  in **dist/**
-```
-npm run build
-```
-A new **cira.core.min.js** will be created in **dist/** directory.
-
-To bundle the cira configs control without node_modules,  run the below command in a command prompt on the root of ui-toolkit,
-
-```
-npm run build-ext
-```
-
-**Note**: The bundle generated using build-ext command can be used in react apps as an independent control
+	!!! note
+		By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.
 
 
+## Create Bundle
 
-## Add to sample html page
+1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
 
-To display the CIRA configs control on a sample web page, update following changes to the existing **src/sample/sampleCIRA.htm** page.
+2. Remove or rename the existing *cira.core.min.js*  in the `ui-toolkit/dist/` directory before building.
 
-```
-<body>
-<div id="ciraroot"></div>
-<script src="../../dist/cira.core.min.js" crossorigin></script>
-</body>
-```
+3. Build the bundle.
+	```
+	npm run build
+	```
 
-## Test the sample page
-At a command prompt navigate to the root of ui-toolkit, run the below command.
-```
-npx serve
-```
-Open Chrome browser, navigate to the following url
-```
-http://<localhost>:5000/src/sample/sampleCIRA.htm?server=<rps IPaddress>:<rps port>
-```
+	A new *cira.core.min.js* will be created in the `ui-toolkit/dist/` directory.
 
-## Add a new Language for Internationalization
+	!!! note
+		To bundle the KVM control without node_modules, run the following build command instead.
+		```
+		npm run built-ext
+		```
+		The bundle generated using the build-ext command can be used in react apps as an independent control
 
- Please refer to [Localization](../localization.md) docs
+
+## Add to Sample HTML Page
+
+1. Add the following code snippet to *sampleCIRA.htm* in the `ui-toolkit/src/sample/` directory using an editor of your choice.
+
+	```
+		<body>
+			<div id="ciraroot"></div>
+			<script src="../../dist/cira.core.min.js" crossorigin></script>
+		</body>
+	```
+
+2. In a Terminal (Linux) or Command Prompt (Windows), navigate to the `ui-toolkit` directory.
+
+3. Serve the HTML page.
+	```
+	npx serve
+	```
+
+4. Open a new Chrome* browser and navigate to the following url:
+	```
+	http://localhost:5000/src/sample/sampleCIRA.htm?rpsServer=https://[RPS-Server-IP-Address]:8080
+	```
 
