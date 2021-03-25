@@ -1,11 +1,17 @@
 <!-- [![RPC](../assets/animations/forkandbuild.gif)](../assets/animations/forkandbuild.gif =500x) -->
 
-The Remote Provisioning Client (RPC) communicates with the Manageability Engine Interface (MEI) and RPS interfaces. The MEI uses the ME Driver to talk to Intel AMT. By running RPC, we will activate Intel AMT into Client Control Mode (CCM), or Admin Control Mode (ACM) based on the created profile, as well as configure the CIRA connection of the AMT device to the MPS. After successfully running, the AMT device will be ready to be managed remotely using the web interface!
+The Remote Provisioning Client (RPC) on the managed devices establishes the Client Initiated Remote Access (CIRA) connection of the Intel® Active Management Technology (Intel® AMT) device to the Management Presence Server (MPS). This allows the remote device to call home to the MPS.  
+
+After running the RPC, the Intel® AMT managed device can be managed remotely using the web interface!
 
 !!! tip "Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
 [![RPC](../assets/images/RPC_Overview.png)](../assets/images/RPC_Overview.png)
+**Figure 1: RPC Configuration** 
+
+!!! tip "Figure 1 Details"
+         The RPC on the managed devices communicates with the Manageability Engine Interface (MEI) and Remote Provisioning Server (RPS) interfaces. The MEI uses the ME Driver to talk to Intel® AMT (Steps 3 and 4, Figure 1). The RPC activates Intel® AMT with a control mode profile, which is associated with a CIRA configuration. The profile, Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../General/createCIRAConfig.md) or [Create an AMT Profile](../General/createProfileACM.md). After running RPC with a profile, the MPS can manage the remote device and issue AMT commands (Steps 5, Figure 1).
 
 ## Build RPC
 
@@ -54,10 +60,10 @@ cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
 
 **To run the application and connect the managed device:**
 
-1. On the managed device, run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
+1\. On the managed device, open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to the directory containing the RPC application. Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
 
-    - Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running
-    - Replace [profile-name] with your created profile from the Web Server.
+- Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running.
+- Replace [profile-name] with your created profile from the Web Server. The RPC application command line parameters are case sensitive.
 
     === "Linux"
         ``` bash

@@ -22,7 +22,7 @@ install webpack and webpack cli as dev dependencies.
 npm i webpack webpack-cli -D webpack-dev-server.
 
 
-## Configuring Webpack for development enviroment :
+## Configuring Webpack for development environment :
 
 Create a Webpack config file webpack.config.dev.js in the root of our project folder.
 
