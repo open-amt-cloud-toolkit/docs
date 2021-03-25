@@ -1779,7 +1779,7 @@
                 
                   <h1>Create a Profile with ACM</h1>
                 
-                <p><a href="../../Glossary/#a">Admin Control Mode (ACM)</a> provides full access to Intel® Active Management Technology (Intel® AMT) functionality. No user consent is required.</p>
+                <p><a href="../../Glossary/#a">Admin Control Mode (ACM)</a> provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.</p>
 <p><img alt="assets/images/Profiles.png" src="../../assets/images/Profiles.png" /></p>
 <p><strong>Figure 1: Set up configuration and profiles for N number of clients. </strong></p>
 <h3 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h3>
@@ -1791,6 +1791,10 @@
 <li><a href="https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html">Entrust</a></li>
 <li><a href="https://www.intel.com/content/dam/support/us/en/documents/software/software-applications/how_to_purchase_and_install_godaddy_certificates_for_setup_and_configuration.pdf">GoDaddy</a></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, <strong>use only</strong> certificate vendors that support Intel® AMT.</p>
+</div>
 <h4 id="dns-suffix">DNS Suffix<a class="headerlink" href="#dns-suffix" title="Permanent link">&para;</a></h4>
 <p>The <a href="../../Glossary/#d">DNS suffix</a> encompasses the <a href="../../Glossary/#d">domain suffix</a> (e.g., .com) and follows the hostname. Consider the following DNS Name example:</p>
 <details class="example" open="open"><summary>Example</summary><p>DNS Name: cb-vending1.burgerbusiness.com</p>
@@ -1837,10 +1841,10 @@
 <p>Under <strong>Activation</strong>, select <strong>Admin Control Mode</strong> from the dropdown menu.</p>
 </li>
 <li>
-<p>Leave <strong>Generate Random AMT Password</strong> unchecked.</p>
+<p>In order to facilitate quick set up,  leave <strong>Generate Random AMT Password</strong> unchecked. </p>
 <div class="admonition tip">
 <p class="admonition-title">Production Environment</p>
-<p>In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.</p>
+<p>In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random    passwords, be aware of the risks. <strong>If the Vault database is lost or corrupted, all randomly generated credentials will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
 </div>
 </li>
 <li>
