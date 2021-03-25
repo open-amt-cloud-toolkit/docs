@@ -46,7 +46,9 @@ These features require user consent:
 
 10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Click **Create.**
+12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+13. Click **Create.**
 
     !!! example
         Example CCM Profile:

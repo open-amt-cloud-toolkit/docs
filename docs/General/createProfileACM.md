@@ -87,7 +87,9 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Click **Create.**
+11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+12. Click **Create.**
 
 !!! example
     Example ACM Profile:
