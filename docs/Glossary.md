@@ -47,7 +47,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Intel® Active Management Technology (Intel® AMT):** A technology that provides out-of-band management and security features on an Intel vPro® platform. [See general overview of features.](https://www.intel.com/content/www/us/en/architecture-and-technology/intel-active-management-technology.html)
 
-**Intel vPro® Platform:** An Intel® platform created for business environments. Intel vPro® features Intel® Core™ i5 and Intel® Core™ i7 vPro® processors, built-in security features, and out-of-band manageability using Intel® AMT. [See more about the platform.](https://www.intel.com/content/www/us/en/architecture-and-technology/vpro/vpro-platform-general.html)
+**Intel vPro® Platform:** An Intel® platform created for business environments. Intel vPro® features Intel® Core™ i5, Intel® Core™ i7, and Intel® Core™ i9 vPro® processors, built-in security features, and out-of-band manageability using Intel® AMT.  [See more about the platform.](https://www.intel.com/content/www/us/en/architecture-and-technology/vpro/vpro-platform-general.html)
 
 **Images (Docker*):**  a set of instructions that determine the creation of an instantiated container  on a Docker platform.
 

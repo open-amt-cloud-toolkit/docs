@@ -1,4 +1,4 @@
-[**Client Control Mode (CCM)**](../Glossary.md#c) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for some features, reflecting the lower level of trust.
+[**Client Control Mode (CCM)**](../Glossary.md#c) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 
 These features require user consent:
 

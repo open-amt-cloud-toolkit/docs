@@ -1,6 +1,6 @@
 
 
-The Open Active Management Technology (AMT) Cloud Toolkit repository includes: 
+The Open Active Management Technology (AMT) Cloud Toolkit repository includes:
 
 - [Management Presence Server (MPS)](../Glossary.md#m)
 - [Remote Provisioning Server (RPS)](../Glossary.md#r)
@@ -58,7 +58,7 @@ Find details about architectural details, security issues, and more in [Microser
 4. Provide the IP Address of your **development system** and press Enter. 
 
     !!! info
-        The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
+        Make sure to enter the IP Address of the development system, not that of any managed devices. The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/app.config.js` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
 
     !!! note
         Warning messages are okay and expected for optional dependencies.

@@ -79,33 +79,12 @@ nav:
     # - Secret Storage: Tutorials/addVault.md
     - Allowlists: Tutorials/allowlist.md
   - APIs:
-    - Management Presence Server:
-      - Overview: APIs/indexMPS.md
-      - Admin Methods:
-        - AllDevices: APIs/MPSmethods/alldevices.md
-        - ConnectedDevices: APIs/MPSmethods/connecteddevices.md
-        - Disconnect: APIs/MPSmethods/disconnect.md
-        - MEScript: APIs/MPSmethods/mescript.md
-        - RootCertificate: APIs/MPSmethods/rootcertificate.md
-      - AMT Methods:
-        - AuditLog: APIs/MPSmethods/auditlog.md
-        - EventLog: APIs/MPSmethods/eventlog.md
-        - GeneralSettings: APIs/MPSmethods/generalsettings.md
-        - GetAMTFeatures: APIs/MPSmethods/getamtfeatures.md
-        - HardwareInfo: APIs/MPSmethods/hardwareinfo.md
-        - PowerAction: APIs/MPSmethods/poweraction.md
-        - PowerCapabilities: APIs/MPSmethods/powercapabilities.md
-        - PowerState: APIs/MPSmethods/powerstate.md
-        - SetAMTFeatures: APIs/MPSmethods/setamtfeatures.md
-        - Version: APIs/MPSmethods/version.md
-    - Remote Provisioning Server:
-      - Overview: APIs/indexRPS.md
-      - CIRA Configuration: APIs/RPSmethods/ciraconfig.md
-      - Intel AMT Domains: APIs/RPSmethods/domains.md
-      - Intel AMT Profiles: APIs/RPSmethods/profiles.md
-      # - Network Configurations: APIs/RPSmethods/networkconfig.md
+    - Management Presence Server: APIs/indexMPS.md
+    - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
     # - Static and Dynamic IPs: Topics/staticIP.md
+    - Glossary: Glossary.md
+    - AMT Power States: Topics/powerstates.md
     - GUIDs in Intel AMT: Topics/guids.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
