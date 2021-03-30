@@ -65,9 +65,7 @@ Find details about architectural details, security issues, and more in [Microser
 
     !!! info
         Make sure to enter the **IP Address of the development system**, not that of any managed devices. The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/environments/environment.ts` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
-<!-- 
-    !!! note
-        Warning messages are okay and expected for optional dependencies. -->
+
 
 All dependencies for MPS, RPS, and the Web UI have now been installed and configured. To learn more about each component and their role click [here](../Microservices/overview.md).
 
@@ -101,9 +99,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         **Figure 1: MPS reports successful deployment.**
 
-    <!-- !!! Note
-        Because the `generateCertificates` field is set to true in the `.mpsrc` file, certificates will be generated and stored in the `../mps/private` directory. -->
-
+    
 <br>
 
 **To start the RPS:**
@@ -158,6 +154,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         **Figure 3: Sample UI reports successful deployment.**
 
+4. The pop-up window will not load the Sample Web UI because the pop-up defaults to localhost.  We will manually navigate to the correct URL in the **Next up** section.
 
 ## Next up
 

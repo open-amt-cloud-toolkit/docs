@@ -41,7 +41,7 @@ These features require user consent:
 
         - One uppercase, one lowercase, one numerical digit, one special character
    
-7. An **MEBX Password** is not required for CCM activation.
+7. An **MEBX Password** is disabled for CCM activation.
 
 8. Select DHCP as **Network Configuration**.
 

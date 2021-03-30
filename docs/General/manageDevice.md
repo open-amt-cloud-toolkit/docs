@@ -29,7 +29,7 @@
 
 3. Click on your connected device.
 
-6. Select an action to perform from the options in the top-right.
+4. Select an action to perform from the options in the top-right.
 
     [![mps](../assets/images/MPS_ManageDevice.png)](../assets/images/MPS_ManageDevice.png)
 

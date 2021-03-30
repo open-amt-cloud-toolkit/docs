@@ -116,7 +116,7 @@ Intel AMT checks the network DNS suffix against the provisioning certificate as 
 
     **Figure 3: Create Domain. **
 
-3. Specify a **Domain Name** of your choice.
+3. Specify a name of your choice for the Domain Profile for the **Domain Name** field. This does not have to be the actual network Domain Name/Suffix.
 
 4. Provide your **Domain Suffix**. This is the actual DNS Suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
 
