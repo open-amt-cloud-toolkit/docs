@@ -121,7 +121,7 @@ The code snippet below adds KVM control to the React application.
         <div className="App">
           <MpsProvider data={data}>
             <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-            mpsServer="localhost:3000/relay" //Replace 'localhost' with Development System or MPS Server IP
+            mpsServer="localhost:3000/relay" //Replace 'localhost' with Development System or MPS Server IP Address
             mouseDebounceTime="200"
             canvasHeight="100%"
             canvasWidth="100%"></KVM>

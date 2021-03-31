@@ -43,4 +43,4 @@ Language can be changed in the browser under langauage section of the browser se
 
 ## Get Localized Strings for Web Consoles with Localization Enabled
 
-If a user's web console is already enabled with localization, please make sure to add the [translations](https://github.com/open-amt-cloud-toolkit/ui-toolkit/tree/master/public/locales) of UI-controls into your web console's translations file.
+If your web console already has localization enabled, make sure to add the [translations](https://github.com/open-amt-cloud-toolkit/ui-toolkit/tree/master/public/locales) of the UI-controls into your web console's translations file.

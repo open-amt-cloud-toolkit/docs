@@ -14,7 +14,7 @@ In order to deploy and make changes, the following tools and application has to 
 - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
-- [A MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
+- [MPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
 
 
 ## Download and Install UI Toolkit
@@ -36,9 +36,9 @@ In order to deploy and make changes, the following tools and application has to 
 	npm install
 	```
 
-## Run in Development Enviroment
+## Run in Development Environment
 
-To add and test new changes before bundling the control, a webpack dev server can be used.
+To add and test new changes before bundling the control, use a webpack dev server.
 
 1. Start the server.
 	```
@@ -93,16 +93,16 @@ To add and test new changes before bundling the control, a webpack dev server ca
 	npx serve
 	```
 
-4. Open a new Chrome* browser and navigate to the following url:
+4. Open a new Chrome* browser and navigate to the following URL:
 	```
 	http://localhost:5000/src/sample/sampleSOL.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
 
-You will see the errors in the following scenarios: 
+You will see errors in the following scenarios: 
 
-- Compilation errors if the ui-toolkit was not downloaded and installed into your react app.
-- The MPS server is not running
-- The MPS server is running but the device is not connected.
+- UI-toolkit was not downloaded and installed into your react app
+- MPS Server is not running
+- MPS Server is running but the device is not connected
 
 
 

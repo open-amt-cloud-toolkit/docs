@@ -14,7 +14,7 @@ In order to deploy and make changes, the following tools and application has to 
 - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
-- [A MPS and RPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
+- [MPS and RPS Server with an AMT Device Connected](../../../Docker/dockerLocal/)
 
 
 ## Download and Install UI Toolkit
@@ -36,9 +36,9 @@ In order to deploy and make changes, the following tools and application has to 
 	npm install
 	```
 
-## Run in Development Enviroment
+## Run in Development Environment
 
-To add and test new changes before bundling the control, a webpack dev server can be used.
+To add and test new changes before bundling the control, use a webpack dev server.
 
 1. Start the server.
 	```
@@ -93,7 +93,7 @@ To add and test new changes before bundling the control, a webpack dev server ca
 	npx serve
 	```
 
-4. Open a new Chrome* browser and navigate to the following url:
+4. Open a new Chrome* browser and navigate to the following URL:
 	```
 	http://localhost:5000/src/sample/sampleDomain.htm?rpsServer=https://[RPS-Server-IP-Address]:8080
 	```
