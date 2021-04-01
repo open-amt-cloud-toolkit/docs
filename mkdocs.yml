@@ -26,7 +26,10 @@ nav:
   - Home: index.md
   - Getting Started:
     - Install:
-      - Local:
+      - Overview:
+        - Manual Overview: Local/overview.md
+        - Docker Overview: Docker/overview.md
+      - Setup:
         - Express Manual Setup: Local/installMPS.md
         - Express Docker Setup: Docker/dockerLocal.md
     - Configure:

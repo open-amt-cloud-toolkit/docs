@@ -59,7 +59,10 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 1. Select the **Profiles** tab from the menu on the left.
 
-2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
+2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
+
+    [![RPS](../assets/images/RPS_NewProfile.png)](../assets/images/RPS_NewProfile.png)
+    **Figure 1: Create a new profile.**
 
 3. Specify a **Profile Name** of your choice.
 
@@ -70,7 +73,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
     !!! tip "Production Environment"
         In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random    passwords, be aware of the risks. **If the Vault database is lost or corrupted, all randomly generated credentials will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
 
-6. Provide a strong **AMT Password**.
+6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
 
     !!! important
         This password must meet standard, **strong** password requirements:
@@ -81,25 +84,25 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 7. Leave **Generate Random MEBX Password** unchecked.
    
-8. Provide a strong **MEBX Password**.
+8. Provide a strong **MEBX Password**. This password can be used to access MEBx on the AMT device.
 
-9.  Select DHCP as **Network Configuration**.
+9. Select DHCP as **Network Configuration**.
 
 10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
 11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-12. Click **Create.**
+12. Click **Save.**
 
 !!! example
     Example ACM Profile:
     [![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
 
-    **Figure 2: Create an ACM AMT profile. **
+    **Figure 2: Example ACM profile.**
 
 ### Create a Domain Profile
 
-In addition to a CIRA Config and an ACM AMT Profile, ACM requires the creation of a Domain profile.
+In addition to a CIRA Config and an ACM Profile, ACM requires the creation of a Domain profile.
 
 Intel AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
 
@@ -107,27 +110,27 @@ Intel AMT checks the network DNS suffix against the provisioning certificate as 
 
 1. Select the **Domains** tab from the left-hand menu.
 
-2. In the top-right corner, click **New.**
+2. In the top-right corner, click **Add New.**
 
     [![RPS New Domain](../assets/images/RPS_NewDomain.png)](../assets/images/RPS_NewDomain.png)
 
     **Figure 3: Create Domain. **
 
-3. Specify a Domain **Name** of your choice.
+3. Specify a name of your choice for the Domain Profile for the **Domain Name** field. This does not have to be the actual network Domain Name/Suffix.
 
-4. Provide your ** Domain Suffix**. This is the actual DNS Suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
+4. Provide your **Domain Suffix**. This is the actual DNS Suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
 
-5. Click **Browse ** and select your purchased Provisioning Certificate.  This certificate must contain the private key.
+5. Click **Choose File** and select your purchased Provisioning Certificate.  This certificate must contain the private key.
 
-6. Provide the Password of the Provisioning Certificate used to encrypt the `.pfx` file.
+6. Provide the **Provisioning Certificate Password** used to encrypt the `.pfx` file.
 
-7. Click **Create.**
+7. Click **Save.**
 
     !!! example
         Example Domain:
             
         [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
-        **Figure 4: Add Provisioning Certificate. **
+        **Figure 4: Example Domain profile. **
 
 
 ## Next Up
