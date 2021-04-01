@@ -184,9 +184,7 @@
     <li class="md-tabs__item">
       
       
-        
-      
-      <a href="../../Local/installMPS/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -373,20 +371,69 @@
           
           
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
+    <label class="md-nav__link" for="nav-2-1-1">
+      Overview
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        <span class="md-nav__icon md-icon"></span>
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" checked>
-    <label class="md-nav__link" for="nav-2-1-1">
-      Local
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" checked>
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
-      <label class="md-nav__title" for="nav-2-1-1">
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1464,10 +1511,12 @@
 <h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">&para;</a></h2>
 <p><strong>To clone the repositories:</strong></p>
 <ol>
-<li>Open a Command Prompt or Terminal and navigate to a directory of your choice for development:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
+<li>
+<p>Open a Terminal or Powershell/Command Prompt and navigate to a directory of your choice for development:</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.2.0
 </code></pre></div>
+</li>
+</ol>
 <h2 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">&para;</a></h2>
 <p>The  <code>.env.template</code> file is used by docker to set environment variables.</p>
 <p><strong>To set the environment variables:</strong></p>
@@ -1478,14 +1527,14 @@
 <div class="highlight"><pre><span></span><code>cp .env.template .env
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (cmd)</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (Cmd Prompt)</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>copy .env.template .env
 </code></pre></div>
 </div>
 </div>
 </li>
 <li>
-<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Use a text editor to modify the <code>.env</code> file or replace YOURIPADDRESS in the command below to use the command line:</p>
+<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Replace <strong>YOURIPADDRESS</strong> in the command below or use a text editor to modify the <code>.env</code> file.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
 </code></pre></div>
@@ -1499,21 +1548,20 @@
 </ol>
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
 <p>Build the MPS, RPS, and Sample UI Docker images and launch the stack.</p>
-<p><strong>To build:</strong></p>
 <ol>
 <li>
-<p>Use docker-compose:</p>
-<div class="highlight"><pre><span></span><code>docker-compose -f <span class="s2">&quot;docker-compose.yml&quot;</span> up -d --build
+<p>Run docker-compose to start the containers.</p>
+<div class="highlight"><pre><span></span><code>sudo docker-compose -f <span class="s2">&quot;docker-compose.yml&quot;</span> up -d --build
 </code></pre></div>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Important - For Windows* 10</p>
 <p>While the <code>docker-compose up</code> command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
 <p><img alt="Image of filesharing" src="../../assets/images/DockerFileSharing.png" /></p>
 </div>
 </li>
 <li>
-<p>Check that all containers are running:</p>
-<div class="highlight"><pre><span></span><code>docker ps --format table<span class="o">{{</span>.Image<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Status<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Names<span class="o">}}</span>
+<p>Check that all of the containers are running.</p>
+<div class="highlight"><pre><span></span><code>sudo docker ps --format table<span class="o">{{</span>.Image<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Status<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Names<span class="o">}}</span>
 </code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -1524,10 +1572,6 @@ mps-microservice:v1               Up <span class="m">6</span> seconds    open-am
 vault                             Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_vault_1
 postgres                          Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rpsdb_1
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On completion, a security warning is normal during local setup with the default values for developer testing environments.</p>
-</div>
 </div>
 </li>
 </ol>

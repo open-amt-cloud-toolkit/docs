@@ -184,7 +184,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Local/installMPS/" class="md-tabs__link">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -374,13 +374,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
     <label class="md-nav__link" for="nav-2-1-1">
-      Local
+      Overview
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" >
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1453,12 +1502,14 @@
                 
                 <ol>
 <li>
-<p>On your development system, browse to the web server in Chrome* using the development system's IP Address.</p>
+<p>Go back to the Sample Web UI on your development system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you closed the browser or were logged out, follow these steps to reopen it:</p>
+<p>Navigate to the UI.</p>
 <div class="highlight"><pre><span></span><code>http://[Development-IP-Address]:3001
 </code></pre></div>
-</li>
-<li>
-<p>Log in with the default credentials below.</p>
+<p>Log in with the default credentials.</p>
 <p><strong>Default credentials:</strong></p>
 <table>
 <thead>
@@ -1478,32 +1529,29 @@
 </tr>
 </tbody>
 </table>
+</div>
 </li>
 <li>
-<p>After logging in, click on Management Presence Server. If already logged in, click the Home icon in the top left corner.</p>
-<p><a href="../../assets/images/WebUI_HomeMPS.png"><img alt="WebUI" src="../../assets/images/WebUI_HomeMPS.png" /></a></p>
-</li>
-<li>
-<p>Click the devices tab from the menu on the left, or click <em>Connected</em> in the default homepage.</p>
+<p>Click the Devices tab from the menu on the left.</p>
 <p><a href="../../assets/images/MPS_ConnectedDevice.png"><img alt="mps" src="../../assets/images/MPS_ConnectedDevice.png" /></a></p>
 <div class="admonition troubleshooting">
 <p class="admonition-title">Troubleshooting</p>
-<p>If the activated device is not listed or if it is listed as unconnected, unplug and then plug back in the power of the AMT device. After succesfully restarting the device, refresh the WebUI to see if the <em>Status</em> changes to <em>Connected</em> and turns green.</p>
+<p>If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After succesfully restarting the device, refresh the WebUI to see if the <em>Status</em> changes to <em>connected</em>.</p>
 </div>
 </li>
 <li>
-<p>Select the checkbox by the connected device you want to manage.</p>
+<p>Click on your connected device.</p>
 </li>
 <li>
-<p>Select an action to perform from the options on the right.</p>
+<p>Select an action to perform from the options in the top-right.</p>
 <p><a href="../../assets/images/MPS_ManageDevice.png"><img alt="mps" src="../../assets/images/MPS_ManageDevice.png" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Since the device was activated in Client Control Mode(CCM), the KVM feature will    not function in this current release. To use KVM, follow the <a href="../createProfileACM/">ACM Activation   Tutorial</a> to see how to configure a device into Admin Control    Mode.</p>
+<p>If activated into Client Control Mode(CCM), the KVM and SOL features will not function in the current release. To use KVM/SOL, follow the <a href="../createProfileACM/">ACM Activation Tutorial</a> to see how to configure a device into Admin Control Mode.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM)   feature to remotely view and control the AMT device.  Issue a Reset to BIOS command   and be able to view and make live changes to BIOS settings.</p>
+<p>Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command and be able to view and make live changes to BIOS settings.</p>
 </div>
 </li>
 </ol>

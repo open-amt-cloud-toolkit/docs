@@ -184,7 +184,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Local/installMPS/" class="md-tabs__link">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -374,13 +374,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
     <label class="md-nav__link" for="nav-2-1-1">
-      Local
+      Overview
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" >
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1429,22 +1478,22 @@
 <p>Each Intel&reg; AMT device has a Global Unique Identifier (GUID) assigned to it by default. This GUID will be used as the reference to each device record. Typically, device GUIDs are required to perform power actions and other device-specific manageability features.</p>
 <p>There are a number of ways to obtain the GUID on the Intel&reg; AMT device:</p>
 <ul>
-<li>WebUI of the Management Presence Server within the Open AMT Cloud Toolkit </li>
+<li>Sample Web UI of the Open AMT Cloud Toolkit </li>
 <li><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/Admin/post_admin">ConnectedDevices API Method</a></li>
 </ul>
 <h2 id="via-webui">Via WebUI<a class="headerlink" href="#via-webui" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Login to your Management Presence Server through the WebUI.</p>
+<p>Login to your Sample Web UI.</p>
 </li>
 <li>
 <p>Navigate to the Devices tab.</p>
 </li>
 <li>
 <p>Your AMT device's GUID is listed in the 2nd column.</p>
+<p><a href="../../assets/images/MPS_ConnectedDevice.png"><img alt="GUID" src="../../assets/images/MPS_ConnectedDevice.png" /></a></p>
 </li>
 </ol>
-<p><a href="../../assets/images/GUID_WebUI.png"><img alt="GUID" src="../../assets/images/GUID_WebUI.png" /></a></p>
 <h2 id="via-api-method">Via API Method<a class="headerlink" href="#via-api-method" title="Permanent link">&para;</a></h2>
 <p>A device's GUID can also be found via the AllDevices or ConnectedDevices MPS methods. Users can follow the <a href="../../Tutorials/apiTutorial/">Construct a Rest API Call</a> tutorial on constructing and running the ConnectedDevices method as an example.</p>
 <p>Example ConnectedDevices Output:

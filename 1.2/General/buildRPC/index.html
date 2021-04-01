@@ -184,7 +184,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Local/installMPS/" class="md-tabs__link">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -374,13 +374,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
     <label class="md-nav__link" for="nav-2-1-1">
-      Local
+      Overview
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" >
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1505,9 +1554,7 @@
                 
                   <h1>Build & Run RPC</h1>
                 
-                <!-- [![RPC](../assets/animations/forkandbuild.gif)](../assets/animations/forkandbuild.gif =500x) -->
-
-<p>The Remote Provisioning Client (RPC) on the managed devices establishes the Client Initiated Remote Access (CIRA) connection of the Intel® Active Management Technology (Intel® AMT) device to the Management Presence Server (MPS). This allows the remote device to call home to the MPS.  </p>
+                <p>The Remote Provisioning Client (RPC) on the managed devices establishes the Client Initiated Remote Access (CIRA) connection of the Intel® Active Management Technology (Intel® AMT) device to the Management Presence Server (MPS). This allows the remote device to call home to the MPS.  </p>
 <p>After running the RPC, the Intel® AMT managed device can be managed remotely using the web interface!</p>
 <div class="admonition tip">
 <p class="admonition-title">Production Environment<p>In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.</p>
@@ -1516,8 +1563,8 @@
 <p><a href="../../assets/images/RPC_Overview.png"><img alt="RPC" src="../../assets/images/RPC_Overview.png" /></a>
 <strong>Figure 1: RPC Configuration</strong> </p>
 <div class="admonition tip">
-<p class="admonition-title">Figure 1 Details<p>The RPC on the managed devices communicates with the Manageability Engine Interface (MEI) and Remote Provisioning Server (RPS) interfaces. The MEI uses the ME Driver to talk to Intel® AMT (Steps 3 and 4, Figure 1). The RPC activates Intel® AMT with a control mode profile, which is associated with a CIRA configuration. The profile, Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in <a href="../createCIRAConfig/">Create a CIRA Config</a> or <a href="../createProfileACM/">Create an AMT Profile</a>. After running RPC with a profile, the MPS can manage the remote device and issue AMT commands (Steps 5, Figure 1).</p>
-</p>
+<p class="admonition-title">Figure 1 Details</p>
+<p>The RPC on the managed devices communicates with the Manageability Engine Interface (MEI) and Remote Provisioning Server (RPS) interfaces. The MEI uses the ME Driver to talk to Intel® AMT (Steps 3 and 4, Figure 1). The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration. The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in <a href="../createCIRAConfig/">Create a CIRA Config</a> or <a href="../createProfileACM/">Create an AMT Profile</a>. After running RPC with a profile, the MPS can manage the remote device and issue AMT commands (Steps 5, Figure 1).</p>
 </div>
 <h2 id="build-rpc">Build RPC<a class="headerlink" href="#build-rpc" title="Permanent link">&para;</a></h2>
 <p>We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions <a href="../../Microservices/RPC/buildRPC_Manual/">here</a>. Optionally, to build RPC with Docker, skip to <a href="#docker-build">Docker Build</a>.</p>
@@ -1528,16 +1575,16 @@
 <ol>
 <li>
 <p>Create a fork of the repository.</p>
-<p><a class="md-button md-button--primary" href="https://github.com/open-amt-cloud-toolkit/rpc/fork">Fork rpc on github</a></p>
+<p><a class="md-button md-button--primary" href="https://github.com/open-amt-cloud-toolkit/rpc/fork" target="_blank">Fork rpc on github</a></p>
 </li>
 <li>
-<p>Click on <strong>Actions</strong>, the tab at the top, and select <strong>Build RPC (Native) Debug/Release</strong>.</p>
+<p>Click on the <strong>Actions</strong> tab at the top and select <strong>Build RPC (Native) Debug/Release</strong>.</p>
 </li>
 <li>
 <p>Click the <strong>Run Workflow</strong> dropdown. </p>
 </li>
 <li>
-<p>Select the <strong>branch: v1.1.0</strong> from the <strong>Use workflow from</strong> dropdown. </p>
+<p>Select the <strong>branch: v1.2.0</strong> from the <strong>Use workflow from</strong> dropdown. </p>
 </li>
 <li>
 <p>By default, the Build Type should be <strong>release</strong>.  </p>
@@ -1549,7 +1596,10 @@
 <p>The build time ranges from 15 to 20 minutes.</p>
 </li>
 <li>
-<p>Once the download is complete, click the completed job, which will feature a green checkmark, and download the appropriate RPC for your managed device's OS under the <strong>Artifacts</strong> section.</p>
+<p>Once the download is complete, click the completed job which will feature a green checkmark.</p>
+</li>
+<li>
+<p>Download the appropriate RPC for your managed device's OS under the <strong>Artifacts</strong> section.</p>
 </li>
 </ol>
 <h4 id="to-delete-your-workflow-run">To Delete your workflow run<a class="headerlink" href="#to-delete-your-workflow-run" title="Permanent link">&para;</a></h4>
@@ -1567,9 +1617,19 @@
 </code></pre></div>
 <h2 id="run-rpc-to-activate-and-connect-the-amt-device">Run RPC to Activate and Connect the AMT Device<a class="headerlink" href="#run-rpc-to-activate-and-connect-the-amt-device" title="Permanent link">&para;</a></h2>
 <p><strong>To run the application and connect the managed device:</strong></p>
-<p>1. On the managed device, open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to the directory containing the RPC application. Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.</p>
-<ul>
-<li>Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running.</li>
+<ol>
+<li>
+<p>On the managed device, open a Terminal (Linux) or Powershell/Command Prompt as Administrator (Windows).</p>
+</li>
+<li>
+<p>Navigate to the directory containing the RPC application. </p>
+</li>
+<li>
+<p>Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.</p>
+</li>
+<li>
+<p>Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running.</p>
+</li>
 <li>
 <p>Replace [profile-name] with your created profile from the Web Server. The RPC application command line parameters are case sensitive.</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
@@ -1587,35 +1647,20 @@ Windows is not supported due to current limitations. See <a href="https://docs.m
 </div>
 </div>
 </li>
-</ul>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Because we are using a self-signed certificate for easier development testing, we need to supply the <strong>--nocertcheck</strong> flag. In production, you would opt for a CA signed certificate. Find out more information about the flag and other arguments <a href="../../Microservices/RPC/commandsRPC/">here</a>.</p>
+<p>Because we are using a self-signed certificate for easier development testing, we need to supply the <strong>--nocertcheck</strong> flag. In production, you would opt for a CA signed certificate. Find out more information about the <a href="../../Microservices/RPC/commandsRPC/">flag and other arguments</a>.</p>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>Example Output after Activating and Configuring a device into ACM:</p>
 <p><a href="../../assets/images/RPC_Success.png"><img alt="RPC Success" src="../../assets/images/RPC_Success.png" /></a></p>
-<div class="admonition tip">
-<p class="admonition-title">Production Environment</p>
-<p>In a production environment, an in-band agent would invoke this command with the parameters rather than a manual command.</p>
-</div>
-</div>
 <div class="admonition note">
-<p class="admonition-title">Troubleshooting<p>RPC generates this message: Unable to get activation info. </p>
-<p>Try again later or check AMT configuration. Verify that you are running RPC with elevated privileges in Terminal or Command Prompt on the managed device .</p>
-</p>
+<p class="admonition-title">Troubleshooting</p>
+<p>Run into an issue? Try these <a href="../../Microservices/RPC/troubleshootingRPC/">troubleshooting steps</a>.</p>
 </div>
-<!-- !!! note
-    If you do not remember your created profile's name, you can navigate to the *Profiles* tab on the web server hosted at `https://[Development-IP-Address]:3000`
-
-    **Default login credentials:**
-
-    | Field       |  Value    |
-    | :----------- | :-------------- |
-    | **Username**| standalone |
-    | **Password**| G@ppm0ym | -->
-
+</div>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../manageDevice/">Manage AMT Device</a></p>
                 

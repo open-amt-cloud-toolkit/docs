@@ -184,7 +184,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Local/installMPS/" class="md-tabs__link">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -374,13 +374,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
     <label class="md-nav__link" for="nav-2-1-1">
-      Local
+      Overview
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" >
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1613,7 +1662,6 @@
 </div>
 <ul>
 <li>The <strong>development system</strong> requires the following software:<ul>
-<li><a href="https://www.google.com/chrome">Chrome* Browser</a></li>
 <li><a href="https://git-scm.com/">git</a></li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE</li>
 <li><a href="https://nodejs.org/">Node.js* LTS 12.x.x or newer</a></li>
@@ -1631,7 +1679,7 @@
 <p>The React app can be created in any preferred development directory. The MPS can continue to run while creating and running the app.</p>
 <ol>
 <li>
-<p>In a Command Prompt or Terminal, go to your preferred development directory. </p>
+<p>In a Terminal or Command Prompt, go to your preferred development directory. </p>
 </li>
 <li>
 <p>Run the following commands to create sample React app named <code>my-app</code>.</p>
@@ -1644,7 +1692,7 @@
 <li>
 <p>Run the following command to add the UI Toolkit and install the required dependencies:</p>
 <div class="highlight"><pre><span></span><code>npm uninstall react react-dom --save 
-npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.1.0 react@16.13.1 react-dom@16.13.1 --save
+npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.2.0 react@16.13.1 react-dom@16.13.1 --save
 </code></pre></div>
 </li>
 <li>
@@ -1734,12 +1782,12 @@ When you make changes, you do not need to stop the application and restart. It w
 </li>
 </ol>
 <p>You are now able to remotely control your Intel AMT device. Other controls such as device audit logs or profiles for RPS have example code below to test with.</p>
-<p>You will see the errors in the following scenario's:</p>
+<p>You will see the errors in the following scenarios:</p>
 <ul>
-<li>compilation errors if ui-toolkit has not downloaded and installed to your react app.</li>
-<li>MPS/RPS server not running, appropriate controls fail to work.</li>
+<li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
+<li>MPS/RPS server not running, appropriate controls willfail to work.</li>
 <li>MPS server running and device not connected.</li>
-<li>If your browser is IE / Edge, there might be some compatibility issues.</li>
+<li>If your browser is IE/Edge, there might be compatibility issues.</li>
 </ul>
 <p><br></p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

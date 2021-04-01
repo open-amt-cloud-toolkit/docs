@@ -184,7 +184,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Local/installMPS/" class="md-tabs__link">
+      <a href="../../Local/overview/" class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -374,13 +374,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" >
     <label class="md-nav__link" for="nav-2-1-1">
-      Local
+      Overview
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Local" data-md-level="3">
+    <nav class="md-nav" aria-label="Overview" data-md-level="3">
       <label class="md-nav__title" for="nav-2-1-1">
         <span class="md-nav__icon md-icon"></span>
-        Local
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Local/overview/" class="md-nav__link">
+      Manual Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Docker/overview/" class="md-nav__link">
+      Docker Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2" >
+    <label class="md-nav__link" for="nav-2-1-2">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1427,15 +1476,15 @@
                 
                 <p>The web portal is available for login after the deployment of the <a href="../../Glossary/#m">Management Presence Server (MPS)</a>, <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a>, and <a href="../../Glossary/#s">Sample Web UI</a>. Make sure all three are successfully running before attempting to login.</p>
 <h2 id="before-logging-in">Before Logging In<a class="headerlink" href="#before-logging-in" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Open a Chrome* browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.</p>
-<div class="highlight"><pre><span></span><code>https://[Development-IP-Address]:3000
-</code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Do not skip this step. It enables the MPS in the Sample Web UI.</p>
+<p>Do not skip these steps. It enables the Sample Web UI to connect to the MPS server.</p>
 </div>
+<ol>
+<li>
+<p>Open any modern web browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.</p>
+<div class="highlight"><pre><span></span><code>https://[Development-IP-Address]:3000
+</code></pre></div>
 </li>
 <li>
 <p>A warning screen will prompt. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the MPS webserver.</p>
@@ -1444,17 +1493,22 @@
 <p><a href="../../assets/images/selfSignedConnect.png"><img alt="MPS Warning" src="../../assets/images/selfSignedConnect.png" /></a></p>
 </div>
 </li>
+<li>
+<p>After clicking proceed, you will see the following text. <strong>This is OK. Move on to the next section: Log In.</strong></p>
+<div class="highlight"><pre><span></span><code>Cannot GET /
+</code></pre></div>
+</li>
 </ol>
 <h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open a new tab on the Chrome* browser and navigate to the Sample Web UI using your development system's IP address on the port of the Sample Web UI. Typically, this is port 3001.</p>
+<p>Open a new tab in your browser and navigate to the Sample Web UI using your development system's IP address on the port of the Sample Web UI. Typically, this is port 3001.</p>
 <div class="highlight"><pre><span></span><code>http://[Development-IP-Address]:3001
 </code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Use your development system's IP Address to connect to the web server.
-<strong>Using <code>localhost</code> will not work.</strong> Google Chrome is currently the <strong>only</strong> supported browser for the Sample Web UI.</p>
+<strong>Using <code>localhost</code> will not work.</strong>  The Sample Web UI uses <strong>HTTP</strong> and not <strong>HTTPS</strong>.</p>
 </div>
 </li>
 <li>
@@ -1480,9 +1534,9 @@
 </table>
 </li>
 <li>
-<p>Select <strong>Remote Provisioning Server</strong> on the web portal.</p>
-<p><a href="../../assets/images/WebUI_HomeRPS.png"><img alt="WebUI" src="../../assets/images/WebUI_HomeRPS.png" /></a></p>
-<p><strong>Figure 1: Choose Remote Provisioning Server.</strong></p>
+<p>The home page should look like the following.</p>
+<p><a href="../../assets/images/WebUI_Home.png"><img alt="WebUI" src="../../assets/images/WebUI_Home.png" /></a></p>
+<p><strong>Figure 1: Sample Web UI Home Page</strong></p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
