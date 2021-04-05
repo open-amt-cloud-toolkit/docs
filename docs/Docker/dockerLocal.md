@@ -13,11 +13,11 @@ Get more information about Docker images and containers at [Docker resources.](h
 
 **To clone the repositories:**
 
-1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development:
+1. Open a Terminal or Powershell/Command Prompt and navigate to a directory of your choice for development:
 
-``` bash
-git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.1.0
-```
+    ``` bash
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.2.0
+    ```
   
 ## Set Environment Variables  
 
@@ -32,12 +32,12 @@ The  `.env.template` file is used by docker to set environment variables.
         cp .env.template .env
         ```
     
-    === "Windows (cmd)"
+    === "Windows (Cmd Prompt)"
         ```
         copy .env.template .env
         ```
 
-2. Set `MPS_COMMON_NAME` to your development system's IP Address. Use a text editor to modify the `.env` file or replace YOURIPADDRESS in the command below to use the command line:
+2. Set `MPS_COMMON_NAME` to your development system's IP Address. Replace **YOURIPADDRESS** in the command below or use a text editor to modify the `.env` file.
 
     === "Linux"
         ``` bash
@@ -53,25 +53,24 @@ The  `.env.template` file is used by docker to set environment variables.
 
 Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 
-**To build:**
 
-1.  Use docker-compose:
+1.  Run docker-compose to start the containers.
 
     ``` bash    
-    docker-compose -f "docker-compose.yml" up -d --build
+    sudo docker-compose -f "docker-compose.yml" up -d --build
     ```
 
-    !!! important
+    !!! important "Important - For Windows* 10"
         While the `docker-compose up` command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
 
         ![Image of filesharing](../assets/images/DockerFileSharing.png)
 
 
 
-2. Check that all containers are running:
+2. Check that all of the containers are running.
 
     ```bash
-    docker ps --format table{{.Image}}\t{{.Status}}\t{{.Names}}
+    sudo docker ps --format table{{.Image}}\t{{.Status}}\t{{.Names}}
     ```
 
     !!! success
@@ -84,9 +83,6 @@ Build the MPS, RPS, and Sample UI Docker images and launch the stack.
         postgres                          Up 6 seconds    open-amt-cloud-toolkit_rpsdb_1
         ```
     
-        !!! note
-            On completion, a security warning is normal during local setup with the default values for developer testing environments.
-
 If any of the above containers are not running, walk through the steps again or file a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
 
 !!! important

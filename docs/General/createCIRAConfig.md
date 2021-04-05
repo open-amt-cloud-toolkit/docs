@@ -1,4 +1,4 @@
-Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS.
+Out-of-band (OOB) manageability is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. 
 
 With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
 
@@ -13,42 +13,40 @@ Intel AMT supports these actions and more.
 
 As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. 
 
+
+
 **To create a CIRA Config:**
 
 1. Select the **CIRA Configs** tab from the left-hand menu.
 
-2. In the top-right corner, click **New.**
+2. In the top-right corner, click **Add New.**
     [![RPS](../assets/images/RPS_NewCIRAConfig.png)](../assets/images/RPS_NewCIRAConfig.png)
     **Figure 1: Create a new CIRA Config.**
 
 3. Specify a **Config Name** of your choice.
 
-4. Select **IPV4**, and provide your developement system's IP Address.
+4. Select **IPv4**, and provide your developement system's IP Address.
 
-5. Set **Port** to the default, 4433.
+5. **Cert Common Name (CN=)** should auto-populate. If not, provide your developement system's IP Address.
 
-6. Set **User Name** and **Password** to the following:
+6. Leave **Port** as the default, 4433.
+
+7. Set **User Name** and **Password** to the following:
 
     | Field         | Value      |
     | :------------ | :--------- |
     | **User Name** | standalone |
     | **Password**  | G@ppm0ym   |
 
+8. Leave the slider set on **Auto-load**.
 
-7. Provide your development system's IP address as the **Cert. Hostname(CN)** to generate the self-signed certificate by the MPS server.
-
-    !!! important
-        Do not modify the default value of **Auto Load** for the **MPS root certificate format.**
-
-8. Click **Load** under MPS Root Certificate.
-
-9. Click **Create.**
+9. Click **Save.**
     
     !!! example
         Example CIRA Config:
             
         [![RPS](../assets/images/RPS_CreateCIRAConfig.png)](../assets/images/RPS_CreateCIRAConfig.png)
-        **Figure 2: Load MPS Root Certificate.** 
+        **Figure 2: Example CIRA Config.** 
 
 ## Next up
 

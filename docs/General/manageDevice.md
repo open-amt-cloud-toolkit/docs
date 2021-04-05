@@ -1,42 +1,43 @@
 
-1. On your development system, browse to the web server in Chrome* using the development system's IP Address.
+1. Go back to the Sample Web UI on your development system.
 	
-    ```
-    http://[Development-IP-Address]:3001
-    ```
+    !!! note
+        If you closed the browser or were logged out, follow these steps to reopen it:
+            
+        Navigate to the UI.
 
-2. Log in with the default credentials below.
+        ```
+        http://[Development-IP-Address]:3001
+        ```
 
-    **Default credentials:**
+        Log in with the default credentials.
 
-    | Field       |  Value    |
-    | :----------- | :-------------- |
-    | **Username**| standalone |
-    | **Password**| G@ppm0ym |
+        **Default credentials:**
 
-3. After logging in, click on Management Presence Server. If already logged in, click the Home icon in the top left corner.
-
-    [![WebUI](../assets/images/WebUI_HomeMPS.png)](../assets/images/WebUI_HomeMPS.png)
+        | Field       |  Value    |
+        | :----------- | :-------------- |
+        | **Username**| standalone |
+        | **Password**| G@ppm0ym |
 
 
-4. Click the devices tab from the menu on the left, or click *Connected* in the default homepage.
+2. Click the Devices tab from the menu on the left.
 
     [![mps](../assets/images/MPS_ConnectedDevice.png)](../assets/images/MPS_ConnectedDevice.png)
 
     !!! troubleshooting
-        If the activated device is not listed or if it is listed as unconnected, unplug and then plug back in the power of the AMT device. After succesfully restarting the device, refresh the WebUI to see if the *Status* changes to *Connected* and turns green.
+        If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After succesfully restarting the device, refresh the WebUI to see if the *Status* changes to *connected*.
 
-5. Select the checkbox by the connected device you want to manage.
+3. Click on your connected device.
 
-6. Select an action to perform from the options on the right.
+4. Select an action to perform from the options in the top-right.
 
     [![mps](../assets/images/MPS_ManageDevice.png)](../assets/images/MPS_ManageDevice.png)
 
     !!! note
-        Since the device was activated in Client Control Mode(CCM), the KVM feature will    not function in this current release. To use KVM, follow the [ACM Activation   Tutorial](createProfileACM.md) to see how to configure a device into Admin Control    Mode.
+        If activated into Client Control Mode(CCM), the KVM and SOL features will not function in the current release. To use KVM/SOL, follow the [ACM Activation Tutorial](createProfileACM.md) to see how to configure a device into Admin Control Mode.
 
     !!! note
-        Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM)   feature to remotely view and control the AMT device.  Issue a Reset to BIOS command   and be able to view and make live changes to BIOS settings.
+        Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command and be able to view and make live changes to BIOS settings.
 
 <br>
 

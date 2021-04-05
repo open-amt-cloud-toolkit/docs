@@ -23,7 +23,6 @@ At minimum, to install and utilize the Open AMT Cloud Toolkit microservices, a n
     Instructions on how to set up the MPS and RPS servers to connect a vPro device can be followed in the [Local](../Local/overview.md) or [Local Docker](../Docker/overview.md) Build and Deploy Guides.
 
 - The **development system** requires the following software:
-    - [Chrome* Browser](https://www.google.com/chrome)
     - [git](https://git-scm.com/)
     - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE
     - [Node.js* LTS 12.x.x or newer](https://nodejs.org/)
@@ -36,14 +35,13 @@ Follow the steps in these sections sequentially:
 - Add UI controls to the React app
 
 
-
 [![UI Toolkit](../assets/images/HelloWorld.png)](../assets/images/HelloWorld.png)
 
 ## Create a New React App
 
 The React app can be created in any preferred development directory. The MPS can continue to run while creating and running the app.
 
-1. In a Command Prompt or Terminal, go to your preferred development directory. 
+1. In a Terminal or Command Prompt, go to your preferred development directory. 
 
 2. Run the following commands to create sample React app named `my-app`.
 
@@ -57,7 +55,7 @@ The React app can be created in any preferred development directory. The MPS can
 
     ``` bash
     npm uninstall react react-dom --save 
-    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.1.0 react@16.13.1 react-dom@16.13.1 --save
+    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.2.0 react@16.13.1 react-dom@16.13.1 --save
     ```
 
 2. Run the following commands to start the web UI locally:
@@ -142,12 +140,12 @@ The code snippet below adds KVM control to the React application.
 You are now able to remotely control your Intel AMT device. Other controls such as device audit logs or profiles for RPS have example code below to test with.
 
 
-You will see the errors in the following scenario's:
+You will see the errors in the following scenarios:
 
-- compilation errors if ui-toolkit has not downloaded and installed to your react app.
-- MPS/RPS server not running, appropriate controls fail to work.
+- Compilation errors if the ui-toolkit was not downloaded and installed to your react app.
+- MPS/RPS server not running, appropriate controls willfail to work.
 - MPS server running and device not connected.
-- If your browser is IE / Edge, there might be some compatibility issues.
+- If your browser is IE/Edge, there might be compatibility issues.
 
 <br>
 

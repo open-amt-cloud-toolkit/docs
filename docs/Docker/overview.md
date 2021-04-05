@@ -32,7 +32,6 @@ Both systems must use a wired (i.e., cable) connection on the same network.
         (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
         (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/).
 
-- [Chrome* Browser](https://www.google.com/chrome)
 - [git](https://git-scm.com/downloads)
      
 

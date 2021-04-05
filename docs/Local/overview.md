@@ -24,7 +24,6 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 
 **Before MPS and RPS installation, install the following software:**
 
-- [Chrome* Browser](https://www.google.com/chrome)
 - [git](https://git-scm.com/downloads)
 - [Node.js* LTS 12.x.x or newer](https://nodejs.org/)
   
