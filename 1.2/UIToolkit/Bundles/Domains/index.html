@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quickstart-to-bundle-domain-control" class="md-skip">
+        <a href="#quickstart-bundle-domain-control" class="md-skip">
           Skip to content
         </a>
       
@@ -1066,36 +1066,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#customize-the-control" class="md-nav__link">
-    Customize the control
+  <a href="#run-in-development-environment" class="md-nav__link">
+    Run in Development Environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-bundle-for-domain" class="md-nav__link">
-    Create Bundle for Domain
+  <a href="#create-bundle" class="md-nav__link">
+    Create Bundle
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to sample html page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-the-sample-page" class="md-nav__link">
-    Test the sample page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-new-language-for-internationalization" class="md-nav__link">
-    Add a new Language for Internationalization
+    Add to Sample HTML Page
   </a>
   
 </li>
@@ -1483,36 +1469,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#customize-the-control" class="md-nav__link">
-    Customize the control
+  <a href="#run-in-development-environment" class="md-nav__link">
+    Run in Development Environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-bundle-for-domain" class="md-nav__link">
-    Create Bundle for Domain
+  <a href="#create-bundle" class="md-nav__link">
+    Create Bundle
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to sample html page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-the-sample-page" class="md-nav__link">
-    Test the sample page
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-new-language-for-internationalization" class="md-nav__link">
-    Add a new Language for Internationalization
+    Add to Sample HTML Page
   </a>
   
 </li>
@@ -1534,66 +1506,107 @@
                   </a>
                 
                 
-                <h1 id="quickstart-to-bundle-domain-control">Quickstart - To Bundle Domain Control<a class="headerlink" href="#quickstart-to-bundle-domain-control" title="Permanent link">&para;</a></h1>
-<p>This document shows how to bundle Domain control and display it on a sample html page for testing.</p>
+                <h1 id="quickstart-bundle-domain-control">Quickstart - Bundle Domain Control<a class="headerlink" href="#quickstart-bundle-domain-control" title="Permanent link">&para;</a></h1>
+<p>This document shows how to:</p>
 <ul>
-<li>how to customize the control</li>
-<li>how to create a bundle for Domain control</li>
-<li>how to add to sample html</li>
-<li>how to add a new language for Internalization </li>
+<li>Run the Domain control in development enviroment</li>
+<li>Create a bundle for Domain control</li>
+<li>Add bundle to a sample HTML file </li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to deploy and make changes, the following tools and application has to be installed on your development machine
--   <a href="https://git-scm.com/">Git</a>
--   <a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE 
--   <a href="https://nodejs.org/">Node.js</a>
--   <a href="https://github.com/open-amt-cloud-toolkit/rps">RPS</a> stands for <strong>R</strong>emote <strong>P</strong>rovisioning <strong>S</strong>erver
--   Build and deploy RPS MicroService locally
--   Intel AMT device is configured and connected to RPS. See the <a href="https://github.com/open-amt-cloud-toolkit/rps">RPS</a> for documentation.
--   Chrome </p>
+<p>In order to deploy and make changes, the following tools and application has to be installed on your development machine</p>
+<ul>
+<li><a href="https://git-scm.com/">Git</a></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE </li>
+<li><a href="https://nodejs.org/">Node.js</a></li>
+<li><a href="https://www.google.com/chrome">Chrome* Browser</a></li>
+<li><a href="../../../Docker/dockerLocal/">MPS and RPS Server with an AMT Device Connected</a></li>
+</ul>
 <h2 id="download-and-install-ui-toolkit">Download and Install UI Toolkit<a class="headerlink" href="#download-and-install-ui-toolkit" title="Permanent link">&para;</a></h2>
-<p>At a command prompt, run the following commands:
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit
-cd ui-toolkit
-npm install
+<ol>
+<li>
+<p>Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.</p>
+</li>
+<li>
+<p>Clone the UI Toolkit Repository.
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit#v1.2.0
 </code></pre></div></p>
-<h2 id="customize-the-control">Customize the control<a class="headerlink" href="#customize-the-control" title="Permanent link">&para;</a></h2>
-<p>To add new changes and test the changes  instantly before bundling the control, webpack dev server can be used</p>
-<p>After making  the changes, open a command prompt and navigate to the root of ui-toolkit, run the below command.</p>
-<div class="highlight"><pre><span></span><code>npm start
-</code></pre></div>
-<p>Open the browser and navigate to following URL</p>
-<div class="highlight"><pre><span></span><code>http://localhost:8080/domain.htm?server=&lt;protocol&gt;://&lt;rps IPaddress&gt;:&lt;rps port&gt;
-</code></pre></div>
-<p><strong>Note:</strong> By default webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on  the next immediate available port</p>
-<h2 id="create-bundle-for-domain">Create Bundle for Domain<a class="headerlink" href="#create-bundle-for-domain" title="Permanent link">&para;</a></h2>
-<p>At a command prompt navigate to the root of ui-toolkit, run the below command.</p>
-<blockquote>
-<p><strong>Note:</strong> Remove or rename the existing <strong>domain.core.min.js</strong>  in <strong>dist/</strong>
-<div class="highlight"><pre><span></span><code>npm run build
-</code></pre></div>
-A new <strong>domain.core.min.js</strong> will be created in <strong>dist/</strong> directory.</p>
-</blockquote>
-<p>To bundle the domain control without node_modules,  run the below command in a command prompt on the root of ui-toolkit,</p>
-<div class="highlight"><pre><span></span><code>npm run build-ext
-</code></pre></div>
-<p><strong>Note</strong>: The bundle generated using build-ext command can be used in react apps as an independent control</p>
-<h2 id="add-to-sample-html-page">Add to sample html page<a class="headerlink" href="#add-to-sample-html-page" title="Permanent link">&para;</a></h2>
-<p>To display the Domain control on a sample web page, update following changes to the existing <strong>src/sample/sampleDomain.htm</strong> page.</p>
-<div class="highlight"><pre><span></span><code>&lt;body&gt;
-&lt;div id=&quot;domainroot&quot;&gt;&lt;/div&gt;
-&lt;script src=&quot;../../dist/domain.core.min.js&quot; crossorigin&gt;&lt;/script&gt;
-&lt;/body&gt;
-</code></pre></div>
-<h2 id="test-the-sample-page">Test the sample page<a class="headerlink" href="#test-the-sample-page" title="Permanent link">&para;</a></h2>
-<p>At a command prompt navigate to the root of ui-toolkit, run the below command.
-<div class="highlight"><pre><span></span><code>npx serve
-</code></pre></div>
-Open Chrome browser, navigate to the following url
-<div class="highlight"><pre><span></span><code>http://&lt;localhost&gt;:5000/src/sample/sampleDomains.htm?server=&lt;rps IPaddress&gt;:&lt;rps port&gt;
+</li>
+<li>
+<p>Change to the <code>ui-toolkit</code> directory.
+    <div class="highlight"><pre><span></span><code>cd ui_toolkit
 </code></pre></div></p>
-<h2 id="add-a-new-language-for-internationalization">Add a new Language for Internationalization<a class="headerlink" href="#add-a-new-language-for-internationalization" title="Permanent link">&para;</a></h2>
-<p>Please refer to <a href="../../localization/">Localization</a> docs</p>
+</li>
+<li>
+<p>Install the dependencies.
+    <div class="highlight"><pre><span></span><code>npm install
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="run-in-development-environment">Run in Development Environment<a class="headerlink" href="#run-in-development-environment" title="Permanent link">&para;</a></h2>
+<p>To add and test new changes before bundling the control, use a webpack dev server.</p>
+<ol>
+<li>
+<p>Start the server.
+    <div class="highlight"><pre><span></span><code>npm start
+</code></pre></div></p>
+</li>
+<li>
+<p>Open a Chrome* browser and navigate to the following link to see changes.
+    <div class="highlight"><pre><span></span><code>http://localhost:8082/domain.htm?rpsServer=https://[RPS-Server-IP-Address]:8080
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.</p>
+</div>
+</li>
+</ol>
+<h2 id="create-bundle">Create Bundle<a class="headerlink" href="#create-bundle" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>To bundle, navigate to the <code>ui-toolkit</code> directory in a Terminal (Linux) or Command Prompt (Windows).</p>
+</li>
+<li>
+<p>Remove or rename the existing <em>domain.core.min.js</em>  in the <code>ui-toolkit/dist/</code> directory before building.</p>
+</li>
+<li>
+<p>Build the bundle.
+    <div class="highlight"><pre><span></span><code>npm run build
+</code></pre></div></p>
+<p>A new <em>domain.core.min.js</em> will be created in the <code>ui-toolkit/dist/</code> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To bundle the KVM control without node_modules, run the following build command instead.
+<div class="highlight"><pre><span></span><code>npm run built-ext
+</code></pre></div>
+The bundle generated using the build-ext command can be used in react apps as an independent control</p>
+</div>
+</li>
+</ol>
+<h2 id="add-to-sample-html-page">Add to Sample HTML Page<a class="headerlink" href="#add-to-sample-html-page" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Add the following code snippet to <em>sampleDomain.htm</em> in the <code>ui-toolkit/src/sample/</code> directory using an editor of your choice.</p>
+<div class="highlight"><pre><span></span><code>    &lt;body&gt;
+        &lt;div id=&quot;domainroot&quot;&gt;&lt;/div&gt;
+        &lt;script src=&quot;../../dist/domain.core.min.js&quot; crossorigin&gt;&lt;/script&gt;
+    &lt;/body&gt;
+</code></pre></div>
+</li>
+<li>
+<p>In a Terminal (Linux) or Command Prompt (Windows), navigate to the <code>ui-toolkit</code> directory.</p>
+</li>
+<li>
+<p>Serve the HTML page.
+    <div class="highlight"><pre><span></span><code>npx serve
+</code></pre></div></p>
+</li>
+<li>
+<p>Open a new Chrome* browser and navigate to the following URL:
+    <div class="highlight"><pre><span></span><code>http://localhost:5000/src/sample/sampleDomain.htm?rpsServer=https://[RPS-Server-IP-Address]:8080
+</code></pre></div></p>
+</li>
+</ol>
                 
               
               
