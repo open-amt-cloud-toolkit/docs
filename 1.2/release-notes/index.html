@@ -1374,11 +1374,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-feature-changes-for-11" class="md-nav__link">
-    Key Feature Changes for 1.1
+  <a href="#key-feature-changes-for-12" class="md-nav__link">
+    Key Feature Changes for 1.2
   </a>
   
-    <nav class="md-nav" aria-label="Key Feature Changes for 1.1">
+    <nav class="md-nav" aria-label="Key Feature Changes for 1.2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1411,8 +1411,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ui-toolkit" class="md-nav__link">
-    UI Toolkit
+  <a href="#sample-ui" class="md-nav__link">
+    Sample UI
   </a>
   
 </li>
@@ -1431,15 +1431,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
-    RPC
+  <a href="#rps_1" class="md-nav__link">
+    RPS
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps_1" class="md-nav__link">
-    MPS
+  <a href="#ui-toolkit" class="md-nav__link">
+    UI Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-rps" class="md-nav__link">
+    MPS &amp; RPS
   </a>
   
 </li>
@@ -1455,8 +1462,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#known-issues-in-11" class="md-nav__link">
-    Known Issues in 1.1
+  <a href="#resolved-issues" class="md-nav__link">
+    Resolved Issues
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-in-12" class="md-nav__link">
+    Known Issues in 1.2
   </a>
   
 </li>
@@ -1504,11 +1518,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-feature-changes-for-11" class="md-nav__link">
-    Key Feature Changes for 1.1
+  <a href="#key-feature-changes-for-12" class="md-nav__link">
+    Key Feature Changes for 1.2
   </a>
   
-    <nav class="md-nav" aria-label="Key Feature Changes for 1.1">
+    <nav class="md-nav" aria-label="Key Feature Changes for 1.2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1541,8 +1555,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ui-toolkit" class="md-nav__link">
-    UI Toolkit
+  <a href="#sample-ui" class="md-nav__link">
+    Sample UI
   </a>
   
 </li>
@@ -1561,15 +1575,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
-    RPC
+  <a href="#rps_1" class="md-nav__link">
+    RPS
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps_1" class="md-nav__link">
-    MPS
+  <a href="#ui-toolkit" class="md-nav__link">
+    UI Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-rps" class="md-nav__link">
+    MPS &amp; RPS
   </a>
   
 </li>
@@ -1585,8 +1606,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#known-issues-in-11" class="md-nav__link">
-    Known Issues in 1.1
+  <a href="#resolved-issues" class="md-nav__link">
+    Resolved Issues
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-in-12" class="md-nav__link">
+    Known Issues in 1.2
   </a>
   
 </li>
@@ -1610,59 +1638,63 @@
                 
                 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
 <p>If you haven't had a chance - checkout the <a href="../letter/">Letter From Devs</a> for a message from our development team.</p>
-<h2 id="key-feature-changes-for-11">Key Feature Changes for 1.1<a class="headerlink" href="#key-feature-changes-for-11" title="Permanent link">&para;</a></h2>
-<p>This section outlines key features changes between versions 1.0 and 1.1 for <a href="../Glossary/#o">Open Active Management Technology (Open AMT) Cloud Toolkit.</a> </p>
+<h2 id="key-feature-changes-for-12">Key Feature Changes for 1.2<a class="headerlink" href="#key-feature-changes-for-12" title="Permanent link">&para;</a></h2>
+<p>This section outlines key features changes between versions 1.1 and 1.2 for <a href="../Glossary/#o">Open Active Management Technology (Open AMT) Cloud Toolkit.</a> </p>
 <h3 id="additions">Additions<a class="headerlink" href="#additions" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><a href="../Glossary/#r">RPS</a><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Network Configuration on Intel&reg; AMT devices:</strong> Added feature to AMT Profiles to select configuring Intel&reg; AMT devices to use DHCP or Static IP.  When set for static IP, Intel&reg; AMT will sync with the Host OS static IP address.  Static IP Address is not supported with CIRA profiles.</li>
-<li><strong>MEBx Password configuration:</strong> The AMT Profile now supports configuration options for setting either a defined or randomized MEBx password on Intel&reg; AMT devices.</li>
-<li><strong>CORS support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
+<li><strong>Hostname and Device Metadata tags:</strong> We have added the ability to define metadata tags for a each Intel&reg; AMT profile.  These tags will be applied to each device that is configured using the profile.  Additionally, if RPC sends up the Intel&reg; AMT device OS hostname during activation, RPS will save this information as part of the device information.  When RPS configures a device, it will perform a POST call to MPS to register that device in MPS.  This works in conjunction with the improved metadata gathering that RPC added in 1.1.</li>
+<li><strong>Node 14 LTS support:</strong> RPS has been updated to support running on Node 14 LTS. </li>
 </ul>
 <h4 id="rpc"><a href="../Glossary/#r">RPC</a><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Added/updated getting metadata from Intel&reg; AMT device:</strong> Improved getting DNS Suffix (OS), Hostname (OS), FQDN (AMT), and DNS Suffix (AMT) from Host OS and Intel&reg; AMT.</li>
-<li><strong>CentOS 7 Support:</strong> Build steps added to support CentOS 7.</li>
-<li><strong>--nocertcheck option:</strong> Option added to skip the TLS cert check for Websocket connections. This is to aid testing in development environments where self-signed TLS certificates are used.</li>
+<li><strong>Docker support added:</strong> Added a dockerfile to RPC that allows customers to build and execute RPC in a docker container on the Intel&reg; AMT device.</li>
 </ul>
 <h4 id="mps"><a href="../Glossary/#m">MPS</a><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>CORS Support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
+<li><strong>PostgreSQL integration added to MPS:</strong> To support additional metadata we are adding to MPS, we have added a PostgreSQL reference implementation to MPS.</li>
+<li><strong>Hostname and Device Metadata tags:</strong> MPS will store device hostname and metadata tag information it receives from RPS in its PostgreSQL DB.  When device information calls are made, the device hostname will be returned to the caller along with the other device information previously provided.  Additionally, the GET devices call now supports an additional tags field (comma-delimited list) that will filter the devices based on the set of tags provided.  This greatly improves scaling of this call with very large number of devices as well as reduces the need for filtering on the caller's side.</li>
+<li><strong>Node 14 LTS support:</strong> RPS has been updated to support running on Node 14 LTS. </li>
+<li><strong>MPS Scaling <em>preview</em> feature:</strong> We've added a scaling configuration feature to MPS that will allow MPS to scale up multiple instances of MPS in a Kubernetes environment to support large deployments.  Both the CIRA connection side and the REST API side of MPS can be scaled up independently.  When an MPS instance goes down, Intel&reg; AMT device connections will be automatically reconnected to a different instance of MPS and the route to that device will be automatically updated.  The current implementation is designed to run in an Azure Kubernetes Service behind a load balancer.  As scaling is a preview feature, it currently doesn't support socket based Intel&reg; AMT connections (KVM and SOL) or the new Metadata (hostnames and tags) feature.  Other features such as PowerAction, HardwareInfo, EventLog, etc should all function in scaling mode.  We expect to have all AMT features supported in scaling mode in the 1.3 release.</li>
+</ul>
+<h4 id="sample-ui"><a href="../Glossary/#s">Sample UI</a><a class="headerlink" href="#sample-ui" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>New look &amp; feel</strong> The Sample UI has had a full rewrite in the 1.2 release based on much feedback from our customers.  This updated UI supports the new hostname and metadata tag features.  While this is still just a reference implementation to showcase the features of the MPS and RPS components, this restructuring of the Sample UI will:<ul>
+<li>Aid developers as an example of how to use our APIs </li>
+<li>Help understand the value of Open AMT Cloud Toolkit.</li>
+</ul>
+</li>
+</ul>
+<h3 id="modifications-and-removals">Modifications and Removals<a class="headerlink" href="#modifications-and-removals" title="Permanent link">&para;</a></h3>
+<h4 id="rps_1"><a href="../Glossary/#r">RPS</a><a class="headerlink" href="#rps_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>RPS API changes</strong> We have performed some fundamental restructuring of the RPS REST APIs to better align with industry RESTful API standards.  With these changes you'll see a greatly simplified structure, error messages in proper JSON structure, consistent property names across request/response, and correct HTML status codes being returned.  <em>This is a breaking change for customers who have already implemented against the 1.1 API.</em></li>
 </ul>
 <h4 id="ui-toolkit"><a href="../Glossary/#u">UI Toolkit</a><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>CORS support:</strong> Added support for Cross-Origin Resource Sharing (CORS).</li>
-<li><strong>MEBx Password option added to Profile Editor:</strong> Provides the ability to set a MEBx password when activating Intel&reg; AMT devices.</li>
-<li><strong>Network Setting option added to Profile Editor:</strong> Provides the ability to set either DHCP or Static IP setting when activating Intel&reg; AMT devices.</li>
-<li><strong>Edit feature added to Profile Editor:</strong> Added ability to edit AMT, CIRA, and Domain profiles in the Profile Editor.</li>
+<li><strong>Deprecation announcement of non-socket UI Toolkit components:</strong> We are removing the following UI Toolkit components in the 1.3 release: Audit Log, CIRA Config, Device Grid, Domain, and Profile.  All of these components are just UI implementations of our existing REST APIs and the need for a REACT component for these items is unnecessary.  We will continue to support and maintain the REACT components for KVM and SOL.  Additionally, we have plans on expanding the KVM and SOL components to support additional UI frameworks beyond REACT.</li>
 </ul>
-<h3 id="modifications-and-removals">Modifications and Removals<a class="headerlink" href="#modifications-and-removals" title="Permanent link">&para;</a></h3>
-<h4 id="rpc_1"><a href="../Glossary/#r">RPC</a><a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
+<h4 id="mps-rps"><a href="../Glossary/#m">MPS</a> &amp; <a href="../Glossary/#r">RPS</a><a class="headerlink" href="#mps-rps" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Improved Link Status when using --amtinfo:</strong> Fixed link status not being set.</li>
-<li><strong>Improved build scripts for Windows and Linux:</strong>  Build scripts have been updated so that the build time and executable size is more consistent between Windows and Linux.</li>
-<li><strong>Release/Debug build changes:</strong> Release and Debug build options now have the exact same functionality.  The only difference is that debug symbols are included in Debug version.</li>
+<li><strong>Deprecation announcement of Developer Mode for both RPS and MPS</strong> We are making strides in improving production mode deployments through the use of deployment scripts and docker containers.  Due to this work, the need for a "simple" developer deployment mode that doesn't use Vault or PostgreSQL is no longer required.  As such, we'll be removing this mode prior to our 1.4 release.  After the removal of developer mode, Vault and PostgreSQL will be required by default but the docker deployment scripts we have will make getting these services up and running easy.  Customers will still have the option to modify the Vault and PostgreSQL interfaces to point to the database service(s) of their choice.</li>
 </ul>
-<h4 id="mps_1"><a href="../Glossary/#m">MPS</a><a class="headerlink" href="#mps_1" title="Permanent link">&para;</a></h4>
+<h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Moved SampleUI into it's own repository:</strong> We have some big changes planned for the Sample UI.  Stay tuned!</li>
-<li><strong>Default allowList setting changed:</strong> Changed the default setting to false.  This is one less configuration change to make if you are not using Vault.  Recommend that this is set to true when running MPS in a production environment.</li>
+<li><strong>Vault Deployment:</strong> When deploying in production, customers will want to run Vault in production mode.  We have added instruction on how to configure this <a href="https://open-amt-cloud-toolkit.github.io/docs/1.2/Docker/dockerLocal_prodVault/">here</a>.</li>
+<li><strong>Intel&reg; AMT connection to MPS reliability after configuration:</strong>  We have added a small delay between when Intel&reg; AMT is activated and CIRA is configured that resolves the connection issues we were seeing in 1.1.</li>
 </ul>
-<h2 id="known-issues-in-11">Known Issues in 1.1<a class="headerlink" href="#known-issues-in-11" title="Permanent link">&para;</a></h2>
+<h2 id="known-issues-in-12">Known Issues in 1.2<a class="headerlink" href="#known-issues-in-12" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Vault Deployment:</strong> Current docker build scripts deploy Vault in developer mode. When the Vault container is brought down in this mode, all data stored in Vault is lost. For production deployments, deploy Vault in production mode and follow best security practices for unsealing Vault and handling access to Vault. For details, see <a href="https://learn.hashicorp.com/tutorials/vault/deployment-guide">Hashicorp* Vault Deployment Guide</a>. With Vault running in production mode, the data that RPS stores in Vault is retained when the container is brought down.</li>
-<li><strong>Intel® AMT Connecting to MPS:</strong> After a successful configuration, Intel® AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel® AMT to attempt to re-connect to MPS:</li>
-<li><strong>Intel&reg; AMT Connecting to MPS:</strong> After a successful configuration, Intel&reg; AMT device will occasionally fail to connect to the MPS. In this situation there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:<ol>
+<li>
+<p><strong>Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:</strong> <em>UPDATE: There is a firmware fix available for this issue, however, we are still testing to ensure that it completely resolves this issue.  We'll let you know once this issue is resolved.</em>  If the MPS goes down for more than 2 days, Intel&reg; AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:</p>
+<ol>
 <li>Unplug and re-plug the network cable</li>
 <li>Reboot the Intel&reg; AMT device</li>
 </ol>
 </li>
-<li><strong>Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:</strong> If the MPS goes down for more than 2 days, Intel&reg; AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:<ol>
-<li>Unplug and re-plug the network cable</li>
-<li>Reboot the Intel&reg; AMT device</li>
-</ol>
+<li>
+<p><strong>KVM freeze intermittently</strong> Viewing a remote desktop with high amount of screen changes (video playback), the KVM session can intermittently freeze.</p>
 </li>
-<li><strong>KVM freeze intermittently</strong> Viewing a remote desktop with high amount of screen changes (video playback), the KVM session can intermittently freeze.</li>
 <li>A full list of current open issues can be found in the issues page for each repository</li>
 </ul>
                 
