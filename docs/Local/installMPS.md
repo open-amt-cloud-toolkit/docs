@@ -37,12 +37,17 @@ Find details about architectural details, security issues, and more in [Microser
 
 1. Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. 
 
-2. Clone the repository and navigate to the open-amt-cloud-toolkit directory.
+2. Clone the repository.
     ``` bash
-    git clone --recursive --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit && cd open-amt-cloud-toolkit
+    git clone --recursive --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
     ```
 
-3. Run the following script to build and install the services. 
+3. Change to the cloned `open-amt-cloud-toolkit` directory.
+    ``` bash
+    cd open-amt-cloud-toolkit
+    ```
+
+4. Run the following script to build and install the services. 
 
     === "Linux"
         ``` bash
@@ -61,7 +66,7 @@ Find details about architectural details, security issues, and more in [Microser
             set-executionpolicy remotesigned
             ```
 
-4. Provide the IP Address of your **development system** and press Enter. 
+5. Provide the IP Address of your **development system** and press Enter. 
 
     !!! info
         Make sure to enter the **IP Address of the development system**, not that of any managed devices. The script will update the `./mps/.mpsrc` file and the `./sample-web-ui/src/environments/environment.ts` file with the IP address you enter. It will also run `npm install` for each service to install the necessary dependencies. For more information on all available configuration options for MPS [click here](../Microservices/MPS/configuration.md) and for RPS [click here](../Microservices/RPS/configuration.md).
