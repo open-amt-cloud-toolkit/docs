@@ -19,6 +19,11 @@ Get more information about Docker images and containers at [Docker resources.](h
     git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.2.0
     ```
   
+2. Change to the cloned `open-amt-cloud-toolkit` directory.
+    ``` bash
+    cd open-amt-cloud-toolkit
+    ```
+
 ## Set Environment Variables  
 
 The  `.env.template` file is used by docker to set environment variables.
@@ -70,7 +75,7 @@ Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 2. Check that all of the containers are running.
 
     ```bash
-    sudo docker ps --format table{{.Image}}\t{{.Status}}\t{{.Names}}
+    sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
     ```
 
     !!! success
