@@ -25,15 +25,14 @@ The web portal is available for login after the deployment of the [Management Pr
 
 ## Log In
 
-1. Open a new tab in your browser and navigate to the Sample Web UI using your development system's IP address on the port of the Sample Web UI. Typically, this is port 3001.
+1. Open a new tab in your browser and navigate to the Sample Web UI using localhost.
 
     ```
-    http://[Development-IP-Address]:3001
+    http://localhost:4200
     ```
 
     !!! important
-        Use your development system's IP Address to connect to the web server.
-        **Using `localhost` will not work.**  The Sample Web UI uses **HTTP** and not **HTTPS**.
+        The Sample Web UI uses **HTTP** and not **HTTPS**.
 
 
 2. Log in to the web portal with the credentials below.

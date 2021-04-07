@@ -150,16 +150,13 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
     npm start
     ```
 
-3. If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.
-
     !!! Success
-        Because MPS runs on port 3000, the Sample Web UI may prompt to use port 3001 instead.
+        By default, the Sample Web UI will use port 4200.
 
         [![Sample UI Output](../assets/images/SampleUI_npmstart.png)](../assets/images/SampleUI_npmstart.png)
 
         **Figure 3: Sample UI reports successful deployment.**
 
-4. The pop-up window will not load the Sample Web UI because the pop-up defaults to localhost.  We will manually navigate to the correct URL in the **Next up** section.
 
 ## Next up
 
