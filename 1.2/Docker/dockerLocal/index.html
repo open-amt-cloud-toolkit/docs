@@ -1516,6 +1516,11 @@
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.2.0
 </code></pre></div>
 </li>
+<li>
+<p>Change to the cloned <code>open-amt-cloud-toolkit</code> directory.
+    <div class="highlight"><pre><span></span><code><span class="nb">cd</span> open-amt-cloud-toolkit
+</code></pre></div></p>
+</li>
 </ol>
 <h2 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">&para;</a></h2>
 <p>The  <code>.env.template</code> file is used by docker to set environment variables.</p>
@@ -1561,7 +1566,7 @@
 </li>
 <li>
 <p>Check that all of the containers are running.</p>
-<div class="highlight"><pre><span></span><code>sudo docker ps --format table<span class="o">{{</span>.Image<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Status<span class="o">}}</span><span class="se">\t</span><span class="o">{{</span>.Names<span class="o">}}</span>
+<div class="highlight"><pre><span></span><code>sudo docker ps --format <span class="s2">&quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;</span>
 </code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>

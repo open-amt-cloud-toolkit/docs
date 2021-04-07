@@ -1545,8 +1545,13 @@
 <p>Open a Terminal (Linux) or Powershell command prompt (Windows) and navigate to a directory of your choice for development. </p>
 </li>
 <li>
-<p>Clone the repository and navigate to the open-amt-cloud-toolkit directory.
-    <div class="highlight"><pre><span></span><code>git clone --recursive --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit <span class="o">&amp;&amp;</span> <span class="nb">cd</span> open-amt-cloud-toolkit
+<p>Clone the repository.
+    <div class="highlight"><pre><span></span><code>git clone --recursive --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+</code></pre></div></p>
+</li>
+<li>
+<p>Change to the cloned <code>open-amt-cloud-toolkit</code> directory.
+    <div class="highlight"><pre><span></span><code><span class="nb">cd</span> open-amt-cloud-toolkit
 </code></pre></div></p>
 </li>
 <li>
@@ -1641,18 +1646,12 @@ Start the RPS server.
 <p>Start the Sample Web UI server.</p>
 <div class="highlight"><pre><span></span><code>npm start
 </code></pre></div>
-</li>
-<li>
-<p>If prompted to use another port, enter 'y' and note the port that is chosen. Typically, the port defaults to 3001. This is where the UI will be running.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>Because MPS runs on port 3000, the Sample Web UI may prompt to use port 3001 instead.</p>
+<p>By default, the Sample Web UI will use port 4200.</p>
 <p><a href="../../assets/images/SampleUI_npmstart.png"><img alt="Sample UI Output" src="../../assets/images/SampleUI_npmstart.png" /></a></p>
 <p><strong>Figure 3: Sample UI reports successful deployment.</strong></p>
 </div>
-</li>
-<li>
-<p>The pop-up window will not load the Sample Web UI because the pop-up defaults to localhost.  We will manually navigate to the correct URL in the <strong>Next up</strong> section.</p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
