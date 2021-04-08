@@ -10,7 +10,7 @@ Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater
 Figure 1 presents the high-level architecture of MPS scaling mode. Per the figure, starting at the bottom:
     
 1. Devices connect to an available MPS Server through the load balancer.
-1. The REST API requests are routed to an available Web Server. A component of MPS running in scale mode, though a load balancer
+1. The REST API requests are routed to an available Web Server, a component of MPS running in scale mode, through a load balancer.
 1. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
 1. The MPS Server sends the traffic to the corresponding device.
 
