@@ -10,6 +10,7 @@ For this deployment, kubernetes will be used running in Azure(R) along with util
 [![Scaling architechure](../assets/images/ScallingHighLevel.png)](../assets/images/ScallingHighLevel.png)
 Figure # 1 shows a high-level diagram of the overall architechture of the MPS scaling mode.
     
+1. Devices connect to an available MPS Server through the load balancer.
 1. The REST api requests are routed to an available Web Server (a component of MPS running in scale mode) though a load balancer.
 1. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
 1. The MPS Server sends the traffic to the corresponding device.
@@ -43,7 +44,7 @@ git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-t
 ```
 
 ### Prerequisite
-**Install required software in Windows environment:**
+**Install required software in Windows environment(in admin mode):**
 
 1. Run \open-amt-cloud-toolkit\scripts\kubernetes\installchoco.bat to install the choco package manager
 1. Close and reopen command window
