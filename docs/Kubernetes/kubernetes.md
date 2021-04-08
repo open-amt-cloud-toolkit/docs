@@ -1,37 +1,35 @@
 ### Introduction
 Note: Not for production use!!
-This guide with provide detail on how to deploy the AMTCloudToolkit services in Microsoft(C) Azure(R).
-Functionality has been added to MPS to allow it to scale and support a greater number of devices. 
-For this deployment, kubernetes will be used running in Azure(R) along with utilizing both redis and consul.
+This guide explains how to deploy the Open AMT Cloud Toolkit services in Microsoft Azure*.
+Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. For this deployment, kubernetes runs in Microsoft Azure* along with redis and consul. Redis is used to sync the Web Server sessions between Web Server instances. Consul is used to communicate device connections between the Web Server and MPS server.
 
 ### High level Design
 
-####Figure #1 MPS Scaling Architecture
+####Figure 1: MPS Scaling Architecture
 [![Scaling architechure](../assets/images/ScallingHighLevel.png)](../assets/images/ScallingHighLevel.png)
-Figure # 1 shows a high-level diagram of the overall architechture of the MPS scaling mode.
+Figure 1 presents the high-level architecture of MPS scaling mode. Per the figure, starting at the bottom:
     
 1. Devices connect to an available MPS Server through the load balancer.
-1. The REST api requests are routed to an available Web Server (a component of MPS running in scale mode) though a load balancer.
+1. The REST API requests are routed to an available Web Server. A component of MPS running in scale mode, though a load balancer
 1. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
 1. The MPS Server sends the traffic to the corresponding device.
 
 ### MPS Configuration
-To support running the service in a distributed environment, some configuration settings were added to MPS.
+To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml. All the following settings have already been preset in the values.yaml file.
 
-1. key\value store (consul) settings:
-    1. distributed_kv_name - name of key/value store used.
-    1. distributed_kv_ip - ip of key value store.
-    1. distributed_kv_port - port used by key/value store.
-
-1. web_proxy_port - port the web server used to communicate to MPS.
-1. network_adaptor - network identifier used when device connects to MPS. Can be either an adaptor name such as `eth0` or starting ip address such as `192.168`.
-1. startup_mode - microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributated mode.
-
-1. redis settings:
-    1. redis_enable - enable redis caching for web session
-    1. redis_host - redis host
-    1. redis_port - redis port
-    1. redis_password - password used to authenticate to redis 
+####Table 1: MPS configuration settings
+| Component:        | Setting:           | Notes:  |
+| ------------- |-------------| -----|
+| consul     | distributed_kv_name  | name of key/value store used. |
+|       | distributed_kv_ip      |   ip of key value store |
+|| distributed_kv_port      |    port used by key/value store |
+| redis| redis_enable | enable redis caching for web session |
+||redis_host|redis host|
+||redis_port|redis port|
+||redis_password|password used to authenticate to redis|
+|general|web_proxy_port|port the web server used to communicate to MPS.|
+||network_adaptor|network identifier used when device connects to MPS. Can be either an adaptor name such as `eth0` or starting ip address such as `192.168`.|
+||startup_mode|microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributated mode.|
 
 ## Get the Toolkit
 
@@ -41,6 +39,13 @@ To support running the service in a distributed environment, some configuration 
 
 ``` bash
 git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+```
+
+## Building the docker images
+Please build and push the following images from the following open-amt-cloud-toolkit repositories MPS, RPS, and sample-web-ui into a public repository. Please update "docker.io/vprodemo" to the desired public repository and "mps" to the corresponding repository name. 
+```
+docker build . -t docker.io/vprodemo/mps:latest
+docker push docker.io/vprodemo/mps:latest
 ```
 
 ### Prerequisite
