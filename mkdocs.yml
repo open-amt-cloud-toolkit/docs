@@ -81,6 +81,7 @@ nav:
     # - Databases: Tutorials/addDatabase.md
     # - Secret Storage: Tutorials/addVault.md
     - Allowlists: Tutorials/allowlist.md
+    - Kubernetes: Kubernetes/kubernetes.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
     - Remote Provisioning Server: APIs/indexRPS.md
