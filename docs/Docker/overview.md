@@ -30,7 +30,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
         **Docker Configuration Details: **
         (1) The Docker for Windows installer defaults to enable all the required settings for this tutorial.
         (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
-        (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/).
+        (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/){target=_blank}.
 
 - [git](https://git-scm.com/downloads)
      
