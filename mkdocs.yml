@@ -25,13 +25,8 @@ theme:
 nav:
   - Home: index.md
   - Getting Started:
-    - Install:
-      - Overview:
-        - Manual Overview: Local/overview.md
-        - Docker Overview: Docker/overview.md
-      - Setup:
-        - Express Manual Setup: Local/installMPS.md
-        - Express Docker Setup: Docker/dockerLocal.md
+    - Overview: Docker/overview.md
+    - Run: Docker/dockerLocal.md
     - Configure:
       - Login to RPS: General/loginToRPS.md
       - Create a CIRA Config: General/createCIRAConfig.md
