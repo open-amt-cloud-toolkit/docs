@@ -1,5 +1,7 @@
 ### Introduction
-Note: Not for production use!!
+!!! important
+    Not for production use!!
+    
 This guide explains how to deploy the Open AMT Cloud Toolkit services in Microsoft Azure*.
 Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. For this deployment, kubernetes runs in Microsoft Azure* along with redis and consul. Redis is used to sync the Web Server sessions between Web Server instances. Consul is used to communicate device connections between the Web Server and MPS server.
 
@@ -15,7 +17,7 @@ Figure 1 presents the high-level architecture of MPS scaling mode. Per the figur
 1. The MPS Server sends the traffic to the corresponding device.
 
 ### MPS Configuration
-To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml. All the following settings have already been preset in the values.yaml file.
+To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`. All the following settings have already been preset in the values.yaml file.
 
 ####Table 1: MPS configuration settings
 | Component:        | Setting:           | Notes:  |
@@ -51,25 +53,26 @@ docker push docker.io/vprodemo/mps:latest
 ### Prerequisite
 **Install required software in Windows environment(in admin mode):**
 
-1. Run \open-amt-cloud-toolkit\scripts\kubernetes\installchoco.bat to install the choco package manager
+1. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installchoco.bat` to install the choco package manager
 1. Close and reopen command window
-1. Run \open-amt-cloud-toolkit\scripts\kubernetes\installpackages.bat to install the required packages
+1. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installpackages.bat` to install the required packages
 
 ### Steps to Deploy
 
 1. Edit entries in the launch.bat file to fit deployment.
 
-1. Update section `images` in stack environmental variables in open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml that correspond with desired images for launch.
+1. Update section `images` in stack environmental variables in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml` that correspond with desired images for launch.
 
-1. If containers are in a private container registry, a base64 auth token needs to be created and placed in open-amt-cloud-toolkit\scripts\kubernetes\config.json
+1. If containers are in a private container registry, a base64 auth token needs to be created and placed in `open-amt-cloud-toolkit\scripts\kubernetes\config.json`
 
-1. Launch with command "launch.bat [resourceGroupName]" [replace the resourceGroupName with the desired resource group name for the deployment]
+1. Launch with command `launch.bat [resourceGroupName]` [replace the resourceGroupName with the desired resource group name for the deployment]
 
-1. Use the settings in the \open-amt-cloud-toolkit\scripts\kubernetes\\.env file to update the values in \open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml
+1. Use the settings in the `\open-amt-cloud-toolkit\scripts\kubernetes\.env` file to update the values in `\open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`
 
-1. From \open-amt-cloud-toolkit\scripts\kubernetes run `helm install openamtcloudstack ./serversChart` to deploy the services into kubernetes.
+1. From `\open-amt-cloud-toolkit\scripts\kubernetes` run `helm install openamtcloudstack ./serversChart` to deploy the services into kubernetes.
 
 1. After deployment is complete use the command `kubectl get pods` to verify all pods have been launched successfully.
 
-NOTE: please restore values.yaml to its prelaunch condition before subsiquesnt deployments
+!!! note 
+    Please restore values.yaml to its prelaunch condition before subsiquesnt deployments
 
