@@ -153,7 +153,7 @@ You will see the errors in the following scenarios:
 
 ### Try Other Controls
 
-Try out other React controls such as Serial Over LAN or Audit Logs [here](../UIToolkit/Controls/auditLogControl.md)
+Try out other React controls such as Serial Over LAN or Audit Logs [here](../UIToolkit/Controls/serialOverLANControl.md)
 
 ### Customize and Create Bundles
 
