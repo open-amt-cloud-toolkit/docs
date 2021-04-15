@@ -218,7 +218,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../Controls/auditLogControl/" class="md-tabs__link">
+      <a href="../Controls/kvmControl/" class="md-tabs__link">
         UI Toolkit
       </a>
     </li>
@@ -874,68 +874,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Controls/auditLogControl/" class="md-nav__link">
-      Audit Log
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Controls/ciraConfigControl/" class="md-nav__link">
-      Cira Config
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Controls/deviceGridControl/" class="md-nav__link">
-      Device Grid
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Controls/domainControl/" class="md-nav__link">
-      Domain
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Controls/kvmControl/" class="md-nav__link">
       Keyboard, Video, Mouse (KVM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Controls/profileControl/" class="md-nav__link">
-      Profile
     </a>
   </li>
 
@@ -983,68 +923,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Bundles/auditLog/" class="md-nav__link">
-      Audit Logs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Bundles/CIRAConfigs/" class="md-nav__link">
-      Cira Configs
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Bundles/DeviceGrid/" class="md-nav__link">
-      Device Grid
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Bundles/Domains/" class="md-nav__link">
-      Domains
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Bundles/kvm/" class="md-nav__link">
       Keyboard, Video, Mouse (KVM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Bundles/Profiles/" class="md-nav__link">
-      Profiles
     </a>
   </li>
 
@@ -1713,7 +1593,7 @@ The use property which indicates which loader can be used to do the transforming
 <p>const path = require('path');
 module.exports = {
      mode: "development",
-     entry: './src/reactjs/components/DeviceGrid/index.tsx', // entry points can be multiple</p>
+     entry: './src/reactjs/components/KVM/index.tsx', // entry points can be multiple</p>
 <p>}</p>
 <h2 id="adding-typescript">Adding Typescript:<a class="headerlink" href="#adding-typescript" title="Permanent link">&para;</a></h2>
 <p>Install Typescript’s dependencies.</p>
@@ -1766,11 +1646,11 @@ const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
 module.exports = {
  ....
   plugins: [
-   new HtmlWebpackPlugin({
-      filename: &#39;device.htm&#39;,
-      template: &#39;./src/sample/sampleDG.htm&#39;,
+    new HtmlWebpackPlugin({
+      filename: &quot;kvm.htm&quot;,
+      template: &quot;./src/sample/sampleKVM.htm&quot;,
       inject: true,
-      chunks: [&quot;device&quot;]
+      chunks: [&quot;kvm&quot;],
     }),
   ]
 }
@@ -1785,18 +1665,11 @@ module.exports = {
     plugins: [
       new webpack.DefinePlugin({
       &#39;process.env&#39;: {
-        &#39;API_KEY_RPS&#39;: JSON.stringify(&#39;&lt;Provide RPS api key&gt;&#39;),
         &#39;API_KEY_MPS&#39;: JSON.stringify(&#39;&lt;Provide MPS api key&gt;&#39;)
       }
     })
     ]
   }
-</code></pre></div>
-<p>These environmental variables can be used inside the code as below,</p>
-<div class="highlight"><pre><span></span><code>const data = {
-  rpsKey: process.env.API_KEY_RPS,
-  mpsKey: process.env.API_KEY_MPS
-}
 </code></pre></div>
 <h2 id="development-server">Development Server:<a class="headerlink" href="#development-server" title="Permanent link">&para;</a></h2>
 <p>we are going to set up a development server using the webpack-dev-server which will open up a default browser when we do npm start and also provide us with live reloading on the fly.</p>
@@ -1817,7 +1690,7 @@ module.exports = {
 
 module.exports = {
      mode: &quot;production&quot;,
-     entry: &#39;./src/reactjs/components/DeviceGrid/index.tsx&#39;, // entry points can be multiple
+     entry: &#39;./src/reactjs/components/KVM/index.tsx&#39;, // entry points can be multiple
     output: {
         filename: &quot;[name].core.min.js&quot;,
         path: path.resolve(__dirname, &quot;./dist&quot;)
