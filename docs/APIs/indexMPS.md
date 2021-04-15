@@ -4,7 +4,7 @@ Steps on how to create your own Rest API call can be found in the [Construct a R
 ## API Calls
 We've documented the MPS REST API with Swagger*.
 
-[Get Started with RPS REST API](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0){: .md-button .md-button--primary target="_blank"}
+[Get Started with MPS REST API](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0){: .md-button .md-button--primary target="_blank"}
 
 If unfamiliar with Swagger, see [Swagger Documentation](https://swagger.io/docs/){: target="_blank"}.
 
