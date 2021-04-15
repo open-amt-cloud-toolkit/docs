@@ -32,7 +32,6 @@ AMT methods allow you to send device-specific calls for things such as power act
 
    | Method       |  Description/Usage |
    | :----------- | :------------------------ |   
-   | **AuditLog** | Returns a requested amount or time range of Intel® AMT Audit Log data for a specified guid |
    | **EventLog** | Return sensor and hardware event data |
    | **GeneralSettings** | View general network settings |
    | **GetAMTFeatures** | View what AMT out-of-band features are enabled/disabled |

@@ -29,7 +29,7 @@ Create a Webpack config file webpack.config.dev.js in the root of our project fo
 const path = require('path');
 module.exports = {
      mode: "development",
-     entry: './src/reactjs/components/DeviceGrid/index.tsx', // entry points can be multiple
+     entry: './src/reactjs/components/KVM/index.tsx', // entry points can be multiple
 
 }
 
@@ -102,11 +102,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
  ....
   plugins: [
-   new HtmlWebpackPlugin({
-      filename: 'device.htm',
-      template: './src/sample/sampleDG.htm',
+    new HtmlWebpackPlugin({
+      filename: "kvm.htm",
+      template: "./src/sample/sampleKVM.htm",
       inject: true,
-      chunks: ["device"]
+      chunks: ["kvm"],
     }),
   ]
 }
@@ -125,21 +125,11 @@ Environmental variables can be setup using the DefinePlugin option in webpack.
     plugins: [
       new webpack.DefinePlugin({
       'process.env': {
-        'API_KEY_RPS': JSON.stringify('<Provide RPS api key>'),
         'API_KEY_MPS': JSON.stringify('<Provide MPS api key>')
       }
     })
     ]
   }
-```
-
-These environmental variables can be used inside the code as below,
-
-```
-const data = {
-  rpsKey: process.env.API_KEY_RPS,
-  mpsKey: process.env.API_KEY_MPS
-}
 ```
 
 
@@ -172,7 +162,7 @@ const path = require('path');
 
 module.exports = {
      mode: "production",
-     entry: './src/reactjs/components/DeviceGrid/index.tsx', // entry points can be multiple
+     entry: './src/reactjs/components/KVM/index.tsx', // entry points can be multiple
     output: {
         filename: "[name].core.min.js",
         path: path.resolve(__dirname, "./dist")
