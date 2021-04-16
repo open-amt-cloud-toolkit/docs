@@ -44,18 +44,19 @@ Set up quickly with Docker containers.
 
 [Get Started with Microservices as Docker Containers](Docker/overview.md){: .md-button .md-button--primary }
 
-Estimated completion time: **Approximately 15 minutes**
+Estimated completion time: **Approximately 30 minutes**
 
-### Other Options
+## Additional Setup Options
 ### Build and Deploy Microservices Locally
-Create up a local installation of microservices with a manual build process.
+
+Set up microservices locally with a manual build process.
 
 [Get Started with Local Microservices](Local/overview.md).
 
-Estimated completion time: **Approximately 15 minutes**
+Estimated completion time: **Approximately 45 minutes**
 
 ### Build and Deploy Microservices on the Cloud
-Both build-and-deploy options install microservices locally on a development system. The client application is installed on a managed device. Experienced Docker users may choose to deploy microservices straight to the cloud.
+Both build-and-deploy options above install microservices locally on a development system. Experienced Docker users may choose to deploy microservices straight to the cloud.
 
 [Get Started with Microservices on the Cloud](Docker/dockerCloud.md).
  
