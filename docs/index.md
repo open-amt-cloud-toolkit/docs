@@ -38,24 +38,26 @@ Integrate the Open AMT Cloud Toolkit into new and existing management consoles, 
 
 ## Open AMT Cloud Toolkit Setup
 
+### Build and Deploy Microservices with Local Docker* Containers
+
+Set up quickly with Docker containers.
+
+[Get Started with Microservices as Docker Containers](Docker/overview.md){: .md-button .md-button--primary }
+
+Estimated completion time: **Approximately 15 minutes**
+
+### Other Options
 ### Build and Deploy Microservices Locally
-If unfamiliar with Docker*, choose this setup option to accomplish a manual, local installation of microservices. 
+Create up a local installation of microservices with a manual build process.
 
-[Get Started with Local Microservices](Local/overview.md){: .md-button .md-button--primary }
-
-
-Estimated completion time: **Approximately 15 minutes**
-
-### Build and Deploy Microservices with Local Docker* Images
-
-If familiar with Docker, choose this setup option to install microservices as local Docker images. This option is an especially good choice for development systems with Docker already installed.
-
-[Get Started with Microservices as Docker Images](Docker/overview.md){: .md-button .md-button--primary }
-
+[Get Started with Local Microservices](Local/overview.md).
 
 Estimated completion time: **Approximately 15 minutes**
 
-Both build-and-deploy options install microservices locally on a development system. The client application is installed on a managed device. Experienced Docker users may choose to deploy microservices straight to the [cloud](Docker/dockerCloud.md).
+### Build and Deploy Microservices on the Cloud
+Both build-and-deploy options install microservices locally on a development system. The client application is installed on a managed device. Experienced Docker users may choose to deploy microservices straight to the cloud.
+
+[Get Started with Microservices on the Cloud](Docker/dockerCloud.md).
  
 -------
 ## Additional Intel® AMT Resources
