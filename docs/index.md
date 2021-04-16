@@ -26,7 +26,7 @@ Additional sections provide guidance on the reference implementation UI Toolkit,
 
  **Figure 2: High-level architecture consists of four major software components.**
 
-As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of four components:
+As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of five components:
 
 1. **MPS** - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (KVM) control.
 2. **RPS** - A microservice that activates Intel® AMT platforms using predefined profiles and connects them to the MPS for manageability use cases.
