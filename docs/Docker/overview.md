@@ -1,14 +1,14 @@
-# Build and Deploy Microservices with Local Docker* Images
+# Prerequisites
 
-This section contains instructions for deploying the  Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) on a local development system as Docker* images. These Hello World deployment instructions detail how to install the microservices manually on a development system and are not intended as production environment instructions.
+This section contains prerequisites for deploying Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) on a local development system as Docker* containers. 
 
 [![Docker Local Overview](../assets/images/LocalDockerWorkflow.png)](../assets/images/LocalDockerWorkflow.png)
 
 
-**Figure 1: Deploy microservices on a local development system as Docker images. **
-
+**Figure 1: Deploy microservices on a local development system as Docker containers. **
 
 ## What You'll Need
+
 
 ###Hardware
 
@@ -33,16 +33,17 @@ Both systems must use a wired (i.e., cable) connection on the same network.
         (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/){target=_blank}.
 
 - [git](https://git-scm.com/downloads)
-     
 
 ## What You'll Do
 
-**To complete a Hello World microservice deployment:**
+**To complete a deployment:**
 
-- Build and Deploy Docker* Images Locally
+- Install the Prerequisites
+- Run Setup to Build and Deploy Microservices with Docker
 - Login and Configure RPS
 - Build RPC
 - Copy RPC to a Managed Device
+
 
 **To connect the managed device:**
 
@@ -50,6 +51,12 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 - Manage the Device with MPS
 
 These sections include instructions for Windows and Linux* environments. Run instructions in a terminal window, the Windows Command Prompt in Administrator mode or the Linux shell/terminal.
+
+## Why Docker*?
+
+A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. Docker streamlines installation to get you up and running faster.
+
+Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)   
 
 Estimated completion time: **15 minutes**
 

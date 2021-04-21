@@ -24,14 +24,9 @@ theme:
 # Page tree
 nav:
   - Home: index.md
-  - Getting Started:
-    - Install:
-      - Overview:
-        - Manual Overview: Local/overview.md
-        - Docker Overview: Docker/overview.md
-      - Setup:
-        - Express Manual Setup: Local/installMPS.md
-        - Express Docker Setup: Docker/dockerLocal.md
+  - Get Started:
+    - Prerequisites: Docker/overview.md
+    - Set Up: Docker/dockerLocal.md
     - Configure:
       - Login to RPS: General/loginToRPS.md
       - Create a CIRA Config: General/createCIRAConfig.md
@@ -66,6 +61,9 @@ nav:
     - Webpack Configuration: UIToolkit/Webpack-Configuration.md
   - Tutorials:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
+    - Developer Manual Setup:
+      - Overview: Local/overview.md
+      - Build and Run: Local/installMPS.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
     # - Databases: Tutorials/addDatabase.md

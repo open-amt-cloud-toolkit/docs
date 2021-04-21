@@ -1,13 +1,6 @@
- 
-The Open Active Management Technology (Open AMT) Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) provide support for deploying the microservices as [Docker*](../Glossary.md#d) images, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+#Express Setup
 
-
-## Why Docker*?
-
-A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. 
-
-Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)
-
+This setup installs the [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) microservices as [Docker*](../Glossary.md#d) containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 ## Get the Toolkit
 
@@ -60,11 +53,17 @@ Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 
 
 1.  Run docker-compose to start the containers.
-
-    ``` bash    
-    sudo docker-compose -f "docker-compose.yml" up -d --build
-    ```
-
+    
+    === "Linux"
+        ```
+        sudo docker-compose -f "docker-compose.yml" up -d --build
+        ```
+    
+    === "Windows (Powershell)"
+        ```
+        docker-compose -f "docker-compose.yml" up -d --build
+        ```
+    
     !!! important "Important - For Windows* 10"
         While the `docker-compose up` command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
 
@@ -74,10 +73,17 @@ Build the MPS, RPS, and Sample UI Docker images and launch the stack.
 
 2. Check that all of the containers are running.
 
-    ```bash
-    sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
-    ```
-
+    
+    === "Linux"
+        ```
+        sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+        ```
+    
+    === "Windows (Powershell)"
+        ```
+        docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+        ```
+    
     !!! success
         ``` bash    
         IMAGE                             STATUS
