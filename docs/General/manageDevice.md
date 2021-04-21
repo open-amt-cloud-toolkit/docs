@@ -7,7 +7,7 @@
         Navigate to the UI.
 
         ```
-        http://[Development-IP-Address]:3001
+        http://localhost:4200
         ```
 
         Log in with the default credentials.
