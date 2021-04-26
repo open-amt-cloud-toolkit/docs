@@ -33,3 +33,23 @@ function App() {
 }
 export default App;
 ```
+
+## Adding mouse delay for KVM
+
+If you are implementing the KVM control by just re-using the core logic and UI of your own, you can provide a configurable mouse delay while instantiating the MouseHelper object as shown below.
+
+```
+const redirector = new AMTKvmDataRedirector(...)
+const module = new AMTDesktop()
+const mouseDelay = 300 // setting a mouse delay time of 300ms
+const mouseHelper = new MouseHelper(module, redirector, mouseDelay) // the mouseDelay parameter will be used for throttling mouse move events for kvm, the default value configured is 200ms
+```
+
+and while binding the mouse move events you can trigger the throttleMouseMove event of the MouseHelper class as shown below
+
+```
+const mouseMove = (mouseEvent) => {
+  this.mouseHelper.throttleMouseMove(mouseEvent)
+}
+```
+
