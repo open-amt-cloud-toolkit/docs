@@ -1,10 +1,12 @@
+--8<-- "References/abbreviations.md"
+
 # Overview
 
- [**Open Active Management Technology (Open AMT) Cloud Toolkit**](Glossary.md#o) provides open-source, modular microservices and libraries for integration of [Intel® Active Management Technology (Intel® AMT)](Glossary.md#i). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize [out-of-band (OOB) management](Glossary.md#o) solutions for [Intel vPro® platforms](Glossary.md#i).
+ **Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® platforms.
 
 ![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
 
- **Figure 1: Open AMT Cloud Toolkit features out-of-band (OOB) management.**
+ **Figure 1: Open AMT Cloud Toolkit features OOB Management.**
  
  Intel® AMT supports remote manageability with: 
 
@@ -16,9 +18,9 @@
 ## Goals
 The toolkit guide provides instructions to:
 
-- Deploy the [Management Presence Server (MPS)](Glossary.md#m) and [Remote Provisioning Server (RPS)](Glossary.md#r) on the development system.
-- Build and run [Remote Provisioning Client (RPC)](Glossary.md#r) on the managed device.
-- Connect the managed device (edge device)
+- Deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) on the development system.
+- Build and run Remote Provisioning Client (RPC) on the managed device.
+- Connect the managed device (edge device).
 
 Additional sections provide guidance on the reference implementation UI Toolkit, REST API usage, asset security, and more. 
 
@@ -36,18 +38,18 @@ As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of
    
 Integrate the Open AMT Cloud Toolkit into new and existing management consoles, software solutions, and more.
 
-## Open AMT Cloud Toolkit Setup
+## Toolkit Setup
 
-### Build and Deploy Microservices with Local Docker* Containers
+### Microservices as Containers
 
-Set up quickly with Docker containers.
+Set up microservices quickly as Docker containers with this recommended method.
 
-[Get Started with Microservices as Docker Containers](Docker/overview.md){: .md-button .md-button--primary }
+[Get Started Now](Docker/overview.md){: .md-button .md-button--primary }
 
 Estimated completion time: **Approximately 30 minutes**
 
 ## Additional Setup Options
-### Build and Deploy Microservices Locally
+### Local Microservices with npm 
 
 Set up microservices locally with a manual build process.
 
@@ -55,7 +57,7 @@ Set up microservices locally with a manual build process.
 
 Estimated completion time: **Approximately 45 minutes**
 
-### Build and Deploy Microservices on the Cloud
+### Microservices on the Cloud
 Both build-and-deploy options above install microservices locally on a development system. Experienced Docker users may choose to deploy microservices straight to the cloud.
 
 [Get Started with Microservices on the Cloud](Docker/dockerCloud.md).
