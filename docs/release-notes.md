@@ -34,8 +34,8 @@ This section outlines key features changes between versions 1.2 and 1.3 for Open
 - **Vault Deployment:** When deploying in production, customers will want to run Vault in production mode.  We have added instruction on how to configure this [here](https://open-amt-cloud-toolkit.github.io/docs/1.2/Docker/dockerLocal_prodVault/).
 - **Intel&reg; AMT connection to MPS reliability after configuration:**  We have added a small delay between when Intel&reg; AMT is activated and CIRA is configured that resolves the connection issues we were seeing in 1.1.
 
-## Known Issues in 1.2
+## Known Issues in 1.3
+#### Intel&reg; AMT
 - **Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:** *UPDATE: There is a firmware fix available for this issue, however, we are still testing to ensure that it completely resolves this issue.  We'll let you know once this issue is resolved.*  If the MPS goes down for more than 2 days, Intel&reg; AMT devices will no longer attempt to connect to MPS. If this happens, there are two ways to prompt Intel&reg; AMT to attempt to re-connect to MPS:
     1.	Unplug and re-plug the network cable
     2.	Reboot the Intel&reg; AMT device
-
