@@ -7,7 +7,7 @@ This section outlines key features changes between versions 1.2 and 1.3 for Open
 
 ### Additions
 #### RPS & MPS
-- **Stateless Authentication:** The RESTful APIs for both RPS and MPS had their APIKEYS removed and now leverage [Kong Gateway](https://konghq.com/kong/) for authentication with JWT Tokens.  This simplifies how API calls are made into the Open AMT Cloud Toolkit services by putting the service name that is being called into the URL.  
+- **Stateless Authentication:** The RESTful APIs for both RPS and MPS had their APIKEYS removed and now leverage [Kong Gateway](https://konghq.com/kong/) for user authentication.  This simplifies how API calls are made into the Open AMT Cloud Toolkit services by routing all API connections through a single URL:   
     Format:
     ```html
     https://example.url/
@@ -19,7 +19,7 @@ This section outlines key features changes between versions 1.2 and 1.3 for Open
     https://example.url/rps
     ```
     
-    With the addition of [Kong Gateway](https://konghq.com/kong/) and its rich [plug-in support](https://docs.konghq.com/hub/), this opens up options for integrators to utilize a broader set of user authentication services (OAuth 2.0, OpenID, Okta, LDAP, etc).  By default, the MPS has added a ```/authorization``` endpoint that will provide a JWT token that can be used. The new stateless authentication model will make integration of Open AMT Cloud Toolkit microservices into existing management consoles much more seamless.
+    With the addition of [Kong Gateway](https://konghq.com/kong/) and its rich [plug-in support](https://docs.konghq.com/hub/), this opens up options for integrators to use a broader set of user authentication services (OAuth 2.0, OpenID, Okta, LDAP, etc).  By default, the MPS provides a JSON Web Token (JWT) via the ```/authorization``` endpoint. The new stateless authentication model will make integration of Open AMT Cloud Toolkit microservices into existing management consoles much more seamless.
 
 ### Modifications and Removals
 #### RPS
