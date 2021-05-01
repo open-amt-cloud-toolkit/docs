@@ -1,6 +1,9 @@
-Figure 1 illustrates the high-level architecture of Open Active Management Technology (AMT) Cloud Toolkit [microservice architecture](../Glossary.md#m).
+--8<-- "References/abbreviations.md"
 
-[![ManualDeploymentWorkflow.png](../assets/images/AEHighLevelArch.png)](../assets/images/AEHighLevelArch.png)
+Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit microservice architecture.
+
+![../assets/images/AEHighLevelArch.png](../assets/images/HiLevelArchitecture.png)
+
 **Figure 1: Deploy Management Presence Server (MPS) and the Remote Provisioning Server (RPS) on a development system.**
 
 As shown in Figure 1, the architecture consists of five components:
@@ -12,13 +15,13 @@ As shown in Figure 1, the architecture consists of five components:
 5. **Sample Web UI** - A web based UI that demonstrates how to use the UI Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
 
 
-## Out-of-band Management (OOBM)
+## Out-of-band Management (OOB Management)
 
-Open AMT Cloud Toolkit uses remote management technology, also known as [out-of-band management (OOBM)](../Glossary.md#o), to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
+Open AMT Cloud Toolkit uses remote management technology, also known as OOB Management, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
 
 Remote management can offer potential cost-savings by decreasing the need for in-person technician visits to remote IT sites and reducing downtime.
 
-## What's the difference between in-band and out-of-band management?
+## What's the difference between in-band and OOB Management?
 
 Remote monitoring and management software solutions often require the managed devices to be in the powered on state. The IT administrator connects to and updates the managed device while it is in the powered on state.
 
