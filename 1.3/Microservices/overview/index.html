@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#out-of-band-management-oobm" class="md-skip">
+        <a href="#out-of-band-management-oob-management" class="md-skip">
           Skip to content
         </a>
       
@@ -564,18 +564,18 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#out-of-band-management-oobm" class="md-nav__link">
-    Out-of-band Management (OOBM)
+  <a href="#out-of-band-management-oob-management" class="md-nav__link">
+    Out-of-band Management (OOB Management)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-the-difference-between-in-band-and-out-of-band-management" class="md-nav__link">
-    What's the difference between in-band and out-of-band management?
+  <a href="#whats-the-difference-between-in-band-and-oob-management" class="md-nav__link">
+    What's the difference between in-band and OOB Management?
   </a>
   
-    <nav class="md-nav" aria-label="What's the difference between in-band and out-of-band management?">
+    <nav class="md-nav" aria-label="What's the difference between in-band and OOB Management?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1299,18 +1299,18 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#out-of-band-management-oobm" class="md-nav__link">
-    Out-of-band Management (OOBM)
+  <a href="#out-of-band-management-oob-management" class="md-nav__link">
+    Out-of-band Management (OOB Management)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-the-difference-between-in-band-and-out-of-band-management" class="md-nav__link">
-    What's the difference between in-band and out-of-band management?
+  <a href="#whats-the-difference-between-in-band-and-oob-management" class="md-nav__link">
+    What's the difference between in-band and OOB Management?
   </a>
   
-    <nav class="md-nav" aria-label="What's the difference between in-band and out-of-band management?">
+    <nav class="md-nav" aria-label="What's the difference between in-band and OOB Management?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1372,65 +1372,65 @@
                 
                   <h1>Overview</h1>
                 
-                <p>Figure 1 illustrates the high-level architecture of Open Active Management Technology (AMT) Cloud Toolkit <a href="../../Glossary/#m">microservice architecture</a>.</p>
-<p><a href="../../assets/images/AEHighLevelArch.png"><img alt="ManualDeploymentWorkflow.png" src="../../assets/images/AEHighLevelArch.png" /></a>
-<strong>Figure 1: Deploy Management Presence Server (MPS) and the Remote Provisioning Server (RPS) on a development system.</strong></p>
+                <p>Figure 1 illustrates the high-level architecture of <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> <abbr title="microservice architecture - An architecture in which the component parts are broken into discrete services, called microservices, that perform specific, limited functions.">microservice architecture</abbr>.</p>
+<p><img alt="../assets/images/AEHighLevelArch.png" src="../../assets/images/HiLevelArchitecture.png" /></p>
+<p><strong>Figure 1: Deploy Management Presence Server (<abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>) and the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr>) on a development system.</strong></p>
 <p>As shown in Figure 1, the architecture consists of five components:</p>
 <ol>
-<li><strong>MPS</strong> - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, and Mouse (KVM) control.</li>
-<li><strong>RPS</strong> - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the MPS for manageability use cases.</li>
-<li><strong>RPC</strong> - A lightweight client application that communicates with the RPS server to activate Intel® AMT.</li>
-<li><strong>UI Toolkit</strong> - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. </li>
-<li><strong>Sample Web UI</strong> - A web based UI that demonstrates how to use the UI Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.</li>
+<li><strong><abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr></strong> - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>) control.</li>
+<li><strong><abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr></strong> - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> for manageability use cases.</li>
+<li><strong><abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr></strong> - A lightweight client application that communicates with the <abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr> server to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>.</li>
+<li><strong><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement AMT features and services to their manageability console.">UI Toolkit</abbr></strong> - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the <abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>, to a console. </li>
+<li><strong><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></strong> - A web based UI that demonstrates how to use the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement AMT features and services to their manageability console.">UI Toolkit</abbr>. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.</li>
 </ol>
-<h2 id="out-of-band-management-oobm">Out-of-band Management (OOBM)<a class="headerlink" href="#out-of-band-management-oobm" title="Permanent link">&para;</a></h2>
-<p>Open AMT Cloud Toolkit uses remote management technology, also known as <a href="../../Glossary/#o">out-of-band management (OOBM)</a>, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  </p>
+<h2 id="out-of-band-management-oob-management">Out-of-band Management (<abbr title="Out-of-band Management - A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols.">OOB Management</abbr>)<a class="headerlink" href="#out-of-band-management-oob-management" title="Permanent link">&para;</a></h2>
+<p><abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> uses remote management technology, also known as <abbr title="Out-of-band Management - A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols.">OOB Management</abbr>, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> software can perform remote management, including powering up as a system that is currently powered down.  </p>
 <p>Remote management can offer potential cost-savings by decreasing the need for in-person technician visits to remote IT sites and reducing downtime.</p>
-<h2 id="whats-the-difference-between-in-band-and-out-of-band-management">What's the difference between in-band and out-of-band management?<a class="headerlink" href="#whats-the-difference-between-in-band-and-out-of-band-management" title="Permanent link">&para;</a></h2>
+<h2 id="whats-the-difference-between-in-band-and-oob-management">What's the difference between in-band and <abbr title="Out-of-band Management - A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols.">OOB Management</abbr>?<a class="headerlink" href="#whats-the-difference-between-in-band-and-oob-management" title="Permanent link">&para;</a></h2>
 <p>Remote monitoring and management software solutions often require the managed devices to be in the powered on state. The IT administrator connects to and updates the managed device while it is in the powered on state.</p>
 <p>With out-of-band management, the administrator can connect to the device when it has been powered down or it is unresponsive. </p>
-<h3 id="cira-configuration">CIRA Configuration<a class="headerlink" href="#cira-configuration" title="Permanent link">&para;</a></h3>
-<p>CIRA enables OOB connections between Intel® AMT platforms and administrative development systems running Open AMT on the same network. </p>
-<p>The <a href="https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server">following steps</a> occur via a CIRA channel:</p>
+<h3 id="cira-configuration"><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Configuration<a class="headerlink" href="#cira-configuration" title="Permanent link">&para;</a></h3>
+<p><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> enables OOB connections between <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> platforms and administrative development systems running Open AMT on the same network. </p>
+<p>The <a href="https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server">following steps</a> occur via a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> channel:</p>
 <ol>
 <li>
-<p>A remote Intel vPro® platform featuring Intel® AMT is activated and a CIRA configuration is applied. The remote platform is referred to as the managed device. </p>
+<p>A remote Intel vPro® platform featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> is activated and a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration is applied. The remote platform is referred to as the managed device. </p>
 </li>
 <li>
-<p>The managed device connects to the MPS and establishes an encrypted connection using Transport Layer Security (TLS) </p>
+<p>The managed device connects to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> and establishes an encrypted connection using Transport Layer Security (TLS) </p>
 </li>
 <li>
-<p>The Intel vPro® platform maintains a long standing connection with the MPS through the use of small <em>keep-alive</em> messages to the MPS.</p>
+<p>The Intel vPro® platform maintains a long standing connection with the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> through the use of small <em>keep-alive</em> messages to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>.</p>
 </li>
 <li>
-<p>A management console sends a command to the MPS, via provided RESTful interfaces, with the command indicating the managed device should take some action.</p>
+<p>A management console sends a command to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>, via provided RESTful interfaces, with the command indicating the managed device should take some action.</p>
 </li>
 <li>
-<p>The MPS authenticates the RESTful command and proxies the command for the management console to the managed device.  </p>
+<p>The <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> authenticates the RESTful command and proxies the command for the management console to the managed device.  </p>
 </li>
 </ol>
-<p>The MPS handles the authentication process with the managed device. </p>
-<h3 id="control-mode-profile">Control Mode Profile<a class="headerlink" href="#control-mode-profile" title="Permanent link">&para;</a></h3>
-<p>Managed devices featuring Intel® AMT support two control modes: </p>
+<p>The <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> handles the authentication process with the managed device. </p>
+<h3 id="control-mode-profile">Control Mode <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#control-mode-profile" title="Permanent link">&para;</a></h3>
+<p>Managed devices featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> support two control modes: </p>
 <ul>
 <li>
-<p><a href="../../Glossary/#a"><strong>Admin Control Mode (ACM): </strong></a>
-In this mode, there are no limitations to Intel® AMT functionality. This reflects the higher level of trust associated with these setup methods. No user consent is required.</p>
+<p><a href="../../Glossary/#a"><strong>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr>): </strong></a>
+In this mode, there are no limitations to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> functionality. This reflects the higher level of trust associated with these setup methods. No user consent is required.</p>
 </li>
 <li>
-<p><a href="../../Glossary/#c"><strong>Client Control Mode (CCM):</strong></a> This mode limits some of Intel® AMT functionality, reflecting the lower level of trust.</p>
+<p><a href="../../Glossary/#c"><strong>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>):</strong></a> This mode limits some of <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> functionality, reflecting the lower level of trust.</p>
 <p>Features requiring User Consent:</p>
 <ul>
-<li>Keyboard, Video, Mouse (KVM) Control</li>
+<li>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>) Control</li>
 <li>IDE-Redirection for sharing and mounting images remotely</li>
 </ul>
 </li>
 </ul>
 <h3 id="domains">Domains<a class="headerlink" href="#domains" title="Permanent link">&para;</a></h3>
-<p>In addition to a CIRA Config and an ACM AMT Profile, ACM requires the creation of a Domain profile.</p>
-<p>Intel® AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware. Intel® AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
+<p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr> AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr> requires the creation of a Domain profile.</p>
+<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
 <h2 id="power-control">Power Control<a class="headerlink" href="#power-control" title="Permanent link">&para;</a></h2>
-<p>With the established CIRA channel, Open AMT Cloud Toolkit enables the administrator to manage remote devices and trigger power actions to:</p>
+<p>With the established <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> channel, <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> enables the administrator to manage remote devices and trigger power actions to:</p>
 <ul>
 <li>power up</li>
 <li>power down</li>
@@ -1438,9 +1438,9 @@ In this mode, there are no limitations to Intel® AMT functionality. This reflec
 <li>reset</li>
 <li>reset to BIOS</li>
 </ul>
-<p>For more information about power states supported by the REST APIs, see <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm">Intel® AMT Implementation and Reference Guide</a> for more details. </p>
-<h2 id="keyboard-video-mouse-kvm-control">Keyboard, Video, Mouse (KVM) Control<a class="headerlink" href="#keyboard-video-mouse-kvm-control" title="Permanent link">&para;</a></h2>
-<p>Intel® AMT enables remote management of a device, even when the OS isn't running, through KVM over IP support. No additional equipment is needed for this feature.  With KVM control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote KVM switches and other hardware. </p>
+<p>For more information about power states supported by the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.">REST</abbr> APIs, see <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm"><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> Implementation and Reference Guide</a> for more details. </p>
+<h2 id="keyboard-video-mouse-kvm-control">Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>) Control<a class="headerlink" href="#keyboard-video-mouse-kvm-control" title="Permanent link">&para;</a></h2>
+<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> enables remote management of a device, even when the OS isn't running, through <abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr> over IP support. No additional equipment is needed for this feature.  With <abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr> control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote <abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr> switches and other hardware. </p>
                 
               
               

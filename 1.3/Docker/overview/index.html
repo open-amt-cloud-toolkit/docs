@@ -1363,7 +1363,7 @@
                 
                 
                 <h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
-<p>This section contains prerequisites for deploying Open AMT Cloud Toolkit's <a href="../../Glossary/#m">Management Presence Server (MPS)</a> and <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a> on a local development system as Docker* containers. </p>
+<p>This section contains prerequisites for deploying <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>'s <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> and <abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr> microservices on a local development system as Docker* containers. </p>
 <p><a href="../../assets/images/LocalDockerWorkflow.png"><img alt="Docker Local Overview" src="../../assets/images/LocalDockerWorkflow.png" /></a></p>
 <p><strong>Figure 1: Deploy microservices on a local development system as Docker containers. </strong></p>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
@@ -1376,7 +1376,7 @@
 </ul>
 <p>Both systems must use a wired (i.e., cable) connection on the same network.</p>
 <h3 id="development-system-software">Development System Software<a class="headerlink" href="#development-system-software" title="Permanent link">&para;</a></h3>
-<p><strong>Before MPS and RPS installation, install the following software:</strong></p>
+<p><strong>Before <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> and <abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr> installation, install the following software:</strong></p>
 <ul>
 <li>
 <p><a href="https://www.docker.com/products/docker-desktop">Docker* Desktop</a> for Windows<em> or Linux</em></p>
@@ -1395,22 +1395,21 @@
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
 <p><strong>To complete a deployment:</strong></p>
 <ul>
-<li>Install the Prerequisites</li>
-<li>Run Setup to Build and Deploy Microservices with Docker</li>
-<li>Login and Configure RPS</li>
-<li>Build RPC</li>
-<li>Copy RPC to a Managed Device</li>
+<li>Install the prerequisites.</li>
+<li>Run setup to build and deploy microservices with Docker.</li>
+<li>Login and configure <abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr>.</li>
+<li>Build <abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr>.</li>
+<li>Copy <abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr> to a managed device.</li>
 </ul>
 <p><strong>To connect the managed device:</strong></p>
 <ul>
-<li>Run RPC on a Managed Device</li>
-<li>Manage the Device with MPS</li>
+<li>Run <abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr> on a managed device.</li>
+<li>Manage the device with <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>.</li>
 </ul>
 <p>These sections include instructions for Windows and Linux* environments. Run instructions in a terminal window, the Windows Command Prompt in Administrator mode or the Linux shell/terminal.</p>
 <h2 id="why-docker">Why Docker*?<a class="headerlink" href="#why-docker" title="Permanent link">&para;</a></h2>
 <p>A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. Docker streamlines installation to get you up and running faster.</p>
 <p>Get more information about Docker images and containers at <a href="https://www.docker.com/resources/what-container">Docker resources.</a>   </p>
-<p>Estimated completion time: <strong>15 minutes</strong></p>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../dockerLocal/"><strong>Build Docker* Images</strong></a></p>
                 

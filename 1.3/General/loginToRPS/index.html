@@ -1306,20 +1306,20 @@
                 
                   <h1>Login to RPS</h1>
                 
-                <p>The web portal is available for login after the deployment of the <a href="../../Glossary/#m">Management Presence Server (MPS)</a>, <a href="../../Glossary/#r">Remote Provisioning Server (RPS)</a>, and <a href="../../Glossary/#s">Sample Web UI</a>. Make sure all three are successfully running before attempting to login.</p>
+                <p>The web portal is available for login after the deployment of the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>, <abbr title="Remote Provisioning Server - A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Make sure all three are successfully running before attempting to login.</p>
 <h2 id="before-logging-in">Before Logging In<a class="headerlink" href="#before-logging-in" title="Permanent link">&para;</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Do not skip these steps. It enables the Sample Web UI to connect to the MPS server.</p>
+<p>Do not skip these steps. It enables the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> to connect to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> server.</p>
 </div>
 <ol>
 <li>
-<p>Open any modern web browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.</p>
+<p>Open any modern web browser and navigate to the following link. Because the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> to connect.</p>
 <div class="highlight"><pre><span></span><code>https://[Development-IP-Address]:3000
 </code></pre></div>
 </li>
 <li>
-<p>A warning screen will prompt. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the MPS webserver.</p>
+<p>A warning screen will prompt. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> webserver.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><a href="../../assets/images/selfSignedConnect.png"><img alt="MPS Warning" src="../../assets/images/selfSignedConnect.png" /></a></p>
@@ -1334,12 +1334,12 @@
 <h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open a new tab in your browser and navigate to the Sample Web UI using localhost.</p>
+<p>Open a new tab in your browser and navigate to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> using localhost.</p>
 <div class="highlight"><pre><span></span><code>http://localhost:4200
 </code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The Sample Web UI uses <strong>HTTP</strong> and not <strong>HTTPS</strong>.</p>
+<p>The <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> uses <strong>HTTP</strong> and not <strong>HTTPS</strong>.</p>
 </div>
 </li>
 <li>
@@ -1367,11 +1367,11 @@
 <li>
 <p>The home page should look like the following.</p>
 <p><a href="../../assets/images/WebUI_Home.png"><img alt="WebUI" src="../../assets/images/WebUI_Home.png" /></a></p>
-<p><strong>Figure 1: Sample Web UI Home Page</strong></p>
+<p><strong>Figure 1: <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Home Page</strong></p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><strong><a href="../createCIRAConfig/">Create a CIRA Config</a></strong></p>
+<p><strong><a href="../createCIRAConfig/">Create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</a></strong></p>
                 
               
               

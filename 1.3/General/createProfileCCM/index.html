@@ -1294,18 +1294,18 @@
                 
                   <h1>Create a Profile with CCM</h1>
                 
-                <p><a href="../../Glossary/#c"><strong>Client Control Mode (CCM)</strong></a> provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.</p>
+                <p>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) provides full access to features of Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>), but it does require user consent for all redirection features.</p>
 <p>These features require user consent:</p>
 <ul>
-<li>Keyboard, Video, Mouse (KVM) Control</li>
+<li>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>) Control</li>
 <li>IDE-Redirection for sharing and mounting images remotely</li>
 <li>Serial-over-LAN (SOL)</li>
 </ul>
 <p><img alt="assets/images/Profiles.png" src="../../assets/images/Profiles.png" /></p>
 <p><strong>Figure 1: Set up configuration and profiles for N number of clients. </strong></p>
-<h2 id="create-a-profile">Create a Profile<a class="headerlink" href="#create-a-profile" title="Permanent link">&para;</a></h2>
-<p><a href="../../Glossary/#p">Profiles</a> provide configuration information to the AMT Firmware during the activation process with the <a href="../../Glossary/#r">Remote Provisioning Client (RPC)</a>.</p>
-<p><strong>To create a CCM profile:</strong></p>
+<h2 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">&para;</a></h2>
+<p>Profiles provide configuration information to the firmware on platforms featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr>).</p>
+<p><strong>To create a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile:</strong></p>
 <ol>
 <li>
 <p>Select the <strong>Profiles</strong> tab from the menu on the left.</p>
@@ -1316,7 +1316,7 @@
 <strong>Figure 1: Create a new profile.</strong></p>
 </li>
 <li>
-<p>Specify a <strong>Profile Name</strong> of your choice.</p>
+<p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
 </li>
 <li>
 <p>Under <strong>Activation Mode</strong>, select <strong>Client Control Mode</strong> from the dropdown menu.</p>
@@ -1329,7 +1329,7 @@
 </div>
 </li>
 <li>
-<p>Provide a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a MPS server.</p>
+<p>Provide a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr> server.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This password must meet standard, <strong>strong</strong> password requirements:</p>
@@ -1344,13 +1344,13 @@
 </div>
 </li>
 <li>
-<p>An <strong>MEBX Password</strong> is disabled for CCM activation.</p>
+<p>An <strong>MEBX Password</strong> is disabled, as the password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of the Intel® AMT.">Intel® MEBX</abbr>) is not necessary for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>.</p>
 </li>
 <li>
 <p>Select DHCP as <strong>Network Configuration</strong>.</p>
 </li>
 <li>
-<p>Select the name of the <strong>CIRA Configuration</strong> you created previously from the drop-down menu.</p>
+<p>Select the name of the <strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Configuration</strong> you created previously from the drop-down menu.</p>
 </li>
 <li>
 <p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
@@ -1359,14 +1359,14 @@
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>Example CCM Profile:</p>
+<p>Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>:</p>
 <p><a href="../../assets/images/RPS_CreateProfile.png"><img alt="RPS" src="../../assets/images/RPS_CreateProfile.png" /></a>
-<strong>Figure 2: Example CCM profile.</strong></p>
+<strong>Figure 2: Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile.</strong></p>
 </div>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><strong><a href="../buildRPC/">Build &amp; Run RPC</a></strong></p>
+<p><strong><a href="../buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr></a></strong></p>
                 
               
               
