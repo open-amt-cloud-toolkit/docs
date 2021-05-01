@@ -1,4 +1,6 @@
-[Admin Control Mode (ACM)](../Glossary.md#a) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.
+--8<-- "References/abbreviations.md"
+
+Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.
 
 ![assets/images/Profiles.png](../assets/images/Profiles.png)
 
@@ -20,7 +22,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel AMT de
 
 
 #### DNS Suffix
-The [DNS suffix](../Glossary.md#d) encompasses the [domain suffix](../Glossary.md#d) (e.g., .com) and follows the hostname. Consider the following DNS Name example:
+The DNS suffix encompasses the domain suffix (e.g., .com) and follows the hostname. Consider the following DNS Name example:
 
 ???+ Example
     DNS Name: cb-vending1.burgerbusiness.com
@@ -84,7 +86,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 7. Leave **Generate Random MEBX Password** unchecked.
    
-8. Provide a strong **MEBX Password**. This password can be used to access MEBx on the AMT device.
+8. Provide a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
 9. Select DHCP as **Network Configuration**.
 

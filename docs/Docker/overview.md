@@ -1,6 +1,7 @@
+--8<-- "References/abbreviations.md"
 # Prerequisites
 
-This section contains prerequisites for deploying Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) on a local development system as Docker* containers. 
+This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
 
 [![Docker Local Overview](../assets/images/LocalDockerWorkflow.png)](../assets/images/LocalDockerWorkflow.png)
 
@@ -8,7 +9,6 @@ This section contains prerequisites for deploying Open AMT Cloud Toolkit's [Mana
 **Figure 1: Deploy microservices on a local development system as Docker containers. **
 
 ## What You'll Need
-
 
 ###Hardware
 
@@ -38,17 +38,17 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 
 **To complete a deployment:**
 
-- Install the Prerequisites
-- Run Setup to Build and Deploy Microservices with Docker
-- Login and Configure RPS
-- Build RPC
-- Copy RPC to a Managed Device
+- Install the prerequisites.
+- Run setup to build and deploy microservices with Docker.
+- Login and configure RPS.
+- Build RPC.
+- Copy RPC to a managed device.
 
 
 **To connect the managed device:**
 
-- Run RPC on a Managed Device
-- Manage the Device with MPS
+- Run RPC on a managed device.
+- Manage the device with MPS.
 
 These sections include instructions for Windows and Linux* environments. Run instructions in a terminal window, the Windows Command Prompt in Administrator mode or the Linux shell/terminal.
 
@@ -57,8 +57,6 @@ These sections include instructions for Windows and Linux* environments. Run ins
 A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. Docker streamlines installation to get you up and running faster.
 
 Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)   
-
-Estimated completion time: **15 minutes**
 
 ## Next up
 [**Build Docker* Images**](dockerLocal.md)
