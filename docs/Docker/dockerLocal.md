@@ -1,6 +1,7 @@
+--8<-- "References/abbreviations.md"
 #Express Setup
 
-This setup installs the [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) microservices as [Docker*](../Glossary.md#d) containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+This setup installs the MPS and RPS microservices as [Docker*](../Glossary.md#d) containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 ## Get the Toolkit
 
@@ -49,7 +50,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 ## Build and Run the Docker Images
 
-Build the MPS, RPS, and Sample UI Docker images and launch the stack.
+Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
 
 
 1.  Run docker-compose to start the containers.

@@ -1,4 +1,6 @@
-[**Client Control Mode (CCM)**](../Glossary.md#c) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
+--8<-- "References/abbreviations.md"
+
+Client Control Mode (CCM) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 
 These features require user consent:
 
@@ -12,7 +14,7 @@ These features require user consent:
 
 ## Create a Profile
 
-[Profiles](../Glossary.md#p) provide configuration information to the AMT Firmware during the activation process with the [Remote Provisioning Client (RPC)](../Glossary.md#r).
+Profiles provide configuration information to the firmware on platforms featuring Intel® AMT during the activation process with the Remote Provisioning Client (RPC).
 
 **To create a CCM profile:**
 
@@ -41,7 +43,7 @@ These features require user consent:
 
         - One uppercase, one lowercase, one numerical digit, one special character
    
-7. An **MEBX Password** is disabled for CCM activation.
+7. An **MEBX Password** is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) is not necessary for CCM.
 
 8. Select DHCP as **Network Configuration**.
 
