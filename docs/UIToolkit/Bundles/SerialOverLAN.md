@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # Quickstart  - Bundle Serial-Over-Lan Control
 
 This document shows how to:

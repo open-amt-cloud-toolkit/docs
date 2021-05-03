@@ -1,10 +1,11 @@
+--8<-- "References/abbreviations.md"
 # MPS Security Considerations
 
-Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel&reg; AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel&reg; AMT devices using REST APIs, MPS uses secrets. There are six key assets that must be protected:
+Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel® AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel® AMT devices using REST APIs, MPS uses secrets. There are six key assets that must be protected:
 
-* Intel&reg; AMT credentials
-* Intel&reg; MPS credentials
-* Device Allowlist (List of UUIDs)
+* Intel® AMT credentials
+* MPS credentials
+* Device Allowlist (List of GUIDs)
 * APIKey
 * Server Configuration
 * Web User Credentials
@@ -14,14 +15,14 @@ In addition to the above assets, there are best practices that are recommended t
 
 ## Security Assets
 
-### 1. Intel&reg; AMT credentials
-AMT credentials allows a user to remotely control Intel&reg; AMT device and these credentials are configured in AMT Firmware. When user performs an action on the device using REST API, MPS then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.
+### 1. Intel® AMT credentials
+AMT credentials allows a user to remotely control Intel® AMT device and these credentials are configured in AMT Firmware. When user performs an action on the device using REST API, MPS then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.
 
 ### 2. Intel&reg; MPS credentials
 Every Intel&reg; device needs to be authenticated prior to successful connection to MPS. MPS credentials are used to authenticate every Intel&reg; device. After establishing TLS connection with MPS, device sends it's username and password, which will then be used to authenticate. It is highly recommended that every device use a unique username and password.
 
-### 3. Device Allowlist (List of UUIDs)
-Each Intel&reg; AMT device has a unique identifier (UUID) assigned to it and this UUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by MPS using MPS credentials. But even before validating credentials, only allowlist Intel&reg; AMT devices can be allowed to connect to make it more secure and this is being done using the allowlist UUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.
+### 3. Device Allowlist (List of GUIDs)
+Each Intel® AMT device has a unique identifier (GUID) assigned to it and this GUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by MPS using MPS credentials. But even before validating credentials, only allowlist Intel® AMT devices can be allowed to connect to make it more secure and this is being done using the allowlist GUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.
 
 ### 4. APIKey
 Every client/user needs to be authenticated before allowing them to perform an action using REST API call. APIKey will be used by MPS to authenticate a client/user.
@@ -40,9 +41,9 @@ There are three potential places where TLS should be enabled to protect the secu
 
 * HTTP/WS connection between Web UI and MPS
 * Connection between MPS and Vault
-* Connection between MPS and Intel&reg; AMT device (This is done automatically with default deployments)
+* Connection between MPS and Intel® AMT device (This is done automatically with default deployments)
 
-Encrypting these communication will help prevent network based attacks attempting to control Intel&reg; AMT device. It is recommended that the most modern version of TLS be used to protect these connections.
+Encrypting these communication will help prevent network based attacks attempting to control Intel® AMT device. It is recommended that the most modern version of TLS be used to protect these connections.
 
 ### 2. Secure and isolate execution environment
 MPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated VM or container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.

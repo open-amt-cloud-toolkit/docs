@@ -1,3 +1,5 @@
+--8<-- "References/abbreviations.md"
+
 This tutorial demonstrates how to construct an Admin method API call for [*ConnectedDevices*](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/Admin/post_admin) using Node.js. The ConnectedDevices method will retrieve information about connected devices, including device GUIDs.
 
 [![ConnectedDevices](../assets/images/ConnectedDevicesAPI.png)](../assets/images/ConnectedDevicesAPI.png)

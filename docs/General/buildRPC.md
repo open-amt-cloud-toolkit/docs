@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 The Remote Provisioning Client (RPC) on the managed devices establishes the Client Initiated Remote Access (CIRA) connection of the Intel® Active Management Technology (Intel® AMT) device to the Management Presence Server (MPS). This allows the remote device to call home to the MPS.  
 
 After running the RPC, the Intel® AMT managed device can be managed remotely using the web interface!
@@ -64,7 +65,7 @@ cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
 
 2. Navigate to the directory containing the RPC application. 
 
-3. Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
+3. Run RPC with the following command to activate and configure Intel® AMT. It will take 1-2 minutes to finish provisioning the device.
 
 - Replace [Development-IP-Address] with the development system's IP address, where the MPS and RPS servers are running.
 - Replace [profile-name] with your created profile from the Web Server. The RPC application command line parameters are case sensitive.

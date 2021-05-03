@@ -9,7 +9,7 @@ Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit micro
 As shown in Figure 1, the architecture consists of five components:
 
 1. **MPS** - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, and Mouse (KVM) control.
-2. **RPS** - A microservice that activates Intel® Active Management Technology (AMT) using predefined profiles and connects them to the MPS for manageability use cases.
+2. **RPS** - A microservice that activates Intel® Active Management Technology (Intel® AMT) using predefined profiles and connects them to the MPS for manageability use cases.
 3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
 4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
 5. **Sample Web UI** - A web based UI that demonstrates how to use the UI Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
@@ -62,7 +62,7 @@ In this mode, there are no limitations to Intel® AMT functionality. This reflec
 
 ### Domains
 
-In addition to a CIRA Config and an ACM AMT Profile, ACM requires the creation of a Domain profile.
+In addition to a CIRA Config and an ACM Profile, ACM requires the creation of a Domain Profile.
 
 Intel® AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware. Intel® AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
 

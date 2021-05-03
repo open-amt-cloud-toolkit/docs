@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # Build Docker* Containers for MPS and RPS and Deploy to the Cloud
 
 The Open AMT Cloud Toolkit provides support for deploying [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) microservices as [Docker*](../Glossary.md#d) containers to the cloud. 

@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # MPS Configuration Options
 
 | Environment Variable       | Default                | Description |

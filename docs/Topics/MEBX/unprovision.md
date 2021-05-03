@@ -1,6 +1,6 @@
 ## Manageability Engine BIOS Extensions (MEBX)
 
-Intel MEBX allows for configuration of the Intel Manageability Engine (ME) platform. Through this interface, you can provision AMT and customize a variety of settings manually.
+Intel® MEBX allows for configuration of the Intel Manageability Engine (ME) platform. Through this interface, you can provision AMT and customize a variety of settings manually.
 
 ### Unprovision an AMT Device Through MEBX
 

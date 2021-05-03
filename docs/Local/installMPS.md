@@ -1,4 +1,4 @@
-
+--8<-- "References/abbreviations.md"
 
 The Open Active Management Technology (AMT) Cloud Toolkit repository includes:
 
@@ -28,7 +28,7 @@ Find details about architectural details, security issues, and more in [Microser
 
     | Prerequisite Software | Purpose |
     | :----------- |  :--|
-    | [git](https://git-scm.com/downloads)| Downloads the OpenAMT Cloud Toolkit repository | 
+    | [git](https://git-scm.com/downloads)| Downloads the Open AMT Cloud Toolkit repository | 
     | [Node.js* LTS 12.x.x or newer](https://nodejs.org/) | Installs and runs the software | 
 
 ## Download and Configure Software
@@ -155,7 +155,7 @@ Start the MPS, RPS, and Sample Web UI in three separate command line terminals.
 
         [![Sample UI Output](../assets/images/SampleUI_npmstart.png)](../assets/images/SampleUI_npmstart.png)
 
-        **Figure 3: Sample UI reports successful deployment.**
+        **Figure 3: Sample Web UI reports successful deployment.**
 
 
 ## Next up

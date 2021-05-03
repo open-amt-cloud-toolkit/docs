@@ -80,7 +80,7 @@ The DbConfig section configures how RPS connects to a database, which we're not 
 
 | Option       |  Description    |
 | :----------- | :-------------- |
-| **DbEnabled** | Set to <span style="color:green"><b>true</b></span> to enable database integration. To use GenerateRandomPassword for an Intel&reg; AMT profile, DbEnabled must be set to true. |
+| **DbEnabled** | Set to <span style="color:green"><b>true</b></span> to enable database integration. To use GenerateRandomPassword for an Intel® AMT profile, DbEnabled must be set to true. |
 | **connectionString** | Specifies how RPS should connect to the database. If DbEnabled is set to *true*, this is required. |
 | **databaseName** | Specifies the name of the database that RPS should use. If DbEnabled is set to *true*, this is required. |
 | **collectionName** |  Specifies the collection in the database that RPS should use. If DbEnabled is set to *true*, this is required. |

@@ -10,7 +10,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 
 #### Provisioning Certificate
 
-By purchasing a certificate, you'll be able to remotely activate an Intel AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities:
+By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities:
 
 - [Comodo](https://www.intel.com/content/www/us/en/architecture-and-technology/intel-active-management-technology/how-to-install-comodo-certificates.html)
 - [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
@@ -33,7 +33,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 1. Manually set it using MEBX on the managed device. Find instructions [here](../Topics/MEBX/dnsSuffix.md)
 
-2. Alternately, change the DHCP Option 15 to DNS Suffix within the Router settings.
+2. Alternately, change the DHCP Option 15 to DNS suffix within the Router settings.
 
 **To find the the DNS suffix, use the following command: **
 
@@ -106,7 +106,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 In addition to a CIRA Config and an ACM Profile, ACM requires the creation of a Domain profile.
 
-Intel AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
+Intel® AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
 
 **To create a domain:**
 
@@ -118,9 +118,9 @@ Intel AMT checks the network DNS suffix against the provisioning certificate as 
 
     **Figure 3: Create Domain. **
 
-3. Specify a name of your choice for the Domain Profile for the **Domain Name** field. This does not have to be the actual network Domain Name/Suffix.
+3. Specify a name of your choice for the Domain Profile for the **Name** field. This does not have to be the actual network Domain Name/Suffix.
 
-4. Provide your **Domain Suffix**. This is the actual DNS Suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
+4. Provide your **DNS suffix** as the **Domain Name**. This is the actual DNS suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
 
 5. Click **Choose File** and select your purchased Provisioning Certificate.  This certificate must contain the private key.
 
