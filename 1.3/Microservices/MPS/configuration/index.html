@@ -1274,11 +1274,6 @@
 <td align="left">Path to where secrets are stored in the vault</td>
 </tr>
 <tr>
-<td align="left">MPS_NODE_ENV</td>
-<td align="left">dev</td>
-<td align="left">Node Environment. Set to <code>PRODUCTION</code> when ready to deploy to production</td>
-</tr>
-<tr>
 <td align="left">MPS_GENERATE_CERTS</td>
 <td align="left">true</td>
 <td align="left">Enables/Disables generation of self signed certificates based on MPS_COMMON_NAME</td>
@@ -1344,23 +1339,8 @@
 <td align="left">Specifies whether or not to enable https</td>
 </tr>
 <tr>
-<td align="left">MPS_MPSXAPIKEY</td>
-<td align="left">APIKEYFORMPS123!</td>
-<td align="left">RESTful API Header Key. This header must be present on all RESTful calls made against MPS</td>
-</tr>
-<tr>
-<td align="left">MPS_LISTEN_ANY</td>
-<td align="left">true</td>
-<td align="left"></td>
-</tr>
-<tr>
 <td align="left">MPS_TLS_OFFLOAD</td>
 <td align="left">false</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">MPS_SESSION_ENCRYPTION_KEY</td>
-<td align="left"><YourStrongSessionEncryptionKey123!></td>
 <td align="left"></td>
 </tr>
 <tr>
@@ -1369,29 +1349,19 @@
 <td align="left">Controls the level of logging provided in the service. Options are (in order of increasing detail): <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code></td>
 </tr>
 <tr>
-<td align="left">MPS_AUTH_ENABLED</td>
-<td align="left">false</td>
-<td align="left"></td>
+<td align="left">MPS_JWT_SECRET</td>
+<td align="left">supersecret</td>
+<td align="left">Secret used for generating a JWT Token. IMPORTANT: This must match the <code>secret</code> in your <code>Kong.yaml</code> file for the jwt plugin configuration.</td>
 </tr>
 <tr>
-<td align="left">MPS_CORS_ORIGIN</td>
-<td align="left">http://localhost:3001</td>
-<td align="left">The domain/origin that is allowed to make requests against this service</td>
+<td align="left">MPS_JWT_ISSUER</td>
+<td align="left">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</td>
+<td align="left">The issuer that will be populated in the token. This is a not considered a secret. IMPORTANT: This must match the <code>key:</code> property in the <code>Kong.yaml</code> file for the jwt plugin configuration.</td>
 </tr>
 <tr>
-<td align="left">MPS_CORS_HEADERS</td>
-<td align="left">Origin, X-Requested-With, Accept, X-MPS-API-Key,x-rps-api-key, Content-Type, csrf-token, authorization</td>
-<td align="left">List of accepted HTTP Headers</td>
-</tr>
-<tr>
-<td align="left">MPS_CORS_METHODS</td>
-<td align="left">*</td>
-<td align="left">List of HTTP Methods that are allowed</td>
-</tr>
-<tr>
-<td align="left">MPS_CORS_ALLOW_CREDENTIALS</td>
-<td align="left">true</td>
-<td align="left">Controls whether or not session credentials can be send</td>
+<td align="left">MPS_JWT_EXPIRATION</td>
+<td align="left">1440</td>
+<td align="left">The default expiration in minutes for the JWT Token. Default is 24 hours.</td>
 </tr>
 </tbody>
 </table>
