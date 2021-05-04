@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 
 1. Go back to the Sample Web UI on your development system.
 	

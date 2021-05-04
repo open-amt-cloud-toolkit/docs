@@ -102,7 +102,7 @@ The code snippet below adds KVM control to the React application.
 
     | Field       |  Value   |
     | :----------- | :-------------- |
-    | `deviceId` | Replace the example deviceId value with the GUID of the Intel AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
+    | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
     | `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. Default MPS Server port is 3000. |
 
 
@@ -137,7 +137,7 @@ The code snippet below adds KVM control to the React application.
 5. If the React app is still open in the browser and hasn't updated, refresh the page. If not already open, open Chrome and navigate to the given URLs from your successful output. By default it is `https://localhost:3001` if MPS is running on Port 3000 already.
 
 
-You are now able to remotely control your Intel AMT device. Other controls such as device audit logs or profiles for RPS have example code below to test with.
+You are now able to remotely control your Intel® AMT device. Other controls such as device audit logs or profiles for RPS have example code below to test with.
 
 
 You will see the errors in the following scenarios:

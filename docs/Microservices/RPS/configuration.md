@@ -1,3 +1,5 @@
+--8<-- "References/abbreviations.md"
+
 # RPS Configuration 
 
 | Environment Variable         | Default                               | Description |

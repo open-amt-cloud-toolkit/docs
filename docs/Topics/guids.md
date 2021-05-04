@@ -1,15 +1,16 @@
-## GUIDs in Intel&reg; AMT
+--8<-- "References/abbreviations.md"
+## GUIDs in Intel® AMT
 
-Each Intel&reg; AMT device has a Global Unique Identifier (GUID) assigned to it by default. This GUID will be used as the reference to each device record. Typically, device GUIDs are required to perform power actions and other device-specific manageability features.
+Each Intel® AMT device has a Global Unique Identifier (GUID) assigned to it by default. This GUID will be used as the reference to each device record. Typically, device GUIDs are required to perform power actions and other device-specific manageability features.
 
-There are a number of ways to obtain the GUID on the Intel&reg; AMT device:
+There are a number of ways to obtain the GUID on the Intel® AMT device:
 
 - Sample Web UI of the Open AMT Cloud Toolkit 
 - [Devices API Method](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/Devices/get_devices)
 
 
 
-## Via WebUI
+## Via Sample Web UI
 
 1. Login to your Sample Web UI.
 

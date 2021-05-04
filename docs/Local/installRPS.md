@@ -1,13 +1,15 @@
-The [Remote Provisioning Service (RPS)](../Glossary.md#r) is a microservice based on Node.js*. The RPS works with the [Remote Provisioning Client (RPC)](../Glossary.md#r) to activate Intel® AMT platforms using a pre-defined profile.
+--8<-- "References/abbreviations.md"
 
-Figure 1 illustrates where RPS fits into the overall [microservice architecture.](../Glossary.md#m)
+The Remote Provisioning Service (RPS) is a microservice based on Node.js*. The RPS works with the Remote Provisioning Client (RPC) to activate Intel® AMT platforms using a pre-defined profile.
+
+Figure 1 illustrates where RPS fits into the overall microservice architecture.
 
 [![RPS](../assets/images/RPSDeployment.png)](../assets/images/RPSDeployment.png)
 
 **Figure 1: Deploy Remote Provisioning Server (RPS) on a development system.**
 
 
-## Clone OpenAMT Cloud Toolkit
+## Clone Open AMT Cloud Toolkit
 
 **To clone the repositories:**
 

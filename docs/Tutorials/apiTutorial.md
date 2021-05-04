@@ -1,8 +1,10 @@
+--8<-- "References/abbreviations.md"
+
 This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/Devices/get_devices) using Node.js. This method will retrieve information about all devices, including device GUIDs.
 
 [![ConnectedDevices](../assets/images/ConnectedDevicesAPI.png)](../assets/images/ConnectedDevicesAPI.png)
 
-**Figure 1: Admin Method API Call for Connected Devices**
+**Figure 1: API Call to Get All Devices**
 
 !!! important
     Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../Docker/overview.md)** to install microservices locally with Docker*.
