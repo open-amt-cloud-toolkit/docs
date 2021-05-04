@@ -1,3 +1,5 @@
+--8<-- "References/abbreviations.md"
+
 In addition to using GitHub Actions to obtain a binary, the RPC binary can also be manually built. The steps below walk through how to build RPC on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.
 
 ### Required Software
@@ -211,7 +213,7 @@ The steps below assume the following directory structure where rpc is the clone 
 
 For additional information on possible arguments when invoking RPC, see [Command Examples](commandsRPC.md).
 
-The following example command shows how to activate and configure an Intel AMT device using a pre-defined profile on your local network.
+The following example command shows how to activate and configure an Intel® AMT device using a pre-defined profile on your local network.
 
 === "Windows"
     ```

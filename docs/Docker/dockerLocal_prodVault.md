@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # Run MPS and RPS using docker and production vault
 ## Introduction
 This document describes how to run MPS and RPS using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.

@@ -1,5 +1,4 @@
-<!-- [![RPC](../assets/animations/forkandbuild.gif)](../assets/animations/forkandbuild.gif =500x) -->
-
+--8<-- "References/abbreviations.md"
 ## Build RPC 
 
 We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](./buildRPC.md).
@@ -22,7 +21,7 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 ## Run RPC to Activate and Connect the AMT Device
 
-1. Run RPC with the following command to activate and configure Intel&reg; AMT. It will take 1-2 minutes to finish provisioning the device.
+1. Run RPC with the following command to activate and configure Intel® AMT. It will take 1-2 minutes to finish provisioning the device.
 
 - Replace [IP-Address] with the IP address of the server where the MPS and RPS services are running
 - Replace [profile-name] with your created profile from the Web Server.

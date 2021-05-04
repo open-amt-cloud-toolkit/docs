@@ -1,8 +1,9 @@
+--8<-- "References/abbreviations.md"
 ## Add/Modify data.json
 
-If `use_allowlist` is set to `true` in the `.mpsrc` file within the `mps` directory, edit the `data.json` file in the `private` directory to allowlist Intel&reg; AMT GUIDs to connect to MPS. 
+If `use_allowlist` is set to `true` in the `.mpsrc` file within the `mps` directory, edit the `data.json` file in the `private` directory to allowlist Intel® AMT GUIDs to connect to MPS. 
 
-For information on how to obtain GUIDs, see [GUIDs in Intel&reg; AMT](../Topics/guids.md).
+For information on how to obtain GUIDs, see [GUIDs in Intel® AMT](../Topics/guids.md).
 
 1. Navigate to the `/mps/private` directory.
 

@@ -1,3 +1,5 @@
+--8<-- "References/abbreviations.md"
+
 Network Configuration profiles on the RPS server help to set the desired network on the AMT device. The [AMT Ethernet Port Setting](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=HTMLDocuments%2FWS-Management_Class_Reference%2FAMT_EthernetPortSettings.htm) is the AMT API used to set the network settings in AMT by the RPS. RPS network profiles currently contain three boolean settings.
 
 - **DHCPEnabled** - is a boolean. Indicates whether DHCP is in use. 

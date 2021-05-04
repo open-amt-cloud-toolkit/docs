@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 
 RPC is primarily used for communicating with the Remote Provision Server (RPS) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.
 
