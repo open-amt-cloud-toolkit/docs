@@ -75,6 +75,7 @@ nav:
     - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
     # - Static and Dynamic IPs: Topics/staticIP.md
+    - Deployment Considerations: Topics/deploymentConsiderations.md
     - AMT Power States: Topics/powerstates.md
     - GUIDs in Intel AMT: Topics/guids.md
     - Intel&reg MEBX:
