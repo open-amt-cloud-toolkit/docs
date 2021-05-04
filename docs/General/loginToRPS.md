@@ -25,7 +25,7 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
     | **Username**| standalone |
     | **Password**| G@ppm0ym |
 
-4. The home page should look like the following.
+4. The home page is shown below in Figure 1.
 
     !!! example
         [![WebUI](../assets/images/WebUI_Home.png)](../assets/images/WebUI_Home.png)
