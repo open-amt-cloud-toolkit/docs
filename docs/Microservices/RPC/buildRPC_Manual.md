@@ -27,7 +27,7 @@ The steps below assume the following directory structure where rpc is the clone 
 2. Clone the RPC repository.
 
     ``` bash
-    git clone --branch v1.1.0 https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
+    git clone --branch v1.3.0 https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
     ```
 
 ### Install Prerequisites and Build RPC

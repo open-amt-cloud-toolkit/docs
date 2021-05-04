@@ -1,17 +1,17 @@
-This tutorial demonstrates how to construct an Admin method API call for [*ConnectedDevices*](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.2.0#/Admin/post_admin) using Node.js. The ConnectedDevices method will retrieve information about connected devices, including device GUIDs.
+This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/Devices/get_devices) using Node.js. This method will retrieve information about all devices, including device GUIDs.
 
 [![ConnectedDevices](../assets/images/ConnectedDevicesAPI.png)](../assets/images/ConnectedDevicesAPI.png)
 
 **Figure 1: Admin Method API Call for Connected Devices**
 
 !!! important
-    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start **[here](../Local/overview.md)** to install microservices locally or **[here](../Docker/overview.md)** to install microservices locally with Docker*.
+    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../Docker/overview.md)** to install microservices locally with Docker*.
 
 Modify the tutorial template to implement other MPS REST APIs by changing these values:
 
+- path
 - method
-- payload
-- path 
+- body (if POST method)
 
 View all available MPS methods [here](../APIs/indexMPS.md).
 
@@ -35,161 +35,140 @@ A minimum network configuration must include:
 ## What You'll Do
 The following sections describe how to:
 
-- Construct an Admin API Call to MPS for connected devices
+- Generate a new JWT for Authorization
+- Construct an API Call to MPS for Devices
 - View Device GUIDs
 
-## Construct an Admin Method API Call for Connected Devices
+## Generate a JWT
+
+### Create a New File
 
 1. Navigate to a file directory of your choice.
-2. Create and open a new JavaScript* file with a name of your choice. In this guide we will refer to it as *SampleAPI.js*.
+2. Create and open a new JavaScript* file with a name of your choice. In this guide, we will refer to it as *generateJWT.js*.
 3. Copy and paste the example code below.
-4. Replace *MPS-Server-IP-Address* with the IP Address of your development system or MPS server.
-
-    !!! note 
-        The ConnectedDevices method uses the **admin** path. MPS methods use either **admin** or **amt** as the path. View the difference and all MPS methods [here](../APIs/indexMPS.md).
-
-    !!! note "Security Information"
-            By running MPS in Dev Mode, authentication is disabled for testing and demonstration purposes. In production, the MPS certificate needs to be signed by a Certificate Authority. Also, an API Key value must be given in the headers of the API request.
 
     !!! example
-        Example SampleAPI.js file:
+        Example generateJWT.js file:
 
-        ```javascript hl_lines="12"
+        ```javascript
+        const https = require('https')
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing withself-signed certs, remove for production
+        let data = JSON.stringify({
+            'username': 'standalone',
+            'password': 'G@ppm0ym'
+        })
+
+        const options = {
+            hostname: 'localhost',
+            path: '/mps/login/api/v1/authorize',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const req = https.request(options, (res) => {
+            res.setEncoding('utf8')
+            res.on('data', d => {
+                console.log(d)
+            })
+        })
+
+        req.on('error', (e) => {
+            console.error(error)
+        })
+
+        // Write data to request body
+        req.write(data)
+        req.end()
+        ```
+
+### Execute the REST API
+
+1. Open a Terminal or Command Prompt to execute the call.
+2. Navigate to the directory you saved the generateJWT.js file.
+3. Run the code snippet using node.
+
+    ```
+    node generateJWT.js
+    ```
+
+    !!! example
+        Example Response:
+
+        ```json
+        {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"}
+        ```
+
+## Construct API Call for Devices
+
+1. Create and open a new JavaScript* file with a name of your choice. In this guide we will refer to it as *myDevices.js*.
+2. Copy and paste the example code below.
+3. Replace [Your-JWT-Token] with the JWT you generated from the Authorize API Call.
+
+    !!! example
+        Example myDevices.js file:
+
+        ```javascript hl_lines="9"
             const https = require('https')
             process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing with self-signed certs, remove for production
-            let postData = {
-                'method': 'ConnectedDevices', //Retrieve all Devices Connected to MPS
-                'payload': {
-                    //Some methods such as PowerAction require a payload. 
-                    //This one does not as it just retrieves data of all connected devices.
-                }
-            }
             
             const options = {
-                hostname: 'MPS-Server-IP-Address', //Your Development System's IP or MPS Server IP
-                port: '3000',
-                path: '/admin', //Supports admin and amt paths. See MPS API Docs for which to use for other different methods.
-                method: 'POST',
+                hostname: 'localhost',
+                path: '/mps/api/v1/devices',
+                method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-MPS-API-KEY': 'APIKEYFORMPS123!'
+                    'Authorization': 'Bearer [Your-JWT-Token]' //Replace [Your-JWT-Token] with your generated JWT Token
                 }
             }
             
             const req = https.request(options, (res) => {
                 res.setEncoding('utf8')
-                res.on('data', (chunk) => {
-                    console.log(chunk)
-                })
-                res.on('end', () => {
-                    console.log('No more data in response.')
+                res.on('data', d => {
+                    console.log(d)
                 })
             })
             
             req.on('error', (e) => {
-                console.error(`problem with request: ${e.message}`)
+                console.error(error)
             })
             
-            // Write data to request body
-            req.write(JSON.stringify(postData))
             req.end()
 
         ```
 
-
-
-## Execute the REST API
-
-1. Open a Command Prompt or Terminal to execute the call.
-2. Navigate to the directory you saved the SampleAPI.js file.
-3. Run the code snippet using node.
-
-```
-node SampleAPI.js
-```
-
-Example Response:
-
-!!! important
-    This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is *required* as part of the POST data.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
-
-
-!!! example
-    Example Command Prompt Output:
-
-    ```json
-        response :  [{"host":"d12428be-9fa1-4226-9784-54b2038beab6",
-        "amtuser":"admin","mpsuser":"standalone","icon":1,"conn":1,
-        "name":"d12428be-9fa1-4226-9784-54b2038beab6"}  ]
-    ```
-    Example JSON Pretty Print:
-
-    ```json
-        [{
-            "host": "d12428be-9fa1-4226-9784-54b2038beab6",
-            "amtuser": "admin",
-            "mpsuser": "standalone",
-            "icon": 1,
-            "conn": 1,
-            "name": "d12428be-9fa1-4226-9784-54b2038beab6"
-        }]
+4. Run the code snippet using node.
 
     ```
+    node myDevices.js
+    ```
 
-## Construct Other MPS Methods
+    !!! important
+        This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
 
-To adapt the above code snippet to work with a different MPS method of your choice, follow the below steps.
 
-1. Select a method from the [MPS API Documentation](../APIs/indexMPS.md)
-2. Update the method field in postData with the name of the method.
-3. Copy and paste the payload if the method requires it. If necessary, replace the guid field inside the payload with the AMT device's GUID.
-4. Update the path field to either **/admin** or **/amt**
-5. Save and run the Javascript file.
+    !!! example
+        Example Terminal Output:
 
-!!! example
-    Highlighted fields should be updated:
+        ```json
+        [{"connectionStatus":1,"hostname":"DESKTOP-R2225SQ",    "guid":"d92b3be1-b04f-49de-b806-54b203054e9d","metadata":   {"guid":"d92b3be1-b04f-49de-b806-54b203054e9d","hostname":"DESKTOP-R2225SQ","tags":    []}}]
+        ```
+        Example JSON Pretty Print:
 
-    ```javascript hl_lines="4 5 6 7 8 12 14"
-        const https = require('https')
-        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing with self-signed certs, remove for production
-        let postData = {
-            'method': 'ConnectedDevices', //Retrieve all Devices Connected to MPS
-            'payload': {
-                //Some methods such as PowerAction require a payload. 
-                //This one does not as it just retrieves data of all connected devices.
+        ```json
+        [
+            {
+                "connectionStatus": 1,
+                "hostname": "DESKTOP-R2225SQ",
+                "guid": "d92b3be1-b04f-49de-b806-54b203054e9d",
+                "metadata": {
+                    "guid": "d92b3be1-b04f-49de-b806-54b203054e9d",
+                    "hostname": "DESKTOP-R2225SQ",
+                    "tags": []
+                }
             }
-        }
-        
-        const options = {
-            hostname: 'MPS-Server-IP-Address', //Your Development System's IP or MPS Server IP
-            port: '3000',
-            path: '/admin', //Supports admin and amt paths. See MPS API Docs for which to use for other different methods.
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-MPS-API-KEY': 'APIKEYFORMPS123!'
-            }
-        }
-        
-        const req = https.request(options, (res) => {
-            res.setEncoding('utf8')
-            res.on('data', (chunk) => {
-                console.log(chunk)
-            })
-            res.on('end', () => {
-                console.log('No more data in response.')
-            })
-        })
-        
-        req.on('error', (e) => {
-            console.error(`problem with request: ${e.message}`)
-        })
-        
-        // Write data to request body
-        req.write(JSON.stringify(postData))
-        req.end()
-
-    ```
+        ]
+        ```
 
 ## Other Methods
 

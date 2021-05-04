@@ -1,31 +1,12 @@
 
 1. Go back to the Sample Web UI on your development system.
 	
-    !!! note
-        If you closed the browser or were logged out, follow these steps to reopen it:
-            
-        Navigate to the UI.
-
-        ```
-        http://localhost:4200
-        ```
-
-        Log in with the default credentials.
-
-        **Default credentials:**
-
-        | Field       |  Value    |
-        | :----------- | :-------------- |
-        | **Username**| standalone |
-        | **Password**| G@ppm0ym |
-
-
 2. Click the Devices tab from the menu on the left.
 
     [![mps](../assets/images/MPS_ConnectedDevice.png)](../assets/images/MPS_ConnectedDevice.png)
 
     !!! troubleshooting
-        If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After succesfully restarting the device, refresh the WebUI to see if the *Status* changes to *connected*.
+        If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After succesfully restarting the device, refresh the Sample Web UI to see if the *Status* changes to *connected*.
 
 3. Click on your connected device.
 

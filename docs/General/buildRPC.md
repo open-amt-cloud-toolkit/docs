@@ -8,7 +8,7 @@ After running the RPC, the Intel® AMT managed device can be managed remotely us
 [![RPC](../assets/images/RPC_Overview.png)](../assets/images/RPC_Overview.png)
 **Figure 1: RPC Configuration** 
 
-!!! tip "Figure 1 Details"
+!!! note "Figure 1 Details"
     The RPC on the managed devices communicates with the Manageability Engine Interface (MEI) and Remote Provisioning Server (RPS) interfaces. The MEI uses the ME Driver to talk to Intel® AMT (Steps 3 and 4, Figure 1). The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration. The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../General/createCIRAConfig.md) or [Create an AMT Profile](../General/createProfileACM.md). After running RPC with a profile, the MPS can manage the remote device and issue AMT commands (Steps 5, Figure 1).
 
 ## Build RPC
@@ -60,7 +60,7 @@ cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
 
 **To run the application and connect the managed device:**
 
-1. On the managed device, open a Terminal (Linux) or Powershell/Command Prompt as Administrator (Windows).
+1. On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
 
 2. Navigate to the directory containing the RPC application. 
 
@@ -71,20 +71,20 @@ cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
 
     === "Linux"
         ``` bash
-        sudo ./rpc -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
+        sudo ./rpc -u wss://[Development-IP-Address]/activate --nocertcheck -c "-t activate --profile [profile-name]"
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc:latest --url wss://[Development-IP-Address]:8080 --nocertcheck -c "activate --profile [profile-name]"
+        sudo docker run --device=/dev/mei0 rpc:latest --url wss://[Development-IP-Address]/activate --nocertcheck -c "activate --profile [profile-name]"
         ```
         Windows is not supported due to current limitations. See [Devices in Containers on Windows](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/hardware-devices-in-containers#hyper-v-isolated-linux-container-support) for more information.
     === "Windows"
         ```
-        rpc.exe -u wss://[Development-IP-Address]:8080 --nocertcheck -c "-t activate --profile [profile-name]"
+        rpc.exe -u wss://[Development-IP-Address]/activate --nocertcheck -c "-t activate --profile [profile-name]"
         ```
 
-!!! note
-    Because we are using a self-signed certificate for easier development testing, we need to supply the **--nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the [flag and other arguments](../Microservices/RPC/commandsRPC.md).
+    !!! note
+        Because we are using a self-signed certificate for easier development testing, we need to supply the **--nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the [flag and other arguments](../Microservices/RPC/commandsRPC.md).
 
 
 !!! success

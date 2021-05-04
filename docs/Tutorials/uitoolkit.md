@@ -55,7 +55,7 @@ The React app can be created in any preferred development directory. The MPS can
 
     ``` bash
     npm uninstall react react-dom --save 
-    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.2.0 react@16.13.1 react-dom@16.13.1 --save
+    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.3.0 react@16.13.1 react-dom@16.13.1 --save
     ```
 
 2. Run the following commands to start the web UI locally:
