@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clone-openamt-cloud-toolkit" class="md-skip">
+        <a href="#clone-open-amt-cloud-toolkit" class="md-skip">
           Skip to content
         </a>
       
@@ -247,7 +247,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Glossary/" class="md-tabs__link">
+      <a href="../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1071,18 +1071,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1108,13 +1096,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1213,8 +1201,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-openamt-cloud-toolkit" class="md-nav__link">
-    Clone OpenAMT Cloud Toolkit
+  <a href="#clone-open-amt-cloud-toolkit" class="md-nav__link">
+    Clone Open AMT Cloud Toolkit
   </a>
   
 </li>
@@ -1252,11 +1240,11 @@
                 
                   <h1>installRPS</h1>
                 
-                <p>The <a href="../../Glossary/#r">Remote Provisioning Service (RPS)</a> is a microservice based on Node.js*. The RPS works with the <a href="../../Glossary/#r">Remote Provisioning Client (RPC)</a> to activate Intel® AMT platforms using a pre-defined profile.</p>
-<p>Figure 1 illustrates where RPS fits into the overall <a href="../../Glossary/#m">microservice architecture.</a></p>
+                <p>The Remote Provisioning Service (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) is a microservice based on Node.js*. The <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> works with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>) to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> platforms using a pre-defined profile.</p>
+<p>Figure 1 illustrates where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> fits into the overall <abbr title="microservice architecture - An architecture in which the component parts are broken into discrete services, called microservices, that perform specific, limited functions.">microservice architecture</abbr>.</p>
 <p><a href="../../assets/images/RPSDeployment.png"><img alt="RPS" src="../../assets/images/RPSDeployment.png" /></a></p>
-<p><strong>Figure 1: Deploy Remote Provisioning Server (RPS) on a development system.</strong></p>
-<h2 id="clone-openamt-cloud-toolkit">Clone OpenAMT Cloud Toolkit<a class="headerlink" href="#clone-openamt-cloud-toolkit" title="Permanent link">&para;</a></h2>
+<p><strong>Figure 1: Deploy Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) on a development system.</strong></p>
+<h2 id="clone-open-amt-cloud-toolkit">Clone <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#clone-open-amt-cloud-toolkit" title="Permanent link">&para;</a></h2>
 <p><strong>To clone the repositories:</strong></p>
 <p>Note: Skip this step if the repositories are already cloned.</p>
 <ol>
@@ -1275,8 +1263,8 @@
  ┣ 📂mps
  ┗ 📂rps
 </code></pre></div>
-<h2 id="start-the-rps-server">Start the RPS Server<a class="headerlink" href="#start-the-rps-server" title="Permanent link">&para;</a></h2>
-<p><strong>To start the RPS:</strong></p>
+<h2 id="start-the-rps-server">Start the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Server<a class="headerlink" href="#start-the-rps-server" title="Permanent link">&para;</a></h2>
+<p><strong>To start the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>:</strong></p>
 <ol>
 <li>
 <p>In the <code>rps</code> directory, run the install command to install all required dependencies. </p>
@@ -1284,7 +1272,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Then, start the server. By default, the RPS web port is 8080.</p>
+<p>Then, start the server. By default, the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> web port is 8080.</p>
 <div class="highlight"><pre><span></span><code>npm run dev
 </code></pre></div>
 <div class="admonition note">
@@ -1295,9 +1283,9 @@
 <p><a href="../../assets/images/RPS_npmrundev.png"><img alt="RPS Output" src="../../assets/images/RPS_npmrundev.png" /></a></p>
 </li>
 </ol>
-<p><strong>Figure 2: RPS reports successful deployment.</strong></p>
+<p><strong>Figure 2: <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> reports successful deployment.</strong></p>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><a href="../../General/loginToRPS/"><strong>Login to RPS</strong></a></p>
+<p><a href="../../General/loginToRPS/"><strong>Login to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></strong></a></p>
                 
               
               

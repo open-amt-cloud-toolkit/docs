@@ -249,7 +249,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../../Glossary/" class="md-tabs__link">
+      <a href="../../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -691,7 +691,7 @@
         
           <li class="md-nav__item">
   <a href="#2-mebx-password" class="md-nav__link">
-    2 MEBx Password
+    2 MEBX Password
   </a>
   
 </li>
@@ -712,7 +712,7 @@
         
           <li class="md-nav__item">
   <a href="#5-device-configuration-information-sent-to-intel-amt-device" class="md-nav__link">
-    5 Device configuration information sent to Intel&reg; AMT device
+    5 Device configuration information sent to Intel® AMT device
   </a>
   
 </li>
@@ -1190,18 +1190,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1227,13 +1215,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1350,7 +1338,7 @@
         
           <li class="md-nav__item">
   <a href="#2-mebx-password" class="md-nav__link">
-    2 MEBx Password
+    2 MEBX Password
   </a>
   
 </li>
@@ -1371,7 +1359,7 @@
         
           <li class="md-nav__item">
   <a href="#5-device-configuration-information-sent-to-intel-amt-device" class="md-nav__link">
-    5 Device configuration information sent to Intel&reg; AMT device
+    5 Device configuration information sent to Intel® AMT device
   </a>
   
 </li>
@@ -1432,43 +1420,43 @@
                   </a>
                 
                 
-                <h1 id="rps-security-considerations">RPS Security Considerations<a class="headerlink" href="#rps-security-considerations" title="Permanent link">&para;</a></h1>
-<p>Remote Provision Service (RPS) is built to be a micro service that plays a component role in a larger set of services that makes up the device management software suite.  In this role, RPS uses and creates secrets that are required to be able to successfully activate and use Intel&reg; AMT.  There are five key assets that must be protected:</p>
+                <h1 id="rps-security-considerations"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Security Considerations<a class="headerlink" href="#rps-security-considerations" title="Permanent link">&para;</a></h1>
+<p>Remote Provision Service (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) is built to be a micro service that plays a component role in a larger set of services that makes up the device management software suite.  In this role, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> uses and creates secrets that are required to be able to successfully activate and use <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>.  There are five key assets that must be protected:</p>
 <ul>
-<li>Remote admin password for Intel&reg; AMT</li>
-<li>MEBx password for Intel&reg; AMT</li>
+<li>Remote admin password for <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr></li>
+<li>MEBX password for <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr></li>
 <li>Provisioning Certificate for each supported domain</li>
 <li>Password used to encrypt each Provisioning Certificate</li>
-<li>Device configuration information sent to Intel&reg; AMT device</li>
+<li>Device configuration information sent to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device</li>
 </ul>
 <p>In addition to the above assets, there are best practices that are recommended to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.</p>
 <hr />
 <h2 id="security-assets">Security Assets<a class="headerlink" href="#security-assets" title="Permanent link">&para;</a></h2>
 <h3 id="1-remote-admin-password">1 Remote Admin Password<a class="headerlink" href="#1-remote-admin-password" title="Permanent link">&para;</a></h3>
-<p>This password is what is configured in the Intel&reg; AMT firmware that allows a remote user to remotely control the Intel&reg; AMT device (power actions, remote desktop, remote terminal, etc).  When RPS activates an Intel&reg; AMT device, it sets this password in the Intel&reg; AMT firmware.  This password can either be statically set or can be randomly generated based on the profile defined by the user.  It is highly recommended to use randomly generated passwords as this will make each Intel&reg; AMT device more secure by using unique passwords per device.
-In a default docker or Kubernetes deployment, RPS will save the Remote Admin Password to the deployed Vault instance.  If Vault is not configured, RPS will not use profiles that specify a randomly generated password.  This is to prevent the loss of access to a configured Intel&reg; AMT device.</p>
-<h3 id="2-mebx-password">2 MEBx Password<a class="headerlink" href="#2-mebx-password" title="Permanent link">&para;</a></h3>
-<p>The Management Engine BIOS Extension (MEBx) password is the password that protects the pre-boot menu option that provides access to Intel&reg; AMT settings.  To use this password a user needs to have physical access to the device.  It is highly recommended to change this password from the factory default settings upon receiving a new Intel&reg; AMT device.  A RPS profile provides an option for either specifying a static password that is used for all devices configured with a given profile or a randomly generated password can be assigned uniquely per device.  The MEBx password set in each device is saved in Vault.
-While a randomly generated password is more secure, in this case there is risk that if the Vault database is lost, access to the Intel&reg; AMT device could be very difficult to recover.  It is recommended to use the high availability and backup options provided by the Vault solution to ensure that these secrets are not lost.</p>
+<p>This password is what is configured in the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> firmware that allows a remote user to remotely control the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device (power actions, remote desktop, remote terminal, etc).  When <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> activates an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device, it sets this password in the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> firmware.  This password can either be statically set or can be randomly generated based on the profile defined by the user.  It is highly recommended to use randomly generated passwords as this will make each <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device more secure by using unique passwords per device.
+In a default docker or Kubernetes deployment, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will save the Remote Admin Password to the deployed Vault instance.  If Vault is not configured, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will not use profiles that specify a randomly generated password.  This is to prevent the loss of access to a configured <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.</p>
+<h3 id="2-mebx-password">2 MEBX Password<a class="headerlink" href="#2-mebx-password" title="Permanent link">&para;</a></h3>
+<p>The Management Engine BIOS Extension (MEBX) password is the password that protects the pre-boot menu option that provides access to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> settings.  To use this password a user needs to have physical access to the device.  It is highly recommended to change this password from the factory default settings upon receiving a new <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.  A <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> profile provides an option for either specifying a static password that is used for all devices configured with a given profile or a randomly generated password can be assigned uniquely per device.  The MEBX password set in each device is saved in Vault.
+While a randomly generated password is more secure, in this case there is risk that if the Vault database is lost, access to the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device could be very difficult to recover.  It is recommended to use the high availability and backup options provided by the Vault solution to ensure that these secrets are not lost.</p>
 <h3 id="3-provisioning-certificate">3 Provisioning Certificate<a class="headerlink" href="#3-provisioning-certificate" title="Permanent link">&para;</a></h3>
-<p>This certificate is unique per owned domain where RPS needs to provision Intel&reg; AMT devices.  This certificate must be derived from a root certificate whose hash matches one of the trusted provisioning root certificate hashes that is listed in the Intel&reg; AMT device firmware.  Generally, the provisioning certificate is purchased from a trusted certificate authority (VeriSign, GoDaddy, Comodo, etc).  The full list of supported CAs based on Intel&reg; AMT version are listed <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/rootcertificatehashes.htm">here</a>.  This certificate must contain the leaf certificate, root certificate, and all of the intermediate certificates to form a complete certificate chain.  Additionally, the certificate file must also include the private key for the certificate (.pfx format).  The leaf certificate for the provisioning certificate must match the domain suffix that the Intel&reg; AMT device is connected as specified by DHCP option 15 or the Trusted DNS Suffix in the Management Engine BIOS Extensions (MEBx).  Matching this is one of the ways in which the Intel&reg; AMT firmware establishes trust with RPS. 
-The provisioning certificate is provided by the user when defining an Intel&reg; AMT profile.  RPS fetches the Provisioning Certificate from Vault when it is needed to activate an Intel&reg; AMT device.  If users have provisioning certificates, they will need to understand which profile to use when configuring an Intel&reg; AMT device based on the network to which the device is currently connected.</p>
+<p>This certificate is unique per owned domain where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> needs to provision <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> devices.  This certificate must be derived from a root certificate whose hash matches one of the trusted provisioning root certificate hashes that is listed in the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device firmware.  Generally, the provisioning certificate is purchased from a trusted certificate authority (VeriSign, GoDaddy, Comodo, etc).  The full list of supported CAs based on <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> version are listed <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/rootcertificatehashes.htm">here</a>.  This certificate must contain the leaf certificate, root certificate, and all of the intermediate certificates to form a complete certificate chain.  Additionally, the certificate file must also include the private key for the certificate (.pfx format).  The leaf certificate for the provisioning certificate must match the <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> that the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device is connected as specified by DHCP option 15 or the Trusted <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> in the Management Engine BIOS Extensions (MEBX).  Matching this is one of the ways in which the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> firmware establishes trust with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. 
+The provisioning certificate is provided by the user when defining an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> profile.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> fetches the Provisioning Certificate from Vault when it is needed to activate an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.  If users have provisioning certificates, they will need to understand which profile to use when configuring an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device based on the network to which the device is currently connected.</p>
 <h3 id="4-password-used-to-encrypt-provisioning-certificate">4 Password used to encrypt Provisioning Certificate<a class="headerlink" href="#4-password-used-to-encrypt-provisioning-certificate" title="Permanent link">&para;</a></h3>
-<p>This is the password that is used to encrypt the provisioning certificate .pfx file that is discussed above.  RPS uses this password to decrypt the provisioning certificate so that it can use the certificate components and the private key to activate Intel&reg; AMT devices.<br />
-RPS fetches the password from Vault and will use it when it is needed to decrypt a provisioning certificate.</p>
-<h3 id="5-device-configuration-information-sent-to-intel-amt-device">5 Device configuration information sent to Intel&reg; AMT device<a class="headerlink" href="#5-device-configuration-information-sent-to-intel-amt-device" title="Permanent link">&para;</a></h3>
-<p>This data is a set of information that Intel&reg; AMT firmware will use to establish trust and then activate the Intel&reg; AMT device.  Contained in this information is the hashed remote admin password and the MEBx password.  It is important to protect this set of information while it is being used by RPS and while in transit to the Intel&reg; AMT device.  Ensuring that a secure (TLS encrypted) WebSocket connection is used when RPS is communicating with the client device will protect this data while in transit.  This set of information uses nonces to prevent replay of this data.</p>
+<p>This is the password that is used to encrypt the provisioning certificate .pfx file that is discussed above.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> uses this password to decrypt the provisioning certificate so that it can use the certificate components and the private key to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> devices.<br />
+<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> fetches the password from Vault and will use it when it is needed to decrypt a provisioning certificate.</p>
+<h3 id="5-device-configuration-information-sent-to-intel-amt-device">5 Device configuration information sent to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device<a class="headerlink" href="#5-device-configuration-information-sent-to-intel-amt-device" title="Permanent link">&para;</a></h3>
+<p>This data is a set of information that <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> firmware will use to establish trust and then activate the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.  Contained in this information is the hashed remote admin password and the MEBX password.  It is important to protect this set of information while it is being used by <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and while in transit to the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.  Ensuring that a secure (TLS encrypted) WebSocket connection is used when <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is communicating with the client device will protect this data while in transit.  This set of information uses nonces to prevent replay of this data.</p>
 <hr />
 <h2 id="best-known-security-methods">Best Known Security Methods<a class="headerlink" href="#best-known-security-methods" title="Permanent link">&para;</a></h2>
 <h3 id="1-enable-tls-on-network-connections">1 Enable TLS on network connections<a class="headerlink" href="#1-enable-tls-on-network-connections" title="Permanent link">&para;</a></h3>
 <p>There are two potential places where TLS should be enable to protect the security assets:
-* WebSocket connection between RPS and Intel&reg; AMT client
-* Database connection between RPS and Vault</p>
-<p>Encrypting these communication transports will help prevent network based attacks attempting to discover the Remote Admin Password and MEBx Password for the Intel&reg; AMT device.  It is recommended that the most modern version of TLS be used to protect these connections.</p>
+* WebSocket connection between <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> client
+* Database connection between <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and Vault</p>
+<p>Encrypting these communication transports will help prevent network based attacks attempting to discover the Remote Admin Password and MEBX Password for the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device.  It is recommended that the most modern version of TLS be used to protect these connections.</p>
 <h3 id="2-secure-and-isolate-execution-environment">2 Secure and isolate execution environment<a class="headerlink" href="#2-secure-and-isolate-execution-environment" title="Permanent link">&para;</a></h3>
-<p>RPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of RPS, it is recommended that RPS be run in a secure execution environment such as a dedicated VM or container.  Deploying into a hardened execution environment eases the burden of individually securing this data while in use.</p>
+<p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> holds the described security assets in memory during execution.  In order to protect these assets while in memory of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, it is recommended that <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> be run in a secure execution environment such as a dedicated VM or container.  Deploying into a hardened execution environment eases the burden of individually securing this data while in use.</p>
 <h3 id="3-utilize-a-hashicorp-vault-implementation-to-store-security-assets">3 Utilize a Hashicorp Vault implementation to store security assets<a class="headerlink" href="#3-utilize-a-hashicorp-vault-implementation-to-store-security-assets" title="Permanent link">&para;</a></h3>
-<p>Utilizing Hashicorp Vault to store security assets either created by or used by RPS will greatly increase the security of these assets.  Not only does Vault encrypt the data at rest, but it also manages access to the data itself.  As the Vault owner, you decide who gets access to the security assets stored there, not RPS.</p>
+<p>Utilizing Hashicorp Vault to store security assets either created by or used by <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will greatly increase the security of these assets.  Not only does Vault encrypt the data at rest, but it also manages access to the data itself.  As the Vault owner, you decide who gets access to the security assets stored there, not <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</p>
                 
               
               

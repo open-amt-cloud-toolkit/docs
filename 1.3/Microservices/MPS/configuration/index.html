@@ -249,7 +249,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../../Glossary/" class="md-tabs__link">
+      <a href="../../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1086,18 +1086,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1123,13 +1111,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1238,7 +1226,7 @@
                   </a>
                 
                 
-                <h1 id="mps-configuration-options">MPS Configuration Options<a class="headerlink" href="#mps-configuration-options" title="Permanent link">&para;</a></h1>
+                <h1 id="mps-configuration-options"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration Options<a class="headerlink" href="#mps-configuration-options" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -1251,7 +1239,7 @@
 <tr>
 <td align="left">MPS_IMAGE</td>
 <td align="left">mps-microservice:v1</td>
-<td align="left">Only used when using docker-compose.yml. Specifies image to use for MPS</td>
+<td align="left">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
 </tr>
 <tr>
 <td align="left">MPS_USE_VAULT</td>
@@ -1281,7 +1269,7 @@
 <tr>
 <td align="left">MPS_COMMON_NAME</td>
 <td align="left">localhost</td>
-<td align="left">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the MPS and RPS servers.</td>
+<td align="left">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers.</td>
 </tr>
 <tr>
 <td align="left">MPS_USE_ALLOWLIST</td>
@@ -1301,17 +1289,17 @@
 <tr>
 <td align="left">MPS_USERNAME</td>
 <td align="left">standalone</td>
-<td align="left">Specifies the username client devices use to connect to MPS</td>
+<td align="left">Specifies the username client devices use to connect to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
 </tr>
 <tr>
 <td align="left">MPS_PASS</td>
 <td align="left">G@ppm0ym</td>
-<td align="left">Specifies the password client devices use to connect to MPS</td>
+<td align="left">Specifies the password client devices use to connect to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
 </tr>
 <tr>
 <td align="left">MPS_USE_GLOBAL_CREDENTIALS</td>
 <td align="left">true</td>
-<td align="left">Each device can have its own MPS username and password. If this flag is enabled in MPS, it will use the same username and password as specified my MPS_USER and MPS_PASSWORD for all devices</td>
+<td align="left">Each device can have its own <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> username and password. If this flag is enabled in <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, it will use the same username and password as specified my MPS_USER and MPS_PASSWORD for all devices</td>
 </tr>
 <tr>
 <td align="left">MPS_ENABLE_LOGGING</td>

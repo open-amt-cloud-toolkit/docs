@@ -244,7 +244,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../../Glossary/" class="md-tabs__link">
+      <a href="../../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1079,18 +1079,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1116,13 +1104,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1237,7 +1225,7 @@
 </tr>
 <tr>
 <td>"Exception reading from device"</td>
-<td>If MPS and RPS are running in Docker, check to ensure Vault has been unsealed.</td>
+<td>If <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are running in Docker, check to ensure Vault has been unsealed.</td>
 </tr>
 <tr>
 <td>"Unable to connect to Local Management Service (LMS). Please ensure LMS is running"</td>
@@ -1252,8 +1240,8 @@
 <td>Unplug the device, from both network and power, let it sit for a while. If that doesn't work, file a github issue</td>
 </tr>
 <tr>
-<td>Device xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx activation failed. Missing DNS Suffix.</td>
-<td>Run <code>./rpc --amtinfo all</code> and ensure there is a DNS suffix. If it is blank, double check your router settings for DHCP. Alternatively, you can override the DNS suffix with <code>--dns mycompany.com</code></td>
+<td>Device xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx activation failed. Missing <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>.</td>
+<td>Run <code>./rpc --amtinfo all</code> and ensure there is a <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>. If it is blank, double check your router settings for DHCP. Alternatively, you can override the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> with <code>--dns mycompany.com</code></td>
 </tr>
 <tr>
 <td>Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00</td>
@@ -1265,11 +1253,11 @@
 </tr>
 <tr>
 <td>Error while activating the AMT in admin mode.</td>
-<td>Check the logs on the RPS server.</td>
+<td>Check the logs on the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server.</td>
 </tr>
 <tr>
 <td>The rpc.exe fails to connect.</td>
-<td>If a device has already been provisioned, <a href="../../../Topics/MEBX/unprovision/">unprovision</a> it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, <a href="../commandsRPC/">Command Examples</a></td>
+<td>If a device has already been provisioned, <a href="../../../Topics/MEBX/unprovision/">unprovision</a> it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>, <a href="../commandsRPC/">Command Examples</a></td>
 </tr>
 </tbody>
 </table>

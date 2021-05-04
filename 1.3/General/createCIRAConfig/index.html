@@ -249,7 +249,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Glossary/" class="md-tabs__link">
+      <a href="../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1111,18 +1111,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1148,13 +1136,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1278,7 +1266,7 @@
                 
                   <h1>Create a CIRA Config</h1>
                 
-                <p><abbr title="Out-of-band Management - A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols.">OOB Management</abbr> is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), which enables a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>-capable edge device to initiate and establish a persistent connection to the <abbr title="Management Presence Server -  A microservice that resides on the development system and receives CIRA requests from the managed device.">MPS</abbr>. </p>
+                <p><abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr> is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), which enables a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>-capable edge device to initiate and establish a persistent connection to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. </p>
 <p>With this persistent connection, administrators can execute various system actions on the remotely managed device, including:</p>
 <ul>
 <li>Reboot</li>
@@ -1288,7 +1276,7 @@
 <li>Boot to BIOS </li>
 <li>Reset to BIOS</li>
 </ul>
-<p>Intel AMT supports these actions and more.</p>
+<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> supports these actions and more.</p>
 <p>As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. </p>
 <p><strong>To create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config:</strong></p>
 <ol>
@@ -1347,9 +1335,9 @@
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p>Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application that resides on the managed device and communicates with the Manageability Engine Interface (MEI) to activate Intel AMT.">RPC</abbr>). Profiles also distinguish between activating in: </p>
-<p><strong><a href="../createProfileCCM/">Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>):</a></strong> This mode offers nearly all manageability features. However, it does not currently support Keyboard, Video, Mouse Control. For other features, such as Serial-Over-LAN or Storage Redirection (IDE-R, USB-R), <strong>user consent is required</strong>.</p>
-<p><strong><a href="../createProfileACM/">Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr>):</a></strong> <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr> mode supports the same <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> features in addition to Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A technology, often a device, that allows a user to control multiple computers from a single keyboard, mouse, and video source.">KVM</abbr>) or Redirection <strong>without user consent</strong>. This means it is <strong>not necessary</strong> to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application.">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
+<p>Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>). Profiles also distinguish between activating in: </p>
+<p><strong><a href="../createProfileCCM/">Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>):</a></strong> This mode offers nearly all manageability features. However, it does not currently support Keyboard, Video, Mouse Control. For other features, such as Serial-Over-LAN or Storage Redirection (IDE-R, USB-R), <strong>user consent is required</strong>.</p>
+<p><strong><a href="../createProfileACM/">Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>):</a></strong> <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode supports the same <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> features in addition to Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) or Redirection <strong>without user consent</strong>. This means it is <strong>not necessary</strong> to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
                 
               
               

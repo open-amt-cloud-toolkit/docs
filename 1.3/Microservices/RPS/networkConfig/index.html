@@ -249,7 +249,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../../Glossary/" class="md-tabs__link">
+      <a href="../../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1118,18 +1118,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1155,13 +1143,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1292,14 +1280,14 @@
                 
                   <h1>Network Profiles</h1>
                 
-                <p>Network Configuration profiles on the RPS server help to set the desired network on the AMT device. The <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=HTMLDocuments%2FWS-Management_Class_Reference%2FAMT_EthernetPortSettings.htm">AMT Ethernet Port Setting</a> is the AMT API used to set the network settings in AMT by the RPS. RPS network profiles currently contain three boolean settings.</p>
+                <p>Network Configuration profiles on the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server help to set the desired network on the AMT device. The <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=HTMLDocuments%2FWS-Management_Class_Reference%2FAMT_EthernetPortSettings.htm">AMT Ethernet Port Setting</a> is the AMT API used to set the network settings in AMT by the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> network profiles currently contain three boolean settings.</p>
 <ul>
 <li><strong>DHCPEnabled</strong> - is a boolean. Indicates whether DHCP is in use. </li>
 <li><strong>SharedStaticIp</strong> - is a boolean. Indicates whether the static host IP is shared with ME.   </li>
 <li><strong>IpSyncEnabled</strong> - is a boolean. Indicates whether the IP synchronization between host and ME is enabled.</li>
 </ul>
 <h3 id="predefined-profiles">Predefined Profiles<a class="headerlink" href="#predefined-profiles" title="Permanent link">&para;</a></h3>
-<p>RPS currently supports two predefined network configurations, DHCP_Enabled and DHCP_Disabled, with the following settings.</p>
+<p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> currently supports two predefined network configurations, DHCP_Enabled and DHCP_Disabled, with the following settings.</p>
 <p>DHCP_Enabled Network Config:
     <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;ProfileName&quot;</span><span class="p">:</span> <span class="s2">&quot;dhcp_enabled&quot;</span><span class="p">,</span>
@@ -1326,12 +1314,12 @@
 - **SecondaryDNS** - Secondary DNS in a string    format. For example: 10.12.232.1 -->
 
 <h3 id="example-scenarios">Example Scenarios<a class="headerlink" href="#example-scenarios" title="Permanent link">&para;</a></h3>
-<p>The following are scenarios depicting the result of RPS attempting to set network settings in comparison to the set Host OS settings.</p>
+<p>The following are scenarios depicting the result of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> attempting to set network settings in comparison to the set Host OS settings.</p>
 <table>
 <thead>
 <tr>
 <th align="left">Host OS</th>
-<th align="left">RPS Network Profile Used</th>
+<th align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Network <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Used</th>
 <th align="left">Network Settings on Device &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
 <th align="left">Result</th>
 </tr>
@@ -1341,31 +1329,31 @@
 <td align="left">Static IP</td>
 <td align="left">DHCP_Enabled</td>
 <td align="left">&#10006; DHCP in Use<br>&#10004; Shared Static IP<br>&#10006; IP Sync</td>
-<td align="left">RPS update the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
+<td align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> update the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
 </tr>
 <tr>
 <td align="left">Static IP</td>
 <td align="left">DHCP_Disabled</td>
 <td align="left">&#10004; DHCP in Use<br>&#10006; Shared Static IP<br>&#10006; IP Sync</td>
-<td align="left">RPS update the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.<br>Note: Sets the same static IP address as host.</td>
+<td align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> update the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.<br>Note: Sets the same static IP address as host.</td>
 </tr>
 <tr>
 <td align="left">Static IP</td>
 <td align="left">DHCP_Disabled</td>
 <td align="left">&#10006; DHCP in Use<br>&#10004; Shared Static IP<br>&#10006; IP Sync</td>
-<td align="left">RPS updates the device settings as per the profile. <br>Note: Sets the same static IP address as host as IP Sync is enabled.</td>
+<td align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> updates the device settings as per the profile. <br>Note: Sets the same static IP address as host as IP Sync is enabled.</td>
 </tr>
 <tr>
 <td align="left">DHCP</td>
 <td align="left">DHCP_Enabled</td>
 <td align="left">&#10004; DHCP in Use<br>&#10006; Shared Static IP<br>&#10006; IP Sync</td>
-<td align="left">RPS updates the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
+<td align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> updates the device settings as per the profile. Deletes SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
 </tr>
 <tr>
 <td align="left">DHCP</td>
 <td align="left">DHCP_Disabled</td>
 <td align="left">&#10004; DHCP in Use<br>&#10006; Shared Static IP<br>&#10006; IP Sync</td>
-<td align="left">RPS updates the device settings as per the profile. Set SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
+<td align="left"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> updates the device settings as per the profile. Set SubnetMask, DefaultGateway, IPAddress, PrimaryDNS, and SecondaryDNS.</td>
 </tr>
 </tbody>
 </table>

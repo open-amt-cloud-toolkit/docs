@@ -249,7 +249,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Glossary/" class="md-tabs__link">
+      <a href="../../Topics/powerstates/" class="md-tabs__link">
         Topics
       </a>
     </li>
@@ -1151,18 +1151,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Glossary/" class="md-nav__link">
-      Glossary
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Topics/powerstates/" class="md-nav__link">
       AMT Power States
     </a>
@@ -1188,13 +1176,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-4" type="checkbox" id="nav-7-4" >
-    <label class="md-nav__link" for="nav-7-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-3" type="checkbox" id="nav-7-3" >
+    <label class="md-nav__link" for="nav-7-3">
       Intel&reg MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
-      <label class="md-nav__title" for="nav-7-4">
+      <label class="md-nav__title" for="nav-7-3">
         <span class="md-nav__icon md-icon"></span>
         Intel&reg MEBX
       </label>
@@ -1365,15 +1353,15 @@
 <p><strong>Figure 1: Admin Method API Call for Connected Devices</strong></p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start <strong><a href="../../Local/overview/">here</a></strong> to install microservices locally or <strong><a href="../../Docker/overview/">here</a></strong> to install microservices locally with Docker*.</p>
+<p>Successfully deploy the Management Presence Server (<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and connect an Intel® vPro device to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> before constructing the API call. Start <strong><a href="../../Local/overview/">here</a></strong> to install microservices locally or <strong><a href="../../Docker/overview/">here</a></strong> to install microservices locally with Docker*.</p>
 </div>
-<p>Modify the tutorial template to implement other MPS REST APIs by changing these values:</p>
+<p>Modify the tutorial template to implement other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs by changing these values:</p>
 <ul>
 <li>method</li>
 <li>payload</li>
 <li>path </li>
 </ul>
-<p>View all available MPS methods <a href="../../APIs/indexMPS/">here</a>.</p>
+<p>View all available <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods <a href="../../APIs/indexMPS/">here</a>.</p>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
 <p><strong>Hardware</strong></p>
 <p>A minimum network configuration must include:</p>
@@ -1383,15 +1371,15 @@
 </ul>
 <p><strong>Software on the Development System</strong> </p>
 <ul>
-<li>MPS</li>
-<li>RPS</li>
+<li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
+<li><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></li>
 <li><a href="https://nodejs.org/">Node.js LTS 12.x.x or newer</a></li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE</li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
 <p>The following sections describe how to:</p>
 <ul>
-<li>Construct an Admin API Call to MPS for connected devices</li>
+<li>Construct an Admin API Call to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for connected devices</li>
 <li>View Device GUIDs</li>
 </ul>
 <h2 id="construct-an-admin-method-api-call-for-connected-devices">Construct an Admin Method API Call for Connected Devices<a class="headerlink" href="#construct-an-admin-method-api-call-for-connected-devices" title="Permanent link">&para;</a></h2>
@@ -1400,13 +1388,13 @@
 <li>Create and open a new JavaScript<em> file with a name of your choice. In this guide we will refer to it as </em>SampleAPI.js*.</li>
 <li>Copy and paste the example code below.</li>
 <li>
-<p>Replace <em>MPS-Server-IP-Address</em> with the IP Address of your development system or MPS server.</p>
+<p>Replace <em><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>-Server-IP-Address</em> with the IP Address of your development system or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ConnectedDevices method uses the <strong>admin</strong> path. MPS methods use either <strong>admin</strong> or <strong>amt</strong> as the path. View the difference and all MPS methods <a href="../../APIs/indexMPS/">here</a>.</p>
+<p>The ConnectedDevices method uses the <strong>admin</strong> path. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods use either <strong>admin</strong> or <strong>amt</strong> as the path. View the difference and all <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods <a href="../../APIs/indexMPS/">here</a>.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Security Information<p>By running MPS in Dev Mode, authentication is disabled for testing and demonstration purposes. In production, the MPS certificate needs to be signed by a Certificate Authority. Also, an API Key value must be given in the headers of the API request.</p>
+<p class="admonition-title">Security Information<p>By running <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in Dev Mode, authentication is disabled for testing and demonstration purposes. In production, the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> certificate needs to be signed by a Certificate Authority. Also, an API Key value must be given in the headers of the API request.</p>
 </p>
 </div>
 <div class="admonition example">
@@ -1454,7 +1442,7 @@
 </div>
 </li>
 </ol>
-<h2 id="execute-the-rest-api">Execute the REST API<a class="headerlink" href="#execute-the-rest-api" title="Permanent link">&para;</a></h2>
+<h2 id="execute-the-rest-api">Execute the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API<a class="headerlink" href="#execute-the-rest-api" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open a Command Prompt or Terminal to execute the call.</li>
 <li>Navigate to the directory you saved the SampleAPI.js file.</li>
@@ -1465,7 +1453,7 @@
 <p>Example Response:</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is <em>required</em> as part of the POST data.</strong> Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found <a href="../../Topics/guids/">here</a>.</p>
+<p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is <em>required</em> as part of the POST data.</strong> Save this value if you want to try other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Other ways to retrieve a GUID can be found <a href="../../Topics/guids/">here</a>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1485,10 +1473,10 @@ Example JSON Pretty Print:</p>
     <span class="p">}]</span>
 </code></pre></div>
 </div>
-<h2 id="construct-other-mps-methods">Construct Other MPS Methods<a class="headerlink" href="#construct-other-mps-methods" title="Permanent link">&para;</a></h2>
-<p>To adapt the above code snippet to work with a different MPS method of your choice, follow the below steps.</p>
+<h2 id="construct-other-mps-methods">Construct Other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods<a class="headerlink" href="#construct-other-mps-methods" title="Permanent link">&para;</a></h2>
+<p>To adapt the above code snippet to work with a different <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> method of your choice, follow the below steps.</p>
 <ol>
-<li>Select a method from the <a href="../../APIs/indexMPS/">MPS API Documentation</a></li>
+<li>Select a method from the <a href="../../APIs/indexMPS/"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Documentation</a></li>
 <li>Update the method field in postData with the name of the method.</li>
 <li>Copy and paste the payload if the method requires it. If necessary, replace the guid field inside the payload with the AMT device's GUID.</li>
 <li>Update the path field to either <strong>/admin</strong> or <strong>/amt</strong></li>
@@ -1538,14 +1526,14 @@ Example JSON Pretty Print:</p>
 </code></pre></div>
 </div>
 <h2 id="other-methods">Other Methods<a class="headerlink" href="#other-methods" title="Permanent link">&para;</a></h2>
-<p>The sample Node code snippet can be adapted for other MPS and RPS methods. To learn more, see: </p>
+<p>The sample Node code snippet can be adapted for other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods. To learn more, see: </p>
 <ul>
-<li><a href="../../APIs/indexMPS/">MPS Methods to manage a device</a>.</li>
-<li><a href="../../APIs/indexRPS/">RPS Methods for server configuration and provisioning</a>.</li>
+<li><a href="../../APIs/indexMPS/"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device</a>.</li>
+<li><a href="../../APIs/indexRPS/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning</a>.</li>
 </ul>
-<h2 id="explore-the-ui-toolkit">Explore the UI Toolkit<a class="headerlink" href="#explore-the-ui-toolkit" title="Permanent link">&para;</a></h2>
-<p>In addition to REST API calls, the Open AMT Cloud Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).</p>
-<p><a class="md-button md-button--primary" href="../uitoolkit/">Get Started with the UI Toolkit</a></p>
+<h2 id="explore-the-ui-toolkit">Explore the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#explore-the-ui-toolkit" title="Permanent link">&para;</a></h2>
+<p>In addition to <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API calls, the <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>).</p>
+<p><a class="md-button md-button--primary" href="../uitoolkit/">Get Started with the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></a></p>
                 
               
               
