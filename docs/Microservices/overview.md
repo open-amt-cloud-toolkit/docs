@@ -49,10 +49,10 @@ The MPS handles the authentication process with the managed device.
 
 Managed devices featuring Intel® AMT support two control modes: 
 
-- [**Admin Control Mode (ACM): **](../Glossary.md#a)
+- **Admin Control Mode (ACM):**
 In this mode, there are no limitations to Intel® AMT functionality. This reflects the higher level of trust associated with these setup methods. No user consent is required.
 
-- [**Client Control Mode (CCM):**](../Glossary.md#c) This mode limits some of Intel® AMT functionality, reflecting the lower level of trust.
+- **Client Control Mode (CCM):** This mode limits some of Intel® AMT functionality, reflecting the lower level of trust.
 
     Features requiring User Consent:
 

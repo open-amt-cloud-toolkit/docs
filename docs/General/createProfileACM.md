@@ -51,7 +51,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 ### Create a Profile
 
-[Profiles](../Glossary.md#p) provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
+A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
 !!! note "Production Environment"
         In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.

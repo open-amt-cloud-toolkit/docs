@@ -2,10 +2,10 @@
 
 The Open Active Management Technology (AMT) Cloud Toolkit repository includes:
 
-- [Management Presence Server (MPS)](../Glossary.md#m)
-- [Remote Provisioning Server (RPS)](../Glossary.md#r)
-- [UI Toolkit](../Glossary.md#u)
-- [Remote Provisioning Client (RPC)](../Glossary.md#r)
+- Management Presence Server (MPS)
+- Remote Provisioning Server (RPS)
+- UI Toolkit
+- Remote Provisioning Client (RPC)
 
 Find details about architectural details, security issues, and more in [Microservices](../Microservices/overview.md).
 

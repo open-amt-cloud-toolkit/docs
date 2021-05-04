@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 #Express Setup
 
-This setup installs the MPS and RPS microservices as [Docker*](../Glossary.md#d) containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+This setup installs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 ## Get the Toolkit
 

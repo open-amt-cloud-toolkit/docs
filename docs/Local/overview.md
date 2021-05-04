@@ -2,7 +2,7 @@
 
 # Build and Deploy Microservices Locally
 
-This section contains instructions for deploying the Open AMT Cloud Toolkit's [Management Presence Server (MPS)](../Glossary.md#m) and [Remote Provisioning Server (RPS)](../Glossary.md#r) on a local development system. These Hello World deployment instructions detail how to install the microservices manually on a development system and are not intended as production environment instructions. 
+This section contains instructions for deploying the Open AMT Cloud Toolkit's Management Presence Server (MPS) and Remote Provisioning Server (RPS) on a local development system. These Hello World deployment instructions detail how to install the microservices manually on a development system and are not intended as production environment instructions. 
 
 [![Local Overview](../assets/images/ManualDeploymentWorkflow.png)](../assets/images/ManualDeploymentWorkflow.png)
 
