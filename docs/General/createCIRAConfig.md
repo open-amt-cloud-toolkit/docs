@@ -11,7 +11,7 @@ With this persistent connection, administrators can execute various system actio
 * Boot to BIOS 
 * Reset to BIOS
 
-Intel AMT supports these actions and more.
+Intel® AMT supports these actions and more.
 
 As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. 
 

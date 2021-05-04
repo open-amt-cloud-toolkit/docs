@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 ### Introduction
 !!! important
     Not for production use!!
