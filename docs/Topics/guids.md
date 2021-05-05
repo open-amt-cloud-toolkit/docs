@@ -6,7 +6,7 @@ Each Intel® AMT device has a Global Unique Identifier (GUID) assigned to it by 
 There are a number of ways to obtain the GUID on the Intel® AMT device:
 
 - Sample Web UI of the Open AMT Cloud Toolkit 
-- [Devices API Method](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/Devices/get_devices)
+- [Devices API Method](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/Devices/get_api_v1_devices)
 
 
 
