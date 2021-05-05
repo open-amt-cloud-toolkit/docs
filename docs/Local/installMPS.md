@@ -39,7 +39,7 @@ Find details about architectural details, security issues, and more in [Microser
 
 2. Clone the repository.
     ``` bash
-    git clone --recursive --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
+    git clone --recursive --branch v1.3.0 https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
     ```
 
 3. Change to the cloned `open-amt-cloud-toolkit` directory.

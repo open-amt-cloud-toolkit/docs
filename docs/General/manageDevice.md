@@ -2,25 +2,6 @@
 
 1. Go back to the Sample Web UI on your development system.
 	
-    !!! note
-        If you closed the browser or were logged out, follow these steps to reopen it:
-            
-        Navigate to the UI.
-
-        ```
-        http://localhost:4200
-        ```
-
-        Log in with the default credentials.
-
-        **Default credentials:**
-
-        | Field       |  Value    |
-        | :----------- | :-------------- |
-        | **Username**| standalone |
-        | **Password**| G@ppm0ym |
-
-
 2. Click the Devices tab from the menu on the left.
 
     [![mps](../assets/images/MPS_ConnectedDevice.png)](../assets/images/MPS_ConnectedDevice.png)
