@@ -31,6 +31,8 @@ This section outlines key features changes between versions 1.2 and 1.3 for Open
 - **API refactoring is complete:** In 1.2 we refactored the RPS REST APIs and in 1.3 we performed a similar refactoring the MPS REST APIs.  With the release of 1.3, these API breaking changes have been completed.  These changes align our APIs to industry standards for RESTful interfaces, normalizes responses, and simplifies the layout into logical groupings.  Special note: with the addition of Stateless Authentication, the API key in the header has been removed.  Please take a look at our updated Swagger documentation: 
     * [RPS on SwaggerHub](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.3.0#/)
     * [MPS on SwaggerHub](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.3.0#/)
+#### RPC
+- **Added CA-Certs to dockerfile:** In order to support certificate checking when running in a docker container, we added the CA-Certs from the base Ubuntu image to the RPC container.  This small change bumps RPC to version 1.2.1.  RPC 1.2.1 is compatible with all other 1.2 and 1.3 Open AMT Cloud Toolkit components.
 
 
 
