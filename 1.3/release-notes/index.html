@@ -1294,6 +1294,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    MPS
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1444,6 +1451,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    MPS
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1524,6 +1538,10 @@ https://example.url/rps
 <h4 id="ui-toolkit_1">UI-Toolkit<a class="headerlink" href="#ui-toolkit_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> freeze intermittently:</strong> We have added a small delay in handling mouse interactions that prevents us from flooding the AMT channel.  There are still a few occasions where <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> could still freeze.  We are still root causing this new issue</li>
+</ul>
+<h4 id="mps"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>AllowList:</strong> The AllowList is a feature that is supposed to prevent devices from connecting to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> unless the GUID is present on the AllowList.  By default, <code>AllowList = false</code>.  If you set <code>AllowList = true</code> this won't do anything and devices will still be able to connect to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, even if they aren't on the AllowList.  </li>
 </ul>
                 
               
