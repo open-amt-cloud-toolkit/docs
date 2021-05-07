@@ -48,3 +48,5 @@ This section outlines key features changes between versions 1.2 and 1.3 for Open
     2.	Reboot the Intel&reg; AMT device
 #### UI-Toolkit
 - **KVM freeze intermittently:** We have added a small delay in handling mouse interactions that prevents us from flooding the AMT channel.  There are still a few occasions where KVM could still freeze.  We are still root causing this new issue
+#### MPS
+- **AllowList:** The AllowList is a feature that is suppose prevent devices from connecting to the MPS unless the GUID is present on the AllowList.  By default, `AllowList = false`.  If you set `AllowList = true` this won't do anything and devices will still be able to connect to MPS, even if they aren't on the AllowList.  
