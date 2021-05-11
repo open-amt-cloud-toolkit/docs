@@ -1376,10 +1376,10 @@
 <div class="highlight"><pre><span></span><code>cmake --build . --config Release
 </code></pre></div></p>
 <div class="admonition note">
-<p class="admonition-title">Note<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p class="admonition-title">Note</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake --build . --config Debug
 </code></pre></div></p>
-</p>
 </div>
 </li>
 <li>
@@ -1395,15 +1395,14 @@
 <ol>
 <li>
 <p>To install the required dependencies; enter the following command.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Ubuntu</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Ubuntu</label><div class="tabbed-content"></div>
+</div>
 <div class="highlight"><pre><span></span><code>sudo apt install git cmake build-essential curl zip unzip tar pkg-config
 </code></pre></div>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">CentOS8</label><div class="tabbed-content"></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">CentOS8</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo yum install cmake
 </code></pre></div>
-</div>
-</div>
 </li>
 <li>
 <p>In the <code>rpc</code> directory, clone the Vcpkg repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it <a href="https://github.com/microsoft/vcpkg">here</a>.
@@ -1433,10 +1432,10 @@
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
 </code></pre></div></p>
 <div class="admonition note">
-<p class="admonition-title">Note<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p class="admonition-title">Note</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
 </code></pre></div></p>
-</p>
 </div>
 </li>
 <li>
@@ -1506,10 +1505,10 @@ make
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DNO_SELECT<span class="o">=</span>ON ..
 </code></pre></div></p>
 <div class="admonition note">
-<p class="admonition-title">Note<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p class="admonition-title">Note</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
 </code></pre></div></p>
-</p>
 </div>
 </li>
 <li>
@@ -1523,7 +1522,7 @@ make
 <h3 id="run-rpc">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#run-rpc" title="Permanent link">&para;</a></h3>
 <p>For additional information on possible arguments when invoking <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>, see <a href="../commandsRPC/">Command Examples</a>.</p>
 <p>The following example command shows how to activate and configure an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device using a pre-defined profile on your local network.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Windows</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>rpc --url wss://localhost:8080 --nocertcheck --cmd &quot;-t activate --profile profile1&quot;
 </code></pre></div>
 <div class="admonition note">
@@ -1531,7 +1530,7 @@ make
 <p>On a Windows® 10 system, the Command Prompt must be ran as Adminstrator.</p>
 </div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Linux</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo ./rpc --url wss://localhost:8080 --nocertcheck --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
 </code></pre></div>
 </div>
