@@ -45,7 +45,7 @@ rpc -u wss://localhost/activate -c "-t deactivate --password P@ssw0rd"
 !!! note
 	The **--password** nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.
 
-Deactivate a Device Activated Previously on a Different Server:
+Deactivate a Device if Unknown by RPS (or Vault):
 ``` bash
 rpc -u wss://localhost/activate -c "-t deactivate --password -f"
 ```
