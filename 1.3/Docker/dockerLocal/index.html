@@ -1316,7 +1316,7 @@
 <p><strong>To clone the repositories:</strong></p>
 <ol>
 <li>
-<p>Open a Terminal or Powershell/Command Prompt and navigate to a directory of your choice for development:</p>
+<p>Open a Terminal or Powershell and navigate to a directory of your choice for development:</p>
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.3.0
 </code></pre></div>
 </li>
@@ -1388,12 +1388,13 @@
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE                             STATUS
-samplewebui                       Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_webui_1
-rps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_rps_1
-mps-microservice:v1               Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_mps_1
-vault                             Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_vault_1
-postgres                          Up <span class="m">6</span> seconds    open-amt-cloud-toolkit_db_1
+<div class="highlight"><pre><span></span><code>IMAGE              STATUS                     NAMES
+webui:latest       Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_webui_1
+rps:latest         Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_rps_1
+vault              Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_vault_1
+mps:latest         Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_mps_1
+postgres           Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_db_1
+kong:2.3           Up <span class="m">6</span> seconds <span class="o">(</span>healthy<span class="o">)</span>     open-amt-cloud-toolkit_kong_1
 </code></pre></div>
 </div>
 </li>

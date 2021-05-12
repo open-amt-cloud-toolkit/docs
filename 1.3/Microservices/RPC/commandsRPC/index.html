@@ -1452,15 +1452,18 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </table>
 <h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h5>
 <p>Activate a Device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost:8080 --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
 </code></pre></div></p>
 <p>Deactivate a Device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost:8080 -c <span class="s2">&quot;-t deactivate --password P@ssw0rd&quot;</span>
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">&quot;-t deactivate --password P@ssw0rd&quot;</span>
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <strong>--password</strong> nested argument uses the AMT password set at the time of provisioning of the device based on the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>. This password should be able to be retrieved from Vault, if unknown.</p>
 </div>
+<p>Deactivate a Device if Unknown by <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (or Vault):
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">&quot;-t deactivate --password -f&quot;</span>
+</code></pre></div></p>
 <p><br></p>
 <h4 id="optional">Optional <a name="optional"></a><a class="headerlink" href="#optional" title="Permanent link">&para;</a></h4>
 <table>
@@ -1496,10 +1499,10 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </table>
 <h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
 <p>Override DNS detection and Activate device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost:8080 --cmd &quot;-t activate --profile profile1&quot; --dns corp.com
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd &quot;-t activate --profile profile1&quot; --dns corp.com
 </code></pre></div></p>
 <p>Connect through proxy and Deactivate device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost:8080 -c &quot;-t deactivate --password P@ssw0rd&quot; -p http://proxy.com:1000
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c &quot;-t deactivate --password P@ssw0rd&quot; -p http://proxy.com:1000
 </code></pre></div></p>
 <p><br></p>
 <h4 id="informational">Informational<a class="headerlink" href="#informational" title="Permanent link">&para;</a></h4>
