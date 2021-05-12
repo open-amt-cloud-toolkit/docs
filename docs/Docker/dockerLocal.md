@@ -7,7 +7,7 @@ This setup installs the MPS and RPS microservices as Docker* containers, standar
 
 **To clone the repositories:**
 
-1. Open a Terminal or Powershell/Command Prompt and navigate to a directory of your choice for development:
+1. Open a Terminal or Powershell and navigate to a directory of your choice for development:
 
     ``` bash
     git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.3.0
@@ -87,12 +87,13 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
     
     !!! success
         ``` bash    
-        IMAGE                             STATUS
-        samplewebui                       Up 6 seconds    open-amt-cloud-toolkit_webui_1
-        rps-microservice:v1               Up 6 seconds    open-amt-cloud-toolkit_rps_1
-        mps-microservice:v1               Up 6 seconds    open-amt-cloud-toolkit_mps_1
-        vault                             Up 6 seconds    open-amt-cloud-toolkit_vault_1
-        postgres                          Up 6 seconds    open-amt-cloud-toolkit_db_1
+        IMAGE              STATUS                     NAMES
+        webui:latest       Up 6 seconds               open-amt-cloud-toolkit_webui_1
+        rps:latest         Up 6 seconds               open-amt-cloud-toolkit_rps_1
+        vault              Up 6 seconds               open-amt-cloud-toolkit_vault_1
+        mps:latest         Up 6 seconds               open-amt-cloud-toolkit_mps_1
+        postgres           Up 6 seconds               open-amt-cloud-toolkit_db_1
+        kong:2.3           Up 6 seconds (healthy)     open-amt-cloud-toolkit_kong_1
         ```
     
 If any of the above containers are not running, walk through the steps again or file a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).

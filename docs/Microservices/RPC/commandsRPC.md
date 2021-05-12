@@ -34,16 +34,22 @@ sudo docker run --device=/dev/mei0 rpc:latest <informational>
 ##### Examples
 Activate a Device:
 ``` bash
-rpc --url wss://localhost:8080 --cmd "-t activate --profile profile1"
+rpc --url wss://localhost/activate --cmd "-t activate --profile profile1"
 ```
 
 Deactivate a Device:
 ``` bash
-rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd"
+rpc -u wss://localhost/activate -c "-t deactivate --password P@ssw0rd"
 ```
 
 !!! note
 	The **--password** nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.
+
+Deactivate a Device if Unknown by RPS (or Vault):
+``` bash
+rpc -u wss://localhost/activate -c "-t deactivate --password -f"
+```
+
 
 
 <br>
@@ -61,12 +67,12 @@ rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd"
 
 Override DNS detection and Activate device:
 ```
-rpc --url wss://localhost:8080 --cmd "-t activate --profile profile1" --dns corp.com
+rpc --url wss://localhost/activate --cmd "-t activate --profile profile1" --dns corp.com
 ```
 
 Connect through proxy and Deactivate device:
 ```
-rpc -u wss://localhost:8080 -c "-t deactivate --password P@ssw0rd" -p http://proxy.com:1000
+rpc -u wss://localhost/activate -c "-t deactivate --password P@ssw0rd" -p http://proxy.com:1000
 ```
 
 
