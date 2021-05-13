@@ -84,3 +84,38 @@ For more information about power states supported by the REST APIs, see [Intel®
 
 Intel® AMT enables remote management of a device, even when the OS isn't running, through KVM over IP support. No additional equipment is needed for this feature.  With KVM control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote KVM switches and other hardware. 
 
+## Log Files
+Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.
+
+### Docker Logs
+
+**To run docker log files in a terminal window as needed:**
+
+1. Open a Terminal or Powershell/Command Prompt and run the command to list the containers:
+   
+    === "Linux"
+        ```
+        sudo docker ps
+        ```
+    
+    === "Windows (Powershell)"
+        ```
+        docker ps
+        ```
+
+2. Copy the first three digits of the container ID of interest. Run the docker logs command followed by the container ID: 
+
+    === "Linux"
+        ```
+        sudo docker logs <container ID>
+        ```
+    
+    === "Windows (Powershell)"
+        ```
+        docker logs <container ID>
+        ```
+
+See more help options for the `docker logs` command in [Docker Documentation](https://docs.docker.com/engine/reference/commandline/logs/). 
+
+### Log Level
+Set the log levels in the `.env` file by altering the configuration levels, `MPS_LOG_LEVEL` and `RPS_LOG_LEVEL`. Find the log level descriptions in the tables contained in [MPS Configuration](../Microservices/MPS/configuration.md) and [RPS Configuration](../Microservices/RPS/configuration.md). 

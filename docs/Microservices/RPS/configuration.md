@@ -13,6 +13,6 @@
 | RPS_SECRETS_PATH             | `secret/data/`          | Specifies the path for where secrets are stored in the vault |
 | RPS_USER                     | `standalone`            | If RPS is aware of MPS. This is the username used to log into MPS. This should match the value provided for MPS_USER |
 | RPS_PASSWORD                 | `G@ppm0ym`              | If RPS is aware of MPS. This is the password used to log into MPS. This should match the value provided for MPS_PASSWORD |
-| RPS_LOG_LEVEL                | `info`                  | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug` |
+| RPS_LOG_LEVEL                | `info`                  | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`, and `silly`  |
 | RPS_MPS_SERVER               | `http://localhost:3000` | Specifices where the MPS is hosted -- required for metadata registration (i.e. hostname, and tags) |
 | RPS_DELAY_TIMER              | `12`                   | Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, RPS sends heartbeats to RPC to keep the connection alive. |
