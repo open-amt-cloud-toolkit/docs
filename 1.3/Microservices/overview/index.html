@@ -618,6 +618,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#log-files" class="md-nav__link">
+    Log Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-logs" class="md-nav__link">
+    Docker Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-level" class="md-nav__link">
+    Log Level
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1341,6 +1368,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#log-files" class="md-nav__link">
+    Log Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-logs" class="md-nav__link">
+    Docker Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-level" class="md-nav__link">
+    Log Level
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1430,6 +1484,39 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 <p>For more information about power states supported by the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs, see <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm"><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> Implementation and Reference Guide</a> for more details. </p>
 <h2 id="keyboard-video-mouse-kvm-control">Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Control<a class="headerlink" href="#keyboard-video-mouse-kvm-control" title="Permanent link">&para;</a></h2>
 <p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> enables remote management of a device, even when the OS isn't running, through <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> over IP support. No additional equipment is needed for this feature.  With <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> switches and other hardware. </p>
+<h2 id="log-files">Log Files<a class="headerlink" href="#log-files" title="Permanent link">&para;</a></h2>
+<p>Each microservice has an associated log file which can contain helpful debug information. Use <code>docker logs</code> to print log information to the terminal.</p>
+<h3 id="docker-logs">Docker Logs<a class="headerlink" href="#docker-logs" title="Permanent link">&para;</a></h3>
+<p><strong>To run docker log files in a terminal window as needed:</strong></p>
+<ol>
+<li>
+<p>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker ps
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker ps
+</code></pre></div>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the first three digits of the container ID of interest. Run the docker logs command followed by the container ID: </p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker logs &lt;container ID&gt;
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker logs &lt;container ID&gt;
+</code></pre></div>
+</div>
+</div>
+</li>
+</ol>
+<p>See more help options for the <code>docker logs</code> command in <a href="https://docs.docker.com/engine/reference/commandline/logs/">Docker Documentation</a>. </p>
+<h3 id="log-level">Log Level<a class="headerlink" href="#log-level" title="Permanent link">&para;</a></h3>
+<p>Set the log levels in the <code>.env</code> file by altering the configuration levels, <code>MPS_LOG_LEVEL</code> and <code>RPS_LOG_LEVEL</code>. Find the log level descriptions in the tables contained in <a href="../MPS/configuration/"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration</a> and <a href="../RPS/configuration/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration</a>. </p>
                 
               
               
