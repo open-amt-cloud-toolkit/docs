@@ -25,4 +25,4 @@
 | MPS_LOG_LEVEL              | info                 | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`, and `silly`. |
 | MPS_JWT_SECRET             | supersecret          | Secret used for generating a JWT Token. IMPORTANT: This must match the `secret` in your `Kong.yaml` file for the jwt plugin configuration.
 | MPS_JWT_ISSUER             | 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc | The issuer that will be populated in the token. This is a not considered a secret. IMPORTANT: This must match the `key:` property in the `Kong.yaml` file for the jwt plugin configuration.
-| MPS_JWT_EXPIRATION         | 1440                 | The default expiration in minutes for the JWT Token. Default is 24 hou
+| MPS_JWT_EXPIRATION         | 1440                 | The default expiration in minutes for the JWT Token. Default is 24 hours.
