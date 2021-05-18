@@ -61,6 +61,7 @@ docker build -f "Dockerfile" -t rpc:latest .
 
 !!! note
     If you wish to perform this docker build on Windows, ensure **Use the WSL 2 based engine** is enabled in Docker Desktop.
+    Once the build is complete, you will need to get the built image to your Linux system running Docker.
 
 
 
