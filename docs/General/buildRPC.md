@@ -1,5 +1,5 @@
 --8<-- "References/abbreviations.md"
-The Remote Provisioning Client (RPC) on the managed devices establishes the Client Initiated Remote Access (CIRA) connection of the Intel® Active Management Technology (Intel® AMT) device to the Management Presence Server (MPS). This allows the remote device to call home to the MPS.  
+The Remote Provisioning Client (RPC), when executed on an Intel® Active Management Technology (Intel® AMT) device, works in concert with the Remote Provisioning Server (RPS) to setup the Intel® AMT firmware.  Once properly configured, the remote device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS.  
 
 After running the RPC, the Intel® AMT managed device can be managed remotely using the web interface!
 
@@ -10,7 +10,7 @@ After running the RPC, the Intel® AMT managed device can be managed remotely us
 **Figure 1: RPC Configuration** 
 
 !!! note "Figure 1 Details"
-    The RPC on the managed devices communicates with the Manageability Engine Interface (MEI) and Remote Provisioning Server (RPS) interfaces. The MEI uses the ME Driver to talk to Intel® AMT (Steps 3 and 4, Figure 1). The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration. The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../General/createCIRAConfig.md) or [Create an AMT Profile](../General/createProfileACM.md). After running RPC with a profile, the MPS can manage the remote device and issue AMT commands (Steps 5, Figure 1).
+    The RPC on a managed device communicates with the MEI/Heci Driver and the Remote Provisioning Server (RPS) interfaces. The MEI/HECI Driver uses the MEI interface to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../General/createCIRAConfig.md) or [Create an AMT Profile](../General/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
 
 ## Build RPC
 
@@ -45,17 +45,25 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 #### To Delete your workflow run
 
-1. Click the **...** menu for the workflow. 
+1. Click the ellipsis ( **...** ) menu for the workflow. 
 
 2. Choose the **Delete workflow run** option.
 
-### Docker Build
+### Docker Build  (For Linux Hosts)
 
-To build RPC w/ Docker, use the following command from the root directory of the open-amt-cloud-toolkit:
+Keep in mind, the image created with this method is only suitable for Docker on a Linux host.
+
+To build RPC with Docker, use the following command from the open-amt-cloud-toolkit/rpc directory:
 
 ``` bash
-cd ./rpc && docker build -f "Dockerfile" -t rpc:latest .
+docker build -f "Dockerfile" -t rpc:latest .
 ```  
+
+!!! note
+    If you wish to perform this docker build on Windows, ensure **Use the WSL 2 based engine** is enabled in Docker Desktop.
+    Once the build is complete, you will need to get the built image to your Linux system running Docker.
+
+
 
 ## Run RPC to Activate and Connect the AMT Device
 
