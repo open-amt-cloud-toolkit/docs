@@ -20,7 +20,7 @@ At minimum, to install and utilize the Open AMT Cloud Toolkit microservices, a n
 - Intel&reg; vPro device, configured and connected to MPS
 
 !!! Note
-    Instructions on how to set up the MPS and RPS servers to connect a vPro device can be followed in the [Local](../Local/overview.md) or [Local Docker](../Docker/overview.md) Build and Deploy Guides.
+    For instructions to set up the MPS and RPS servers to connect a managed device, see the [Getting Started Guide](../Docker/overview.md).
 
 - The **development system** requires the following software:
     - [git](https://git-scm.com/)
