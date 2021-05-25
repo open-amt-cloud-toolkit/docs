@@ -1,26 +1,37 @@
 --8<-- "References/abbreviations.md"
 ### Introduction
+This guide explains how to deploy the Open AMT Cloud Toolkit microservices to support a greater number of managed devices. This deployment uses: 
+
+* Kong* API Gateway
+* Kubernetes on Microsoft Azure*
+* PostgreSQL*
+* HashiCorp Vault*
+* Redis Protocol*
+* Consul*
+
 !!! important
-    Not for production use!!
+    NOT FOR PRODUCTION USE.
+
+### High-level Design
+
+[![Scaling architecture](../assets/images/HighLevelArchitectureScaling.png)](../assets/images/HighLevelArchitectureScaling.png)
+**Figure 1: MPS Scaling Architecture**
+
+Figure 1 presents the high-level architecture and flow of MPS scaling mode. 
+
+Note the various APIs and protocols used to establish and secure connectivity: 
     
-This guide explains how to deploy the Open AMT Cloud Toolkit services in Microsoft Azure*.
-Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. For this deployment, kubernetes runs in Microsoft Azure* along with redis and consul. Redis is used to sync the Web Server sessions between Web Server instances. Consul is used to communicate device connections between the Web Server and MPS server.
-
-### High level Design
-
-####Figure 1: MPS Scaling Architecture
-[![Scaling architechure](../assets/images/ScallingHighLevel.png)](../assets/images/ScallingHighLevel.png)
-Figure 1 presents the high-level architecture of MPS scaling mode. Per the figure, starting at the bottom:
-    
-1. Devices connect to an available MPS Server through the load balancer.
-1. The REST API requests are routed to an available Web Server, a component of MPS running in scale mode, through a load balancer.
-1. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
-1. The MPS Server sends the traffic to the corresponding device.
-
+* Managed devices use CIRA to connect and call home to instances of the MPS in the cloud. 
+* RPCs connect to an available instance of the MPS Server with WSS calls. These calls are funneled through Kong* API Gateway, which supports a variety of APIs. Kong manages load balancing, logging, authentication and more. 
+* The Kong* API Gateway handles requests from client apps, such as the Sample Web UI included in Open AMT Cloud Toolkit, sending them along to an available RPS.
+* The MPS Router chooses an available instance of the MPS.
+* The RPS microservices communicate with MPS microservices through the REST API. 
+* Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by MPS in Vault will increase the security of these assets.
+  
 ### MPS Configuration
-To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`. All the following settings have already been preset in the values.yaml file.
+To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`. Table 1 details the settings involved in the scaling deployment.
 
-####Table 1: MPS configuration settings
+
 | Component:        | Setting:           | Notes:  |
 | ------------- |-------------| -----|
 | consul     | distributed_kv_name  | name of key/value store used. |
@@ -32,48 +43,51 @@ To support running the service in a distributed environment, some configuration 
 ||redis_password|password used to authenticate to redis|
 |general|web_proxy_port|port the web server used to communicate to MPS.|
 ||network_adaptor|network identifier used when device connects to MPS. Can be either an adaptor name such as `eth0` or starting ip address such as `192.168`.|
-||startup_mode|microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributated mode.|
+||startup_mode|microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributed mode.|
+
+**Table 1: MPS Configuration Settings**
 
 ## Get the Toolkit
 
 **To clone the repositories:**
 
-1. Open a Command Prompt or Terminal and navigate to a directory of your choice for development:
+Open a Command Prompt or Terminal and navigate to a directory of your choice for development:
 
 ``` bash
 git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
 ```
 
-## Building the docker images
-Please build and push the following images from the following open-amt-cloud-toolkit repositories MPS, RPS, and sample-web-ui into a public repository. Please update "docker.io/vprodemo" to the desired public repository and "mps" to the corresponding repository name. 
+## Building the Docker Images
+1. Build and push the following images from the following open-amt-cloud-toolkit repositories MPS, RPS, and sample-web-ui into a public repository.
 ```
 docker build . -t docker.io/vprodemo/mps:latest
 docker push docker.io/vprodemo/mps:latest
 ```
+2. Update "docker.io/vprodemo" to the desired public repository and "mps" to the corresponding repository name. 
 
-### Prerequisite
-**Install required software in Windows environment(in admin mode):**
+### Prerequisites
+**Install required software in Windows environment (in admin mode):**
 
-1. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installchoco.bat` to install the choco package manager
-1. Close and reopen command window
-1. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installpackages.bat` to install the required packages
+1. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installchoco.bat` to install the choco package manager.
+2. Close and reopen the command window.
+3. Run `\open-amt-cloud-toolkit\scripts\kubernetes\installpackages.bat` to install the required packages.
 
 ### Steps to Deploy
 
 1. Edit entries in the launch.bat file to fit deployment.
+   
+2.  In `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`, update the stack environment variables in `images` with desired images for launch.
 
-1. Update section `images` in stack environmental variables in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml` that correspond with desired images for launch.
+3. If containers are in a private container registry, create a base64 auth token and place it in `open-amt-cloud-toolkit\scripts\kubernetes\config.json`
 
-1. If containers are in a private container registry, a base64 auth token needs to be created and placed in `open-amt-cloud-toolkit\scripts\kubernetes\config.json`
+4. Launch with command `launch.bat [resourceGroupName]`. Replace the resourceGroupName with the desired resource group name for the deployment.
 
-1. Launch with command `launch.bat [resourceGroupName]` [replace the resourceGroupName with the desired resource group name for the deployment]
+5. Use the settings in the `\open-amt-cloud-toolkit\scripts\kubernetes\.env` file to update the values in the `\open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml` file.
 
-1. Use the settings in the `\open-amt-cloud-toolkit\scripts\kubernetes\.env` file to update the values in `\open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`
+6. From `\open-amt-cloud-toolkit\scripts\kubernetes` run `helm install openamtcloudstack ./serversChart` to deploy the services into kubernetes.
 
-1. From `\open-amt-cloud-toolkit\scripts\kubernetes` run `helm install openamtcloudstack ./serversChart` to deploy the services into kubernetes.
-
-1. After deployment is complete use the command `kubectl get pods` to verify all pods have been launched successfully.
+7. After deployment is complete, use the command `kubectl get pods` to verify all pods have been launched successfully.
 
 !!! note 
-    Please restore values.yaml to its prelaunch condition before subsiquesnt deployments
+    Please restore values.yaml to its prelaunch condition before subsequent deployments.
 
