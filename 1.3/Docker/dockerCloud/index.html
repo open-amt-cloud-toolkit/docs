@@ -1472,7 +1472,7 @@ set HTTPS_PROXY=http://10.3.4.52:8080
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If using a private Docker hub, set the password variable: DOCKER_LOGIN_PASSWORD=[your-docker-login-password</p>
+<p>If using a private Docker hub, set the password variable: DOCKER_LOGIN_PASSWORD=[your-docker-login-password]</p>
 </div>
 <p>4. Run the oact-stack-azure-vm.bat file. This file: </p>
 <ul>
@@ -1484,6 +1484,18 @@ set HTTPS_PROXY=http://10.3.4.52:8080
 <div class="highlight"><pre><span></span><code>cd scripts\docker-compose
 oact-stack-azure-vm.bat vprodemo westus
 </code></pre></div>
+<p>5. Log into <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>:</p>
+<p>When running the stack in Azure, there are a few adjustments that need to be made to access the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> that are different than the docker deployment.
+- https needs to be specified in the URL.  If using a self-signed certificate, the first time you access the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, this certificate will need to be accepted.
+- Use the FQDN of the Azure instance for the URL instead of the IP address.
+- 8443 is the exposed port on the API gateway, so this needs to be appended to the URL.</p>
+<div class="highlight"><pre><span></span><code>https://test-instance.westus.azurecontainer.io:8443/
+</code></pre></div>
+<p>6. Creating <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> profile:</p>
+<ul>
+<li>When creating the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> profile on an Azure deployment, use the FQDN option and fill in the FQDN of the Azure instance.<br />
+--insert screenshot here--</li>
+</ul>
                 
               
               
