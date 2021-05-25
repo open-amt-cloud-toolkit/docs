@@ -132,7 +132,7 @@ The following sections describe how to:
             })
             
             req.on('error', (e) => {
-                console.error(error)
+                console.error(e)
             })
             
             req.end()

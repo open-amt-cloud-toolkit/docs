@@ -2,6 +2,8 @@
 
 Client Control Mode (CCM) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 
+**While Intel® AMT includes the ability to use the features listed below with user consent in CCM, the Open AMT Cloud Toolkit does not currently support it.**
+
 These features require user consent:
 
 - Keyboard, Video, Mouse (KVM) Control
@@ -43,7 +45,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
         - One uppercase, one lowercase, one numerical digit, one special character
    
-7. An **MEBX Password** is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) is not necessary for CCM.
+7. The **MEBX Password** field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
 8. Select DHCP as **Network Configuration**.
 

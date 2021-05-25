@@ -93,7 +93,7 @@ docker build -f "Dockerfile" -t rpc:latest .
         ```
 
     !!! note
-        Because we are using a self-signed certificate for easier development testing, we need to supply the **--nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the [flag and other arguments](../Microservices/RPC/commandsRPC.md).
+        Because we are using a self-signed certificate for easier development testing, we need to supply the **nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the [flag and other arguments](../Microservices/RPC/commandsRPC.md).
 
 
 !!! success
