@@ -10,7 +10,7 @@
 | MPS_SECRETS_PATH           | secret/data/         | Path to where secrets are stored in the vault |
 | MPS_GENERATE_CERTS         | true                 | Enables/Disables generation of self signed certificates based on MPS_COMMON_NAME |
 | MPS_COMMON_NAME            | localhost            |  Development system's IP address. <br> **Note:** For this guide, you **cannot** use localhost because the managed device would be unable to reach the MPS and RPS servers. | For this guide, the address will be used in a self-signed certificate. It may be an IP address or FQDN in real world deployment. |
-| MPS_USE_ALLOWLIST          | true                 | A value of false disables the allowlist functionality. For information about allowlist, see the allowlist [tutorial](../../Tutorials/allowlist.md)  |
+| MPS_USE_ALLOWLIST          | false                 | This configuration option is deprecated and will be removed in a future version  |
 | MPS_PORT                   | 4433                 | |
 | MPS_WEB_PORT               | 3000                 | |
 | MPS_USERNAME                   | standalone           | Specifies the username client devices use to connect to MPS   |
