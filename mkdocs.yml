@@ -28,7 +28,7 @@ nav:
     - Prerequisites: Docker/overview.md
     - Set Up: Docker/dockerLocal.md
     - Configure:
-      - Login to RPS: General/loginToRPS.md
+      - Login to Sample Web UI: General/loginToRPS.md
       - Create a CIRA Config: General/createCIRAConfig.md
       - Create an AMT Profile:
         - Create a Profile with CCM: General/createProfileCCM.md

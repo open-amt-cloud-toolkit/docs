@@ -102,4 +102,4 @@ If any of the above containers are not running, walk through the steps again or 
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
 
 ## Next up
-[**Login to RPS**](../General/loginToRPS.md)
+[**Login to Sample Web UI**](../General/loginToRPS.md)
