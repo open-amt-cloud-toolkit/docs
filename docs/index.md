@@ -49,16 +49,8 @@ Set up microservices quickly as Docker containers with this recommended method.
 Estimated completion time: **Approximately 30 minutes**
 
 ## Additional Setup Options
-### Local Microservices with npm 
-
-Set up microservices locally with a manual build process.
-
-[Get Started with Local Microservices](Local/overview.md).
-
-Estimated completion time: **Approximately 45 minutes**
-
 ### Microservices on the Cloud
-Both build-and-deploy options above install microservices locally on a development system. Experienced Docker users may choose to deploy microservices straight to the cloud.
+Experienced Docker users may choose to deploy microservices straight to the cloud.
 
 [Get Started with Microservices on the Cloud](Docker/dockerCloud.md).
  
