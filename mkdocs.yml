@@ -61,14 +61,14 @@ nav:
     - Webpack Configuration: UIToolkit/Webpack-Configuration.md
   - Tutorials:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
-    - Developer Manual Setup:
-      - Overview: Local/overview.md
-      - Build and Run: Local/installMPS.md
+    # - Developer Manual Setup:
+      # - Overview: Local/overview.md
+      # - Build and Run: Local/installMPS.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
     # - Databases: Tutorials/addDatabase.md
     # - Secret Storage: Tutorials/addVault.md
-    - Allowlists: Tutorials/allowlist.md
+    # - Allowlists: Tutorials/allowlist.md
     - Kubernetes: Kubernetes/kubernetes.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
