@@ -139,7 +139,7 @@ set HTTPS_PROXY=http://10.3.4.52:8080
 ```
 
 !!! Note
-    If using a private Docker hub, set the password variable: DOCKER_LOGIN_PASSWORD=[your-docker-login-password
+    If using a private Docker hub, set the password variable: DOCKER_LOGIN_PASSWORD=[your-docker-login-password]
 
 4\. Run the oact-stack-azure-vm.bat file. This file: 
 
@@ -154,3 +154,19 @@ oact-stack-azure-vm.bat [your-solution-name] [region (e.g.,: westus)] [MPS-IMAGE
 cd scripts\docker-compose
 oact-stack-azure-vm.bat vprodemo westus
 ```
+
+5\. Log into Sample Web UI:
+
+When running the stack in Azure, there are a few adjustments that need to be made to access the Sample Web UI that are different than the docker deployment.
+- https needs to be specified in the URL.  If using a self-signed certificate, the first time you access the Sample Web UI, this certificate will need to be accepted.
+- Use the FQDN of the Azure instance for the URL instead of the IP address.
+- 8443 is the exposed port on the API gateway, so this needs to be appended to the URL.
+
+```
+https://test-instance.westus.azurecontainer.io:8443/
+```
+
+6\. Creating CIRA profile:
+
+- When creating the CIRA profile on an Azure deployment, use the FQDN option and fill in the FQDN of the Azure instance.  
+--insert screenshot here--
