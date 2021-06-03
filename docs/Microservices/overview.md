@@ -84,6 +84,28 @@ For more information about power states supported by the REST APIs, see [Intel®
 
 Intel® AMT enables remote management of a device, even when the OS isn't running, through KVM over IP support. No additional equipment is needed for this feature.  With KVM control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote KVM switches and other hardware. 
 
+## Passwords
+
+There are four levels of passwords: 
+
+1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password:** Intel® MEBX enables the configuration of the Intel Manageability Engine (ME) platform. The Intel® MEBX password along with other configuration details is set on the managed device in the BIOS. For details about entering the Intel® MEBX BIOS settings, see [MEBX Unprovision](../Topics/MEBX/unprovision.md).
+
+2. **Sample Web UI Password:** The system administrator uses this password on the development system when logging into the Sample Web UI. To login, see [Login to Sample Web UI](../General/loginToRPS.md)
+   
+3. **CIRA Password:** CIRA enables a CIRA-capable edge device (i.e., managed device) to initiate and establish a persistent connection to the MPS. Use this password when you [Create a CIRA Config](../General/createCIRAConfig.md). 
+   
+4. **Provisioning Certificate Password:** Provisioning involves setting up a remote client, system, or device, on a network using a digitally signed certificate as a security credential. Use this password when you [Create an AMT Profile](../General/createProfileACM.md).
+
+Multiple passwords enhance the security of Open AMT Cloud Toolkit.
+
+| What     |  Where    | Security |  Default Values | Modify |
+| :-----------| :-------------- |:-------------- | :-------------- | :-------------- |
+| **Intel MEBX Password** |Managed devices | Provisioning | admin | In BIOS |
+|**Sample Web UI Password** | System running MPS and RPS (i.e., development system) | Administrative Management | Username: standalone Password: G@ppm0ym|.env file|
+| **CIRA Password** | Development system  | CIRA Profile  | Username: standalone Password: G@ppm0ym| .env file |
+| **Provisioning Certificate Password** | Development system | Certificate Usage | Generating a random password is strongly advised. | Vault |
+
+
 ## Log Files
 Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.
 
