@@ -59,14 +59,14 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
 
-2. Remove or rename the existing *kvm.core.min.js*  in the `ui-toolkit/dist/` directory before building.
+2. Remove or rename the existing *kvm.min.js*  in the `ui-toolkit/dist/` directory before building.
 
 3. Build the bundle.
 	```
 	npm run build
 	```
 
-	A new *kvm.core.min.js* will be created in the `ui-toolkit/dist/` directory.
+	A new *kvm.min.js* will be created in the `ui-toolkit/dist/` directory.
 
 	!!! note
 		To bundle the KVM control without node_modules, run the following build command instead.
@@ -83,7 +83,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 	```
 	<body>
 	  <div id="kvm"></div>
-	  <script src="../../dist/kvm.core.min.js" crossorigin></script>
+	  <script src="../../dist/kvm.min.js" crossorigin></script>
 	</body>
 	```
 
