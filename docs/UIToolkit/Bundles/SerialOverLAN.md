@@ -58,7 +58,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
 
-2. Remove or rename the existing *sol.core.min.js*  in the `ui-toolkit/dist/` directory before building.
+2. Remove or rename the existing *sol.min.js*  in the `ui-toolkit/dist/` directory before building.
 
 3. Build the bundle.
 	```
@@ -83,7 +83,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 	```
 	<body>
 	  <div id="sol"></div>
-	  <script src="../../dist/sol.core.min.js" crossorigin></script>
+	  <script src="../../dist/sol.min.js" crossorigin></script>
 	</body>
 	```
 

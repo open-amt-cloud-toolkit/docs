@@ -112,27 +112,6 @@ module.exports = {
 }
 ```
 
-## Adding API keys as Environmental variables:
-
-Environmental variables can be setup using the DefinePlugin option in webpack.
-
-```
-  const path = require('path');
-  const webpack = require('webpack');
-
-  module.exports = {
-    ...
-    plugins: [
-      new webpack.DefinePlugin({
-      'process.env': {
-        'API_KEY_MPS': JSON.stringify('<Provide MPS api key>')
-      }
-    })
-    ]
-  }
-```
-
-
 ## Development Server:
 
 we are going to set up a development server using the webpack-dev-server which will open up a default browser when we do npm start and also provide us with live reloading on the fly.
@@ -164,7 +143,7 @@ module.exports = {
      mode: "production",
      entry: './src/reactjs/components/KVM/index.tsx', // entry points can be multiple
     output: {
-        filename: "[name].core.min.js",
+        filename: "[name].min.js",
         path: path.resolve(__dirname, "./dist")
     },
   ....
