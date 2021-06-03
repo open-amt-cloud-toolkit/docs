@@ -1448,8 +1448,7 @@
 <ol>
 <li>
 <p>Run the following command to add the UI Toolkit and install the required dependencies:</p>
-<div class="highlight"><pre><span></span><code>npm uninstall react react-dom --save 
-npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.3.0 react@16.13.1 react-dom@16.13.1 --save
+<div class="highlight"><pre><span></span><code>npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.3.0
 </code></pre></div>
 </li>
 <li>
@@ -1509,24 +1508,19 @@ When you make changes, you do not need to stop the application and restart. It w
 </table>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">KVM</span><span class="p">,</span> <span class="nx">MpsProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">&quot;ui-toolkit&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">KVM</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">&quot;ui-toolkit&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="s1">&#39;../node_modules/ui-toolkit/i18n.ts&#39;</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">mpsKey</span><span class="o">:</span> <span class="s1">&#39;&lt;MPS API key&gt;&#39;</span>
-  <span class="p">};</span>
   <span class="k">return</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">MpsProvider</span> <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//Replace with AMT Device GUID</span>
-<span class="hll">        <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;localhost:3000/relay&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
-</span><span class="hll">        <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-</span>        <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+        <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;localhost:3000/relay&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
+        <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
+        <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
         <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
-      <span class="o">&lt;</span><span class="err">/MpsProvider&gt;</span>
-    <span class="o">&lt;</span><span class="err">/div&gt;</span>
-  <span class="p">);</span>
-<span class="p">}</span>
+<span class="hll">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span><span class="hll">  <span class="p">);</span>
+</span><span class="p">}</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
 </code></pre></div>
@@ -1549,7 +1543,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <p><br></p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <h3 id="try-other-controls">Try Other Controls<a class="headerlink" href="#try-other-controls" title="Permanent link">&para;</a></h3>
-<p>Try out other React controls such as Serial Over LAN or Audit Logs <a href="../../UIToolkit/Controls/serialOverLANControl/">here</a></p>
+<p>Try out other React controls such as Serial Over LAN <a href="../../UIToolkit/Controls/serialOverLANControl/">here</a></p>
 <h3 id="customize-and-create-bundles">Customize and Create Bundles<a class="headerlink" href="#customize-and-create-bundles" title="Permanent link">&para;</a></h3>
 <p>Try out creating and customizing React bundles for things such as Serial Over LAN or KVM <a href="../../UIToolkit/Bundles/kvm/">here</a></p>
 <h2 id="license-note">License Note<a class="headerlink" href="#license-note" title="Permanent link">&para;</a></h2>

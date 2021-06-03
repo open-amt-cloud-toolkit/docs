@@ -950,13 +950,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adding-api-keys-as-environmental-variables" class="md-nav__link">
-    Adding API keys as Environmental variables:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#development-server" class="md-nav__link">
     Development Server:
   </a>
@@ -1365,13 +1358,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#adding-api-keys-as-environmental-variables" class="md-nav__link">
-    Adding API keys as Environmental variables:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#development-server" class="md-nav__link">
     Development Server:
   </a>
@@ -1520,22 +1506,6 @@ module.exports = {
   ]
 }
 </code></pre></div>
-<h2 id="adding-api-keys-as-environmental-variables">Adding API keys as Environmental variables:<a class="headerlink" href="#adding-api-keys-as-environmental-variables" title="Permanent link">&para;</a></h2>
-<p>Environmental variables can be setup using the DefinePlugin option in webpack.</p>
-<div class="highlight"><pre><span></span><code>  const path = require(&#39;path&#39;);
-  const webpack = require(&#39;webpack&#39;);
-
-  module.exports = {
-    ...
-    plugins: [
-      new webpack.DefinePlugin({
-      &#39;process.env&#39;: {
-        &#39;API_KEY_MPS&#39;: JSON.stringify(&#39;&lt;Provide MPS api key&gt;&#39;)
-      }
-    })
-    ]
-  }
-</code></pre></div>
 <h2 id="development-server">Development Server:<a class="headerlink" href="#development-server" title="Permanent link">&para;</a></h2>
 <p>we are going to set up a development server using the webpack-dev-server which will open up a default browser when we do npm start and also provide us with live reloading on the fly.</p>
 <p>npm i webpack-dev-server --D</p>
@@ -1557,7 +1527,7 @@ module.exports = {
      mode: &quot;production&quot;,
      entry: &#39;./src/reactjs/components/KVM/index.tsx&#39;, // entry points can be multiple
     output: {
-        filename: &quot;[name].core.min.js&quot;,
+        filename: &quot;[name].min.js&quot;,
         path: path.resolve(__dirname, &quot;./dist&quot;)
     },
   ....

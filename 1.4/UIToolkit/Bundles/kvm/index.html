@@ -1324,13 +1324,13 @@
 <p>To bundle, navigate to the <code>ui-toolkit</code> directory in a Terminal (Linux) or Command Prompt (Windows).</p>
 </li>
 <li>
-<p>Remove or rename the existing <em>kvm.core.min.js</em>  in the <code>ui-toolkit/dist/</code> directory before building.</p>
+<p>Remove or rename the existing <em>kvm.min.js</em>  in the <code>ui-toolkit/dist/</code> directory before building.</p>
 </li>
 <li>
 <p>Build the bundle.
     <div class="highlight"><pre><span></span><code>npm run build
 </code></pre></div></p>
-<p>A new <em>kvm.core.min.js</em> will be created in the <code>ui-toolkit/dist/</code> directory.</p>
+<p>A new <em>kvm.min.js</em> will be created in the <code>ui-toolkit/dist/</code> directory.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To bundle the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control without node_modules, run the following build command instead.
@@ -1346,7 +1346,7 @@ The bundle generated using the build-ext command can be used in react apps as an
 <p>Add the following code snippet to <em>sampleKVM.htm</em> in the <code>ui-toolkit/src/sample/</code> directory using an editor of your choice.</p>
 <div class="highlight"><pre><span></span><code>&lt;body&gt;
   &lt;div id=&quot;kvm&quot;&gt;&lt;/div&gt;
-  &lt;script src=&quot;../../dist/kvm.core.min.js&quot; crossorigin&gt;&lt;/script&gt;
+  &lt;script src=&quot;../../dist/kvm.min.js&quot; crossorigin&gt;&lt;/script&gt;
 &lt;/body&gt;
 </code></pre></div>
 </li>
