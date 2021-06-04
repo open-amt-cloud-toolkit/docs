@@ -2,13 +2,14 @@
 
 # RPS Security Considerations
 
-Remote Provision Service (RPS) is built to be a micro service that plays a component role in a larger set of services that makes up the device management software suite.  In this role, RPS uses and creates secrets that are required to be able to successfully activate and use Intel® AMT.  There are five key assets that must be protected:
+Remote Provision Service (RPS) is built to be a micro service that plays a component role in a larger set of services that makes up the device management software suite.  In this role, RPS uses and creates secrets that are required to be able to successfully activate and use Intel® AMT.  There are six key assets that must be protected:
 
 * Remote admin password for Intel® AMT
 * MEBX password for Intel® AMT
 * Provisioning Certificate for each supported domain
 * Password used to encrypt each Provisioning Certificate
 * Device configuration information sent to Intel® AMT device
+* MPS CIRA login credentials
 
 In addition to the above assets, there are best practices that are recommended to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.
 
@@ -17,7 +18,7 @@ In addition to the above assets, there are best practices that are recommended t
 
 ### 1 Remote Admin Password
 This password is what is configured in the Intel® AMT firmware that allows a remote user to remotely control the Intel® AMT device (power actions, remote desktop, remote terminal, etc).  When RPS activates an Intel® AMT device, it sets this password in the Intel® AMT firmware.  This password can either be statically set or can be randomly generated based on the profile defined by the user.  It is highly recommended to use randomly generated passwords as this will make each Intel® AMT device more secure by using unique passwords per device.
-In a default docker or Kubernetes deployment, RPS will save the Remote Admin Password to the deployed Vault instance.  If Vault is not configured, RPS will not use profiles that specify a randomly generated password.  This is to prevent the loss of access to a configured Intel® AMT device.
+In a default docker or Kubernetes deployment, RPS will save the Remote Admin Password to the deployed Vault instance.
 
 ### 2 MEBX Password
 The Management Engine BIOS Extension (MEBX) password is the password that protects the pre-boot menu option that provides access to Intel® AMT settings.  To use this password a user needs to have physical access to the device.  It is highly recommended to change this password from the factory default settings upon receiving a new Intel® AMT device.  A RPS profile provides an option for either specifying a static password that is used for all devices configured with a given profile or a randomly generated password can be assigned uniquely per device.  The MEBX password set in each device is saved in Vault.
@@ -32,20 +33,23 @@ This is the password that is used to encrypt the provisioning certificate .pfx f
 RPS fetches the password from Vault and will use it when it is needed to decrypt a provisioning certificate.
 
 ### 5 Device configuration information sent to Intel® AMT device
-This data is a set of information that Intel® AMT firmware will use to establish trust and then activate the Intel® AMT device.  Contained in this information is the hashed remote admin password and the MEBX password.  It is important to protect this set of information while it is being used by RPS and while in transit to the Intel® AMT device.  Ensuring that a secure (TLS encrypted) WebSocket connection is used when RPS is communicating with the client device will protect this data while in transit.  This set of information uses nonces to prevent replay of this data.
+This data is a set of information that Intel® AMT firmware will use to establish trust and then activate the Intel® AMT device.  Contained in this information is the hashed remote admin password and the MEBX password.  It is important to protect this set of information while it is being used by RPS and while in transit to the Intel® AMT device.  Ensuring that a secure (TLS encrypted) WebSocket connection is used when RPS is communicating with the client device will protect this data while in transit.  This set of information utilizes nonces to prevent replay of this data.
+
+### 6 MPS CIRA Login Credentials
+In order for an Intel&reg; AMT device to connect to the MPS over a CIRA connection, it needs to provide the correct login credentials for MPS.  These credentials are specified as part of the AMT Profile created in RPS.  When a device is configured by RPS, the MPS CIRA credentials will be sent to MPS using the Devices POST API call where MPS will store the credentials.  These credentials are verfied by the MPS when the CIRA connection is established.
 
 ---
 ## Best Known Security Methods
 
 ### 1 Enable TLS on network connections
-There are two potential places where TLS should be enable to protect the security assets:
-* WebSocket connection between RPS and Intel® AMT client
-* Database connection between RPS and Vault
+There are two potential places where TLS could be enable to protect the security assets:
+* WebSocket connection between RPS and Intel® AMT client (recommended)
+* Connection between RPS and Vault - If communication between RPS and Vault is outside a secure container environment (not recommended deployment, see item 2 below)
 
-Encrypting these communication transports will help prevent network based attacks attempting to discover the Remote Admin Password and MEBX Password for the Intel® AMT device.  It is recommended that the most modern version of TLS be used to protect these connections.
+Securing these communication routes will help prevent security assets being exposed through network based attacks intercepting messages between components. It is recommended that the most modern version of TLS be used when encrypting communication.
 
 ### 2 Secure and isolate execution environment
-RPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of RPS, it is recommended that RPS be run in a secure execution environment such as a dedicated VM or container.  Deploying into a hardened execution environment eases the burden of individually securing this data while in use.
+RPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of RPS, it is recommended that RPS be run in a secure execution environment such as a dedicated container. Deploying into a secure conatiner environment eases the burden of individually securing the assets while in memory or in transit between Open AMT Cloud Toolkit services.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
 
 ### 3 Utilize a Hashicorp Vault implementation to store security assets
 Utilizing Hashicorp Vault to store security assets either created by or used by RPS will greatly increase the security of these assets.  Not only does Vault encrypt the data at rest, but it also manages access to the data itself.  As the Vault owner, you decide who gets access to the security assets stored there, not RPS.
