@@ -1,12 +1,11 @@
 --8<-- "References/abbreviations.md"
 # MPS Security Considerations
 
-Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel® AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel® AMT devices using REST APIs, MPS uses secrets. There are six key assets that must be protected:
+Management Presence Server (MPS) is a cloud agnostic micro-service that enables Intel® AMT-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on Intel® AMT devices using REST APIs, MPS uses secrets. There are five key areas that must be considered:
 
-* Intel® AMT credentials
-* MPS credentials
-* Device Allowlist (List of GUIDs)
-* APIKey
+* Intel® AMT remote admin credentials
+* Intel&reg; AMT CIRA credentials
+* Authorize API end point
 * Server Configuration
 * Web User Credentials
 
@@ -15,23 +14,22 @@ In addition to the above assets, there are best practices that are recommended t
 
 ## Security Assets
 
-### 1. Intel® AMT credentials
-AMT credentials allows a user to remotely control Intel® AMT device and these credentials are configured in AMT Firmware. When user performs an action on the device using REST API, MPS then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.
+### 1. Intel&reg; AMT remote admin credentials
+Intel&reg; AMT remote admin credentials allows a user to remotely control an Intel&reg; AMT device and these credentials are configured in AMT Firmware by a configuration server (ex. RPS). When a user performs an action on the device using REST API, MPS fetches the corresponding credentials of that device from the configured secrets store (ex. Vault) and uses it as part of digest authentication. It is highly recommended to use a strong password (as per AMT password requirements) that is unique per device to make it more secure.
 
-### 2. Intel&reg; MPS credentials
-Every Intel&reg; device needs to be authenticated prior to successful connection to MPS. MPS credentials are used to authenticate every Intel&reg; device. After establishing TLS connection with MPS, device sends it's username and password, which will then be used to authenticate. It is highly recommended that every device use a unique username and password.
+### 2. Intel&reg; AMT CIRA credentials
+When an Intel&reg; device attempts to establish a connection to the MPS, there are two checks that are performed by MPS prior to allowing the connection.  
+1. The Intel&reg; AMT device's GUID must be listed in the MPS database.  This is typically added by using the Devices POST API.  
+2. The Intel&reg; AMT device needs to supply the correct credentials to MPS.  These credentials are checked against the username (stored in the database) and password (stored in Vault).  It is highly recommended that every device use a unique password.
 
-### 3. Device Allowlist (List of GUIDs)
-Each Intel® AMT device has a unique identifier (GUID) assigned to it and this GUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by MPS using MPS credentials. But even before validating credentials, only allowlist Intel® AMT devices can be allowed to connect to make it more secure and this is being done using the allowlist GUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.
+### 3. Authorize API end point
+MPS has a default Authorize API end point for issuing a JWT for basic user authentication to the REST APIs.  This is in place so developers can easily start using the Open AMT Cloud Toolkit microservices without needing to setup a full user authentication service just to evaluate the software.  In production, it is recommended to disable this Authorize API end point by leaving the MPS Web User credentials blank in the MPS configuration file.
 
-### 4. APIKey
-Every client/user needs to be authenticated before allowing them to perform an action using REST API call. APIKey will be used by MPS to authenticate a client/user.
+### 4. Server Configuration
+In order for MPS to use secure protocols, certificates will need to be configured, and the keys for these certificates need to be securely stored. If the keys are compromised then an attacker will be able to decrypt messages that are encrypted with these certificates.  For evaluation purposes, MPS will generate self-signed certificates used for encryption.  For production, it is recommended to purchase CA-signed certificates who's signatures can be independently verified.
 
-### 5. Server Configuration
-In order for MPS to use secure protocols, we will have to configure certificates, and the keys for these certificates need to be securely stored. If the keys are compromised then the attacker will be able to decrypt all the messages.
-
-### 6. Web User Credentials
-Primary way of authenticating a user who intends to perform an action is using APIKey but MPS also provides a sample Web-based User Interface. This Web Interface shows how to make REST API calls using AJAX. Only authenticated users should be allowed to make REST API calls using Web UI and the authentication will be done using Web user credentials.
+### 5. Web User Credentials
+The Open AMT Cloud Toolkit is designed to operate behind an API Gateway (ex. Kong API Gateway).  The API Gateway's responsibility is to validate the Auth Tokens provided by a user who is requesting access to an API end point.  Once verified the API Gateway will forward the request to the appropriate microservice (MPS or RPS).  In order to make evaluation easy, MPS has implemented an Authorize API end point that will issue a JWT when the proper web user credentials are provided.  The Web User credentials are global credentials that are configured in the MPS configuration file and do not provide any fine tuned permissions.  *NOTE: This user auth model is very simple and is not recommended for production use.*  
 
 
 ## Best Known Security Methods
@@ -39,14 +37,14 @@ Primary way of authenticating a user who intends to perform an action is using A
 ### 1. Enable TLS on network connections
 There are three potential places where TLS should be enabled to protect the security assets:
 
-* HTTP/WS connection between Web UI and MPS
-* Connection between MPS and Vault
+* HTTPS/WSS connection between Web UI and MPS
+* Connection between MPS and Vault - If not running MPS and Vault together inside a secure container environment
 * Connection between MPS and Intel® AMT device (This is done automatically with default deployments)
 
-Encrypting these communication will help prevent network based attacks attempting to control Intel® AMT device. It is recommended that the most modern version of TLS be used to protect these connections.
+Encrypting these communication will help prevent security assets being exposed through network based attacks intercepting messages between components. It is recommended that the most modern version of TLS be used to protect these connections.
 
 ### 2. Secure and isolate execution environment
-MPS holds the described security assets in memory during execution.  In order to protect these assets while in memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated VM or container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.
+MPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
 
 ### 3. Utilize Vault for storing Credentials
 Vault is a tool used to secure, store, and tightly control access to secrets. Utilizing Vault to store passwords used by MPS will greatly increase the security of these assets.
