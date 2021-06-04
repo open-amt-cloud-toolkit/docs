@@ -23,28 +23,29 @@ When an Intel&reg; device attempts to establish a connection to the MPS, there a
 2. The Intel&reg; AMT device needs to supply the correct credentials to MPS.  These credentials are checked against the username (stored in the database) and password (stored in Vault).  It is highly recommended that every device use a unique password.
 
 ### 3. Authorize API end point
-MPS has a default Authorize API end point for issuing a JWT for basic user authentication to the REST APIs.  This is in place so developers can easily start using the Open AMT Cloud Toolkit microservices without needing to setup a full user authentication service just to evaluate the software.  In production, it is recommended to disable this Authorize API end point by leaving the MPS Web User credentials blank in the MPS configuration file.
+MPS has a default Authorize API end point for issuing a JWT for basic user authentication to the REST APIs.  This is in place so developers can easily start using the Open AMT Cloud Toolkit microservices without needing to setup a full user authentication service for evaluation of the software.  In production, it is recommended to use a robust user authentation service (ex. OAuth2, OpenID, LDAP, etc) and disable this Authorize API end point by leaving the MPS Web User credentials blank in the MPS configuration file.
 
 ### 4. Server Configuration
 In order for MPS to use secure protocols, certificates will need to be configured, and the keys for these certificates need to be securely stored. If the keys are compromised then an attacker will be able to decrypt messages that are encrypted with these certificates.  For evaluation purposes, MPS will generate self-signed certificates used for encryption.  For production, it is recommended to purchase CA-signed certificates who's signatures can be independently verified.
 
 ### 5. Web User Credentials
-The Open AMT Cloud Toolkit is designed to operate behind an API Gateway (ex. Kong API Gateway).  The API Gateway's responsibility is to validate the Auth Tokens provided by a user who is requesting access to an API end point.  Once verified the API Gateway will forward the request to the appropriate microservice (MPS or RPS).  In order to make evaluation easy, MPS has implemented an Authorize API end point that will issue a JWT when the proper web user credentials are provided.  The Web User credentials are global credentials that are configured in the MPS configuration file and do not provide any fine tuned permissions.  *NOTE: This user auth model is very simple and is not recommended for production use.*  
+The Open AMT Cloud Toolkit is designed to operate behind an API Gateway (ex. Kong API Gateway).  The API Gateway's responsibility is to validate the Auth Tokens provided by a user who is requesting access to an API end point.  Once verified the API Gateway will forward the request to the appropriate microservice (MPS or RPS).  In order to make evaluation easy, MPS has implemented an Authorize API end point (see item 3 above) that will issue a JWT when the proper web user credentials are provided.  The Web User credentials are global credentials that are configured in the MPS configuration file and do not provide any fine tuned permissions.  
+*NOTE: This user auth model is very simple and is not recommended for production use.*  
 
 
 ## Best Known Security Methods
 
 ### 1. Enable TLS on network connections
-There are three potential places where TLS should be enabled to protect the security assets:
+There are three potential places where TLS could be enabled to protect the security assets:
 
-* HTTPS/WSS connection between Web UI and MPS
-* Connection between MPS and Vault - If not running MPS and Vault together inside a secure container environment
-* Connection between MPS and Intel® AMT device (This is done automatically with default deployments)
+* HTTPS/WSS connection between Web UI and MPS (recommended)
+* Connection between MPS and Vault - If communication between MPS and Vault is outside a secure container environment (not recommended deployment, see item 2 below)
+* Connection between MPS and Intel® AMT device (required and done automatically by MPS)
 
-Encrypting these communication will help prevent security assets being exposed through network based attacks intercepting messages between components. It is recommended that the most modern version of TLS be used to protect these connections.
+Securing these communication routes will help prevent security assets being exposed through network based attacks intercepting messages between components. It is recommended that the most modern version of TLS be used when encrypting communication.
 
 ### 2. Secure and isolate execution environment
-MPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
+MPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of MPS, it is recommended that MPS be run in a secure execution environment such as a dedicated container. Deploying into a secure conatiner environment eases the burden of individually securing the assets while in memory or in transit between Open AMT Cloud Toolkit services.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
 
 ### 3. Utilize Vault for storing Credentials
 Vault is a tool used to secure, store, and tightly control access to secrets. Utilizing Vault to store passwords used by MPS will greatly increase the security of these assets.
