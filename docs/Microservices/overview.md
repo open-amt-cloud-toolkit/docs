@@ -88,22 +88,21 @@ Intel® AMT enables remote management of a device, even when the OS isn't runnin
 
 There are four levels of passwords: 
 
-1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password:** Intel® MEBX enables the configuration of the Intel Manageability Engine (ME) platform. The Intel® MEBX password along with other configuration details is set on the managed device in the BIOS. For details about entering the Intel® MEBX BIOS settings, see [MEBX Unprovision](../Topics/MEBX/unprovision.md).
-
-2. **Sample Web UI Password:** The system administrator uses this password on the development system when logging into the Sample Web UI. To login, see [Login to Sample Web UI](../General/loginToRPS.md)
-   
-3. **CIRA Password:** CIRA enables a CIRA-capable edge device (i.e., managed device) to initiate and establish a persistent connection to the MPS. Use this password when you [Create a CIRA Config](../General/createCIRAConfig.md). 
-   
-4. **Provisioning Certificate Password:** Provisioning involves setting up a remote client, system, or device, on a network using a digitally signed certificate as a security credential. Use this password when you [Create an AMT Profile](../General/createProfileACM.md).
+1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password : MEBX Password - ** Use this password to secure the local Intel® MEBX menu. This password is only used when physically accessing the managed device during system boot. Access the menu with Ctrl-P on most devices.
+2. **Sample Web UI Password: MPS_WEB_ADMIN_PASSWORD - ** Use this password on the development system when logging into the Sample Web UI. The Sample Web UI Password uses this default MPS user authentication credential when it triggers MPS to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. 
+3. ** ACM & CCM Profiles: AMT Password - ** This CIRA credential is used by Intel® AMT managed devices to authenticate the MPS when establishing the CIRA connection. Groups of devices can use the same password, but a unique password per device is recommended. Intel® AMT verifies this password when it gets a command from the MPS server.  
+4. **Provisioning Certificate Password - **  The AMT Provisioning certificate is a special certificate used by Intel® AMT devices to establish trust with the configuration service when activating in Admin Control Mode. RPS requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform ACM activation.
 
 Multiple passwords enhance the security of Open AMT Cloud Toolkit.
 
-| What     |  Where    | Security |  Default Values | Modify |
-| :-----------| :-------------- |:-------------- | :-------------- | :-------------- |
-| **Intel MEBX Password** |Managed devices | Provisioning | admin | In BIOS |
-|**Sample Web UI Password** | System running MPS and RPS (i.e., development system) | Administrative Management | Username: standalone Password: G@ppm0ym|.env file|
-| **CIRA Password** | Development system  | CIRA Profile  | Username: standalone Password: G@ppm0ym| .env file |
-| **Provisioning Certificate Password** | Development system | Certificate Usage | Generating a random password is strongly advised. | Vault |
+| What  | Security |  Default Values | Modify |
+| :-----------|:-------------- | :-------------- | :-------------- |
+| **Intel MEBX Password** | Prevention of Physical Security Violations | admin | In MEBX (Ctrl-P) |
+|**Sample Web UI Password** | Remote Role Management | Username: standalone Password: G@ppm0ym|.env file|
+| **ACM & CCM Profiles: AMT Password** | Authentication of MPS/RPS Access | Not applicable. | 1. Create a new profile. 2. Make an API call to update. 3. Update Vault.|
+| **Provisioning Certificate Password** | Signed Certificate Usage | Not applicable.| 1. Create a new profile. 2. Make an API call to update. 3. Update Vault.|
+
+**Table 1: Summary of Open AMT Passwords**
 
 
 ## Log Files
