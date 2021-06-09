@@ -15,25 +15,25 @@ kubectl create secret docker-registry registrycredentials --docker-server=<your-
 
 Additionally, you'll need to provide secrets for the following:
 
-MPS/KONG JWT:
+### MPS/KONG JWT
 
+This is the secret used for generating and verifying JWTs.
 ```
 kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
 ```
-KONG ACL for JWT:
+### KONG ACL for JWT
+
+This configures KONG with an ACL to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
 ```
 kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 ```
 
-MPS Web Username and Password
+### MPS Web Username and Password
+This is the username and password that is used for requesting a JWT. These credentials are also used for logging in to the UI.
 ```
 kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
 ```
 
-MPS Username and Password
-```
-kubectl create secret generic mps --from-literal=user=<your-username> --from-literal=password=<your-password>
-```
 
 ## Update Configuration
 

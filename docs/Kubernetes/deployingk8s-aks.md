@@ -42,24 +42,34 @@ kubectl create secret docker-registry registrycredentials --docker-server=<your-
 
 Additionally, you'll need to provide secrets for the following:
 
-MPS/KONG JWT:
+### MPS/KONG JWT:
+
+This is the secret used for generating and verifying JWTs.
 
 ```
 kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
 ```
-KONG ACL for JWT:
+### KONG ACL for JWT
+
+This configures KONG with an ACL to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
 ```
 kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 ```
 
-MPS Web Username and Password:
+### MPS Web Username and Password
+This is the username and password that is used for requesting a JWT. These credentials are also used for logging in to the UI.
 ```
 kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
 ```
 
-MPS Username and Password:
+### Azure Storage Account Key 
+Currently, we leverage Azure Storage Accounts for persistent storage of MPS certificates that can be shared by multiple instances of MPS. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).
+
+!!! note 
+    This will likely change in a future release
+
 ```
-kubectl create secret generic mps --from-literal=user=<your-username> --from-literal=password<your-password>
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=<your-cluster-name>stg --from-literal=azurestorageaccountkey=<your-storage-key>
 ```
 
 
@@ -80,6 +90,40 @@ Next, update the `commonName:` key in the `mps:` section in the `values.yaml` fi
 mps:
   commonName: "<your-domain-name>.<location>.cloudapp.azure.com"
 ```
+
+Lastly, the default access mode for storage (`storageAccessMode:`) is set to `ReadWriteOnce`. This only works with a one node cluster. You'll need to update this to `ReadWriteMany` to scale out the toolkit.
+
+``` yaml
+mps:
+  storageAccessMode: "ReadWriteMany"
+```
+
+This will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide `PersistentVolume` that can match the claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mps-certs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azure-secret
+    secretNamespace: default
+    shareName: mps-certs
+    readOnly: false
+  mountOptions:
+  - dir_mode=0755
+  - file_mode=0755
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+This is provided in `./kubernetes/charts/volumes/azure.yaml` and can be applied to your cluster with `kubectl apply -f ./kubernetes/charts/volumes/azure.yaml`.
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
