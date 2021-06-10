@@ -12,19 +12,14 @@ Open `src/App.js`, add the following code as show below:
 
 ```javascript hl_lines="12 13"
 import React from "react";
-import { Sol, MpsProvider } from "ui-toolkit";
+import { Sol } from "ui-toolkit";
 import '../node_modules/ui-toolkit/i18n.ts'
 
 const App = () => {
-  const data = {
-    mpsKey: '<MPS API key>'
-  };
   return (
     <div>
-      <MpsProvider data={data}>
         <Sol deviceId="038d0240-045c-05f4-7706-980700080009" //The AMT Device's GUID
         mpsServer="[MPS-Server-IP-Address]:3000"></Sol>
-      </MpsProvider>
     </div>
   );
 }
