@@ -84,6 +84,28 @@ For more information about power states supported by the REST APIs, see [Intel®
 
 Intel® AMT enables remote management of a device, even when the OS isn't running, through KVM over IP support. No additional equipment is needed for this feature.  With KVM control, IT administrators can access and update PCs and devices as if they were onsite. It eliminates the need for remote KVM switches and other hardware. 
 
+## Passwords
+
+There are five levels of passwords: 
+
+1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password: MEBX Password - ** Use this password to secure the local Intel® MEBX menu. This password is only used when physically accessing the managed device during system boot. Access the menu with Ctrl-P on most devices.
+2. **Sample Web UI Password: MPS_WEB_ADMIN_PASSWORD - ** Use this password when logging into the Sample Web UI. The Sample Web UI Password uses this default MPS user authentication credential when it triggers MPS to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. 
+3. **ACM & CCM Profiles: AMT Password - ** RPS uses this password to activate and configure Intel® AMT. When MPS requests an action of a managed device, such as a power action, it uses this password. Intel® AMT verifies this password when it gets a command from the MPS server.
+4. **Provisioning Certificate Password - **  The AMT Provisioning certificate is a special certificate used by Intel® AMT devices to establish trust with the configuration service when activating in Admin Control Mode. RPS requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform ACM activation. 
+5. **MPS CIRA Credential: MPS_USER and MPS_PASSWORD - ** This CIRA credential is used by Intel® AMT managed devices to authenticate the MPS when establishing the CIRA connection. 
+
+Multiple passwords enhance the security of Open AMT Cloud Toolkit.
+
+| What  | Security |  Default Values | Modify |
+| :-----------|:-------------- | :-------------- | :-------------- |
+|**1. Intel MEBX Password** | Prevention of Physical Security Violations | admin | In MEBX (Ctrl-P) |
+|**2. Sample Web UI Password** | Remote Role Management | Username: standalone Password: G@ppm0ym|.env file|
+|**3. ACM & CCM Profiles: AMT Password** | Authentication of MPS/RPS Access | Not applicable. | 1. Create a new profile. 2. Make an API call to update. 3. Update Vault.|
+|**4. Provisioning Certificate Password** | Signed Certificate Usage | Not applicable.| 1.Re-export certificate with another password. 2. Create a new profile. 3. Make an API call to update. 4. Update Vault. |
+|**5. MPS CIRA Credential** | MPS credential used by AMT | Not applicable. | 1. Create a new profile. 2. Make an API call to update. 3. Update Vault. |
+
+**Table 1: Summary of Open AMT Passwords**
+
 ## Log Files
 Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.
 
