@@ -54,7 +54,7 @@ The React app can be created in any preferred development directory. The MPS can
 1. Run the following command to add the UI Toolkit and install the required dependencies:
 
     ``` bash
-    npm install git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#v1.3.0
+    npm install @open-amt-cloud-toolkit/ui-toolkit
     ```
 
 2. Run the following commands to start the web UI locally:
@@ -102,27 +102,29 @@ The code snippet below adds KVM control to the React application.
     | Field       |  Value   |
     | :----------- | :-------------- |
     | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-    | `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. Default MPS Server port is 3000. |
+    | `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. Default MPS Server port is 3000 or if using KONG, no port is used and should be `/mps/ws` |
+    | `authToken` | Update the token with a valid JWT Token you have received from logging into MPS. |
 
 
-    ``` javascript hl_lines="13 14"
-    import React from "react";
-    import "./App.css";
-    import { KVM } from "ui-toolkit";
-    import '../node_modules/ui-toolkit/i18n.ts';
-    function App() {
-      return (
-        <div className="App">
-            <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-            mpsServer="localhost:3000/relay" //Replace 'localhost' with Development System or MPS Server IP Address
-            mouseDebounceTime="200"
-            canvasHeight="100%"
-            canvasWidth="100%"></KVM>
-        </div>
-      );
-    }
+    ``` javascript hl_lines="8 9 11"
+        import React from "react";
+        import "./App.css";
+        import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit/reactjs/KVM";
 
-    export default App;
+        function App() {
+            return (
+                <div className="App">
+                    <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
+                    mpsServer="https://localhost/mps/ws" //Replace 'localhost' with Development System or MPS Server IP Address
+                    mouseDebounceTime="200"
+                    authToken="" // Replace with a valid JWT token provided during login of MPS
+                    canvasHeight="100%"
+                    canvasWidth="100%"></KVM>
+                </div>
+            );
+        }
+
+        export default App;
     ```
 
 

@@ -3,7 +3,7 @@
 
 This document shows how to:
 
-- Run the KVM control in development enviroment
+- Run the KVM control in development environment
 - Create a bundle for KVM control
 - Add bundle to a sample HTML file 
 
@@ -78,7 +78,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 ## Add to Sample HTML Page
 
-1. Add the following code snippet to *sampleKVM.htm* in the `ui-toolkit/src/sample/` directory using an editor of your choice.
+1. Add the following code snippet to *sampleKVM.htm* in the `ui-toolkit/src/reactjs/sample/` directory using an editor of your choice.
 
 	```
 	<body>
