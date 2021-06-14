@@ -1209,24 +1209,25 @@
 Open <code>src/App.js</code>, add the following code as show below:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Change <code>deviceId</code> value to your device GUID <code>mpsServer</code> value to your MPS server address and appropriate port.</p>
+<p>Change <code>deviceId</code> value to your device GUID, <code>mpsServer</code> value to your MPS server address, and pass in a valid JWT  for <code>authToken</code>.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">KVM</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">&quot;ui-toolkit&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s1">&#39;../node_modules/ui-toolkit/i18n.ts&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code>    <span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+    <span class="k">import</span> <span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">KVM</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">&quot;@open-amt-cloud-toolkit/ui-toolkit/reactjs/KVM&quot;</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//The AMT Device&#39;s GUID</span>
-        <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;[MPS-Server-IP-Address]:3000/relay&quot;</span>
-        <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-        <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
-<span class="hll">        <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
-</span><span class="hll">    <span class="o">&lt;</span><span class="err">/div&gt;</span>
-</span>  <span class="p">);</span>
-<span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+<span class="hll">                <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//Replace with AMT Device GUID</span>
+</span><span class="hll">                <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
+</span>                <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
+<span class="hll">                <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT provided during login of MPS</span>
+</span>                <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+                <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
+            <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
 <span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
 </code></pre></div>
                 
