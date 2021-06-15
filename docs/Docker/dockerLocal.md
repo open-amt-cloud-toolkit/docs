@@ -53,7 +53,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 ## Set Kong JSON Web Token (JWT)
 
-The shared secret used in kong needs to be set.
+The shared secret used in Kong for JWT authentication needs to be set.
 
 1. Under the `jwt_secrets:secret` section of open-amt-cloud-toolkit\kong.yaml, add the secret used for the environmental variable  `MPS_JWT_SECRET` above.   
 
