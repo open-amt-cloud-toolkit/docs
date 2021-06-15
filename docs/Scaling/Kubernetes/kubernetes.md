@@ -9,7 +9,7 @@ Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater
 ### High level Design
 
 ####Figure 1: MPS Scaling Architecture
-[![Scaling architechure](../assets/images/ScallingHighLevel.png)](../assets/images/ScallingHighLevel.png)
+[![Scaling architechure](../../assets/images/ScallingHighLevel.png)](../../assets/images/ScallingHighLevel.png)
 Figure 1 presents the high-level architecture of MPS scaling mode. Per the figure, starting at the bottom:
     
 1. Devices connect to an available MPS Server through the load balancer.
