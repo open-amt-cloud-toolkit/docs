@@ -47,6 +47,8 @@ The  `.env.template` file is used by docker to set environment variables.
         (Get-Content -Path './.env') -replace 'MPS_COMMON_NAME=localhost', 'MPS_COMMON_NAME=YOURIPADDRESS' | Set-Content -Path './.env'
         ```
 
+3. Set `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` to the desired username and password for the Sample Web UI login.
+
 
 ## Build and Run the Docker Images
 
