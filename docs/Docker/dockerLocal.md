@@ -49,7 +49,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 3. Set `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` to the desired username and password for the Sample Web UI login.
 
-4. Set `MPS_JWT_SECRET` to a secure secret. Keep track of the secret chosen, it will be used below.
+4. Set `MPS_JWT_SECRET` to a strong secret. Keep track of what was chosen, it will be used below.
 
 ## Set Kong JSON Web Token (JWT)
 
