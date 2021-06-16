@@ -396,6 +396,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
+    Set Kong JSON Web Token (JWT)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-and-run-the-docker-images" class="md-nav__link">
     Build and Run the Docker Images
   </a>
@@ -1217,6 +1224,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
+    Set Kong JSON Web Token (JWT)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-and-run-the-docker-images" class="md-nav__link">
     Build and Run the Docker Images
   </a>
@@ -1291,6 +1305,17 @@
 </div>
 </div>
 </li>
+<li>
+<p>Set <code>MPS_WEB_ADMIN_USER</code> and <code>MPS_WEB_ADMIN_PASSWORD</code> to the desired username and password for the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> login.</p>
+</li>
+<li>
+<p>Set <code>MPS_JWT_SECRET</code> to a strong secret. Keep track of what was chosen, as it will be used below.</p>
+</li>
+</ol>
+<h2 id="set-kong-json-web-token-jwt">Set Kong JSON Web Token (JWT)<a class="headerlink" href="#set-kong-json-web-token-jwt" title="Permanent link">&para;</a></h2>
+<p>Set the shared secret used in Kong for JWT authentication.</p>
+<ol>
+<li>Under the <code>jwt_secrets:secret</code> section of open-amt-cloud-toolkit\kong.yaml, add the secret used for the environmental variable  <code>MPS_JWT_SECRET</code> above.   </li>
 </ol>
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
 <p>Build the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Docker images and launch the stack.</p>
