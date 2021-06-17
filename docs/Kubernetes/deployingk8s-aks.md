@@ -13,7 +13,15 @@ Note the location as you will need the public key (`.pub` file) in the next step
 
 ## Deploy AKS
 
-Login using `az login` if you haven't already and make sure the correct subscription is set as default using `az account set`
+Login using `az login` if you haven't already.
+```
+az login
+``` 
+Additionally, make sure the correct subscription is set as default using `az account set`
+```
+az account set
+```
+
 ``` bash
 az group create --name <your-resource-group-name> --location eastus
 ```

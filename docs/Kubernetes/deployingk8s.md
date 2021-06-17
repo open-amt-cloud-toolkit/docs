@@ -46,6 +46,28 @@ mps:
   commonName: "<your-ip-address>"
 ```
 
+Lastly, you'll need to provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For a local, one node cluster, you can use the following YAML: 
+
+``` yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mps-certs
+  labels:
+    type: local
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: "/mnt/data/mpscerts"
+```
+
+This is provided in `./kubernetes/charts/volumes/local.yaml` and can be applied to your cluster with
+```
+kubectl apply -f ./kubernetes/charts/volumes/local.yaml
+```
 ## Deploy Open AMT Cloud Toolkit Using Helm
 
 Navigate to `./kubernetes` and deploy using Helm 
