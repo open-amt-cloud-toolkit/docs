@@ -35,9 +35,7 @@ az aks get-credentials --resource-group <your-resource-group-name> --name <your-
 
 If you are using a private docker registry, you'll need to provide your credentials to K8S. 
 ```
-kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> 
---docker-username=<your-username> 
---docker-password=<your-password>
+kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
 ```
 
 Additionally, you'll need to provide secrets for the following:
@@ -47,7 +45,7 @@ Additionally, you'll need to provide secrets for the following:
 This is the secret used for generating and verifying JWTs.
 
 ```
-kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
+kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret=<your-secret>
 ```
 ### KONG ACL for JWT
 
@@ -75,7 +73,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## Update Configuration
 
-Update the `kong:` section in the `values.yaml` file with the desired dns name you would like for your cluster (i.e. myopenamtk8s):
+Update the `kong:` section in the `./kubernetes/charts/values.yaml` file with the desired dns name you would like for your cluster (i.e. myopenamtk8s):
 
 ``` yaml
 kong:
@@ -84,7 +82,7 @@ kong:
       service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>"
 ```
 
-Next, update the `commonName:` key in the `mps:` section in the `values.yaml` file with the FQDN for your cluster. For AKS, the format is `<your-domain-name>.<location>.cloudapp.azure.com`. This is value provided in the "outputs" section when you [Deploy AKS](#deploy-aks).
+Next, update the `commonName:` key in the `mps:` section in the `values.yaml` file with the FQDN for your cluster. For AKS, the format is `<your-domain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the "outputs" section when you [Deploy AKS](#deploy-aks).
 
 ``` yaml
 mps:
@@ -98,7 +96,7 @@ mps:
   storageAccessMode: "ReadWriteMany"
 ```
 
-This will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide `PersistentVolume` that can match the claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:
+This will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide a `PersistentVolume` that can match the claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:
 
 ```yaml
 apiVersion: v1
@@ -123,7 +121,11 @@ spec:
   - mfsymlinks
   - nobrl
 ```
-This is provided in `./kubernetes/charts/volumes/azure.yaml` and can be applied to your cluster with `kubectl apply -f ./kubernetes/charts/volumes/azure.yaml`.
+This is provided in `./kubernetes/charts/volumes/azure.yaml` and can be applied to your cluster with 
+
+```
+kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
+```
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
