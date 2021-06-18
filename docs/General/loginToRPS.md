@@ -16,14 +16,8 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
         [![MPS Warning](../assets/images/selfSignedConnect.png)](../assets/images/selfSignedConnect.png)
 
 
-3. Log in to the web portal with the credentials below.
+3. Log in to the web portal with the credentials set for the environment variables `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD`.
 
-    **Default credentials:**
-
-    | Field       |  Value    |
-    | :-----------| :-------------- |
-    | **Username**| standalone |
-    | **Password**| G@ppm0ym |
 
 4. The home page is shown below in Figure 1.
 
