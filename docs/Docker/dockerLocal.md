@@ -64,7 +64,7 @@ Set the shared secret used in Kong for JWT authentication.
 
 2. Update the *secret* field with your MPS_JWT_SECRET.
 
-    ``` yaml
+    ``` yaml hl_lines="4"
     jwt_secrets:
       - consumer: admin
         key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
