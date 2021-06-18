@@ -29,7 +29,7 @@ The steps below assume the following directory structure where rpc is the clone 
 2. Clone the RPC repository.
 
     ``` bash
-    git clone --branch v1.2.0 https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
+    git clone --branch v1.2.2 https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
     ```
 
 ### Install Prerequisites and Build RPC
@@ -216,15 +216,17 @@ For additional information on possible arguments when invoking RPC, see [Command
 The following example command shows how to activate and configure an Intel® AMT device using a pre-defined profile on your local network.
 
 === "Windows"
-    ```
-    rpc --url wss://localhost:8080 --nocertcheck --cmd "-t activate --profile profile1"
-    ```
-    !!! note
+    !!! important
         On a Windows® 10 system, the Command Prompt must be ran as Adminstrator.
+    ```
+    rpc --url wss://localhost/activate --nocertcheck --cmd "-t activate --profile profile1"
+    ```
+
 === "Linux"
     ``` bash
-    sudo ./rpc --url wss://localhost:8080 --nocertcheck --cmd "-t activate --profile profile1"
+    sudo ./rpc --url wss://localhost/activate --nocertcheck --cmd "-t activate --profile profile1"
     ```
+
 !!! note
     The **--nocertcheck** flag allows for the use of self-signed certificates for development purposes. Find more information [here](commandsRPC.md#optional)
 

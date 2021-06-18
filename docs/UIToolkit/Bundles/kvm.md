@@ -24,7 +24,7 @@ In order to deploy and make changes, the following tools and application has to 
 
 2. Clone the UI Toolkit Repository.
 	```
-	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v1.3.0
+	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v1.4.0
 	```
 
 3. Change to the `ui-toolkit` directory.
