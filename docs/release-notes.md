@@ -7,15 +7,12 @@ This section outlines key features changes between versions 1.3 and 1.4 for Open
 
 ### Additions
 #### RPS & MPS
-- **Containerized Scaling Support:**  In 1.2 we released a preview version of scaling, a first look at supporting large-scale deployments. In 1.4 we've updated scaling capabilities with support for Docker Swarm and Kubernetes deployments.
-With this feature, scale the MPS and RPS microservices as needed to support an entire fleet of Intel® AMT devices.
-
-The toolkit enables robust scaling through:
-    * A new component (MPS Router) that acts as a reverse proxy between the API Gateway and the MPS. More on MPS Router below.
-    * Support for deploying cloud based components and dependencies to Docker Swarm and Kubernetes. Components include MPS, RPS, MPS Router, API Gateway, Vault, PostgreSQL.  
-    * Cloud provider agnostic [deployment documentation](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/kubernetes/).
-    * Improved routing of KVM and SOL sessions when multiple instances of MPS are deployed.
-    * An increase in the number of CIRA connections that can be handled per MPS instance. Detailed guidance will be provided with the LTS release.
+- **Containerized Scaling Support:**  In 1.2 we released a preview version of scaling, a first look at supporting large-scale deployments. In 1.4 we've updated scaling capabilities with support for Docker Swarm and Kubernetes deployments.  With this feature, scale the MPS and RPS microservices as needed to support an entire fleet of Intel® AMT devices.  The toolkit enables robust scaling through:
+   *  A new component (MPS Router) that acts as a reverse proxy between the API Gateway and the MPS. More on MPS Router below.
+   *  Support for deploying cloud based components and dependencies to Docker Swarm and Kubernetes. Components include MPS, RPS, MPS Router, API Gateway, Vault, PostgreSQL.  
+   *  Cloud provider agnostic [deployment documentation](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/kubernetes/).
+   *  Improved routing of KVM and SOL sessions when multiple instances of MPS are deployed.
+   *  An increase in the number of CIRA connections that can be handled per MPS instance. Detailed guidance will be provided with the LTS release.
 
 #### MPS Router
 - **Reverse Proxy:** In this release we are adding a new required component to the toolkit deployment, the MPS Router.  This small containerized GO serivce acts as a reverse proxy between the API Gateway and MPS.  When Intel&reg; AMT devices make a CIRA connection with MPS, the MPS registers the device GUID and its MPS instance ID with the MPS Router.  All MPS API calls coming from the API Gateway are first sent to the MPS Router before being forwarded to the correct MPS instance.  As with all components of the Open AMT Cloud Toolkit, this service is open source and is located in the [MPS Router](https://github.com/open-amt-cloud-toolkit/mps-router) repository.
@@ -27,6 +24,11 @@ The toolkit enables robust scaling through:
 #### MPS
 - **AllowList:** Allowlist enables administrators to specify which devices (GUIDs) can connect to MPS. Removing "developer mode" in a previous version broke Allowlist functionality. In this release, MPS AllowList functionality allows devices to connect if they are listed in the MPS database and present the proper credentials. If a device either is not listed in the MPS database or has the wrong credentials, MPS will refuse the connection. Along with this change, we have improved the MPS Devices API to make it very easy to add, edit, and remove devices from the MPS database. MPS API documentation can be found out on [Swagger](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/)
 
+#### Sample Web UI
+- **Improvements:** We have made some minor changes and improvements in the Sample Web UI to stream line profile creation and provide additional information on the devices page.
+   * When setting a new random password in the CIRA Config and Profiles the UI now sets the password length for the user, removing the need for the password length field.  The REST APIs still support user defined values from 8 to 32 for password length.
+   * On the devices page, we have added the device Name, GUID, and tags to help with easily finding this information for each device.
+
 ## Resolved Issues
 
 ## Known Issues in 1.4
@@ -37,4 +39,7 @@ The toolkit enables robust scaling through:
 #### UI-Toolkit
 - **KVM freeze intermittently:** We have added a small delay in handling mouse interactions that prevents us from flooding the AMT channel.  There are still a few occasions where KVM could still freeze.  We are still root causing this new issue
 #### RPS
-- **Failure to add Device:** If an RPS call to add new device information and credentials to Vault fails, the RPS should revert the changes to the other service and emit an error message. Currently RPS will provide an error, but it does not revert the changes. Resolving the failing issue with the service and then re-running the activation restores the data integrity between the database and Vault.
+- **[Data shouldn't be added if vault calls fail](https://github.com/open-amt-cloud-toolkit/rps/issues/254):** Currently, if vault calls fail (i.e. during creation of domain), the domain is successfully added to the database despite not being added to vault. Ideally, the database entry should be rolled back if vault call fails.
+#### Sample-Web-UI
+- **[CIRA Config Name Smashed](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/278):** Longer config names run into the IP Address field
+- **[AMT Responses should return status (i.e. NOT_READY) instead of "Sent Succesfully"](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/276):** Messages should provide a bit more information as to the response of the AMT call instead of success/fail.
