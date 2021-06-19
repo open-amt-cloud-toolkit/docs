@@ -47,6 +47,16 @@ The  `.env.template` file is used by docker to set environment variables.
         (Get-Content -Path './.env') -replace 'MPS_COMMON_NAME=localhost', 'MPS_COMMON_NAME=YOURIPADDRESS' | Set-Content -Path './.env'
         ```
 
+3. Set `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` to the desired username and password for the Sample Web UI login.
+
+4. Set `MPS_JWT_SECRET` to a strong secret. Keep track of what was chosen, as it will be used below.
+
+## Set Kong JSON Web Token (JWT)
+
+Set the shared secret used in Kong for JWT authentication.
+
+1. Under the `jwt_secrets:secret` section of open-amt-cloud-toolkit\kong.yaml, add the secret used for the environmental variable  `MPS_JWT_SECRET` above.   
+
 
 ## Build and Run the Docker Images
 
@@ -102,4 +112,4 @@ If any of the above containers are not running, walk through the steps again or 
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
 
 ## Next up
-[**Login to RPS**](../General/loginToRPS.md)
+[**Login to Sample Web UI**](../General/loginToRPS.md)

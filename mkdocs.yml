@@ -1,20 +1,17 @@
 # Project information
 site_name: 'Open Active Management Technology Cloud Toolkit'
+site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
-copyright: 'Copyright &copy; 2020 Intel Corporation'
-site_dir: site/1.3
-google_analytics:
-  - 'UA-185750581-1'
-  - 'auto'
+copyright: 'Copyright &copy; 2021 Intel Corporation'
+site_dir: site/1.4
 # Configuration
 theme:
   name: 'material'
   language: 'en'
   logo: 'assets/images/logo-white-75px.png'
-  # palette:
-  #   primary: 'Light Blue'
-  #   accent: 'Light Blue'
+  analytics: 
+    gtag: 'G-00QEDJW2TS'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
@@ -28,7 +25,7 @@ nav:
     - Prerequisites: Docker/overview.md
     - Set Up: Docker/dockerLocal.md
     - Configure:
-      - Login to RPS: General/loginToRPS.md
+      - Login to Sample Web UI: General/loginToRPS.md
       - Create a CIRA Config: General/createCIRAConfig.md
       - Create an AMT Profile:
         - Create a Profile with CCM: General/createProfileCCM.md
@@ -46,7 +43,6 @@ nav:
       - Network Profiles: Microservices/RPS/networkConfig.md
       - Security Information: Microservices/RPS/securityRPS.md
     - Remote Provisioning Client :
-      # - Build & Run RPC (GitHub Actions): General/buildRPC_GithubActions.md
       - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
       - Command Examples: Microservices/RPC/commandsRPC.md
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
@@ -61,26 +57,21 @@ nav:
     - Webpack Configuration: UIToolkit/Webpack-Configuration.md
   - Tutorials:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
-    - Developer Manual Setup:
-      - Overview: Local/overview.md
-      - Build and Run: Local/installMPS.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
-    # - Databases: Tutorials/addDatabase.md
-    # - Secret Storage: Tutorials/addVault.md
-    - Allowlists: Tutorials/allowlist.md
-    - Kubernetes: Kubernetes/kubernetes.md
+    - Kubernetes: 
+        - Overview: Kubernetes/kubernetes.md
+        - Locally with Docker Desktop: Kubernetes/deployingk8s.md
+        - Azure K8S Service (AKS): Kubernetes/deployingk8s-aks.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
     - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
-    # - Static and Dynamic IPs: Topics/staticIP.md
     - AMT Power States: Topics/powerstates.md
     - GUIDs in Intel AMT: Topics/guids.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
       - Unprovisioning: Topics/MEBX/unprovision.md
-    # - Proxies: Topics/proxies.md
   - Letter From The Devs: letter.md
   - Release notes: release-notes.md
   - License: license.md
