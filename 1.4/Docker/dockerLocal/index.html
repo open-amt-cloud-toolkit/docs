@@ -995,13 +995,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4" >
     <label class="md-nav__link" for="nav-5-4">
-      Kubernetes
+      Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Kubernetes" data-md-level="2">
+    <nav class="md-nav" aria-label="Scaling" data-md-level="2">
       <label class="md-nav__title" for="nav-5-4">
         <span class="md-nav__icon md-icon"></span>
-        Kubernetes
+        Scaling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1012,8 +1012,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Kubernetes/kubernetes/" class="md-nav__link">
-      Overview
+    <a href="../../Scaling/Kubernetes/kubernetes/" class="md-nav__link">
+      Kubernetes
     </a>
   </li>
 
@@ -1024,20 +1024,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
-      Locally with Docker Desktop
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
-      Azure K8S Service (AKS)
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm
     </a>
   </li>
 
@@ -1399,13 +1387,14 @@
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE              STATUS                     NAMES
-webui:latest       Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_webui_1
-rps:latest         Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_rps_1
-vault              Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_vault_1
-mps:latest         Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_mps_1
-postgres           Up <span class="m">6</span> seconds               open-amt-cloud-toolkit_db_1
-kong:2.3           Up <span class="m">6</span> seconds <span class="o">(</span>healthy<span class="o">)</span>     open-amt-cloud-toolkit_kong_1
+<div class="highlight"><pre><span></span><code>IMAGE              STATUS                    NAMES
+webui:latest       Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_webui_1
+vault              Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_vault_1
+postgres           Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_db_1
+mps:latest         Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_mps_1
+rps:latest         Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_rps_1
+mpsrouter:latest   Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_mpsrouter_1
+kong:2.3           Up <span class="m">5</span> seconds <span class="o">(</span>healthy<span class="o">)</span>   open-amt-cloud-toolkit_kong_1
 </code></pre></div>
 </div>
 </li>
