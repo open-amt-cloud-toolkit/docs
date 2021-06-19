@@ -3,8 +3,8 @@
 !!! important
     Not for production use!!
     
-This guide explains how to deploy the Open AMT Cloud Toolkit services in Microsoft Azure*.
-Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. For this deployment, kubernetes runs in Microsoft Azure* along with redis and consul. Redis is used to sync the Web Server sessions between Web Server instances. Consul is used to communicate device connections between the Web Server and MPS server.
+This guide explains how to deploy the Open AMT Cloud Toolkit services in kubernetes.
+Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. 
 
 ### High level Design
 
