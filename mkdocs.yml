@@ -59,10 +59,11 @@ nav:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
-    - Kubernetes: 
-        - Overview: Kubernetes/kubernetes.md
-        - Locally with Docker Desktop: Kubernetes/deployingk8s.md
-        - Azure K8S Service (AKS): Kubernetes/deployingk8s-aks.md
+    # - Databases: Tutorials/addDatabase.md
+    # - Secret Storage: Tutorials/addVault.md
+    - Scaling: 
+      - Kubernetes: Scaling/Kubernetes/kubernetes.md
+      - Docker Swarm: Scaling/Docker Swarm/docker-swarm.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
     - Remote Provisioning Server: APIs/indexRPS.md
