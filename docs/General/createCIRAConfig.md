@@ -42,9 +42,9 @@ As long as the managed device is connected to the network and to a power source,
 
         - One uppercase, one lowercase, one numerical digit, one special character
 
-8. Leave the slider set on **Auto-load**.
+9. Leave the slider set on **Auto-load**.
 
-9. Click **Save.**
+10. Click **Save.**
     
     !!! example
         Example CIRA Config:

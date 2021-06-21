@@ -217,7 +217,7 @@ The following example command shows how to activate and configure an Intel® AMT
 
 === "Windows"
     !!! important
-        On a Windows® 10 system, the Command Prompt must be ran as Adminstrator.
+        On a Windows® 10 system, the Command Prompt must be run as Adminstrator.
     ```
     rpc --url wss://localhost/activate --nocertcheck --cmd "-t activate --profile profile1"
     ```
