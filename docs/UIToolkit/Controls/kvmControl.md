@@ -1,10 +1,10 @@
+--8<-- "References/abbreviations.md"
+Not sure how to implement Keyboard, Video Mouse (KVM)? View the [UI Toolkit KVM Module Tutorial](../../Tutorials/uitoolkit.md) for a step-by-step walkthrough prerequisites and instructions for implementing a React Control using the UI Toolkit.
 
-Not sure how to implement? View the [UI Toolkit KVM Module Tutorial](../../Tutorials/uitoolkit.md) for a step-by-step walkthrough on pre-requisites and implementing a React Control using the UI Toolkit.
+## Add KVM Control
 
-## Add Keyboard, Video, Mouse (KVM) Control
-
-The following code snippet shows how to add KVM control to the React application.
-Open `src/App.js`, add the following code as show below:
+Use the following code snippet to add the KVM control to the React Application.
+Open `src/App.js` and add the code shown below:
 
 !!! note
     Change `deviceId` value to your device GUID, `mpsServer` value to your MPS server address, and pass in a valid JWT  for `authToken`.
