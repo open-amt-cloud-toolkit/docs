@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # Add MPS UI Toolkit Controls to a WebUI
 
 The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as the Keyboard, Video, Mouse (KVM). A sample web application, based on React.js, is provided for test and development. 
@@ -8,10 +9,10 @@ The tutorial outlines how to add various controls to the sample React web applic
 
 ### Hardware
 
-At minimum, to install and utilize the Open AMT Cloud Toolkit microservices, a network configuration must include:
+**Configure a network that includes:**
 
--  A development system with Windows* 10 or Ubuntu* 18.04 or newer
--  At least one Intel® vPro device
+- A development system running Windows® 10 or Ubuntu* 18.04 or newer
+- At least one Intel vPro® device to manage
 
 ### Software
 
