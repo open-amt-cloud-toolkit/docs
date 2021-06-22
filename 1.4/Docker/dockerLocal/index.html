@@ -1286,7 +1286,7 @@
 <ol>
 <li>
 <p>Open a Terminal or Powershell and navigate to a directory of your choice for development:</p>
-<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.3.0
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.4.0
 </code></pre></div>
 </li>
 <li>
@@ -1312,39 +1312,86 @@
 </div>
 </li>
 <li>
-<p>Set <code>MPS_COMMON_NAME</code> to your development system's IP Address. Replace <strong>YOURIPADDRESS</strong> in the command below or use a text editor to modify the <code>.env</code> file.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g&quot;</span> .env
-</code></pre></div>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;MPS_COMMON_NAME=localhost&#39;</span><span class="p">,</span> <span class="s1">&#39;MPS_COMMON_NAME=YOURIPADDRESS&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./.env&#39;</span>
-</code></pre></div>
-</div>
+<p>In a text editor or IDE of choice, open the new <code>.env</code> file to edit.</p>
+</li>
+<li>
+<p>Update the following 4 fields. Save and keep track of the values you choose.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPS_COMMON_NAME</td>
+<td>Development System IP Address</td>
+<td>For connecting to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server via UI or APIs</td>
+</tr>
+<tr>
+<td>MPS_WEB_ADMIN_USER</td>
+<td>Username of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></td>
+</tr>
+<tr>
+<td>MPS_WEB_ADMIN_PASSWORD</td>
+<td><strong>Strong</strong> password of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></td>
+</tr>
+<tr>
+<td>MPS_JWT_SECRET</td>
+<td>A strong secret of your choice</td>
+<td>Used when generating a JSON Web Token for authentication</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This password must meet standard, <strong>strong</strong> password requirements:</p>
+<ul>
+<li>
+<p>8 to 32 characters</p>
+</li>
+<li>
+<p>One uppercase, one lowercase, one numerical digit, one special character</p>
+</li>
+</ul>
 </div>
 </li>
 <li>
-<p>Set <code>MPS_WEB_ADMIN_USER</code> and <code>MPS_WEB_ADMIN_PASSWORD</code> to the desired username and password for the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> login.</p>
-</li>
-<li>
-<p>Set <code>MPS_JWT_SECRET</code> to a strong secret. Keep track of what was chosen, as it will be used below.</p>
+<p>Save and close the file.</p>
 </li>
 </ol>
 <h2 id="set-kong-json-web-token-jwt">Set Kong JSON Web Token (JWT)<a class="headerlink" href="#set-kong-json-web-token-jwt" title="Permanent link">&para;</a></h2>
 <p>Set the shared secret used in Kong for JWT authentication.</p>
 <ol>
-<li>Under the <code>jwt_secrets:secret</code> section of open-amt-cloud-toolkit\kong.yaml, add the secret used for the environmental variable  <code>MPS_JWT_SECRET</code> above.   </li>
+<li>
+<p>Open the <code>kong.yaml</code> file.</p>
+</li>
+<li>
+<p>Update the <em>secret</em> field with your MPS_JWT_SECRET.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">jwt_secrets</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">consumer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
+    <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</span> <span class="c1">#sample key</span>
+<span class="hll">    <span class="nt">secret</span><span class="p">:</span> <span class="s">&quot;mySecret&quot;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Save and close the file.</p>
+</li>
 </ol>
 <h2 id="build-and-run-the-docker-images">Build and Run the Docker Images<a class="headerlink" href="#build-and-run-the-docker-images" title="Permanent link">&para;</a></h2>
 <p>Build the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Docker images and launch the stack.</p>
 <ol>
 <li>
 <p>Run docker-compose to start the containers.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo docker-compose -f &quot;docker-compose.yml&quot; up -d --build
 </code></pre></div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows (Powershell)</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker-compose -f &quot;docker-compose.yml&quot; up -d --build
 </code></pre></div>
 </div>
@@ -1357,11 +1404,11 @@
 </li>
 <li>
 <p>Check that all of the containers are running.</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
 </code></pre></div>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Windows (Powershell)</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows (Powershell)</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
 </code></pre></div>
 </div>
