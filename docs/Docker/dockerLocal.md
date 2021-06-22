@@ -113,13 +113,14 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
     
     !!! success
         ``` bash    
-        IMAGE              STATUS                     NAMES
-        webui:latest       Up 6 seconds               open-amt-cloud-toolkit_webui_1
-        rps:latest         Up 6 seconds               open-amt-cloud-toolkit_rps_1
-        vault              Up 6 seconds               open-amt-cloud-toolkit_vault_1
-        mps:latest         Up 6 seconds               open-amt-cloud-toolkit_mps_1
-        postgres           Up 6 seconds               open-amt-cloud-toolkit_db_1
-        kong:2.3           Up 6 seconds (healthy)     open-amt-cloud-toolkit_kong_1
+        IMAGE              STATUS                    NAMES
+        webui:latest       Up 5 seconds             open-amt-cloud-toolkit_webui_1
+        vault              Up 5 seconds             open-amt-cloud-toolkit_vault_1
+        postgres           Up 5 seconds             open-amt-cloud-toolkit_db_1
+        mps:latest         Up 5 seconds             open-amt-cloud-toolkit_mps_1
+        rps:latest         Up 5 seconds             open-amt-cloud-toolkit_rps_1
+        mpsrouter:latest   Up 5 seconds             open-amt-cloud-toolkit_mpsrouter_1
+        kong:2.3           Up 5 seconds (healthy)   open-amt-cloud-toolkit_kong_1
         ```
     
 If any of the above containers are not running, walk through the steps again or file a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).

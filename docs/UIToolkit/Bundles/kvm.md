@@ -1,5 +1,5 @@
 --8<-- "References/abbreviations.md"
-# Quickstart - Bundle KVM Control
+# Quickstart - Bundle Keyboard Video Mouse (KVM) Control
 
 This document shows how to:
 
@@ -9,7 +9,7 @@ This document shows how to:
 
 ## Prerequisites
 
-In order to deploy and make changes, the following tools and application has to be installed on your development machine
+In order to deploy and make changes, the following tools and application has to be installed on your development machine:
 
 - [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
@@ -22,31 +22,31 @@ In order to deploy and make changes, the following tools and application has to 
 
 1. Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.
 
-2. Clone the UI Toolkit Repository.
+2. Clone the UI Toolkit Repository:
 	```
 	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v1.4.0
 	```
 
-3. Change to the `ui-toolkit` directory.
+3. Change to the `ui-toolkit` directory:
 	```
 	cd ui_toolkit
 	```
 
-4. Install the dependencies.
+4. Install the dependencies:
 	```
 	npm install
 	```
 
 ## Run in Development Environment
 
-To add and test new changes before bundling the control, use a webpack dev server.
+To add and test new changes before bundling the control, use a webpack dev server:
 
-1. Start the server.
+1. Start the server:
 	```
 	npm start
 	```
 
-2. Open a Chrome* browser and navigate to the following link to see changes.
+2. Open a Chrome* browser and navigate to the following link to see changes:
 	```
 	http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
@@ -61,7 +61,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 2. Remove or rename the existing *kvm.min.js*  in the `ui-toolkit/dist/` directory before building.
 
-3. Build the bundle.
+3. Build the bundle:
 	```
 	npm run build
 	```
@@ -78,7 +78,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 ## Add to Sample HTML Page
 
-1. Add the following code snippet to *sampleKVM.htm* in the `ui-toolkit/src/reactjs/sample/` directory using an editor of your choice.
+1. Add the following code snippet to *sampleKVM.htm* in the `ui-toolkit/src/reactjs/sample/` directory using an editor of your choice:
 
 	```
 	<body>
@@ -89,7 +89,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 
 2. In a Terminal (Linux) or Command Prompt (Windows), navigate to the `ui-toolkit` directory.
 
-3. Serve the HTML page.
+3. Serve the HTML page:
 	```
 	npx serve
 	```
@@ -99,7 +99,7 @@ To add and test new changes before bundling the control, use a webpack dev serve
 	http://localhost:5000/src/sample/sampleKVM.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
 	```
 
-You will see errors in the following scenarios: 
+Errors may occur in the following scenarios: 
 
 - UI-toolkit was not downloaded and installed into your react app
 - MPS Server is not running

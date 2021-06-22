@@ -40,3 +40,5 @@
 
 *[UI Toolkit]: UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console. 
 
+*[Webpack]: A module bundler that packages various assets and files (e.g., CSS, JS, JPG, etc.).
+
