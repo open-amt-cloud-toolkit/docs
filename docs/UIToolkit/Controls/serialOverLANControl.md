@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
         <Sol deviceId="038d0240-045c-05f4-7706-980700080009"//Replace with AMT Device GUID
-        mpsServer="https://localhost/mps/ws" //Replace 'localhost' with Development System or MPS Server IP Address
+        mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
         authToken=""> // Replace with a valid JWT provided during login of MPS
         </Sol>
     </div>
