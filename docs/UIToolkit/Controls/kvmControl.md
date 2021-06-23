@@ -18,7 +18,7 @@ Open `src/App.js` and add the code shown below:
         return (
             <div className="App">
                 <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-                mpsServer="https://localhost/mps/ws" //Replace 'localhost' with Development System or MPS Server IP Address
+                mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
                 mouseDebounceTime="200"
                 authToken="" // Replace with a valid JWT provided during login of MPS
                 canvasHeight="100%"
