@@ -7,7 +7,7 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
 1. Open any modern web browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.
 
     ```
-    https://localhost
+    https://<Development-IP-Address>
     ```
 
 2.  A warning screen will prompt. Click **Advanced** and then **Proceed** to continue to connect to the MPS webserver.
@@ -16,7 +16,7 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
         [![MPS Warning](../assets/images/selfSignedConnect.png)](../assets/images/selfSignedConnect.png)
 
 
-3. Log in to the web portal with the credentials set for the environment variables `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD`.
+3. Log in to the web portal with the login credentials set for the environment variables `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` in the `.env` file.
 
 
 4. The home page is shown below in Figure 1.

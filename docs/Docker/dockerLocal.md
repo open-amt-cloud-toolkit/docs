@@ -10,7 +10,7 @@ This setup installs the MPS and RPS microservices as Docker* containers, standar
 1. Open a Terminal or Powershell and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.3.0
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.4.0
     ```
   
 2. Change to the cloned `open-amt-cloud-toolkit` directory.
@@ -36,26 +36,42 @@ The  `.env.template` file is used by docker to set environment variables.
         copy .env.template .env
         ```
 
-2. Set `MPS_COMMON_NAME` to your development system's IP Address. Replace **YOURIPADDRESS** in the command below or use a text editor to modify the `.env` file.
+2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-    === "Linux"
-        ``` bash
-        sed -i "s|MPS_COMMON_NAME=localhost|MPS_COMMON_NAME=YOURIPADDRESS|g" .env
-        ```
-    === "Windows (Powershell)"
-        ``` powershell
-        (Get-Content -Path './.env') -replace 'MPS_COMMON_NAME=localhost', 'MPS_COMMON_NAME=YOURIPADDRESS' | Set-Content -Path './.env'
-        ```
+3. Update the following 4 fields. Save and keep track of the values you choose.
 
-3. Set `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` to the desired username and password for the Sample Web UI login.
+    | Field Name | Required | Usage |
+    | ------------- | ------------------ | ------------ |
+    | MPS_COMMON_NAME | Development System IP Address | For connecting to MPS server via UI or APIs |
+    | MPS_WEB_ADMIN_USER | Username of your choice | For logging into the Sample Web UI |
+    | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
+    | MPS_JWT_SECRET | A strong secret of your choice | Used when generating a JSON Web Token for authentication |
 
-4. Set `MPS_JWT_SECRET` to a strong secret. Keep track of what was chosen, as it will be used below.
+    !!! important
+        This password must meet standard, **strong** password requirements:
+
+        - 8 to 32 characters
+
+        - One uppercase, one lowercase, one numerical digit, one special character
+
+4. Save and close the file.
 
 ## Set Kong JSON Web Token (JWT)
 
 Set the shared secret used in Kong for JWT authentication.
 
-1. Under the `jwt_secrets:secret` section of open-amt-cloud-toolkit\kong.yaml, add the secret used for the environmental variable  `MPS_JWT_SECRET` above.   
+1. Open the `kong.yaml` file.
+
+2. Update the *secret* field with your MPS_JWT_SECRET.
+
+    ``` yaml hl_lines="4"
+    jwt_secrets:
+      - consumer: admin
+        key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
+        secret: "mySecret"
+    ```
+
+3. Save and close the file.
 
 
 ## Build and Run the Docker Images
