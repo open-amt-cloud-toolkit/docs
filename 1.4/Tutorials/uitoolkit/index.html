@@ -1518,7 +1518,7 @@ When you make changes, you do not need to stop the application and restart. It w
 </tr>
 <tr>
 <td align="left"><code>mpsServer</code></td>
-<td align="left">Replace the <em>localhost</em> with the IP Address of your Development Device or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. Default <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server port is 3000 or if using KONG, no port is used and should be <code>/mps/ws</code></td>
+<td align="left">Replace the <em>localhost</em> with the IP Address of your Development Device or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. The default <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server port is 3000. If using KONG, remove the port and append <code>/mps/ws/relay</code>  to localhost.</td>
 </tr>
 <tr>
 <td align="left"><code>authToken</code></td>
@@ -1534,7 +1534,7 @@ When you make changes, you do not need to stop the application and restart. It w
         <span class="k">return</span> <span class="p">(</span>
             <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
 <span class="hll">                <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//Replace with AMT Device GUID</span>
-</span><span class="hll">                <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
+</span><span class="hll">                <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
 </span>                <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
 <span class="hll">                <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT token provided during login of MPS</span>
 </span>                <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
