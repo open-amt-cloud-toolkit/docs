@@ -1278,6 +1278,7 @@
 <li>Helm CLI (v3.5+)</li>
 </ul>
 <h2 id="create-ssh-key">Create SSH Key<a class="headerlink" href="#create-ssh-key" title="Permanent link">&para;</a></h2>
+<p>This key is required by Azure to create VMs that use SSH keys for authentication. See <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed">https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed</a> for more details.</p>
 <p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 2048
 </code></pre></div>
 Note the location as you will need the public key (<code>.pub</code> file) in the next step. </p>
