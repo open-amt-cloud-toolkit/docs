@@ -103,7 +103,7 @@ The code snippet below adds KVM control to the React application.
     | Field       |  Value   |
     | :----------- | :-------------- |
     | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-    | `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. Default MPS Server port is 3000 or if using KONG, no port is used and should be `/mps/ws/relay` |
+| `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to localhost. |
     | `authToken` | Update the token with a valid JWT Token you have received from logging into MPS. |
 
 
