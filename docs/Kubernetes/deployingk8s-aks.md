@@ -6,6 +6,7 @@
 - Helm CLI (v3.5+)
 
 ## Create SSH Key
+This key is required by Azure to create VMs that use SSH keys for authentication.
 ```
 ssh-keygen -t rsa -b 2048
 ```
