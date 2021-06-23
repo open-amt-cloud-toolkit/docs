@@ -31,16 +31,20 @@ As long as the managed device is connected to the network and to a power source,
 
 6. Leave **Port** as the default, 4433.
 
-7. Set **User Name** and **Password** to the following:
+7. Leave the **Username** as *admin* or choose your own. These credentials will be used when constructing API calls.
 
-    | Field         | Value      |
-    | :------------ | :--------- |
-    | **User Name** | standalone |
-    | **Password**  | G@ppm0ym   |
+8. Set a strong **Password** of your choice.
 
-8. Leave the slider set on **Auto-load**.
+    !!! important
+        This password must meet standard, **strong** password requirements:
 
-9. Click **Save.**
+        - 8 to 32 characters
+
+        - One uppercase, one lowercase, one numerical digit, one special character
+
+9. Leave the slider set on **Auto-load**.
+
+10. Click **Save.**
     
     !!! example
         Example CIRA Config:
