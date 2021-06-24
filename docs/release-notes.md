@@ -14,10 +14,10 @@ This section outlines key features changes between versions 1.3 and 1.4 for Open
 #### MPS & RPS: 
    - **WebSocket Authentication Updated:** Kong Authenication for Websockets is now required for KVM and SOL connections.  The same JWT that is used for REST calls can also be used for KVM and SOL connections.
    - **Environment Variables Removed:** The following environment variables have been removed from MPS:
-        * username
-        * pass
-        * use_global_credentials
-        * use_allowlist
+       - username
+       - pass
+       - use_global_credentials
+       - use_allowlist
    - **Default Credentials Removed:** The default values for web_admin_user and web_admin_password have been removed from the MPS configuration file.  This disables the ability to request a JWT from MPS using the "authorize" REST API.  When deploying MPS, user specified credentials will need to be supplied in the configuration file or a 3rd party user authentication service will need to be setup to issue auth tokens.
    - **Vault Schema Updated:** Vault KeyName for RPS has been changed to remove the profile prefix from the key name.
    - **Metadata REST End Point Removed:** To simplify the MPS API structure, we have merged the "metadata" REST calls into the "devices" REST end point.  Details in Modifications and Removals section.
@@ -25,11 +25,11 @@ This section outlines key features changes between versions 1.3 and 1.4 for Open
 ### Additions
 #### RPS & MPS
 - **Containerized Scaling Support:**  In 1.2 we released a preview version of scaling, a first look at supporting large-scale deployments. In 1.4 we've updated scaling capabilities with support for Docker Swarm and Kubernetes deployments.  With this feature, scale the MPS and RPS microservices as needed to support an entire fleet of Intel® AMT devices.  The toolkit enables robust scaling through:
-   *  A new component (MPS Router) that acts as a reverse proxy between the API Gateway and the MPS. More on MPS Router below.
-   *  Support for deploying cloud based components and dependencies to Docker Swarm and Kubernetes. Components include MPS, RPS, MPS Router, API Gateway, Vault, PostgreSQL.  
-   *  Cloud provider agnostic [deployment documentation](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/kubernetes/).
-   *  Improved routing of KVM and SOL sessions when multiple instances of MPS are deployed.
-   *  An increase in the number of CIRA connections that can be handled per MPS instance. Detailed guidance will be provided with the LTS release.
+    - A new component (MPS Router) that acts as a reverse proxy between the API Gateway and the MPS. More on MPS Router below.
+    - Support for deploying cloud based components and dependencies to Docker Swarm and Kubernetes. Components include MPS, RPS, MPS Router, API Gateway, Vault, PostgreSQL.  
+    - Cloud provider agnostic [deployment documentation](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/kubernetes/).
+    - Improved routing of KVM and SOL sessions when multiple instances of MPS are deployed.
+    - An increase in the number of CIRA connections that can be handled per MPS instance. Detailed guidance will be provided with the LTS release.
 
 #### MPS Router
 - **Reverse Proxy:** In this release we are adding a new required component to the toolkit deployment, the MPS Router.  This small containerized Golang-based service acts as a reverse proxy between the API Gateway and MPS.  When Intel&reg; AMT devices make a CIRA connection with MPS, the MPS registers the device GUID and its MPS instance ID with the MPS Router.  All MPS API calls coming from the API Gateway are first sent to the MPS Router before being forwarded to the correct MPS instance.  As with all components of the Open AMT Cloud Toolkit, this service is open source and is located in the [MPS Router](https://github.com/open-amt-cloud-toolkit/mps-router) repository.
@@ -47,8 +47,8 @@ This section outlines key features changes between versions 1.3 and 1.4 for Open
 
 #### Sample Web UI
 - **Improvements:** We have made some minor changes and improvements in the Sample Web UI to streamline profile creation and provide additional information on the devices page.
-   * The UI now sets the password length for new random passwords, removing the need for the password length field in the CIRA Config and Profiles. The REST APIs still support user defined values from 8 to 32 for password length.
-   * On the devices page, we have added the device hostname, GUID, and tags to help with easily finding this information for each device.
+    - The UI now sets the password length for new random passwords, removing the need for the password length field in the CIRA Config and Profiles. The REST APIs still support user defined values from 8 to 32 for password length.
+    - On the devices page, we have added the device hostname, GUID, and tags to help with easily finding this information for each device.
 
 ## Resolved Issues
 
