@@ -12,7 +12,9 @@
 
 *[domain suffix]: domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).  
 
-*[Intel® AMT]: Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.
+*[AKS]: Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.
+
+*[Intel® AMT]: Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.
 
 *[KVM]: Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.
 
@@ -24,7 +26,7 @@
 
 *[OOB Management]: Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.
 
-*[Open AMT Cloud Toolkit]: Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.
+*[Open AMT Cloud Toolkit]: Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.
 
 *[Profile]: Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process. 
 

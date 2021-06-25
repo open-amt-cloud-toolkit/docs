@@ -34,11 +34,11 @@ CIRA enables OOB connections between Intel® AMT platforms and administrative de
 
 The [following steps](https://01.org/open-active-management-technology-cloud-toolkit/overview/management-presence-server) occur via a CIRA channel:
 
-1. A remote Intel vPro® platform featuring Intel® AMT is activated and a CIRA configuration is applied. The remote platform is referred to as the managed device. 
+1. A remote Intel vPro® Platform featuring Intel® AMT is activated and a CIRA configuration is applied. The remote platform is referred to as the managed device. 
 
 2. The managed device connects to the MPS and establishes an encrypted connection using Transport Layer Security (TLS) 
 
-3. The Intel vPro® platform maintains a long standing connection with the MPS through the use of small *keep-alive* messages to the MPS.
+3. The Intel vPro® Platform maintains a long standing connection with the MPS through the use of small *keep-alive* messages to the MPS.
 
 4. A management console sends a command to the MPS, via provided RESTful interfaces, with the command indicating the managed device should take some action.
 
