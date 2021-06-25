@@ -32,11 +32,11 @@ This deployment demonstrates the use of Docker* in swarm mode with the following
    
     === "Linux"
         ```
-        whatever
+        bash sed -i "s|driver: bridge|driver: overlay|g" swarm.yml
         ```
     === "Windows"
         ```
-        whatever 
+        powershell (Get-Content -Path './swarm.yml') -replace 'driver: bridge', 'driver: overlay' | Set-Content -Path './swarm.yml'
         ```
 
 4. Check all the services are running:
