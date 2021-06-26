@@ -33,7 +33,7 @@ nav:
     - Connect:
       - Build & Run RPC: General/buildRPC.md
       - Manage AMT Device: General/manageDevice.md
-  - Microservices:
+  - Components:
     - Overview: Microservices/overview.md
     - Managed Presence Server:
       - Configuration: Microservices/MPS/configuration.md
@@ -46,15 +46,15 @@ nav:
       - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
       - Command Examples: Microservices/RPC/commandsRPC.md
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
-  - UI Toolkit:
-    - Controls:
-      - Keyboard, Video, Mouse (KVM): UIToolkit/Controls/kvmControl.md
-      - Serial Over LAN (SOL): UIToolkit/Controls/serialOverLANControl.md
-    - React Bundles:
-      - Keyboard, Video, Mouse (KVM): UIToolkit/Bundles/kvm.md
-      - Serial Over LAN (SOL): UIToolkit/Bundles/SerialOverLAN.md
-    - Localization: UIToolkit/localization.md
-    - Webpack Configuration: UIToolkit/Webpack-Configuration.md
+    - UI Toolkit:
+      - Controls:
+        - Keyboard, Video, Mouse: UIToolkit/Controls/kvmControl.md
+        - Serial Over LAN: UIToolkit/Controls/serialOverLANControl.md
+      - React Bundles:
+        - Keyboard, Video, Mouse: UIToolkit/Bundles/kvm.md
+        - Serial Over LAN: UIToolkit/Bundles/SerialOverLAN.md
+      - Localization: UIToolkit/localization.md
+      - Webpack Configuration: UIToolkit/Webpack-Configuration.md
   - Tutorials:
     - Docker* Images on the Cloud: Docker/dockerCloud.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md

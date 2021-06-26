@@ -1,3 +1,4 @@
+--8<-- "References/abbreviations.md"
 # Add MPS UI Toolkit Controls to a WebUI
 
 The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as the Keyboard, Video, Mouse (KVM). A sample web application, based on React.js, is provided for test and development. 
@@ -8,10 +9,10 @@ The tutorial outlines how to add various controls to the sample React web applic
 
 ### Hardware
 
-At minimum, to install and utilize the Open AMT Cloud Toolkit microservices, a network configuration must include:
+**Configure a network that includes:**
 
--  A development system with Windows* 10 or Ubuntu* 18.04 or newer
--  At least one Intel® vPro device
+- A development system running Windows® 10 or Ubuntu* 18.04 or newer
+- At least one Intel vPro® device to manage
 
 ### Software
 
@@ -102,7 +103,7 @@ The code snippet below adds KVM control to the React application.
     | Field       |  Value   |
     | :----------- | :-------------- |
     | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-    | `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. Default MPS Server port is 3000 or if using KONG, no port is used and should be `/mps/ws` |
+| `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to localhost. |
     | `authToken` | Update the token with a valid JWT Token you have received from logging into MPS. |
 
 
@@ -115,7 +116,7 @@ The code snippet below adds KVM control to the React application.
             return (
                 <div className="App">
                     <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-                    mpsServer="https://localhost/mps/ws" //Replace 'localhost' with Development System or MPS Server IP Address
+                    mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
                     mouseDebounceTime="200"
                     authToken="" // Replace with a valid JWT token provided during login of MPS
                     canvasHeight="100%"
