@@ -38,8 +38,12 @@ This deployment demonstrates the use of Docker* in swarm mode with the following
         ```
         powershell (Get-Content -Path './swarm.yml') -replace 'driver: bridge', 'driver: overlay' | Set-Content -Path './swarm.yml'
         ```
+4. Create the stack
+```
+docker stack deploy -c swarm.yml scalingdemo
+```
 
-4. Check all the services are running:
+5. Check all the services are running:
 
     ```
     docker stack services scalingdemo
@@ -59,14 +63,14 @@ This deployment demonstrates the use of Docker* in swarm mode with the following
         |pc143h8ml4ua  |scalingdemo_webui          |replicated      | 1/1             |webui:latest   |                 |
 
 
-5. Scale the mps service:
+6. Scale the mps service:
 
     ```
     docker service scale scalingdemo_mps=2
     ```
 
    
-6. Remove the stack:
+7. Remove the stack:
 
     ```
     docker stack rm scalingdemo
