@@ -15,7 +15,7 @@ This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS a
 **Configure a network that includes:**
 
 -  A development system 
--  At least one Intel vPro® device
+-  At least one Intel vPro® Platform
 -  A flash drive or equivalent means to transfer files between
 
 Both systems must use a wired (i.e., cable) connection on the same network.
@@ -32,7 +32,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
         (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
         (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/){target=_blank}.
 
-- [git](https://git-scm.com/downloads)
+- [git*](https://git-scm.com/downloads)
 
 ## What You'll Do
 

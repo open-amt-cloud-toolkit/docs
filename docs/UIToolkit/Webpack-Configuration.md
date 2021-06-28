@@ -42,7 +42,7 @@ The example code below resolves the file extensions, .tsx, .ts and .js. Files wi
 
 **To add Typescript support:**
 
-1. Install the Typescript dependency, awesome-typescript-loader:**
+1. Install the Typescript dependency, awesome-typescript-loader:
 
 ```
 npm i awesome-typescript-loader -D
