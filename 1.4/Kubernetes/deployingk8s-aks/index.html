@@ -16,7 +16,7 @@
     
     
       
-        <title>Deployingk8s aks - Open Active Management Technology Cloud Toolkit</title>
+        <title>AKS - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Deployingk8s aks
+              AKS
             
           </span>
         </div>
@@ -152,7 +152,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -160,9 +162,7 @@
   <li class="md-tabs__item">
     
     
-      
-    
-    <a href="../.." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -200,7 +200,9 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Docker/dockerCloud/" class="md-tabs__link">
+        
+      
+      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -845,10 +847,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     <label class="md-nav__link" for="nav-4">
       Tutorials
       <span class="md-nav__icon md-icon"></span>
@@ -860,18 +864,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
         
           
           
@@ -901,18 +893,66 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" checked>
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -935,9 +975,150 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        AKS
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      AKS
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-ssh-key" class="md-nav__link">
+    Create SSH Key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-aks" class="md-nav__link">
+    Deploy AKS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-aks-instance" class="md-nav__link">
+    Connect to AKS Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpskong-jwt" class="md-nav__link">
+    MPS/KONG JWT:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kong-acl-for-jwt" class="md-nav__link">
+    KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-web-username-and-password" class="md-nav__link">
+    MPS Web Username and Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-storage-account-key" class="md-nav__link">
+    Azure Storage Account Key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-configuration" class="md-nav__link">
+    Update Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+    Deploy Open AMT Cloud Toolkit using Helm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+    Initialize and Unseal Vault
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1269,7 +1450,7 @@
                   </a>
                 
                 
-                  <h1>Deployingk8s aks</h1>
+                  <h1>AKS</h1>
                 
                 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1282,7 +1463,7 @@
 <p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 2048
 </code></pre></div>
 Note the location as you will need the public key (<code>.pub</code> file) in the next step. </p>
-<h2 id="deploy-aks">Deploy AKS<a class="headerlink" href="#deploy-aks" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr><a class="headerlink" href="#deploy-aks" title="Permanent link">&para;</a></h2>
 <p>Login using <code>az login</code> if you haven't already.
 <div class="highlight"><pre><span></span><code>az login
 </code></pre></div>
@@ -1293,9 +1474,9 @@ Additionally, make sure the correct subscription is set as default using <code>a
 </code></pre></div>
 <p><div class="highlight"><pre><span></span><code>az deployment group create --resource-group &lt;your-resource-group-name&gt; --template-file aks.json
 </code></pre></div>
-You will be prompted for a name for the AKS Cluster, the linux user admin name (i.e. your name), and the public key (<code>.pub</code> file) you generated in <a href="#create-ssh-key">Create SSH Key</a>. This takes about ~5 min. Note the <code>fqdnSuffix</code> in the "outputs" section of the JSON response (i.e. <code>westus2.cloudapp.azure.com</code>) when complete. This will be needed for the updating the commonName in the <code>values.yaml</code> file.</p>
-<h2 id="connect-to-aks-instance">Connect to AKS Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">&para;</a></h2>
-<p>Ensure your <code>kubectl</code> is connected to the Kubernetes cluster you wish to deploy/manage. With AKS, use the following: </p>
+You will be prompted for a name for the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Cluster, the linux user admin name (i.e. your name), and the public key (<code>.pub</code> file) you generated in <a href="#create-ssh-key">Create SSH Key</a>. This takes about ~5 min. Note the <code>fqdnSuffix</code> in the "outputs" section of the JSON response (i.e. <code>westus2.cloudapp.azure.com</code>) when complete. This will be needed for the updating the commonName in the <code>values.yaml</code> file.</p>
+<h2 id="connect-to-aks-instance">Connect to <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">&para;</a></h2>
+<p>Ensure your <code>kubectl</code> is connected to the Kubernetes cluster you wish to deploy/manage. With <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, use the following: </p>
 <div class="highlight"><pre><span></span><code>az aks get-credentials --resource-group &lt;your-resource-group-name&gt; --name &lt;your-cluster-name&gt;
 </code></pre></div>
 <h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
@@ -1330,7 +1511,7 @@ You will be prompted for a name for the AKS Cluster, the linux user admin name (
     <span class="nt">annotations</span><span class="p">:</span>
       <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">&quot;&lt;your-domain-name&gt;&quot;</span>
 </code></pre></div>
-<p>Next, update the <code>commonName:</code> key in the <code>mps:</code> section in the <code>values.yaml</code> file with the FQDN for your cluster. For AKS, the format is <code>&lt;your-domain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the "outputs" section when you <a href="#deploy-aks">Deploy AKS</a>.</p>
+<p>Next, update the <code>commonName:</code> key in the <code>mps:</code> section in the <code>values.yaml</code> file with the FQDN for your cluster. For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-domain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the "outputs" section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
   <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&lt;your-domain-name&gt;.&lt;location&gt;.cloudapp.azure.com&quot;</span>
 </code></pre></div>
@@ -1338,7 +1519,7 @@ You will be prompted for a name for the AKS Cluster, the linux user admin name (
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
   <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteMany&quot;</span>
 </code></pre></div>
-<p>This will update the PersistentVolumeClaim to request <code>ReadWriteMany</code>, this means you'll need to provide a <code>PersistentVolume</code> that can match the claim. The Azure deployment performed in <a href="#deploy-aks">Deploy AKS</a> creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:</p>
+<p>This will update the PersistentVolumeClaim to request <code>ReadWriteMany</code>, this means you'll need to provide a <code>PersistentVolume</code> that can match the claim. The Azure deployment performed in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a> creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:</p>
 <p><div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1364,7 +1545,7 @@ You will be prompted for a name for the AKS Cluster, the linux user admin name (
 This is provided in <code>./kubernetes/charts/volumes/azure.yaml</code> and can be applied to your cluster with </p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
 </code></pre></div>
-<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <p>Navigate to <code>./kubernetes</code> and deploy using Helm 
 <div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
 </code></pre></div></p>

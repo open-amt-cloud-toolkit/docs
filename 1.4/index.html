@@ -200,7 +200,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="Docker/dockerCloud/" class="md-tabs__link">
+      <a href="Tutorials/uitoolkit/" class="md-tabs__link">
         Tutorials
       </a>
     </li>
@@ -952,18 +952,6 @@
 
 
   <li class="md-nav__item">
-    <a href="Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="Tutorials/uitoolkit/" class="md-nav__link">
       UI Toolkit KVM Module
     </a>
@@ -989,15 +977,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1020,9 +1052,26 @@
 
 
   <li class="md-nav__item">
-    <a href="Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1314,10 +1363,10 @@
                 
                 
                 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
-<p><strong>Open Active Management Technology Cloud Toolkit (<abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>)</strong> provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (<abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>) solutions for Intel vPro® platforms.</p>
+<p><strong>Open Active Management Technology Cloud Toolkit (<abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>)</strong> provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (<abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>) solutions for Intel vPro® Platforms.</p>
 <p><img alt="assets/images/OOBManagement.png" src="assets/images/OOBManagement.png" /></p>
-<p><strong>Figure 1: <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> features <abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>.</strong></p>
-<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> supports remote manageability with: </p>
+<p><strong>Figure 1: <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> features <abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>.</strong></p>
+<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> supports remote manageability with: </p>
 <p><strong><abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>:</strong> This hardware-based remote management solution operates below the operating system.</p>
 <p><strong><abbr title="Call Home - A CIRA-enabled technique that managed devices use to remain in contact with the Management Presence Server.">Call Home</abbr>:</strong> This capability enables administrators to control, update, and modify remote clients with <abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>.</p>
 <h2 id="goals">Goals<a class="headerlink" href="#goals" title="Permanent link">&para;</a></h2>
@@ -1330,15 +1379,15 @@
 <p>Additional sections provide guidance on the reference implementation <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr>, <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API usage, asset security, and more. </p>
 <p><img alt="assets/images/AEHighLevelArch.png" src="assets/images/HiLevelArchitecture.png" /></p>
 <p><strong>Figure 2: High-level architecture consists of four major software components.</strong></p>
-<p>As shown in Figure 2, <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> high-level architecture consists of five components:</p>
+<p>As shown in Figure 2, <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> high-level architecture consists of five components:</p>
 <ol>
-<li><strong><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></strong> - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) control.</li>
-<li><strong><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></strong> - A microservice that activates <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> platforms using predefined profiles and connects them to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for manageability use cases.</li>
-<li><strong><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong> - A lightweight client application that communicates with the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>.</li>
+<li><strong><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></strong> - A microservice that uses an Intel vPro® Platform feature, Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) control.</li>
+<li><strong><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></strong> - A microservice that activates <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> platforms using predefined profiles and connects them to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for manageability use cases.</li>
+<li><strong><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong> - A lightweight client application that communicates with the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>.</li>
 <li><strong><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></strong> - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, to a console. </li>
 <li><strong><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></strong> - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.</li>
 </ol>
-<p>Integrate the <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> into new and existing management consoles, software solutions, and more.</p>
+<p>Integrate the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> into new and existing management consoles, software solutions, and more.</p>
 <h2 id="toolkit-setup">Toolkit Setup<a class="headerlink" href="#toolkit-setup" title="Permanent link">&para;</a></h2>
 <h3 id="microservices-as-containers">Microservices as Containers<a class="headerlink" href="#microservices-as-containers" title="Permanent link">&para;</a></h3>
 <p>Set up microservices quickly as Docker containers with this recommended method.</p>
@@ -1349,8 +1398,8 @@
 <p>Experienced Docker users may choose to deploy microservices straight to the cloud.</p>
 <p><a href="Docker/dockerCloud/">Get Started with Microservices on the Cloud</a>.</p>
 <hr />
-<h2 id="additional-intel-amt-resources">Additional <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> Resources<a class="headerlink" href="#additional-intel-amt-resources" title="Permanent link">&para;</a></h2>
-<p>For additional information about <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>, see the following links:</p>
+<h2 id="additional-intel-amt-resources">Additional <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> Resources<a class="headerlink" href="#additional-intel-amt-resources" title="Permanent link">&para;</a></h2>
+<p>For additional information about <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>, see the following links:</p>
 <ul>
 <li><a href="https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html">Intel vPro® Platform Overview</a></li>
 <li><a href="https://www.intel.com/content/www/us/en/support/articles/000026592/technologies.html">Video Link</a></li>

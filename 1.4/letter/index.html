@@ -200,7 +200,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../Docker/dockerCloud/" class="md-tabs__link">
+      <a href="../Tutorials/uitoolkit/" class="md-tabs__link">
         Tutorials
       </a>
     </li>
@@ -867,18 +867,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Tutorials/uitoolkit/" class="md-nav__link">
       UI Toolkit KVM Module
     </a>
@@ -904,15 +892,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -935,9 +967,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1216,8 +1265,8 @@
                   <h1>Letter From The Devs</h1>
                 
                 <h2 id="hello-everyone">Hello Everyone!<a class="headerlink" href="#hello-everyone" title="Permanent link">&para;</a></h2>
-<p>We've got a <strong>JUICY</strong> release of the <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>, v.1.4.0 is out now! We've decided to push out LTS until next release given the amount of changes in this release. We've got a few more breaking changes in this release, so please read the <a href="../release-notes/">release notes</a> and changelogs carefully if you haven't already.</p>
-<p>For this release, we have primarily focused on scaling. Our last release, didn't have any updates for scaling so we felt it was time to give it some much needed attention. Firstly, we removed all <code>*.bat</code> scripts required for deploying the Kubernetes (K8s) stack. They were super helpful if you were on Windows, but not so helpful for other platforms. Additionally, they were a bit opinionated on how things should be deployed and obfuscated how the services were deployed. We've taken what was in those scripts, streamlined many of the operations and provided some <a href="../Kubernetes/deployingk8s/">documentation</a> for each command that is required to help guide you through each step. Secondly, we've begun the process of making the K8s deployment cloud platform agnostic. Previously, v1.2 scaling focused solely on Azure Kubernetes Service (AKS), and the work required to support other cloud providers was a bit much to ask of our users (basically starting from scratch). With this release, we've ensured our Helm charts work on a local K8s cluster (for development without the need of a cloud), and AKS. Additionally, we have restructured our helm charts to be flexible for use in Amazon EKS, Google's GKE, or other cloud environments. While we haven't tested these other cloud providers, we are confident that the Helm charts are in a much better state for flexibility. In the next release, we will continue modifications to our Helm deployment to make it as stateless as possible. Namely, we will be removing PostgreSQL from the K8s deployment requiring users to bring their own managed database as this avoids high risk of managing state in a K8s cluster (backups, resiliency, cloud permissions, etc...). We will also make some modifications around how certificates are handled for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, and are also exploring mTLS between services for extra security.</p>
+<p>We've got a <strong>JUICY</strong> release of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>, v.1.4.0 is out now! We've decided to push out LTS until next release given the amount of changes in this release. We've got a few more breaking changes in this release, so please read the <a href="../release-notes/">release notes</a> and changelogs carefully if you haven't already.</p>
+<p>For this release, we have primarily focused on scaling. Our last release, didn't have any updates for scaling so we felt it was time to give it some much needed attention. Firstly, we removed all <code>*.bat</code> scripts required for deploying the Kubernetes (K8s) stack. They were super helpful if you were on Windows, but not so helpful for other platforms. Additionally, they were a bit opinionated on how things should be deployed and obfuscated how the services were deployed. We've taken what was in those scripts, streamlined many of the operations and provided some <a href="../Kubernetes/deployingk8s/">documentation</a> for each command that is required to help guide you through each step. Secondly, we've begun the process of making the K8s deployment cloud platform agnostic. Previously, v1.2 scaling focused solely on Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>), and the work required to support other cloud providers was a bit much to ask of our users (basically starting from scratch). With this release, we've ensured our Helm charts work on a local K8s cluster (for development without the need of a cloud), and <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. Additionally, we have restructured our helm charts to be flexible for use in Amazon EKS, Google's GKE, or other cloud environments. While we haven't tested these other cloud providers, we are confident that the Helm charts are in a much better state for flexibility. In the next release, we will continue modifications to our Helm deployment to make it as stateless as possible. Namely, we will be removing PostgreSQL from the K8s deployment requiring users to bring their own managed database as this avoids high risk of managing state in a K8s cluster (backups, resiliency, cloud permissions, etc...). We will also make some modifications around how certificates are handled for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, and are also exploring mTLS between services for extra security.</p>
 <p>Speaking of security, we've taken a look at some of our practices and started making some changes as to how we treat deployments. For the past few releases, we've provided default usernames/passwords to make it easy to get up and running quickly and easily. The unfortunate reality is that often times, these default usernames/passwords can easily end up inadvertently in a production environment thus compromising a deployment. So while we sacrifice a bit of speed to get up and running in the beginning, we felt it a small enough change to remove default usernames and passwords, and instead ask our users to provide them in either k8s secrets, or environment variable at deploy time. Also in this release, we now require a JWT for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> connections, this should have been in our last release but it didn't quite make it. We will continue to focus on security as we move towards our LTS release and will ensure stronger user provided or randomly generated passwords.</p>
 <p>Next up is the ui-toolkit. We've renamed the package! It is now called <code>@open-amt-cloud-toolkit/ui-toolkit</code>, and even better yet, you can now install from NPM with <code>npm install @open-amt-cloud-toolkit/ui-toolkit</code>!!! This is something that we should have been doing from the start. An open source project should <strong>NOT</strong> being asking their users to install an npm dependency outside the node/npm ecosystem against the industry norm. Going forward, our ui-toolkit releases will be tagged on github for you to get the source material as well as available on npm to use in your projects. Enjoy!</p>
 <p>Lastly, <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Events! We have added an optional preview feature that leverages MQTT to publish events that occur in <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Namely, you can subscribe to the <code>mps/events</code> topic to see when and what AMT calls are happening through <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, and whether they are succeeding or failing. This is a really good way to gain some insight into the health of your devices. We'll continue to expand this to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and potentially change the schema a bit as this feature matures. If you have any input, feel free to join the <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/discussions/58">discussion</a>. </p>

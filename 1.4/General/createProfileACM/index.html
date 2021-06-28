@@ -202,7 +202,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Docker/dockerCloud/" class="md-tabs__link">
+      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link">
         Tutorials
       </a>
     </li>
@@ -950,18 +950,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Tutorials/uitoolkit/" class="md-nav__link">
       UI Toolkit KVM Module
     </a>
@@ -987,15 +975,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1018,9 +1050,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1305,12 +1354,12 @@
                 
                   <h1>Create a Profile with ACM</h1>
                 
-                <p>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>) provides full access to Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>) functionality. User consent is optional for redirection features.</p>
+                <p>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>) provides full access to Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>) functionality. User consent is optional for redirection features.</p>
 <p><img alt="assets/images/Profiles.png" src="../../assets/images/Profiles.png" /></p>
 <p><strong>Figure 1: Set up configuration and profiles for N number of clients. </strong></p>
 <h3 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h3>
 <h4 id="provisioning-certificate">Provisioning Certificate<a class="headerlink" href="#provisioning-certificate" title="Permanent link">&para;</a></h4>
-<p>By purchasing a certificate, you'll be able to remotely activate an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities:</p>
+<p>By purchasing a certificate, you'll be able to remotely activate an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities:</p>
 <ul>
 <li><a href="https://www.intel.com/content/www/us/en/support/articles/000054981/technologies.html">Comodo</a></li>
 <li><a href="https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html">DigiCert</a></li>
@@ -1319,7 +1368,7 @@
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>For <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> in Open Active Management Technology (Open AMT) Cloud Toolkit, <strong>use only</strong> certificate vendors that support <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>.</p>
+<p>For <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> in Open Active Management Technology (Open AMT) Cloud Toolkit, <strong>use only</strong> certificate vendors that support <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>.</p>
 </div>
 <h4 id="dns-suffix">DNS Suffix<a class="headerlink" href="#dns-suffix" title="Permanent link">&para;</a></h4>
 <p>The <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> encompasses the <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> (e.g., .com) and follows the hostname. Consider the following DNS Name example:</p>
@@ -1417,7 +1466,7 @@
 </div>
 <h3 id="create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-a-domain-profile" title="Permanent link">&para;</a></h3>
 <p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> requires the creation of a Domain profile.</p>
-<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
+<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
 <p><strong>To create a domain:</strong></p>
 <ol>
 <li>

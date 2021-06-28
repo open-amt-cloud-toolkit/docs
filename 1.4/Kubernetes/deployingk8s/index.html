@@ -16,7 +16,7 @@
     
     
       
-        <title>Deployingk8s - Open Active Management Technology Cloud Toolkit</title>
+        <title>K8s - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Deployingk8s
+              K8s
             
           </span>
         </div>
@@ -152,7 +152,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -160,9 +162,7 @@
   <li class="md-tabs__item">
     
     
-      
-    
-    <a href="../.." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -200,7 +200,9 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../Docker/dockerCloud/" class="md-tabs__link">
+        
+      
+      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -845,10 +847,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     <label class="md-nav__link" for="nav-4">
       Tutorials
       <span class="md-nav__icon md-icon"></span>
@@ -860,18 +864,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
         
           
           
@@ -901,18 +893,66 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" checked>
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -933,11 +973,137 @@
           
           
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        K8s
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      K8s
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpskong-jwt" class="md-nav__link">
+    MPS/KONG JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kong-acl-for-jwt" class="md-nav__link">
+    KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-web-username-and-password" class="md-nav__link">
+    MPS Web Username and Password
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-configuration" class="md-nav__link">
+    Update Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    MPS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+    Deploy Open AMT Cloud Toolkit Using Helm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+    Initialize and Unseal Vault
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
-    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../deployingk8s-aks/" class="md-nav__link">
+      AKS
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1254,7 +1420,7 @@
                   </a>
                 
                 
-                  <h1>Deployingk8s</h1>
+                  <h1>K8s</h1>
                 
                 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1302,7 +1468,7 @@
 <p>This is provided in <code>./kubernetes/charts/volumes/local.yaml</code> and can be applied to your cluster with
 <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/local.yaml
 </code></pre></div></p>
-<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <p>Navigate to <code>./kubernetes</code> and deploy using Helm 
 <div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
 </code></pre></div></p>

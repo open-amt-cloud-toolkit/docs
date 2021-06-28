@@ -202,7 +202,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../dockerCloud/" class="md-tabs__link">
+      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link">
         Tutorials
       </a>
     </li>
@@ -950,18 +950,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../Tutorials/uitoolkit/" class="md-nav__link">
       UI Toolkit KVM Module
     </a>
@@ -987,15 +975,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1018,9 +1050,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1306,7 +1355,7 @@
                 
                 
                 <h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
-<p>This section contains prerequisites for deploying <abbr title="Open Active Management Technology Cloud Tookit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>'s <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices on a local development system as Docker* containers. </p>
+<p>This section contains prerequisites for deploying <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>'s <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices on a local development system as Docker* containers. </p>
 <p><a href="../../assets/images/LocalDockerWorkflow.png"><img alt="Docker Local Overview" src="../../assets/images/LocalDockerWorkflow.png" /></a></p>
 <p><strong>Figure 1: Deploy microservices on a local development system as Docker containers. </strong></p>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
@@ -1314,7 +1363,7 @@
 <p><strong>Configure a network that includes:</strong></p>
 <ul>
 <li>A development system </li>
-<li>At least one Intel vPro® device</li>
+<li>At least one Intel vPro® Platform</li>
 <li>A flash drive or equivalent means to transfer files between</li>
 </ul>
 <p>Both systems must use a wired (i.e., cable) connection on the same network.</p>
@@ -1332,7 +1381,7 @@
 </div>
 </li>
 <li>
-<p><a href="https://git-scm.com/downloads">git</a></p>
+<p><a href="https://git-scm.com/downloads">git*</a></p>
 </li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>

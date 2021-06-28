@@ -202,7 +202,7 @@
     <li class="md-tabs__item">
       
       
-      <a href="../../../Docker/dockerCloud/" class="md-tabs__link">
+      <a href="../../../Tutorials/uitoolkit/" class="md-tabs__link">
         Tutorials
       </a>
     </li>
@@ -1000,18 +1000,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../../Tutorials/uitoolkit/" class="md-nav__link">
       UI Toolkit KVM Module
     </a>
@@ -1037,15 +1025,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1068,9 +1100,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../../../Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1404,9 +1453,9 @@
                 
                 
                 <h1 id="mps-security-considerations"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Security Considerations<a class="headerlink" href="#mps-security-considerations" title="Permanent link">&para;</a></h1>
-<p>Management Presence Server (<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) is a cloud agnostic micro-service that enables <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr>-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> devices using <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs, <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> uses secrets. There are six key assets that must be protected:</p>
+<p>Management Presence Server (<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) is a cloud agnostic micro-service that enables <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>-based platforms connecting over the internet to connect securely to manageability consoles. In order for a client to securely perform actions on <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices using <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs, <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> uses secrets. There are six key assets that must be protected:</p>
 <ul>
-<li><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> credentials</li>
+<li><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> credentials</li>
 <li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credentials</li>
 <li>Device Allowlist (List of GUIDs)</li>
 <li>APIKey</li>
@@ -1415,12 +1464,12 @@
 </ul>
 <p>In addition to the above assets, there are best practices that are recommended to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.</p>
 <h2 id="security-assets">Security Assets<a class="headerlink" href="#security-assets" title="Permanent link">&para;</a></h2>
-<h3 id="1-intel-amt-credentials">1. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> credentials<a class="headerlink" href="#1-intel-amt-credentials" title="Permanent link">&para;</a></h3>
-<p>AMT credentials allows a user to remotely control <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device and these credentials are configured in AMT Firmware. When user performs an action on the device using <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API, <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.</p>
+<h3 id="1-intel-amt-credentials">1. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> credentials<a class="headerlink" href="#1-intel-amt-credentials" title="Permanent link">&para;</a></h3>
+<p>AMT credentials allows a user to remotely control <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device and these credentials are configured in AMT Firmware. When user performs an action on the device using <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API, <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> then fetches corresponding credentials of that device from Vault and uses it as part of digest authentication. It is highly recommended to use strong password (as per AMT password requirements) and also, unique passwords per device to make it more secure.</p>
 <h3 id="2-intel-mps-credentials">2. Intel&reg; <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credentials<a class="headerlink" href="#2-intel-mps-credentials" title="Permanent link">&para;</a></h3>
 <p>Every Intel&reg; device needs to be authenticated prior to successful connection to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credentials are used to authenticate every Intel&reg; device. After establishing TLS connection with <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, device sends it's username and password, which will then be used to authenticate. It is highly recommended that every device use a unique username and password.</p>
 <h3 id="3-device-allowlist-list-of-guids">3. Device Allowlist (List of GUIDs)<a class="headerlink" href="#3-device-allowlist-list-of-guids" title="Permanent link">&para;</a></h3>
-<p>Each <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device has a unique identifier (GUID) assigned to it and this GUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> using <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credentials. But even before validating credentials, only allowlist <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> devices can be allowed to connect to make it more secure and this is being done using the allowlist GUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.</p>
+<p>Each <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device has a unique identifier (GUID) assigned to it and this GUID is assigned by Original Equipment Manufacturer (OEM). As discussed above, devices are authenticated by <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> using <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credentials. But even before validating credentials, only allowlist <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices can be allowed to connect to make it more secure and this is being done using the allowlist GUID.  When Vault is being used to store device credentials, this list of devices is also the allowlist.</p>
 <h3 id="4-apikey">4. APIKey<a class="headerlink" href="#4-apikey" title="Permanent link">&para;</a></h3>
 <p>Every client/user needs to be authenticated before allowing them to perform an action using <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call. APIKey will be used by <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to authenticate a client/user.</p>
 <h3 id="5-server-configuration">5. Server Configuration<a class="headerlink" href="#5-server-configuration" title="Permanent link">&para;</a></h3>
@@ -1433,9 +1482,9 @@
 <ul>
 <li>HTTP/WS connection between Web UI and <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
 <li>Connection between <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and Vault</li>
-<li>Connection between <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device (This is done automatically with default deployments)</li>
+<li>Connection between <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device (This is done automatically with default deployments)</li>
 </ul>
-<p>Encrypting these communication will help prevent network based attacks attempting to control <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device. It is recommended that the most modern version of TLS be used to protect these connections.</p>
+<p>Encrypting these communication will help prevent network based attacks attempting to control <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device. It is recommended that the most modern version of TLS be used to protect these connections.</p>
 <h3 id="2-secure-and-isolate-execution-environment">2. Secure and isolate execution environment<a class="headerlink" href="#2-secure-and-isolate-execution-environment" title="Permanent link">&para;</a></h3>
 <p><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> holds the described security assets in memory during execution.  In order to protect these assets while in memory of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, it is recommended that <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> be run in a secure execution environment such as a dedicated VM or container. Deploying into a hardened execution environment eases the burden of individually securing the assets while in memory.</p>
 <h3 id="3-utilize-vault-for-storing-credentials">3. Utilize Vault for storing Credentials<a class="headerlink" href="#3-utilize-vault-for-storing-credentials" title="Permanent link">&para;</a></h3>

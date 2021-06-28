@@ -202,7 +202,7 @@
       
         
       
-      <a href="../../Docker/dockerCloud/" class="md-tabs__link md-tabs__link--active">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -869,18 +869,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../../Docker/dockerCloud/" class="md-nav__link">
-      Docker* Images on the Cloud
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -1041,15 +1029,59 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
-    <label class="md-nav__link" for="nav-4-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+    <label class="md-nav__link" for="nav-4-3">
       Scaling
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-3">
         <span class="md-nav__icon md-icon"></span>
         Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/overview/" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      Docker Swarm*
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" >
+    <label class="md-nav__link" for="nav-4-3-3">
+      Kubernetes Deployments
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-3">
+        <span class="md-nav__icon md-icon"></span>
+        Kubernetes Deployments
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1072,9 +1104,26 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
-      Docker Swarm
+    <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
+      K8s
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      AKS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1421,7 +1470,7 @@
 <p><strong>Configure a network that includes:</strong></p>
 <ul>
 <li>A development system running Windows® 10 or Ubuntu* 18.04 or newer</li>
-<li>At least one Intel vPro® device to manage</li>
+<li>At least one Intel vPro® Platform to manage</li>
 </ul>
 <h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1514,7 +1563,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <tbody>
 <tr>
 <td align="left"><code>deviceId</code></td>
-<td align="left">Replace the example deviceId value with the GUID of the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device activated and connected to your <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. Information on obtaining a GUID can be found <a href="../../Topics/guids/">here</a>.</td>
+<td align="left">Replace the example deviceId value with the GUID of the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device activated and connected to your <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. Information on obtaining a GUID can be found <a href="../../Topics/guids/">here</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>mpsServer</code></td>
@@ -1553,7 +1602,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <p>If the React app is still open in the browser and hasn't updated, refresh the page. If not already open, open Chrome and navigate to the given URLs from your successful output. By default it is <code>https://localhost:3001</code> if <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is running on Port 3000 already.</p>
 </li>
 </ol>
-<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® platform.">Intel® AMT</abbr> device. Other controls such as device audit logs or profiles for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> have example code below to test with.</p>
+<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device. Other controls such as device audit logs or profiles for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> have example code below to test with.</p>
 <p>You will see the errors in the following scenarios:</p>
 <ul>
 <li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
