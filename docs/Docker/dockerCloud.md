@@ -17,7 +17,7 @@ This tutorial explains the steps to deploy MPS and RPS as Docker images to the c
 **Configure a network that includes:**
 
 -  A development system running Windows® 10 or Ubuntu* 18.04 or newer 
--  At least one Intel vPro® device to manage
+-  At least one Intel vPro® platform to manage
 
 ###Software
 
@@ -59,7 +59,7 @@ az login
 
 This command will invoke the default browser, which displays a login screen.
 
-2\. Login to the Docker hub account with the Docker ID and password. [KD: Please place pix here.]
+2\. Login to the Docker hub account with the Docker ID and password. 
 
 ```
 docker login --username [your Docker ID] --password [your Docker Hub Password]

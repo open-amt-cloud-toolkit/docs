@@ -2,7 +2,7 @@
 
 # Overview
 
- **Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® platforms.
+ **Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® Platforms.
 
 ![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
 
@@ -30,7 +30,7 @@ Additional sections provide guidance on the reference implementation UI Toolkit,
 
 As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of five components:
 
-1. **MPS** - A microservice that uses an Intel vPro® platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (KVM) control.
+1. **MPS** - A microservice that uses an Intel vPro® Platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (KVM) control.
 2. **RPS** - A microservice that activates Intel® AMT platforms using predefined profiles and connects them to the MPS for manageability use cases.
 3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
 4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 

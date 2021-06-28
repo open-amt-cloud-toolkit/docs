@@ -12,7 +12,7 @@ The tutorial outlines how to add various controls to the sample React web applic
 **Configure a network that includes:**
 
 - A development system running Windows® 10 or Ubuntu* 18.04 or newer
-- At least one Intel vPro® device to manage
+- At least one Intel vPro® Platform to manage
 
 ### Software
 

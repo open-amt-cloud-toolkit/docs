@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 # Quickstart - Bundle Keyboard Video Mouse (KVM) Control
 
-This document shows how to:
+Use these instructions to:
 
 - Run the KVM control in development environment
 - Create a bundle for KVM control
