@@ -56,7 +56,6 @@ nav:
       - Localization: UIToolkit/localization.md
       - Webpack Configuration: UIToolkit/Webpack-Configuration.md
   - Tutorials:
-    - Docker* Images on the Cloud: Docker/dockerCloud.md
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
     # - Databases: Tutorials/addDatabase.md
