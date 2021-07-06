@@ -10,14 +10,8 @@
 | MPS_SECRETS_PATH           | secret/data/         | Path to where secrets are stored in the vault |
 | MPS_GENERATE_CERTS         | true                 | Enables/Disables generation of self signed certificates based on MPS_COMMON_NAME |
 | MPS_COMMON_NAME            | localhost            |  Development system's IP address. <br> **Note:** For this guide, you **cannot** use localhost because the managed device would be unable to reach the MPS and RPS servers. | For this guide, the address will be used in a self-signed certificate. It may be an IP address or FQDN in real world deployment. |
-| MPS_USE_ALLOWLIST          | false                 | This configuration option is deprecated and will be removed in a future version  |
 | MPS_PORT                   | 4433                 | |
 | MPS_WEB_PORT               | 3000                 | |
-| MPS_USERNAME                   | standalone           | Specifies the username client devices use to connect to MPS   |
-| MPS_PASS               | G@ppm0ym             | Specifies the password client devices use to connect to MPS  |
-| MPS_USE_GLOBAL_CREDENTIALS | true                 | Each device can have its own MPS username and password. If this flag is enabled in MPS, it will use the same username and password as specified my MPS_USER and MPS_PASSWORD for all devices |
-| MPS_ENABLE_LOGGING         | true                 | |
-| MPS_DEBUG                  | true                 | |
 | MPS_WEB_ADMIN_USER         | n/a                  | Specifies the username for API authentication |
 | MPS_WEB_ADMIN_PASSWORD     | n/a                  | Specifies the password for API authentication |
 | MPS_HTTPS                  | true                 | Specifies whether or not to enable https      |
