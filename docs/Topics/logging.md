@@ -10,6 +10,6 @@
 | error            | only logs critical errors such as exceptions; includes 500 level responses |
 | warn             | unexpected issue that doesn't affect service operation|
 | info             | service messages such as messages for startup and shutdown |
-| verbose          | includes 200 level responses |
+| verbose          | database query messages; includes 200 level responses |
 | debug            | level useful for diagnosing issues with the services; includes 400 level responses|
 | silly            | all logs|
