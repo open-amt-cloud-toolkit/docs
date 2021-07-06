@@ -9,7 +9,7 @@
 | :------------------------- | :-- |
 | error            | only critical errors such as exceptions; includes 500 level responses |
 | warn             | unexpected issue that does not affect service operation|
-| info             | service messages such as messages for startup and shutdown |
+| info             | service messages such as messages for startup and shutdown (default level for MPS and RPS services) |
 | verbose          | database query messages; includes 200 level responses |
 | debug            | level useful for diagnosing issues with the services; includes 400 level responses|
 | silly            | all logs|
