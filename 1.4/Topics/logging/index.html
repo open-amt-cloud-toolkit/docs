@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Topics/staticIP/">
+        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Topics/logging/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -16,7 +16,7 @@
     
     
       
-        <title>Static and Dynamic IP Addresses - Open Active Management Technology Cloud Toolkit</title>
+        <title>Logging - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#static-and-dynamic-ip-addresses" class="md-skip">
+        <a href="#logging" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Static and Dynamic IP Addresses
+              Logging
             
           </span>
         </div>
@@ -152,7 +152,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -160,9 +162,7 @@
   <li class="md-tabs__item">
     
     
-      
-    
-    <a href="../.." class="md-tabs__link md-tabs__link--active">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -226,7 +226,9 @@
     <li class="md-tabs__item">
       
       
-      <a href="../powerstates/" class="md-tabs__link">
+        
+      
+      <a href="../powerstates/" class="md-tabs__link md-tabs__link--active">
         Topics
       </a>
     </li>
@@ -1041,10 +1043,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     <label class="md-nav__link" for="nav-6">
       Topics
       <span class="md-nav__icon md-icon"></span>
@@ -1085,11 +1089,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../logging/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Logging
     </a>
+    
   </li>
 
         
@@ -1200,21 +1213,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-static-ips-and-certificates" class="md-nav__link">
-    Create Static IPs and Certificates
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1225,39 +1223,49 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Topics/staticIP.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Topics/logging.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="static-and-dynamic-ip-addresses">Static and Dynamic IP Addresses<a class="headerlink" href="#static-and-dynamic-ip-addresses" title="Permanent link">&para;</a></h1>
-<h3 id="create-static-ips-and-certificates">Create Static IPs and Certificates<a class="headerlink" href="#create-static-ips-and-certificates" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Open Command Prompt as an Administrator. Change directory to the <code>..\scripts\kubernetes</code> folder within the MPS repository that was downloaded and unzipped.
-<div class="highlight"><pre><span></span><code>cd [path-to-MPS_MicroService-repo-folder]\scripts\kubernetes
-</code></pre></div></p>
-</li>
-<li>
-<p>In this directory, run the following .bat script to create the required IPs and Certificates for MPS and RPS. <strong>Provide a new password of your choice for your private keys and save and/or remember it.</strong>
-<div class="highlight"><pre><span></span><code>createipsandcerts.bat [resource-group-name] [aks-cluster-name][your-private-keys-password]
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Copy and save the outputted MPS Static IP Address, RPS Static IP Address, and Node Resource Group from the script.</strong>
-<div class="highlight"><pre><span></span><code>C:\quickstart\mps\scripts\kubernetes&gt;&quot;MPS IP ADDRESS&quot; 13.87.225.246
-
-C:\quickstart\mps\scripts\kubernetes&gt;&quot;RPS IP ADDRESS&quot; 13.87.226.61
-
-C:\quickstart\mps\scripts\kubernetes&gt;&quot;Node Resource Group&quot;  C_matt-rg_matt-aks_westus
-
-Creating kubectl secrets with name &quot;mpscerts&quot; and keys rootCA_mps.key rootCA_mps.crt mps_cert.key mps_cert.crt secret/mpscerts created
-Creating kubectl secrets with name &quot;rpscerts&quot; and keys rootCA_rps.key rootCA_rps.crt rps_cert.key rps_cert.crt secret/rpscerts created
-</code></pre></div></p>
-</li>
-</ol>
-<p>At this point, all of your cert key names are stored in your Kubernetes secret store. When building the stack, we will pull them down.</p>
-<p><br><br><br></p>
+                <h1 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h1>
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>Microservices logging uses the Winston logging format. Log levels for both MPS and RPS microservices are controlled by the environmental variables MPS_LOG_LEVEL and RPS_LOG_LEVEL respectively. Logging levels are listed in the table below by increasing level of detail: <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code>, and <code>silly</code>.</p>
+<h1 id="log-levels">Log levels<a class="headerlink" href="#log-levels" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th align="left">Log level</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">error</td>
+<td align="left">only critical errors such as exceptions; 500 level api responses</td>
+</tr>
+<tr>
+<td align="left">warn</td>
+<td align="left">unexpected issue which don't affect service operation</td>
+</tr>
+<tr>
+<td align="left">info</td>
+<td align="left">service startup and shutdown messages (default level for MPS and RPS services)</td>
+</tr>
+<tr>
+<td align="left">verbose</td>
+<td align="left">database query messages; device heartbeat; 200 level api responses</td>
+</tr>
+<tr>
+<td align="left">debug</td>
+<td align="left">level useful for diagnosing issues with the services; 400 level api responses</td>
+</tr>
+<tr>
+<td align="left">silly</td>
+<td align="left">all logs</td>
+</tr>
+</tbody>
+</table>
                 
               
               
