@@ -48,7 +48,7 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_JWT_SECRET | A strong secret of your choice | Used when generating a JSON Web Token for authentication |
 
     !!! important
-        This password must meet standard, **strong** password requirements:
+        The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
 
@@ -97,7 +97,6 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         ![Image of filesharing](../assets/images/DockerFileSharing.png)
 
 
-
 2. Check that all of the containers are running.
 
     
@@ -127,6 +126,25 @@ If any of the above containers are not running, walk through the steps again or 
 
 !!! important
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
+
+!!! important **Best Practice: Remove or Prune Images and Volumes**
+    With repeated deployments, Docker images or volumes can accumulate. This interferes with achieving stable deployment as remnants of a previous deployment's configuration may be present. Use the following commands to manage images and volumes:
+    
+    List images or volumes:
+   
+    `docker image ls`
+    `docker volume ls`
+   
+    Prune unused images or volumes:
+   
+    `docker image prune`
+    `docker volume prune`
+
+    Remove unwanted images or volumes: 
+
+    `docker image rm <name of image>`
+    `docker volume rm <name of volume>`
+    
 
 ## Next up
 [**Login to Sample Web UI**](../General/loginToRPS.md)

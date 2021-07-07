@@ -47,9 +47,12 @@ The React app can be created in any preferred development directory. The MPS can
 2. Run the following commands to create sample React app named `my-app`.
 
   ``` bash
-  npx create-react-app my-app && cd my-app
+  npx create-react-app my-app
   ```
-
+3. Change to the my-app directory:
+   ``` bash
+   cd my-app
+   ```
 ## Add UI Toolkit
 
 1. Run the following command to add the UI Toolkit and install the required dependencies:

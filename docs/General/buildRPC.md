@@ -31,7 +31,7 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 3. Click the **Run Workflow** dropdown. 
 
-4. Select the **branch: v1.2.2** from the **Use workflow from** dropdown. 
+4. Select the latest branch from the **Use workflow from** dropdown. If you don't see the branch in the list, type "v" to see the list of branches.
 
 5. By default, the Build Type should be **release**.  
 

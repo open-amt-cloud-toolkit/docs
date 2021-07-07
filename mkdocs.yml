@@ -64,9 +64,8 @@ nav:
       - Overview: Scaling/overview.md
       - Docker Swarm*: Scaling/Docker Swarm/docker-swarm.md
       - Kubernetes Deployments:
-          # - Kubernetes: Scaling/Kubernetes/kubernetes.md
-          - Kubernetes: Kubernetes/deployingk8s.md
-          - Azure Kubernetes Service: Kubernetes/deployingk8s-aks.md
+          - Kubernetes (K8s): Kubernetes/deployingk8s.md
+          - AKS: Kubernetes/deployingk8s-aks.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
     - Remote Provisioning Server: APIs/indexRPS.md
