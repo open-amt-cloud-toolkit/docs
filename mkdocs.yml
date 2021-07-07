@@ -72,6 +72,7 @@ nav:
   - Topics:
     - AMT Power States: Topics/powerstates.md
     - GUIDs in Intel AMT: Topics/guids.md
+    - Logging: Topics/logging.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
       - Unprovisioning: Topics/MEBX/unprovision.md
