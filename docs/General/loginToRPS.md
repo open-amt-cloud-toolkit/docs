@@ -2,6 +2,11 @@
 
 The web portal is available for login after the deployment of the MPS, RPS, and Sample Web UI. Make sure all three are successfully running before attempting to login.
 
+!!! example
+    **Passwords**
+
+    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Components -> Overview](../Microservices/overview.md#Passwords).
+
 ## Log In
 
 1. Open any modern web browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.
@@ -25,6 +30,7 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
         [![WebUI](../assets/images/WebUI_Home.png)](../assets/images/WebUI_Home.png)
 
         **Figure 1: Sample Web UI Home Page**
+    
 
 ## Next up
 **[Create a CIRA Config](createCIRAConfig.md)**
