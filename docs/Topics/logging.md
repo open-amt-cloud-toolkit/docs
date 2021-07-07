@@ -1,7 +1,7 @@
 # Logging
 
 # Introduction
- Logging for the MPS and RPS services are using the winston logging framework. Log levels for both the MPS and RPS services are controlled by the environmental variables MPS_LOG_LEVEL and RPS_LOG_LEVEL respectfully. Supported levels are as follows: `error`, `warn`, `info`, `verbose`, `debug`, and `silly` (in order with increasing detail).
+ Microservices logging uses the Winston logging format. Log levels for both MPS and RPS microservices are controlled by the environmental variables MPS_LOG_LEVEL and RPS_LOG_LEVEL respectively. Logging levels are listed in the table below by increasing level of detail: `error`, `warn`, `info`, `verbose`, `debug`, and `silly`.
 
 # Log levels
 
