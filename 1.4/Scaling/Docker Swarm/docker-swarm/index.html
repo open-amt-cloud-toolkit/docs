@@ -1003,7 +1003,7 @@
 
   <li class="md-nav__item">
     <a href="../../../Kubernetes/deployingk8s/" class="md-nav__link">
-      Kubernetes
+      Kubernetes (K8s)
     </a>
   </li>
 
@@ -1015,7 +1015,7 @@
 
   <li class="md-nav__item">
     <a href="../../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
-      Azure Kubernetes Service
+      AKS
     </a>
   </li>
 
@@ -1285,11 +1285,11 @@
                   <h1>Docker Swarm*</h1>
                 
                 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
-<p>This deployment demonstrates the use of Docker* in swarm mode with the following conditions: </p>
+<p>This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: </p>
 <ul>
-<li>All the images are built and tested with docker-compose. To learn more about building the images with docker-compose, please refer to <a href="../../../Docker/dockerLocal/"><strong>Express Setup</strong></a>. </li>
-<li>Images can only be deployed on other systems if they are pushed to a registry. </li>
-<li>Also, if the images are not pushed to any registry, it cannot be deployed on other systems. </li>
+<li>All images are built and tested with docker-compose. To learn more about building the images with docker-compose, refer to <a href="../../../Docker/dockerLocal/"><strong>Express Setup</strong></a>. </li>
+<li>Push images to the registry to make them available for deployment on other systems.  </li>
+<li>Run the commands below from the <code>open-amt-cloud-toolkit</code> install directory. </li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -1298,40 +1298,49 @@
 <h3 id="deploy-the-stack-to-the-swarm">Deploy the stack to the swarm<a class="headerlink" href="#deploy-the-stack-to-the-swarm" title="Permanent link">&para;</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important - For Linux</p>
-<p>Before running the following commands on Linux, confirm that the user has been added to the docker group. For instructions on how to do this please refer to <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user"><strong>Add docker group</strong></a>. Otherwise, you can prefix each command with <code>sudo</code>.</p>
+<p>Before running the following commands on Linux, confirm that the user has been added to the docker group. For instructions, refer to <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user"><strong>Add docker group</strong></a>. Otherwise, prefix each command with <code>sudo</code>.</p>
 </div>
 <ol>
 <li>
-<p>Initialize a swarm:</p>
-<div class="highlight"><pre><span></span><code>docker swarm init
-</code></pre></div>
+<p>Initialize a swarm.
+     <div class="highlight"><pre><span></span><code>docker swarm init
+</code></pre></div></p>
 </li>
 <li>
-<p>Copy docker compose config to temporary swarm.yml file:</p>
-<div class="highlight"><pre><span></span><code>docker-compose -f .\docker-compose.yml config &gt; swarm.yml
-</code></pre></div>
+<p>Copy docker compose config to temporary <code>swarm.yml</code> file.
+    <div class="highlight"><pre><span></span><code>docker-compose -f .\docker-compose.yml config &gt; swarm.yml
+</code></pre></div></p>
 </li>
 <li>
-<p>Set the network to overlay: </p>
+<p>Set the network driver to overlay in the <code>swarm.yml</code> file.</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>bash sed -i &quot;s|driver: bridge|driver: overlay|g&quot; swarm.yml
+<div class="highlight"><pre><span></span><code>sed -i <span class="s2">&quot;s|driver: bridge|driver: overlay|g&quot;</span> swarm.yml
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>powershell (Get-Content -Path &#39;./swarm.yml&#39;) -replace &#39;driver: bridge&#39;, &#39;driver: overlay&#39; | Set-Content -Path &#39;./swarm.yml&#39;
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./swarm.yml&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;driver: bridge&#39;</span><span class="p">,</span> <span class="s1">&#39;driver: overlay&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./swarm.yml&#39;</span>
 </code></pre></div>
 </div>
 </div>
-<ol>
-<li>Create the stack
-<div class="highlight"><pre><span></span><code>docker stack deploy -c swarm.yml scalingdemo
-</code></pre></div></li>
-</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Open the swarm.yml file to check that <code>driver: bridge</code> was replaced with <code>driver: overlay</code>. If the result is incorrect or corrupted, delete the swarm.yml file, rerun Step 2, and manually replace the string.</p>
+</div>
 </li>
 <li>
-<p>Check all the services are running:</p>
-<div class="highlight"><pre><span></span><code>docker stack services scalingdemo
-</code></pre></div>
+<p>If you've run docker-compose previously, as in the instructions in <a href="../../../Docker/dockerLocal/"><strong>Express Setup</strong></a>, run docker-compose down to stop the open-amt-cloud-toolkit services:
+   <div class="highlight"><pre><span></span><code>docker-compose down -v
+</code></pre></div></p>
+</li>
+<li>
+<p>Create the stack.
+    <div class="highlight"><pre><span></span><code>docker stack deploy -c swarm.yml scalingdemo
+</code></pre></div></p>
+</li>
+<li>
+<p>Check all of the services are running.
+    <div class="highlight"><pre><span></span><code>docker stack services scalingdemo
+</code></pre></div></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>The table below is an example of a services list: </p>
@@ -1408,14 +1417,88 @@
 </div>
 </li>
 <li>
-<p>Scale the mps service:</p>
-<div class="highlight"><pre><span></span><code>docker service scale scalingdemo_mps=2
-</code></pre></div>
+<p>Scale the mps service.
+    <div class="highlight"><pre><span></span><code>docker service scale scalingdemo_mps=2
+</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>The table below is an example of a services list after scaling the mps: </p>
+<table>
+<thead>
+<tr>
+<th align="left">ID</th>
+<th align="left">NAME</th>
+<th align="left">MODE</th>
+<th align="left">REPLICAS</th>
+<th align="left">IMAGE</th>
+<th align="left">PORTS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">6dye78yg66zp</td>
+<td align="left">scalingdemo_db</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">postgres:latest</td>
+<td align="left">*:5432-&gt;5432/tcp</td>
+</tr>
+<tr>
+<td align="left">nahbub6fxrvu</td>
+<td align="left">scalingdemo_kong</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">kong:2.3</td>
+<td align="left"><em>:443-&gt;8443/tcp, </em>:8001-&gt;8001/tcp</td>
+</tr>
+<tr>
+<td align="left">nltp54asb8kz</td>
+<td align="left">scalingdemo_mps</td>
+<td align="left">replicated</td>
+<td align="left">2/2</td>
+<td align="left">mps:latest</td>
+<td align="left">*:4433-&gt;4433/tcp</td>
+</tr>
+<tr>
+<td align="left">uc9jsf5554cv</td>
+<td align="left">scalingdemo_mpsrouter</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">mpsrouter:latest</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ojtcs8qjxct3</td>
+<td align="left">scalingdemo_rps</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">rps:latest</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">wbk4of70do63</td>
+<td align="left">scalingdemo_vault</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">vault:latest</td>
+<td align="left">*:8200-&gt;8200/tcp</td>
+</tr>
+<tr>
+<td align="left">pc143h8ml4ua</td>
+<td align="left">scalingdemo_webui</td>
+<td align="left">replicated</td>
+<td align="left">1/1</td>
+<td align="left">webui:latest</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
 </li>
 <li>
-<p>Remove the stack:</p>
-<div class="highlight"><pre><span></span><code>docker stack rm scalingdemo
-</code></pre></div>
+<p>Remove the stack:
+    <div class="highlight"><pre><span></span><code>docker stack rm scalingdemo
+</code></pre></div></p>
 </li>
 </ol>
                 

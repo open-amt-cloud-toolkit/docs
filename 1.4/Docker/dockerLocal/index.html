@@ -1026,7 +1026,7 @@
 
   <li class="md-nav__item">
     <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
-      Kubernetes
+      Kubernetes (K8s)
     </a>
   </li>
 
@@ -1038,7 +1038,7 @@
 
   <li class="md-nav__item">
     <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
-      Azure Kubernetes Service
+      AKS
     </a>
   </li>
 
@@ -1398,7 +1398,7 @@
 </table>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This password must meet standard, <strong>strong</strong> password requirements:</p>
+<p>The MPS_WEB_ADMIN_PASSWORD must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
 <li>
 <p>8 to 32 characters</p>
@@ -1481,6 +1481,24 @@ kong:2.3           Up <span class="m">5</span> seconds <span class="o">(</span>h
 <p class="admonition-title">Important</p>
 <p>Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run <code>docker-compose down -v</code> when bringing down the stack, which removes the volumes, and start fresh upon <code>docker-compose up</code>.  To run vault in production mode, follow the guide <a href="../dockerLocal_prodVault/">here</a>.</p>
 </div>
+<p>!!! important <strong>Best Practice: Remove or Prune Images and Volumes</strong>
+    With repeated deployments, Docker images or volumes can accumulate. This interferes with achieving stable deployment as remnants of a previous deployment's configuration may be present. Use the following commands to manage images and volumes:</p>
+<div class="codehilite"><pre><span></span><code>List images or volumes:
+
+`docker image ls`
+`docker volume ls`
+
+Prune unused images or volumes:
+
+`docker image prune`
+`docker volume prune`
+
+Remove unwanted images or volumes:
+
+`docker image rm &lt;name of image&gt;`
+`docker volume rm &lt;name of volume&gt;`
+</code></pre></div>
+
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../../General/loginToRPS/"><strong>Login to <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></strong></a></p>
                 
