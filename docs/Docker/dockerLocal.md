@@ -122,28 +122,28 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         kong:2.3           Up 5 seconds (healthy)   open-amt-cloud-toolkit_kong_1
         ```
     
-If any of the above containers are not running, walk through the steps again or file a github issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
 
 !!! important
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
 
-!!! important **Best Practice: Remove or Prune Images and Volumes**
+!!! note "**Best Practice: Remove or Prune Images and Volumes**"
     With repeated deployments, Docker images or volumes can accumulate. This interferes with achieving stable deployment as remnants of a previous deployment's configuration may be present. Use the following commands to manage images and volumes:
     
     List images or volumes:
    
-    `docker image ls`
-    `docker volume ls`
+    - `docker image ls`
+    - `docker volume ls`
    
     Prune unused images or volumes:
    
-    `docker image prune`
-    `docker volume prune`
+    - `docker image prune`
+    - `docker volume prune`
 
     Remove unwanted images or volumes: 
 
-    `docker image rm <name of image>`
-    `docker volume rm <name of volume>`
+    - `docker image rm <name of image>`
+    - `docker volume rm <name of volume>`
     
 
 ## Next up
