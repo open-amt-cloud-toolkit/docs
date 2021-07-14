@@ -997,30 +997,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
-    Create Secrets
+  <a href="#create-kubernetes-secrets" class="md-nav__link">
+    Create Kubernetes Secrets
   </a>
   
-    <nav class="md-nav" aria-label="Create Secrets">
+    <nav class="md-nav" aria-label="Create Kubernetes Secrets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mpskong-jwt" class="md-nav__link">
-    MPS/KONG JWT
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kong-acl-for-jwt" class="md-nav__link">
-    KONG ACL for JWT
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps-web-username-and-password" class="md-nav__link">
-    MPS Web Username and Password
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
   </a>
   
 </li>
@@ -1035,19 +1042,6 @@
     Update Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Update Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mps" class="md-nav__link">
-    MPS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1061,6 +1055,19 @@
   <a href="#initialize-and-unseal-vault" class="md-nav__link">
     Initialize and Unseal Vault
   </a>
+  
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1329,30 +1336,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
-    Create Secrets
+  <a href="#create-kubernetes-secrets" class="md-nav__link">
+    Create Kubernetes Secrets
   </a>
   
-    <nav class="md-nav" aria-label="Create Secrets">
+    <nav class="md-nav" aria-label="Create Kubernetes Secrets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mpskong-jwt" class="md-nav__link">
-    MPS/KONG JWT
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kong-acl-for-jwt" class="md-nav__link">
-    KONG ACL for JWT
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps-web-username-and-password" class="md-nav__link">
-    MPS Web Username and Password
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
   </a>
   
 </li>
@@ -1367,19 +1381,6 @@
     Update Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Update Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mps" class="md-nav__link">
-    MPS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1393,6 +1394,19 @@
   <a href="#initialize-and-unseal-vault" class="md-nav__link">
     Initialize and Unseal Vault
   </a>
+  
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1422,35 +1436,94 @@
                 
                   <h1>Kubernetes (K8s)</h1>
                 
-                <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+                <p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>). See <a href="https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/deployingk8s-aks/"><abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
+<p>Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes <a href="https://kubernetes.io/docs/home/">here</a>.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Docker Desktop w/ kubectl</li>
-<li>Helm CLI (v3.5+)     </li>
+<li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> with <a href="https://docs.docker.com/desktop/kubernetes/">Kubernetes Enabled</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
 </ul>
-<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important - For Linux</p>
+<p>If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as <a href="https://minikube.sigs.k8s.io/docs/">minikube</a> or <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">kubeadm</a>.</p>
+</div>
+<h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
+<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">&para;</a></h3>
 <p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry regcred --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
 </code></pre></div></p>
-<p>Additionally, you'll need to provide secrets for the following:</p>
-<h3 id="mpskong-jwt"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#mpskong-jwt" title="Permanent link">&para;</a></h3>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
+<li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
+<li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
+</ul>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
 <p>This is the secret used for generating and verifying JWTs.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
 </code></pre></div></p>
-<h3 id="kong-acl-for-jwt">KONG ACL for JWT<a class="headerlink" href="#kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
-<p>This configures KONG with an ACL to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
+</ul>
+<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
+<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 </code></pre></div></p>
-<h3 id="mps-web-username-and-password"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#mps-web-username-and-password" title="Permanent link">&para;</a></h3>
-<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging in to the UI.
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
+<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
 </code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
+<li>
+<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
+<ul>
+<li>8 to 32 characters</li>
+<li>One uppercase, one lowercase, one numerical digit, one special character</li>
+</ul>
+</div>
+</li>
+</ul>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
-<h3 id="mps"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h3>
-<p>Next, update the <code>commonName:</code> key in the <code>mps:</code> section in the <code>values.yaml</code> file with the ip address of your machine</p>
-<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-  <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&lt;your-ip-address&gt;&quot;</span>
+<ol>
+<li>
+<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code></p>
+</li>
+<li>
+<p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
+<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mps:latest&quot;</span>
+</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/rps:latest&quot;</span>
+</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/webui:latest&quot;</span>
+</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mpsrouter:latest&quot;</span>
+</span>    <span class="nt">postgresdb</span><span class="p">:</span> <span class="s">&quot;postgres:13&quot;</span>
 </code></pre></div>
-<p>Lastly, you'll need to provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For a local, one node cluster, you can use the following YAML: </p>
+</li>
+<li>
+<p>Update the <em>commonName</em> key in the <code>mps</code> section with the IP Address of your machine.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
+<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&lt;your-ip-address&gt;&quot;</span>
+</span>    <span class="c1"># storageClassName: &quot;&quot;</span>
+    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
+    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
+    <span class="nt">connectionString</span><span class="p">:</span> <span class="s">&quot;postgresql://postgresadmin:admin123@postgres:5432/mpsdb&quot;</span>
+    <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
+</code></pre></div>
+</li>
+<li>
+<p>Save and close the file.</p>
+</li>
+<li>
+<p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For a local, single-node cluster, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/local.yaml</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Provided local.yaml Example</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1465,32 +1538,113 @@
   <span class="nt">hostPath</span><span class="p">:</span>
     <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;/mnt/data/mpscerts&quot;</span>
 </code></pre></div>
-<p>This is provided in <code>./kubernetes/charts/volumes/local.yaml</code> and can be applied to your cluster with
-<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/local.yaml
+</div>
+</li>
+<li>
+<p>Apply it to your cluster.
+    <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/local.yaml
 </code></pre></div></p>
+</li>
+</ol>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
-<p>Navigate to <code>./kubernetes</code> and deploy using Helm 
-<div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
+<ol>
+<li>
+<p>Navigate to <code>./kubernetes</code> directory.</p>
+</li>
+<li>
+<p>Deploy using Helm.
+    <div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
 </code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME: openamtstack
+LAST DEPLOYED: Wed Jul 14 12:59:29 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>View the pods. You might notice <code>openamtstack-vault-0</code> is not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+    <div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
+mps-6984b7c69d-8d5gf                                 1/1     Running   0          5m
+mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          5m
+oactdb-697b55f885-8mdmg                              1/1     Running   0          5m
+openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          5m
+<span class="hll">openamtstack-vault-0                                 0/1     Running   0          5m
+</span>openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          5m
+rps-79877bf5c5-hnv8t                                 1/1     Running   0          5m
+webui-784cd49976-bj7z5                               1/1     Running   0          5m
+</code></pre></div>
+</div>
+</li>
+</ol>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
-<p>Use the following instructions to initialize unseal and vault:  <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault</a></p>
+<ol>
+<li>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Make sure you download your credentials and save them in a secure location.</p>
 </div>
-<p>After initializing and unsealing the vault, you need to enable the Key Value engine.
-To do this:
-  1. Click "Enable New Engine +"
-  2. Choose "KV"
-  3. Click "Next"
-  4. Leave the default path and choose version 2 from the drop down. 
-  5. Click "Enable Engine"</p>
-<p>Once you have your vault token, we'll add the root token as a secret to the k8s cluster so the services can access it.</p>
-<p>Vault Token:
+</li>
+</ol>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine:</p>
+<ol>
+<li>
+<p>Click "Enable New Engine +".</p>
+</li>
+<li>
+<p>Choose "KV".</p>
+</li>
+<li>
+<p>Click "Next".</p>
+</li>
+<li>
+<p>Leave the default path and choose version 2 from the drop down. </p>
+</li>
+<li>
+<p>Click "Enable Engine".</p>
+</li>
+</ol>
+<h4 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-root-token&gt;</strong> is your <em>root_token</em> generated by Vault.</li>
+</ul>
+</li>
+<li>
+<p>View the pods. All pods should now be Ready and Running.
+    <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
+mps-6984b7c69d-8d5gf                                 1/1     Running   0          7m
+mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          7m
+oactdb-697b55f885-8mdmg                              1/1     Running   0          7m
+openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
+openamtstack-vault-0                                 1/1     Running   0          7m
+openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
+rps-79877bf5c5-hnv8t                                 1/1     Running   0          7m
+webui-784cd49976-bj7z5                               1/1     Running   0          7m
+</code></pre></div>
+</div>
+</li>
+</ol>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Continue from getting started steps <a href="https://open-amt-cloud-toolkit.github.io/docs/1.3/General/loginToRPS/">here</a></p>
+<p><a href="https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/"><strong>Continue from the Get Started steps</strong></a></p>
                 
               
               

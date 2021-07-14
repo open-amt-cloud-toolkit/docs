@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#azure-kubernetes-service-aks" class="md-skip">
           Skip to content
         </a>
       
@@ -980,6 +980,8 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         AKS
@@ -993,6 +995,8 @@
       
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1038,22 +1042,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mpskong-jwt" class="md-nav__link">
-    MPS/KONG JWT:
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kong-acl-for-jwt" class="md-nav__link">
-    KONG ACL for JWT
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps-web-username-and-password" class="md-nav__link">
-    MPS Web Username and Password
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
   </a>
   
 </li>
@@ -1088,6 +1099,19 @@
   <a href="#initialize-and-unseal-vault" class="md-nav__link">
     Initialize and Unseal Vault
   </a>
+  
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1329,6 +1353,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1373,22 +1399,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mpskong-jwt" class="md-nav__link">
-    MPS/KONG JWT:
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kong-acl-for-jwt" class="md-nav__link">
-    KONG ACL for JWT
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps-web-username-and-password" class="md-nav__link">
-    MPS Web Username and Password
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
   </a>
   
 </li>
@@ -1424,6 +1457,19 @@
     Initialize and Unseal Vault
   </a>
   
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1450,13 +1496,13 @@
                   </a>
                 
                 
-                  <h1>AKS</h1>
-                
-                <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+                <h1 id="azure-kubernetes-service-aks">Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>)<a class="headerlink" href="#azure-kubernetes-service-aks" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Docker Desktop w/ kubectl</li>
+<li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li>Azure CLI (v2.24.0+)</li>
-<li>Helm CLI (v3.5+)</li>
+<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
 </ul>
 <h2 id="create-ssh-key">Create SSH Key<a class="headerlink" href="#create-ssh-key" title="Permanent link">&para;</a></h2>
 <p>This key is required by Azure to create VMs that use SSH keys for authentication. See <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed">https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed</a> for more details.</p>
@@ -1480,22 +1526,47 @@ You will be prompted for a name for the <abbr title="Azure Kubernetes Service - 
 <div class="highlight"><pre><span></span><code>az aks get-credentials --resource-group &lt;your-resource-group-name&gt; --name &lt;your-cluster-name&gt;
 </code></pre></div>
 <h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
+<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">&para;</a></h3>
 <p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server=&lt;your-registry-server&gt; --docker-username=&lt;your-username&gt; --docker-password=&lt;your-password&gt;
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry regcred --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
 </code></pre></div></p>
-<p>Additionally, you'll need to provide secrets for the following:</p>
-<h3 id="mpskong-jwt"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT:<a class="headerlink" href="#mpskong-jwt" title="Permanent link">&para;</a></h3>
-<p>This is the secret used for generating and verifying JWTs.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&lt;your-secret&gt;
-</code></pre></div>
-<h3 id="kong-acl-for-jwt">KONG ACL for JWT<a class="headerlink" href="#kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
-<p>This configures KONG with an ACL to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
+<li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
+<li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
+</ul>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
+<p>This is the secret used for generating and verifying JWTs.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
+</ul>
+<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
+<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 </code></pre></div></p>
-<h3 id="mps-web-username-and-password"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#mps-web-username-and-password" title="Permanent link">&para;</a></h3>
-<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging in to the UI.
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
+<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
 </code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
+<li>
+<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
+<ul>
+<li>8 to 32 characters</li>
+<li>One uppercase, one lowercase, one numerical digit, one special character</li>
+</ul>
+</div>
+</li>
+</ul>
 <h3 id="azure-storage-account-key">Azure Storage Account Key<a class="headerlink" href="#azure-storage-account-key" title="Permanent link">&para;</a></h3>
 <p>Currently, we leverage Azure Storage Accounts for persistent storage of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> certificates that can be shared by multiple instances of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).</p>
 <div class="admonition note">
@@ -1550,26 +1621,47 @@ This is provided in <code>./kubernetes/charts/volumes/azure.yaml</code> and can 
 <div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
 </code></pre></div></p>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
-<p>Use the following instructions to initialize unseal and vault:  <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault</a></p>
+<ol>
+<li>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Make sure you download your credentials and save them in a secure location.</p>
 </div>
-<p>After initializing and unsealing the vault, you need to enable the Key Value engine.
-To do this:</p>
-<ol>
-<li>Click "Enable New Engine +"</li>
-<li>Choose "KV"</li>
-<li>Click "Next"</li>
-<li>Leave the default path and choose version 2 from the drop down. </li>
-<li>Click "Enable Engine"</li>
+</li>
 </ol>
-<p>Once you have your vault token, we'll add the root token as a secret to the k8s cluster so the services can access it.</p>
-<p>Vault Token:
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine:</p>
+<ol>
+<li>
+<p>Click "Enable New Engine +".</p>
+</li>
+<li>
+<p>Choose "KV".</p>
+</li>
+<li>
+<p>Click "Next".</p>
+</li>
+<li>
+<p>Leave the default path and choose version 2 from the drop down. </p>
+</li>
+<li>
+<p>Click "Enable Engine".</p>
+</li>
+</ol>
+<h4 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
-</code></pre></div></p>
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-root-token&gt;</strong> is your <em>root_token</em> generated by Vault.</li>
+</ul>
+</li>
+</ol>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Visit the portal using the FQDN name and continue from getting started steps <a href="https://open-amt-cloud-toolkit.github.io/docs/1.3/General/loginToRPS/">here</a></p>
+<p>Visit the portal using the FQDN name and <a href="https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/"><strong>Continue from the Get Started steps</strong></a></p>
                 
               
               
