@@ -1334,7 +1334,7 @@
 <p><strong>To clone the repositories:</strong></p>
 <ol>
 <li>
-<p>Open a Terminal or Powershell and navigate to a directory of your choice for development:</p>
+<p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.4.0
 </code></pre></div>
 </li>
@@ -1391,8 +1391,8 @@
 </tr>
 <tr>
 <td>MPS_JWT_SECRET</td>
-<td>A strong secret of your choice</td>
-<td>Used when generating a JSON Web Token for authentication</td>
+<td>A strong secret of your choice (e.g. A unique, random 256bit string)</td>
+<td>Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. More info on JWT can be found <a href="https://jwt.io/introduction">here</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1424,7 +1424,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">jwt_secrets</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">consumer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
     <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</span> <span class="c1">#sample key</span>
-<span class="hll">    <span class="nt">secret</span><span class="p">:</span> <span class="s">&quot;mySecret&quot;</span>
+<span class="hll">    <span class="nt">secret</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Yq3t6w9z$C&amp;E)H@McQfTjWnZr4u7x!A%</span> <span class="c1">#sample secret, DO NOT use for production</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -1435,19 +1435,19 @@
 <p>Build the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Docker images and launch the stack.</p>
 <ol>
 <li>
-<p>Run docker-compose to start the containers.</p>
+<p>Run docker-compose to start the containers from the <code>./open-amt-cloud-toolkit</code> directory.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo docker-compose -f &quot;docker-compose.yml&quot; up -d --build
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker-compose -f &quot;docker-compose.yml&quot; up -d --build
 </code></pre></div>
 </div>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important - For Windows* 10</p>
-<p>While the <code>docker-compose up</code> command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
+<p>While the <code>docker-compose up</code> command is running, you may see a number of pop-ups asking for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
 <p><img alt="Image of filesharing" src="../../assets/images/DockerFileSharing.png" /></p>
 </div>
 </li>
@@ -1457,21 +1457,22 @@
 <div class="highlight"><pre><span></span><code>sudo docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
 </code></pre></div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows (Powershell)</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
 </code></pre></div>
 </div>
 </div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE              STATUS                    NAMES
-webui:latest       Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_webui_1
-vault              Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_vault_1
-postgres           Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_db_1
-mps:latest         Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_mps_1
-rps:latest         Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_rps_1
-mpsrouter:latest   Up <span class="m">5</span> seconds             open-amt-cloud-toolkit_mpsrouter_1
-kong:2.3           Up <span class="m">5</span> seconds <span class="o">(</span>healthy<span class="o">)</span>   open-amt-cloud-toolkit_kong_1
+<div class="highlight"><pre><span></span><code>IMAGE               STATUS                             NAMES
+postgres            Up <span class="m">18</span> seconds                      open-amt-cloud-toolkit_db_1
+kong:2.3            Up <span class="m">17</span> seconds <span class="o">(</span>health: starting<span class="o">)</span>   open-amt-cloud-toolkit_kong_1
+eclipse-mosquitto   Up <span class="m">20</span> seconds                      open-amt-cloud-toolkit_mosquitto_1
+webui:latest        Up <span class="m">23</span> seconds                      open-amt-cloud-toolkit_webui_1
+rps:latest          Up <span class="m">24</span> seconds                      open-amt-cloud-toolkit_rps_1
+vault               Up <span class="m">21</span> seconds                      open-amt-cloud-toolkit_vault_1
+mpsrouter:latest    Up <span class="m">23</span> seconds                      open-amt-cloud-toolkit_mpsrouter_1
+mps:latest          Up <span class="m">22</span> seconds                      open-amt-cloud-toolkit_mps_1
 </code></pre></div>
 </div>
 </li>
