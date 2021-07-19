@@ -12,7 +12,7 @@
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.1.7">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.7">
     
     
       
@@ -1493,7 +1493,7 @@
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code></p>
+<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
 </li>
 <li>
 <p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
@@ -1549,11 +1549,8 @@
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Navigate to <code>./kubernetes</code> directory.</p>
-</li>
-<li>
 <p>Deploy using Helm.
-    <div class="highlight"><pre><span></span><code>helm install openamtstack ./charts
+    <div class="highlight"><pre><span></span><code>helm install openamtstack ./kubernetes/charts
 </code></pre></div></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -1613,7 +1610,7 @@ webui-784cd49976-bj7z5                               1/1     Running   0        
 <p>Click "Enable Engine".</p>
 </li>
 </ol>
-<h4 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h4>
+<h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
