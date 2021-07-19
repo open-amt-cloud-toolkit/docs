@@ -7,7 +7,7 @@ This setup installs the MPS and RPS microservices as Docker* containers, standar
 
 **To clone the repositories:**
 
-1. Open a Terminal or Powershell and navigate to a directory of your choice for development:
+1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
     git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v1.4.0
@@ -41,11 +41,11 @@ The  `.env.template` file is used by docker to set environment variables.
 3. Update the following 4 fields. Save and keep track of the values you choose.
 
     | Field Name | Required | Usage |
-    | ------------- | ------------------ | ------------ |
-    | MPS_COMMON_NAME | Development System IP Address | For connecting to MPS server via UI or APIs |
-    | MPS_WEB_ADMIN_USER | Username of your choice | For logging into the Sample Web UI |
+    | -------------          | ------------------ | ------------ |
+    | MPS_COMMON_NAME        | Development System IP Address      | For connecting to MPS server via UI or APIs |
+    | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
-    | MPS_JWT_SECRET | A strong secret of your choice | Used when generating a JSON Web Token for authentication |
+    | MPS_JWT_SECRET         | A strong secret of your choice (e.g. A unique, random 256bit string)    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. More info on JWT can be found [here](https://jwt.io/introduction).|
 
     !!! important
         The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
@@ -68,7 +68,7 @@ Set the shared secret used in Kong for JWT authentication.
     jwt_secrets:
       - consumer: admin
         key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
-        secret: "mySecret"
+        secret: Yq3t6w9z$C&E)H@McQfTjWnZr4u7x!A% #sample secret, DO NOT use for production
     ```
 
 3. Save and close the file.
@@ -79,20 +79,20 @@ Set the shared secret used in Kong for JWT authentication.
 Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
 
 
-1.  Run docker-compose to start the containers.
+1.  Run docker-compose to start the containers from the `./open-amt-cloud-toolkit` directory.
     
     === "Linux"
         ```
         sudo docker-compose -f "docker-compose.yml" up -d --build
         ```
     
-    === "Windows (Powershell)"
+    === "Windows"
         ```
         docker-compose -f "docker-compose.yml" up -d --build
         ```
     
     !!! important "Important - For Windows* 10"
-        While the `docker-compose up` command is running, you may see a pop-up ask for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
+        While the `docker-compose up` command is running, you may see a number of pop-ups asking for permission for Docker Desktop Filesharing. You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
 
         ![Image of filesharing](../assets/images/DockerFileSharing.png)
 
@@ -105,21 +105,22 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
         ```
     
-    === "Windows (Powershell)"
+    === "Windows"
         ```
         docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
         ```
     
     !!! success
         ``` bash    
-        IMAGE              STATUS                    NAMES
-        webui:latest       Up 5 seconds             open-amt-cloud-toolkit_webui_1
-        vault              Up 5 seconds             open-amt-cloud-toolkit_vault_1
-        postgres           Up 5 seconds             open-amt-cloud-toolkit_db_1
-        mps:latest         Up 5 seconds             open-amt-cloud-toolkit_mps_1
-        rps:latest         Up 5 seconds             open-amt-cloud-toolkit_rps_1
-        mpsrouter:latest   Up 5 seconds             open-amt-cloud-toolkit_mpsrouter_1
-        kong:2.3           Up 5 seconds (healthy)   open-amt-cloud-toolkit_kong_1
+        IMAGE               STATUS                             NAMES
+        postgres            Up 18 seconds                      open-amt-cloud-toolkit_db_1
+        kong:2.3            Up 17 seconds (health: starting)   open-amt-cloud-toolkit_kong_1
+        eclipse-mosquitto   Up 20 seconds                      open-amt-cloud-toolkit_mosquitto_1
+        webui:latest        Up 23 seconds                      open-amt-cloud-toolkit_webui_1
+        rps:latest          Up 24 seconds                      open-amt-cloud-toolkit_rps_1
+        vault               Up 21 seconds                      open-amt-cloud-toolkit_vault_1
+        mpsrouter:latest    Up 23 seconds                      open-amt-cloud-toolkit_mpsrouter_1
+        mps:latest          Up 22 seconds                      open-amt-cloud-toolkit_mps_1
         ```
     
 If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
