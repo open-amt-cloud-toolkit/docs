@@ -25,9 +25,9 @@ As long as the managed device is connected to the network and to a power source,
 
 3. Specify a **Config Name** of your choice.
 
-4. Select **IPv4**, and provide your developement system's IP Address.
+4. Select **IPv4**, and provide your development system's IP Address.
 
-5. **Cert Common Name (CN=)** should auto-populate. If not, provide your developement system's IP Address.
+5. **Cert Common Name (CN=)** should auto-populate. If not, provide your development system's IP Address.
 
 6. Leave **Port** as the default, 4433.
 
