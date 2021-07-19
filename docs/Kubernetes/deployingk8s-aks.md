@@ -2,48 +2,81 @@
 
 # Azure Kubernetes Service (AKS)
 
+This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using AKS. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See [Kubernetes (K8s)](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/deployingk8s/).
+
+Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about AKS [here](https://docs.microsoft.com/en-us/azure/aks/).
+
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- Azure CLI (v2.24.0+)
+- [Azure CLI (v2.24.0+)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Helm CLI (v3.5+)](https://helm.sh/)
 
 ## Create SSH Key
-This key is required by Azure to create VMs that use SSH keys for authentication. See [https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed) for more details.
+This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see [Detailed steps: Create and manage SSH keys](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed).
 
-```
-ssh-keygen -t rsa -b 2048
-```
-Note the location as you will need the public key (`.pub` file) in the next step. 
+1. Create a new ssh key.
+
+    ```
+    ssh-keygen -t rsa -b 2048
+    ```
+
+2. Take note of the location it was saved at. You will need the public key (`.pub` file) in a following step. 
 
 ## Deploy AKS
 
-Login using `az login` if you haven't already.
-```
-az login
-``` 
-Additionally, make sure the correct subscription is set as default using `az account set`
-```
-az account set
-```
+1. Login to Azure.
+  ```
+  az login
+  ``` 
 
-``` bash
-az group create --name <your-resource-group-name> --location eastus
-```
+    Additionally, you can verify the correct subscription is set.
+    ```
+    az account show
+    ```
 
-```
-az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
-```
-You will be prompted for a name for the AKS Cluster, the linux user admin name (i.e. your name), and the public key (`.pub` file) you generated in [Create SSH Key](#create-ssh-key). This takes about ~5 min. Note the `fqdnSuffix` in the "outputs" section of the JSON response (i.e. `westus2.cloudapp.azure.com`) when complete. This will be needed for the updating the commonName in the `values.yaml` file.
+2. Provide a name to create a new resource group.
+
+    ``` bash
+    az group create --name <your-resource-group-name> --location eastus
+    ```
+
+3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json`.
+
+    ```
+    az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
+    ```
+
+4. After running the previous command, you will be prompted for 3 different strings. After the final prompt, it will take about 5 minutes to finish running.
+    - Provide a name for the AKS Cluster.
+    - Provide a name (e.g. your name) for the linux user admin name.
+    - Provide the string of the ssh key from the `.pub` file.
+
+5. Take note of the `fqdnSuffix` in the `outputs` section of the JSON response (e.g. `eastus.cloudapp.azure.com`)
+
+    ```json hl_lines="8"
+    "outputs": {
+      "controlPlaneFQDN": {
+        "type": "String",
+        "value": "bwcluster-9c68035a.hcp.westus.azmk8s.io"
+      },
+      "fqdnSuffix": {
+        "type": "String",
+        "value": "eastus.cloudapp.azure.com"
+      }
+    },
+    ```
 
 ## Connect to AKS Instance
 
-Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/manage. With AKS, use the following: 
+Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/manage.
 
-```
-az aks get-credentials --resource-group <your-resource-group-name> --name <your-cluster-name>
-```
+1. Provide your resource group name and cluster name, respectively.
+
+    ```
+    az aks get-credentials --resource-group <your-resource-group-name> --name <your-cluster-name>
+    ```
 
 ## Create Secrets 
 
@@ -96,7 +129,7 @@ Where:
         - One uppercase, one lowercase, one numerical digit, one special character
 
 
-### Azure Storage Account Key 
+### 5. Azure Storage Account Key 
 Currently, we leverage Azure Storage Accounts for persistent storage of MPS certificates that can be shared by multiple instances of MPS. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).
 
 !!! note 
@@ -106,69 +139,135 @@ Currently, we leverage Azure Storage Accounts for persistent storage of MPS cert
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=<your-cluster-name>stg --from-literal=azurestorageaccountkey=<your-storage-key>
 ```
 
+Where:
+
+- **&lt;your-cluster-name&gt;** is the cluster name chosen in [Deploy AKS](#deploy-aks).
+- **&lt;your-storage-key&gt;** is one of the generated access keys of the storage account.
+
+    !!! important "Important - Finding Access Keys"
+        An access key can be found by either:
+
+        - Run `az storage account keys list --account-name <your-cluster-name>stg` to view access keys.
+
+        - Navigate to `Home > Storage accounts > cluster-name > Access keys` using Microsoft Azure via online.
+
 
 ## Update Configuration
 
-Update the `kong:` section in the `./kubernetes/charts/values.yaml` file with the desired dns name you would like for your cluster (i.e. myopenamtk8s):
+1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
 
-``` yaml
-kong:
-  proxy:
-    annotations:
-      service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>"
-```
+2. Update the *service.beta.kubernetes.io/azure-dns-label-name* key in the `kong:` section with the desired DNS name you would like for your cluster (i.e. myopenamtk8s).
 
-Next, update the `commonName:` key in the `mps:` section in the `values.yaml` file with the FQDN for your cluster. For AKS, the format is `<your-domain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the "outputs" section when you [Deploy AKS](#deploy-aks).
+    ``` yaml hl_lines="4"
+    kong:
+      proxy:
+        annotations:
+          service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>"
+    ```
 
-``` yaml
-mps:
-  commonName: "<your-domain-name>.<location>.cloudapp.azure.com"
-```
+3. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
 
-Lastly, the default access mode for storage (`storageAccessMode:`) is set to `ReadWriteOnce`. This only works with a one node cluster. You'll need to update this to `ReadWriteMany` to scale out the toolkit.
+    ```yaml hl_lines="2-5"
+    images:
+        mps: "vprodemo.azurecr.io/mps:latest"
+        rps: "vprodemo.azurecr.io/rps:latest"
+        webui: "vprodemo.azurecr.io/webui:latest"
+        mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
+        postgresdb: "postgres:13"
+    ```
 
-``` yaml
-mps:
-  storageAccessMode: "ReadWriteMany"
-```
+4. Update the following keys in the `mps` section.
 
-This will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide a `PersistentVolume` that can match the claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster:
+    | Key Name | Update to | Description |
+    | -------------     | ------------------    | ------------ |
+    | commonName        | FQDN for your cluster | For AKS, the format is `<your-domain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks). |
+    | storageAccessMode | ReadWriteMany         | Must set to `ReadWriteMany` to scale. The default access mode for storage (`storageAccessMode`) is set to `ReadWriteOnce`. This only works with a one node cluster. |
 
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: mps-certs
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  azureFile:
-    secretName: azure-secret
-    secretNamespace: default
-    shareName: mps-certs
-    readOnly: false
-  mountOptions:
-  - dir_mode=0755
-  - file_mode=0755
-  - uid=1000
-  - gid=1000
-  - mfsymlinks
-  - nobrl
-```
-This is provided in `./kubernetes/charts/volumes/azure.yaml` and can be applied to your cluster with 
 
-```
-kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
-```
+    ``` yaml hl_lines="2 4"
+    mps:
+        commonName: "<your-domain-name>.<location>.cloudapp.azure.com"
+        # storageClassName: ""
+        storageAccessMode: "ReadWriteOnce" #Change to ReadWriteMany
+        replicaCount: 1
+        logLevel: "silly"
+        connectionString: "postgresql://postgresadmin:admin123@postgres:5432/mpsdb"
+        jwtExpiration: 1440
+    ```
+
+
+5. Save and close the file.
+
+6. Provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For an AKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/azure.yaml`.
+
+    !!! note
+        Changing storageAccessMode will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide a `PersistentVolume` that can match that claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster.
+
+    !!! example "Provided azure.yaml Example"
+        ```yaml
+        apiVersion: v1
+        kind: PersistentVolume
+        metadata:
+          name: mps-certs
+        spec:
+          capacity:
+            storage: 1Gi
+          accessModes:
+            - ReadWriteMany
+          azureFile:
+            secretName: azure-secret
+            secretNamespace: default
+            shareName: mps-certs
+            readOnly: false
+          mountOptions:
+          - dir_mode=0755
+          - file_mode=0755
+          - uid=1000
+          - gid=1000
+          - mfsymlinks
+          - nobrl
+        ```
+
+7. Apply it to your cluster.
+    ```
+    kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
+    ```
+
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
-Navigate to `./kubernetes` and deploy using Helm 
-```
-helm install openamtstack ./charts
-```
+1. Deploy using Helm.
+    ```
+    helm install openamtstack ./kubernetes/charts
+    ```
+
+    !!! success
+        ```
+        NAME: openamtstack
+        LAST DEPLOYED: Thu Jul 15 11:17:38 2021
+        NAMESPACE: default
+        STATUS: deployed
+        REVISION: 1
+        TEST SUITE: None
+        ```
+
+2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+    ```
+    kubectl get pods
+    ```
+
+    !!! success
+        ``` hl_lines="2 6 8"
+        NAME                                                 READY   STATUS                       RESTARTS   AGE
+        mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+        mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
+        oactdb-697b55f885-g6l58                              1/1     Running                      0          2m6s
+        openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
+        openamtstack-vault-0                                 0/1     Running                      0          2m6s
+        openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+        rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
+        webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
+        ```
 
 ## Initialize and Unseal Vault
 
@@ -176,6 +275,13 @@ helm install openamtstack ./charts
 
     !!! important 
         Make sure you download your credentials and save them in a secure location.
+
+    !!! note "Note - Finding the Vault UI External IP Address"
+        The external IP of your Vault UI service can be found by either:
+
+        - Run `kubectl get services` and view under the `openamtstack-vault-ui` service.
+
+        - Navigate to `Home > Kubernetes services > cluster-name > Services and ingresses` using Microsoft Azure via online.
 
 After initializing and unsealing the vault, you need to enable the Key Value engine:
 
@@ -189,7 +295,7 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 5. Click "Enable Engine".
   
-#### Vault Token Secret
+### Vault Token Secret
 
 1. Add the root token as a secret to the k8s cluster so that the services can access Vault.
 
@@ -201,7 +307,25 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
     - **&lt;your-root-token&gt;** is your *root_token* generated by Vault.
 
+2. View the pods. All pods should now be Ready and Running.
+    ```
+    kubectl get pods
+    ```
+
+    !!! success
+        ```
+        NAME                                                 READY   STATUS      RESTARTS   AGE
+        mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
+        mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
+        oactdb-697b55f885-g6l58                              1/1     Running     0          4m5s
+        openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
+        openamtstack-vault-0                                 1/1     Running     0          4m5s
+        openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
+        rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
+        webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
+        ```
+
 ## Next Steps
 
-Visit the portal using the FQDN name and [**Continue from the Get Started steps**](https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/)
+Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/)
 

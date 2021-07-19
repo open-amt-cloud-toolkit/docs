@@ -66,7 +66,7 @@ Where:
 
 ## Update Configuration
 
-1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`
+1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
 
 2. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
 
@@ -120,11 +120,9 @@ Where:
 
 ## Deploy Open AMT Cloud Toolkit Using Helm
 
-1. Navigate to `./kubernetes` directory.
-
-2. Deploy using Helm.
+1. Deploy using Helm.
     ```
-    helm install openamtstack ./charts
+    helm install openamtstack ./kubernetes/charts
     ```
 
     !!! success
@@ -174,7 +172,7 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 5. Click "Enable Engine".
   
-#### Vault Token Secret
+### Vault Token Secret
 
 1. Add the root token as a secret to the k8s cluster so that the services can access Vault.
 
