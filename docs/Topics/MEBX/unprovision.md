@@ -10,7 +10,7 @@ Intel® MEBX allows for configuration of the Intel Manageability Engine (ME) pla
 
 3\. Enter the AMT password
 !!! NOTE
-    If it is the first time entering MEBX, the defaut password is `admin`. It will prompt you to create a new password.
+    If it is the first time entering MEBX, the default password is `admin`. It will prompt you to create a new password.
 
 4\. Select ‘Intel AMT configuration’ 
 

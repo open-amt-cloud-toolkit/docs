@@ -93,9 +93,9 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 ## R
 
-**Remote Provision Client (RPC):** A lightweight client application that resides on the managed device. The RPC communicates with the Manageability Engine Interface (MEI) in the Management Engine (ME) driver to activate Intel AMT. 
+**Remote Provision Client (RPC):** A lightweight client application that resides on the managed device. The RPC communicates with the Manageability Engine Interface (MEI) in the Management Engine (ME) driver to activate Intel® AMT. 
 
-**Remote Provision Server (RPS):** A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel AMT using a pre-defined profile.
+**Remote Provision Server (RPS):** A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.
 
 **REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
 

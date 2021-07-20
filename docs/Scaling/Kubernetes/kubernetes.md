@@ -9,13 +9,13 @@ Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater
 ### High level Design
 
 ####Figure 1: MPS Scaling Architecture
-[![Scaling architechure](../../assets/images/ScallingHighLevel.png)](../../assets/images/ScallingHighLevel.png)
+[![Scaling architecture](../../assets/images/ScallingHighLevel.png)](../../assets/images/ScallingHighLevel.png)
 Figure 1 presents the high-level architecture of MPS scaling mode. Per the figure, starting at the bottom:
     
 1. Devices connect to an available MPS Server through the load balancer.
-1. The REST API requests are routed to an available Web Server, a component of MPS running in scale mode, through a load balancer.
-1. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
-1. The MPS Server sends the traffic to the corresponding device.
+2. The REST API requests are routed to an available Web Server, a component of MPS running in scale mode, through a load balancer.
+3. The Web Server determines which MPS Server to route the traffic to based on which MPS Server the device is connected to and sends that traffic through the MPS Proxy connection. 
+4. The MPS Server sends the traffic to the corresponding device.
 
 ### MPS Configuration
 To support running the service in a distributed environment, some configuration settings were added to MPS. These settings can be modified in `open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml`. All the following settings have already been preset in the values.yaml file.
@@ -32,7 +32,7 @@ To support running the service in a distributed environment, some configuration 
 ||redis_password|password used to authenticate to redis|
 |general|web_proxy_port|port the web server used to communicate to MPS.|
 ||network_adaptor|network identifier used when device connects to MPS. Can be either an adaptor name such as `eth0` or starting ip address such as `192.168`.|
-||startup_mode|microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributated mode.|
+||startup_mode|microservice run mode. `standalone` when running in non scaling mode or run components in `mps` and `web` for distributed mode.|
 
 ## Get the Toolkit
 
@@ -75,5 +75,5 @@ docker push docker.io/vprodemo/mps:latest
 1. After deployment is complete use the command `kubectl get pods` to verify all pods have been launched successfully.
 
 !!! note 
-    Please restore values.yaml to its prelaunch condition before subsiquesnt deployments
+    Please restore values.yaml to its prelaunch condition before subsequent deployments
 

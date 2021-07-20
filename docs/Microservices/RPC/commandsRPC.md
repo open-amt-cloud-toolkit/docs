@@ -31,7 +31,8 @@ sudo docker run --device=/dev/mei0 rpc:latest <informational>
 | -c, --cmd &lt;command&gt;  | Server Command         | Activate or Deactivate command for AMT device. See example commands below. |
 | -u, --url &lt;url&gt;      | Websocket Server       | Address and Port of the RPS server, wss://localhost:8080. By default, RPS runs on port 8080. |
 
-##### Examples
+##### <a name="RPCexamples"></a>RPC Activate/Deactivate Examples  
+
 Activate a Device:
 ``` bash
 rpc --url wss://localhost/activate --cmd "-t activate --profile profile1"

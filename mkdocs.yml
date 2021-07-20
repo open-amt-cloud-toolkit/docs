@@ -45,7 +45,6 @@ nav:
     - Remote Provisioning Client :
       - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
       - Command Examples: Microservices/RPC/commandsRPC.md
-      - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
     - UI Toolkit:
       - Controls:
         - Keyboard, Video, Mouse: UIToolkit/Controls/kvmControl.md
@@ -55,6 +54,7 @@ nav:
         - Serial Over LAN: UIToolkit/Bundles/SerialOverLAN.md
       - Localization: UIToolkit/localization.md
       - Webpack Configuration: UIToolkit/Webpack-Configuration.md
+    - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Tutorials:
     - UI Toolkit KVM Module: Tutorials/uitoolkit.md
     - REST API Call: Tutorials/apiTutorial.md
@@ -71,7 +71,7 @@ nav:
     - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
     - AMT Power States: Topics/powerstates.md
-    - GUIDs in Intel AMT: Topics/guids.md
+    - GUIDs in Intel® AMT: Topics/guids.md
     - Logging: Topics/logging.md
     - Intel&reg MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
@@ -79,7 +79,6 @@ nav:
   - Letter From The Devs: letter.md
   - Release notes: release-notes.md
   - License: license.md
-  
 # Extensions
 markdown_extensions:
   - admonition

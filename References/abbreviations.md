@@ -8,7 +8,7 @@
 
 *[DNS suffix]: Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.
 
-*[Domain Profile]: Domain Profile - A profile enabling the remote activation of an Intel AMT device into Admin Control Mode.
+*[Domain Profile]: Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.
 
 *[domain suffix]: domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).  
 
@@ -30,7 +30,7 @@
 
 *[Profile]: Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process. 
 
-*[RPC]: Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS. 
+*[RPC]: Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS. 
 
 *[RPS]: Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.
 

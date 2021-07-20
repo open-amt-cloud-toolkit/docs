@@ -39,7 +39,7 @@
 
 	Rebuild and generate a new bundle before testing the changes.
 
-Language can be changed in the browser under langauage section of the browser settings. English is the default if no customized translation file provided for the langauage.
+Language can be changed in the browser under language section of the browser settings. English is the default if no customized translation file provided for the language.
 
 ## Get Localized Strings for Web Consoles with Localization Enabled
 

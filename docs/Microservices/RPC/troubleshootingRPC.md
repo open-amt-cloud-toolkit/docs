@@ -1,11 +1,28 @@
 --8<-- "References/abbreviations.md"
 
-The table below details possible errors that may occur when activating or de-activating managed devices along with some potential solutions.
+The sections below detail possible errors that may occur when activating or de-activating managed devices along with some potential solutions.
 
-!!! tip
-    If your device has more than one ethernet port, ensure your ethernet cable is plugged into the port that is connected to vPro. You can double check this by ensuring the link status reports "up" when running `./rpc --amtinfo all`. If you have network access, but show a link status of "down". It is likely the cable is plugged into the wrong port.
+# MPS
 
-| Error Message | Possible Solutions |
+| Error Issue or Message | Possible Solutions |
+| ------------- | ------------------ |
+| Vault is empty in dev mode. | Profiles and configs are not persistent in this mode. To run vault in production mode, follow the [Use Docker and Vault in Production Mode](../../Docker/dockerLocal_prodVault.md).|
+|MPS is missing from list of running services. | (1) Check for error messages in the logs. For details, see [Docker Logs](../overview.md#Dockerlogs). |
+| | (2) Verify that the .env file contains correct values in each field.|
+
+# RPS
+
+| Error Issue or Message | Possible Solutions |
+| ------------- | ------------------ |
+| Create a profile fails or information cannot be read from vault. | Make sure Vault and PostGres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).|
+| An error occurred during provisioning. | (1) Verify that the correct certificate is being used. |
+|  | (2) Verify the Domain suffix. |
+
+
+
+# RPC
+
+| Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
 | "Decrypting provisioning certificate failed"| Double check the password is correct on the certificate loaded into the "domains" on the UI | 
 | "Exception reading from device"  | If MPS and RPS are running in Docker, check to ensure Vault has been unsealed. |
@@ -16,4 +33,25 @@ The table below details possible errors that may occur when activating or de-act
 | Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00 | Ensure you have provided the `--password` flag for the `--cmd/-c` you are trying to execute, and that it is the password you used when provisioning the device. |
 | Unable to connect to websocket server. Please check url. | After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address. |
 | Error while activating the AMT in admin mode. | Check the logs on the RPS server. | 
-| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../../Topics/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [Command Examples](commandsRPC.md) | 
+| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../../Topics/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [RPC Activate/Deactivate Examples](commandsRPC.md) | 
+
+# UI Toolkit
+- If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial [Add MPS UI Toolkit Controls to a WebUI](../../Tutorials/uitoolkit.md). 
+- If adding a control results in an error, double-check the device ID, mpsServer IP address value, and authToken.
+
+# General Troubleshooting Tips
+
+If a configuration becomes unworkable, it may be necessary clean up the environment by:
+
+- Deactivating the managed device
+- Unprovisioning the managed device
+- Stopping all Docker services
+- Disabling the management engine
+
+Do all the above if it becomes necessary to reset your environment completely. See instructions below.
+
+1. **Deactivate the Managed Device:** Use rpc.exe as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples)
+2. **Unprovision the Managed Device:** See [Unprovisioning](../../Topics/MEBX/unprovision.md)
+3. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove services as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
+4. **Disable the Management Device:** If the certificate is no longer being accepted, disable the MEBX management engine and start over with configurations. See [Matt, please fill in]()
+

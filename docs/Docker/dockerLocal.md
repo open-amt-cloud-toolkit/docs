@@ -74,7 +74,7 @@ Set the shared secret used in Kong for JWT authentication.
 3. Save and close the file.
 
 
-## Build and Run the Docker Images
+## <a name="Builddockerimages"></a>Build and Run the Docker Images
 
 Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
 
