@@ -72,9 +72,9 @@ nav:
     - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
     - AMT Power States: Topics/powerstates.md
-    - GUIDs in Intel® AMT: Topics/guids.md
+    - GUIDs in Intel&reg; AMT: Topics/guids.md
     - Logging: Topics/logging.md
-    - Intel&reg MEBX:
+    - Intel&reg; MEBX:
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
       - Unprovisioning: Topics/MEBX/unprovision.md
   - Letter From The Devs: letter.md
