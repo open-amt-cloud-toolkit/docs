@@ -50,7 +50,9 @@ If a configuration becomes unworkable, it may be necessary clean up the environm
 
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
-1. **Deactivate the Managed Device:** Use rpc.exe as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples).
+1. **Deactivate the Managed Device:** Use rpc.exe as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples). 
+2. **Unprovision the Managed Device:** It is also possible to unprovision the device fully via MEBX. See [Unprovisioning](../../Topics/MEBX/unprovision.md).
+3. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove services as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 
 
@@ -75,8 +77,5 @@ Example:
        ```
        docker system prune -a --volumes
        ```
-    
-2. **Unprovision the Managed Device:** See [Unprovisioning](../../Topics/MEBX/unprovision.md).
-3. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove services as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
-4. **Disable the Management Device:** If the certificate is no longer being accepted, disable the MEBX management engine and start over with configurations. See [Matt, please fill in]()
+
 
