@@ -566,6 +566,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -757,18 +769,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -918,6 +918,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1161,7 +1173,7 @@
 
   <li class="md-nav__item">
     <a href="Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1187,13 +1199,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1373,7 +1385,7 @@
 <p>The toolkit guide provides instructions to:</p>
 <ul>
 <li>Deploy the Management Presence Server (<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) on the development system.</li>
-<li>Build and run Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>) on the managed device.</li>
+<li>Build and run Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) on the managed device.</li>
 <li>Connect the managed device (edge device).</li>
 </ul>
 <p>Additional sections provide guidance on the reference implementation <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr>, <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API usage, asset security, and more. </p>
@@ -1383,7 +1395,7 @@
 <ol>
 <li><strong><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></strong> - A microservice that uses an Intel vPro® Platform feature, Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) control.</li>
 <li><strong><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></strong> - A microservice that activates <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> platforms using predefined profiles and connects them to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for manageability use cases.</li>
-<li><strong><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong> - A lightweight client application that communicates with the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>.</li>
+<li><strong><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong> - A lightweight client application that communicates with the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>.</li>
 <li><strong><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></strong> - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, to a console. </li>
 <li><strong><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></strong> - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.</li>
 </ol>

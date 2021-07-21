@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-mps-and-rps-using-docker-and-production-vault" class="md-skip">
+        <a href="#use-docker-and-vault-in-production-mode" class="md-skip">
           Skip to content
         </a>
       
@@ -481,6 +481,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -672,18 +684,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -833,6 +833,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1076,7 +1088,7 @@
 
   <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1102,13 +1114,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1230,7 +1242,7 @@
                   </a>
                 
                 
-                <h1 id="run-mps-and-rps-using-docker-and-production-vault">Run <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using docker and production vault<a class="headerlink" href="#run-mps-and-rps-using-docker-and-production-vault" title="Permanent link">&para;</a></h1>
+                <h1 id="use-docker-and-vault-in-production-mode">Use Docker and Vault in Production Mode<a class="headerlink" href="#use-docker-and-vault-in-production-mode" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This document describes how to run <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.</p>
 <ol>

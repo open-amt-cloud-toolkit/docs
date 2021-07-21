@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#mps" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -478,6 +483,25 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Troubleshooting
+    </a>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -631,12 +655,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
     <label class="md-nav__link" for="nav-3-4">
       Remote Provisioning Client
       <span class="md-nav__icon md-icon"></span>
@@ -670,25 +692,6 @@
     <a href="../commandsRPC/" class="md-nav__link">
       Command Examples
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Troubleshooting
-    </a>
-    
   </li>
 
         
@@ -841,6 +844,27 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Troubleshooting
+    </a>
+    
   </li>
 
         
@@ -1084,7 +1108,7 @@
 
   <li class="md-nav__item">
     <a href="../../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1110,13 +1134,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1198,6 +1222,21 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1208,17 +1247,58 @@
                   </a>
                 
                 
-                  <h1>Troubleshooting</h1>
-                
-                <p>The table below details possible errors that may occur when activating or de-activating managed devices along with some potential solutions.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If your device has more than one ethernet port, ensure your ethernet cable is plugged into the port that is connected to vPro. You can double check this by ensuring the link status reports "up" when running <code>./rpc --amtinfo all</code>. If you have network access, but show a link status of "down". It is likely the cable is plugged into the wrong port.</p>
-</div>
+                <p>The sections below detail possible errors that may occur when activating or de-activating managed devices along with some potential solutions.</p>
+<h1 id="mps"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
-<th>Error Message</th>
+<th>Error Issue or Message</th>
+<th>Possible Solutions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vault is empty in dev mode.</td>
+<td>Profiles and configs are not persistent in this mode. To run vault in production mode, follow the <a href="../../../Docker/dockerLocal_prodVault/">Use Docker and Vault in Production Mode</a>.</td>
+</tr>
+<tr>
+<td><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is missing from list of running services.</td>
+<td>(1) Check for error messages in the logs. For details, see <a href="../../overview/#Dockerlogs">Docker Logs</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>(2) Verify that the .env file contains correct values in each field.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Error Issue or Message</th>
+<th>Possible Solutions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create a profile fails or information cannot be read from vault.</td>
+<td>Make sure Vault and PostGres are running. For details, see the <code>docker ps</code> command in <a href="../../../Docker/dockerLocal/#Builddockerimages">Build and Run Docker Images</a>.</td>
+</tr>
+<tr>
+<td>An error occurred during provisioning.</td>
+<td>(1) Verify that the correct certificate is being used.</td>
+</tr>
+<tr>
+<td></td>
+<td>(2) Verify the Domain suffix.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Error Issue or Message</th>
 <th>Possible Solutions</th>
 </tr>
 </thead>
@@ -1261,10 +1341,48 @@
 </tr>
 <tr>
 <td>The rpc.exe fails to connect.</td>
-<td>If a device has already been provisioned, <a href="../../../Topics/MEBX/unprovision/">unprovision</a> it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>, <a href="../commandsRPC/">Command Examples</a></td>
+<td>If a device has already been provisioned, <a href="../../../Topics/MEBX/unprovision/">unprovision</a> it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, <a href="../commandsRPC/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples</a></td>
 </tr>
 </tbody>
 </table>
+<h1 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h1>
+<ul>
+<li>If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial <a href="../../../Tutorials/uitoolkit/">Add <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI</a>. </li>
+<li>If adding a control results in an error, double-check the device ID, mpsServer IP address value, and authToken.</li>
+</ul>
+<h1 id="general-troubleshooting-tips">General Troubleshooting Tips<a class="headerlink" href="#general-troubleshooting-tips" title="Permanent link">&para;</a></h1>
+<p>If a configuration becomes unworkable, it may be necessary to clean up the environment by:</p>
+<ul>
+<li>unprovisioning, also known as deactivating, the managed device</li>
+<li>stopping all Docker services</li>
+</ul>
+<p>Do all the above if it becomes necessary to reset your environment completely. See instructions below.</p>
+<ol>
+<li><strong>Unprovision the Managed Device:</strong> Use rpc.exe to dectivate the managed device as described in <a href="../commandsRPC/#RPCexamples"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples</a>. The <code>deactivate</code> parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See <a href="../../../Topics/MEBX/unprovision/">Unprovisioning</a>.</li>
+<li><strong>Shut down Docker Services:</strong> Use <code>docker image prune</code> and <code>docker image rm</code> to stop or remove all images, containers, and volumes, as described in <a href="../../../Docker/dockerLocal/#Builddockerimages">Build and Run Docker Images</a>.</li>
+</ol>
+<p>The best practice example below stops Docker and then prunes all volumes. </p>
+<p>Example:</p>
+<p>Stop Docker services.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker-compose down -v
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker-compose down -v
+</code></pre></div>
+</div>
+</div>
+<p>Prune the volumes.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker system prune -a --volumes
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker system prune -a --volumes
+</code></pre></div>
+</div>
+</div>
                 
               
               

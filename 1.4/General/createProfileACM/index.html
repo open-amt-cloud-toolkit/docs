@@ -564,6 +564,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -755,18 +767,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -916,6 +916,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1159,7 +1171,7 @@
 
   <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1185,13 +1197,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1396,7 +1408,7 @@
 </div>
 <p><br></p>
 <h3 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">&para;</a></h3>
-<p>A <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>).</p>
+<p>A <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
 <div class="admonition note">
 <p class="admonition-title">Production Environment<p>In a production environment, devices are typically activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode enables <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
 </p>
@@ -1464,7 +1476,7 @@
 <a href="../../assets/images/RPS_CreateProfile_ACM.png"><img alt="RPS ACM Profile" src="../../assets/images/RPS_CreateProfile_ACM.png" /></a></p>
 <p><strong>Figure 2: Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile.</strong></p>
 </div>
-<h3 id="create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-a-domain-profile" title="Permanent link">&para;</a></h3>
+<h3 id="create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-a-domain-profile" title="Permanent link">&para;</a></h3>
 <p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> requires the creation of a Domain profile.</p>
 <p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
 <p><strong>To create a domain:</strong></p>
@@ -1478,7 +1490,7 @@
 <p><strong>Figure 3: Create Domain. </strong></p>
 </li>
 <li>
-<p>Specify a name of your choice for the <abbr title="Domain Profile - A profile enabling the remote activation of an Intel AMT device into Admin Control Mode.">Domain Profile</abbr> for the <strong>Name</strong> field. This does not have to be the actual network Domain Name/Suffix.</p>
+<p>Specify a name of your choice for the <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr> for the <strong>Name</strong> field. This does not have to be the actual network Domain Name/Suffix.</p>
 </li>
 <li>
 <p>Provide your <strong><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr></strong> as the <strong>Domain Name</strong>. This is the actual <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.</p>
@@ -1500,7 +1512,7 @@
 </li>
 </ol>
 <h2 id="next-up">Next Up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><strong><a href="../buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></a></strong></p>
+<p><strong><a href="../buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a></strong></p>
                 
               
               

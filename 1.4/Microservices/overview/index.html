@@ -483,6 +483,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -792,18 +804,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../RPC/troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -953,6 +953,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../RPC/troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1196,7 +1208,7 @@
 
   <li class="md-nav__item">
     <a href="../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1222,13 +1234,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1438,7 +1450,7 @@
 <p>Figure 1 illustrates the high-level steps for basic deployment: </p>
 <ol>
 <li><strong>Deploy Microservices</strong> - Install the microservices on a development system as Docker* containers, which can run locally or on the cloud.</li>
-<li><strong>Deploy <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> Architecture</strong> - Transfer the lightweight clients to managed devices.</li>
+<li><strong>Deploy <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Architecture</strong> - Transfer the lightweight clients to managed devices.</li>
 <li><strong>Configure AMT</strong> - Through the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, configure AMT by creating control mode profile(s).</li>
 <li><strong>Connect AMT</strong> - Use the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage connectivity, as this microservice listens for the call home messaging of managed devices.  </li>
 <li><strong>Issue AMT Command</strong> - Send power commands (e.g., power off) through the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
@@ -1488,7 +1500,7 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 </li>
 </ul>
 <h3 id="domains">Domains<a class="headerlink" href="#domains" title="Permanent link">&para;</a></h3>
-<p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> requires the creation of a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel AMT device into Admin Control Mode.">Domain Profile</abbr>.</p>
+<p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> requires the creation of a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr>.</p>
 <p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
 <h2 id="power-control">Power Control<a class="headerlink" href="#power-control" title="Permanent link">&para;</a></h2>
 <p>With the established <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> channel, <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> enables the administrator to manage remote devices and trigger power actions to:</p>
@@ -1557,7 +1569,7 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 <p><strong>Table 1: Summary of Open AMT Passwords</strong></p>
 <h2 id="log-files">Log Files<a class="headerlink" href="#log-files" title="Permanent link">&para;</a></h2>
 <p>Each microservice has an associated log file which can contain helpful debug information. Use <code>docker logs</code> to print log information to the terminal.</p>
-<h3 id="docker-logs">Docker Logs<a class="headerlink" href="#docker-logs" title="Permanent link">&para;</a></h3>
+<h3 id="docker-logs"><a name="Dockerlogs"></a>Docker Logs<a class="headerlink" href="#docker-logs" title="Permanent link">&para;</a></h3>
 <p><strong>To run docker log files in a terminal window as needed:</strong></p>
 <ol>
 <li>

@@ -483,6 +483,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -722,8 +734,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
+  <a href="#rpc-activatedeactivate-examples" class="md-nav__link">
+    RPC Activate/Deactivate Examples
   </a>
   
 </li>
@@ -742,7 +754,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_1" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     Examples
   </a>
   
@@ -762,7 +774,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_2" class="md-nav__link">
+  <a href="#examples_1" class="md-nav__link">
     Examples
   </a>
   
@@ -782,18 +794,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
   </li>
 
         
@@ -946,6 +946,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1189,7 +1201,7 @@
 
   <li class="md-nav__item">
     <a href="../../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1215,13 +1227,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1341,8 +1353,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
+  <a href="#rpc-activatedeactivate-examples" class="md-nav__link">
+    RPC Activate/Deactivate Examples
   </a>
   
 </li>
@@ -1361,7 +1373,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_1" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     Examples
   </a>
   
@@ -1381,7 +1393,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#examples_2" class="md-nav__link">
+  <a href="#examples_1" class="md-nav__link">
     Examples
   </a>
   
@@ -1416,9 +1428,9 @@
                 
                   <h1>Command Examples</h1>
                 
-                <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> is primarily used for communicating with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.</p>
+                <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> is primarily used for communicating with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.</p>
 <p>All currently available arguments and their definitions are listed below along with example commands. </p>
-<h3 id="rpc-usage"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> Usage<a class="headerlink" href="#rpc-usage" title="Permanent link">&para;</a></h3>
+<h3 id="rpc-usage"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Usage<a class="headerlink" href="#rpc-usage" title="Permanent link">&para;</a></h3>
 <p>On Windows:
 <div class="highlight"><pre><span></span><code>rpc &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
 rpc &lt;informational&gt;
@@ -1431,7 +1443,7 @@ sudo ./rpc &lt;informational&gt;
 <div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
 sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informational&gt;
 </code></pre></div></p>
-<h3 id="rpc-arguments"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> Arguments<a class="headerlink" href="#rpc-arguments" title="Permanent link">&para;</a></h3>
+<h3 id="rpc-arguments"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Arguments<a class="headerlink" href="#rpc-arguments" title="Permanent link">&para;</a></h3>
 <h4 id="required">Required<a class="headerlink" href="#required" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1454,7 +1466,7 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </tr>
 </tbody>
 </table>
-<h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h5>
+<h5 id="rpc-activatedeactivate-examples"><a name="RPCexamples"></a><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples<a class="headerlink" href="#rpc-activatedeactivate-examples" title="Permanent link">&para;</a></h5>
 <p>Activate a Device:
 <div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
 </code></pre></div></p>
@@ -1497,11 +1509,11 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 <tr>
 <td>-v, --verbose</td>
 <td>Verbose Output</td>
-<td>Display WSMan communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> when executing <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></td>
+<td>Display WSMan communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> when executing <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></td>
 </tr>
 </tbody>
 </table>
-<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
+<h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h5>
 <p>Override DNS detection and Activate device:
 <div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd &quot;-t activate --profile profile1&quot; --dns corp.com
 </code></pre></div></p>
@@ -1527,7 +1539,7 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 <tr>
 <td>--version</td>
 <td>Version</td>
-<td>Current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></td>
+<td>Current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></td>
 </tr>
 <tr>
 <td>--amtinfo &lt;item&gt;</td>
@@ -1536,7 +1548,7 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </tr>
 </tbody>
 </table>
-<h5 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h5>
+<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h5>
 <p>View All Information Items:
 <div class="highlight"><pre><span></span><code>rpc --amtinfo all
 </code></pre></div></p>

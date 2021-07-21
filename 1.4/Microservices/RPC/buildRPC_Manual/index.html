@@ -483,6 +483,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -733,18 +745,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../troubleshootingRPC/" class="md-nav__link">
-      Troubleshooting
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -894,6 +894,18 @@
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshootingRPC/" class="md-nav__link">
+      Troubleshooting
+    </a>
   </li>
 
         
@@ -1137,7 +1149,7 @@
 
   <li class="md-nav__item">
     <a href="../../../Topics/guids/" class="md-nav__link">
-      GUIDs in Intel AMT
+      GUIDs in Intel&reg; AMT
     </a>
   </li>
 
@@ -1163,13 +1175,13 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4" >
     <label class="md-nav__link" for="nav-6-4">
-      Intel&reg MEBX
+      Intel&reg; MEBX
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Intel&reg MEBX" data-md-level="2">
+    <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
       <label class="md-nav__title" for="nav-6-4">
         <span class="md-nav__icon md-icon"></span>
-        Intel&reg MEBX
+        Intel&reg; MEBX
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1312,7 +1324,7 @@
                 
                   <h1>Build & Run RPC (Manual)</h1>
                 
-                <p>In addition to using GitHub Actions to obtain a binary, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> binary can also be manually built. The steps below walk through how to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.</p>
+                <p>In addition to using GitHub Actions to obtain a binary, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> binary can also be manually built. The steps below walk through how to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.</p>
 <h3 id="required-software">Required Software<a class="headerlink" href="#required-software" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://git-scm.com/downloads">git</a></li>
@@ -1325,7 +1337,7 @@
 </li>
 </ul>
 <p><br></p>
-<p>The steps below assume the following directory structure where rpc is the clone of the <a href="https://github.com/open-amt-cloud-toolkit/rpc">rpc repository</a>, vcpkg is a clone of the VCPKG tool source and build is the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> build directory. Both vcpkg and build directories will be created in later steps.</p>
+<p>The steps below assume the following directory structure where rpc is the clone of the <a href="https://github.com/open-amt-cloud-toolkit/rpc">rpc repository</a>, vcpkg is a clone of the VCPKG tool source and build is the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> build directory. Both vcpkg and build directories will be created in later steps.</p>
 <div class="highlight"><pre><span></span><code>\rpc
   |__vcpkg
   |__build
@@ -1333,17 +1345,17 @@
 <h3 id="clone-the-repository">Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>On your development system, navigate to a directory of your choice to clone and build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>.</p>
+<p>On your development system, navigate to a directory of your choice to clone and build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.</p>
 </li>
 <li>
-<p>Clone the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> repository.</p>
+<p>Clone the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> repository.</p>
 <div class="highlight"><pre><span></span><code>git clone --branch v1.2.2 https://github.com/open-amt-cloud-toolkit/rpc.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> rpc
 </code></pre></div>
 </li>
 </ol>
-<h3 id="install-prerequisites-and-build-rpc">Install Prerequisites and Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#install-prerequisites-and-build-rpc" title="Permanent link">&para;</a></h3>
+<h3 id="install-prerequisites-and-build-rpc">Install Prerequisites and Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#install-prerequisites-and-build-rpc" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
-<p>Open 'x64 Native Tools Command Prompt for VS 20XX' on your development system.  <strong>This is NOT a regular Windows Command Prompt.</strong>  This specific tool is used for compiling the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> executable.</p>
+<p>Open 'x64 Native Tools Command Prompt for VS 20XX' on your development system.  <strong>This is NOT a regular Windows Command Prompt.</strong>  This specific tool is used for compiling the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.</p>
 <p><img alt="NTCP" src="../../../assets/images/x64NativeToolsCP.png" /></p>
 <p><strong>Build VCPKG and C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK</strong></p>
 <ol>
@@ -1363,7 +1375,7 @@
 </code></pre></div></p>
 </li>
 </ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong></p>
+<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
 <ol>
 <li>
 <p>Return to the <code>rpc</code> directory and create a new <code>build</code> directory.
@@ -1376,12 +1388,12 @@
 </code></pre></div></p>
 </li>
 <li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> executable.
+<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.
 <div class="highlight"><pre><span></span><code>cmake --build . --config Release
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake --build . --config Debug
 </code></pre></div></p>
 </div>
@@ -1424,7 +1436,7 @@
 </code></pre></div></p>
 </li>
 </ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong></p>
+<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
 <ol>
 <li>
 <p>Return to the <code>rpc</code> directory and create a new 'build' directory.
@@ -1437,13 +1449,13 @@
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
 </code></pre></div></p>
 </div>
 </li>
 <li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> executable.
+<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.
 <div class="highlight"><pre><span></span><code>cmake --build .
 </code></pre></div></p>
 </li>
@@ -1497,7 +1509,7 @@ make
 </code></pre></div></p>
 </li>
 </ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr></strong></p>
+<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
 <ol>
 <li>
 <p>Return to the <code>rpc</code> directory and create a new 'build' directory.
@@ -1510,21 +1522,21 @@ make
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
 <div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
 </code></pre></div></p>
 </div>
 </li>
 <li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr> executable
+<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable
 <div class="highlight"><pre><span></span><code>cmake --build .
 </code></pre></div></p>
 </li>
 </ol>
 </div>
 </div>
-<h3 id="run-rpc">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#run-rpc" title="Permanent link">&para;</a></h3>
-<p>For additional information on possible arguments when invoking <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel AMT using a configuration from RPS.">RPC</abbr>, see <a href="../commandsRPC/">Command Examples</a>.</p>
+<h3 id="run-rpc">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#run-rpc" title="Permanent link">&para;</a></h3>
+<p>For additional information on possible arguments when invoking <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, see <a href="../commandsRPC/">Command Examples</a>.</p>
 <p>The following example command shows how to activate and configure an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using a pre-defined profile on your local network.</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Windows</label><div class="tabbed-content">
 <div class="admonition important">
