@@ -33,6 +33,7 @@ nav:
     - Connect:
       - Build & Run RPC: General/buildRPC.md
       - Manage AMT Device: General/manageDevice.md
+    - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Components:
     - Overview: Microservices/overview.md
     - Managed Presence Server:
