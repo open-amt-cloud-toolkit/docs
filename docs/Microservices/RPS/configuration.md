@@ -12,5 +12,5 @@
 | RPS_VAULT_TOKEN              | `myroot`                | Token used to access the vault |
 | RPS_SECRETS_PATH             | `secret/data/`          | Specifies the path for where secrets are stored in the vault |
 | RPS_LOG_LEVEL                | `info`                  | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`, and `silly`  |
-| RPS_MPS_SERVER               | `http://localhost:3000` | Specifices where the MPS is hosted -- required for metadata registration (i.e. hostname, and tags) |
+| RPS_MPS_SERVER               | `http://localhost:3000` | Specifies where the MPS is hosted -- required for metadata registration (i.e. hostname, and tags) |
 | RPS_DELAY_TIMER              | `12`                   | Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, RPS sends heartbeats to RPC to keep the connection alive. |

@@ -109,7 +109,7 @@ Multiple passwords enhance the security of Open AMT Cloud Toolkit.
 ## Log Files
 Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.
 
-### Docker Logs
+### <a name="Dockerlogs"></a>Docker Logs
 
 **To run docker log files in a terminal window as needed:**
 

@@ -77,7 +77,7 @@ By default, React apps run on port `3000`. If port `3000` is already used by the
 
     !!! note
 
-        It is possible to see the below error after running `npm start`. This is okay and will be automatically resolved in the next section.
+        It is possible to see the error below after running `npm start`. This is okay and will be automatically resolved in the next section.
 
         [![UI Toolkit err](../assets/images/UIToolkit_npmstart_err.png)](../assets/images/UIToolkit_npmstart_err.png)
 
@@ -143,7 +143,7 @@ You are now able to remotely control your Intel® AMT device. Other controls suc
 You will see the errors in the following scenarios:
 
 - Compilation errors if the ui-toolkit was not downloaded and installed to your react app.
-- MPS/RPS server not running, appropriate controls willfail to work.
+- MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
 - If your browser is IE/Edge, there might be compatibility issues.
 
