@@ -41,41 +41,44 @@ The sections below detail possible errors that may occur when activating or de-a
 
 # General Troubleshooting Tips
 
-If a configuration becomes unworkable, it may be necessary clean up the environment by:
+If a configuration becomes unworkable, it may be necessary to clean up the environment by:
 
-- Deactivating the managed device
-- Unprovisioning the managed device
-- Stopping all Docker services
-- Disabling the management engine
+- unprovisioning, also known as deactivating, the managed device
+- stopping all Docker services
 
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
-1. **Deactivate the Managed Device:** Use rpc.exe as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples). 
-2. **Unprovision the Managed Device:** It is also possible to unprovision the device fully via MEBX. See [Unprovisioning](../../Topics/MEBX/unprovision.md).
-3. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove services as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
+1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../../Topics/MEBX/unprovision.md).
+2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 
 
 Example:
 
-   === "Linux"
-       ```
-       sudo docker-compose down -v
-       ```
-    
-   === "Windows (Powershell)"
-       ```
-       docker-compose down -v
-       ```
+Stop Docker services.
 
- === "Linux"
-       ```
-       sudo docker system prune -a --volumes
-       ```
+=== "Linux"
+     ```
+     sudo docker-compose down -v
+     ```
     
-   === "Windows (Powershell)"
-       ```
-       docker system prune -a --volumes
-       ```
+=== "Windows"
+     ```
+     docker-compose down -v
+     ```
+
+Prune the volumes.
+
+=== "Linux"
+     ```
+     sudo docker system prune -a --volumes
+     ```
+
+=== "Windows"
+     ```
+     docker system prune -a --volumes
+     ```
+
+
 
 
