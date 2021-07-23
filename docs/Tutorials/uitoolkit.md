@@ -75,14 +75,6 @@ By default, React apps run on port `3000`. If port `3000` is already used by the
 
     **Figure 2: React reports successful deployment.**
 
-    !!! note
-
-        It is possible to see the error below after running `npm start`. This is okay and will be automatically resolved in the next section.
-
-        [![UI Toolkit err](../assets/images/UIToolkit_npmstart_err.png)](../assets/images/UIToolkit_npmstart_err.png)
-
-        **Figure 3: React reports failed compilation.**
-
 !!! important
     By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
     When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
@@ -106,29 +98,29 @@ The code snippet below adds KVM control to the React application.
     | Field       |  Value   |
     | :----------- | :-------------- |
     | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-| `mpsServer` | Replace the *localhost* with the IP Address of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to localhost. |
+    | `mpsServer` | Replace the *localhost* with the IP Address or FQDN of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to the IP or FQDN. |
     | `authToken` | Update the token with a valid JWT Token you have received from logging into MPS. |
 
 
     ``` javascript hl_lines="8 9 11"
-        import React from "react";
-        import "./App.css";
-        import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit/reactjs/KVM";
+    import React from "react";
+    import "./App.css";
+    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit/reactjs/KVM";
 
-        function App() {
-            return (
-                <div className="App">
-                    <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-                    mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
-                    mouseDebounceTime="200"
-                    authToken="" // Replace with a valid JWT token provided during login of MPS
-                    canvasHeight="100%"
-                    canvasWidth="100%"></KVM>
-                </div>
-            );
-        }
+    function App() {
+        return (
+            <div className="App">
+                <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
+                mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
+                mouseDebounceTime="200"
+                authToken="" // Replace with a valid JWT token provided during login of MPS
+                canvasHeight="100%"
+                canvasWidth="100%"></KVM>
+            </div>
+        );
+    }
 
-        export default App;
+    export default App;
     ```
 
 

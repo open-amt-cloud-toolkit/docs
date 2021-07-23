@@ -9,14 +9,6 @@ This tutorial demonstrates how to generate a JWT token for Authorization and con
 !!! important
     Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../Docker/overview.md)** to install microservices locally with Docker*.
 
-Modify the tutorial template to implement other MPS REST APIs by changing these values:
-
-- path
-- method
-- body (if POST method)
-
-View all available MPS methods [here](../APIs/indexMPS.md).
-
 ## What You'll Need
 
 **Hardware**
@@ -48,20 +40,20 @@ The following sections describe how to:
 1. Navigate to a file directory of your choice.
 2. Create and open a new JavaScript* file with a name of your choice. In this guide, we will refer to it as *generateJWT.js*.
 3. Copy and paste the example code below.
+4. Update the values of the `username`, `password`, and `hostname` keys.
 
-    !!! example
-        Example generateJWT.js file:
+    !!! example "Example generateJWT.js POST"
 
-        ```javascript
+        ```javascript hl_lines="4 5 9"
         const https = require('https')
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing withself-signed certs, remove for production
         let data = JSON.stringify({
-            'username': 'standalone',
-            'password': 'G@ppm0ym'
+            'username': 'standalone', //Replace with MPS_WEB_ADMIN_USER from .env file or mpsweb stored secret
+            'password': 'G@ppm0ym' //Replace with MPS_WEB_ADMIN_PASSWORD from .env file or mpsweb stored secret
         })
 
         const options = {
-            hostname: 'localhost',
+            hostname: 'localhost', //Replace 'localhost' with IP Address or FQDN
             path: '/mps/login/api/v1/authorize',
             method: 'POST',
             headers: {
@@ -106,36 +98,36 @@ The following sections describe how to:
 
 1. Create and open a new JavaScript* file with a name of your choice. In this guide we will refer to it as *myDevices.js*.
 2. Copy and paste the example code below.
-3. Replace [Your-JWT-Token] with the JWT you generated from the Authorize API Call.
+3. Update the value of the `hostname` key to the IP Address or FQDN.
+4. Replace &lt;Your-JWT-Token&gt; with the JWT you generated from the Authorize API Call.
 
-    !!! example
-        Example myDevices.js file:
+    !!! example "Example myDevices.js GET"
 
-        ```javascript hl_lines="9"
-            const https = require('https')
-            process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing with self-signed certs, remove for production
-            
-            const options = {
-                hostname: 'localhost',
-                path: '/mps/api/v1/devices',
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer [Your-JWT-Token]' //Replace [Your-JWT-Token] with your generated JWT Token
-                }
+        ```javascript hl_lines="5 9"
+        const https = require('https')
+        process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 //For testing with self-signed certs, remove for production
+        
+        const options = {
+            hostname: 'localhost', //Replace 'localhost' with IP Address or FQDN
+            path: '/mps/api/v1/devices',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer <Your-JWT-Token>' //Replace <Your-JWT-Token> with your generated JWT Token
             }
-            
-            const req = https.request(options, (res) => {
-                res.setEncoding('utf8')
-                res.on('data', d => {
-                    console.log(d)
-                })
+        }
+        
+        const req = https.request(options, (res) => {
+            res.setEncoding('utf8')
+            res.on('data', d => {
+                console.log(d)
             })
-            
-            req.on('error', (e) => {
-                console.error(e)
-            })
-            
-            req.end()
+        })
+        
+        req.on('error', (e) => {
+            console.error(e)
+        })
+        
+        req.end()
 
         ```
 
@@ -174,10 +166,16 @@ The following sections describe how to:
 
 ## Other Methods
 
-The sample Node code snippet can be adapted for other MPS and RPS methods. To learn more, see: 
+The sample POST and GET code snippets above can be adapted for other MPS and RPS methods. To test other methods, see: 
 
 - [MPS Methods to manage a device](../APIs/indexMPS.md).
 - [RPS Methods for server configuration and provisioning](../APIs/indexRPS.md).
+
+Modify the tutorial POST and GET templates to implement other MPS REST APIs by changing these values:
+
+- path
+- method
+- payload (stored in the variable 'data', if POST method)
 
 ## Explore the UI Toolkit
 In addition to REST API calls, the Open AMT Cloud Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
