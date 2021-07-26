@@ -10,7 +10,7 @@ Open AMT Cloud Toolkit supports Eventing, customizable event monitoring, using M
 ![../assets/images/MQTT.png](../assets/images/MQTT.png)
 **Figure 1: MQTT Eventing Examples**
 
-An Open AMT Cloud Toolkit sends JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. In Figure 1 above, proactive notifications are published on the MQTT bus. 
+An Open AMT Cloud Toolkit sends JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. As shown in Figure 1, proactive notifications are published in the MQTT container. 
 
 ## What You'll Need
 
