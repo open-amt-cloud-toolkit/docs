@@ -89,7 +89,7 @@ docker build -f "Dockerfile" -t rpc:latest .
         Windows is not supported due to current limitations. See [Devices in Containers on Windows](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/hardware-devices-in-containers#hyper-v-isolated-linux-container-support) for more information.
     === "Windows"
         ```
-        rpc.exe -u wss://[Development-IP-Address]/activate --nocertcheck -c "-t activate --profile [profile-name]"
+        .\rpc.exe -u wss://[Development-IP-Address]/activate --nocertcheck -c "-t activate --profile [profile-name]"
         ```
 
     !!! note
