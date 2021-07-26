@@ -15,9 +15,10 @@ An Open AMT Cloud Toolkit sends JSON events to a Mosquitto* broker deployed as a
 ## What You'll Need
 
 **Obtain MQTT Explorer: **
+Choose the MQTT tool of your choice. In the example, below we use is MQTT Explorer.
 
 1. Go to the Microsoft Store.
-2. Type `MQQT-Explorer` in **Search**.
+2. Type `MQTT-Explorer` in **Search**.
 3. Choose **Get**.
 
 # To Set Up MQTT Support
@@ -26,7 +27,7 @@ An Open AMT Cloud Toolkit sends JSON events to a Mosquitto* broker deployed as a
 
 1. In a text editor or IDE of choice, open the `.env` file to edit.
 
-2. Update the field `MPS_MQTT_ADDRESS` with `mqtt://mosquitto:8883`. The `mqtt:` prefix indicates an MQTT broker is being used. Kong* will now route event messages to port 8083.
+2. Update the field `MPS_MQTT_ADDRESS` with `mqtt://mosquitto:8883`. The `mqtt:` prefix indicates an MQTT broker is being used. Kong* will now route event messages to port 8883.
    
 3. Save and close file.
 
