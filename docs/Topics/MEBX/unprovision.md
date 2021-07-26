@@ -8,7 +8,7 @@ Intel® MEBX allows for configuration of the Intel Manageability Engine (ME) pla
 
 2\. While the device is booting up, press `Ctrl+P` to reach the MEBX login screen 
 !!! important
-    In the example above `Ctrl+P` reaches the MEBX login screen. BIOS screen activation may vary among manufacturers. Check your system documentation.
+    In the example above, `Ctrl+P` reaches the MEBX login screen. BIOS screen activation may vary among manufacturers. Check your system documentation.
 
 3\. Enter the AMT password
 !!! NOTE
