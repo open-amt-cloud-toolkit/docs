@@ -37,7 +37,7 @@ Choose the MQTT tool of your choice. In the example, below we use is MQTT Explor
    
 2. Add a Name (suggested: `MPS`). 
    
-3. Choose the `mqtt` from the dropdown **protocol**. 
+3. Choose the `mqtt` optiohn from the dropdown **protocol**. 
    
 4. In the **Host** field, add the IP address of the system where Kong is installed.
    
