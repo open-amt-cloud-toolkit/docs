@@ -49,7 +49,7 @@ Choose the MQTT tool of your choice. In the example, below we use is MQTT Explor
 
 3. Verify **Validate certificate** and **Encryption (tls)** are **disabled**. 
    
-4. Choose the `mqtt` option from the dropdown **protocol**. 
+4. Choose the `mqtt://` option from the dropdown **protocol**. 
    
 5. In the **Host** field, add the IP address of the system where Kong is installed.
    
