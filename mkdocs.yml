@@ -77,7 +77,7 @@ nav:
     - Intel&reg; MEBX: 
       - DNS Suffix: Topics/MEBX/dnsSuffix.md
       - Unprovisioning: Topics/MEBX/unprovision.md
-    - MQTT: Topics/mqtt.md
+    - MQTT Eventing: Topics/mqtt.md
   - Letter From The Devs: letter.md
   - Release notes: release-notes.md
   - License: license.md
