@@ -92,9 +92,11 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+11. Search and select the **WiFi Config** from the list of WiFi Configs created previously. The selected Wifi Configs will be shown under **Associated Wireless Profiles** and can be re-ordered by dragging them.
 
-12. Click **Save.**
+12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+13. Click **Save.**
 
 !!! example
     Example ACM Profile:
