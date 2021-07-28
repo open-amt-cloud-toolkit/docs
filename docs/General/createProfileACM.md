@@ -24,7 +24,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 #### DNS Suffix
 The DNS suffix encompasses the domain suffix (e.g., .com) and follows the hostname. Consider the following DNS Name example:
 
-???+ Example
+!!! example
     DNS Name: cb-vending1.burgerbusiness.com
 
 In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerbusiness.com.**
@@ -53,7 +53,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
-!!! note "Production Environment"
+!!! important "Production Environment"
         In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 
@@ -77,7 +77,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
 
-    !!! important
+    !!! important "Important - Using Strong Passwords"
         This password must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
@@ -96,8 +96,8 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 12. Click **Save.**
 
-!!! example
-    Example ACM Profile:
+!!! example "Example ACM Profile"
+    
     [![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
 
     **Figure 2: Example ACM profile.**
@@ -128,9 +128,8 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
 7. Click **Save.**
 
-    !!! example
-        Example Domain:
-            
+    !!! example "Example Domain"
+                    
         [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
         **Figure 4: Example Domain profile. **
 
