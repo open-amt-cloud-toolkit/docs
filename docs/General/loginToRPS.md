@@ -14,6 +14,9 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
     ```
     https://<Development-IP-Address>
     ```
+    !!! important
+        NOTE: Use the development system's IP address, not localhost, in the URL. The development system's IP address is where the MPS is installed and running.
+
 
 2.  A warning screen will prompt. Click **Advanced** and then **Proceed** to continue to connect to the MPS webserver.
 
