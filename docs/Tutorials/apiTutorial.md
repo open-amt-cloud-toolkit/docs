@@ -37,12 +37,15 @@ The following sections describe how to:
 
 ### Create a New File
 
+!!! note "Note - MPS API Authorize Method"
+    See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Auth/post_api_v1_authorize){target=_blank} for the structure and other requirements of the Authorize API call used in the following to generate a JWT.
+
 1. Navigate to a file directory of your choice.
 2. Create and open a new JavaScript* file with a name of your choice. In this guide, we will refer to it as *generateJWT.js*.
 3. Copy and paste the example code below.
 4. Update the values of the `username`, `password`, and `hostname` keys.
 
-    !!! example "Example generateJWT.js POST"
+    !!! example "Example POST - generateJWT.js"
 
         ```javascript hl_lines="4 5 9"
         const https = require('https')
@@ -96,12 +99,15 @@ The following sections describe how to:
 
 ## Construct API Call for Devices
 
+!!! note "Note - MPS API GetDevices Method"
+    See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices){target=_blank} for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.
+
 1. Create and open a new JavaScript* file with a name of your choice. In this guide we will refer to it as *myDevices.js*.
 2. Copy and paste the example code below.
 3. Update the value of the `hostname` key to the IP Address or FQDN.
 4. Replace &lt;Your-JWT-Token&gt; with the JWT you generated from the Authorize API Call.
 
-    !!! example "Example myDevices.js GET"
+    !!! example "Example GET - myDevices.js"
 
         ```javascript hl_lines="5 9"
         const https = require('https')
@@ -168,8 +174,8 @@ The following sections describe how to:
 
 The sample POST and GET code snippets above can be adapted for other MPS and RPS methods. To test other methods, see: 
 
-- [MPS Methods to manage a device](../APIs/indexMPS.md).
-- [RPS Methods for server configuration and provisioning](../APIs/indexRPS.md).
+- [MPS Methods to manage a device](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps){target=_blank}.
+- [RPS Methods for server configuration and provisioning](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps){target=_blank}.
 
 Modify the tutorial POST and GET templates to implement other MPS REST APIs by changing these values:
 

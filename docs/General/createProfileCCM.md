@@ -38,7 +38,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
 
-    !!! important
+    !!! important "Important - Using Strong Passwords"
         This password must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
@@ -55,9 +55,8 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 11. Click **Save.**
 
-    !!! example
-        Example CCM Profile:
-
+    !!! example "Example CCM Profile"
+        
         [![RPS](../assets/images/RPS_CreateProfile.png)](../assets/images/RPS_CreateProfile.png)
         **Figure 2: Example CCM profile.**
 

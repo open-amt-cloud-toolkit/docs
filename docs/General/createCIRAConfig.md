@@ -35,7 +35,7 @@ As long as the managed device is connected to the network and to a power source,
 
 8. Set a strong **Password** of your choice.
 
-    !!! important
+    !!! important "Important - Using Strong Passwords"
         This password must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
@@ -46,8 +46,7 @@ As long as the managed device is connected to the network and to a power source,
 
 10. Click **Save.**
     
-    !!! example
-        Example CIRA Config:
+    !!! example "Example CIRA Config"
             
         [![RPS](../assets/images/RPS_CreateCIRAConfig.png)](../assets/images/RPS_CreateCIRAConfig.png)
         **Figure 2: Example CIRA Config.** 

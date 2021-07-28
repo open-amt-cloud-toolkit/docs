@@ -92,7 +92,7 @@ docker build -f "Dockerfile" -t rpc:latest .
         .\rpc.exe -u wss://[Development-IP-Address]/activate --nocertcheck -c "-t activate --profile [profile-name]"
         ```
 
-    !!! note
+    !!! note "Note - RPC Arguments"
         Because we are using a self-signed certificate for easier development testing, we need to supply the **nocertcheck** flag. In production, you would opt for a CA signed certificate. Find out more information about the [flag and other arguments](../Microservices/RPC/commandsRPC.md).
 
 
@@ -102,7 +102,7 @@ docker build -f "Dockerfile" -t rpc:latest .
     [![RPC Success](../assets/images/RPC_Success.png)](../assets/images/RPC_Success.png)
 
 
-    !!! note "Troubleshooting"
+    !!! error "Troubleshooting"
         Run into an issue? Try these [troubleshooting steps](../Microservices/RPC/troubleshootingRPC.md).
          
 

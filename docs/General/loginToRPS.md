@@ -9,18 +9,19 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
 
 ## Log In
 
-1. Open any modern web browser and navigate to the following link. Because the MPS Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the Sample Web UI to connect.
+1. Open any modern web browser and navigate to the following link.
 
     ```
     https://<Development-IP-Address>
     ```
-    !!! important
-        NOTE: Use the development system's IP address, not localhost, in the URL. The development system's IP address is where the MPS is installed and running.
+
+    !!! important "Important - URL of Sample Web UI"
+        You **must use** the development system's IP address in the URL. **Localhost or 127.0.0.1 will NOT work**. [Read more about Kong API Gateway to find out why](https://konghq.com/kong/){target=_blank}. The development system's IP address is where the Docker containers are running.
 
 
-2.  A warning screen will prompt. Click **Advanced** and then **Proceed** to continue to connect to the MPS webserver.
+2.  A warning screen will prompt because the MPS Server is using self-signed certificates for testing. Click **Advanced** and then **Proceed** to continue to connect to the Sample Web UI.
 
-    !!! example
+    !!! example "Example - Chrome* Browser Warning Screen"
         [![MPS Warning](../assets/images/selfSignedConnect.png)](../assets/images/selfSignedConnect.png)
 
 
@@ -29,10 +30,8 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
 
 4. The home page is shown below in Figure 1.
 
-    !!! example
+    !!! example "Example - Sample Web UI Home Page"
         [![WebUI](../assets/images/WebUI_Home.png)](../assets/images/WebUI_Home.png)
-
-        **Figure 1: Sample Web UI Home Page**
     
 
 ## Next up
