@@ -1432,6 +1432,10 @@
 </ul>
 <h2 id="generate-a-jwt">Generate a JWT<a class="headerlink" href="#generate-a-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-new-file">Create a New File<a class="headerlink" href="#create-a-new-file" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note - <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Authorize Method</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for the structure and other requirements of the Authorize API call used in the following to generate a JWT.</p>
+</div>
 <ol>
 <li>Navigate to a file directory of your choice.</li>
 <li>Create and open a new JavaScript<em> file with a name of your choice. In this guide, we will refer to it as </em>generateJWT.js*.</li>
@@ -1439,7 +1443,7 @@
 <li>
 <p>Update the values of the <code>username</code>, <code>password</code>, and <code>hostname</code> keys.</p>
 <div class="admonition example">
-<p class="admonition-title">Example generateJWT.js POST</p>
+<p class="admonition-title">Example POST - generateJWT.js</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">)</span>
 <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">[</span><span class="s1">&#39;NODE_TLS_REJECT_UNAUTHORIZED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span> <span class="c1">//For testing withself-signed certs, remove for production</span>
 <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
@@ -1491,6 +1495,10 @@
 </li>
 </ol>
 <h2 id="construct-api-call-for-devices">Construct API Call for Devices<a class="headerlink" href="#construct-api-call-for-devices" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note - <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API GetDevices Method</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.</p>
+</div>
 <ol>
 <li>Create and open a new JavaScript<em> file with a name of your choice. In this guide we will refer to it as </em>myDevices.js*.</li>
 <li>Copy and paste the example code below.</li>
@@ -1498,7 +1506,7 @@
 <li>
 <p>Replace &lt;Your-JWT-Token&gt; with the JWT you generated from the Authorize API Call.</p>
 <div class="admonition example">
-<p class="admonition-title">Example myDevices.js GET</p>
+<p class="admonition-title">Example GET - myDevices.js</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">)</span>
 <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">[</span><span class="s1">&#39;NODE_TLS_REJECT_UNAUTHORIZED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span> <span class="c1">//For testing with self-signed certs, remove for production</span>
 
@@ -1559,8 +1567,8 @@ Example JSON Pretty Print:</p>
 <h2 id="other-methods">Other Methods<a class="headerlink" href="#other-methods" title="Permanent link">&para;</a></h2>
 <p>The sample POST and GET code snippets above can be adapted for other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods. To test other methods, see: </p>
 <ul>
-<li><a href="../../APIs/indexMPS/"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device</a>.</li>
-<li><a href="../../APIs/indexRPS/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning</a>.</li>
+<li><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps" target="_blank"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device</a>.</li>
+<li><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning</a>.</li>
 </ul>
 <p>Modify the tutorial POST and GET templates to implement other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs by changing these values:</p>
 <ul>

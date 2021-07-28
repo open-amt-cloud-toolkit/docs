@@ -1592,7 +1592,7 @@ When you make changes, you do not need to stop the application and restart. It w
 </tr>
 <tr>
 <td align="left"><code>authToken</code></td>
-<td align="left">Update the token with a valid JWT Token you have received from logging into <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</td>
+<td align="left">Update the token with a valid JWT Token you have received during authentication when logging into <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Alternatively, see other instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1606,7 +1606,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <span class="hll">            <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//Replace with AMT Device GUID</span>
 </span><span class="hll">            <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
 </span>            <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-<span class="hll">            <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT token provided during login of MPS</span>
+<span class="hll">            <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT token provided during login of MPS or via the &#39;Authorize&#39; API Method</span>
 </span>            <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
             <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
         <span class="o">&lt;</span><span class="err">/div&gt;</span>
@@ -1620,10 +1620,10 @@ When you make changes, you do not need to stop the application and restart. It w
 <p>Save and close the file.</p>
 </li>
 <li>
-<p>If the React app is still open in the browser and hasn't updated, refresh the page. If not already open, open Chrome and navigate to the given URLs from your successful output. By default it is <code>https://localhost:3001</code> if <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is running on Port 3000 already.</p>
+<p>If the React app hasn't updated automatically, refresh the page.</p>
 </li>
 </ol>
-<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device. Other controls such as device audit logs or profiles for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> have example code below to test with.</p>
+<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using Keyboard, Video, Mouse control.</p>
 <p>You will see the errors in the following scenarios:</p>
 <ul>
 <li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
@@ -1634,9 +1634,9 @@ When you make changes, you do not need to stop the application and restart. It w
 <p><br></p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <h3 id="try-other-controls">Try Other Controls<a class="headerlink" href="#try-other-controls" title="Permanent link">&para;</a></h3>
-<p>Try out other React controls such as Serial Over LAN <a href="../../UIToolkit/Controls/serialOverLANControl/">here</a></p>
+<p>Try out other React controls such as <a href="../../UIToolkit/Controls/serialOverLANControl/">Serial Over LAN</a>.</p>
 <h3 id="customize-and-create-bundles">Customize and Create Bundles<a class="headerlink" href="#customize-and-create-bundles" title="Permanent link">&para;</a></h3>
-<p>Try out creating and customizing React bundles for things such as Serial Over LAN or <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> <a href="../../UIToolkit/Bundles/kvm/">here</a></p>
+<p>Try out creating and customizing React bundles for things such as Serial Over LAN or <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> <a href="../../UIToolkit/Bundles/kvm/">here</a>.</p>
 <h2 id="license-note">License Note<a class="headerlink" href="#license-note" title="Permanent link">&para;</a></h2>
 <p>If you are distributing the FortAwesome Icons, please provide attribution to the source per the <a href="https://creativecommons.org/licenses/by/4.0/deed.ast">CC-by 4.0</a> license obligations.</p>
                 

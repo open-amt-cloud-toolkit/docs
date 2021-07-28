@@ -1317,14 +1317,18 @@
 <h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open any modern web browser and navigate to the following link. Because the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is using self-signed certificates in developer mode, we must proceed past the warning screen for the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> to connect.</p>
+<p>Open any modern web browser and navigate to the following link.</p>
 <div class="highlight"><pre><span></span><code>https://&lt;Development-IP-Address&gt;
 </code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important - URL of <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></p>
+<p>You <strong>must use</strong> the development system's IP address in the URL. <strong>Localhost or 127.0.0.1 will NOT work</strong>. <a href="https://konghq.com/kong/" target="_blank">Read more about Kong API Gateway to find out why</a>. The development system's IP address is where the Docker containers are running.</p>
+</div>
 </li>
 <li>
-<p>A warning screen will prompt. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> webserver.</p>
+<p>A warning screen will prompt because the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is using self-signed certificates for testing. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">Example - Chrome* Browser Warning Screen</p>
 <p><a href="../../assets/images/selfSignedConnect.png"><img alt="MPS Warning" src="../../assets/images/selfSignedConnect.png" /></a></p>
 </div>
 </li>
@@ -1334,9 +1338,8 @@
 <li>
 <p>The home page is shown below in Figure 1.</p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
+<p class="admonition-title">Example - <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Home Page</p>
 <p><a href="../../assets/images/WebUI_Home.png"><img alt="WebUI" src="../../assets/images/WebUI_Home.png" /></a></p>
-<p><strong>Figure 1: <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Home Page</strong></p>
 </div>
 </li>
 </ol>

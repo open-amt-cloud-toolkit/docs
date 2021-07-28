@@ -1396,8 +1396,10 @@
 </div>
 <h4 id="dns-suffix">DNS Suffix<a class="headerlink" href="#dns-suffix" title="Permanent link">&para;</a></h4>
 <p>The <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> encompasses the <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> (e.g., .com) and follows the hostname. Consider the following DNS Name example:</p>
-<details class="example" open="open"><summary>Example</summary><p>DNS Name: cb-vending1.burgerbusiness.com</p>
-</details>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>DNS Name: cb-vending1.burgerbusiness.com</p>
+</div>
 <p>In this example, the hostname is <strong>cb-vending1</strong> and the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> is <strong>burgerbusiness.com.</strong></p>
 <p><strong>To set the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>: </strong></p>
 <ol>
@@ -1421,7 +1423,7 @@
 <p><br></p>
 <h3 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">&para;</a></h3>
 <p>A <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
-<div class="admonition note">
+<div class="admonition important">
 <p class="admonition-title">Production Environment<p>In a production environment, devices are typically activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode enables <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
 </p>
 </div>
@@ -1451,7 +1453,7 @@
 <li>
 <p>Provide a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</p>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Important - Using Strong Passwords</p>
 <p>This password must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
 <li>
@@ -1483,9 +1485,8 @@
 </li>
 </ol>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>:
-<a href="../../assets/images/RPS_CreateProfile_ACM.png"><img alt="RPS ACM Profile" src="../../assets/images/RPS_CreateProfile_ACM.png" /></a></p>
+<p class="admonition-title">Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
+<p><a href="../../assets/images/RPS_CreateProfile_ACM.png"><img alt="RPS ACM Profile" src="../../assets/images/RPS_CreateProfile_ACM.png" /></a></p>
 <p><strong>Figure 2: Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile.</strong></p>
 </div>
 <h3 id="create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-a-domain-profile" title="Permanent link">&para;</a></h3>
@@ -1516,8 +1517,7 @@
 <li>
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example Domain:</p>
+<p class="admonition-title">Example Domain</p>
 <p><a href="../../assets/images/RPS_CreateDomain.png"><img alt="RPS Domain Creation" src="../../assets/images/RPS_CreateDomain.png" /></a>
 <strong>Figure 4: Example Domain profile. </strong></p>
 </div>
