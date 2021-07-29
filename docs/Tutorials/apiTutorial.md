@@ -144,7 +144,7 @@ The following sections describe how to:
     ```
 
     !!! important
-        This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
+        This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e., [Power Actions](../Topics/powerstates.md), Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
 
 
     !!! example

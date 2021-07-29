@@ -42,7 +42,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
-    | MPS_COMMON_NAME        | Development System IP Address      | For connecting to MPS server via UI or APIs |
+    | MPS_COMMON_NAME        | Development System IP Address. | For connecting to MPS server via UI or APIs. **WARNING: Do not use localhost. Use the development system IP Address.**|
     | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256bit string. See another example in [code snippet below](./#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
