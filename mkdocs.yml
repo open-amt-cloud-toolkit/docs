@@ -10,74 +10,75 @@ theme:
   name: 'material'
   language: 'en'
   logo: 'assets/images/logo-white-75px.png'
-  analytics: 
+  analytics:
     gtag: 'G-00QEDJW2TS'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
   custom_dir: ./docs/overrides
 # Page tree
 nav:
   - Home: index.md
   - Get Started:
-    - Prerequisites: Docker/overview.md
-    - Set Up: Docker/dockerLocal.md
-    - Configure:
-      - Login to Sample Web UI: General/loginToRPS.md
-      - Create a CIRA Config: General/createCIRAConfig.md
-      - Create an AMT Profile:
-        - Create a Profile with CCM: General/createProfileCCM.md
-        - Create a Profile with ACM: General/createProfileACM.md  
-    - Connect:
-      - Build & Run RPC: General/buildRPC.md
-      - Manage AMT Device: General/manageDevice.md
-    - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
+      - Prerequisites: Docker/overview.md
+      - Set Up: Docker/dockerLocal.md
+      - Configure:
+          - Login to Sample Web UI: General/loginToRPS.md
+          - Create a CIRA Config: General/createCIRAConfig.md
+          - Create an AMT Profile:
+              - Create a Profile with CCM: General/createProfileCCM.md
+              - Create a Profile with ACM: General/createProfileACM.md
+      - Connect:
+          - Build & Run RPC: General/buildRPC.md
+          - Manage AMT Device: General/manageDevice.md
+      - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Components:
-    - Overview: Microservices/overview.md
-    - Managed Presence Server:
-      - Configuration: Microservices/MPS/configuration.md
-      - Security Information: Microservices/MPS/securityMPS.md
-    - Remote Provisioning Server:
-      - Configuration: Microservices/RPS/configuration.md
-      - Network Profiles: Microservices/RPS/networkConfig.md
-      - Security Information: Microservices/RPS/securityRPS.md
-    - Remote Provisioning Client :
-      - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
-      - Command Examples: Microservices/RPC/commandsRPC.md
-    - UI Toolkit:
-      - Controls:
-        - Keyboard, Video, Mouse: UIToolkit/Controls/kvmControl.md
-        - Serial Over LAN: UIToolkit/Controls/serialOverLANControl.md
-      - React Bundles:
-        - Keyboard, Video, Mouse: UIToolkit/Bundles/kvm.md
-        - Serial Over LAN: UIToolkit/Bundles/SerialOverLAN.md
-      - Localization: UIToolkit/localization.md
-      - Webpack Configuration: UIToolkit/Webpack-Configuration.md
-    - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
+      - Overview: Microservices/overview.md
+      - Managed Presence Server:
+          - Configuration: Microservices/MPS/configuration.md
+          - Security Information: Microservices/MPS/securityMPS.md
+      - Remote Provisioning Server:
+          - Configuration: Microservices/RPS/configuration.md
+          - Network Profiles: Microservices/RPS/networkConfig.md
+          - Security Information: Microservices/RPS/securityRPS.md
+      - Remote Provisioning Client:
+          - Build & Run RPC (Manual): Microservices/RPC/buildRPC_Manual.md
+          - Command Examples: Microservices/RPC/commandsRPC.md
+      - UI Toolkit:
+          - Controls:
+              - Keyboard, Video, Mouse: UIToolkit/Controls/kvmControl.md
+              - Serial Over LAN: UIToolkit/Controls/serialOverLANControl.md
+          - React Bundles:
+              - Keyboard, Video, Mouse: UIToolkit/Bundles/kvm.md
+              - Serial Over LAN: UIToolkit/Bundles/SerialOverLAN.md
+          - Localization: UIToolkit/localization.md
+          - Webpack Configuration: UIToolkit/Webpack-Configuration.md
+      - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Tutorials:
-    - UI Toolkit KVM Module: Tutorials/uitoolkit.md
-    - REST API Call: Tutorials/apiTutorial.md
-    # - Databases: Tutorials/addDatabase.md
-    # - Secret Storage: Tutorials/addVault.md
-    - Scaling: 
-      - Overview: Scaling/overview.md
-      - Docker Swarm*: Scaling/Docker Swarm/docker-swarm.md
-      - Kubernetes Deployments:
-          - Kubernetes (K8s): Kubernetes/deployingk8s.md
-          - AKS: Kubernetes/deployingk8s-aks.md
+      - UI Toolkit KVM Module: Tutorials/uitoolkit.md
+      - REST API Call: Tutorials/apiTutorial.md
+      # - Databases: Tutorials/addDatabase.md
+      # - Secret Storage: Tutorials/addVault.md
+      - Scaling:
+          - Overview: Scaling/overview.md
+          - Docker Swarm*: Scaling/Docker Swarm/docker-swarm.md
+          - Kubernetes Deployments:
+              - Kubernetes (K8s): Kubernetes/deployingk8s.md
+              - AKS: Kubernetes/deployingk8s-aks.md
   - APIs:
-    - Management Presence Server: APIs/indexMPS.md
-    - Remote Provisioning Server: APIs/indexRPS.md
+      - Management Presence Server: APIs/indexMPS.md
+      - Remote Provisioning Server: APIs/indexRPS.md
   - Topics:
-    - AMT Power States: Topics/powerstates.md
-    - GUIDs in Intel® AMT: Topics/guids.md
-    - Logging: Topics/logging.md
-    - Intel&reg; MEBX: 
-      - DNS Suffix: Topics/MEBX/dnsSuffix.md
-      - Unprovisioning: Topics/MEBX/unprovision.md
-    - MQTT Eventing: Topics/mqtt.md
+      - AMT Power States: Topics/powerstates.md
+      - GUIDs in Intel® AMT: Topics/guids.md
+      - Logging: Topics/logging.md
+      - Intel&reg; MEBX:
+          - DNS Suffix: Topics/MEBX/dnsSuffix.md
+          - Unprovisioning: Topics/MEBX/unprovision.md
+      - MQTT Eventing: Topics/mqtt.md
   - Letter From The Devs: letter.md
   - Release notes: release-notes.md
   - License: license.md
