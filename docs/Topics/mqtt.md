@@ -2,7 +2,9 @@
 
 # Message Queuing Telemetry Transport (MQTT) Eventing Support
 
-Open AMT Cloud Toolkit supports Eventing, customizable event monitoring, using Message Queuing Telemetry Transport (MQTT), an IoT publish-and-subscribe network protocol. With MQTT Eventing, administrators subscribe and customize network event monitoring of server events. This eliminates the need to query or poll MPS to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. 
+Open AMT Cloud Toolkit supports Eventing using Message Queuing Telemetry Transport (MQTT), an IoT publish-and-subscribe network protocol. With MQTT Eventing, administrators can subscribe to specific topics, categories of events, for server event monitoring. This eliminates the need to query or poll MPS to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. 
+
+
 
 !!! important
     Currently, the implementation publishes all MPS REST API call events to the MQTT Broker. 
