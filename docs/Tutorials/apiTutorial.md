@@ -174,13 +174,13 @@ The following sections describe how to:
 
 The sample POST and GET code snippets above can be adapted for other MPS and RPS methods. To test other methods, see: 
 
-- [MPS Methods to manage a device:](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps){target=_blank}
+- [MPS Methods to manage a device:](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){target=_blank}
 
-    [MPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps){: .md-button .md-button--primary target=_blank }
+    [MPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){: .md-button .md-button--primary target=_blank }
 
-- [RPS Methods for server configuration and provisioning:](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps){target=_blank}
+- [RPS Methods for server configuration and provisioning:](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){target=_blank}
 
-    [RPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps){: .md-button .md-button--primary target=_blank }
+    [RPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){: .md-button .md-button--primary target=_blank }
 
 Modify the tutorial POST and GET templates to implement other MPS REST APIs by changing these values:
 
