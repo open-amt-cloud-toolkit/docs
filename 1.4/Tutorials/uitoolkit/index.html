@@ -1555,8 +1555,8 @@
 <p><a href="../../assets/images/UIToolkit_npmstart.png"><img alt="UI Toolkit start" src="../../assets/images/UIToolkit_npmstart.png" /></a></p>
 <p><strong>Figure 2: React reports successful deployment.</strong></p>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
+<div class="admonition note">
+<p class="admonition-title">Note - Using Chromium Browser and Refreshing</p>
 <p>By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
 When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.</p>
 </div>
@@ -1584,15 +1584,15 @@ When you make changes, you do not need to stop the application and restart. It w
 <tbody>
 <tr>
 <td align="left"><code>deviceId</code></td>
-<td align="left">Replace the example deviceId value with the GUID of the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device activated and connected to your <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. Information on obtaining a GUID can be found <a href="../../Topics/guids/">here</a>.</td>
+<td align="left"><strong>Replace the example deviceId</strong> value with the GUID of the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device.  See <a href="../../Topics/guids/">How to Find GUIDs in <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr></a>.</td>
 </tr>
 <tr>
 <td align="left"><code>mpsServer</code></td>
-<td align="left">Replace the <em>localhost</em> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. The default <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server port is 3000. If using KONG, remove the port and append <code>/mps/ws/relay</code>  to the IP or FQDN.</td>
+<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. When using KONG, <code>/mps/ws/relay</code> must be appeneded to the IP or FQDN.</td>
 </tr>
 <tr>
 <td align="left"><code>authToken</code></td>
-<td align="left">Update the token with a valid JWT Token you have received during authentication when logging into <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Alternatively, see other instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
+<td align="left"><strong>Provide valid JWT.</strong> See instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1606,7 +1606,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <span class="hll">            <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span> <span class="c1">//Replace with AMT Device GUID</span>
 </span><span class="hll">            <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span> <span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
 </span>            <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-<span class="hll">            <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT token provided during login of MPS or via the &#39;Authorize&#39; API Method</span>
+<span class="hll">            <span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1">// Replace with a valid JWT token from &#39;Authorize&#39; API Method</span>
 </span>            <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
             <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
         <span class="o">&lt;</span><span class="err">/div&gt;</span>
@@ -1630,6 +1630,14 @@ When you make changes, you do not need to stop the application and restart. It w
 <li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server not running, appropriate controls will fail to work.</li>
 <li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server running and device not connected.</li>
 <li>If your browser is IE/Edge, there might be compatibility issues.</li>
+<li>
+<p>Incorrect or invalid JWT for authToken, see instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example authToken Format</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90&quot;</span><span class="p">}</span>
+</code></pre></div>
+</div>
+</li>
 </ul>
 <p><br></p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
