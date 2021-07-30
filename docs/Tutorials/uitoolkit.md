@@ -75,7 +75,7 @@ By default, React apps run on port `3000`. If port `3000` is already used by the
 
     **Figure 2: React reports successful deployment.**
 
-!!! important
+!!! Note "Note - Using Chromium Browser and Refreshing"
     By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
     When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
 
@@ -97,9 +97,9 @@ The code snippet below adds KVM control to the React application.
 
     | Field       |  Value   |
     | :----------- | :-------------- |
-    | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-    | `mpsServer` | Replace the *localhost* with the IP Address or FQDN of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to the IP or FQDN. |
-    | `authToken` | Update the token with a valid JWT Token you have received during authentication when logging into MPS. Alternatively, see other instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
+    | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Topics/guids.md). |
+    | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your Development Device or MPS Server. When using KONG, `/mps/ws/relay` must be appeneded to the IP or FQDN. |
+    | `authToken` | **Provide valid JWT.** See instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
 
 
     ``` javascript hl_lines="8 9 11"
@@ -113,7 +113,7 @@ The code snippet below adds KVM control to the React application.
                 <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
                 mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
                 mouseDebounceTime="200"
-                authToken="" // Replace with a valid JWT token provided during login of MPS or via the 'Authorize' API Method
+                authToken="" // Replace with a valid JWT token from 'Authorize' API Method
                 canvasHeight="100%"
                 canvasWidth="100%"></KVM>
             </div>
@@ -138,6 +138,13 @@ You will see the errors in the following scenarios:
 - MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
 - If your browser is IE/Edge, there might be compatibility issues.
+- Incorrect or invalid JWT for authToken
+    
+    !!! example "Example authToken Format"
+
+        ```json
+        {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"}
+        ```
 
 <br>
 
