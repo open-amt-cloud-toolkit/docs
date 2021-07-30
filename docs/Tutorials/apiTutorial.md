@@ -144,7 +144,7 @@ The following sections describe how to:
     ```
 
     !!! important
-        This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
+        This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e., [Power Actions](../Topics/powerstates.md), Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
 
 
     !!! example
@@ -174,8 +174,13 @@ The following sections describe how to:
 
 The sample POST and GET code snippets above can be adapted for other MPS and RPS methods. To test other methods, see: 
 
-- [MPS Methods to manage a device](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps){target=_blank}.
-- [RPS Methods for server configuration and provisioning](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps){target=_blank}.
+- [MPS Methods to manage a device:](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){target=_blank}
+
+    [MPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){: .md-button .md-button--primary target=_blank }
+
+- [RPS Methods for server configuration and provisioning:](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){target=_blank}
+
+    [RPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){: .md-button .md-button--primary target=_blank }
 
 Modify the tutorial POST and GET templates to implement other MPS REST APIs by changing these values:
 
