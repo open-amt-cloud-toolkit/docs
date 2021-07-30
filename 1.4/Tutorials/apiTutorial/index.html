@@ -1254,7 +1254,7 @@
 
   <li class="md-nav__item">
     <a href="../../Topics/mqtt/" class="md-nav__link">
-      MQTT Eventing
+      MQTT Event Monitoring
     </a>
   </li>
 
@@ -1540,7 +1540,7 @@
 </code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e. Power Actions, Audit Logs, etc), the device GUID is <em>required</em> as part of the GET path.</strong> Save this value if you want to try other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Other ways to retrieve a GUID can be found <a href="../../Topics/guids/">here</a>.</p>
+<p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e., <a href="../../Topics/powerstates/">Power Actions</a>, Audit Logs, etc), the device GUID is <em>required</em> as part of the GET path.</strong> Save this value if you want to try other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Other ways to retrieve a GUID can be found <a href="../../Topics/guids/">here</a>.</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1567,8 +1567,14 @@ Example JSON Pretty Print:</p>
 <h2 id="other-methods">Other Methods<a class="headerlink" href="#other-methods" title="Permanent link">&para;</a></h2>
 <p>The sample POST and GET code snippets above can be adapted for other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods. To test other methods, see: </p>
 <ul>
-<li><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps" target="_blank"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device</a>.</li>
-<li><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning</a>.</li>
+<li>
+<p><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0" target="_blank"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device:</a></p>
+<p><a class="md-button md-button--primary" href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0" target="_blank"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Docs</a></p>
+</li>
+<li>
+<p><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning:</a></p>
+<p><a class="md-button md-button--primary" href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Docs</a></p>
+</li>
 </ul>
 <p>Modify the tutorial POST and GET templates to implement other <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs by changing these values:</p>
 <ul>
