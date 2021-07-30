@@ -138,7 +138,7 @@ You will see the errors in the following scenarios:
 - MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
 - If your browser is IE/Edge, there might be compatibility issues.
-- Incorrect or invalid JWT for authToken
+- Incorrect or invalid JWT for authToken, see instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}.
     
     !!! example "Example authToken Format"
 
