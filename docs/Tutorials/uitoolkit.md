@@ -75,7 +75,7 @@ By default, React apps run on port `3000`. If port `3000` is already used by the
 
     **Figure 2: React reports successful deployment.**
 
-!!! important
+!!! Note "Note - Using Chromium Browser and Refreshing"
     By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
     When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
 
@@ -97,9 +97,9 @@ The code snippet below adds KVM control to the React application.
 
     | Field       |  Value   |
     | :----------- | :-------------- |
-    | `deviceId` | Replace the example deviceId value with the GUID of the Intel® AMT device activated and connected to your MPS server. Information on obtaining a GUID can be found [here](../Topics/guids.md). |
-    | `mpsServer` | Replace the *localhost* with the IP Address or FQDN of your Development Device or MPS Server. The default MPS Server port is 3000. If using KONG, remove the port and append `/mps/ws/relay`  to the IP or FQDN. |
-    | `authToken` | Update the token with a valid JWT Token you have received from logging into MPS. |
+    | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Topics/guids.md). |
+    | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your Development Device or MPS Server. When using KONG, `/mps/ws/relay` must be appeneded to the IP or FQDN. |
+    | `authToken` | **Provide valid JWT.** See instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
 
 
     ``` javascript hl_lines="8 9 11"
@@ -113,7 +113,7 @@ The code snippet below adds KVM control to the React application.
                 <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
                 mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
                 mouseDebounceTime="200"
-                authToken="" // Replace with a valid JWT token provided during login of MPS
+                authToken="" // Replace with a valid JWT token from 'Authorize' API Method
                 canvasHeight="100%"
                 canvasWidth="100%"></KVM>
             </div>
@@ -126,10 +126,10 @@ The code snippet below adds KVM control to the React application.
 
 4. Save and close the file.
 
-5. If the React app is still open in the browser and hasn't updated, refresh the page. If not already open, open Chrome and navigate to the given URLs from your successful output. By default it is `https://localhost:3001` if MPS is running on Port 3000 already.
+5. If the React app hasn't updated automatically, refresh the page.
 
 
-You are now able to remotely control your Intel® AMT device. Other controls such as device audit logs or profiles for RPS have example code below to test with.
+You are now able to remotely control your Intel® AMT device using Keyboard, Video, Mouse control.
 
 
 You will see the errors in the following scenarios:
@@ -138,6 +138,13 @@ You will see the errors in the following scenarios:
 - MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
 - If your browser is IE/Edge, there might be compatibility issues.
+- Incorrect or invalid JWT for authToken, see instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}.
+    
+    !!! example "Example authToken Format"
+
+        ```json
+        {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"}
+        ```
 
 <br>
 
@@ -145,11 +152,11 @@ You will see the errors in the following scenarios:
 
 ### Try Other Controls
 
-Try out other React controls such as Serial Over LAN [here](../UIToolkit/Controls/serialOverLANControl.md)
+Try out other React controls such as [Serial Over LAN](../UIToolkit/Controls/serialOverLANControl.md).
 
 ### Customize and Create Bundles
 
-Try out creating and customizing React bundles for things such as Serial Over LAN or KVM [here](../UIToolkit/Bundles/kvm.md)
+Try out creating and customizing React bundles for things such as Serial Over LAN or KVM [here](../UIToolkit/Bundles/kvm.md).
 
 
 ## License Note

@@ -59,5 +59,5 @@ A Docker container is the instantiation of a Docker image as a virtualized unit 
 Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)   
 
 ## Next up
-[**Build Docker* Images**](dockerLocal.md)
+[**Setup - Build Docker* Images**](dockerLocal.md)
 
