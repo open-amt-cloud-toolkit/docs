@@ -215,6 +215,10 @@ For additional information on possible arguments when invoking RPC, see [Command
 
 The following example command shows how to activate and configure an Intel® AMT device using a pre-defined profile on your local network.
 
+
+1. After building the RPC, copy the executable to the managed device.
+2. Run the RPC.
+
 === "Windows"
     !!! important
         On a Windows® 10 system, the Command Prompt must be run as Adminstrator.

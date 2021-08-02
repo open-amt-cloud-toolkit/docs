@@ -78,7 +78,7 @@ With the established CIRA channel, Open AMT Cloud Toolkit enables the administra
 - reset
 - reset to BIOS
 
-For more information about power states supported by the REST APIs, see [Intel® AMT Implementation and Reference Guide](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm) for more details. 
+For more information about [power states](../Topics/powerstates.md) supported by the REST APIs, see [Intel® AMT Implementation and Reference Guide](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fchangesystempowerstate.htm) for more details. 
 
 ## Keyboard, Video, Mouse (KVM) Control
 
