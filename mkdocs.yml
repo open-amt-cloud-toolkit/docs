@@ -101,3 +101,5 @@ extra_css:
   - assets\stylesheets\version-select.css
 extra_javascript:
   - assets\javascripts\version-select.js
+plugins:
+  - render_swagger
