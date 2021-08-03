@@ -34,6 +34,7 @@ jobs:
       - name: Run a one-line script
         run: |
           pip install mkdocs-material==6.1.7
+          pip install mkdocs-render-swagger-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
       - uses: actions/checkout@v2
