@@ -7,4 +7,4 @@
   }
 </style>
 
-!!swagger API_Details_MPS.json!!
+!!swagger-http https://api.swaggerhub.com/apis/rbheopenamt/mps/1.5.0!!
