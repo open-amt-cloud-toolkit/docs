@@ -4,7 +4,7 @@ site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2021 Intel Corporation'
-site_dir: site/1.4
+site_dir: site/1.5
 # Configuration
 theme:
   name: 'material'

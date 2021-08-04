@@ -33,7 +33,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          pip install mkdocs-material==6.1.7
+          pip install mkdocs-material==7.2.2
           pip install mkdocs-render-swagger-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
