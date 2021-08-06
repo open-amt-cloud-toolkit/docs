@@ -84,7 +84,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 If you are using a private docker registry, you'll need to provide your credentials to K8S. 
 ``` bash
-kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
+kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
 ```
 
 Where:
