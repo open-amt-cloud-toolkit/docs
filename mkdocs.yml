@@ -21,7 +21,11 @@ theme:
   custom_dir: ./docs/overrides
 # Page tree
 nav:
-  - Home: index.md
+  - Home:
+      - Overview: index.md
+      - Letter From The Devs: letter.md
+      - Release notes: release-notes.md
+      - License: license.md
   - Get Started:
       - Prerequisites: Docker/overview.md
       - Set Up: Docker/dockerLocal.md
@@ -79,9 +83,6 @@ nav:
           - DNS Suffix: Topics/MEBX/dnsSuffix.md
           - Unprovisioning: Topics/MEBX/unprovision.md
       - Event Monitoring with MQTT: Topics/mqtt.md
-  - Letter From The Devs: letter.md
-  - Release notes: release-notes.md
-  - License: license.md
 # Extensions
 markdown_extensions:
   - admonition
@@ -101,3 +102,5 @@ extra_css:
   - assets\stylesheets\version-select.css
 extra_javascript:
   - assets\javascripts\version-select.js
+plugins:
+  - render_swagger
