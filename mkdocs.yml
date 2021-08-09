@@ -99,8 +99,8 @@ markdown_extensions:
       permalink: true
 extra_css:
   - assets\stylesheets\branding.css
-  - assets\stylesheets\version-select.css
-extra_javascript:
-  - assets\javascripts\version-select.js
 plugins:
   - render_swagger
+extra:
+  version:
+    provider: mike
