@@ -21,7 +21,11 @@ theme:
   custom_dir: ./docs/overrides
 # Page tree
 nav:
-  - Home: index.md
+  - Home:
+      - Overview: index.md
+      - Letter From The Devs: letter.md
+      - Release notes: release-notes.md
+      - License: license.md
   - Get Started:
       - Prerequisites: Docker/overview.md
       - Set Up: Docker/dockerLocal.md
@@ -81,9 +85,6 @@ nav:
       - Event Monitoring:
           - Viewing MQTT Events: Topics/mqtt.md
           - Adding/Editing Events: Tutorials/addMqttEvents.md
-  - Letter From The Devs: letter.md
-  - Release notes: release-notes.md
-  - License: license.md
 # Extensions
 markdown_extensions:
   - admonition
@@ -103,3 +104,5 @@ extra_css:
   - assets\stylesheets\version-select.css
 extra_javascript:
   - assets\javascripts\version-select.js
+plugins:
+  - render_swagger
