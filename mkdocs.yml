@@ -18,6 +18,8 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - search.suggest
+    - search.highlight
   custom_dir: ./docs/overrides
 # Page tree
 nav:
@@ -103,6 +105,7 @@ extra_css:
   - assets\stylesheets\branding.css
 plugins:
   - render_swagger
+  - search
 extra:
   version:
     provider: mike
