@@ -14,3 +14,4 @@
 | RPS_LOG_LEVEL                | `info`                  | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`, and `silly`  |
 | RPS_MPS_SERVER               | `http://localhost:3000` | Specifies where the MPS is hosted -- required for metadata registration (i.e. hostname, and tags) |
 | RPS_DELAY_TIMER              | `12`                   | Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, RPS sends heartbeats to RPC to keep the connection alive. |
+| RPS_MQTT_ADDRESS            | No Value   | Address of where the mqtt broker is hosted. Mqtt container is named `mosquitto` and is open to port `8883`. Thus unless setting are changed the value should be either empty (off) or `mqtt://mosquitto:8883` (on) |

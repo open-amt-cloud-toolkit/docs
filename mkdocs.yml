@@ -82,7 +82,9 @@ nav:
       - Intel&reg; MEBX:
           - DNS Suffix: Topics/MEBX/dnsSuffix.md
           - Unprovisioning: Topics/MEBX/unprovision.md
-      - Event Monitoring with MQTT: Topics/mqtt.md
+      - Event Monitoring:
+          - Viewing MQTT Events: Topics/mqtt.md
+          - Adding/Editing Events: Tutorials/addMqttEvents.md
 # Extensions
 markdown_extensions:
   - admonition
