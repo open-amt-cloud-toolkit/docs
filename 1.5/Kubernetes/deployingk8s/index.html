@@ -1390,10 +1390,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1558,7 +1597,7 @@
 <li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
 <li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
 </ul>
-<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
 <p>This is the secret used for generating and verifying JWTs.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
 </code></pre></div></p>
@@ -1570,7 +1609,7 @@
 <p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 </code></pre></div></p>
-<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
 <p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
 </code></pre></div></p>
@@ -1620,7 +1659,7 @@
 <p>Save and close the file.</p>
 </li>
 <li>
-<p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For a local, single-node cluster, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/local.yaml</code>.</p>
+<p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For a local, single-node cluster, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/local.yaml</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Provided local.yaml Example</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>

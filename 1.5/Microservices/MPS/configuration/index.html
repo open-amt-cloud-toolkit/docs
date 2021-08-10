@@ -1280,10 +1280,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1328,7 +1367,7 @@
                   </a>
                 
                 
-                <h1 id="mps-configuration-options"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration Options<a class="headerlink" href="#mps-configuration-options" title="Permanent link">&para;</a></h1>
+                <h1 id="mps-configuration-options"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration Options<a class="headerlink" href="#mps-configuration-options" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -1341,7 +1380,7 @@
 <tr>
 <td align="left">MPS_IMAGE</td>
 <td align="left">mps-microservice:v1</td>
-<td align="left">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
+<td align="left">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
 </tr>
 <tr>
 <td align="left">MPS_USE_VAULT</td>
@@ -1371,7 +1410,7 @@
 <tr>
 <td align="left">MPS_COMMON_NAME</td>
 <td align="left">localhost</td>
-<td align="left">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers.</td>
+<td align="left">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers.</td>
 </tr>
 <tr>
 <td align="left">MPS_PORT</td>
@@ -1422,6 +1461,11 @@
 <td align="left">MPS_JWT_EXPIRATION</td>
 <td align="left">1440</td>
 <td align="left">The default expiration in minutes for the JWT Token. Default is 24 hours.</td>
+</tr>
+<tr>
+<td align="left">MPS_MQTT_ADDRESS</td>
+<td align="left">No Value</td>
+<td align="left">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
 </tr>
 </tbody>
 </table>

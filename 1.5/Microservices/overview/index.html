@@ -1386,10 +1386,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1539,8 +1578,8 @@
 <li><strong>Deploy Microservices</strong> - Install the microservices on a development system as Docker* containers, which can run locally or on the cloud.</li>
 <li><strong>Deploy <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Architecture</strong> - Transfer the lightweight clients to managed devices.</li>
 <li><strong>Configure AMT</strong> - Through the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, configure AMT by creating control mode profile(s).</li>
-<li><strong>Connect AMT</strong> - Use the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage connectivity, as this microservice listens for the call home messaging of managed devices.  </li>
-<li><strong>Issue AMT Command</strong> - Send power commands (e.g., power off) through the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
+<li><strong>Connect AMT</strong> - Use the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage connectivity, as this microservice listens for the call home messaging of managed devices.  </li>
+<li><strong>Issue AMT Command</strong> - Send power commands (e.g., power off) through the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
 <li><strong>Add AMT functionality</strong> - Explore the additional functionality provided by <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to develop your own web console or application.</li>
 </ol>
 <h2 id="out-of-band-management-oob-management">Out-of-band Management (<abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr>)<a class="headerlink" href="#out-of-band-management-oob-management" title="Permanent link">&para;</a></h2>
@@ -1557,19 +1596,19 @@
 <p>A remote Intel vPro® Platform featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> is activated and a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration is applied. The remote platform is referred to as the managed device. </p>
 </li>
 <li>
-<p>The managed device connects to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and establishes an encrypted connection using Transport Layer Security (TLS) </p>
+<p>The managed device connects to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and establishes an encrypted connection using Transport Layer Security (TLS) </p>
 </li>
 <li>
-<p>The Intel vPro® Platform maintains a long standing connection with the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> through the use of small <em>keep-alive</em> messages to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</p>
+<p>The Intel vPro® Platform maintains a long standing connection with the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> through the use of small <em>keep-alive</em> messages to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</p>
 </li>
 <li>
-<p>A management console sends a command to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, via provided RESTful interfaces, with the command indicating the managed device should take some action.</p>
+<p>A management console sends a command to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, via provided RESTful interfaces, with the command indicating the managed device should take some action.</p>
 </li>
 <li>
-<p>The <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> authenticates the RESTful command and proxies the command for the management console to the managed device.  </p>
+<p>The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> authenticates the RESTful command and proxies the command for the management console to the managed device.  </p>
 </li>
 </ol>
-<p>The <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> handles the authentication process with the managed device. </p>
+<p>The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> handles the authentication process with the managed device. </p>
 <h3 id="control-mode-profile">Control Mode <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#control-mode-profile" title="Permanent link">&para;</a></h3>
 <p>Managed devices featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> support two control modes: </p>
 <ul>
@@ -1605,10 +1644,10 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 <p>There are five levels of passwords: </p>
 <ol>
 <li><strong>Intel® Manageability Engine BIOS Extensions (MEBX) Password: MEBX Password - </strong> Use this password to secure the local <abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr> menu. This password is only used when physically accessing the managed device during system boot. Access the menu with Ctrl-P on most devices.</li>
-<li><strong><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Password: MPS_WEB_ADMIN_PASSWORD - </strong> Use this password when logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. The <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Password uses this default <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> user authentication credential when it triggers <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. </li>
-<li><strong><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> &amp; <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> Profiles: AMT Password - </strong> <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> uses this password to activate and configure <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. When <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> requests an action of a managed device, such as a power action, it uses this password. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> verifies this password when it gets a command from the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</li>
+<li><strong><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Password: MPS_WEB_ADMIN_PASSWORD - </strong> Use this password when logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. The <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Password uses this default <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> user authentication credential when it triggers <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. </li>
+<li><strong><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> &amp; <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> Profiles: AMT Password - </strong> <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> uses this password to activate and configure <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. When <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> requests an action of a managed device, such as a power action, it uses this password. <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> verifies this password when it gets a command from the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</li>
 <li><strong>Provisioning Certificate Password - </strong>  The AMT Provisioning certificate is a special certificate used by <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices to establish trust with the configuration service when activating in Admin Control Mode. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation. </li>
-<li><strong><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Credential: MPS_USER and MPS_PASSWORD - </strong> This <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> credential is used by <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> managed devices to authenticate the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> when establishing the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection. </li>
+<li><strong><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Credential: MPS_USER and MPS_PASSWORD - </strong> This <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> credential is used by <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> managed devices to authenticate the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> when establishing the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection. </li>
 </ol>
 <p>Multiple passwords enhance the security of <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
 <table>
@@ -1635,7 +1674,7 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 </tr>
 <tr>
 <td align="left"><strong>3. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> &amp; <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> Profiles: AMT Password</strong></td>
-<td align="left">Authentication of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Access</td>
+<td align="left">Authentication of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Access</td>
 <td align="left">Not applicable.</td>
 <td align="left">1. Create a new profile. 2. Make an API call to update. 3. Update Vault.</td>
 </tr>
@@ -1646,8 +1685,8 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 <td align="left">1.Re-export certificate with another password. 2. Create a new profile. 3. Make an API call to update. 4. Update Vault.</td>
 </tr>
 <tr>
-<td align="left"><strong>5. <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Credential</strong></td>
-<td align="left"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credential used by AMT</td>
+<td align="left"><strong>5. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Credential</strong></td>
+<td align="left"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> credential used by AMT</td>
 <td align="left">Not applicable.</td>
 <td align="left">1. Create a new profile. 2. Make an API call to update. 3. Update Vault.</td>
 </tr>
@@ -1686,7 +1725,7 @@ In this mode, there are no limitations to <abbr title="Intel® Active Management
 </ol>
 <p>See more help options for the <code>docker logs</code> command in <a href="https://docs.docker.com/engine/reference/commandline/logs/">Docker Documentation</a>. </p>
 <h3 id="log-level">Log Level<a class="headerlink" href="#log-level" title="Permanent link">&para;</a></h3>
-<p>Set the log levels in the <code>.env</code> file by altering the configuration levels, <code>MPS_LOG_LEVEL</code> and <code>RPS_LOG_LEVEL</code>. Find the log level descriptions in the tables contained in <a href="../MPS/configuration/"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration</a> and <a href="../RPS/configuration/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration</a>. </p>
+<p>Set the log levels in the <code>.env</code> file by altering the configuration levels, <code>MPS_LOG_LEVEL</code> and <code>RPS_LOG_LEVEL</code>. Find the log level descriptions in the tables contained in <a href="../MPS/configuration/"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration</a> and <a href="../RPS/configuration/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration</a>. </p>
                 
               
               

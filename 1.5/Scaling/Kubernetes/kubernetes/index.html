@@ -1264,10 +1264,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1407,20 +1446,20 @@
 <p>Not for production use!!</p>
 </div>
 <p>This guide explains how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> services in kubernetes.
-Scaling functionality in <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. </p>
+Scaling functionality in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. </p>
 <h3 id="high-level-design">High level Design<a class="headerlink" href="#high-level-design" title="Permanent link">&para;</a></h3>
-<h4 id="figure-1-mps-scaling-architecture">Figure 1: <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Scaling Architecture<a class="headerlink" href="#figure-1-mps-scaling-architecture" title="Permanent link">&para;</a></h4>
+<h4 id="figure-1-mps-scaling-architecture">Figure 1: <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Scaling Architecture<a class="headerlink" href="#figure-1-mps-scaling-architecture" title="Permanent link">&para;</a></h4>
 <p><a href="../../../assets/images/ScallingHighLevel.png"><img alt="Scaling architecture" src="../../../assets/images/ScallingHighLevel.png" /></a>
-Figure 1 presents the high-level architecture of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> scaling mode. Per the figure, starting at the bottom:</p>
+Figure 1 presents the high-level architecture of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> scaling mode. Per the figure, starting at the bottom:</p>
 <ol>
-<li>Devices connect to an available <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server through the load balancer.</li>
-<li>The <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API requests are routed to an available Web Server, a component of <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> running in scale mode, through a load balancer.</li>
-<li>The Web Server determines which <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server to route the traffic to based on which <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server the device is connected to and sends that traffic through the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Proxy connection. </li>
-<li>The <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server sends the traffic to the corresponding device.</li>
+<li>Devices connect to an available <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server through the load balancer.</li>
+<li>The <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API requests are routed to an available Web Server, a component of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> running in scale mode, through a load balancer.</li>
+<li>The Web Server determines which <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server to route the traffic to based on which <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server the device is connected to and sends that traffic through the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Proxy connection. </li>
+<li>The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server sends the traffic to the corresponding device.</li>
 </ol>
-<h3 id="mps-configuration"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration<a class="headerlink" href="#mps-configuration" title="Permanent link">&para;</a></h3>
-<p>To support running the service in a distributed environment, some configuration settings were added to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. These settings can be modified in <code>open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml</code>. All the following settings have already been preset in the values.yaml file.</p>
-<h4 id="table-1-mps-configuration-settings">Table 1: <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> configuration settings<a class="headerlink" href="#table-1-mps-configuration-settings" title="Permanent link">&para;</a></h4>
+<h3 id="mps-configuration"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration<a class="headerlink" href="#mps-configuration" title="Permanent link">&para;</a></h3>
+<p>To support running the service in a distributed environment, some configuration settings were added to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. These settings can be modified in <code>open-amt-cloud-toolkit\scripts\kubernetes\serversChart\values.yaml</code>. All the following settings have already been preset in the values.yaml file.</p>
+<h4 id="table-1-mps-configuration-settings">Table 1: <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> configuration settings<a class="headerlink" href="#table-1-mps-configuration-settings" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -1468,12 +1507,12 @@ Figure 1 presents the high-level architecture of <abbr title="Management Presenc
 <tr>
 <td>general</td>
 <td>web_proxy_port</td>
-<td>port the web server used to communicate to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</td>
+<td>port the web server used to communicate to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</td>
 </tr>
 <tr>
 <td></td>
 <td>network_adaptor</td>
-<td>network identifier used when device connects to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Can be either an adaptor name such as <code>eth0</code> or starting ip address such as <code>192.168</code>.</td>
+<td>network identifier used when device connects to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Can be either an adaptor name such as <code>eth0</code> or starting ip address such as <code>192.168</code>.</td>
 </tr>
 <tr>
 <td></td>
@@ -1490,7 +1529,7 @@ Figure 1 presents the high-level architecture of <abbr title="Management Presenc
 <div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit
 </code></pre></div>
 <h2 id="building-the-docker-images">Building the docker images<a class="headerlink" href="#building-the-docker-images" title="Permanent link">&para;</a></h2>
-<p>Please build and push the following images from the following open-amt-cloud-toolkit repositories <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and sample-web-ui into a public repository. Please update "docker.io/vprodemo" to the desired public repository and "mps" to the corresponding repository name. 
+<p>Please build and push the following images from the following open-amt-cloud-toolkit repositories <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and sample-web-ui into a public repository. Please update "docker.io/vprodemo" to the desired public repository and "mps" to the corresponding repository name. 
 <div class="highlight"><pre><span></span><code>docker build . -t docker.io/vprodemo/mps:latest
 docker push docker.io/vprodemo/mps:latest
 </code></pre></div></p>

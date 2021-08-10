@@ -1308,10 +1308,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1377,7 +1416,7 @@
 Open <code>src/App.js</code> and add the code shown below:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Change <code>deviceId</code> value to your device GUID, <code>mpsServer</code> value to your <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server address, and pass in a valid JWT  for <code>authToken</code>.</p>
+<p>Change <code>deviceId</code> value to your device GUID, <code>mpsServer</code> value to your <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server address, and pass in a valid JWT  for <code>authToken</code>.</p>
 </div>
 <div class="highlight"><pre><span></span><code>    <span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
     <span class="k">import</span> <span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>

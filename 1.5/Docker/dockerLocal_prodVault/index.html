@@ -1264,10 +1264,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1329,7 +1368,7 @@
                 
                 <h1 id="use-docker-and-vault-in-production-mode">Use Docker and Vault in Production Mode<a class="headerlink" href="#use-docker-and-vault-in-production-mode" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This document describes how to run <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.</p>
+<p>This document describes how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.</p>
 <ol>
 <li>
 <p>Update the vault section in the docker-compose file (<code>scripts\docker-compose\docker-compose.yaml</code>) with the section below: 

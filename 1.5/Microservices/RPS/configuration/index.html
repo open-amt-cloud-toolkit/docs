@@ -1280,10 +1280,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1381,12 +1420,17 @@
 <tr>
 <td align="left">RPS_MPS_SERVER</td>
 <td align="left"><code>http://localhost:3000</code></td>
-<td align="left">Specifies where the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
+<td align="left">Specifies where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
 </tr>
 <tr>
 <td align="left">RPS_DELAY_TIMER</td>
 <td align="left"><code>12</code></td>
 <td align="left">Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> sends heartbeats to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to keep the connection alive.</td>
+</tr>
+<tr>
+<td align="left">RPS_MQTT_ADDRESS</td>
+<td align="left">No Value</td>
+<td align="left">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
 </tr>
 </tbody>
 </table>

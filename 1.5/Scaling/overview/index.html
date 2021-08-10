@@ -1331,10 +1331,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1416,17 +1455,17 @@
                 
                 
                 <h1 id="scaling-overview">Scaling Overview<a class="headerlink" href="#scaling-overview" title="Permanent link">&para;</a></h1>
-<p>Scaling functionality in <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Kubernetes (K8s), Azure Kubernetes Service<em> (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>), and Docker Swarm</em>. In addition, administrators can use kuberctl to manage the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. </p>
+<p>Scaling functionality in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Kubernetes (K8s), Azure Kubernetes Service<em> (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>), and Docker Swarm</em>. In addition, administrators can use kuberctl to manage the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. </p>
 <p><img alt="../assets/images/HighLevelArchitectureScaling" src="../../assets/images/HighLevelArchitectureScaling.png" /></p>
 <p><strong>Figure 1: High-level Architecture of Scaling Implementation</strong></p>
 <p>Figure 1 illustrates the basic high-level software flow:</p>
 <ul>
-<li>Managed devices use <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> to connect and call home to instances of the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in the cloud. </li>
-<li>RPCs connect to an available instance of the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server with WSS calls. These calls are funneled through Kong* API Gateway, which supports a variety of APIs. Kong manages load balancing, logging, authentication and more. </li>
+<li>Managed devices use <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> to connect and call home to instances of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in the cloud. </li>
+<li>RPCs connect to an available instance of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server with WSS calls. These calls are funneled through Kong* API Gateway, which supports a variety of APIs. Kong manages load balancing, logging, authentication and more. </li>
 <li>The Kong* API Gateway handles requests from client apps, such as the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> included in <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>, sending them along to an available <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</li>
-<li>The <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router chooses an available instance of the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
-<li>The <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices communicate with <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> microservices through the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API. </li>
-<li>Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in Vault will increase the security of these assets.</li>
+<li>The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router chooses an available instance of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
+<li>The <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices communicate with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> microservices through the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API. </li>
+<li>Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in Vault will increase the security of these assets.</li>
 </ul>
 <h2 id="docker-in-swarm-mode">Docker in Swarm Mode<a class="headerlink" href="#docker-in-swarm-mode" title="Permanent link">&para;</a></h2>
 <p>If you're new to scaling, Docker in swarm mode is a great way to start developing a scaling proof of concept. </p>

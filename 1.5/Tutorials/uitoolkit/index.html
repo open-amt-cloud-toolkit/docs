@@ -1403,10 +1403,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1561,7 +1600,7 @@
                   </a>
                 
                 
-                <h1 id="add-mps-ui-toolkit-controls-to-a-webui">Add <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI<a class="headerlink" href="#add-mps-ui-toolkit-controls-to-a-webui" title="Permanent link">&para;</a></h1>
+                <h1 id="add-mps-ui-toolkit-controls-to-a-webui">Add <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI<a class="headerlink" href="#add-mps-ui-toolkit-controls-to-a-webui" title="Permanent link">&para;</a></h1>
 <p>The <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as the Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>). A sample web application, based on React.js, is provided for test and development. </p>
 <p>The tutorial outlines how to add various controls to the sample React web application provided. Developers can use the sample code below as a springboard for developing their own consoles.</p>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
@@ -1573,13 +1612,13 @@
 </ul>
 <h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://github.com/open-amt-cloud-toolkit/MPS"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>, the Management Presence Server</li>
+<li><a href="https://github.com/open-amt-cloud-toolkit/MPS"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>, the Management Presence Server</li>
 <li><a href="https://github.com/open-amt-cloud-toolkit/RCS"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></a>, the Remote Provisioning Server</li>
-<li>Intel&reg; vPro device, configured and connected to <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
+<li>Intel&reg; vPro device, configured and connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For instructions to setup the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers to connect a managed device, see the <a href="../../Docker/overview/">Get Started Guide</a></p>
+<p>For instructions to setup the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers to connect a managed device, see the <a href="../../Docker/overview/">Get Started Guide</a></p>
 </div>
 <ul>
 <li>The <strong>development system</strong> requires the following software:<ul>
@@ -1597,7 +1636,7 @@
 </ul>
 <p><a href="../../assets/images/HelloWorld.png"><img alt="UI Toolkit" src="../../assets/images/HelloWorld.png" /></a></p>
 <h2 id="create-a-new-react-app">Create a New React App<a class="headerlink" href="#create-a-new-react-app" title="Permanent link">&para;</a></h2>
-<p>The React app can be created in any preferred development directory. The <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> can continue to run while creating and running the app.</p>
+<p>The React app can be created in any preferred development directory. The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> can continue to run while creating and running the app.</p>
 <ol>
 <li>
 <p>In a Terminal or Command Prompt, go to your preferred development directory. </p>
@@ -1624,7 +1663,7 @@
 </code></pre></div>
 </li>
 </ol>
-<p>By default, React apps run on port <code>3000</code>. If port <code>3000</code> is already used by the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.</p>
+<p>By default, React apps run on port <code>3000</code>. If port <code>3000</code> is already used by the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p><a href="../../assets/images/UIToolkit_npmstart.png"><img alt="UI Toolkit start" src="../../assets/images/UIToolkit_npmstart.png" /></a></p>
@@ -1663,7 +1702,7 @@ When you make changes, you do not need to stop the application and restart. It w
 </tr>
 <tr>
 <td align="left"><code>mpsServer</code></td>
-<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. When using KONG, <code>/mps/ws/relay</code> must be appeneded to the IP or FQDN.</td>
+<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. When using KONG, <code>/mps/ws/relay</code> must be appeneded to the IP or FQDN.</td>
 </tr>
 <tr>
 <td align="left"><code>authToken</code></td>
@@ -1702,8 +1741,8 @@ When you make changes, you do not need to stop the application and restart. It w
 <p>You will see the errors in the following scenarios:</p>
 <ul>
 <li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
-<li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server not running, appropriate controls will fail to work.</li>
-<li><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server running and device not connected.</li>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server not running, appropriate controls will fail to work.</li>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server running and device not connected.</li>
 <li>If your browser is IE/Edge, there might be compatibility issues.</li>
 <li>
 <p>Incorrect or invalid JWT for authToken, see instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</p>

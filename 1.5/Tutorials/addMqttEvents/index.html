@@ -9,21 +9,21 @@
       
       
       
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Bundles/kvm/">
+        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Tutorials/addMqttEvents/">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>Keyboard, Video, Mouse - Open Active Management Technology Cloud Toolkit</title>
+        <title>Adding/Editing Events - Open Active Management Technology Cloud Toolkit</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
         
       
     
@@ -38,9 +38,9 @@
     
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/branding.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/version-select.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/version-select.css">
     
     
       
@@ -59,7 +59,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quickstart-bundle-keyboard-video-mouse-kvm-control" class="md-skip">
+        <a href="#individual-events" class="md-skip">
           Skip to content
         </a>
       
@@ -78,9 +78,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keyboard, Video, Mouse
+              Adding/Editing Events
             
           </span>
         </div>
@@ -140,7 +140,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         Home
       </a>
     </li>
@@ -156,8 +156,56 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Docker/overview/" class="md-tabs__link">
+      <a href="../../Docker/overview/" class="md-tabs__link">
         Get Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Microservices/overview/" class="md-tabs__link">
+        Components
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../uitoolkit/" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../APIs/indexMPS/" class="md-tabs__link">
+        APIs
       </a>
     </li>
   
@@ -174,55 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Microservices/overview/" class="md-tabs__link md-tabs__link--active">
-        Components
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Tutorials/uitoolkit/" class="md-tabs__link">
-        Tutorials
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../APIs/indexMPS/" class="md-tabs__link">
-        APIs
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Topics/powerstates/" class="md-tabs__link">
+      <a href="../../Topics/powerstates/" class="md-tabs__link md-tabs__link--active">
         Topics
       </a>
     </li>
@@ -249,9 +249,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
 
     </a>
     Open Active Management Technology Cloud Toolkit
@@ -301,7 +301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Overview
       </a>
     </li>
@@ -313,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../letter/" class="md-nav__link">
+      <a href="../../letter/" class="md-nav__link">
         Letter From The Devs
       </a>
     </li>
@@ -325,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../release-notes/" class="md-nav__link">
+      <a href="../../release-notes/" class="md-nav__link">
         Release notes
       </a>
     </li>
@@ -337,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         License
       </a>
     </li>
@@ -379,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Docker/overview/" class="md-nav__link">
+      <a href="../../Docker/overview/" class="md-nav__link">
         Prerequisites
       </a>
     </li>
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Docker/dockerLocal/" class="md-nav__link">
+      <a href="../../Docker/dockerLocal/" class="md-nav__link">
         Set Up
       </a>
     </li>
@@ -424,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/loginToRPS/" class="md-nav__link">
+      <a href="../../General/loginToRPS/" class="md-nav__link">
         Login to Sample Web UI
       </a>
     </li>
@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/createCIRAConfig/" class="md-nav__link">
+      <a href="../../General/createCIRAConfig/" class="md-nav__link">
         Create a CIRA Config
       </a>
     </li>
@@ -469,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/createProfileCCM/" class="md-nav__link">
+      <a href="../../General/createProfileCCM/" class="md-nav__link">
         Create a Profile with CCM
       </a>
     </li>
@@ -481,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/createProfileACM/" class="md-nav__link">
+      <a href="../../General/createProfileACM/" class="md-nav__link">
         Create a Profile with ACM
       </a>
     </li>
@@ -526,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/buildRPC/" class="md-nav__link">
+      <a href="../../General/buildRPC/" class="md-nav__link">
         Build & Run RPC
       </a>
     </li>
@@ -538,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/manageDevice/" class="md-nav__link">
+      <a href="../../General/manageDevice/" class="md-nav__link">
         Manage AMT Device
       </a>
     </li>
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -575,14 +575,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Components
@@ -600,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/overview/" class="md-nav__link">
+      <a href="../../Microservices/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -633,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/MPS/configuration/" class="md-nav__link">
+      <a href="../../Microservices/MPS/configuration/" class="md-nav__link">
         Configuration
       </a>
     </li>
@@ -645,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/MPS/securityMPS/" class="md-nav__link">
+      <a href="../../Microservices/MPS/securityMPS/" class="md-nav__link">
         Security Information
       </a>
     </li>
@@ -684,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/configuration/" class="md-nav__link">
+      <a href="../../Microservices/RPS/configuration/" class="md-nav__link">
         Configuration
       </a>
     </li>
@@ -696,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/networkConfig/" class="md-nav__link">
+      <a href="../../Microservices/RPS/networkConfig/" class="md-nav__link">
         Network Profiles
       </a>
     </li>
@@ -708,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/securityRPS/" class="md-nav__link">
+      <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
         Security Information
       </a>
     </li>
@@ -747,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
+      <a href="../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
         Build & Run RPC (Manual)
       </a>
     </li>
@@ -759,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/commandsRPC/" class="md-nav__link">
+      <a href="../../Microservices/RPC/commandsRPC/" class="md-nav__link">
         Command Examples
       </a>
     </li>
@@ -775,14 +773,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
       
       <label class="md-nav__link" for="__nav_3_5">
         UI Toolkit
@@ -821,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Controls/kvmControl/" class="md-nav__link">
+      <a href="../../UIToolkit/Controls/kvmControl/" class="md-nav__link">
         Keyboard, Video, Mouse
       </a>
     </li>
@@ -833,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Controls/serialOverLANControl/" class="md-nav__link">
+      <a href="../../UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
         Serial Over LAN
       </a>
     </li>
@@ -849,14 +845,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
       
       <label class="md-nav__link" for="__nav_3_5_2">
         React Bundles
@@ -872,79 +866,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Keyboard, Video, Mouse
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../UIToolkit/Bundles/kvm/" class="md-nav__link">
         Keyboard, Video, Mouse
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-and-install-ui-toolkit" class="md-nav__link">
-    Download and Install UI Toolkit
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-in-development-environment" class="md-nav__link">
-    Run in Development Environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-bundle" class="md-nav__link">
-    Create Bundle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to Sample HTML Page
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -954,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SerialOverLAN/" class="md-nav__link">
+      <a href="../../UIToolkit/Bundles/SerialOverLAN/" class="md-nav__link">
         Serial Over LAN
       </a>
     </li>
@@ -972,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../localization/" class="md-nav__link">
+      <a href="../../UIToolkit/localization/" class="md-nav__link">
         Localization
       </a>
     </li>
@@ -984,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Webpack-Configuration/" class="md-nav__link">
+      <a href="../../UIToolkit/Webpack-Configuration/" class="md-nav__link">
         Webpack Configuration
       </a>
     </li>
@@ -1002,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
+      <a href="../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -1044,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorials/uitoolkit/" class="md-nav__link">
+      <a href="../uitoolkit/" class="md-nav__link">
         UI Toolkit KVM Module
       </a>
     </li>
@@ -1056,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tutorials/apiTutorial/" class="md-nav__link">
+      <a href="../apiTutorial/" class="md-nav__link">
         REST API Call
       </a>
     </li>
@@ -1089,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/overview/" class="md-nav__link">
+      <a href="../../Scaling/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1101,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
         Docker Swarm*
       </a>
     </li>
@@ -1134,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Kubernetes/deployingk8s/" class="md-nav__link">
+      <a href="../../Kubernetes/deployingk8s/" class="md-nav__link">
         Kubernetes (K8s)
       </a>
     </li>
@@ -1146,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      <a href="../../Kubernetes/deployingk8s-aks/" class="md-nav__link">
         AKS
       </a>
     </li>
@@ -1200,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../APIs/indexMPS/" class="md-nav__link">
+      <a href="../../APIs/indexMPS/" class="md-nav__link">
         Management Presence Server
       </a>
     </li>
@@ -1212,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../APIs/indexRPS/" class="md-nav__link">
+      <a href="../../APIs/indexRPS/" class="md-nav__link">
         Remote Provisioning Server
       </a>
     </li>
@@ -1231,12 +1157,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       <label class="md-nav__link" for="__nav_6">
         Topics
@@ -1254,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/powerstates/" class="md-nav__link">
+      <a href="../../Topics/powerstates/" class="md-nav__link">
         AMT Power States
       </a>
     </li>
@@ -1266,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/guids/" class="md-nav__link">
+      <a href="../../Topics/guids/" class="md-nav__link">
         GUIDs in Intel® AMT
       </a>
     </li>
@@ -1278,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/logging/" class="md-nav__link">
+      <a href="../../Topics/logging/" class="md-nav__link">
         Logging
       </a>
     </li>
@@ -1311,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/MEBX/dnsSuffix/" class="md-nav__link">
+      <a href="../../Topics/MEBX/dnsSuffix/" class="md-nav__link">
         DNS Suffix
       </a>
     </li>
@@ -1323,7 +1251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/MEBX/unprovision/" class="md-nav__link">
+      <a href="../../Topics/MEBX/unprovision/" class="md-nav__link">
         Unprovisioning
       </a>
     </li>
@@ -1339,12 +1267,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" checked>
       
       <label class="md-nav__link" for="__nav_6_5">
         Event Monitoring
@@ -1362,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Topics/mqtt/" class="md-nav__link">
+      <a href="../../Topics/mqtt/" class="md-nav__link">
         Viewing MQTT Events
       </a>
     </li>
@@ -1372,11 +1302,101 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Adding/Editing Events
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Adding/Editing Events
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#individual-events" class="md-nav__link">
+    Individual Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Individual Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-events" class="md-nav__link">
+    Adding Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-deleting-events" class="md-nav__link">
+    Editing / Deleting Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqttprovider-class" class="md-nav__link">
+    MqttProvider Class
+  </a>
+  
+    <nav class="md-nav" aria-label="MqttProvider Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting" class="md-nav__link">
+    Connecting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqtt-broker" class="md-nav__link">
+    MQTT Broker
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1409,8 +1429,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1419,36 +1437,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#individual-events" class="md-nav__link">
+    Individual Events
   </a>
+  
+    <nav class="md-nav" aria-label="Individual Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-events" class="md-nav__link">
+    Adding Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-deleting-events" class="md-nav__link">
+    Editing / Deleting Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#download-and-install-ui-toolkit" class="md-nav__link">
-    Download and Install UI Toolkit
+  <a href="#mqttprovider-class" class="md-nav__link">
+    MqttProvider Class
   </a>
+  
+    <nav class="md-nav" aria-label="MqttProvider Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting" class="md-nav__link">
+    Connecting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-in-development-environment" class="md-nav__link">
-    Run in Development Environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-bundle" class="md-nav__link">
-    Create Bundle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-to-sample-html-page" class="md-nav__link">
-    Add to Sample HTML Page
+  <a href="#mqtt-broker" class="md-nav__link">
+    MQTT Broker
   </a>
   
 </li>
@@ -1465,118 +1509,48 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/UIToolkit/Bundles/kvm.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Tutorials/addMqttEvents.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="quickstart-bundle-keyboard-video-mouse-kvm-control">Quickstart - Bundle Keyboard Video Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Control<a class="headerlink" href="#quickstart-bundle-keyboard-video-mouse-kvm-control" title="Permanent link">&para;</a></h1>
-<p>Use these instructions to:</p>
-<ul>
-<li>Run the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control in development environment</li>
-<li>Create a bundle for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control</li>
-<li>Add bundle to a sample HTML file </li>
-</ul>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to deploy and make changes, the following tools and application has to be installed on your development machine:</p>
-<ul>
-<li><a href="https://git-scm.com/">Git</a></li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE </li>
-<li><a href="https://nodejs.org/">Node.js</a></li>
-<li><a href="https://www.google.com/chrome">Chrome* Browser</a></li>
-<li><a href="../../../Docker/dockerLocal/"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server with an AMT Device Connected</a></li>
-</ul>
-<h2 id="download-and-install-ui-toolkit">Download and Install <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#download-and-install-ui-toolkit" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.</p>
-</li>
-<li>
-<p>Clone the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Repository:
-    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v1.4.0
-</code></pre></div></p>
-</li>
-<li>
-<p>Change to the <code>ui-toolkit</code> directory:
-    <div class="highlight"><pre><span></span><code>cd ui_toolkit
-</code></pre></div></p>
-</li>
-<li>
-<p>Install the dependencies:
-    <div class="highlight"><pre><span></span><code>npm install
-</code></pre></div></p>
-</li>
-</ol>
-<h2 id="run-in-development-environment">Run in Development Environment<a class="headerlink" href="#run-in-development-environment" title="Permanent link">&para;</a></h2>
-<p>To add and test new changes before bundling the control, use a webpack dev server:</p>
-<ol>
-<li>
-<p>Start the server:
-    <div class="highlight"><pre><span></span><code>npm start
-</code></pre></div></p>
-</li>
-<li>
-<p>Open a Chrome* browser and navigate to the following link to see changes:
-    <div class="highlight"><pre><span></span><code>http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&amp;mpsServer=https://[MPS-Server-IP-Address]:3000
-</code></pre></div></p>
+                  <h1>Adding/Editing Events</h1>
+                
+                <p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> both have the ability to publish event messages through an <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker. The following will demonstrate how to add, remove or edit the events published by the server. For information on the process of subscribing to these events, see <a href="../../Topics/mqtt/"><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Eventing Support</a>.</p>
+<p>There are three main components that can be manipulated within the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> event flow: individual events throughout <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, the MqttProvider class and the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker.</p>
+<h3 id="individual-events">Individual Events<a class="headerlink" href="#individual-events" title="Permanent link">&para;</a></h3>
+<h4 id="adding-events">Adding Events<a class="headerlink" href="#adding-events" title="Permanent link">&para;</a></h4>
+<p>Events can be added anywhere with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> using the <code>publishEvent</code> method as long as the MqttProvider class is imported. Here is an example of how an implementation might look.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MqttProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../../utils/mqttProvider&#39;</span>
+
+<span class="nx">MqttProvider</span><span class="p">.</span><span class="nx">publishEvent</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Example&#39;</span><span class="p">],</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="nx">guid</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>publishEvent</code> method takes the parameters (message type, array of methods associated with the message, message to be sent, and <strong>optionally</strong> the guid of the device) and creates a message to be published by the event broker.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.</p>
+<p>See MqttProvider Class section for how to change the parameters and behavior of the <code>publishEvent</code> method.</p>
 </div>
-</li>
-</ol>
-<h2 id="create-bundle">Create Bundle<a class="headerlink" href="#create-bundle" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>To bundle, navigate to the <code>ui-toolkit</code> directory in a Terminal (Linux) or Command Prompt (Windows).</p>
-</li>
-<li>
-<p>Remove or rename the existing <em>kvm.min.js</em>  in the <code>ui-toolkit/dist/</code> directory before building.</p>
-</li>
-<li>
-<p>Build the bundle:
-    <div class="highlight"><pre><span></span><code>npm run build
-</code></pre></div></p>
-<p>A new <em>kvm.min.js</em> will be created in the <code>ui-toolkit/dist/</code> directory.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>To bundle the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control without node_modules, run the following build command instead.
-<div class="highlight"><pre><span></span><code>npm run built-ext
+<h4 id="editing-deleting-events">Editing / Deleting Events<a class="headerlink" href="#editing-deleting-events" title="Permanent link">&para;</a></h4>
+<p>A number of default events have been added to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, such as API calls and action events. If any of these events are deemed to be lacking or unnecessary they can simply be edited or deleted. Event pubishing works independently from the inner workings of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and thus will function normally with the addition, adaptation or deletion of any individual events.</p>
+<h3 id="mqttprovider-class">MqttProvider Class<a class="headerlink" href="#mqttprovider-class" title="Permanent link">&para;</a></h3>
+<h4 id="connecting">Connecting<a class="headerlink" href="#connecting" title="Permanent link">&para;</a></h4>
+<p>This class handles the interactions with the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker.</p>
+<p>A connection is established in the respective <code>index.ts</code> files of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> with the following code.</p>
+<p><div class="highlight"><pre><span></span><code>  <span class="kd">const</span> <span class="nx">mqtt</span>: <span class="kt">MqttProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MqttProvider</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+  <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connectBroker</span><span class="p">()</span>
 </code></pre></div>
-The bundle generated using the build-ext command can be used in react apps as an independent control</p>
+The <code>connectBroker</code> method creates the connection between a client (stored in the class) and the <code>mosquitto</code> docker container which acts as the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker. Then the instance of the class that was just created and connected is stored as a static object within the class, allowing for the methods in this class to be accessed easily with a simple import rather than passing the instance around <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</p>
+<p>The config parameter contains the respective config types of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> but MqttProvider is really only looking for the <code>MQTT_ADDRESS</code> environment variable so it knows where to connect to. </p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code>MQTT_ADDRESS</code> environment variables for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are left blank in the .env.template file. This corresponds to the <strong>OFF</strong> state. To turn event logging with mosquitto <strong>ON</strong> give the address of the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker <code>mqtt://mosquitto:8883</code> to the <code>MPS_MQTT_ADDRESS</code> and <code>RPS_MQTT_ADDRESS</code> environment variables.</p>
 </div>
-</li>
-</ol>
-<h2 id="add-to-sample-html-page">Add to Sample HTML Page<a class="headerlink" href="#add-to-sample-html-page" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Add the following code snippet to <em>sampleKVM.htm</em> in the <code>ui-toolkit/src/reactjs/sample/</code> directory using an editor of your choice:</p>
-<div class="highlight"><pre><span></span><code>&lt;body&gt;
-  &lt;div id=&quot;kvm&quot;&gt;&lt;/div&gt;
-  &lt;script src=&quot;../../dist/kvm.min.js&quot; crossorigin&gt;&lt;/script&gt;
-&lt;/body&gt;
-</code></pre></div>
-</li>
-<li>
-<p>In a Terminal (Linux) or Command Prompt (Windows), navigate to the <code>ui-toolkit</code> directory.</p>
-</li>
-<li>
-<p>Serve the HTML page:
-    <div class="highlight"><pre><span></span><code>npx serve
-</code></pre></div></p>
-</li>
-<li>
-<p>Open a new Chrome* browser and navigate to the following URL:
-    <div class="highlight"><pre><span></span><code>http://localhost:5000/src/sample/sampleKVM.htm?deviceId=[AMT-Device-GUID]&amp;mpsServer=https://[MPS-Server-IP-Address]:3000
-</code></pre></div></p>
-</li>
-</ol>
-<p>Errors may occur in the following scenarios: </p>
-<ul>
-<li>UI-toolkit was not downloaded and installed into your react app</li>
-<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is not running</li>
-<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is running but the device is not connected</li>
-</ul>
+<h4 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h4>
+<p>Currently the core functionality of this system is focused around the <code>publishEvent</code> method. This is the developers way of creating server events that will be sent to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker and then published to subscribers.</p>
+<p>The function simply takes information about an event the developer wants to publish, organizes it, adds a timestamp and sends it to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker. This setup can be expanded upon by changing the parameters and the elements within <code>OpenAMTEvent</code> (the interface used to organize the message) or by adding new methods altogether. </p>
+<p>One common change might be to the handling of topics. Topics are how subscribers choose what information they would like to receive and are organized in a directory-like structure. For instance, if a message has the topic <code>cars/ford</code> then subscribers of <code>#</code>, <code>cars</code> or <code>cars/ford</code> will receive the message while subscribers of <code>trucks</code> or <code>cars/ferrari</code> will not. The method used to send a message to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker is <code>publish</code>, and the first argument of this method is the topic. Currently, this is hardcoded with a default value but a developer could add a parameter, tie the topic to existing parameters or create different publishEvent methods that correspond to different topics.</p>
+<h3 id="mqtt-broker"><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker<a class="headerlink" href="#mqtt-broker" title="Permanent link">&para;</a></h3>
+<p>The Broker for <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> messages is the docker container named <code>mosquitto</code> and it runs the eclipse-mosquitto:latest image. Changes to the functionality of the Broker can be made through <code>mosquitto.conf</code>. Most of the Broker setup has been left in its default state but more information about customizing the broker can be found <a href="https://mosquitto.org/man/mosquitto-conf-5.html">here</a>.</p>
                 
               
               
@@ -1648,12 +1622,12 @@ The bundle generated using the build-ext command can be used in react apps as an
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
       
-        <script src="../../../assets/javascripts/version-select.js"></script>
+        <script src="../../assets/javascripts/version-select.js"></script>
       
     
   </body>

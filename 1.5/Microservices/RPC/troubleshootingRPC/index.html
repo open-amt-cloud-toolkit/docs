@@ -1286,10 +1286,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1335,7 +1374,7 @@
                 
                 
                 <p>The sections below detail possible errors that may occur when activating or de-activating managed devices along with some potential solutions.</p>
-<h1 id="mps"><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h1>
+<h1 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -1349,7 +1388,7 @@
 <td>Profiles and configs are not persistent in this mode. To run vault in production mode, follow the <a href="../../../Docker/dockerLocal_prodVault/">Use Docker and Vault in Production Mode</a>.</td>
 </tr>
 <tr>
-<td><abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is missing from list of running services.</td>
+<td><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is missing from list of running services.</td>
 <td>(1) Check for error messages in the logs. For details, see <a href="../../overview/#Dockerlogs">Docker Logs</a>.</td>
 </tr>
 <tr>
@@ -1396,7 +1435,7 @@
 </tr>
 <tr>
 <td>"Exception reading from device"</td>
-<td>If <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are running in Docker, check to ensure Vault has been unsealed.</td>
+<td>If <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are running in Docker, check to ensure Vault has been unsealed.</td>
 </tr>
 <tr>
 <td>"Unable to connect to Local Management Service (LMS). Please ensure LMS is running"</td>
@@ -1434,7 +1473,7 @@
 </table>
 <h1 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h1>
 <ul>
-<li>If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial <a href="../../../Tutorials/uitoolkit/">Add <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI</a>. </li>
+<li>If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial <a href="../../../Tutorials/uitoolkit/">Add <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI</a>. </li>
 <li>If adding a control results in an error, double-check the device ID, mpsServer IP address value, and authToken.</li>
 </ul>
 <h1 id="general-troubleshooting-tips">General Troubleshooting Tips<a class="headerlink" href="#general-troubleshooting-tips" title="Permanent link">&para;</a></h1>

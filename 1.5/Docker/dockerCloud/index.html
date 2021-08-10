@@ -1264,10 +1264,49 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        Event Monitoring
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../Topics/mqtt/" class="md-nav__link">
-        Event Monitoring with MQTT
+        Viewing MQTT Events
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+        Adding/Editing Events
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1375,10 +1414,10 @@
                   </a>
                 
                 
-                <h1 id="build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud">Build Docker* Containers for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and Deploy to the Cloud<a class="headerlink" href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud" title="Permanent link">&para;</a></h1>
-<p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides support for deploying Management Presence Server (<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) microservices as Docker* containers to the cloud. </p>
+                <h1 id="build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud">Build Docker* Containers for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and Deploy to the Cloud<a class="headerlink" href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud" title="Permanent link">&para;</a></h1>
+<p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides support for deploying Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) microservices as Docker* containers to the cloud. </p>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
-<p>This tutorial explains the steps to deploy <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> as Docker images to the cloud using Microsoft Azure*:</p>
+<p>This tutorial explains the steps to deploy <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> as Docker images to the cloud using Microsoft Azure*:</p>
 <ol>
 <li>Create a Microsoft Azure* subscription. </li>
 <li>Create a Docker Hub account. Supply it with a Docker ID which will be used later.</li>
@@ -1393,7 +1432,7 @@
 <li>At least one Intel vPro® platform to manage</li>
 </ul>
 <h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
-<p><strong>Before  <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install or subscribe to the following software:</strong></p>
+<p><strong>Before  <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install or subscribe to the following software:</strong></p>
 <ul>
 <li>
 <p><a href="https://azure.microsoft.com/en-us/free/search/?&amp;ef_id=EAIaIQobChMIwNTKptLm6gIVAxLnCh3ESwcQEAAYASAAEgL8uPD_BwE:G:s&amp;OCID=AID2100131_SEM_EAIaIQobChMIwNTKptLm6gIVAxLnCh3ESwcQEAAYASAAEgL8uPD_BwE:G:s&amp;gclid=EAIaIQobChMIwNTKptLm6gIVAxLnCh3ESwcQEAAYASAAEgL8uPD_BwE">Microsoft Azure Subscription and Login</a></p>
@@ -1433,7 +1472,7 @@
 <div class="highlight"><pre><span></span><code>docker login --username [your Docker ID] --password [your Docker Hub Password]
 </code></pre></div>
 <h2 id="build-the-repositories">Build the Repositories<a class="headerlink" href="#build-the-repositories" title="Permanent link">&para;</a></h2>
-<p>Build the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Docker images from their respective directories with the <strong>build -t</strong> command, giving the image a name and tag:</p>
+<p>Build the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Docker images from their respective directories with the <strong>build -t</strong> command, giving the image a name and tag:</p>
 <p><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build -t [name:tag]</a>  </p>
 <ul>
 <li>Create a name and tag with lowercase letters, digits, and separators (i.e., underscores, periods, and dashes).</li>
@@ -1444,8 +1483,8 @@
 <p class="admonition-title">Note</p>
 <p>Building a fresh Docker image may take several minutes.</p>
 </div>
-<p><strong>To build <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>:</strong></p>
-<p>1. Navigate to the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> folder and build the Docker image. Execute a build and push for <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. </p>
+<p><strong>To build <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>:</strong></p>
+<p>1. Navigate to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> folder and build the Docker image. Execute a build and push for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. </p>
 <p>The <strong>docker push</strong> command with the -t or --tag option enables the naming and tagging of a build: </p>
 <p><a href="**https://docs.docker.com/engine/reference/commandline/push/**">docker push -t [docker-id][name:tag]</a></p>
 <div class="highlight"><pre><span></span><code>cd parent directory\mps
@@ -1460,8 +1499,8 @@ docker push f30911230032\rps-microservice:v1
 </code></pre></div>
 <h2 id="deploy-the-images">Deploy the Images<a class="headerlink" href="#deploy-the-images" title="Permanent link">&para;</a></h2>
 <p><strong>To deploy to the cloud:</strong></p>
-<p>1. After building the new <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> images, navigate to <code>mps\scripts\docker-compose</code> folder and use <code>xcopy</code> to copy the .env.template file to <code>.env</code>. </p>
-<p>The environment file <code>.env.template</code> contains the <abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> environment variables to pass to the Docker engine.</p>
+<p>1. After building the new <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> images, navigate to <code>mps\scripts\docker-compose</code> folder and use <code>xcopy</code> to copy the .env.template file to <code>.env</code>. </p>
+<p>The environment file <code>.env.template</code> contains the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> environment variables to pass to the Docker engine.</p>
 <div class="highlight"><pre><span></span><code>cd mps\scripts\docker-compose
 xcopy /Y .env.template .env
 </code></pre></div>
@@ -1491,7 +1530,7 @@ set HTTPS_PROXY=http://10.3.4.52:8080
 <li>Runs the <strong>docker-compose</strong> up command. </li>
 <li>Copies the .env-template file to .env.</li>
 </ul>
-<p>oact-stack-azure-vm.bat [your-solution-name] [region (e.g.,: westus)] [<abbr title="Management Presence Server -  A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>-IMAGE] [<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-IMAGE]</p>
+<p>oact-stack-azure-vm.bat [your-solution-name] [region (e.g.,: westus)] [<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>-IMAGE] [<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-IMAGE]</p>
 <div class="highlight"><pre><span></span><code>cd scripts\docker-compose
 oact-stack-azure-vm.bat vprodemo westus
 </code></pre></div>
