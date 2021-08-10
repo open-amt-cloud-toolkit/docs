@@ -76,6 +76,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/createWiFiConfig/</loc>
+         <lastmod>2021-08-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/General/loginToRPS/</loc>
          <lastmod>2021-08-10</lastmod>
          <changefreq>daily</changefreq>
