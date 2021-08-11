@@ -51,9 +51,11 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 9. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-10. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+10. Search and select the **WiFi Config** from the list of WiFi Configs created previously. The selected Wifi Configs will be shown under **Associated Wireless Profiles** and can be re-ordered by dragging them.
 
-11. Click **Save.**
+11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+12. Click **Save.**
 
     !!! example "Example CCM Profile"
         
