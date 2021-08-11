@@ -1,6 +1,6 @@
 --8<-- "References/abbreviations.md"
 
-Actions are specified by number. Use the [PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/AMT/get_api_v1_amt_power_capabilities__guid_) method to return the actions available for a specific device. Use the [PowerState](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/AMT/get_api_v1_amt_power_state__guid_) method to obtain the current power state.
+Actions are specified by number. Use the [PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/AMT/get_api_v1_amt_power_capabilities__guid_) method to return the actions available for a specific device. Use the [PowerState](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/AMT/get_api_v1_amt_power_state__guid_) method to obtain the current power state.
 
 Possible actions are listed in the following table:
 
