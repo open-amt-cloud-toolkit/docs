@@ -11,21 +11,23 @@ The Long Term Support (LTS) release of Open AMT Cloud Toolkit is official and is
 This section outlines key features changes between versions 1.4 and 1.5 for Open AMT Cloud Toolkit.
 
 ### Breaking Changes
-#### : 
 
 ### Additions
 #### RPS
-- **Wireless Configuration:** 
-- **RPS Events:**
+- **Wireless Configuration:** Added the capability to configure Intel&reg; AMT with wireless profiles.  This enables Intel&reg; AMT to connect to a known wireless access point and establish a CIRA connection back to MPS.  RPS has added a new Wireless Profile interface that allows adding and prioritizing multiple wireless profiles in the AMT Profile.  These profiles are set during configuration of the Intel&reg; AMT device.  The new APIs are documented [here](https://open-amt-cloud-toolkit.github.io/docs/1.5/APIs/indexRPS/)
+- **RPS Events:** Continuing to improve our server event messages, we have instrumented RPS to send events to the MQTT broker in this release.  Some of the events you can expect to see are devices successfully being configured, failures in configuration, and new profiles being added.  As this feature is still early release, we continue to appreciate feedback on how we can improve this feature.
 #### MPS
-- **API Paging support:**
+- **API Paging support:** We have added the ability to limit the response size to a specific number.  This allows UIs making queries to MPS and RPS to scope responses to page size.
 #### UI Toolkit
-- **Split up Core, React, and Angular code into different repositories:** 
+- **Split up Core, React, and Angular code into different repositories:** We have had quite a few requests to have an option to just deliver the core functionality of the UI-Toolkit without being wrapped in the React framework.  To support this, we have split out the UI-Toolkit into three repositories: Core, React, and Angular.  Both the React and Angular repositories pull from the Core to build the components in the specific ui framework.
 #### Sample Web UI
-- **UI updated to handle Wireless configurations:**
+- **UI updated to handle Wireless configurations:** The Sample Web UI has been updated to support the new Wireless profile feature.
 ### Modifications and Removals
+#### Open AMT Cloud Toolkit
+#### RPS
+#### RPC
 #### MPS
-
+#### UI Toolkit
 #### Sample Web UI
 - **Improvements:** We have made some minor changes and improvements in the Sample Web UI to streamline profile creation and provide additional information on the devices page.
     - The UI now sets the password length for new random passwords, removing the need for the password length field in the CIRA Config and Profiles. The REST APIs still support user defined values from 8 to 32 for password length.
@@ -34,6 +36,7 @@ This section outlines key features changes between versions 1.4 and 1.5 for Open
 ## Resolved Issues in this release
 #### Open AMT Cloud Toolkit
 #### RPS
+#### RPC
 #### MPS
 - **[MPS won't start when tls_offload is set to true or https is set to false](https://github.com/open-amt-cloud-toolkit/mps/issues/288)**
 #### UI Toolkit
@@ -59,6 +62,7 @@ This section outlines key features changes between versions 1.4 and 1.5 for Open
 - **[Data shouldn't be added if vault calls fail](https://github.com/open-amt-cloud-toolkit/rps/issues/254):** Bug
 - **[AMT Wi-Fi Configuration not supported on non-Windows systems](https://github.com/open-amt-cloud-toolkit/rps/issues/349):** Known Issue
 - **[Wi-Fi config: Intel AMT system disconnects from mps stack after powering off the device](https://github.com/open-amt-cloud-toolkit/rps/issues/350):** Known Issue
+#### RPC
 #### MPS
 - **[Direct Connection from MPS to AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/10):** Enhancement
 - **[Should return error on additional KVM connections for a single device](https://github.com/open-amt-cloud-toolkit/mps/issues/104):** Enhancement
