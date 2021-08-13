@@ -1055,18 +1055,30 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../createWiFiConfig/" class="md-nav__link">
+        Wireless Activation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
       
-      <label class="md-nav__link" for="__nav_4_3">
+      <label class="md-nav__link" for="__nav_4_4">
         Scaling
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           Scaling
         </label>
@@ -1104,14 +1116,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" type="checkbox" id="__nav_4_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" >
       
-      <label class="md-nav__link" for="__nav_4_3_3">
+      <label class="md-nav__link" for="__nav_4_4_3">
         Kubernetes Deployments
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_3_3">
+        <label class="md-nav__title" for="__nav_4_4_3">
           <span class="md-nav__icon md-icon"></span>
           Kubernetes Deployments
         </label>
@@ -1430,18 +1442,11 @@
                 
                   <h1>Create a CIRA Config</h1>
                 
-                <p><abbr title="Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.">OOB Management</abbr> is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>), which enables a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>-capable edge device to initiate and establish a persistent connection to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. </p>
-<p>With this persistent connection, administrators can execute various system actions on the remotely managed device, including:</p>
-<ul>
-<li>Reboot</li>
-<li>Reset</li>
-<li>Power on and power up</li>
-<li>Power off and power down</li>
-<li>Boot to BIOS </li>
-<li>Reset to BIOS</li>
-</ul>
-<p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> supports these actions and more.</p>
-<p>As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. </p>
+                <p>Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>) enables a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>-capable edge device to initiate and establish a persistent connection to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note - Wireless Activations</p>
+<p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
+</div>
 <p><strong>To create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config:</strong></p>
 <ol>
 <li>

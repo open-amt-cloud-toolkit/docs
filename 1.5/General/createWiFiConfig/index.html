@@ -16,7 +16,7 @@
     
     
       
-        <title>createWiFiConfig - Open Active Management Technology Cloud Toolkit</title>
+        <title>Wireless Activation - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              createWiFiConfig
+              Wireless Activation
             
           </span>
         </div>
@@ -216,13 +216,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link">
+      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -967,12 +969,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         Tutorials
@@ -1012,19 +1016,67 @@
             
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wireless Activation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Wireless Activation
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#next-up" class="md-nav__link">
+    Next up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
   
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
       
-      <label class="md-nav__link" for="__nav_4_3">
+      <label class="md-nav__link" for="__nav_4_4">
         Scaling
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           Scaling
         </label>
@@ -1062,14 +1114,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_3" type="checkbox" id="__nav_4_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" >
       
-      <label class="md-nav__link" for="__nav_4_3_3">
+      <label class="md-nav__link" for="__nav_4_4_3">
         Kubernetes Deployments
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_3_3">
+        <label class="md-nav__title" for="__nav_4_4_3">
           <span class="md-nav__icon md-icon"></span>
           Kubernetes Deployments
         </label>
@@ -1386,7 +1438,7 @@
                   </a>
                 
                 
-                  <h1>createWiFiConfig</h1>
+                  <h1>Wireless Activation</h1>
                 
                 <p><strong>To create a WiFi Config:</strong></p>
 <ol>
@@ -1395,31 +1447,38 @@
 </li>
 <li>
 <p>In the top-right corner, click <strong>Add New.</strong>
-    <a href="../../assets/images/RPS_NewWireless.png"><img alt="RPS" src="../../assets/images/RPS_NewWireless.png" /></a>
+    <a href="../../assets/images/RPS_NewWireless.png"><img alt="RPS New Wireless Profile" src="../../assets/images/RPS_NewWireless.png" /></a>
     <strong>Figure 1: Create a new WiFi Config.</strong></p>
 </li>
 <li>
-<p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
+<p>Specify a <strong>Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
 </li>
 <li>
 <p>Under <strong>Authentication Method</strong>, select <strong>WPA PSK</strong> or <strong>WPA2 PSK</strong>.</p>
 </li>
 <li>
-<p>Under <strong>Encryption Method</strong>, select <strong>TKIP</strong> or <strong>CCMP</strong> </p>
+<p>Under <strong>Encryption Method</strong>, select <strong>TKIP</strong> or <strong>CCMP</strong>.</p>
 </li>
 <li>
-<p>Specify a <strong>SSID</strong> or in common terms, name of your wireless network.</p>
+<p>Specify a <strong>SSID</strong>. This is the name of your wireless network.</p>
 </li>
 <li>
-<p>Provide a strong <strong>PSK Passphrase</strong>. This passphrase is the password to the WiFi Network.</p>
+<p>Provide a strong <strong>PSK Passphrase</strong>. This is the password to the WiFi Network.</p>
 </li>
 <li>
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example WiFi Config:
-<a href="../../assets/images/RPS_WirelessCreate.png"><img alt="RPS" src="../../assets/images/RPS_WirelessCreate.png" /></a>
-<strong>Figure 2: Example WiFi Config.</strong> </p>
+<p class="admonition-title">Example Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
+<p><a href="../../assets/images/RPS_WirelessCreate.png"><img alt="RPS Wireless Profile" src="../../assets/images/RPS_WirelessCreate.png" /></a>
+<strong>Figure 2: Example Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>.</strong> </p>
+</div>
+</li>
+<li>
+<p><strong>Important</strong>: After saving, continue on to create either a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> or <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile. When prompted, select your new Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> from the drop-down menu. The selected Wi-Fi Profiles will be shown under <strong>Associated Wireless Profiles</strong> and can be re-ordered by dragging them.</p>
+<div class="admonition example">
+<p class="admonition-title">Example - Select Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
+<p><a href="../../assets/images/RPS_CreateProfile_withWiFi.png"><img alt="RPS Bottom of Profile" src="../../assets/images/RPS_CreateProfile_withWiFi.png" /></a>
+<strong>Figure 3: Selection of Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>/<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></strong></p>
 </div>
 </li>
 </ol>
