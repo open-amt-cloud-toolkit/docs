@@ -65,6 +65,7 @@ nav:
   - Tutorials:
       - UI Toolkit KVM Module: Tutorials/uitoolkit.md
       - REST API Call: Tutorials/apiTutorial.md
+      - Wireless Activation: General/createWiFiConfig.md
       # - Databases: Tutorials/addDatabase.md
       # - Secret Storage: Tutorials/addVault.md
       - Scaling:

@@ -14,40 +14,44 @@ After running the RPC, the Intel® AMT managed device can be managed remotely us
 
 ## Build RPC
 
-We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster. However, if you wish to do this locally, please follow the instructions [here](../Microservices/RPC/buildRPC_Manual.md). Optionally, to build RPC with Docker, skip to [Docker Build](#docker-build).
+We leverage GitHub Actions as a means to build RPC automatically leveraging Github's CI/CD Infrastructure. This avoids having to deal with the challenges of getting your build environment just right on your local machine and allows you to get up and running much faster.
 
-Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.)
+However, if you wish to build and compile RPC locally, see [Build & Run RPC (Manual)](../Microservices/RPC/buildRPC_Manual.md). Optionally, to build RPC with Docker, skip to [Docker Build](#docker-build).
 
-<img src="../../assets/animations/forkandbuild.gif" width="500"  />
+Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/#:~:text=GitHub%20Actions%20is%20an%20API,every%20step%20along%20the%20way.).
+
+<!-- <img src="../../assets/animations/forkandbuild.gif" width="500"  /> -->
 
 ### Github Actions
 #### To Build the RPC with Github Actions
 
-1. Create a fork of the repository.
+1. Create a fork of the repository. Choose your account to fork to.
 
     [Fork rpc on github](https://github.com/open-amt-cloud-toolkit/rpc/fork){: .md-button .md-button--primary target=_blank }
 
-2. Click on the **Actions** tab at the top and select **Build RPC (Native) Debug/Release**.
+    [![RPC Fork](../assets/images/RPC_Fork.png)](../assets/images/RPC_Fork.png)
 
-3. Click the **Run Workflow** dropdown. 
+2. Click on the **Actions** tab at the top.
 
-4. Select the latest branch from the **Use workflow from** dropdown. If you don't see the branch in the list, type "v" to see the list of branches.
+3. Enable workflows by clicking **I understand my workflows, go ahead and enable them**.
 
-5. By default, the Build Type should be **release**.  
+4. Select **Build RPC (Native) Debug/Release**.
 
-6. Click the **Run Workflow** button.
+5. Click the **Run Workflow** dropdown. 
 
-7. The build time ranges from 15 to 20 minutes.
+6. Select the latest branch from the **Use workflow from** dropdown. If you don't see the branch in the list, type "v" to see the list of branches.
 
-8. Once the download is complete, click the completed job which will feature a green checkmark.
+7. By default, the Build Type should be **release**.  
 
-9. Download the appropriate RPC for your managed device's OS under the **Artifacts** section.
+8. Click the **Run Workflow** button.
 
-#### To Delete your workflow run
+    [![RPC Workflow](../assets/images/RPC_Workflow.png)](../assets/images/RPC_Workflow.png)
 
-1. Click the ellipsis ( **...** ) menu for the workflow. 
+9. The build time ranges from 15 to 20 minutes.
 
-2. Choose the **Delete workflow run** option.
+10. Once the download is complete, click the completed job which will feature a green checkmark.
+
+11. Download the appropriate RPC for your managed device's OS under the **Artifacts** section.
 
 ### Docker Build  (For Linux Hosts)
 
