@@ -1,8 +1,6 @@
 --8<-- "References/abbreviations.md"
 # Release Notes
 
-If you haven't had a chance - checkout the [Letter From Devs](./letter.md) for a message from our development team.
-
 ## Announcements
 ### Long Term Support Release
 The Long Term Support (LTS) release of Open AMT Cloud Toolkit is official and is planned for September 2021. With the release of LTS, the version of Open AMT Cloud Toolkit and all of the components will be moving to 2.0.0. Why the major version change? During the 1.X development period, we made many breaking changes as we were improving our external interfaces, database schemas, and communication protocols. Starting with 2.0, we will no longer be introducing breaking changes in minor version releases. This means that any 2.X component will be compatible with other 2.X components. With this adherence to [semantic versioning](https://semver.org/) our goal is to allow our customers the flexibility to upgrade versions with confidence and clarity of compatibility.
