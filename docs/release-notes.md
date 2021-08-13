@@ -14,7 +14,7 @@ We are working on updating the version of CPPRestSDK used in RPC which will upda
 This section outlines key features changes between versions 1.4 and 1.5 for Open AMT Cloud Toolkit.
 
 ### Breaking Changes
-- No breaking changes!
+- Removed configuration_script column from profiles DB
 ### Additions
 #### Open AMT Cloud Toolkit
 - **MQTT address configuration:** To support the service events feature, we have add an option to the .env.template to configure the mqtt address.
