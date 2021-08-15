@@ -38,7 +38,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-3. Update the following 4 fields. Save and keep track of the values you choose.
+3. Update the following 7 fields. Save and keep track of the values you choose.
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
@@ -46,6 +46,11 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256bit string. See another example in [code snippet below](./#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
+    | POSTGRES_PASSWORD             | **Strong** password of your choice  | The database password
+    | MPS_CONNECTION_STRING        | `postgresql://postgresadmin:[PASSWORD]@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string for MPS | 
+    | RPS_CONNECTION_STRING        | `postgresql://postgresadmin:[PASSWORD]@localhost:5432/rpsdb?sslmode=no-verify` | The database connection string for RPS | 
+
+    The password selected for MPS_CONNECTION_STRING,  RPS_CONNECTION_STRING, and POSTGRES_PASSWORD must all be the same. Replace [PASSWORD] found in  MPS_CONNECTION_STRING and RPS_CONNECTION_STRING with the password selected for POSTGRES_PASSWORD.
 
     !!! important "Important - Using Strong Passwords"
         The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
