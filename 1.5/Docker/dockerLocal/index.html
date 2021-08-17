@@ -1536,7 +1536,7 @@
 <p>In a text editor or IDE of choice, open the new <code>.env</code> file to edit.</p>
 </li>
 <li>
-<p>Update the following 4 fields. Save and keep track of the values you choose.</p>
+<p>Update the following 7 fields. Save and keep track of the values you choose.</p>
 <table>
 <thead>
 <tr>
@@ -1566,8 +1566,24 @@
 <td>A strong secret of your choice (Example: A unique, random 256bit string. See another example in <a href="./#set-kong-json-web-token-jwt">code snippet below</a>).</td>
 <td>Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
 </tr>
+<tr>
+<td>POSTGRES_PASSWORD</td>
+<td><strong>Strong</strong> password of your choice</td>
+<td>The database password</td>
+</tr>
+<tr>
+<td>MPS_CONNECTION_STRING</td>
+<td><code>postgresql://postgresadmin:[PASSWORD]@localhost:5432/mpsdb?sslmode=no-verify</code></td>
+<td>The database connection string for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
+</tr>
+<tr>
+<td>RPS_CONNECTION_STRING</td>
+<td><code>postgresql://postgresadmin:[PASSWORD]@localhost:5432/rpsdb?sslmode=no-verify</code></td>
+<td>The database connection string for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></td>
+</tr>
 </tbody>
 </table>
+<p>The password selected for MPS_CONNECTION_STRING,  RPS_CONNECTION_STRING, and POSTGRES_PASSWORD must all be the same. Replace [PASSWORD] found in  MPS_CONNECTION_STRING and RPS_CONNECTION_STRING with the password selected for POSTGRES_PASSWORD.</p>
 <div class="admonition important">
 <p class="admonition-title">Important - Using Strong Passwords</p>
 <p>The MPS_WEB_ADMIN_PASSWORD must meet standard, <strong>strong</strong> password requirements:</p>

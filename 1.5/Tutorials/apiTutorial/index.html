@@ -1594,7 +1594,7 @@
 <p class="admonition-title">Example POST - generateJWT.js</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">)</span>
 <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">[</span><span class="s1">&#39;NODE_TLS_REJECT_UNAUTHORIZED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span> <span class="c1">//For testing withself-signed certs, remove for production</span>
-<span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
 <span class="hll">    <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;standalone&#39;</span><span class="p">,</span> <span class="c1">//Replace with MPS_WEB_ADMIN_USER from .env file or mpsweb stored secret</span>
 </span><span class="hll">    <span class="s1">&#39;password&#39;</span><span class="o">:</span> <span class="s1">&#39;G@ppm0ym&#39;</span> <span class="c1">//Replace with MPS_WEB_ADMIN_PASSWORD from .env file or mpsweb stored secret</span>
 </span><span class="p">})</span>

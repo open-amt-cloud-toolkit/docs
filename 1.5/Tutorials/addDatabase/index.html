@@ -1407,13 +1407,13 @@
 </ol>
 <p>This module will need to implement the MongoDB types from mongodb and ILogger, AMTDeviceDTO, and IAMTDeviceWriter from RPS.  Below is an example of how this could be implemented:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// we imported all types from mongodb driver, to use in code</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoClient</span><span class="p">,</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">Collection</span><span class="p">,</span> <span class="nx">InsertOneWriteOpResult</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;mongodb&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">ILogger</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../interfaces/ILogger&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AMTDeviceDTO</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;./dto/AmtDeviceDTO&#39;</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;./interfaces/IAMTDeviceWriter&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MongoClient</span><span class="p">,</span> <span class="nx">Client</span><span class="p">,</span> <span class="nx">Collection</span><span class="p">,</span> <span class="nx">InsertOneWriteOpResult</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;mongodb&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ILogger</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../interfaces/ILogger&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AMTDeviceDTO</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./dto/AmtDeviceDTO&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./interfaces/IAMTDeviceWriter&#39;</span><span class="p">;</span>
 
 <span class="c1">// that class only can be extended</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">AmtDeviceMongoDbRepository</span> <span class="nx">implements</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">{</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AmtDeviceMongoDbRepository</span> <span class="kr">implements</span> <span class="nx">IAMTDeviceWriter</span> <span class="p">{</span>
     <span class="kr">private</span> <span class="nx">collection</span><span class="o">:</span> <span class="nx">Collection</span><span class="p">;</span>
     <span class="kr">private</span> <span class="nx">client</span><span class="o">:</span> <span class="nx">Client</span><span class="p">;</span>
     <span class="kr">private</span> <span class="nx">connectionString</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -1421,7 +1421,7 @@
     <span class="kr">private</span> <span class="nx">collectionName</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="kr">private</span> <span class="nx">logger</span><span class="o">:</span> <span class="nx">ILogger</span><span class="p">;</span>
 
-    <span class="nx">constructor</span><span class="p">(</span><span class="nx">logger</span><span class="o">:</span> <span class="nx">ILogger</span><span class="p">,</span> <span class="nx">connectionString</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">databaseName</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">collectionName</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">constructor</span><span class="p">(</span><span class="nx">logger</span><span class="o">:</span> <span class="nx">ILogger</span><span class="p">,</span> <span class="nx">connectionString</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">databaseName</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">collectionName</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">connectionString</span> <span class="o">=</span> <span class="nx">connectionString</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">databaseName</span> <span class="o">=</span> <span class="nx">databaseName</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">collectionName</span> <span class="o">=</span> <span class="nx">collectionName</span><span class="p">;</span>
@@ -1440,7 +1440,7 @@
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nx">public</span> <span class="k">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">async</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">device</span><span class="o">:</span> <span class="nx">AMTDeviceDTO</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kr">boolean</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
@@ -1449,7 +1449,7 @@
             <span class="kd">let</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">InsertOneWriteOpResult</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">device</span><span class="p">);</span>
             <span class="k">return</span> <span class="o">!!</span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">ok</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`exception inserting record: </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`exception inserting record: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
             <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -1458,12 +1458,12 @@
 <ol>
 <li>Edit the file index.ts in \RPS_MicroServer\src\ and import the implementation of database module. For example:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span><span class="nx">AmtDeviceMongoDbRepository</span><span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;./repositories/AmtDeviceMongoDbRepository&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span><span class="nx">AmtDeviceMongoDbRepository</span><span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./repositories/AmtDeviceMongoDbRepository&#39;</span><span class="p">;</span>
 </code></pre></div>
 <ol>
 <li>Edit the file index.ts in \RPS_MicroServer\src\ and set the amtDeviceWriter object to an instance of the repository (under configurator.isAMTDeviceWriterEnabled() located in line 35). For example:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nx">amtDeviceWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AmtDeviceMongoDbRepository</span><span class="p">(</span><span class="nx">Logger</span><span class="p">(</span><span class="s2">&quot;AmtDeviceMongoDbRepository&quot;</span><span class="p">),</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">connectionString</span><span class="p">,</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">databaseName</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">collectionName</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="nx">amtDeviceWriter</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AmtDeviceMongoDbRepository</span><span class="p">(</span><span class="nx">Logger</span><span class="p">(</span><span class="s2">&quot;AmtDeviceMongoDbRepository&quot;</span><span class="p">),</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">connectionString</span><span class="p">,</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">databaseName</span> <span class="nx">configurator</span><span class="p">.</span><span class="nx">DbConfig</span><span class="p">.</span><span class="nx">collectionName</span><span class="p">);</span>
 </code></pre></div>
 <ol>
 <li>
