@@ -1,19 +1,9 @@
 --8<-- "References/abbreviations.md"
 
-OOB Management is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. 
+Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.
 
-With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
-
-* Reboot
-* Reset
-* Power on and power up
-* Power off and power down
-* Boot to BIOS 
-* Reset to BIOS
-
-Intel® AMT supports these actions and more.
-
-As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. 
+!!! note "Note - Wireless Activations"
+    This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
 
 **To create a CIRA Config:**
 
