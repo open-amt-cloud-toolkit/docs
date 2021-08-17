@@ -2,7 +2,11 @@ version: "3"
 services:
   docs:
     image: docs:latest
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     ports:
         - 9000:8000
+    volumes:
+      - .:/docs  
     

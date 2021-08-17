@@ -21,3 +21,4 @@
 | MPS_JWT_ISSUER             | 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc | The issuer that will be populated in the token. This is a not considered a secret. IMPORTANT: This must match the `key:` property in the `Kong.yaml` file for the jwt plugin configuration.
 | MPS_JWT_EXPIRATION         | 1440                 | The default expiration in minutes for the JWT Token. Default is 24 hours. |
 | MPS_MQTT_ADDRESS            | No Value   | Address of where the mqtt broker is hosted. Mqtt container is named `mosquitto` and is open to port `8883`. Thus unless setting are changed the value should be either empty (off) or `mqtt://mosquitto:8883` (on) |
+| MPS_CONNECTION_STRING        | `postgresql://postgresadmin@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string | 
