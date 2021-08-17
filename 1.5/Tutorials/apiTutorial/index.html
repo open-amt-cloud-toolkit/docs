@@ -1550,7 +1550,7 @@
                 
                   <h1>REST API Call</h1>
                 
-                <p>This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices">Getting Devices</a> using Node.js. This method will retrieve information about all devices, including device GUIDs.</p>
+                <p>This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices">Getting Devices</a> using Node.js. This method will retrieve information about all devices, including device GUIDs.</p>
 <p><a href="../../assets/images/ConnectedDevicesAPI.png"><img alt="ConnectedDevices" src="../../assets/images/ConnectedDevicesAPI.png" /></a></p>
 <p><strong>Figure 1: API Call to Get All Devices</strong></p>
 <div class="admonition important">
@@ -1582,7 +1582,7 @@
 <h3 id="create-a-new-file">Create a New File<a class="headerlink" href="#create-a-new-file" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note - <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Authorize Method</p>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for the structure and other requirements of the Authorize API call used in the following to generate a JWT.</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for the structure and other requirements of the Authorize API call used in the following to generate a JWT.</p>
 </div>
 <ol>
 <li>Navigate to a file directory of your choice.</li>
@@ -1645,7 +1645,7 @@
 <h2 id="construct-api-call-for-devices">Construct API Call for Devices<a class="headerlink" href="#construct-api-call-for-devices" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note - <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API GetDevices Method</p>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.</p>
 </div>
 <ol>
 <li>Create and open a new JavaScript<em> file with a name of your choice. In this guide we will refer to it as </em>myDevices.js*.</li>
@@ -1716,12 +1716,12 @@ Example JSON Pretty Print:</p>
 <p>The sample POST and GET code snippets above can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods. To test other methods, see: </p>
 <ul>
 <li>
-<p><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device:</a></p>
-<p><a class="md-button md-button--primary" href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Docs</a></p>
+<p><a href="../../APIs/indexMPS/" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device:</a></p>
+<p><a class="md-button md-button--primary" href="../../APIs/indexMPS/" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Docs</a></p>
 </li>
 <li>
-<p><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning:</a></p>
-<p><a class="md-button md-button--primary" href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Docs</a></p>
+<p><a href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning:</a></p>
+<p><a class="md-button md-button--primary" href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Docs</a></p>
 </li>
 </ul>
 <p>Modify the tutorial POST and GET templates to implement other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs by changing these values:</p>
