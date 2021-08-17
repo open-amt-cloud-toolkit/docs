@@ -2,7 +2,7 @@
 
 # Azure Kubernetes Service (AKS)
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using AKS. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See [Kubernetes (K8s)](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/deployingk8s/).
+This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using AKS. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See [Kubernetes (K8s)](./deployingk8s.md).
 
 Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about AKS [here](https://docs.microsoft.com/en-us/azure/aks/).
 
@@ -327,5 +327,5 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 ## Next Steps
 
-Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/)
+Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](./../General/loginToRPS.md)
 

@@ -1,6 +1,6 @@
 --8<-- "References/abbreviations.md"
 
-This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices) using Node.js. This method will retrieve information about all devices, including device GUIDs.
+This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices) using Node.js. This method will retrieve information about all devices, including device GUIDs.
 
 [![ConnectedDevices](../assets/images/ConnectedDevicesAPI.png)](../assets/images/ConnectedDevicesAPI.png)
 
@@ -38,7 +38,7 @@ The following sections describe how to:
 ### Create a New File
 
 !!! note "Note - MPS API Authorize Method"
-    See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Auth/post_api_v1_authorize){target=_blank} for the structure and other requirements of the Authorize API call used in the following to generate a JWT.
+    See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Auth/post_api_v1_authorize){target=_blank} for the structure and other requirements of the Authorize API call used in the following to generate a JWT.
 
 1. Navigate to a file directory of your choice.
 2. Create and open a new JavaScript* file with a name of your choice. In this guide, we will refer to it as *generateJWT.js*.
@@ -100,7 +100,7 @@ The following sections describe how to:
 ## Construct API Call for Devices
 
 !!! note "Note - MPS API GetDevices Method"
-    See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0#/Devices/get_api_v1_devices){target=_blank} for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.
+    See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices){target=_blank} for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.
 
 1. Create and open a new JavaScript* file with a name of your choice. In this guide we will refer to it as *myDevices.js*.
 2. Copy and paste the example code below.
@@ -174,13 +174,13 @@ The following sections describe how to:
 
 The sample POST and GET code snippets above can be adapted for other MPS and RPS methods. To test other methods, see: 
 
-- [MPS Methods to manage a device:](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){target=_blank}
+- [MPS Methods to manage a device:](./../APIs/indexMPS.md){target=_blank}
 
-    [MPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.4.0){: .md-button .md-button--primary target=_blank }
+    [MPS API Docs](./../APIs/indexMPS.md){: .md-button .md-button--primary target=_blank }
 
-- [RPS Methods for server configuration and provisioning:](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){target=_blank}
+- [RPS Methods for server configuration and provisioning:](./../APIs/indexRPS.md){target=_blank}
 
-    [RPS API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/1.4.0){: .md-button .md-button--primary target=_blank }
+    [RPS API Docs](./../APIs/indexRPS.md){: .md-button .md-button--primary target=_blank }
 
 Modify the tutorial POST and GET templates to implement other MPS REST APIs by changing these values:
 

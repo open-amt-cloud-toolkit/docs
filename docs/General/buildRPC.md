@@ -35,23 +35,20 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 3. Enable workflows by clicking **I understand my workflows, go ahead and enable them**.
 
-4. Select **Build RPC (Native) Debug/Release**.
+4. Type "v" to see the list of release branches from the **Use workflow from** dropdown.
 
-5. Click the **Run Workflow** dropdown. 
+5. Select the v{{ rpcClone.version }} branch.
 
-6. Select the latest branch from the **Use workflow from** dropdown. If you don't see the branch in the list, type "v" to see the list of branches.
+6. By default, the Build Type should be **release**.  
 
-7. By default, the Build Type should be **release**.  
+7. Click the **Run Workflow** button.
 
-8. Click the **Run Workflow** button.
+8. The build time ranges from 15 to 20 minutes.
 
-    [![RPC Workflow](../assets/images/RPC_Workflow.png)](../assets/images/RPC_Workflow.png)
+9. Once the download is complete, click the completed job which will feature a green checkmark.
 
-9. The build time ranges from 15 to 20 minutes.
+10. Download the appropriate RPC for your managed device's OS under the **Artifacts** section.
 
-10. Once the download is complete, click the completed job which will feature a green checkmark.
-
-11. Download the appropriate RPC for your managed device's OS under the **Artifacts** section.
 
 ### Docker Build  (For Linux Hosts)
 

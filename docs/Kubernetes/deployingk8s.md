@@ -1,6 +1,6 @@
 --8<-- "References/abbreviations.md"
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](https://open-amt-cloud-toolkit.github.io/docs/1.4/Kubernetes/deployingk8s-aks/).
+This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes [here](https://kubernetes.io/docs/home/).
 
@@ -204,4 +204,4 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 ## Next Steps
 
-[**Continue from the Get Started steps**](https://open-amt-cloud-toolkit.github.io/docs/1.4/General/loginToRPS/)
+[**Continue from the Get Started steps**](./../General/loginToRPS.md)
