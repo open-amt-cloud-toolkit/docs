@@ -38,7 +38,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-3. Update the following 7 fields. Save and keep track of the values you choose.
+3. Update the following fields for configuring the MPS and Sample Web UI. Save and keep track of the values you choose.
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
@@ -46,12 +46,7 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256bit string. See another example in [code snippet below](./#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
-    | POSTGRES_PASSWORD             | **Strong** password of your choice  | The database password
-    | MPS_CONNECTION_STRING        | `postgresql://postgresadmin:[PASSWORD]@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string for MPS | 
-    | RPS_CONNECTION_STRING        | `postgresql://postgresadmin:[PASSWORD]@localhost:5432/rpsdb?sslmode=no-verify` | The database connection string for RPS | 
-
-    The password selected for MPS_CONNECTION_STRING,  RPS_CONNECTION_STRING, and POSTGRES_PASSWORD must all be the same. Replace [PASSWORD] found in  MPS_CONNECTION_STRING and RPS_CONNECTION_STRING with the password selected for POSTGRES_PASSWORD.
-
+    
     !!! important "Important - Using Strong Passwords"
         The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
 
@@ -59,7 +54,26 @@ The  `.env.template` file is used by docker to set environment variables.
 
         - One uppercase, one lowercase, one numerical digit, one special character
 
-4. Save and close the file.
+4. Update the fields for connecting to the Postgres database.
+
+    | Field Name              | Required                                                                                         | Usage |
+    | -------------           | ------------------                                                                               | ------------ |
+    | POSTGRES_PASSWORD       | Password of your choice. Common **strong** password practices are recommended.                   | The database password |
+    | MPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/mpsdb?sslmode=no-verify`    | The database connection string for MPS | 
+    | RPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/rpsdb?sslmode=no-verify`    | The database connection string for RPS | 
+
+    !!! important "Important - Use Same Value for all 3 Fields"
+        The password selected for `MPS_CONNECTION_STRING`,  `RPS_CONNECTION_STRING`, and `POSTGRES_PASSWORD` must all be the same. **Replace [POSTGRES_PASSWORD]** found in `MPS_CONNECTION_STRING` and `RPS_CONNECTION_STRING` with the password selected for `POSTGRES_PASSWORD`.
+
+5. Update the fields for setting up Vault.
+
+    | Field Name        | Required                                                   | Usage |
+    | -------------     | ------------------                                         | ------------ |
+    | RPS_VAULT_TOKEN   | String value of your choice. **Must match `MPS_VAULT_TOKEN`**. | Root Token for accessing Vault. |
+    | MPS_VAULT_TOKEN   | String value of your choice. **Must match `RPS_VAULT_TOKEN`**. | Root Token for accessing Vault. | 
+
+
+6. Save the file.
 
 ## Set Kong JSON Web Token (JWT)
 
@@ -73,7 +87,7 @@ Set the shared secret used in Kong for JWT authentication.
     jwt_secrets:
       - consumer: admin
         key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
-        secret: Yq3t6w9z$C&E)H@McQfTjWnZr4u7x!A% #sample secret, DO NOT use for production
+        secret: "Yq3t6w9z$C&E)H@McQfTjWnZr4u7x!A%" #sample secret, DO NOT use for production
     ```
 
 3. Save and close the file.
@@ -137,23 +151,6 @@ If any of the above containers are not running, walk through the steps again or 
 !!! important
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).
 
-!!! note "**Best Practice: Remove or Prune Images and Volumes**"
-    With repeated deployments, Docker images or volumes can accumulate. This interferes with achieving stable deployment as remnants of a previous deployment's configuration may be present. Use the following commands to manage images and volumes:
-    
-    List images or volumes:
-   
-    - `docker image ls`
-    - `docker volume ls`
-   
-    Prune unused images or volumes:
-   
-    - `docker image prune`
-    - `docker volume prune`
-
-    Remove unwanted images or volumes: 
-
-    - `docker image rm <name of image>`
-    - `docker volume rm <name of volume>`
     
 
 ## Next up
