@@ -53,7 +53,8 @@ The  `.env.template` file is used by docker to set environment variables.
         - 8 to 32 characters
 
         - One uppercase, one lowercase, one numerical digit, one special character
-
+        - 
+<!-- Will re-add for 2.0
 4. Update the fields for connecting to the Postgres database.
 
     | Field Name              | Required                                                                                         | Usage |
@@ -64,8 +65,9 @@ The  `.env.template` file is used by docker to set environment variables.
 
     !!! important "Important - Use Same Value for all 3 Fields"
         The password selected for `MPS_CONNECTION_STRING`,  `RPS_CONNECTION_STRING`, and `POSTGRES_PASSWORD` must all be the same. **Replace [POSTGRES_PASSWORD]** found in `MPS_CONNECTION_STRING` and `RPS_CONNECTION_STRING` with the password selected for `POSTGRES_PASSWORD`.
+-->
 
-5. Update the fields for setting up Vault.
+4. Update the fields for setting up Vault.
 
     | Field Name        | Required                                                   | Usage |
     | -------------     | ------------------                                         | ------------ |
@@ -73,7 +75,7 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_VAULT_TOKEN   | String value of your choice. **Must match `RPS_VAULT_TOKEN`**. | Root Token for accessing Vault. | 
 
 
-6. Save the file.
+5. Save the file.
 
 ## Set Kong JSON Web Token (JWT)
 
