@@ -10,6 +10,9 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Helm CLI (v3.5+)](https://helm.sh/)
 
+!!!important "Important"
+    This deployment requires an external postgres db.  Please see [postgres](https://www.postgresql.org/) for more information.
+
 !!!important "Important - For Linux"
     If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 
@@ -63,6 +66,27 @@ Where:
         - 8 to 32 characters
         - One uppercase, one lowercase, one numerical digit, one special character
 
+### 5. Database connection strings
+
+Configure the database connection strings used by MPS, RPS, and MPS Router.
+
+```
+kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<HOST>:5432/rpsdb?sslmode=require
+```
+
+```
+kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<HOST>:5432/mpsdb?sslmode=require
+```
+
+```
+kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<HOST>:5432/mpsdb?sslmode=require
+```
+
+Where:
+
+- **&lt;USERNAME&gt;** username for the postgres database.
+- **&lt;PASSWORD&gt;** password for the postgres database.
+- **&lt;HOST&gt;** loction for the postgres database.
 
 ## Update Configuration
 
@@ -88,7 +112,6 @@ Where:
         storageAccessMode: "ReadWriteOnce"
         replicaCount: 1
         logLevel: "silly"
-        connectionString: "postgresql://postgresadmin:admin123@postgres:5432/mpsdb"
         jwtExpiration: 1440
     ```
 
@@ -117,6 +140,30 @@ Where:
     ```
     kubectl apply -f ./kubernetes/charts/volumes/local.yaml
     ```
+## Create database schema 
+
+Use the database schema files to initialize the postgres db.
+
+NOTE: The following commands will prompt for the database password.
+
+```
+psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+```
+
+```
+psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f <SCRIPTLOCATION>\init.sql
+```
+
+```
+psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f <SCRIPTLOCATION>\initMPS.sql
+```
+
+Where:
+
+- **&lt;USERNAME&gt;** username for the postgres database
+- **&lt;HOST&gt;** location of the postgres database 
+- **&lt;SCRIPTLOCATION&gt;** location of the sql scripts '\open-amt-cloud-toolkit\data'
+
 
 ## Deploy Open AMT Cloud Toolkit Using Helm
 
