@@ -20,6 +20,7 @@ theme:
     - navigation.tabs.sticky
     - search.suggest
     - search.highlight
+    - navigation.top
   custom_dir: ./docs/overrides
 # Page tree
 nav:
