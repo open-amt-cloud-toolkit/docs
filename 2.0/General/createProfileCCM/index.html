@@ -1487,25 +1487,10 @@
 <p>Under <strong>Activation Mode</strong>, select <strong>Client Control Mode</strong> from the dropdown menu.</p>
 </li>
 <li>
-<p>Leave <strong>Generate Random AMT Password</strong> unchecked.</p>
+<p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</p>
 <div class="admonition tip">
-<p class="admonition-title">Production Environment</p>
-<p>In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.</p>
-</div>
-</li>
-<li>
-<p>Provide a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</p>
-<div class="admonition important">
-<p class="admonition-title">Important - Using Strong Passwords</p>
-<p>This password must meet standard, <strong>strong</strong> password requirements:</p>
-<ul>
-<li>
-<p>8 to 32 characters</p>
-</li>
-<li>
-<p>One uppercase, one lowercase, one numerical digit, one special character</p>
-</li>
-</ul>
+<p class="admonition-title">Tip</p>
+<p>The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
 </div>
 </li>
 <li>
@@ -1527,8 +1512,8 @@
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
-<p><a href="../../assets/images/RPS_CreateProfile.png"><img alt="RPS" src="../../assets/images/RPS_CreateProfile.png" /></a>
-<strong>Figure 2: Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile.</strong></p>
+<p><a href="../../assets/images/RPS_CreateProfile.png"><img alt="RPS" src="../../assets/images/RPS_CreateProfile.png" /></a></p>
+<p><strong>Figure 2: Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile.</strong></p>
 </div>
 </li>
 </ol>
