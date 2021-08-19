@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#next-up" class="md-skip">
+        <a href="#find-if-a-device-support-wireless" class="md-skip">
           Skip to content
         </a>
       
@@ -1047,6 +1047,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#find-if-a-device-support-wireless" class="md-nav__link">
+    Find if a Device Support Wireless
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-wifi-config" class="md-nav__link">
+    Create a WiFi Config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-up" class="md-nav__link">
     Next up
   </a>
@@ -1415,6 +1429,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#find-if-a-device-support-wireless" class="md-nav__link">
+    Find if a Device Support Wireless
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-wifi-config" class="md-nav__link">
+    Create a WiFi Config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-up" class="md-nav__link">
     Next up
   </a>
@@ -1440,7 +1468,61 @@
                 
                   <h1>Wireless Activation</h1>
                 
-                <p><strong>To create a WiFi Config:</strong></p>
+                <div class="admonition important">
+<p class="admonition-title">Important - Windows 10 Supported Only</p>
+<p>This feature is currently only supported for systems on Windows 10 operating systems.</p>
+</div>
+<p>After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.</p>
+<p><strong>For devices to be activated in Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</strong>: The managed, AMT device can be activated and configured on a wireless connection.</p>
+<p><strong>For devices to be activated in Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>: The managed, AMT device <strong>MUST have a wired connection</strong> during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.</p>
+<h2 id="find-if-a-device-support-wireless">Find if a Device Support Wireless<a class="headerlink" href="#find-if-a-device-support-wireless" title="Permanent link">&para;</a></h2>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can pull information to help determine if your current device supports wireless functionality.  See <a href="../buildRPC/">Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a> for steps on how to obtain the binary.</p>
+<ol>
+<li>
+<p>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>--amtinfo all</code> argument.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc --amtinfo all<span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>.\rpc.exe --amtinfo all&quot;
+</code></pre></div>
+</div>
+</div>
+</li>
+<li>
+<p>Look at the output for the LAN Interface section as highlighted below. <strong>If <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> does NOT return a section for wireless</strong>, then the AMT device does not support wireless functionality. </p>
+<div class="highlight"><pre><span></span><code>Version                : 15.0.10
+Build Number           : 1447
+SKU                    : 16392
+UUID                   : 4c4b4568-195a-4260-8097-a4c14f566733
+Control Mode           : pre-provisioning state
+DNS Suffix             : vprodemo.com
+DNS Suffix (OS)        :
+FQDN                   :
+Hostname (OS)          : DESKTOP-3YM6MPN
+RAS Network            : outside enterprise
+RAS Remote Status      : not connected
+RAS Trigger            : user initiated
+RAS MPS Hostname       :
+LAN Inteface           : wired
+DHCP Enabled           : true
+DHCP Mode              : passive
+Link Status            : up
+IP Address             : 0.0.0.0
+MAC Address            : 80:c4:a8:58:df:e9
+<span class="hll">LAN Inteface           : wireless
+</span><span class="hll">DHCP Enabled           : true
+</span><span class="hll">DHCP Mode              : passive
+</span><span class="hll">Link Status            : down
+</span><span class="hll">IP Address             : 0.0.0.0
+</span><span class="hll">MAC Address            : 00:00:00:00:00:00
+</span>Certificate Hashes     : 
+...
+</code></pre></div>
+</li>
+</ol>
+<h2 id="create-a-wifi-config">Create a WiFi Config<a class="headerlink" href="#create-a-wifi-config" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Select the <strong>Wireless</strong> tab from the left-hand menu.</p>
@@ -1474,7 +1556,7 @@
 </div>
 </li>
 <li>
-<p><strong>Important</strong>: After saving, continue on to create either a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> or <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile. When prompted, select your new Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> from the drop-down menu. The selected Wi-Fi Profiles will be shown under <strong>Associated Wireless Profiles</strong> and can be re-ordered by dragging them.</p>
+<p><strong>Important</strong>: After saving, continue on to create either a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> or <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile. When prompted, search for and select your new Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> from the drop-down menu. The selected Wi-Fi Profiles will be shown under <strong>Associated Wireless Profiles</strong> and can be re-ordered by dragging them to give priority.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - Select Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
 <p><a href="../../assets/images/RPS_CreateProfile_withWiFi.png"><img alt="RPS Bottom of Profile" src="../../assets/images/RPS_CreateProfile_withWiFi.png" /></a>
@@ -1498,6 +1580,11 @@
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
         
       </main>
       
@@ -1559,7 +1646,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>

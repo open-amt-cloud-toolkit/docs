@@ -462,6 +462,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" class="md-nav__link">
+    - One uppercase, one lowercase, one numerical digit, one special character
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
     Set Kong JSON Web Token (JWT)
   </a>
@@ -1463,6 +1470,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" class="md-nav__link">
+    - One uppercase, one lowercase, one numerical digit, one special character
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
     Set Kong JSON Web Token (JWT)
   </a>
@@ -1536,7 +1550,7 @@
 <p>In a text editor or IDE of choice, open the new <code>.env</code> file to edit.</p>
 </li>
 <li>
-<p>Update the following 7 fields. Save and keep track of the values you choose.</p>
+<p>Update the following fields for configuring the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Save and keep track of the values you choose.</p>
 <table>
 <thead>
 <tr>
@@ -1566,39 +1580,58 @@
 <td>A strong secret of your choice (Example: A unique, random 256bit string. See another example in <a href="./#set-kong-json-web-token-jwt">code snippet below</a>).</td>
 <td>Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
 </tr>
-<tr>
-<td>POSTGRES_PASSWORD</td>
-<td><strong>Strong</strong> password of your choice</td>
-<td>The database password</td>
-</tr>
-<tr>
-<td>MPS_CONNECTION_STRING</td>
-<td><code>postgresql://postgresadmin:[PASSWORD]@localhost:5432/mpsdb?sslmode=no-verify</code></td>
-<td>The database connection string for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
-</tr>
-<tr>
-<td>RPS_CONNECTION_STRING</td>
-<td><code>postgresql://postgresadmin:[PASSWORD]@localhost:5432/rpsdb?sslmode=no-verify</code></td>
-<td>The database connection string for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></td>
-</tr>
 </tbody>
 </table>
-<p>The password selected for MPS_CONNECTION_STRING,  RPS_CONNECTION_STRING, and POSTGRES_PASSWORD must all be the same. Replace [PASSWORD] found in  MPS_CONNECTION_STRING and RPS_CONNECTION_STRING with the password selected for POSTGRES_PASSWORD.</p>
 <div class="admonition important">
 <p class="admonition-title">Important - Using Strong Passwords</p>
 <p>The MPS_WEB_ADMIN_PASSWORD must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
-<li>
-<p>8 to 32 characters</p>
-</li>
-<li>
-<p>One uppercase, one lowercase, one numerical digit, one special character</p>
-</li>
+<li>8 to 32 characters</li>
 </ul>
+<h2 id="-one-uppercase-one-lowercase-one-numerical-digit-one-special-character">- One uppercase, one lowercase, one numerical digit, one special character<a class="headerlink" href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" title="Permanent link">&para;</a></h2>
 </div>
 </li>
+</ol>
+<!-- Will re-add for 2.0
+4. Update the fields for connecting to the Postgres database.
+
+    | Field Name              | Required                                                                                         | Usage |
+    | -------------           | ------------------                                                                               | ------------ |
+    | POSTGRES_PASSWORD       | Password of your choice. Common **strong** password practices are recommended.                   | The database password |
+    | MPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/mpsdb?sslmode=no-verify`    | The database connection string for MPS | 
+    | RPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/rpsdb?sslmode=no-verify`    | The database connection string for RPS | 
+
+    !!! important "Important - Use Same Value for all 3 Fields"
+        The password selected for `MPS_CONNECTION_STRING`,  `RPS_CONNECTION_STRING`, and `POSTGRES_PASSWORD` must all be the same. **Replace [POSTGRES_PASSWORD]** found in `MPS_CONNECTION_STRING` and `RPS_CONNECTION_STRING` with the password selected for `POSTGRES_PASSWORD`.
+-->
+
+<ol>
 <li>
-<p>Save and close the file.</p>
+<p>Update the fields for setting up Vault.</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Required</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RPS_VAULT_TOKEN</td>
+<td>String value of your choice. <strong>Must match <code>MPS_VAULT_TOKEN</code></strong>.</td>
+<td>Root Token for accessing Vault.</td>
+</tr>
+<tr>
+<td>MPS_VAULT_TOKEN</td>
+<td>String value of your choice. <strong>Must match <code>RPS_VAULT_TOKEN</code></strong>.</td>
+<td>Root Token for accessing Vault.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Save the file.</p>
 </li>
 </ol>
 <h2 id="set-kong-json-web-token-jwt">Set Kong JSON Web Token (JWT)<a class="headerlink" href="#set-kong-json-web-token-jwt" title="Permanent link">&para;</a></h2>
@@ -1612,7 +1645,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">jwt_secrets</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">consumer</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
     <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</span> <span class="c1">#sample key</span>
-<span class="hll">    <span class="nt">secret</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Yq3t6w9z$C&amp;E)H@McQfTjWnZr4u7x!A%</span> <span class="c1">#sample secret, DO NOT use for production</span>
+<span class="hll">    <span class="nt">secret</span><span class="p">:</span> <span class="s">&quot;Yq3t6w9z$C&amp;E)H@McQfTjWnZr4u7x!A%&quot;</span> <span class="c1">#sample secret, DO NOT use for production</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -1670,25 +1703,6 @@ mps:latest          Up <span class="m">22</span> seconds                      op
 <p class="admonition-title">Important</p>
 <p>Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run <code>docker-compose down -v</code> when bringing down the stack, which removes the volumes, and start fresh upon <code>docker-compose up</code>.  To run vault in production mode, follow the guide <a href="../dockerLocal_prodVault/">here</a>.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title"><strong>Best Practice: Remove or Prune Images and Volumes</strong></p>
-<p>With repeated deployments, Docker images or volumes can accumulate. This interferes with achieving stable deployment as remnants of a previous deployment's configuration may be present. Use the following commands to manage images and volumes:</p>
-<p>List images or volumes:</p>
-<ul>
-<li><code>docker image ls</code></li>
-<li><code>docker volume ls</code></li>
-</ul>
-<p>Prune unused images or volumes:</p>
-<ul>
-<li><code>docker image prune</code></li>
-<li><code>docker volume prune</code></li>
-</ul>
-<p>Remove unwanted images or volumes: </p>
-<ul>
-<li><code>docker image rm &lt;name of image&gt;</code></li>
-<li><code>docker volume rm &lt;name of volume&gt;</code></li>
-</ul>
-</div>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
 <p><a href="../../General/loginToRPS/"><strong>Login to <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></strong></a></p>
                 
@@ -1701,6 +1715,11 @@ mps:latest          Up <span class="m">22</span> seconds                      op
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
         
       </main>
       
@@ -1762,7 +1781,7 @@ mps:latest          Up <span class="m">22</span> seconds                      op
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
