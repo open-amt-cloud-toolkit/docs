@@ -34,8 +34,7 @@ The following sections describe how to:
 
 ## Generate a Token for Authorization
 
-!!! note "Note - MPS API Authorize Method"
-    See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Auth/post_api_v1_authorize){target=_blank} for the structure and other requirements of the Authorize API call used in the following to generate a JWT.
+See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Auth/post_api_v1_authorize){target=_blank} for more information.
 
 1. Open a Terminal or Command Prompt.
 2. Copy and paste the example code below into a text editor.
@@ -69,8 +68,7 @@ The following sections describe how to:
 
 ## Run API Call for Get Devices
 
-!!! note "Note - MPS API GetDevices Method"
-    See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices){target=_blank} for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.
+See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices){target=_blank} for more information.
 
 1. Open a Terminal or Command Prompt.
 2. Copy and paste the example code below into a text editor.
