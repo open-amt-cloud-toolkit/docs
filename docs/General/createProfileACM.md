@@ -70,33 +70,22 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. In order to facilitate quick set up,  leave **Generate Random AMT Password** unchecked. 
+5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
    
-    !!! tip "Production Environment"
-        In a production environment, generate a random password for each AMT device to create a stronger, more secure AMT environment. However, if opting to use random    passwords, be aware of the risks. **If the Vault database is lost or corrupted, all randomly generated credentials will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
-
-6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
-
-    !!! important "Important - Using Strong Passwords"
-        This password must meet standard, **strong** password requirements:
-
-        - 8 to 32 characters
-
-        - One uppercase, one lowercase, one numerical digit, one special character
-
-7. Leave **Generate Random MEBX Password** unchecked.
+    !!! tip
+        The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
-8. Provide a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
+6. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
-9. Select DHCP as **Network Configuration**.
+7. Select DHCP as **Network Configuration**.
 
-10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+8. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
+9. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
 
-12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+10. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-13. Click **Save.**
+11. Click **Save.**
 
 !!! example "Example ACM Profile"
     
@@ -133,6 +122,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
     !!! example "Example Domain"
                     
         [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
+
         **Figure 4: Example Domain profile. **
 
 

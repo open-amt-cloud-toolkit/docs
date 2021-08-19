@@ -31,19 +31,10 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 4. Under **Activation Mode**, select **Client Control Mode** from the dropdown menu.
 
-5. Leave **Generate Random AMT Password** unchecked.
+5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
    
-    !!! tip "Production Environment"
-        In a production environment, you typically generate a random password for each AMT device to create a stronger, more secure AMT environment.
-
-6. Provide a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
-
-    !!! important "Important - Using Strong Passwords"
-        This password must meet standard, **strong** password requirements:
-
-        - 8 to 32 characters
-
-        - One uppercase, one lowercase, one numerical digit, one special character
+    !!! tip
+        The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
 7. The **MEBX Password** field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
@@ -60,6 +51,7 @@ Profiles provide configuration information to the firmware on platforms featurin
     !!! example "Example CCM Profile"
         
         [![RPS](../assets/images/RPS_CreateProfile.png)](../assets/images/RPS_CreateProfile.png)
+        
         **Figure 2: Example CCM profile.**
 
 ## Next up
