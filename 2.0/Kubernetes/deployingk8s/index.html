@@ -1171,6 +1171,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-database-connection-strings" class="md-nav__link">
+    5. Database connection strings
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1179,6 +1186,13 @@
         <li class="md-nav__item">
   <a href="#update-configuration" class="md-nav__link">
     Update Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-database-schema" class="md-nav__link">
+    Create database schema
   </a>
   
 </li>
@@ -1543,6 +1557,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-database-connection-strings" class="md-nav__link">
+    5. Database connection strings
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1551,6 +1572,13 @@
         <li class="md-nav__item">
   <a href="#update-configuration" class="md-nav__link">
     Update Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-database-schema" class="md-nav__link">
+    Create database schema
   </a>
   
 </li>
@@ -1617,6 +1645,10 @@
 <li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
 </ul>
 <div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This deployment requires an external postgres db.  Please see <a href="https://www.postgresql.org/">postgres</a> for more information.</p>
+</div>
+<div class="admonition important">
 <p class="admonition-title">Important - For Linux</p>
 <p>If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as <a href="https://minikube.sigs.k8s.io/docs/">minikube</a> or <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">kubeadm</a>.</p>
 </div>
@@ -1662,6 +1694,20 @@
 </div>
 </li>
 </ul>
+<h3 id="5-database-connection-strings">5. Database connection strings<a class="headerlink" href="#5-database-connection-strings" title="Permanent link">&para;</a></h3>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/rpsdb?sslmode=require
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database.</li>
+<li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
+<li><strong>&lt;HOST&gt;</strong> loction for the postgres database.</li>
+</ul>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -1685,7 +1731,6 @@
     <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
     <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
     <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
-    <span class="nt">connectionString</span><span class="p">:</span> <span class="s">&quot;postgresql://postgresadmin:admin123@postgres:5432/mpsdb&quot;</span>
     <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
 </code></pre></div>
 </li>
@@ -1718,6 +1763,21 @@
 </code></pre></div></p>
 </li>
 </ol>
+<h2 id="create-database-schema">Create database schema<a class="headerlink" href="#create-database-schema" title="Permanent link">&para;</a></h2>
+<p>Use the database schema files to initialize the postgres db.</p>
+<p>NOTE: The following commands will prompt for the database password.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\initMPS.sql
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database</li>
+<li><strong>&lt;HOST&gt;</strong> location of the postgres database </li>
+<li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'</li>
+</ul>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <ol>
 <li>

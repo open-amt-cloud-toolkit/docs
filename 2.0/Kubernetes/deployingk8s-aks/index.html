@@ -1215,6 +1215,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-database-connection-strings" class="md-nav__link">
+    6. Database connection strings
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1224,6 +1231,33 @@
   <a href="#update-configuration" class="md-nav__link">
     Update Configuration
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-database-schema" class="md-nav__link">
+    Create database schema
+  </a>
+  
+    <nav class="md-nav" aria-label="Create database schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-access-to-database" class="md-nav__link">
+    Enable access to database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-databases" class="md-nav__link">
+    Create databases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1605,6 +1639,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-database-connection-strings" class="md-nav__link">
+    6. Database connection strings
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1614,6 +1655,33 @@
   <a href="#update-configuration" class="md-nav__link">
     Update Configuration
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-database-schema" class="md-nav__link">
+    Create database schema
+  </a>
+  
+    <nav class="md-nav" aria-label="Create database schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-access-to-database" class="md-nav__link">
+    Enable access to database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-databases" class="md-nav__link">
+    Create databases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1677,6 +1745,7 @@
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI (v2.24.0+)</a></li>
 <li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
 </ul>
 <h2 id="create-ssh-key">Create SSH Key<a class="headerlink" href="#create-ssh-key" title="Permanent link">&para;</a></h2>
 <p>This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed">Detailed steps: Create and manage SSH keys</a>.</p>
@@ -1811,6 +1880,20 @@
 </div>
 </li>
 </ul>
+<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">&para;</a></h3>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql</li>
+<li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
+<li><strong>&lt;SERVERURL&gt;</strong> url for the Azure hosted postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com.</li>
+</ul>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -1863,7 +1946,6 @@
 <span class="hll">    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span> <span class="c1">#Change to ReadWriteMany</span>
 </span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
     <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
-    <span class="nt">connectionString</span><span class="p">:</span> <span class="s">&quot;postgresql://postgresadmin:admin123@postgres:5432/mpsdb&quot;</span>
     <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
 </code></pre></div>
 </li>
@@ -1908,6 +1990,35 @@
 </code></pre></div></p>
 </li>
 </ol>
+<h2 id="create-database-schema">Create database schema<a class="headerlink" href="#create-database-schema" title="Permanent link">&para;</a></h2>
+<h3 id="enable-access-to-database">Enable access to database<a class="headerlink" href="#enable-access-to-database" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Navigate to <code>Home &gt; Resource Groups &gt; Resource Group Name &gt; Azure Database for PostgreSQL Server</code> using Microsoft Azure via online</li>
+<li>Settings -&gt; Connection Security</li>
+<li>Under firewall rules, select 'add current client ip address'</li>
+<li>
+<p>Select Save</p>
+</li>
+<li>
+<p>Under the general tab, take note of the 'server name' and 'admin username', they will be needed in the next step.</p>
+</li>
+</ul>
+<p>NOTE: Please remember to delete this firewall rule when finished.</p>
+<h3 id="create-databases">Create databases<a class="headerlink" href="#create-databases" title="Permanent link">&para;</a></h3>
+<p>Use the database schema files to initialize the hosted postgres db.</p>
+<p>NOTE: The following commands will prompt for the database password.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\initMPS.sql
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql</li>
+<li><strong>&lt;HOST&gt;</strong> location of the postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com </li>
+<li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'</li>
+</ul>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
