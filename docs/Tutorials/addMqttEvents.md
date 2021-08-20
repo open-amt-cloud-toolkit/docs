@@ -1,4 +1,5 @@
 --8<-- "References/abbreviations.md"
+
 RPS and MPS microservices can publish event messages through an MQTT Broker. The following instructions demonstrate how to add, remove, or edit the events published by the server. To learn more about subscribing to these events, see [MQTT Eventing Support](../Topics/mqtt.md).
 
 Three main components can be manipulated within the MQTT event flow:
