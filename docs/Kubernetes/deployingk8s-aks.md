@@ -12,6 +12,7 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Azure CLI (v2.24.0+)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Helm CLI (v3.5+)](https://helm.sh/)
+- [PSQL CLI (11.13)](https://www.postgresql.org/download/)
 
 ## Create SSH Key
 This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see [Detailed steps: Create and manage SSH keys](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed).
@@ -151,6 +152,27 @@ Where:
 
         - Navigate to `Home > Storage accounts > cluster-name > Access keys` using Microsoft Azure via online.
 
+### 6. Database connection strings
+
+Configure the database connection strings used by MPS, RPS, and MPS Router.
+
+```
+kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
+```
+
+```
+kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+```
+
+```
+kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+```
+
+Where:
+
+- **&lt;USERNAME&gt;** username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql
+- **&lt;PASSWORD&gt;** password for the postgres database.
+- **&lt;SERVERURL&gt;** url for the Azure hosted postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com.
 
 ## Update Configuration
 
@@ -191,7 +213,6 @@ Where:
         storageAccessMode: "ReadWriteOnce" #Change to ReadWriteMany
         replicaCount: 1
         logLevel: "silly"
-        connectionString: "postgresql://postgresadmin:admin123@postgres:5432/mpsdb"
         jwtExpiration: 1440
     ```
 
@@ -232,7 +253,41 @@ Where:
     ```
     kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
     ```
+## Create database schema 
+### Enable access to database
 
+- Navigate to `Home > Resource Groups > Resource Group Name > Azure Database for PostgreSQL Server` using Microsoft Azure via online
+- Settings -> Connection Security
+- Under firewall rules, select 'add current client ip address'
+- Select Save
+
+- Under the general tab, take note of the 'server name' and 'admin username', they will be needed in the next step.
+
+NOTE: Please remember to delete this firewall rule when finished.
+
+### Create databases
+
+Use the database schema files to initialize the hosted postgres db.
+
+NOTE: The following commands will prompt for the database password.
+
+```
+psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+```
+
+```
+psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f <SCRIPTLOCATION>\init.sql
+```
+
+```
+psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f <SCRIPTLOCATION>\initMPS.sql
+```
+
+Where:
+
+- **&lt;USERNAME&gt;** username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql
+- **&lt;HOST&gt;** location of the postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com 
+- **&lt;SCRIPTLOCATION&gt;** location of the sql scripts '\open-amt-cloud-toolkit\data'
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
