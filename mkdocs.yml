@@ -43,7 +43,7 @@ nav:
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Components:
       - Overview: Microservices/overview.md
-      - Managed Presence Server:
+      - Management Presence Server:
           - Configuration: Microservices/MPS/configuration.md
           - Security Information: Microservices/MPS/securityMPS.md
       - Remote Provisioning Server:
