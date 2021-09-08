@@ -2,6 +2,8 @@ version: "3"
 services:
   docs:
     image: docs:latest
+    volumes: 
+      - ./:/docs
     build:
       context: .
       dockerfile: ./Dockerfile
