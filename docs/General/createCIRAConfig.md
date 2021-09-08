@@ -1,19 +1,9 @@
 --8<-- "References/abbreviations.md"
 
-OOB Management is a separate channel of remote management that allows administrators to securely access Intel® Active Management Technology (Intel® AMT) devices at a hardware level, beneath the operating system. This is accomplished with Client Initiated Remote Access (CIRA), which enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. 
+Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.
 
-With this persistent connection, administrators can execute various system actions on the remotely managed device, including:
-
-* Reboot
-* Reset
-* Power on and power up
-* Power off and power down
-* Boot to BIOS 
-* Reset to BIOS
-
-Intel® AMT supports these actions and more.
-
-As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection. 
+!!! note "Note - Wireless Activations"
+    This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
 
 **To create a CIRA Config:**
 
@@ -33,22 +23,14 @@ As long as the managed device is connected to the network and to a power source,
 
 7. Leave the **Username** as *admin* or choose your own. These credentials will be used when constructing API calls.
 
-8. Set a strong **Password** of your choice.
+8. Leave the slider set on **Auto-load**.
 
-    !!! important "Important - Using Strong Passwords"
-        This password must meet standard, **strong** password requirements:
-
-        - 8 to 32 characters
-
-        - One uppercase, one lowercase, one numerical digit, one special character
-
-9. Leave the slider set on **Auto-load**.
-
-10. Click **Save.**
+9. Click **Save.**
     
     !!! example "Example CIRA Config"
             
         [![RPS](../assets/images/RPS_CreateCIRAConfig.png)](../assets/images/RPS_CreateCIRAConfig.png)
+        
         **Figure 2: Example CIRA Config.** 
 
 ## Next up

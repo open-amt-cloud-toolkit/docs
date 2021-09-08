@@ -1,7 +1,7 @@
 FROM squidfunk/mkdocs-material
 
 RUN pip install --no-cache-dir \
-  mkdocs-render-swagger-plugin
+  mkdocs-render-swagger-plugin mkdocs-macros-plugin
 
 EXPOSE 8000
 

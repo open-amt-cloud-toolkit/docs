@@ -5,7 +5,7 @@
 | Environment Variable         | Default                               | Description |
 | :--------------------------- | :------------------------------------ | :---------- |
 | RPS_IMAGE                    | `rps-microservice:v1`   | Only used when using docker-compose.yml. Specifies image to use for RPS |
-| RPS_CONNECTION_STRING        | `postgresql://postgresadmin:admin123@localhost:5432/rpsdb` | The database connection string | 
+| RPS_CONNECTION_STRING        | `postgresql://postgresadmin@localhost:5432/rpsdb?sslmode=no-verify` | The database connection string | 
 | RPS_WEB_PORT                 | `8081`                  | Specifies the Web API port to listen on |
 | RPS_WEBSOCKETPORT            | `8080`                  | Specifies the Websocket port to listen on |
 | RPS_VAULT_ADDRESS            | `http://vault:8200`    | Address of where the vault is hosted |
