@@ -251,4 +251,4 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 ## Next Steps
 
-[**Continue from the Get Started steps**](./../General/loginToRPS.md)
+[**Continue from the Get Started steps**](../../General/loginToRPS.md)
