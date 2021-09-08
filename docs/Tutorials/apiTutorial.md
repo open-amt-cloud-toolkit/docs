@@ -54,7 +54,7 @@ See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/a
         ```
 
     !!!info "Info - Using the --insecure Flag"
-        Because we are using self-signed certificates for MPS for development purposes, we must supply this flag to force past certificatverification.
+        Because we are using self-signed certificates for MPS for development and testing purposes, we must supply this flag to bypass SSL certificate verification.
 
 4. Run the command.
 
@@ -115,7 +115,7 @@ See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/
 
 ## Example GET/POST Templates
 
-The sample GET and POST curl commands below can be adapted for other MPS and RPS methods **by changing the URI path and modifying the request body data, if applicable**.
+The sample GET and POST curl commands below can be adapted for other MPS and RPS methods **by changing the URL path and modifying the request body data, if applicable**.
 
 === "Power Capabilities (GET Template)"     
     === "Linux"
