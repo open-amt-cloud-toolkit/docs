@@ -23,22 +23,14 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 
 7. Leave the **Username** as *admin* or choose your own. These credentials will be used when constructing API calls.
 
-8. Set a strong **Password** of your choice.
+8. Leave the slider set on **Auto-load**.
 
-    !!! important "Important - Using Strong Passwords"
-        This password must meet standard, **strong** password requirements:
-
-        - 8 to 32 characters
-
-        - One uppercase, one lowercase, one numerical digit, one special character
-
-9. Leave the slider set on **Auto-load**.
-
-10. Click **Save.**
+9. Click **Save.**
     
     !!! example "Example CIRA Config"
             
         [![RPS](../assets/images/RPS_CreateCIRAConfig.png)](../assets/images/RPS_CreateCIRAConfig.png)
+        
         **Figure 2: Example CIRA Config.** 
 
 ## Next up

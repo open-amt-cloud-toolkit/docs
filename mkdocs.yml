@@ -4,7 +4,7 @@ site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2021 Intel Corporation'
-site_dir: site/1.5
+site_dir: site/2.0
 # Configuration
 theme:
   name: 'material'
@@ -20,6 +20,7 @@ theme:
     - navigation.tabs.sticky
     - search.suggest
     - search.highlight
+    - navigation.top
   custom_dir: ./docs/overrides
 # Page tree
 nav:
@@ -42,7 +43,7 @@ nav:
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Components:
       - Overview: Microservices/overview.md
-      - Managed Presence Server:
+      - Management Presence Server:
           - Configuration: Microservices/MPS/configuration.md
           - Security Information: Microservices/MPS/securityMPS.md
       - Remote Provisioning Server:
