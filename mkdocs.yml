@@ -43,7 +43,7 @@ nav:
       - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
   - Components:
       - Overview: Microservices/overview.md
-      - Managed Presence Server:
+      - Management Presence Server:
           - Configuration: Microservices/MPS/configuration.md
           - Security Information: Microservices/MPS/securityMPS.md
       - Remote Provisioning Server:
@@ -73,8 +73,9 @@ nav:
           - Overview: Scaling/overview.md
           - Docker Swarm*: Scaling/Docker Swarm/docker-swarm.md
           - Kubernetes Deployments:
-              - Kubernetes (K8s): Kubernetes/deployingk8s.md
-              - AKS: Kubernetes/deployingk8s-aks.md
+              - Kubernetes (K8s): Scaling/Kubernetes/deployingk8s.md
+              - AKS: Scaling/Kubernetes/deployingk8s-aks.md
+          - KUMA Service Mesh: Scaling/Kubernetes/service-mesh.md
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
