@@ -38,7 +38,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-3. Update the following fields for configuring the MPS and Sample Web UI. Save and keep track of the values you choose.
+3. Update the following fields for configuring the MPS, Sample Web UI, Vault and Postgres. Save and keep track of the values you choose.
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
@@ -46,36 +46,18 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256bit string. See another example in [code snippet below](./#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
-    
+    | POSTGRES_USER          | Username of your choice            | For logging into the Postgres |
+    | POSTGRES_PASSWORD      | **Strong** password of your choice | For logging into the Postgres |
+    | VAULT_TOKEN            | **Strong** token of your choice    | For logging into the vault |
+
     !!! important "Important - Using Strong Passwords"
         The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
 
         - One uppercase, one lowercase, one numerical digit, one special character
-        - 
-<!-- Will re-add for 2.0
-4. Update the fields for connecting to the Postgres database.
 
-    | Field Name              | Required                                                                                         | Usage |
-    | -------------           | ------------------                                                                               | ------------ |
-    | POSTGRES_PASSWORD       | Password of your choice. Common **strong** password practices are recommended.                   | The database password |
-    | MPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/mpsdb?sslmode=no-verify`    | The database connection string for MPS | 
-    | RPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/rpsdb?sslmode=no-verify`    | The database connection string for RPS | 
-
-    !!! important "Important - Use Same Value for all 3 Fields"
-        The password selected for `MPS_CONNECTION_STRING`,  `RPS_CONNECTION_STRING`, and `POSTGRES_PASSWORD` must all be the same. **Replace [POSTGRES_PASSWORD]** found in `MPS_CONNECTION_STRING` and `RPS_CONNECTION_STRING` with the password selected for `POSTGRES_PASSWORD`.
--->
-
-4. Update the fields for setting up Vault.
-
-    | Field Name        | Required                                                   | Usage |
-    | -------------     | ------------------                                         | ------------ |
-    | RPS_VAULT_TOKEN   | String value of your choice. **Must match `MPS_VAULT_TOKEN`**. | Root Token for accessing Vault. |
-    | MPS_VAULT_TOKEN   | String value of your choice. **Must match `RPS_VAULT_TOKEN`**. | Root Token for accessing Vault. | 
-
-
-5. Save the file.
+4. Save the file.
 
 ## Set Kong JSON Web Token (JWT)
 
