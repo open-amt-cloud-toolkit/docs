@@ -42,13 +42,13 @@ See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/a
 
     === "Linux"
         ```bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/  authorize \
+        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize \
             -H "Content-Type:application/json" \
             -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"
         ```
     === "Windows"
         ```bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/  authorize ^
+        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize ^
             -H "Content-Type:application/json" ^
             -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"
         ```
