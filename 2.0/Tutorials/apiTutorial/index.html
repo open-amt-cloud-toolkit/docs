@@ -1049,35 +1049,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generate-a-jwt" class="md-nav__link">
-    Generate a JWT
+  <a href="#generate-a-token-for-authorization" class="md-nav__link">
+    Generate a Token for Authorization
   </a>
-  
-    <nav class="md-nav" aria-label="Generate a JWT">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-a-new-file" class="md-nav__link">
-    Create a New File
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#execute-the-rest-api" class="md-nav__link">
-    Execute the REST API
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#construct-api-call-for-devices" class="md-nav__link">
-    Construct API Call for Devices
+  <a href="#run-api-call-for-get-devices" class="md-nav__link">
+    Run API Call for Get Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-getpost-templates" class="md-nav__link">
+    Example GET/POST Templates
   </a>
   
 </li>
@@ -1496,35 +1483,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generate-a-jwt" class="md-nav__link">
-    Generate a JWT
+  <a href="#generate-a-token-for-authorization" class="md-nav__link">
+    Generate a Token for Authorization
   </a>
-  
-    <nav class="md-nav" aria-label="Generate a JWT">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-a-new-file" class="md-nav__link">
-    Create a New File
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#execute-the-rest-api" class="md-nav__link">
-    Execute the REST API
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#construct-api-call-for-devices" class="md-nav__link">
-    Construct API Call for Devices
+  <a href="#run-api-call-for-get-devices" class="md-nav__link">
+    Run API Call for Get Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-getpost-templates" class="md-nav__link">
+    Example GET/POST Templates
   </a>
   
 </li>
@@ -1562,7 +1536,7 @@
                 
                   <h1>REST API Call</h1>
                 
-                <p>This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices">Getting Devices</a> using Node.js. This method will retrieve information about all devices, including device GUIDs.</p>
+                <p>This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/">curl</a>. This method will retrieve information about all devices, including device GUIDs.</p>
 <p><a href="../../assets/images/ConnectedDevicesAPI.png"><img alt="ConnectedDevices" src="../../assets/images/ConnectedDevicesAPI.png" /></a></p>
 <p><strong>Figure 1: API Call to Get All Devices</strong></p>
 <div class="admonition important">
@@ -1579,153 +1553,135 @@
 <p><strong>Software on the Development System</strong> </p>
 <ul>
 <li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
-<li><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></li>
-<li><a href="https://nodejs.org/">Node.js LTS 12.x.x or newer</a></li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE</li>
+<li><a href="https://curl.se/download.html">curl</a></li>
+<li>Any Text Editor</li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
 <p>The following sections describe how to:</p>
 <ul>
 <li>Generate a new JWT for Authorization</li>
-<li>Construct an API Call to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for Devices</li>
-<li>View Device GUIDs</li>
+<li>Run an API Call to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for Devices</li>
+<li>See Other Example GET/POST Commands</li>
 </ul>
-<h2 id="generate-a-jwt">Generate a JWT<a class="headerlink" href="#generate-a-jwt" title="Permanent link">&para;</a></h2>
-<h3 id="create-a-new-file">Create a New File<a class="headerlink" href="#create-a-new-file" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note - <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Authorize Method</p>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for the structure and other requirements of the Authorize API call used in the following to generate a JWT.</p>
-</div>
+<h2 id="generate-a-token-for-authorization">Generate a Token for Authorization<a class="headerlink" href="#generate-a-token-for-authorization" title="Permanent link">&para;</a></h2>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for more information.</p>
 <ol>
-<li>Navigate to a file directory of your choice.</li>
-<li>Create and open a new JavaScript<em> file with a name of your choice. In this guide, we will refer to it as </em>generateJWT.js*.</li>
-<li>Copy and paste the example code below.</li>
+<li>Open a Terminal or Command Prompt.</li>
+<li>Copy and paste the example code below into a text editor.</li>
 <li>
-<p>Update the values of the <code>username</code>, <code>password</code>, and <code>hostname</code> keys.</p>
-<div class="admonition example">
-<p class="admonition-title">Example POST - generateJWT.js</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">)</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">[</span><span class="s1">&#39;NODE_TLS_REJECT_UNAUTHORIZED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span> <span class="c1">//For testing withself-signed certs, remove for production</span>
-<span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<span class="hll">    <span class="s1">&#39;username&#39;</span><span class="o">:</span> <span class="s1">&#39;standalone&#39;</span><span class="p">,</span> <span class="c1">//Replace with MPS_WEB_ADMIN_USER from .env file or mpsweb stored secret</span>
-</span><span class="hll">    <span class="s1">&#39;password&#39;</span><span class="o">:</span> <span class="s1">&#39;G@ppm0ym&#39;</span> <span class="c1">//Replace with MPS_WEB_ADMIN_PASSWORD from .env file or mpsweb stored secret</span>
-</span><span class="p">})</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="c1">//Replace &#39;localhost&#39; with IP Address or FQDN</span>
-</span>    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/mps/login/api/v1/authorize&#39;</span><span class="p">,</span>
-    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">https</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">d</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
-    <span class="p">})</span>
-<span class="p">})</span>
-
-<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="c1">// Write data to request body</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
-<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+<p>Update the values of the <code>[IP-Address or FQDN]</code>, <code>[MPS_WEB_ADMIN_USER]</code>, and <code>[MPS_WEB_ADMIN_PASSWORD]</code> fields.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure -X POST https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/login/api/v1/authorize <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type:application/json&quot;</span> <span class="se">\</span>
+    -d <span class="s2">&quot;{\&quot;username\&quot;:\&quot;[MPS_WEB_ADMIN_USER]\&quot;, \&quot;password\&quot;:\&quot; [MPS_WEB_ADMIN_PASSWORD]\&quot;}&quot;</span>
 </code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure -X POST https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/login/api/v1/authorize ^
+    -H <span class="s2">&quot;Content-Type:application/json&quot;</span> ^
+    -d <span class="s2">&quot;{\&quot;username\&quot;:\&quot;[MPS_WEB_ADMIN_USER]\&quot;, \&quot;password\&quot;:\&quot; [MPS_WEB_ADMIN_PASSWORD]\&quot;}&quot;</span>
+</code></pre></div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info - Using the --insecure Flag</p>
+<p>Because we are using self-signed certificates for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for development and testing purposes, we must supply this flag to bypass SSL certificate verification.</p>
 </div>
 </li>
-</ol>
-<h3 id="execute-the-rest-api">Execute the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API<a class="headerlink" href="#execute-the-rest-api" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Open a Terminal or Command Prompt to execute the call.</li>
-<li>Navigate to the directory you saved the generateJWT.js file.</li>
 <li>
-<p>Run the code snippet using node.</p>
-<div class="highlight"><pre><span></span><code>node generateJWT.js
-</code></pre></div>
+<p>Run the command.</p>
 <div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example Response:</p>
+<p class="admonition-title">Example - Response of Authorize Method</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90&quot;</span><span class="p">}</span>
 </code></pre></div>
 </div>
 </li>
-</ol>
-<h2 id="construct-api-call-for-devices">Construct API Call for Devices<a class="headerlink" href="#construct-api-call-for-devices" title="Permanent link">&para;</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note - <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API GetDevices Method</p>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for the structure and other requirements of the GetDevices API call used in the following to generate a JWT.</p>
-</div>
-<ol>
-<li>Create and open a new JavaScript<em> file with a name of your choice. In this guide we will refer to it as </em>myDevices.js*.</li>
-<li>Copy and paste the example code below.</li>
-<li>Update the value of the <code>hostname</code> key to the IP Address or FQDN.</li>
 <li>
-<p>Replace &lt;Your-JWT-Token&gt; with the JWT you generated from the Authorize API Call.</p>
-<div class="admonition example">
-<p class="admonition-title">Example GET - myDevices.js</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">https</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">)</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">[</span><span class="s1">&#39;NODE_TLS_REJECT_UNAUTHORIZED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span> <span class="c1">//For testing with self-signed certs, remove for production</span>
-
-<span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll">    <span class="nx">hostname</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="c1">//Replace &#39;localhost&#39; with IP Address or FQDN</span>
-</span>    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/mps/api/v1/devices&#39;</span><span class="p">,</span>
-    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
-<span class="hll">        <span class="s1">&#39;Authorization&#39;</span><span class="o">:</span> <span class="s1">&#39;Bearer &lt;Your-JWT-Token&gt;&#39;</span> <span class="c1">//Replace &lt;Your-JWT-Token&gt; with your generated JWT Token</span>
-</span>    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">https</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">d</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
-    <span class="p">})</span>
-<span class="p">})</span>
-
-<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+<p>This token will be used when making any other API call as part of the Authorization header. </p>
+</li>
+</ol>
+<h2 id="run-api-call-for-get-devices">Run API Call for Get Devices<a class="headerlink" href="#run-api-call-for-get-devices" title="Permanent link">&para;</a></h2>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for more information.</p>
+<ol>
+<li>Open a Terminal or Command Prompt.</li>
+<li>Copy and paste the example code below into a text editor.</li>
+<li>
+<p>Update the values of the <code>[IP-Address or FQDN]</code> and <code>[JWT-Token]</code> fields.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/devices <span class="se">\</span>
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
 </code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/devices ^
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
+</code></pre></div>
+</div>
 </div>
 </li>
 <li>
-<p>Run the code snippet using node.</p>
-<div class="highlight"><pre><span></span><code>node myDevices.js
+<p>Run the command.</p>
+<div class="admonition example">
+<p class="admonition-title">Example - Response of Devices Method</p>
+<p>Example Terminal Output:</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">[{</span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">,</span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="s2">&quot;vpro3-NUC8v5PNK&quot;</span><span class="p">,</span><span class="nt">&quot;tags&quot;</span><span class="p">:[],</span><span class="nt">&quot;mpsInstance&quot;</span><span class="p">:</span><span class="s2">&quot;mps&quot;</span><span class="p">,</span><span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;mpsusername&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span><span class="p">}]</span>
+</code></pre></div>
+Example JSON Pretty Print:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;guid&quot;</span><span class="p">:</span> <span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;vpro3-NUC8v5PNK&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;mpsInstance&quot;</span><span class="p">:</span> <span class="s2">&quot;mps&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;mpsusername&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e., <a href="../../Topics/powerstates/">Power Actions</a>, Audit Logs, etc), the device GUID is <em>required</em> as part of the GET path.</strong> Save this value if you want to try other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Other ways to retrieve a GUID can be found <a href="../../Topics/guids/">here</a>.</p>
 </div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>Example Terminal Output:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">[{</span><span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="s2">&quot;DESKTOP-R2225SQ&quot;</span><span class="p">,</span>    <span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span>   <span class="p">{</span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="s2">&quot;DESKTOP-R2225SQ&quot;</span><span class="p">,</span><span class="nt">&quot;tags&quot;</span><span class="p">:</span>    <span class="p">[]}}]</span>
-</code></pre></div>
-Example JSON Pretty Print:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;DESKTOP-R2225SQ&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;guid&quot;</span><span class="p">:</span> <span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;guid&quot;</span><span class="p">:</span> <span class="s2">&quot;d92b3be1-b04f-49de-b806-54b203054e9d&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;DESKTOP-R2225SQ&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-</code></pre></div>
 </div>
 </li>
 </ol>
+<h2 id="example-getpost-templates">Example GET/POST Templates<a class="headerlink" href="#example-getpost-templates" title="Permanent link">&para;</a></h2>
+<p>The sample GET and POST curl commands below can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods <strong>by changing the URL path and modifying the request body data, if applicable</strong>.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Power Capabilities (GET Template)</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span> <span class="se">\</span>
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span> ^
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
+</code></pre></div>
+</div>
+</div>
+<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Power Action (POST Template)</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure -X POST https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span> <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span> <span class="se">\</span>
+    -d <span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure -X POST https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span> ^
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> ^
+    -H <span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span> ^
+    -d <span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
+</code></pre></div>
+</div>
+</div>
+<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/1.5.0#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
+</div>
+</div>
 <h2 id="other-methods">Other Methods<a class="headerlink" href="#other-methods" title="Permanent link">&para;</a></h2>
-<p>The sample POST and GET code snippets above can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods. To test other methods, see: </p>
+<p>For all available methods, see: </p>
 <ul>
 <li>
 <p><a href="../../APIs/indexMPS/" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device:</a></p>
@@ -1735,12 +1691,6 @@ Example JSON Pretty Print:</p>
 <p><a href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning:</a></p>
 <p><a class="md-button md-button--primary" href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Docs</a></p>
 </li>
-</ul>
-<p>Modify the tutorial POST and GET templates to implement other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs by changing these values:</p>
-<ul>
-<li>path</li>
-<li>method</li>
-<li>payload (stored in the variable 'data', if POST method)</li>
 </ul>
 <h2 id="explore-the-ui-toolkit">Explore the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#explore-the-ui-toolkit" title="Permanent link">&para;</a></h2>
 <p>In addition to <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API calls, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>).</p>
