@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPC/buildRPC_Manual/">
+        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s-eks/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
     
     
       
-        <title>Build & Run RPC (Manual) - Open Active Management Technology Cloud Toolkit</title>
+        <title>EKS - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#required-software" class="md-skip">
+        <a href="#amazon-elastic-kubernetes-service-eks" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build & Run RPC (Manual)
+              EKS
             
           </span>
         </div>
@@ -200,15 +200,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../overview/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../Microservices/overview/" class="md-tabs__link">
         Components
       </a>
     </li>
@@ -218,13 +216,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../Tutorials/uitoolkit/" class="md-tabs__link">
+      <a href="../../../Tutorials/uitoolkit/" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -578,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshootingRPC/" class="md-nav__link">
+      <a href="../../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -597,14 +597,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Components
@@ -622,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+      <a href="../../../Microservices/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -655,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../MPS/configuration/" class="md-nav__link">
+      <a href="../../../Microservices/MPS/configuration/" class="md-nav__link">
         Configuration
       </a>
     </li>
@@ -667,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../MPS/securityMPS/" class="md-nav__link">
+      <a href="../../../Microservices/MPS/securityMPS/" class="md-nav__link">
         Security Information
       </a>
     </li>
@@ -706,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RPS/configuration/" class="md-nav__link">
+      <a href="../../../Microservices/RPS/configuration/" class="md-nav__link">
         Configuration
       </a>
     </li>
@@ -718,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RPS/networkConfig/" class="md-nav__link">
+      <a href="../../../Microservices/RPS/networkConfig/" class="md-nav__link">
         Network Profiles
       </a>
     </li>
@@ -730,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RPS/securityRPS/" class="md-nav__link">
+      <a href="../../../Microservices/RPS/securityRPS/" class="md-nav__link">
         Security Information
       </a>
     </li>
@@ -746,14 +744,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
       <label class="md-nav__link" for="__nav_3_4">
         Remote Provisioning Client
@@ -769,68 +765,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Build & Run RPC (Manual)
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
         Build & Run RPC (Manual)
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#required-software" class="md-nav__link">
-    Required Software
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    Clone the Repository
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-prerequisites-and-build-rpc" class="md-nav__link">
-    Install Prerequisites and Build RPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-rpc" class="md-nav__link">
-    Run RPC
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -840,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../commandsRPC/" class="md-nav__link">
+      <a href="../../../Microservices/RPC/commandsRPC/" class="md-nav__link">
         Command Examples
       </a>
     </li>
@@ -1011,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshootingRPC/" class="md-nav__link">
+      <a href="../../../Microservices/RPC/troubleshootingRPC/" class="md-nav__link">
         Troubleshooting
       </a>
     </li>
@@ -1030,12 +969,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         Tutorials
@@ -1087,12 +1028,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
       
       <label class="md-nav__link" for="__nav_4_4">
         Scaling
@@ -1110,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1122,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+      <a href="../../Docker%20Swarm/docker-swarm/" class="md-nav__link">
         Docker Swarm*
       </a>
     </li>
@@ -1132,12 +1075,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" checked>
       
       <label class="md-nav__link" for="__nav_4_4_3">
         Kubernetes Deployments
@@ -1155,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/Kubernetes/deployingk8s/" class="md-nav__link">
+      <a href="../deployingk8s/" class="md-nav__link">
         Kubernetes (K8s)
       </a>
     </li>
@@ -1167,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/Kubernetes/deployingk8s-aks/" class="md-nav__link">
+      <a href="../deployingk8s-aks/" class="md-nav__link">
         AKS
       </a>
     </li>
@@ -1177,11 +1122,236 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../Scaling/Kubernetes/deployingk8s-eks/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          EKS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         EKS
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-eks-cluster" class="md-nav__link">
+    Create EKS Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create EKS Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configure-aws-cli" class="md-nav__link">
+    1. Configure AWS CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-ssh-key-for-cluster-access" class="md-nav__link">
+    2. Create ssh key for cluster access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-cluster" class="md-nav__link">
+    3. Create cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-postgres-db-in-rps" class="md-nav__link">
+    Create postgres db in RPS
+  </a>
+  
+    <nav class="md-nav" aria-label="Create postgres db in RPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-a-managed-instance-of-postres-db" class="md-nav__link">
+    1. Create a managed instance of postres db
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-virtual-private-cloud-vpc-for-access" class="md-nav__link">
+    2. Configure Virtual Private Cloud (VPC) for access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-databases-and-schema" class="md-nav__link">
+    3. Create databases and schema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-aks-instance" class="md-nav__link">
+    Connect to AKS Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-database-connection-strings" class="md-nav__link">
+    6. Database connection strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-configuration" class="md-nav__link">
+    Update Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+    Deploy Open AMT Cloud Toolkit using Helm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+    Initialize and Unseal Vault
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-commonname" class="md-nav__link">
+    Update commonName
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amazon-ebs-csi-driver" class="md-nav__link">
+    Amazon EBS CSI driver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-running-pods" class="md-nav__link">
+    Verify running pods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1191,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Scaling/Kubernetes/service-mesh/" class="md-nav__link">
+      <a href="../service-mesh/" class="md-nav__link">
         KUMA Service Mesh
       </a>
     </li>
@@ -1454,6 +1624,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1462,29 +1634,193 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-software" class="md-nav__link">
-    Required Software
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    Clone the Repository
+  <a href="#create-eks-cluster" class="md-nav__link">
+    Create EKS Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Create EKS Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configure-aws-cli" class="md-nav__link">
+    1. Configure AWS CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-ssh-key-for-cluster-access" class="md-nav__link">
+    2. Create ssh key for cluster access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-cluster" class="md-nav__link">
+    3. Create cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-postgres-db-in-rps" class="md-nav__link">
+    Create postgres db in RPS
+  </a>
+  
+    <nav class="md-nav" aria-label="Create postgres db in RPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-a-managed-instance-of-postres-db" class="md-nav__link">
+    1. Create a managed instance of postres db
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-virtual-private-cloud-vpc-for-access" class="md-nav__link">
+    2. Configure Virtual Private Cloud (VPC) for access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-databases-and-schema" class="md-nav__link">
+    3. Create databases and schema
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-aks-instance" class="md-nav__link">
+    Connect to AKS Instance
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-prerequisites-and-build-rpc" class="md-nav__link">
-    Install Prerequisites and Build RPC
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+    1. Private Docker Registry Credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mpskong-jwt" class="md-nav__link">
+    2. MPS/KONG JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+    3. KONG ACL for JWT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+    4. MPS Web Username and Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-database-connection-strings" class="md-nav__link">
+    6. Database connection strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-configuration" class="md-nav__link">
+    Update Configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-rpc" class="md-nav__link">
-    Run RPC
+  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+    Deploy Open AMT Cloud Toolkit using Helm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+    Initialize and Unseal Vault
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vault-token-secret" class="md-nav__link">
+    Vault Token Secret
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-commonname" class="md-nav__link">
+    Update commonName
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amazon-ebs-csi-driver" class="md-nav__link">
+    Amazon EBS CSI driver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-running-pods" class="md-nav__link">
+    Verify running pods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    Next Steps
   </a>
   
 </li>
@@ -1501,250 +1837,337 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Microservices/RPC/buildRPC_Manual.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Scaling/Kubernetes/deployingk8s-eks.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Build & Run RPC (Manual)</h1>
-                
-                <p>In addition to using GitHub Actions to obtain a binary, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> binary can also be manually built. The steps below walk through how to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.</p>
-<h3 id="required-software">Required Software<a class="headerlink" href="#required-software" title="Permanent link">&para;</a></h3>
+                <h1 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">&para;</a></h1>
+<p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See <a href="../deployingk8s/">Kubernetes (K8s)</a>.</p>
+<p>Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS <a href="https://aws.amazon.com/eks">here</a>.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://git-scm.com/downloads">git</a></li>
+<li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a href="https://aws.amazon.com/cli/">AWS CLI</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html">eksctl CLI</a></li>
+<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
 </ul>
-<p>Additionally, if using Windows® 10:</p>
+<h2 id="create-eks-cluster">Create EKS Cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">&para;</a></h2>
+<h3 id="1-configure-aws-cli">1. Configure AWS CLI<a class="headerlink" href="#1-configure-aws-cli" title="Permanent link">&para;</a></h3>
+<p>Follow steps listed <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">here</a>.</p>
+<h3 id="2-create-ssh-key-for-cluster-access">2. Create ssh key for cluster access<a class="headerlink" href="#2-create-ssh-key-for-cluster-access" title="Permanent link">&para;</a></h3>
+<p>Follow steps listed <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">here</a>.</p>
+<h3 id="3-create-cluster">3. Create cluster<a class="headerlink" href="#3-create-cluster" title="Permanent link">&para;</a></h3>
+<p>Create a new EKS cluster and supporting components:</p>
+<div class="highlight"><pre><span></span><code>eksctl create cluster --name &lt;name&gt; --region &lt;region&gt; --with-oidc --ssh-access --ssh-public-key &lt;ssh keypair name&gt; --managed
+</code></pre></div>
+<p>Parameters:</p>
 <ul>
-<li><a href="https://visualstudio.microsoft.com/">Microsoft Visual Studio*</a>: 2019 or newer version of Visual Studio Community/Professional<ul>
-<li>Make sure to install the <strong>Desktop development with C++</strong> package at time of installation or via the 'Get tools and extensions' menu within Microsoft Visual Studio*.</li>
+<li><strong>&lt;name&gt;</strong> name of eks stack.</li>
+<li><strong>&lt;region&gt;</strong> aws region to deploy stack. eg. 'us-2-west'.</li>
+<li><strong>&lt;ssh keypair name&gt;</strong> name of the ssh key from the previous step.</li>
 </ul>
-</li>
+<h2 id="create-postgres-db-in-rps">Create postgres db in <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#create-postgres-db-in-rps" title="Permanent link">&para;</a></h2>
+<h3 id="1-create-a-managed-instance-of-postres-db">1. Create a managed instance of postres db<a class="headerlink" href="#1-create-a-managed-instance-of-postres-db" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html#CHAP_GettingStarted.Creating.PostgreSQL">Creating Postgres DB steps</a>
+Note: Use the vpc created from the cluster above (should begin with 'eksctl-<strong>&lt;name&gt;</strong>-cluster'). Select the default security group.</p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;name&gt;</strong> name of eks stack.</li>
 </ul>
-<p><br></p>
-<p>The steps below assume the following directory structure where rpc is the clone of the <a href="https://github.com/open-amt-cloud-toolkit/rpc">rpc repository</a>, vcpkg is a clone of the VCPKG tool source and build is the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> build directory. Both vcpkg and build directories will be created in later steps.</p>
-<div class="highlight"><pre><span></span><code>\rpc
-  |__vcpkg
-  |__build
+<h3 id="2-configure-virtual-private-cloud-vpc-for-access">2. Configure Virtual Private Cloud (VPC) for access<a class="headerlink" href="#2-configure-virtual-private-cloud-vpc-for-access" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <a href="https://console.aws.amazon.com/rds/home">RDS home</a>.</li>
+<li>Select 'Databases' on the left hand side of the screen.</li>
+<li>Select the database created from above.</li>
+<li>Under the 'Connectivity &amp; security' -&gt; 'security', click on the VPC under 'VPC security groups'.  </li>
+<li>With the VPC selected, select 'Inbound rules' -&gt; 'Edit inbound rules'.<br />
+a. Select 'Add rule'.<br />
+b. Under 'Type' select 'PostgresSQL'.<br />
+c. 'Source' scroll down to 'My IP'.<br />
+d. Select 'Add rule' once again.<br />
+e. Under 'Type' select 'PostgresSQL'.<br />
+f. With 'custom' selected for source, click in the search box. select the security group starting with the label 'eks-cluster-sg'.<br />
+g. Select 'Save rules'.  </li>
+</ol>
+<h3 id="3-create-databases-and-schema">3. Create databases and schema<a class="headerlink" href="#3-create-databases-and-schema" title="Permanent link">&para;</a></h3>
+<p>Use the database schema files to initialize the hosted postgres db.</p>
+<p>NOTE: The following commands will prompt for the database password.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
 </code></pre></div>
-<h3 id="clone-the-repository">Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>On your development system, navigate to a directory of your choice to clone and build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.</p>
-</li>
-<li>
-<p>Clone the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> repository.</p>
-<div class="highlight"><pre><span></span><code>git clone --branch v1.2.1 https://github.com/open-amt-cloud-toolkit/rpc.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> rpc
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
 </code></pre></div>
-</li>
-</ol>
-<h3 id="install-prerequisites-and-build-rpc">Install Prerequisites and Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#install-prerequisites-and-build-rpc" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
-<p>Open 'x64 Native Tools Command Prompt for VS 20XX' on your development system.  <strong>This is NOT a regular Windows Command Prompt.</strong>  This specific tool is used for compiling the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.</p>
-<p><img alt="NTCP" src="../../../assets/images/x64NativeToolsCP.png" /></p>
-<p><strong>Build VCPKG and C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK</strong></p>
-<ol>
-<li>
-<p>In the <code>rpc</code> directory, clone the VCPKG repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it <a href="https://github.com/microsoft/vcpkg">here</a>.
-<div class="highlight"><pre><span></span><code>git clone --branch <span class="m">2020</span>.11-1 https://github.com/microsoft/vcpkg.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> vcpkg
-</code></pre></div></p>
-</li>
-<li>
-<p>Build vcpkg.exe using the following command.
-<div class="highlight"><pre><span></span><code>bootstrap-vcpkg.bat
-</code></pre></div></p>
-</li>
-<li>
-<p>Install C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-<div class="highlight"><pre><span></span><code>vcpkg install cpprestsdk<span class="o">[</span>websockets<span class="o">]</span>:x64-windows-static
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
-<ol>
-<li>
-<p>Return to the <code>rpc</code> directory and create a new <code>build</code> directory.
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-</code></pre></div></p>
-</li>
-<li>
-<p>Generate the CMake config.
-<div class="highlight"><pre><span></span><code>cmake -DVCPKG_TARGET_TRIPLET<span class="o">=</span>x64-windows-static -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake ..
-</code></pre></div></p>
-</li>
-<li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.
-<div class="highlight"><pre><span></span><code>cmake --build . --config Release
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-<div class="highlight"><pre><span></span><code>cmake --build . --config Debug
-</code></pre></div></p>
-</div>
-</li>
-<li>
-<p>Change to <code>Release</code> directory.
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Release
-</code></pre></div></p>
-</li>
-</ol>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Ubuntu/CentOS 8</label><div class="tabbed-content">
-<p>The following steps are for Ubuntu 18.04, Ubuntu 20.04, or CentOS8.</p>
-<p><strong>Build VCPKG and C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK</strong></p>
-<ol>
-<li>
-<p>To install the required dependencies; enter the following command.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Ubuntu</label><div class="tabbed-content"></div>
-</div>
-<div class="highlight"><pre><span></span><code>sudo apt install git cmake build-essential curl zip unzip tar pkg-config
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\initMPS.sql
 </code></pre></div>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">CentOS8</label><div class="tabbed-content"></div>
-</div>
-<div class="highlight"><pre><span></span><code>sudo yum install cmake
-</code></pre></div>
-</li>
-<li>
-<p>In the <code>rpc</code> directory, clone the Vcpkg repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it <a href="https://github.com/microsoft/vcpkg">here</a>.
-<div class="highlight"><pre><span></span><code>git clone --branch <span class="m">2020</span>.11-1 https://github.com/microsoft/vcpkg.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> vcpkg
-</code></pre></div></p>
-</li>
-<li>
-<p>Build vcpkg.exe using the following command.
-<div class="highlight"><pre><span></span><code>./bootstrap-vcpkg.sh
-</code></pre></div></p>
-</li>
-<li>
-<p>Install C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-<div class="highlight"><pre><span></span><code>./vcpkg install cpprestsdk<span class="o">[</span>websockets<span class="o">]</span>
-</code></pre></div></p>
-</li>
-</ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database.</li>
+<li><strong>&lt;HOST&gt;</strong> location of the postgres database.</li>
+<li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'.</li>
+</ul>
+<h2 id="connect-to-aks-instance">Connect to <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">&para;</a></h2>
+<p>Ensure your <code>kubectl</code> is connected to the Kubernetes cluster you wish to deploy/manage.</p>
 <ol>
 <li>
-<p>Return to the <code>rpc</code> directory and create a new 'build' directory.
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-</code></pre></div></p>
+<p>Provide your resource group name and cluster name, respectively.</p>
+<p><div class="highlight"><pre><span></span><code>aws eks update-kubeconfig --region &lt;region&gt; --name &lt;name&gt;
+</code></pre></div>
+Where:</p>
 </li>
 <li>
-<p>Generate the CMake config.
-<div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ..
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-<div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
-</code></pre></div></p>
-</div>
+<p><strong>&lt;name&gt;</strong> name of eks stack.</p>
 </li>
-<li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable.
-<div class="highlight"><pre><span></span><code>cmake --build .
-</code></pre></div></p>
-</li>
+<li><strong>&lt;region&gt;</strong> aws region to deploy stack. eg. 'us-2-west'.</li>
 </ol>
-</div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">CentOS 7</label><div class="tabbed-content">
+<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
+<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">&para;</a></h3>
+<p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
+<li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
+<li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
+</ul>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
+<p>This is the secret used for generating and verifying JWTs.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
+</ul>
+<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
+<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
+</code></pre></div></p>
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
+<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
+<li>
+<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><strong>All commands should be executed in the same Terminal. The "export PATH=..." (for CMake and Git), and "scl enable devtoolset-7 bash" (for GCC) are temporary changes which only affect the current Terminal session.</strong></p>
+<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
+<ul>
+<li>8 to 32 characters</li>
+<li>One uppercase, one lowercase, one numerical digit, one special character</li>
+</ul>
 </div>
-<p><strong>Install Dependencies</strong></p>
+</li>
+</ul>
+<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">&para;</a></h3>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.<br />
+Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database.</li>
+<li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
+<li><strong>&lt;SERVERURL&gt;</strong> url for the Amazon hosted postgres database.</li>
+</ul>
+<h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Download CMake. CMake 3.10.2 is recommended and can be downloaded from <a href="https://cmake.org/files/v3.10/">here</a>. Other CMake binary versions are available <a href="https://cmake.org/download/">here</a>.
-<div class="highlight"><pre><span></span><code>./cmake-3.10.2-Linux-x86_64.sh
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/home/user/Downloads/cmake-3.10.2-Linux-x86_64/bin:<span class="nv">$PATH</span>
-</code></pre></div></p>
+<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
 </li>
 <li>
-<p>Update GCC toolchain.
-<div class="highlight"><pre><span></span><code>sudo yum install centos-release-scl
-sudo yum install devtoolset-7
-scl enable devtoolset-7 bash
-</code></pre></div></p>
+<p>Remove the section <em>service.beta.kubernetes.io/azure-dns-label-name</em> key in the <code>kong:</code> section.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
+  <span class="nt">proxy</span><span class="p">:</span>
+    <span class="nt">annotations</span><span class="p">:</span>
+<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">&quot;&lt;your-domain-name&gt;&quot;</span>
+</span></code></pre></div>
 </li>
 <li>
-<p>Build Git source control system.
-<div class="highlight"><pre><span></span><code>sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-develperl-CPAN perl-devel
-git clone https://github.com/git/git.git
-make configure
-make
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/home/user/Downloads/git:<span class="nv">$PATH</span>
+<p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
+<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mps:latest&quot;</span>
+</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/rps:latest&quot;</span>
+</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/webui:latest&quot;</span>
+</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mpsrouter:latest&quot;</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Update the following keys in the <code>mps</code> section.</p>
+<table>
+<thead>
+<tr>
+<th>Key Name</th>
+<th>Update to</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storageClassName</td>
+<td>ebs-sc</td>
+<td>Name of the storage class in AWS</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
+    <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+<span class="hll">    <span class="c1"># storageClassName: &quot;&quot; #Change to &quot;ebs-sc&quot;</span>
+</span>    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
+    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
+    <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
+</code></pre></div>
+</li>
+<li>
+<p>Save and close the file.</p>
+</li>
+<li>
+<p>Provide a <code>StorageClass</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For an EKS deployment, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/aws.yaml</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Provided aws.yaml Example</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs-sc</span>
+<span class="nt">provisioner</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
+<span class="nt">volumeBindingMode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
+</code></pre></div>
+</li>
+<li>
+<p>Apply it to your cluster.
+    <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/aws.yaml
 </code></pre></div></p>
 </li>
 </ol>
-<p><strong>Build VCPKG and C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK</strong></p>
+<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>In the <code>rpc</code> directory, clone the VCPKG repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it <a href="https://github.com/microsoft/vcpkg">here</a>.
-<div class="highlight"><pre><span></span><code>git clone --branch <span class="m">2020</span>.11-1 https://github.com/microsoft/vcpkg.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> vcpkg
+<p>Deploy using Helm.
+    <div class="highlight"><pre><span></span><code>helm install openamtstack ./kubernetes/charts
 </code></pre></div></p>
-</li>
-<li>
-<p>Build vcpkg.exe using the following command.
-<div class="highlight"><pre><span></span><code>./bootstrap-vcpkg.sh
-</code></pre></div></p>
-</li>
-<li>
-<p>Install C++ <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-<div class="highlight"><pre><span></span><code>./vcpkg install cpprestsdk<span class="o">[</span>websockets<span class="o">]</span>
-</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME: openamtstack
+LAST DEPLOYED: Thu Jul 15 11:17:38 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+</code></pre></div>
+</div>
 </li>
 </ol>
-<p><strong>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></strong></p>
+<h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Return to the <code>rpc</code> directory and create a new 'build' directory.
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
-</code></pre></div></p>
-</li>
-<li>
-<p>Generate the CMake config
-<div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DNO_SELECT<span class="o">=</span>ON ..
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-<div class="highlight"><pre><span></span><code>cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
-</code></pre></div></p>
-</div>
-</li>
-<li>
-<p>Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable
-<div class="highlight"><pre><span></span><code>cmake --build .
-</code></pre></div></p>
-</li>
-</ol>
-</div>
-</div>
-<h3 id="run-rpc">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#run-rpc" title="Permanent link">&para;</a></h3>
-<p>For additional information on possible arguments when invoking <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, see <a href="../commandsRPC/">Command Examples</a>.</p>
-<p>The following example command shows how to activate and configure an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using a pre-defined profile on your local network.</p>
-<ol>
-<li>After building the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, copy the executable to the managed device.</li>
-<li>Run the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.</li>
-</ol>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Windows</label><div class="tabbed-content">
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>On a Windows® 10 system, the Command Prompt must be run as Adminstrator.</p>
-</div>
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --nocertcheck --cmd &quot;-t activate --profile profile1&quot;
-</code></pre></div>
-</div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sudo ./rpc --url wss://localhost/activate --nocertcheck --cmd <span class="s2">&quot;-t activate --profile profile1&quot;</span>
-</code></pre></div>
-</div>
+<p>Make sure you download your credentials and save them in a secure location.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <strong>--nocertcheck</strong> flag allows for the use of self-signed certificates for development purposes. Find more information <a href="../commandsRPC/#optional">here</a></p>
+<p class="admonition-title">Note - Finding the Vault UI External IP Address</p>
+<p>The external IP of your Vault UI service can be found by either:</p>
+<ul>
+<li>
+<p>Run <code>kubectl get services</code> and view under the <code>openamtstack-vault-ui</code> service.</p>
+</li>
+<li>
+<p>Navigate to <code>Home &gt; Kubernetes services &gt; cluster-name &gt; Services and ingresses</code> using Microsoft Azure via online.</p>
+</li>
+</ul>
 </div>
-<p>Example Success Output:</p>
-<p><a href="../../../assets/images/RPC_Success.png"><img alt="RPC Success" src="../../../assets/images/RPC_Success.png" /></a></p>
+</li>
+</ol>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine:</p>
+<ol>
+<li>
+<p>Click "Enable New Engine +".</p>
+</li>
+<li>
+<p>Choose "KV".</p>
+</li>
+<li>
+<p>Click "Next".</p>
+</li>
+<li>
+<p>Leave the default path and choose version 2 from the drop down. </p>
+</li>
+<li>
+<p>Click "Enable Engine".</p>
+</li>
+</ol>
+<h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-root-token&gt;</strong> is your <em>root_token</em> generated by Vault.</li>
+</ul>
+</li>
+</ol>
+<h3 id="update-commonname">Update commonName<a class="headerlink" href="#update-commonname" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Run the following command.</p>
+<p><code>kubectl get service openamtstack-kong-proxy</code></p>
+</li>
+<li>
+<p>Under the 'EXTERNAL-IP' column, record the url provided.</p>
+</li>
+<li>
+<p>Update the entry for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> commonName in the values.yml file with the value from above.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
+<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&quot;</span> <span class="c1"># change with value from above</span>
+</span>    <span class="nt">storageClassName</span><span class="p">:</span> <span class="s">&quot;ebs-sc&quot;</span>
+    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
+    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
+    <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run the following command to update the stack using helm.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>helm upgrade openamtstack ./kubernetes/charts 
+</code></pre></div>
+<h2 id="amazon-ebs-csi-driver">Amazon EBS CSI driver<a class="headerlink" href="#amazon-ebs-csi-driver" title="Permanent link">&para;</a></h2>
+<p>Enable persistent storage in the cluster be following the steps provided in the following <a href="https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html">guide</a>.</p>
+<p>NOTE: The sample application does not need to be deployed as well.</p>
+<h2 id="verify-running-pods">Verify running pods<a class="headerlink" href="#verify-running-pods" title="Permanent link">&para;</a></h2>
+<p>View the pods. All pods should now be Ready and Running.
+    <div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div></p>
+<div class="codehilite"><pre><span></span><code>!!! success
+    ```
+    NAME                                                 READY   STATUS      RESTARTS   AGE
+    mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
+    mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
+    oactdb-697b55f885-g6l58                              1/1     Running     0          4m5s
+    openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
+    openamtstack-vault-0                                 1/1     Running     0          4m5s
+    openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
+    rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
+    webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
+    ```
+</code></pre></div>
+
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Visit the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> using the FQDN name and <a href="../../../General/loginToRPS/"><strong>Continue from the Get Started steps</strong></a>.</p>
                 
               
               
