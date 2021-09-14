@@ -462,13 +462,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" class="md-nav__link">
-    - One uppercase, one lowercase, one numerical digit, one special character
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
     Set Kong JSON Web Token (JWT)
   </a>
@@ -1482,13 +1475,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" class="md-nav__link">
-    - One uppercase, one lowercase, one numerical digit, one special character
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#set-kong-json-web-token-jwt" class="md-nav__link">
     Set Kong JSON Web Token (JWT)
   </a>
@@ -1562,7 +1548,7 @@
 <p>In a text editor or IDE of choice, open the new <code>.env</code> file to edit.</p>
 </li>
 <li>
-<p>Update the following fields for configuring the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Save and keep track of the values you choose.</p>
+<p>Update the following fields for configuring the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, Vault and Postgres. Save and keep track of the values you choose.</p>
 <table>
 <thead>
 <tr>
@@ -1592,55 +1578,35 @@
 <td>A strong secret of your choice (Example: A unique, random 256bit string. See another example in <a href="./#set-kong-json-web-token-jwt">code snippet below</a>).</td>
 <td>Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
 </tr>
+<tr>
+<td>POSTGRES_USER</td>
+<td>Username of your choice</td>
+<td>For logging into the Postgres</td>
+</tr>
+<tr>
+<td>POSTGRES_PASSWORD</td>
+<td><strong>Strong</strong> password of your choice</td>
+<td>For logging into the Postgres</td>
+</tr>
+<tr>
+<td>VAULT_TOKEN</td>
+<td><strong>Strong</strong> token of your choice</td>
+<td>For logging into the vault</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition important">
 <p class="admonition-title">Important - Using Strong Passwords</p>
 <p>The MPS_WEB_ADMIN_PASSWORD must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
-<li>8 to 32 characters</li>
-</ul>
-<h2 id="-one-uppercase-one-lowercase-one-numerical-digit-one-special-character">- One uppercase, one lowercase, one numerical digit, one special character<a class="headerlink" href="#-one-uppercase-one-lowercase-one-numerical-digit-one-special-character" title="Permanent link">&para;</a></h2>
-</div>
-</li>
-</ol>
-<!-- Will re-add for 2.0
-4. Update the fields for connecting to the Postgres database.
-
-    | Field Name              | Required                                                                                         | Usage |
-    | -------------           | ------------------                                                                               | ------------ |
-    | POSTGRES_PASSWORD       | Password of your choice. Common **strong** password practices are recommended.                   | The database password |
-    | MPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/mpsdb?sslmode=no-verify`    | The database connection string for MPS | 
-    | RPS_CONNECTION_STRING   | Replace with: `postgresql://postgresadmin:[POSTGRES_PASSWORD]@db:5432/rpsdb?sslmode=no-verify`    | The database connection string for RPS | 
-
-    !!! important "Important - Use Same Value for all 3 Fields"
-        The password selected for `MPS_CONNECTION_STRING`,  `RPS_CONNECTION_STRING`, and `POSTGRES_PASSWORD` must all be the same. **Replace [POSTGRES_PASSWORD]** found in `MPS_CONNECTION_STRING` and `RPS_CONNECTION_STRING` with the password selected for `POSTGRES_PASSWORD`.
--->
-
-<ol>
 <li>
-<p>Update the fields for setting up Vault.</p>
-<table>
-<thead>
-<tr>
-<th>Field Name</th>
-<th>Required</th>
-<th>Usage</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>RPS_VAULT_TOKEN</td>
-<td>String value of your choice. <strong>Must match <code>MPS_VAULT_TOKEN</code></strong>.</td>
-<td>Root Token for accessing Vault.</td>
-</tr>
-<tr>
-<td>MPS_VAULT_TOKEN</td>
-<td>String value of your choice. <strong>Must match <code>RPS_VAULT_TOKEN</code></strong>.</td>
-<td>Root Token for accessing Vault.</td>
-</tr>
-</tbody>
-</table>
+<p>8 to 32 characters</p>
+</li>
+<li>
+<p>One uppercase, one lowercase, one numerical digit, one special character</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Save the file.</p>
