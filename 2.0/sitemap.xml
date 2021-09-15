@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/announcements/</loc>
+         <lastmod>2021-09-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/license/</loc>
          <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
@@ -96,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/troubleshooting/</loc>
+         <lastmod>2021-09-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/MPS/configuration/</loc>
          <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
@@ -112,11 +122,6 @@
     </url>
     <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPC/commandsRPC/</loc>
-         <lastmod>2021-09-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPC/troubleshootingRPC/</loc>
          <lastmod>2021-09-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
