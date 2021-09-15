@@ -1,0 +1,16 @@
+--8<-- "References/abbreviations.md"
+
+# Announcements
+### <b>Open AMT Cloud Toolkit 2.0 is here!</b>
+We have been preparing for this for quite a while and we know many of our customers have been eagerly awaiting this announcement, our Long Term Support (LTS) release is here!  
+
+#### <b>What does having an LTS release mean?</b> 
+Starting with LTS, Open AMT Cloud Toolkit will now have two release streams that customers can use.  The current Rapid release stream continues to operate as it has been since the beginning of this year.  Every six weeks we'll release new features and fixes that customers can use to add out-of-band functionality to their device management solution.  For Long Term Support releases, new features will be added roughly every six months.  Only critical security and bug fixes will be applied between feature releases, maintaining a stable feature set for the LTS release.  When we release a new LTS version, all of the features in the current Rapid release stream will be merged to the LTS release stream.  Similar to Rapid Releases, only the latest LTS release will be actively supported and maintained.  With this release, both the Rapid and LTS releases are set to 2.0 and have the exact same feature set.  As we continue to release new Rapid releases, the Rapid release stream will continue to add new features while the LTS release stream will continue with the 2.0 feature set.
+
+#### <b>Compatibility between versions</b>
+As we previously announced, with the major version change, we are strictly following semantic versioning, making all 2.X components compatible with each other.  It also means that our 1.X components are not supported with 2.X components.  In this release, all of our components have been versioned up to 2.0 and validated together to ensure compatibility.  While both Rapid and LTS releases that share the same major version *should* be compatible with each other, we won't be validating Rapid and LTS combinations, so it is recommended that customers use either all Rapid or all LTS components.
+
+### <b>Changes coming for Remote Provisioning Client</b>
+ For 2.0, we are deprecating the C++ version of RPC in favor of our Go-based implementation. The reason for this is two-fold. First, we want to be able to take advantage of more modern tooling such as Snyk for Vulnerability Scanning, and Dependabot for dependency updates, among others. Secondly, the cloud focused technologies and protocols we use, which include REST and Websockets, have better support in modern languages. We still needed to balance the interaction between the AMT Firmware and the cloud which led to Go being a natural choice to use.  With the 2.0 release, we are providing an early look at the Go version of RPC.  Over the next few Rapid releases the functionality of the Go version will exceed that of the C++ version and customers will be encouraged to migrate.
+
+<i>The entire Open AMT Cloud Toolkit team hopes you are as excited about this release as we are and we look forward to continuing to working with you!  You can read more about this release in our [release notes](release-notes.md).</i>
