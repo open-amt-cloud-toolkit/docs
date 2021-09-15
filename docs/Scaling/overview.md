@@ -32,23 +32,31 @@ Docker in swarm mode is a container orchestration tool, software used to deploy 
 Kubernetes is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services.
 
 !!! Warning
-    The Kubernetes deployment section is not a tutorial for beginners. It intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
+    The Kubernetes deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
 
-[Get Started with Kubernetes](./Kubernetes/kubernetes.md){: .md-button .md-button--primary target="_blank"}
+[Get Started with Kubernetes](../Scaling/Kubernetes/kubernetes.md){: .md-button .md-button--primary target="_blank"}
 
 ## Kubernetes (K8s)
 K8s is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. The instructions use kubectl, a command line tool for managing Kubernetes clusters.
 
 
 !!! Warning
-    The K8s deployment section is not a tutorial for beginners. It intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
+    The K8s deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
 
-[Get Started with K8s](./Kubernetes/deployingk8s.md){: .md-button .md-button--primary target="_blank"}
+[Get Started with K8s](../Scaling/Kubernetes/deployingk8s.md){: .md-button .md-button--primary target="_blank"}
 
 ## Azure Kubernetes Service (AKS)
 AKS is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. 
 
 !!! Warning
-    The AKS deployment section is not a tutorial for beginners. It intended for those who have prior knowledge of the service. To begin learning about AKS, start with [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/).
+    The AKS deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about AKS, start with [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/).
 
-[Get Started with AKS](./Kubernetes/deployingk8s-aks.md){: .md-button .md-button--primary target="_blank"}
+[Get Started with AKS](../Scaling/Kubernetes/deployingk8s-aks.md){: .md-button .md-button--primary target="_blank"}
+
+## Amazon Elastic Kubernetes Service (EKS)
+EKS is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. 
+
+!!! Warning
+    The EKS deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about EKS, start with [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
+
+[Get Started with EKS](../Scaling/Kubernetes/deployingk8s-eks.md){: .md-button .md-button--primary target="_blank"}

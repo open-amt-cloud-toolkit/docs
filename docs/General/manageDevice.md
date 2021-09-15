@@ -16,11 +16,15 @@
     [![mps](../assets/images/MPS_ManageDevice.png)](../assets/images/MPS_ManageDevice.png)
 
     !!! note
-        If activated into Client Control Mode(CCM), the KVM and SOL features will not function in the current release. To use KVM/SOL, follow the [ACM Activation Tutorial](createProfileACM.md) to see how to configure a device into Admin Control Mode.
+        If activated in Client Control Mode(CCM), the KVM and SOL features require entering a user consent code, which will be displayed on the device. To use KVM/SOL without user consent, follow the [ACM Activation Tutorial](createProfileACM.md) for how to configure a device into Admin Control Mode.
 
     !!! note
-        Activated in Admin Control Mode already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command and be able to view and make live changes to BIOS settings.
+        Activated already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command to view and make live changes to BIOS settings.
 
+5. When performing a KVM action, give the user consent code displayed on the client device.
+    
+    [![mps](../assets/images/MPS_UserConsent.png)](../assets/images/MPS_UserConsent.png)
+  
 <br>
 
 ## Next steps
