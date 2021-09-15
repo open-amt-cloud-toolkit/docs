@@ -1679,7 +1679,7 @@
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
 <h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">&para;</a></h3>
 <p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry regcred --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
 </code></pre></div></p>
 <p>Where:</p>
 <ul>
