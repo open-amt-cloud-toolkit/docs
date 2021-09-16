@@ -81,8 +81,12 @@ nav:
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
-  - Topics:
+  - Topics:    
       - AMT Power States: Topics/powerstates.md
+      - Deployment Considerations:
+          - Overview: Topics/Deployment/overview.md
+          - Database: Topics/Deployment/database.md
+          - Secret Provider: Topics/Deployment/secrets.md
       - GUIDs in Intel® AMT: Topics/guids.md
       - Logging: Topics/logging.md
       - Intel&reg; MEBX:
@@ -100,27 +104,34 @@ markdown_extensions:
   - pymdownx.snippets
   - attr_list
   - pymdownx.inlinehilite
-  - pymdownx.superfences
-  - codehilite:
-      guess_lang: false
+  - pymdownx.superfences:
+    # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   - toc:
       permalink: true
 extra_css:
   - assets\stylesheets\branding.css
+  - assets\stylesheets\mermaid.css
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
   - render_swagger
   - search
   - macros
+  - mermaid2
 extra:
   version:
     provider: mike
   mpsAPI:
-    version: 1.5.0
+    version: 2.0.0
   rpsAPI: 
-    version: 1.5.0
+    version: 2.0.0
   baseClone:
-    version: 1.5.0
+    version: 2.0.0
   rpcClone:
-    version: 1.2.1
+    version: 2.0.0
   uiClone:
-    version: 1.5.0
+    version: 2.0.0
