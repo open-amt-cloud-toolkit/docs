@@ -31,20 +31,20 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 4. Under **Activation Mode**, select **Client Control Mode** from the dropdown menu.
 
-5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server.
+5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
     !!! tip
         The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
 7. The **MEBX Password** field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
-8. Select DHCP as **Network Configuration**.
+8. Leave DHCP as the default for **Network Configuration**.
 
-9. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
+10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+11. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](./createWiFiConfig.md).
 
 12. Click **Save.**
 
