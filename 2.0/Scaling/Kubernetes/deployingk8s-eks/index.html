@@ -1,1863 +1,1019 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s-eks/">
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
-    
-    
-      
-        <title>EKS - Open Active Management Technology Cloud Toolkit</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1118c9be.min.css">
-      
-        
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ba0d045b.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/branding.css">
-    
-    
-      
+<!DOCTYPE html>
 
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#amazon-elastic-kubernetes-service-eks" class="md-skip">
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s-eks/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.2" name="generator"/>
+<title>EKS - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#amazon-elastic-kubernetes-service-eks">
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
-      
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             Open Active Management Technology Cloud Toolkit
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               EKS
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     open-amt-cloud-toolkit/open-amt-cloud-toolkit
   </div>
 </a>
-      </div>
-    
-  </nav>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
         Home
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Docker/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Docker/overview/">
         Get Started
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Microservices/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Microservices/overview/">
         Components
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Tutorials/uitoolkit/" class="md-tabs__link md-tabs__link--active">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../Tutorials/uitoolkit/">
         Tutorials
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../APIs/indexMPS/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../APIs/indexMPS/">
         APIs
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../Topics/powerstates/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../Topics/powerstates/">
         Topics
       </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
-      
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../assets/images/logo-white-75px.png"/>
+</a>
     Open Active Management Technology Cloud Toolkit
   </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     open-amt-cloud-toolkit/open-amt-cloud-toolkit
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      <label class="md-nav__link" for="__nav_1">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
         Home
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
           Home
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../announcements/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../announcements/">
         Announcements
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../release-notes/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../release-notes/">
         Release notes
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../license/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../license/">
         License
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      <label class="md-nav__link" for="__nav_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
         Get Started
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Get Started" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Get Started
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Docker/overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Docker/overview/">
         Prerequisites
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Docker/dockerLocal/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Docker/dockerLocal/">
         Set Up
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Configure
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Configure" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           Configure
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/loginToRPS/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/loginToRPS/">
         Login to Sample Web UI
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/createCIRAConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/createCIRAConfig/">
         Create a CIRA Config
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3_3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
         Create an AMT Profile
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Create an AMT Profile" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_3_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
           Create an AMT Profile
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/createProfileCCM/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/createProfileCCM/">
         Create a Profile with CCM
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/createProfileACM/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/createProfileACM/">
         Create a Profile with ACM
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
-      
-      <label class="md-nav__link" for="__nav_2_4">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Connect
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Connect" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           Connect
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/buildRPC/" class="md-nav__link">
-        Build & Run RPC
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/buildRPC/">
+        Build &amp; Run RPC
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/manageDevice/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/manageDevice/">
         Manage AMT Device
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/troubleshooting/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/troubleshooting/">
         Troubleshooting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Components
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Components" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Components" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Components
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/overview/">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
-      
-      <label class="md-nav__link" for="__nav_3_2">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
         Management Presence Server
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Management Presence Server" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
           Management Presence Server
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/MPS/configuration/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/MPS/configuration/">
         Configuration
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/MPS/securityMPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/MPS/securityMPS/">
         Security Information
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
-      
-      <label class="md-nav__link" for="__nav_3_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
         Remote Provisioning Server
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
           Remote Provisioning Server
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/configuration/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/RPS/configuration/">
         Configuration
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/networkConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/RPS/networkConfig/">
         Network Profiles
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/RPS/securityRPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/RPS/securityRPS/">
         Security Information
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
-      
-      <label class="md-nav__link" for="__nav_3_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
         Remote Provisioning Client
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Remote Provisioning Client" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
           Remote Provisioning Client
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
-        Build & Run RPC (Manual)
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC (Manual)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/RPC/commandsRPC/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/RPC/commandsRPC/">
         Command Examples
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
-      
-      <label class="md-nav__link" for="__nav_3_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5">
         UI Toolkit
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="UI Toolkit" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
           UI Toolkit
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
-      
-      <label class="md-nav__link" for="__nav_3_5_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" id="__nav_3_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5_1">
         Controls
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Controls" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_5_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_1">
+<span class="md-nav__icon md-icon"></span>
           Controls
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/Controls/kvmControl/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
-      
-      <label class="md-nav__link" for="__nav_3_5_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" id="__nav_3_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5_2">
         React Bundles
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="React Bundles" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_5_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_2">
+<span class="md-nav__icon md-icon"></span>
           React Bundles
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/Bundles/kvm/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Bundles/kvm/">
         Keyboard, Video, Mouse
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/Bundles/SerialOverLAN/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Bundles/SerialOverLAN/">
         Serial Over LAN
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/localization/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/localization/">
         Localization
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../UIToolkit/Webpack-Configuration/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Webpack-Configuration/">
         Webpack Configuration
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Microservices/troubleshooting/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Microservices/troubleshooting/">
         Troubleshooting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
-      
-      <label class="md-nav__link" for="__nav_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Tutorials
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Tutorials
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Tutorials/uitoolkit/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Tutorials/uitoolkit/">
         UI Toolkit KVM Module
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Tutorials/apiTutorial/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Tutorials/apiTutorial/">
         REST API Call
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../General/createWiFiConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../General/createWiFiConfig/">
         Wireless Activation
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
-      
-      <label class="md-nav__link" for="__nav_4_4">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
         Scaling
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
           Scaling
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../overview/">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Docker%20Swarm/docker-swarm/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Docker%20Swarm/docker-swarm/">
         Docker Swarm*
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" checked>
-      
-      <label class="md-nav__link" for="__nav_4_4_3">
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" id="__nav_4_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_3">
         Kubernetes Deployments
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_4_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_3">
+<span class="md-nav__icon md-icon"></span>
           Kubernetes Deployments
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../deployingk8s/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deployingk8s/">
         Kubernetes (K8s)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../deployingk8s-aks/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deployingk8s-aks/">
         AKS
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
           EKS
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         EKS
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
     Prerequisites
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-eks-cluster" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-eks-cluster">
     Create EKS Cluster
   </a>
-  
-    <nav class="md-nav" aria-label="Create EKS Cluster">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-configure-aws-cli" class="md-nav__link">
+<nav aria-label="Create EKS Cluster" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-configure-aws-cli">
     1. Configure AWS CLI
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-ssh-key-for-cluster-access" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-create-ssh-key-for-cluster-access">
     2. Create ssh key for cluster access
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-cluster" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-cluster">
     3. Create cluster
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-postgres-db-in-rps" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-postgres-db-in-rps">
     Create postgres db in RPS
   </a>
-  
-    <nav class="md-nav" aria-label="Create postgres db in RPS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-create-a-managed-instance-of-postres-db" class="md-nav__link">
+<nav aria-label="Create postgres db in RPS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-create-a-managed-instance-of-postres-db">
     1. Create a managed instance of postres db
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configure-virtual-private-cloud-vpc-for-access" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-configure-virtual-private-cloud-vpc-for-access">
     2. Configure Virtual Private Cloud (VPC) for access
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-databases-and-schema" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-databases-and-schema">
     3. Create databases and schema
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#connect-to-aks-instance" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-to-aks-instance">
     Connect to AKS Instance
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-secrets">
     Create Secrets
   </a>
-  
-    <nav class="md-nav" aria-label="Create Secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+<nav aria-label="Create Secrets" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-private-docker-registry-credentials">
     1. Private Docker Registry Credentials
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-mpskong-jwt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-mpskong-jwt">
     2. MPS/KONG JWT
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-kong-acl-for-jwt">
     3. KONG ACL for JWT
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-mps-web-username-and-password">
     4. MPS Web Username and Password
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#6-database-connection-strings" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-database-connection-strings">
     6. Database connection strings
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#update-configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploy-open-amt-cloud-toolkit-using-helm">
     Deploy Open AMT Cloud Toolkit using Helm
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initialize-and-unseal-vault">
     Initialize and Unseal Vault
   </a>
-  
-    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vault-token-secret" class="md-nav__link">
+<nav aria-label="Initialize and Unseal Vault" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vault-token-secret">
     Vault Token Secret
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#update-commonname" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-commonname">
     Update commonName
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#amazon-ebs-csi-driver" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#amazon-ebs-csi-driver">
     Amazon EBS CSI driver
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-running-pods" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-running-pods">
     Verify running pods
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
     Next Steps
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-      
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../service-mesh/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../service-mesh/">
         KUMA Service Mesh
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      <label class="md-nav__link" for="__nav_5">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         APIs
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="APIs" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           APIs
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../APIs/indexMPS/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../APIs/indexMPS/">
         Management Presence Server
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../APIs/indexRPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../APIs/indexRPS/">
         Remote Provisioning Server
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      <label class="md-nav__link" for="__nav_6">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
         Topics
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Topics" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Topics" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           Topics
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/powerstates/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/powerstates/">
         AMT Power States
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/guids/" class="md-nav__link">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+        Deployment Considerations
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment Considerations" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Deployment Considerations
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/Deployment/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/Deployment/database/">
+        Database
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/Deployment/secrets/">
+        Secret Provider
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/guids/">
         GUIDs in Intel® AMT
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/logging/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/logging/">
         Logging
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
-      
-      <label class="md-nav__link" for="__nav_6_4">
-        Intel&reg; MEBX
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+        Intel® MEBX
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_4">
-          <span class="md-nav__icon md-icon"></span>
-          Intel&reg; MEBX
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/MEBX/dnsSuffix/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/MEBX/dnsSuffix/">
         DNS Suffix
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/MEBX/unprovision/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/MEBX/unprovision/">
         Unprovisioning
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
-      
-      <label class="md-nav__link" for="__nav_6_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_6" id="__nav_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_6">
         Event Monitoring
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
           Event Monitoring
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Topics/mqtt/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Topics/mqtt/">
         Viewing MQTT Events
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Tutorials/addMqttEvents/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../Tutorials/addMqttEvents/">
         Adding/Editing Events
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
     Prerequisites
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-eks-cluster" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-eks-cluster">
     Create EKS Cluster
   </a>
-  
-    <nav class="md-nav" aria-label="Create EKS Cluster">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-configure-aws-cli" class="md-nav__link">
+<nav aria-label="Create EKS Cluster" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-configure-aws-cli">
     1. Configure AWS CLI
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-ssh-key-for-cluster-access" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-create-ssh-key-for-cluster-access">
     2. Create ssh key for cluster access
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-cluster" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-cluster">
     3. Create cluster
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-postgres-db-in-rps" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-postgres-db-in-rps">
     Create postgres db in RPS
   </a>
-  
-    <nav class="md-nav" aria-label="Create postgres db in RPS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-create-a-managed-instance-of-postres-db" class="md-nav__link">
+<nav aria-label="Create postgres db in RPS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-create-a-managed-instance-of-postres-db">
     1. Create a managed instance of postres db
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configure-virtual-private-cloud-vpc-for-access" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-configure-virtual-private-cloud-vpc-for-access">
     2. Configure Virtual Private Cloud (VPC) for access
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-databases-and-schema" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-create-databases-and-schema">
     3. Create databases and schema
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#connect-to-aks-instance" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-to-aks-instance">
     Connect to AKS Instance
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-secrets">
     Create Secrets
   </a>
-  
-    <nav class="md-nav" aria-label="Create Secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-private-docker-registry-credentials" class="md-nav__link">
+<nav aria-label="Create Secrets" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-private-docker-registry-credentials">
     1. Private Docker Registry Credentials
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2-mpskong-jwt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-mpskong-jwt">
     2. MPS/KONG JWT
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3-kong-acl-for-jwt" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-kong-acl-for-jwt">
     3. KONG ACL for JWT
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#4-mps-web-username-and-password" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-mps-web-username-and-password">
     4. MPS Web Username and Password
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#6-database-connection-strings" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-database-connection-strings">
     6. Database connection strings
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#update-configuration" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-open-amt-cloud-toolkit-using-helm" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploy-open-amt-cloud-toolkit-using-helm">
     Deploy Open AMT Cloud Toolkit using Helm
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#initialize-and-unseal-vault" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initialize-and-unseal-vault">
     Initialize and Unseal Vault
   </a>
-  
-    <nav class="md-nav" aria-label="Initialize and Unseal Vault">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vault-token-secret" class="md-nav__link">
+<nav aria-label="Initialize and Unseal Vault" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vault-token-secret">
     Vault Token Secret
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#update-commonname" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-commonname">
     Update commonName
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#amazon-ebs-csi-driver" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#amazon-ebs-csi-driver">
     Amazon EBS CSI driver
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-running-pods" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-running-pods">
     Verify running pods
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
     Next Steps
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Scaling/Kubernetes/deployingk8s-eks.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <h1 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">&para;</a></h1>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Scaling/Kubernetes/deployingk8s-eks.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">¶</a></h1>
 <p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See <a href="../deployingk8s/">Kubernetes (K8s)</a>.</p>
 <p>Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS <a href="https://aws.amazon.com/eks">here</a>.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
@@ -1866,12 +1022,12 @@
 <li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
 <li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
 </ul>
-<h2 id="create-eks-cluster">Create EKS Cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">&para;</a></h2>
-<h3 id="1-configure-aws-cli">1. Configure AWS CLI<a class="headerlink" href="#1-configure-aws-cli" title="Permanent link">&para;</a></h3>
+<h2 id="create-eks-cluster">Create EKS Cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">¶</a></h2>
+<h3 id="1-configure-aws-cli">1. Configure AWS CLI<a class="headerlink" href="#1-configure-aws-cli" title="Permanent link">¶</a></h3>
 <p>Follow steps listed <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">here</a>.</p>
-<h3 id="2-create-ssh-key-for-cluster-access">2. Create ssh key for cluster access<a class="headerlink" href="#2-create-ssh-key-for-cluster-access" title="Permanent link">&para;</a></h3>
+<h3 id="2-create-ssh-key-for-cluster-access">2. Create ssh key for cluster access<a class="headerlink" href="#2-create-ssh-key-for-cluster-access" title="Permanent link">¶</a></h3>
 <p>Follow steps listed <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">here</a>.</p>
-<h3 id="3-create-cluster">3. Create cluster<a class="headerlink" href="#3-create-cluster" title="Permanent link">&para;</a></h3>
+<h3 id="3-create-cluster">3. Create cluster<a class="headerlink" href="#3-create-cluster" title="Permanent link">¶</a></h3>
 <p>Create a new EKS cluster and supporting components:</p>
 <div class="highlight"><pre><span></span><code>eksctl create cluster --name &lt;name&gt; --region &lt;region&gt; --with-oidc --ssh-access --ssh-public-key &lt;ssh keypair name&gt; --managed
 </code></pre></div>
@@ -1881,33 +1037,33 @@
 <li><strong>&lt;region&gt;</strong> aws region to deploy stack. eg. 'us-2-west'.</li>
 <li><strong>&lt;ssh keypair name&gt;</strong> name of the ssh key from the previous step.</li>
 </ul>
-<h2 id="create-postgres-db-in-rps">Create postgres db in <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#create-postgres-db-in-rps" title="Permanent link">&para;</a></h2>
-<h3 id="1-create-a-managed-instance-of-postres-db">1. Create a managed instance of postres db<a class="headerlink" href="#1-create-a-managed-instance-of-postres-db" title="Permanent link">&para;</a></h3>
+<h2 id="create-postgres-db-in-rps">Create postgres db in <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#create-postgres-db-in-rps" title="Permanent link">¶</a></h2>
+<h3 id="1-create-a-managed-instance-of-postres-db">1. Create a managed instance of postres db<a class="headerlink" href="#1-create-a-managed-instance-of-postres-db" title="Permanent link">¶</a></h3>
 <p><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html#CHAP_GettingStarted.Creating.PostgreSQL">Creating Postgres DB steps</a>
 Note: Use the vpc created from the cluster above (should begin with 'eksctl-<strong>&lt;name&gt;</strong>-cluster'). Select the default security group.</p>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;name&gt;</strong> name of eks stack.</li>
 </ul>
-<h3 id="2-configure-virtual-private-cloud-vpc-for-access">2. Configure Virtual Private Cloud (VPC) for access<a class="headerlink" href="#2-configure-virtual-private-cloud-vpc-for-access" title="Permanent link">&para;</a></h3>
+<h3 id="2-configure-virtual-private-cloud-vpc-for-access">2. Configure Virtual Private Cloud (VPC) for access<a class="headerlink" href="#2-configure-virtual-private-cloud-vpc-for-access" title="Permanent link">¶</a></h3>
 <ol>
 <li>Go to <a href="https://console.aws.amazon.com/rds/home">RDS home</a>.</li>
 <li>Select 'Databases' on the left hand side of the screen.</li>
 <li>Select the database created from above.</li>
 <li>Under the 'Connectivity &amp; security' -&gt; 'security', click on the VPC under 'VPC security groups'.  </li>
-<li>With the VPC selected, select 'Inbound rules' -&gt; 'Edit inbound rules'.<br />
-a. Select 'Add rule'.<br />
-b. Under 'Type' select 'PostgresSQL'.<br />
-c. 'Source' scroll down to 'My IP'.<br />
-d. Select 'Add rule' once again.<br />
-e. Under 'Type' select 'PostgresSQL'.<br />
-f. With 'custom' selected for source, click in the search box. select the security group starting with the label 'eks-cluster-sg'.<br />
+<li>With the VPC selected, select 'Inbound rules' -&gt; 'Edit inbound rules'.<br/>
+a. Select 'Add rule'.<br/>
+b. Under 'Type' select 'PostgresSQL'.<br/>
+c. 'Source' scroll down to 'My IP'.<br/>
+d. Select 'Add rule' once again.<br/>
+e. Under 'Type' select 'PostgresSQL'.<br/>
+f. With 'custom' selected for source, click in the search box. select the security group starting with the label 'eks-cluster-sg'.<br/>
 g. Select 'Save rules'.  </li>
 </ol>
-<h3 id="3-create-databases-and-schema">3. Create databases and schema<a class="headerlink" href="#3-create-databases-and-schema" title="Permanent link">&para;</a></h3>
+<h3 id="3-create-databases-and-schema">3. Create databases and schema<a class="headerlink" href="#3-create-databases-and-schema" title="Permanent link">¶</a></h3>
 <p>Use the database schema files to initialize the hosted postgres db.</p>
 <p>NOTE: The following commands will prompt for the database password.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
 </code></pre></div>
@@ -1919,7 +1075,7 @@ g. Select 'Save rules'.  </li>
 <li><strong>&lt;HOST&gt;</strong> location of the postgres database.</li>
 <li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'.</li>
 </ul>
-<h2 id="connect-to-aks-instance">Connect to <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">&para;</a></h2>
+<h2 id="connect-to-aks-instance">Connect to <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">¶</a></h2>
 <p>Ensure your <code>kubectl</code> is connected to the Kubernetes cluster you wish to deploy/manage.</p>
 <ol>
 <li>
@@ -1933,8 +1089,8 @@ Where:</p>
 </li>
 <li><strong>&lt;region&gt;</strong> aws region to deploy stack. eg. 'us-2-west'.</li>
 </ol>
-<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
-<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">&para;</a></h3>
+<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">¶</a></h2>
+<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">¶</a></h3>
 <p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
 <div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
 </code></pre></div></p>
@@ -1944,19 +1100,19 @@ Where:</p>
 <li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
 <li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
 </ul>
-<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">&para;</a></h3>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">¶</a></h3>
 <p>This is the secret used for generating and verifying JWTs.
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="&lt;your-secret&gt;"
 </code></pre></div></p>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
 </ul>
-<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
+<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">¶</a></h3>
 <p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 </code></pre></div></p>
-<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">¶</a></h3>
 <p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
 </code></pre></div></p>
@@ -1975,8 +1131,8 @@ Where:</p>
 </div>
 </li>
 </ul>
-<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">&para;</a></h3>
-<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.<br />
+<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">¶</a></h3>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.<br/>
 Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
 </code></pre></div>
@@ -1990,7 +1146,7 @@ Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
 <li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
 <li><strong>&lt;SERVERURL&gt;</strong> url for the Amazon hosted postgres database.</li>
 </ul>
-<h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
+<h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
@@ -2000,16 +1156,16 @@ Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
   <span class="nt">proxy</span><span class="p">:</span>
     <span class="nt">annotations</span><span class="p">:</span>
-<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">&quot;&lt;your-domain-name&gt;&quot;</span>
+<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">"&lt;your-domain-name&gt;"</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
-<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mps:latest&quot;</span>
-</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/rps:latest&quot;</span>
-</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/webui:latest&quot;</span>
-</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">&quot;vprodemo.azurecr.io/mpsrouter:latest&quot;</span>
+<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mps:latest"</span>
+</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/rps:latest"</span>
+</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/webui:latest"</span>
+</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -2031,11 +1187,11 @@ Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-    <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
-<span class="hll">    <span class="c1"># storageClassName: &quot;&quot; #Change to &quot;ebs-sc&quot;</span>
-</span>    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
+    <span class="nt">commonName</span><span class="p">:</span> <span class="s">""</span>
+<span class="hll">    <span class="c1"># storageClassName: "" #Change to "ebs-sc"</span>
+</span>    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">"ReadWriteOnce"</span>
     <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">"silly"</span>
     <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
 </code></pre></div>
 </li>
@@ -2061,7 +1217,7 @@ Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.</p>
 </code></pre></div></p>
 </li>
 </ol>
-<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Deploy using Helm.
@@ -2079,7 +1235,7 @@ TEST SUITE: None
 </div>
 </li>
 </ol>
-<h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
+<h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
@@ -2119,7 +1275,7 @@ TEST SUITE: None
 <p>Click "Enable Engine".</p>
 </li>
 </ol>
-<h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h3>
+<h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
@@ -2131,7 +1287,7 @@ TEST SUITE: None
 </ul>
 </li>
 </ol>
-<h3 id="update-commonname">Update commonName<a class="headerlink" href="#update-commonname" title="Permanent link">&para;</a></h3>
+<h3 id="update-commonname">Update commonName<a class="headerlink" href="#update-commonname" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Run the following command.</p>
@@ -2143,11 +1299,11 @@ TEST SUITE: None
 <li>
 <p>Update the entry for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> commonName in the values.yml file with the value from above.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">&quot;&quot;</span> <span class="c1"># change with value from above</span>
-</span>    <span class="nt">storageClassName</span><span class="p">:</span> <span class="s">&quot;ebs-sc&quot;</span>
-    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">&quot;ReadWriteOnce&quot;</span>
+<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">""</span> <span class="c1"># change with value from above</span>
+</span>    <span class="nt">storageClassName</span><span class="p">:</span> <span class="s">"ebs-sc"</span>
+    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">"ReadWriteOnce"</span>
     <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">&quot;silly&quot;</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">"silly"</span>
     <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
 </code></pre></div>
 </li>
@@ -2157,14 +1313,14 @@ TEST SUITE: None
 </ol>
 <div class="highlight"><pre><span></span><code>helm upgrade openamtstack ./kubernetes/charts 
 </code></pre></div>
-<h2 id="amazon-ebs-csi-driver">Amazon EBS CSI driver<a class="headerlink" href="#amazon-ebs-csi-driver" title="Permanent link">&para;</a></h2>
+<h2 id="amazon-ebs-csi-driver">Amazon EBS CSI driver<a class="headerlink" href="#amazon-ebs-csi-driver" title="Permanent link">¶</a></h2>
 <p>Enable persistent storage in the cluster be following the steps provided in the following <a href="https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html">guide</a>.</p>
 <p>NOTE: The sample application does not need to be deployed as well.</p>
-<h2 id="verify-running-pods">Verify running pods<a class="headerlink" href="#verify-running-pods" title="Permanent link">&para;</a></h2>
+<h2 id="verify-running-pods">Verify running pods<a class="headerlink" href="#verify-running-pods" title="Permanent link">¶</a></h2>
 <p>View the pods. All pods should now be Ready and Running.
     <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div></p>
-<div class="codehilite"><pre><span></span><code>!!! success
+<pre><code>!!! success
     ```
     NAME                                                 READY   STATUS      RESTARTS   AGE
     mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
@@ -2176,29 +1332,18 @@ TEST SUITE: None
     rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
     webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
     ```
-</code></pre></div>
-
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+</code></pre>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
 <p>Visit the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> using the FQDN name and <a href="../../../General/loginToRPS/"><strong>Continue from the Get Started steps</strong></a>.</p>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
             Back to top
           </a>
-        
-      </main>
-      
-        <!--
+</main>
+<!--
   Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -2219,48 +1364,32 @@ TEST SUITE: None
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 -->
-
-
-
 <!-- Application footer -->
 <footer class="md-footer">
-
-
-  <!-- Further information -->
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Intel Corporation
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
           </div>
         
         Made with
-        <a
-          href="https://squidfunk.github.io/mkdocs-material/"
-          target="_blank" rel="noopener"
-        >
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
           Material for MkDocs
         </a>
-      </div>
-
-      <!-- Social links -->
-      
-    </div>
-  </div>
+</div>
+<!-- Social links -->
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
-    
-    
-      <script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
 </html>

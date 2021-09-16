@@ -1,1492 +1,772 @@
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Docker/dockerCloud/">
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
-    
-    
-      
-        <title>dockerCloud - Open Active Management Technology Cloud Toolkit</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
-      
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
-    
-    
-      
+<!DOCTYPE html>
 
-
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud" class="md-skip">
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Docker/dockerCloud/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.2.2" name="generator"/>
+<title>dockerCloud - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud">
           Skip to content
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
-      
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
             Open Active Management Technology Cloud Toolkit
           </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
             
               dockerCloud
             
           </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+<ol class="md-search-result__list"></ol>
 </div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     open-amt-cloud-toolkit/open-amt-cloud-toolkit
   </div>
 </a>
-      </div>
-    
-  </nav>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
         Home
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../overview/">
         Get Started
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../Microservices/overview/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Microservices/overview/">
         Components
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../Tutorials/uitoolkit/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Tutorials/uitoolkit/">
         Tutorials
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../APIs/indexMPS/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../APIs/indexMPS/">
         APIs
       </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../Topics/powerstates/" class="md-tabs__link">
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Topics/powerstates/">
         Topics
       </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
+</li>
+</ul>
+</div>
 </nav>
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
-      
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
-
-    </a>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
     Open Active Management Technology Cloud Toolkit
   </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     open-amt-cloud-toolkit/open-amt-cloud-toolkit
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      <label class="md-nav__link" for="__nav_1">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
         Home
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
           Home
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../announcements/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../announcements/">
         Announcements
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../release-notes/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../release-notes/">
         Release notes
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../license/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../license/">
         License
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
-      
-      <label class="md-nav__link" for="__nav_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
         Get Started
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Get Started" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
           Get Started
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
         Prerequisites
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dockerLocal/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dockerLocal/">
         Set Up
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
         Configure
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Configure" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
           Configure
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/loginToRPS/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/loginToRPS/">
         Login to Sample Web UI
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/createCIRAConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/createCIRAConfig/">
         Create a CIRA Config
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
-      
-      <label class="md-nav__link" for="__nav_2_3_3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
         Create an AMT Profile
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Create an AMT Profile" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_3_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
           Create an AMT Profile
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/createProfileCCM/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/createProfileCCM/">
         Create a Profile with CCM
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/createProfileACM/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/createProfileACM/">
         Create a Profile with ACM
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
-      
-      <label class="md-nav__link" for="__nav_2_4">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
         Connect
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Connect" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
           Connect
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/buildRPC/" class="md-nav__link">
-        Build & Run RPC
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/buildRPC/">
+        Build &amp; Run RPC
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/manageDevice/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/manageDevice/">
         Manage AMT Device
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/troubleshooting/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/troubleshooting/">
         Troubleshooting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      <label class="md-nav__link" for="__nav_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
         Components
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Components" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Components" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
           Components
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/overview/">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
-      
-      <label class="md-nav__link" for="__nav_3_2">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2">
         Management Presence Server
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Management Presence Server" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
           Management Presence Server
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/MPS/configuration/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/MPS/configuration/">
         Configuration
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/MPS/securityMPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/MPS/securityMPS/">
         Security Information
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
-      
-      <label class="md-nav__link" for="__nav_3_3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
         Remote Provisioning Server
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
           Remote Provisioning Server
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/RPS/configuration/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/RPS/configuration/">
         Configuration
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/RPS/networkConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/RPS/networkConfig/">
         Network Profiles
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/RPS/securityRPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/RPS/securityRPS/">
         Security Information
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
-      
-      <label class="md-nav__link" for="__nav_3_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
         Remote Provisioning Client
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Remote Provisioning Client" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
           Remote Provisioning Client
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/RPC/buildRPC_Manual/" class="md-nav__link">
-        Build & Run RPC (Manual)
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC (Manual)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/RPC/commandsRPC/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/RPC/commandsRPC/">
         Command Examples
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
-      
-      <label class="md-nav__link" for="__nav_3_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5">
         UI Toolkit
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="UI Toolkit" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
           UI Toolkit
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
-      
-      <label class="md-nav__link" for="__nav_3_5_1">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" id="__nav_3_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5_1">
         Controls
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Controls" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_5_1">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_1">
+<span class="md-nav__icon md-icon"></span>
           Controls
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/Controls/kvmControl/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
-      
-      <label class="md-nav__link" for="__nav_3_5_2">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" id="__nav_3_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_5_2">
         React Bundles
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="React Bundles" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_5_2">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_2">
+<span class="md-nav__icon md-icon"></span>
           React Bundles
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/Bundles/kvm/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/Bundles/kvm/">
         Keyboard, Video, Mouse
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/Bundles/SerialOverLAN/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/Bundles/SerialOverLAN/">
         Serial Over LAN
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/localization/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/localization/">
         Localization
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../UIToolkit/Webpack-Configuration/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../UIToolkit/Webpack-Configuration/">
         Webpack Configuration
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Microservices/troubleshooting/" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Microservices/troubleshooting/">
         Troubleshooting
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
         Tutorials
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
           Tutorials
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Tutorials/uitoolkit/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/uitoolkit/">
         UI Toolkit KVM Module
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Tutorials/apiTutorial/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/apiTutorial/">
         REST API Call
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../General/createWiFiConfig/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../General/createWiFiConfig/">
         Wireless Activation
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
-      
-      <label class="md-nav__link" for="__nav_4_4">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
         Scaling
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Scaling" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
           Scaling
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/overview/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/overview/">
         Overview
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/Docker%20Swarm/docker-swarm/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/Docker%20Swarm/docker-swarm/">
         Docker Swarm*
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" type="checkbox" id="__nav_4_4_3" >
-      
-      <label class="md-nav__link" for="__nav_4_4_3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" id="__nav_4_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_3">
         Kubernetes Deployments
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_4_3">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_3">
+<span class="md-nav__icon md-icon"></span>
           Kubernetes Deployments
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/Kubernetes/deployingk8s/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/Kubernetes/deployingk8s/">
         Kubernetes (K8s)
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/Kubernetes/deployingk8s-aks/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/Kubernetes/deployingk8s-aks/">
         AKS
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/Kubernetes/deployingk8s-eks/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/Kubernetes/deployingk8s-eks/">
         EKS
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Scaling/Kubernetes/service-mesh/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Scaling/Kubernetes/service-mesh/">
         KUMA Service Mesh
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      <label class="md-nav__link" for="__nav_5">
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
         APIs
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="APIs" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
           APIs
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../APIs/indexMPS/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexMPS/">
         Management Presence Server
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../APIs/indexRPS/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexRPS/">
         Remote Provisioning Server
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      <label class="md-nav__link" for="__nav_6">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
         Topics
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Topics" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Topics" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
           Topics
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/powerstates/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/powerstates/">
         AMT Power States
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/guids/" class="md-nav__link">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+        Deployment Considerations
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment Considerations" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Deployment Considerations
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/Deployment/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/Deployment/database/">
+        Database
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/Deployment/secrets/">
+        Secret Provider
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/guids/">
         GUIDs in Intel® AMT
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/logging/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/logging/">
         Logging
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
-      
-      <label class="md-nav__link" for="__nav_6_4">
-        Intel&reg; MEBX
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+        Intel® MEBX
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_4">
-          <span class="md-nav__icon md-icon"></span>
-          Intel&reg; MEBX
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/MEBX/dnsSuffix/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/MEBX/dnsSuffix/">
         DNS Suffix
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/MEBX/unprovision/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/MEBX/unprovision/">
         Unprovisioning
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
-      
-      <label class="md-nav__link" for="__nav_6_5">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_6" id="__nav_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_6">
         Event Monitoring
         <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Event Monitoring" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_5">
-          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
           Event Monitoring
         </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Topics/mqtt/" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Topics/mqtt/">
         Viewing MQTT Events
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Tutorials/addMqttEvents/" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/addMqttEvents/">
         Adding/Editing Events
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-youll-do" class="md-nav__link">
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-youll-do">
     What You'll Do
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#what-youll-need" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-youll-need">
     What You'll Need
   </a>
-  
-    <nav class="md-nav" aria-label="What You'll Need">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hardware" class="md-nav__link">
+<nav aria-label="What You'll Need" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
     Hardware
   </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#software" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
     Software
   </a>
-  
 </li>
-        
-      </ul>
-    </nav>
-  
+</ul>
+</nav>
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#login-to-the-accounts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#login-to-the-accounts">
     Login to the Accounts
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#build-the-repositories" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#build-the-repositories">
     Build the Repositories
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-the-images" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploy-the-images">
     Deploy the Images
   </a>
-  
 </li>
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Docker/dockerCloud.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <h1 id="build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud">Build Docker* Containers for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and Deploy to the Cloud<a class="headerlink" href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud" title="Permanent link">&para;</a></h1>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Docker/dockerCloud.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud">Build Docker* Containers for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and Deploy to the Cloud<a class="headerlink" href="#build-docker-containers-for-mps-and-rps-and-deploy-to-the-cloud" title="Permanent link">¶</a></h1>
 <p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides support for deploying Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) microservices as Docker* containers to the cloud. </p>
-<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
 <p>This tutorial explains the steps to deploy <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> as Docker images to the cloud using Microsoft Azure*:</p>
 <ol>
 <li>Create a Microsoft Azure* subscription. </li>
@@ -1494,14 +774,14 @@
 <li>Login to the accounts.</li>
 <li>Build and deploy to the cloud.</li>
 </ol>
-<h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
-<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h3>
+<h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">¶</a></h2>
+<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">¶</a></h3>
 <p><strong>Configure a network that includes:</strong></p>
 <ul>
 <li>A development system running Windows® 10 or Ubuntu* 18.04 or newer </li>
 <li>At least one Intel vPro® platform to manage</li>
 </ul>
-<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">¶</a></h3>
 <p><strong>Before  <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install or subscribe to the following software:</strong></p>
 <ul>
 <li>
@@ -1532,7 +812,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="login-to-the-accounts">Login to the Accounts<a class="headerlink" href="#login-to-the-accounts" title="Permanent link">&para;</a></h2>
+<h2 id="login-to-the-accounts">Login to the Accounts<a class="headerlink" href="#login-to-the-accounts" title="Permanent link">¶</a></h2>
 <p><strong>To login:</strong></p>
 <p>1. Login to Microsoft Azure with the Azure CLI using the <strong>az</strong> command. Type the command in a Windows Command Prompt or Azure PowerShell.</p>
 <div class="highlight"><pre><span></span><code>az login
@@ -1541,9 +821,9 @@
 <p>2. Login to the Docker hub account with the Docker ID and password. </p>
 <div class="highlight"><pre><span></span><code>docker login --username [your Docker ID] --password [your Docker Hub Password]
 </code></pre></div>
-<h2 id="build-the-repositories">Build the Repositories<a class="headerlink" href="#build-the-repositories" title="Permanent link">&para;</a></h2>
+<h2 id="build-the-repositories">Build the Repositories<a class="headerlink" href="#build-the-repositories" title="Permanent link">¶</a></h2>
 <p>Build the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Docker images from their respective directories with the <strong>build -t</strong> command, giving the image a name and tag:</p>
-<p><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build -t [name:tag]</a>  </p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/build/">docker build -t [name:tag]</a> </p>
 <ul>
 <li>Create a name and tag with lowercase letters, digits, and separators (i.e., underscores, periods, and dashes).</li>
 <li>Do not end a name or tag with a separator.</li>
@@ -1567,7 +847,7 @@ docker push f30911230045\mps-microservice:v1
 docker build . -t  f30911230032\rps-microservice:v1
 docker push f30911230032\rps-microservice:v1
 </code></pre></div>
-<h2 id="deploy-the-images">Deploy the Images<a class="headerlink" href="#deploy-the-images" title="Permanent link">&para;</a></h2>
+<h2 id="deploy-the-images">Deploy the Images<a class="headerlink" href="#deploy-the-images" title="Permanent link">¶</a></h2>
 <p><strong>To deploy to the cloud:</strong></p>
 <p>1. After building the new <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> images, navigate to <code>mps\scripts\docker-compose</code> folder and use <code>xcopy</code> to copy the .env.template file to <code>.env</code>. </p>
 <p>The environment file <code>.env.template</code> contains the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> environment variables to pass to the Docker engine.</p>
@@ -1613,28 +893,18 @@ oact-stack-azure-vm.bat vprodemo westus
 </code></pre></div>
 <p>6. Creating <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> profile:</p>
 <ul>
-<li>When creating the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> profile on an Azure deployment, use the FQDN option and fill in the FQDN of the Azure instance.<br />
+<li>When creating the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> profile on an Azure deployment, use the FQDN option and fill in the FQDN of the Azure instance.<br/>
 --insert screenshot here--</li>
 </ul>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
             Back to top
           </a>
-        
-      </main>
-      
-        <!--
+</main>
+<!--
   Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1655,48 +925,32 @@ oact-stack-azure-vm.bat vprodemo westus
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
   IN THE SOFTWARE.
 -->
-
-
-
 <!-- Application footer -->
 <footer class="md-footer">
-
-
-  <!-- Further information -->
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Intel Corporation
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
           </div>
         
         Made with
-        <a
-          href="https://squidfunk.github.io/mkdocs-material/"
-          target="_blank" rel="noopener"
-        >
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
           Material for MkDocs
         </a>
-      </div>
-
-      <!-- Social links -->
-      
-    </div>
-  </div>
+</div>
+<!-- Social links -->
+</div>
+</div>
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
-      
-    
-  </body>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
 </html>

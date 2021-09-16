@@ -206,6 +206,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/database/</loc>
+         <lastmod>2021-09-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/overview/</loc>
+         <lastmod>2021-09-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/secrets/</loc>
+         <lastmod>2021-09-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/MEBX/dnsSuffix/</loc>
          <lastmod>2021-09-16</lastmod>
          <changefreq>daily</changefreq>

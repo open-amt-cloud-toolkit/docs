@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Bundles/SerialOverLAN/" rel="canonical"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/database/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.2, mkdocs-material-7.2.2" name="generator"/>
-<title>Serial Over LAN - Open Active Management Technology Cloud Toolkit</title>
+<title>Database - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../../assets/stylesheets/main.1118c9be.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ba0d045b.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,7 +23,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#quickstart-bundle-serial-over-lan-sol-control">
+<a class="md-skip" href="#reference-implementation">
           Skip to content
         </a>
 </div>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Serial Over LAN
+              Database
             
           </span>
 </div>
@@ -111,7 +111,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../../../Microservices/overview/">
+<a class="md-tabs__link" href="../../../Microservices/overview/">
         Components
       </a>
 </li>
@@ -126,7 +126,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../../Topics/powerstates/">
+<a class="md-tabs__link md-tabs__link--active" href="../../powerstates/">
         Topics
       </a>
 </li>
@@ -296,8 +296,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3">
         Components
         <span class="md-nav__icon md-icon"></span>
@@ -393,8 +393,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3_5">
         UI Toolkit
         <span class="md-nav__icon md-icon"></span>
@@ -418,20 +418,20 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Controls/kvmControl/">
+<a class="md-nav__link" href="../../../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Controls/serialOverLANControl/">
+<a class="md-nav__link" href="../../../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" id="__nav_3_5_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" id="__nav_3_5_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3_5_2">
         React Bundles
         <span class="md-nav__icon md-icon"></span>
@@ -443,63 +443,25 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../kvm/">
+<a class="md-nav__link" href="../../../UIToolkit/Bundles/kvm/">
         Keyboard, Video, Mouse
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Serial Over LAN
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../UIToolkit/Bundles/SerialOverLAN/">
         Serial Over LAN
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#prerequisites">
-    Prerequisites
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#download-and-install-ui-toolkit">
-    Download and Install UI Toolkit
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#run-in-development-environment">
-    Run in Development Environment
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-bundle">
-    Create Bundle
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#add-to-sample-html-page">
-    Add to Sample HTML Page
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../localization/">
+<a class="md-nav__link" href="../../../UIToolkit/localization/">
         Localization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Webpack-Configuration/">
+<a class="md-nav__link" href="../../../UIToolkit/Webpack-Configuration/">
         Webpack Configuration
       </a>
 </li>
@@ -629,8 +591,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
 <label class="md-nav__link" for="__nav_6">
         Topics
         <span class="md-nav__icon md-icon"></span>
@@ -642,12 +604,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/powerstates/">
+<a class="md-nav__link" href="../../powerstates/">
         AMT Power States
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_6_2">
         Deployment Considerations
         <span class="md-nav__icon md-icon"></span>
@@ -659,17 +621,88 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/Deployment/overview/">
+<a class="md-nav__link" href="../overview/">
         Overview
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/Deployment/database/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Database
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Database
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reference-implementation">
+    Reference Implementation
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/Deployment/secrets/">
+<a class="md-nav__link" href="#example-replacements">
+    Example Replacements
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#services-that-require-updating">
+    Services That Require Updating
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-you-need-to-do">
+    What you need to do
+  </a>
+<nav aria-label="What you need to do" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#db-schema-overview">
+    DB Schema Overview
+  </a>
+<nav aria-label="DB Schema Overview" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps">
+    RPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps">
+    MPS
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-db-client">
+    Add DB Client
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
+    Update Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-code">
+    Write Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../secrets/">
         Secret Provider
       </a>
 </li>
@@ -677,12 +710,12 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/guids/">
+<a class="md-nav__link" href="../../guids/">
         GUIDs in Intel® AMT
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/logging/">
+<a class="md-nav__link" href="../../logging/">
         Logging
       </a>
 </li>
@@ -699,12 +732,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/MEBX/dnsSuffix/">
+<a class="md-nav__link" href="../../MEBX/dnsSuffix/">
         DNS Suffix
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/MEBX/unprovision/">
+<a class="md-nav__link" href="../../MEBX/unprovision/">
         Unprovisioning
       </a>
 </li>
@@ -724,7 +757,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../Topics/mqtt/">
+<a class="md-nav__link" href="../../mqtt/">
         Viewing MQTT Events
       </a>
 </li>
@@ -754,29 +787,62 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#prerequisites">
-    Prerequisites
+<a class="md-nav__link" href="#reference-implementation">
+    Reference Implementation
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#download-and-install-ui-toolkit">
-    Download and Install UI Toolkit
+<a class="md-nav__link" href="#example-replacements">
+    Example Replacements
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#run-in-development-environment">
-    Run in Development Environment
+<a class="md-nav__link" href="#services-that-require-updating">
+    Services That Require Updating
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-bundle">
-    Create Bundle
+<a class="md-nav__link" href="#what-you-need-to-do">
+    What you need to do
+  </a>
+<nav aria-label="What you need to do" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#db-schema-overview">
+    DB Schema Overview
+  </a>
+<nav aria-label="DB Schema Overview" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps">
+    RPS
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#add-to-sample-html-page">
-    Add to Sample HTML Page
+<a class="md-nav__link" href="#mps">
+    MPS
   </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-db-client">
+    Add DB Client
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
+    Update Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-code">
+    Write Code
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -785,116 +851,183 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/UIToolkit/Bundles/SerialOverLAN.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Topics/Deployment/database.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="quickstart-bundle-serial-over-lan-sol-control">Quickstart  - Bundle Serial Over LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) Control<a class="headerlink" href="#quickstart-bundle-serial-over-lan-sol-control" title="Permanent link">¶</a></h1>
-<p>Use these instructions to:</p>
+<h1>Database</h1>
+<p>The docker based PostgreSQL image that is used in the <code>docker-compose.yml</code> is great for proof-of-concept of and development with the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>. However, when gearing up for production it is recommended to leverage a managed database instance offered by a public cloud provider or perhaps a database hosted by your internal IT. Regardless of your deployment scenario (ie. a VM, Kubernetes, Docker Swarm, a native environment), managing state in your own cluster comes with a higher risk of data loss than that of a managed database instance. </p>
+<h4 id="reference-implementation">Reference Implementation<a class="headerlink" href="#reference-implementation" title="Permanent link">¶</a></h4>
+<p><img alt="postgres" src="./../../../assets/images/logos/elephant.png" style="width:50px;"/></p>
 <ul>
-<li>Run the <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> control in development environment</li>
-<li>Create a bundle for <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> control</li>
-<li>Add bundle to a sample HTML file</li>
+<li>Postgres</li>
 </ul>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
-<p>In order to deploy and make changes, the following tools and application have to be installed on your development system:</p>
+<h4 id="example-replacements">Example Replacements<a class="headerlink" href="#example-replacements" title="Permanent link">¶</a></h4>
 <ul>
-<li><a href="https://git-scm.com/">Git</a></li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE </li>
-<li><a href="https://nodejs.org/">Node.js</a></li>
-<li><a href="https://www.google.com/chrome">Chrome* Browser</a></li>
-<li><a href="../../../Docker/dockerLocal/"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server with an AMT Device Connected</a></li>
+<li>Azure Managed Postgres</li>
+<li>Azure MSSQL</li>
+<li>Amazon RDS</li>
+<li>MySQL</li>
+<li>MariaDB</li>
 </ul>
-<h2 id="download-and-install-ui-toolkit">Download and Install <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#download-and-install-ui-toolkit" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.</p>
-</li>
-<li>
-<p>Clone the UI-Toolkit Repository:
-    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v2.0.0
-</code></pre></div></p>
-</li>
-<li>
-<p>Change to the <code>ui-toolkit</code> directory:
-    <div class="highlight"><pre><span></span><code>cd ui_toolkit
-</code></pre></div></p>
-</li>
-<li>
-<p>Install the dependencies:
-    <div class="highlight"><pre><span></span><code>npm install
-</code></pre></div></p>
-</li>
-</ol>
-<h2 id="run-in-development-environment">Run in Development Environment<a class="headerlink" href="#run-in-development-environment" title="Permanent link">¶</a></h2>
-<p>To add and test new changes before bundling the control, use a webpack dev server.</p>
-<ol>
-<li>
-<p>Start the server:
-    <div class="highlight"><pre><span></span><code>npm start
-</code></pre></div></p>
-</li>
-<li>
-<p>Open a Chrome* browser and navigate to the following link to see changes:
-    <div class="highlight"><pre><span></span><code>http://localhost:8080/sol.htm?deviceId=[AMT-Device-GUID]&amp;mpsServer=https://[MPS-Server-IP-Address]:3000
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.</p>
+<h2 id="services-that-require-updating">Services That Require Updating<a class="headerlink" href="#services-that-require-updating" title="Permanent link">¶</a></h2>
+<ul>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
+<li><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> </li>
+</ul>
+<h2 id="what-you-need-to-do">What you need to do<a class="headerlink" href="#what-you-need-to-do" title="Permanent link">¶</a></h2>
+<p>For this guide, we'll be focusing on <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. We'll walk through the primary steps required to swap out the database with another provider. In this example, we'll be using mssql.  At a high level, there are a few main tasks to accomplish:</p>
+<ul>
+<li>Review DB Schema</li>
+<li>Add DB Client Dependency</li>
+<li>Configuration</li>
+<li>Code Implementation</li>
+</ul>
+<h3 id="db-schema-overview">DB Schema Overview<a class="headerlink" href="#db-schema-overview" title="Permanent link">¶</a></h3>
+<h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">¶</a></h4>
+<p><div class="mermaid">erDiagram
+    DOMAIN {
+        string name
+        string domain_suffix
+        string provisioning_cert
+        string provisioning_cert_storage_format
+        string provisioning_cert_key
+        datetime creation_date
+        string created_by
+    }
 </div>
-</li>
-</ol>
-<h2 id="create-bundle">Create Bundle<a class="headerlink" href="#create-bundle" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>To bundle, navigate to the <code>ui-toolkit</code> directory in a Terminal (Linux) or Command Prompt (Windows).</p>
-</li>
-<li>
-<p>Remove or rename the existing <em>sol.min.js</em>  in the <code>ui-toolkit/dist/</code> directory before building:</p>
-</li>
-<li>
-<p>Build the bundle:
-    <div class="highlight"><pre><span></span><code>npm run build
-</code></pre></div></p>
-<p>A new <em>kvm.core.min.js</em> will be created in the <code>ui-toolkit/dist/</code> directory.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>To bundle the Serial-Over-LAN control without node_modules, run the following build command instead.
-<div class="highlight"><pre><span></span><code>npm run built-ext
-</code></pre></div>
-The bundle generated using the build-ext command can be used in react apps as an independent control</p>
+<div class="mermaid">erDiagram
+    PROFILE o|--o| CIRACONFIG : has
+    PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
+    PROFILE {
+      string profile_name
+      string activation
+      string amt_password
+      string cira_config_name
+      datetime creation_date
+      string created_by
+      string mebx_password
+      string tags
+      boolean dhcp_enabled
+      string tenant_id
+    }
+    CIRACONFIG 
+    CIRACONFIG {
+      string cira_config_name
+      string mps_server_address
+      int mps_port
+      string user_name
+      string password
+      string generate_random_password
+      string random_password_length
+      string common_name
+      int server_address_format
+      int auth_method
+      string mps_root_certificate
+      string proxydetails
+    }
+
+    WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
+    WIRELESSCONFIGS {
+      string wireless_profile_name 
+      integer authentication_method 
+      integer encryption_method 
+      string ssid 
+      int psk_value 
+      string psk_passphrase 
+      int link_policy 
+      datetime creation_date 
+      string created_by 
+      string tenant_id 
+    }
+    PROFILES_WIRELESSCONFIGS {
+      string wireless_profile_name
+      string profile_name
+      datetime creation_date
+      string created_by
+      string tenant_id
+    }
+</div></p>
+<h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h4>
+<div class="mermaid">erDiagram
+    DEVICE {
+        guid uuid
+        string tags
+        string hostname
+        string mpsinstance
+        boolean connectionstatus
+        string mpsusername
+        string tenantid
+    }
 </div>
-</li>
-</ol>
-<h2 id="add-to-sample-html-page">Add to Sample HTML Page<a class="headerlink" href="#add-to-sample-html-page" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>Add the following code snippet to <em>sampleSOL.htm</em> in the <code>ui-toolkit/src/sample/</code> directory using an editor of your choice:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"sol"</span><span class="nt">&gt;&lt;/div&gt;</span>
-  <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"../../dist/sol.min.js"</span> <span class="err">crossorigin</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
+<h3 id="add-db-client">Add DB Client<a class="headerlink" href="#add-db-client" title="Permanent link">¶</a></h3>
+<p>The first step is to add your database client library that you will use to connect to your database. Since this example is for mssql, we will use <a href="https://www.npmjs.com/package/mssql"><code>node-mssql</code></a>.</p>
+<div class="highlight"><pre><span></span><code>npm install node-mssql --save
 </code></pre></div>
-</li>
-<li>
-<p>In a Terminal (Linux) or Command Prompt (Windows), navigate to the <code>ui-toolkit</code> directory:</p>
-</li>
-<li>
-<p>Serve the HTML page.
-    <div class="highlight"><pre><span></span><code>npx serve
+<h3 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h3>
+<p>Next, you'll need to update the connection string and a folder name for your db either in your ENV or .rc file:
+<div class="highlight"><pre><span></span><code><span class="nt">"db_provider"</span><span class="p">:</span><span class="s2">"mssql"</span><span class="p">,</span> <span class="err">//</span><span class="kc">t</span><span class="err">his</span> <span class="kc">nee</span><span class="err">ds</span> <span class="kc">t</span><span class="err">o</span>  <span class="err">ma</span><span class="kc">t</span><span class="err">ch</span> <span class="kc">t</span><span class="err">he</span> <span class="kc">f</span><span class="err">older</span> <span class="kc">na</span><span class="err">me</span> <span class="err">you</span> <span class="err">crea</span><span class="kc">te</span> <span class="err">i</span><span class="kc">n</span> <span class="kc">t</span><span class="err">he</span> <span class="kc">ne</span><span class="err">x</span><span class="kc">t</span> <span class="err">s</span><span class="kc">te</span><span class="err">p</span>
+<span class="nt">"connection_string"</span><span class="p">:</span><span class="s2">"Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true'"</span><span class="p">,</span>
 </code></pre></div></p>
-</li>
-<li>
-<p>Open a new Chrome* browser and navigate to the following URL:
-    <div class="highlight"><pre><span></span><code>http://localhost:5000/src/sample/sampleSOL.htm?deviceId=[AMT-Device-GUID]&amp;mpsServer=https://[MPS-Server-IP-Address]:3000
+<h3 id="write-code">Write Code<a class="headerlink" href="#write-code" title="Permanent link">¶</a></h3>
+<p>After you've got your configuration correct and db client added, next is to update the code to support the new database. </p>
+<p>Add a new folder named exactly as what you provided for the <code>db_provider</code> property to the <code>./src/data</code> folder. For our example we'll use <code>mssql</code>.</p>
+<p><img alt="vault" src="./../../../assets/images/DbFolder.png" style="width:150px;"/></p>
+<p>Next, we'll need to create an <code>index.ts</code> file that implements our IDB interface. Take a look at the interface below:
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">interface</span> <span class="nx">IDB</span> <span class="p">{</span>
+  <span class="nx">ciraConfigs</span>: <span class="kt">ICiraConfigTable</span>
+  <span class="nx">domains</span>: <span class="kt">IDomainsTable</span>
+  <span class="nx">profiles</span>: <span class="kt">IProfilesTable</span>
+  <span class="nx">wirelessProfiles</span>: <span class="kt">IWirelessProfilesTable</span>
+  <span class="nx">profileWirelessConfigs</span>: <span class="kt">IProfilesWifiConfigsTable</span>
+  <span class="nx">query</span><span class="o">:</span> <span class="p">(</span><span class="nx">text</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">params?</span>: <span class="kt">any</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div>
+We'll first implement the <code>query</code> method:
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="nx">query</span> <span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">text</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">params?</span>: <span class="kt">any</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">mssql</span><span class="p">.</span><span class="nx">IResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span>
+    <span class="kd">const</span> <span class="nx">start</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="ow">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">request</span><span class="p">().</span><span class="nx">query</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">duration</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">start</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">verbose</span><span class="p">(</span><span class="sb">`executed query: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">rows</span>: <span class="kt">result.recordset.length</span> <span class="si">}</span><span class="sb">)}`</span><span class="p">)</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
 </code></pre></div></p>
-</li>
-</ol>
-<p>Errors may occur in the following scenarios:  </p>
-<ul>
-<li>UI-toolkit was not downloaded and installed into your react app</li>
-<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is not running</li>
-<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is running but the device is not connected</li>
-</ul>
+<p>The above is just an example to demonstrate that this function should be responsible for taking in the query and parameters and performing the execution.</p>
+<p>Next, You'll need to implement each one of the table interfaces. The base interface looks like this: 
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">interface</span> <span class="nx">ITable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">getCount</span><span class="o">:</span> <span class="p">(</span><span class="nx">tenantId?</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span>
+  <span class="nx">get</span><span class="o">:</span> <span class="p">(</span><span class="nx">limit</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">offset</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">tenantId?</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[]</span><span class="o">&gt;</span>
+  <span class="nx">getByName</span><span class="o">:</span> <span class="p">(</span><span class="nx">name</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">tenantId?</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
+  <span class="ow">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">name</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">tenantId?</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span>
+  <span class="nx">insert</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span>: <span class="kt">T</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
+  <span class="nx">update</span><span class="o">:</span> <span class="p">(</span><span class="nx">item</span>: <span class="kt">T</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</code></pre></div>
+There are interfaces for each table in the <code>./interfaces/database</code> that adds specific functions on top of the the base <code>ITable&lt;&gt;</code> interface.
+Here's an example of the get implementation for Domains:
+<div class="highlight"><pre><span></span><code>  <span class="cm">/**</span>
+<span class="cm">   * @description Get all Domains from DB</span>
+<span class="cm">   * @param {number} top</span>
+<span class="cm">   * @param {number} skip</span>
+<span class="cm">   * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB</span>
+<span class="cm">   */</span>
+  <span class="k">async</span> <span class="nx">get</span> <span class="p">(</span><span class="nx">top</span>: <span class="kt">number</span> <span class="o">=</span> <span class="nx">DEFAULT_TOP</span><span class="p">,</span> <span class="nx">skip</span>: <span class="kt">number</span> <span class="o">=</span> <span class="nx">DEFAULT_SKIP</span><span class="p">,</span> <span class="nx">tenantId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AMTDomain</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">    SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId</span>
+<span class="sb">    FROM domains </span>
+<span class="sb">    ORDER BY name`</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">result</span>
+  <span class="p">}</span>
+</code></pre></div></p>
+<p>Once you've completed all of the queries for each function for each table, you should be good to go! It's a good idea to run our API Tests w/ Postman provided in the <code>./src/test/collections</code> folder to ensure all the APIs are working as expected when implementing a new database provider. </p>
 </article>
 </div>
 </div>
@@ -951,5 +1084,5 @@ The bundle generated using the build-ext command can be used in react apps as an
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
 <script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-</body>
+<script>mermaid.initialize({});</script></body>
 </html>
