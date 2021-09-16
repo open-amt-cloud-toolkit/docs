@@ -81,7 +81,7 @@ nav:
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
-  - Topics:    
+  - Reference:
       - AMT Power States: Topics/powerstates.md
       - Deployment Considerations:
           - Overview: Topics/Deployment/overview.md
