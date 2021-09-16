@@ -35,7 +35,7 @@ Read more about GitHub Actions [here](https://github.blog/2019-08-08-github-acti
 
 3. Enable workflows by clicking **I understand my workflows, go ahead and enable them**.
 
-4. Choose a workflow.
+4. Choose the **Build RPC (Native) Debug/Release** workflow.
 
 5. Click the **Run workflow** dropdown. 
 
