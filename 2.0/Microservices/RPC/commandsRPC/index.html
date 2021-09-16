@@ -891,17 +891,17 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </table>
 <h5 id="rpc-activatedeactivate-examples"><a name="RPCexamples"></a><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples<a class="headerlink" href="#rpc-activatedeactivate-examples" title="Permanent link">¶</a></h5>
 <p>Activate a Device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd <span class="s2">"-t activate --profile profile1"</span>
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd <span class="s2">"activate --profile profile1"</span>
 </code></pre></div></p>
 <p>Deactivate a Device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"-t deactivate --password P@ssw0rd"</span>
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"deactivate --password P@ssw0rd"</span>
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <strong>--password</strong> nested argument uses the AMT password set at the time of provisioning of the device based on the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>. This password should be able to be retrieved from Vault, if unknown.</p>
 </div>
 <p>Deactivate a Device if Unknown by <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (or Vault):
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"-t deactivate --password -f"</span>
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"deactivate --password [AMT-Password] -f"</span>
 </code></pre></div></p>
 <p><br/></p>
 <h4 id="optional">Optional <a name="optional"></a><a class="headerlink" href="#optional" title="Permanent link">¶</a></h4>
@@ -938,10 +938,10 @@ sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informa
 </table>
 <h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">¶</a></h5>
 <p>Override DNS detection and Activate device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd "-t activate --profile profile1" --dns corp.com
+<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd "activate --profile profile1" --dns corp.com
 </code></pre></div></p>
 <p>Connect through proxy and Deactivate device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c "-t deactivate --password P@ssw0rd" -p http://proxy.com:1000
+<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c "deactivate --password P@ssw0rd" -p http://proxy.com:1000
 </code></pre></div></p>
 <p><br/></p>
 <h4 id="informational">Informational<a class="headerlink" href="#informational" title="Permanent link">¶</a></h4>

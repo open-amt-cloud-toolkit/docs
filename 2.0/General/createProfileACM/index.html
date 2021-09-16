@@ -873,7 +873,7 @@
 <p>Under <strong>Activation</strong>, select <strong>Admin Control Mode</strong> from the dropdown menu.</p>
 </li>
 <li>
-<p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</p>
+<p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
@@ -883,16 +883,16 @@
 <p>Provide or generate a strong <strong>MEBX Password</strong>. This password can be used to access Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) on the AMT device.</p>
 </li>
 <li>
-<p>Select DHCP as <strong>Network Configuration</strong>.</p>
+<p>Leave DHCP as the default for <strong>Network Configuration</strong>.</p>
+</li>
+<li>
+<p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
 </li>
 <li>
 <p>Select the name of the <strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Configuration</strong> you created previously from the drop-down menu.</p>
 </li>
 <li>
 <p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
-</li>
-<li>
-<p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
 </li>
 <li>
 <p>Click <strong>Save.</strong></p>
