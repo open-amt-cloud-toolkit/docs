@@ -382,5 +382,5 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 ## Next Steps
 
-Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](./../General/loginToRPS.md)
+Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../General/loginToRPS.md)
 

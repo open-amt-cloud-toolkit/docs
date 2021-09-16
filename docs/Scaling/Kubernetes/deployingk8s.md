@@ -22,7 +22,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 If you are using a private docker registry, you'll need to provide your credentials to K8S. 
 ``` bash
-kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
+kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
 ```
 
 Where:
@@ -251,4 +251,4 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
 ## Next Steps
 
-[**Continue from the Get Started steps**](./../General/loginToRPS.md)
+[**Continue from the Get Started steps**](../../General/loginToRPS.md)

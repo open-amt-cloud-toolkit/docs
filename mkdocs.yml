@@ -26,6 +26,7 @@ theme:
 nav:
   - Home:
       - Overview: index.md
+      - Announcements: announcements.md
       - Release notes: release-notes.md
       - License: license.md
   - Get Started:
@@ -40,10 +41,10 @@ nav:
       - Connect:
           - Build & Run RPC: General/buildRPC.md
           - Manage AMT Device: General/manageDevice.md
-      - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
+      - Troubleshooting: Microservices/troubleshooting.md
   - Components:
       - Overview: Microservices/overview.md
-      - Managed Presence Server:
+      - Management Presence Server:
           - Configuration: Microservices/MPS/configuration.md
           - Security Information: Microservices/MPS/securityMPS.md
       - Remote Provisioning Server:
@@ -62,7 +63,7 @@ nav:
               - Serial Over LAN: UIToolkit/Bundles/SerialOverLAN.md
           - Localization: UIToolkit/localization.md
           - Webpack Configuration: UIToolkit/Webpack-Configuration.md
-      - Troubleshooting: Microservices/RPC/troubleshootingRPC.md
+      - Troubleshooting: Microservices/troubleshooting.md
   - Tutorials:
       - UI Toolkit KVM Module: Tutorials/uitoolkit.md
       - REST API Call: Tutorials/apiTutorial.md
@@ -73,8 +74,10 @@ nav:
           - Overview: Scaling/overview.md
           - Docker Swarm*: Scaling/Docker Swarm/docker-swarm.md
           - Kubernetes Deployments:
-              - Kubernetes (K8s): Kubernetes/deployingk8s.md
-              - AKS: Kubernetes/deployingk8s-aks.md
+              - Kubernetes (K8s): Scaling/Kubernetes/deployingk8s.md
+              - AKS: Scaling/Kubernetes/deployingk8s-aks.md
+              - EKS: Scaling/Kubernetes/deployingk8s-eks.md
+              - KUMA Service Mesh: Scaling/Kubernetes/service-mesh.md
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
@@ -123,12 +126,12 @@ extra:
   version:
     provider: mike
   mpsAPI:
-    version: 1.5.0
+    version: 2.0.0
   rpsAPI: 
-    version: 1.5.0
+    version: 2.0.0
   baseClone:
-    version: 1.5.0
+    version: 2.0.0
   rpcClone:
-    version: 1.2.1
+    version: 2.0.0
   uiClone:
-    version: 1.5.0
+    version: 2.0.0
