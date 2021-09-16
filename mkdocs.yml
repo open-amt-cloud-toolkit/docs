@@ -115,12 +115,12 @@ extra:
   version:
     provider: mike
   mpsAPI:
-    version: 1.5.0
+    version: 2.0.0
   rpsAPI: 
-    version: 1.5.0
+    version: 2.0.0
   baseClone:
-    version: 1.5.0
+    version: 2.0.0
   rpcClone:
-    version: 1.2.1
+    version: 2.0.0
   uiClone:
-    version: 1.5.0
+    version: 2.0.0
