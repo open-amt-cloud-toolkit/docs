@@ -110,7 +110,7 @@ docker build -f "Dockerfile" -t rpc:latest .
 
 
     !!! error "Troubleshooting"
-        Run into an issue? Try these [troubleshooting steps](../Microservices/RPC/troubleshootingRPC.md).
+        Run into an issue? Try these [troubleshooting steps](../Microservices/troubleshooting.md).
          
 
 ## Next up

@@ -2,19 +2,25 @@
 
 The sections below detail possible errors that may occur when activating or de-activating managed devices along with some potential solutions.
 
+# Intel&reg; AMT Device
+
+| Error Issue or Message | Possible Solutions |
+| ------------- | ------------------ |
+| Intel&reg; AMT device fails to reconnect after MPS is down for 2 or more days | Update to latest firmware.  Workarounds include: a) Reboot device b) unplug and re-plug network cable |
+
 # MPS
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
-| Vault is empty in dev mode. | Profiles and configs are not persistent in this mode. To run vault in production mode, follow the [Use Docker and Vault in Production Mode](../../Docker/dockerLocal_prodVault.md).|
-|MPS is missing from list of running services. | (1) Check for error messages in the logs. For details, see [Docker Logs](../overview.md#Dockerlogs). |
+| Vault is empty in dev mode. | Profiles and configs are not persistent in this mode. To run vault in production mode, follow the [Use Docker and Vault in Production Mode](../Docker/dockerLocal_prodVault.md).|
+|MPS is missing from list of running services. | (1) Check for error messages in the logs. For details, see [Docker Logs](overview.md#Dockerlogs). |
 | | (2) Verify that the .env file contains correct values in each field.|
 
 # RPS
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
-| Create a profile fails or information cannot be read from vault. | Make sure Vault and PostGres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).|
+| Create a profile fails or information cannot be read from vault. | Make sure Vault and PostGres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../Docker/dockerLocal.md#Builddockerimages).|
 | An error occurred during provisioning. | (1) Verify that the correct certificate is being used. |
 |  | (2) Verify the Domain suffix. |
 
@@ -33,10 +39,10 @@ The sections below detail possible errors that may occur when activating or de-a
 | Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00 | Ensure you have provided the `--password` flag for the `--cmd/-c` you are trying to execute, and that it is the password you used when provisioning the device. |
 | Unable to connect to websocket server. Please check url. | After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address. |
 | Error while activating the AMT in admin mode. | Check the logs on the RPS server. | 
-| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../../Topics/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [RPC Activate/Deactivate Examples](commandsRPC.md) | 
+| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../Topics/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [RPC Activate/Deactivate Examples](/rpc/commandsRPC.md) | 
 
 # UI Toolkit
-- If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial [Add MPS UI Toolkit Controls to a WebUI](../../Tutorials/uitoolkit.md). 
+- If you encounter an error during the installation, verify the prerequisites and version numbers, such as Node.js* LTS, by consulting the tutorial [Add MPS UI Toolkit Controls to a WebUI](../Tutorials/uitoolkit.md). 
 - If adding a control results in an error, double-check the device ID, mpsServer IP address value, and authToken.
 
 # General Troubleshooting Tips
@@ -48,8 +54,8 @@ If a configuration becomes unworkable, it may be necessary to clean up the envir
 
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
-1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../../Topics/MEBX/unprovision.md).
-2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../../Docker/dockerLocal.md#Builddockerimages).
+1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](/rpc/commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Topics/MEBX/unprovision.md).
+2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../Docker/dockerLocal.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 
 
