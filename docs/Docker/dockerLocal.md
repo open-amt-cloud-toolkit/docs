@@ -128,8 +128,14 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         mps:latest          Up 10 seconds                      open-amt-cloud-toolkit_mps_1
         vault               Up 10 seconds                      open-amt-cloud-toolkit_vault_1
         ```
-    
-If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+
+  
+!!! important 
+    ** Container Issues **
+
+    If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+
+    If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
 
 !!! important
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](./dockerLocal_prodVault.md).

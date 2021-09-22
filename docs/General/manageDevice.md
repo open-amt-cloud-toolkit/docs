@@ -32,7 +32,7 @@
 After successfully deploying the Open AMT Cloud Toolkit microservices and client, explore other tools and topics in the Open AMT Cloud Toolkit architecture:
 
 ### REST API Calls
-Use the REST API tutorial to construct an Authorize API call to get a JWT Token as well as a Devices API call to see connected devices using node.js. Then, modify the template to create other MPS REST API calls. 
+Learn how to send commands to AMT devices with the curl-based REST API tutorial. Generate a JWT token for Authorization and construct an API call to get a list of devices. 
 
 [Get Started with REST API Calls](../Tutorials/apiTutorial.md){: .md-button .md-button--primary }
 
