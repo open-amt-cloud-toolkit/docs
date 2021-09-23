@@ -536,13 +536,14 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#kubernetes">
-    Kubernetes
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#kubernetes-k8s">
     Kubernetes (K8s)
+  </a>
+<nav aria-label="Kubernetes (K8s)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#local-kubernetes">
+    Local Kubernetes
   </a>
 </li>
 <li class="md-nav__item">
@@ -554,6 +555,9 @@
 <a class="md-nav__link" href="#amazon-elastic-kubernetes-service-eks">
     Amazon Elastic Kubernetes Service (EKS)
   </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -759,13 +763,14 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#kubernetes">
-    Kubernetes
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#kubernetes-k8s">
     Kubernetes (K8s)
+  </a>
+<nav aria-label="Kubernetes (K8s)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#local-kubernetes">
+    Local Kubernetes
   </a>
 </li>
 <li class="md-nav__item">
@@ -780,6 +785,9 @@
 </li>
 </ul>
 </nav>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -789,7 +797,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="scaling-overview">Scaling Overview<a class="headerlink" href="#scaling-overview" title="Permanent link">¶</a></h1>
-<p>Scaling functionality in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Kubernetes (K8s), Azure Kubernetes Service<em> (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>), and Docker Swarm</em>. In addition, administrators can use kubectl to manage the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. </p>
+<p>Scaling functionality in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> enables <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service<em> (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>), Amazon Elasic Kubernetes Service</em> (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. </p>
 <p><img alt="../assets/images/HighLevelArchitectureScaling" src="../../assets/images/HighLevelArchitectureScaling.png"/></p>
 <p><strong>Figure 1: High-level Architecture of Scaling Implementation</strong></p>
 <p>Figure 1 illustrates the basic high-level software flow:</p>
@@ -801,6 +809,7 @@
 <li>The <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices communicate with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> microservices through the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API. </li>
 <li>Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> in Vault will increase the security of these assets.</li>
 </ul>
+<p><br/></p>
 <h2 id="docker-in-swarm-mode">Docker in Swarm Mode<a class="headerlink" href="#docker-in-swarm-mode" title="Permanent link">¶</a></h2>
 <p>If you're new to scaling, Docker in swarm mode is a great way to start developing a scaling proof of concept. </p>
 <p>Docker in swarm mode is a container orchestration tool, software used to deploy and manage large numbers of containers and services. In this mode, Docker enables the administrator to deploy and manage Docker nodes or worker nodes that are added to a Docker swarm instance. Administrator can then deploy a service to the swarm instance and expose ports to an external load balancer.  </p>
@@ -809,33 +818,20 @@
 <p>To learn more about Docker in swarm mode, start with <a href="https://docs.docker.com/engine/swarm/">Swarm mode overview</a>.</p>
 </div>
 <p><a class="md-button md-button--primary" href="../Docker%20Swarm/docker-swarm/" target="_blank">Get Started with Docker Swarm</a></p>
-<h2 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">¶</a></h2>
-<p>Kubernetes is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The Kubernetes deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with <a href="https://kubernetes.io/">Kubernetes</a>.</p>
-</div>
-<p><a class="md-button md-button--primary" href="../Kubernetes/kubernetes/" target="_blank">Get Started with Kubernetes</a></p>
+<p><br/></p>
 <h2 id="kubernetes-k8s">Kubernetes (K8s)<a class="headerlink" href="#kubernetes-k8s" title="Permanent link">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The K8s deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with <a href="https://kubernetes.io/">Kubernetes</a>, <a href="https://docs.microsoft.com/en-us/azure/aks/">Azure Kubernetes Service</a>, or <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html">Amazon Elastic Kubernetes Service</a>.</p>
+</div>
+<h3 id="local-kubernetes">Local Kubernetes<a class="headerlink" href="#local-kubernetes" title="Permanent link">¶</a></h3>
 <p>K8s is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. The instructions use kubectl, a command line tool for managing Kubernetes clusters.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The K8s deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with <a href="https://kubernetes.io/">Kubernetes</a>.</p>
-</div>
 <p><a class="md-button md-button--primary" href="../Kubernetes/deployingk8s/" target="_blank">Get Started with K8s</a></p>
-<h2 id="azure-kubernetes-service-aks">Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>)<a class="headerlink" href="#azure-kubernetes-service-aks" title="Permanent link">¶</a></h2>
+<h3 id="azure-kubernetes-service-aks">Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>)<a class="headerlink" href="#azure-kubernetes-service-aks" title="Permanent link">¶</a></h3>
 <p><abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, start with <a href="https://docs.microsoft.com/en-us/azure/aks/">Azure Kubernetes Service</a>.</p>
-</div>
 <p><a class="md-button md-button--primary" href="../Kubernetes/deployingk8s-aks/" target="_blank">Get Started with <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a></p>
-<h2 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">¶</a></h2>
+<h3 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">¶</a></h3>
 <p>EKS is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The EKS deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about EKS, start with <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html">Amazon Elastic Kubernetes Service</a>.</p>
-</div>
 <p><a class="md-button md-button--primary" href="../Kubernetes/deployingk8s-eks/" target="_blank">Get Started with EKS</a></p>
 </article>
 </div>

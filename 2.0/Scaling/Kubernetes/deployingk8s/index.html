@@ -595,10 +595,24 @@
 <a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
+<nav aria-label="Update Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-valuesyaml">
+    Edit values.yaml
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-database-schema">
-    Create database schema
+<a class="md-nav__link" href="#apply-volumes">
+    Apply Volumes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases-and-schema">
+    Create Databases and Schema
   </a>
 </li>
 <li class="md-nav__item">
@@ -844,10 +858,24 @@
 <a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
+<nav aria-label="Update Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-valuesyaml">
+    Edit values.yaml
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-database-schema">
-    Create database schema
+<a class="md-nav__link" href="#apply-volumes">
+    Apply Volumes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases-and-schema">
+    Create Databases and Schema
   </a>
 </li>
 <li class="md-nav__item">
@@ -892,20 +920,17 @@
 <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> with <a href="https://docs.docker.com/desktop/kubernetes/">Kubernetes Enabled</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
 </ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This deployment requires an external postgres db.  Please see <a href="https://www.postgresql.org/">postgres</a> for more information.</p>
-</div>
 <div class="admonition important">
 <p class="admonition-title">Important - For Linux</p>
 <p>If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as <a href="https://minikube.sigs.k8s.io/docs/">minikube</a> or <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">kubeadm</a>.</p>
 </div>
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">¶</a></h2>
 <h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">¶</a></h3>
-<p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
-</code></pre></div></p>
+<p>If you are using a private docker registry, you'll need to provide your credentials to K8S. </p>
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server=&lt;your-registry-server&gt; --docker-username=&lt;your-username&gt; --docker-password=&lt;your-password&gt;
+</code></pre></div>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
@@ -913,28 +938,28 @@
 <li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
 </ul>
 <h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">¶</a></h3>
-<p>This is the secret used for generating and verifying JWTs.
+<p>This is the secret used for generating and verifying JWTs.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="&lt;your-secret&gt;"
-</code></pre></div></p>
+</code></pre></div>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
 </ul>
 <h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">¶</a></h3>
-<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
+<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">¶</a></h3>
-<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
+<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
-</code></pre></div></p>
+</code></pre></div>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
 <li>
 <p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Important - Using Strong Passwords</p>
 <p>The password must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
 <li>8 to 32 characters</li>
@@ -944,21 +969,40 @@
 </li>
 </ul>
 <h3 id="5-database-connection-strings">5. Database connection strings<a class="headerlink" href="#5-database-connection-strings" title="Permanent link">¶</a></h3>
-<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/rpsdb?sslmode=require
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;HOST&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
+<ol>
+<li>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database.</li>
-<li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
-<li><strong>&lt;HOST&gt;</strong> loction for the postgres database.</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the username for the Postgres database.</li>
+<li><strong>&lt;PASSWORD&gt;</strong> is the password for the Postgres database.</li>
+<li><strong>&lt;SERVERURL&gt;</strong> is the loction for the Postgres database.</li>
 </ul>
+</li>
+<li>
+<p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
+</code></pre></div>
+</li>
+</ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h2>
+<h3 id="edit-valuesyaml">Edit values.yaml<a class="headerlink" href="#edit-valuesyaml" title="Permanent link">¶</a></h3>
 <ol>
+<li>
+<p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.0.0
+</code></pre></div>
+</li>
 <li>
 <p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
 </li>
@@ -969,11 +1013,10 @@
 </span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/rps:latest"</span>
 </span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/webui:latest"</span>
 </span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span>
-</span>    <span class="nt">postgresdb</span><span class="p">:</span> <span class="s">"postgres:13"</span>
-</code></pre></div>
+</span></code></pre></div>
 </li>
 <li>
-<p>Update the <em>commonName</em> key in the <code>mps</code> section with the IP Address of your machine.</p>
+<p>Update the <code>commonName</code> key in the <strong>mps</strong> section with the IP Address of your development device.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
 <span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-ip-address&gt;"</span>
 </span>    <span class="c1"># storageClassName: ""</span>
@@ -986,6 +1029,9 @@
 <li>
 <p>Save and close the file.</p>
 </li>
+</ol>
+<h3 id="apply-volumes">Apply Volumes<a class="headerlink" href="#apply-volumes" title="Permanent link">¶</a></h3>
+<ol>
 <li>
 <p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For a local, single-node cluster, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/local.yaml</code>.</p>
 <div class="admonition example">
@@ -1007,26 +1053,37 @@
 </div>
 </li>
 <li>
-<p>Apply it to your cluster.
-    <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/local.yaml
-</code></pre></div></p>
+<p>Apply it to your cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/local.yaml
+</code></pre></div>
 </li>
 </ol>
-<h2 id="create-database-schema">Create database schema<a class="headerlink" href="#create-database-schema" title="Permanent link">¶</a></h2>
-<p>Use the database schema files to initialize the postgres db.</p>
-<p>NOTE: The following commands will prompt for the database password.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\initMPS.sql
-</code></pre></div>
+<h2 id="create-databases-and-schema">Create Databases and Schema<a class="headerlink" href="#create-databases-and-schema" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Use the database schema files to initialize the hosted Postgres DB in the following steps.</p>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database</li>
-<li><strong>&lt;HOST&gt;</strong> location of the postgres database </li>
-<li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'</li>
+<li><strong>&lt;HOST&gt;</strong> is the location of the Postgres database.</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the username for the Postgres database.</li>
 </ul>
+</li>
+<li>
+<p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
+</code></pre></div>
+</li>
+<li>
+<p>Create tables for the new 'rpsdb'.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/init.sql
+</code></pre></div>
+</li>
+<li>
+<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+</code></pre></div>
+</li>
+</ol>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">¶</a></h2>
 <ol>
 <li>
@@ -1053,7 +1110,6 @@ TEST SUITE: None
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-6984b7c69d-8d5gf                                 1/1     Running   0          5m
 mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          5m
-oactdb-697b55f885-8mdmg                              1/1     Running   0          5m
 openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          5m
 <span class="hll">openamtstack-vault-0                                 0/1     Running   0          5m
 </span>openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          5m
@@ -1064,31 +1120,37 @@ webui-784cd49976-bj7z5                               1/1     Running   0        
 </li>
 </ol>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">¶</a></h2>
-<ol>
-<li>
-<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Make sure you download your credentials and save them in a secure location.</p>
+<div class="admonition danger -">
+<p class="admonition-title">Danger - Download and Save Vault Keys</p>
+<p><strong>Make sure to download your Vault credentials</strong> and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.</p>
 </div>
-</li>
-</ol>
-<p>After initializing and unsealing the vault, you need to enable the Key Value engine:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip - Finding the Vault UI External IP Address<p>The external IP of your Vault UI service can be found by running:</p>
+<div class="highlight"><pre><span></span><code>kubectl get services openamtstack-vault-ui
+</code></pre></div>
+</p>
+</div>
 <ol>
 <li>
-<p>Click "Enable New Engine +".</p>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>. <strong>Stop and return here after signing in to Vault with the <code>root_token</code>.</strong></p>
 </li>
 <li>
-<p>Choose "KV".</p>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
 </li>
 <li>
-<p>Click "Next".</p>
+<p>Click <strong>Enable New Engine +</strong>.</p>
 </li>
 <li>
-<p>Leave the default path and choose version 2 from the drop down. </p>
+<p>Choose <strong>KV</strong>.</p>
 </li>
 <li>
-<p>Click "Enable Engine".</p>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Leave the default path and choose <strong>version 2</strong> from the drop down. </p>
+</li>
+<li>
+<p>Click <strong>Enable Engine</strong>.</p>
 </li>
 </ol>
 <h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">¶</a></h3>
@@ -1099,7 +1161,7 @@ webui-784cd49976-bj7z5                               1/1     Running   0        
 </code></pre></div>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;your-root-token&gt;</strong> is your <em>root_token</em> generated by Vault.</li>
+<li><strong>&lt;your-root-token&gt;</strong> is your <code>root_token</code> generated by Vault.</li>
 </ul>
 </li>
 <li>
@@ -1111,7 +1173,6 @@ webui-784cd49976-bj7z5                               1/1     Running   0        
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-6984b7c69d-8d5gf                                 1/1     Running   0          7m
 mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          7m
-oactdb-697b55f885-8mdmg                              1/1     Running   0          7m
 openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
 openamtstack-vault-0                                 1/1     Running   0          7m
 openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m

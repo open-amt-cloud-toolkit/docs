@@ -563,6 +563,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#get-the-toolkit">
+    Get the Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#create-ssh-key">
     Create SSH Key
   </a>
@@ -620,21 +625,35 @@
 <a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
+<nav aria-label="Update Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-valuesyaml">
+    Edit values.yaml
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-database-schema">
-    Create database schema
+<a class="md-nav__link" href="#apply-volumes">
+    Apply Volumes
   </a>
-<nav aria-label="Create database schema" class="md-nav">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases-and-schema">
+    Create Databases and Schema
+  </a>
+<nav aria-label="Create Databases and Schema" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#enable-access-to-database">
-    Enable access to database
+    Enable Access to Database
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#create-databases">
-    Create databases
+    Create Databases
   </a>
 </li>
 </ul>
@@ -841,6 +860,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#get-the-toolkit">
+    Get the Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#create-ssh-key">
     Create SSH Key
   </a>
@@ -898,21 +922,35 @@
 <a class="md-nav__link" href="#update-configuration">
     Update Configuration
   </a>
+<nav aria-label="Update Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-valuesyaml">
+    Edit values.yaml
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-database-schema">
-    Create database schema
+<a class="md-nav__link" href="#apply-volumes">
+    Apply Volumes
   </a>
-<nav aria-label="Create database schema" class="md-nav">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases-and-schema">
+    Create Databases and Schema
+  </a>
+<nav aria-label="Create Databases and Schema" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#enable-access-to-database">
-    Enable access to database
+    Enable Access to Database
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#create-databases">
-    Create databases
+    Create Databases
   </a>
 </li>
 </ul>
@@ -957,12 +995,19 @@
 <p>Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>) offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> <a href="https://docs.microsoft.com/en-us/azure/aks/">here</a>.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI (v2.24.0+)</a></li>
 <li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
 <li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
 </ul>
+<h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.0.0
+</code></pre></div>
+</li>
+</ol>
 <h2 id="create-ssh-key">Create SSH Key<a class="headerlink" href="#create-ssh-key" title="Permanent link">¶</a></h2>
 <p>This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed">Detailed steps: Create and manage SSH keys</a>.</p>
 <ol>
@@ -981,17 +1026,14 @@
 <p>Login to Azure.
   <div class="highlight"><pre><span></span><code>az login
 </code></pre></div></p>
-<p>Additionally, you can verify the correct subscription is set.
-<div class="highlight"><pre><span></span><code>az account show
-</code></pre></div></p>
 </li>
 <li>
-<p>Provide a name to create a new resource group.</p>
-<div class="highlight"><pre><span></span><code>az group create --name &lt;your-resource-group-name&gt; --location eastus
+<p>Provide a name and region to create a new resource group.</p>
+<div class="highlight"><pre><span></span><code>az group create --name &lt;your-resource-group-name&gt; --location &lt;region&gt;
 </code></pre></div>
 </li>
 <li>
-<p>Provide the name of your new resource group from the last step and start a deployment at that resource group based on <code>aks.json</code>.</p>
+<p>Provide the name of your new resource group from the last step and start a deployment at that resource group based on <code>aks.json</code> in the <code>./open-amt-cloud-toolkit</code> directory.</p>
 <div class="highlight"><pre><span></span><code>az deployment group create --resource-group &lt;your-resource-group-name&gt; --template-file aks.json
 </code></pre></div>
 </li>
@@ -1060,7 +1102,7 @@
 <li>
 <p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Important - Using Strong Passwords</p>
 <p>The password must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
 <li>8 to 32 characters</li>
@@ -1097,30 +1139,44 @@
 </li>
 </ul>
 <h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">¶</a></h3>
-<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
+<ol>
+<li>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql</li>
-<li><strong>&lt;PASSWORD&gt;</strong> password for the postgres database.</li>
-<li><strong>&lt;SERVERURL&gt;</strong> url for the Azure hosted postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com.</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the full username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
+<li><strong>&lt;PASSWORD&gt;</strong> is the password for the Postgres database.</li>
+<li><strong>&lt;SERVERURL&gt;</strong> is the url for the Azure-hosted Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
 </ul>
+</li>
+<li>
+<p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
+</code></pre></div>
+</li>
+</ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h2>
+<h3 id="edit-valuesyaml">Edit values.yaml<a class="headerlink" href="#edit-valuesyaml" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
 </li>
 <li>
-<p>Update the <em>service.beta.kubernetes.io/azure-dns-label-name</em> key in the <code>kong:</code> section with the desired DNS name you would like for your cluster (i.e. myopenamtk8s).</p>
+<p>Update the <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <strong>kong</strong> section with the desired subdomain name for your URL you would like for your cluster (i.e. myopenamtk8s).</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
   <span class="nt">proxy</span><span class="p">:</span>
     <span class="nt">annotations</span><span class="p">:</span>
-<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">"&lt;your-domain-name&gt;"</span>
+<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;"</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -1130,8 +1186,7 @@
 </span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/rps:latest"</span>
 </span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/webui:latest"</span>
 </span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span>
-</span>    <span class="nt">postgresdb</span><span class="p">:</span> <span class="s">"postgres:13"</span>
-</code></pre></div>
+</span></code></pre></div>
 </li>
 <li>
 <p>Update the following keys in the <code>mps</code> section.</p>
@@ -1147,7 +1202,7 @@
 <tr>
 <td>commonName</td>
 <td>FQDN for your cluster</td>
-<td>For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-domain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</td>
+<td>For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</td>
 </tr>
 <tr>
 <td>storageAccessMode</td>
@@ -1157,7 +1212,7 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-domain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
+<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
 </span>    <span class="c1"># storageClassName: ""</span>
 <span class="hll">    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">"ReadWriteOnce"</span> <span class="c1">#Change to ReadWriteMany</span>
 </span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -1168,6 +1223,9 @@
 <li>
 <p>Save and close the file.</p>
 </li>
+</ol>
+<h3 id="apply-volumes">Apply Volumes<a class="headerlink" href="#apply-volumes" title="Permanent link">¶</a></h3>
+<ol>
 <li>
 <p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For an <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> deployment, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/azure.yaml</code>.</p>
 <div class="admonition note">
@@ -1206,35 +1264,62 @@
 </code></pre></div></p>
 </li>
 </ol>
-<h2 id="create-database-schema">Create database schema<a class="headerlink" href="#create-database-schema" title="Permanent link">¶</a></h2>
-<h3 id="enable-access-to-database">Enable access to database<a class="headerlink" href="#enable-access-to-database" title="Permanent link">¶</a></h3>
-<ul>
-<li>Navigate to <code>Home &gt; Resource Groups &gt; Resource Group Name &gt; Azure Database for PostgreSQL Server</code> using Microsoft Azure via online</li>
-<li>Settings -&gt; Connection Security</li>
-<li>Under firewall rules, select 'add current client ip address'</li>
+<h2 id="create-databases-and-schema">Create Databases and Schema<a class="headerlink" href="#create-databases-and-schema" title="Permanent link">¶</a></h2>
+<h3 id="enable-access-to-database">Enable Access to Database<a class="headerlink" href="#enable-access-to-database" title="Permanent link">¶</a></h3>
+<ol>
 <li>
-<p>Select Save</p>
+<p>Navigate to <code>Home &gt; Resource Groups &gt; Resource Group Name</code> using Microsoft Azure via online.</p>
 </li>
 <li>
-<p>Under the general tab, take note of the 'server name' and 'admin username', they will be needed in the next step.</p>
+<p>Select the Postgres DB. It will have a Type of <code>Azure Database for PostgreSQL Server</code>.</p>
 </li>
-</ul>
-<p>NOTE: Please remember to delete this firewall rule when finished.</p>
-<h3 id="create-databases">Create databases<a class="headerlink" href="#create-databases" title="Permanent link">¶</a></h3>
-<p>Use the database schema files to initialize the hosted postgres db.</p>
-<p>NOTE: The following commands will prompt for the database password.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\init.sql
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f &lt;SCRIPTLOCATION&gt;\initMPS.sql
-</code></pre></div>
+<li>
+<p>Under Settings in the left-hand menu, select <strong>Connection Security</strong>.</p>
+</li>
+<li>
+<p>Under Firewall rules, select <strong>Add current client IP address</strong>.</p>
+</li>
+<li>
+<p>Select Save.</p>
+</li>
+<li>
+<p>Under the Overview tab, take note of the 'Server name' and 'Admin username'. They will be needed in the next steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to delete this firewall rule when finished.</p>
+</div>
+</li>
+</ol>
+<h3 id="create-databases">Create Databases<a class="headerlink" href="#create-databases" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Use the database schema files to initialize the hosted Postgres DB in the following steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following commands will prompt for the database password you chose <a href="#create-postgres-db-in-rds">here</a>.</p>
+</div>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;USERNAME&gt;</strong> username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql</li>
-<li><strong>&lt;HOST&gt;</strong> location of the postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com </li>
-<li><strong>&lt;SCRIPTLOCATION&gt;</strong> location of the sql scripts '\open-amt-cloud-toolkit\data'</li>
+<li><strong>&lt;HOST&gt;</strong> is the location of the Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
 </ul>
+</li>
+<li>
+<p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
+</code></pre></div>
+</li>
+<li>
+<p>Create tables for the new 'rpsdb'.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/init.sql
+</code></pre></div>
+</li>
+<li>
+<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+</code></pre></div>
+</li>
+</ol>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">¶</a></h2>
 <ol>
 <li>
@@ -1253,15 +1338,14 @@ TEST SUITE: None
 </div>
 </li>
 <li>
-<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>openamtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
-    <div class="highlight"><pre><span></span><code>kubectl get pods
-</code></pre></div></p>
+<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>openamtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
-<span class="hll">mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+<span class="hll">mps-69786bfb47-92mpc                                 0/1     Pending                      0          2m6s
 </span>mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
-oactdb-697b55f885-g6l58                              1/1     Running                      0          2m6s
 openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
 <span class="hll">openamtstack-vault-0                                 0/1     Running                      0          2m6s
 </span>openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
@@ -1272,66 +1356,59 @@ openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running            
 </li>
 </ol>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">¶</a></h2>
+<div class="admonition danger -">
+<p class="admonition-title">Danger - Download and Save Vault Keys</p>
+<p><strong>Make sure to download your Vault credentials</strong> and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip - Finding the Vault UI External IP Address<p>The external IP of your Vault UI service can be found by running:</p>
+<div class="highlight"><pre><span></span><code>kubectl get services openamtstack-vault-ui
+</code></pre></div>
+</p>
+</div>
 <ol>
 <li>
-<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Make sure you download your credentials and save them in a secure location.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note - Finding the Vault UI External IP Address</p>
-<p>The external IP of your Vault UI service can be found by either:</p>
-<ul>
-<li>
-<p>Run <code>kubectl get services</code> and view under the <code>openamtstack-vault-ui</code> service.</p>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>. <strong>Stop and return here after signing in to Vault with the <code>root_token</code>.</strong></p>
 </li>
 <li>
-<p>Navigate to <code>Home &gt; Kubernetes services &gt; cluster-name &gt; Services and ingresses</code> using Microsoft Azure via online.</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-<p>After initializing and unsealing the vault, you need to enable the Key Value engine:</p>
-<ol>
-<li>
-<p>Click "Enable New Engine +".</p>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
 </li>
 <li>
-<p>Choose "KV".</p>
+<p>Click <strong>Enable New Engine +</strong>.</p>
 </li>
 <li>
-<p>Click "Next".</p>
+<p>Choose <strong>KV</strong>.</p>
 </li>
 <li>
-<p>Leave the default path and choose version 2 from the drop down. </p>
+<p>Click <strong>Next</strong>.</p>
 </li>
 <li>
-<p>Click "Enable Engine".</p>
+<p>Leave the default path and choose <strong>version 2</strong> from the drop down. </p>
+</li>
+<li>
+<p>Click <strong>Enable Engine</strong>.</p>
 </li>
 </ol>
 <h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">¶</a></h3>
 <ol>
 <li>
-<p>Add the root token as a secret to the k8s cluster so that the services can access Vault.</p>
+<p>Add the root token as a secret to the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> cluster so that the services can access Vault.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
 </code></pre></div>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;your-root-token&gt;</strong> is your <em>root_token</em> generated by Vault.</li>
+<li><strong>&lt;your-root-token&gt;</strong> is your <code>root_token</code> generated by Vault.</li>
 </ul>
 </li>
 <li>
-<p>View the pods. All pods should now be Ready and Running.
-    <div class="highlight"><pre><span></span><code>kubectl get pods
-</code></pre></div></p>
+<p>View the pods. All pods should now be Ready and Running.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS      RESTARTS   AGE
 mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
 mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
-oactdb-697b55f885-g6l58                              1/1     Running     0          4m5s
 openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
 openamtstack-vault-0                                 1/1     Running     0          4m5s
 openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
