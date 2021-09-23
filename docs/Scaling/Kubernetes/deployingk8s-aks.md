@@ -8,11 +8,18 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 
 ## Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Azure CLI (v2.24.0+)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Helm CLI (v3.5+)](https://helm.sh/)
 - [PSQL CLI (11.13)](https://www.postgresql.org/download/)
+
+## Get the Toolkit
+
+1. Clone the Open AMT Cloud Toolkit.
+
+    ```
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    ```
 
 ## Create SSH Key
 This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see [Detailed steps: Create and manage SSH keys](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed).
@@ -32,18 +39,13 @@ This key is required by Azure to create VMs that use SSH keys for authentication
   az login
   ``` 
 
-    Additionally, you can verify the correct subscription is set.
-    ```
-    az account show
-    ```
-
-2. Provide a name to create a new resource group.
+2. Provide a name and region to create a new resource group.
 
     ``` bash
-    az group create --name <your-resource-group-name> --location eastus
+    az group create --name <your-resource-group-name> --location <region>
     ```
 
-3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json`.
+3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json` in the `./open-amt-cloud-toolkit` directory.
 
     ```
     az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
@@ -123,7 +125,7 @@ Where:
 - **&lt;your-username&gt;** is a username of your choice.
 - **&lt;your-password&gt;** is a strong password of your choice.
 
-    !!! important
+    !!! important "Important - Using Strong Passwords"
         The password must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
@@ -154,37 +156,49 @@ Where:
 
 ### 6. Database connection strings
 
-Configure the database connection strings used by MPS, RPS, and MPS Router.
 
-```
-kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
-```
+1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
 
-```
-kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-```
 
-```
-kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-```
+    Where:
 
-Where:
+    - **&lt;USERNAME&gt;** is the full username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
+    - **&lt;PASSWORD&gt;** is the password for the Postgres database.
+    - **&lt;SERVERURL&gt;** is the url for the Azure-hosted Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
 
-- **&lt;USERNAME&gt;** username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql
-- **&lt;PASSWORD&gt;** password for the postgres database.
-- **&lt;SERVERURL&gt;** url for the Azure hosted postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com.
+2. Create RPS connection string secret.
+
+    ```
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    ```
+
+3. Create MPS Router connection string secret.
+
+    ```
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    ```
+
+4. Create MPS connection string secret.   
+
+    ```
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+    ```
+
+
 
 ## Update Configuration
 
+### Edit values.yaml
+
 1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
 
-2. Update the *service.beta.kubernetes.io/azure-dns-label-name* key in the `kong:` section with the desired DNS name you would like for your cluster (i.e. myopenamtk8s).
+2. Update the `service.beta.kubernetes.io/azure-dns-label-name` key in the **kong** section with the desired subdomain name for your URL you would like for your cluster (i.e. myopenamtk8s).
 
     ``` yaml hl_lines="4"
     kong:
       proxy:
         annotations:
-          service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>"
+          service.beta.kubernetes.io/azure-dns-label-name: "<your-subdomain-name>"
     ```
 
 3. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
@@ -195,20 +209,19 @@ Where:
         rps: "vprodemo.azurecr.io/rps:latest"
         webui: "vprodemo.azurecr.io/webui:latest"
         mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
-        postgresdb: "postgres:13"
     ```
 
 4. Update the following keys in the `mps` section.
 
     | Key Name | Update to | Description |
     | -------------     | ------------------    | ------------ |
-    | commonName        | FQDN for your cluster | For AKS, the format is `<your-domain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks). |
+    | commonName        | FQDN for your cluster | For AKS, the format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks). |
     | storageAccessMode | ReadWriteMany         | Must set to `ReadWriteMany` to scale. The default access mode for storage (`storageAccessMode`) is set to `ReadWriteOnce`. This only works with a one node cluster. |
 
 
     ``` yaml hl_lines="2 4"
     mps:
-        commonName: "<your-domain-name>.<location>.cloudapp.azure.com"
+        commonName: "<your-subdomain-name>.<location>.cloudapp.azure.com"
         # storageClassName: ""
         storageAccessMode: "ReadWriteOnce" #Change to ReadWriteMany
         replicaCount: 1
@@ -219,7 +232,9 @@ Where:
 
 5. Save and close the file.
 
-6. Provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For an AKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/azure.yaml`.
+### Apply Volumes
+
+1. Provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For an AKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/azure.yaml`.
 
     !!! note
         Changing storageAccessMode will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide a `PersistentVolume` that can match that claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster.
@@ -249,45 +264,59 @@ Where:
           - nobrl
         ```
 
-7. Apply it to your cluster.
+2. Apply it to your cluster.
     ```
     kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
     ```
-## Create database schema 
-### Enable access to database
 
-- Navigate to `Home > Resource Groups > Resource Group Name > Azure Database for PostgreSQL Server` using Microsoft Azure via online
-- Settings -> Connection Security
-- Under firewall rules, select 'add current client ip address'
-- Select Save
+## Create Databases and Schema 
 
-- Under the general tab, take note of the 'server name' and 'admin username', they will be needed in the next step.
+### Enable Access to Database
 
-NOTE: Please remember to delete this firewall rule when finished.
+1. Navigate to `Home > Resource Groups > Resource Group Name` using Microsoft Azure via online.
 
-### Create databases
+2. Select the Postgres DB. It will have a Type of `Azure Database for PostgreSQL Server`.
 
-Use the database schema files to initialize the hosted postgres db.
+3. Under Settings in the left-hand menu, select **Connection Security**.
 
-NOTE: The following commands will prompt for the database password.
+4. Under Firewall rules, select **Add current client IP address**.
 
-```
-psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
-```
+5. Select Save.
 
-```
-psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f <SCRIPTLOCATION>\init.sql
-```
+6. Under the Overview tab, take note of the 'Server name' and 'Admin username'. They will be needed in the next steps.
 
-```
-psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f <SCRIPTLOCATION>\initMPS.sql
-```
+    !!! note
+        Remember to delete this firewall rule when finished.
 
-Where:
+### Create Databases
 
-- **&lt;USERNAME&gt;** username for the postgres database in the form of &lt;USERNAME&gt;@&lt;your-cluster-name&gt;-sql
-- **&lt;HOST&gt;** location of the postgres database in the form of &lt;your-cluster-name&gt;-sql.postgres.database.azure.com 
-- **&lt;SCRIPTLOCATION&gt;** location of the sql scripts '\open-amt-cloud-toolkit\data'
+1. Use the database schema files to initialize the hosted Postgres DB in the following steps.
+
+    !!! note
+        The following commands will prompt for the database password you chose [here](#create-postgres-db-in-rds).
+
+    Where:
+
+    - **&lt;HOST&gt;** is the location of the Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
+    - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
+
+2. Create the RPS database.
+
+    ```
+    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+    ```
+
+3. Create tables for the new 'rpsdb'.
+
+    ```
+    psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    ```
+
+4. Create the MPS database.
+
+    ```
+    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+    ```
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
@@ -307,16 +336,16 @@ Where:
         ```
 
 2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+
     ```
     kubectl get pods
     ```
 
     !!! success
-        ``` hl_lines="2 6 8"
+        ``` hl_lines="2 5 7"
         NAME                                                 READY   STATUS                       RESTARTS   AGE
-        mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+        mps-69786bfb47-92mpc                                 0/1     Pending                      0          2m6s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
-        oactdb-697b55f885-g6l58                              1/1     Running                      0          2m6s
         openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
         openamtstack-vault-0                                 0/1     Running                      0          2m6s
         openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
@@ -326,33 +355,33 @@ Where:
 
 ## Initialize and Unseal Vault
 
-1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault).
+!!! danger - "Danger - Download and Save Vault Keys"
+    **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
-    !!! important 
-        Make sure you download your credentials and save them in a secure location.
+!!! tip "Tip - Finding the Vault UI External IP Address"
+        The external IP of your Vault UI service can be found by running:
 
-    !!! note "Note - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by either:
+        ```
+        kubectl get services openamtstack-vault-ui
+        ```
 
-        - Run `kubectl get services` and view under the `openamtstack-vault-ui` service.
+1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 
-        - Navigate to `Home > Kubernetes services > cluster-name > Services and ingresses` using Microsoft Azure via online.
+2. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-After initializing and unsealing the vault, you need to enable the Key Value engine:
+3. Click **Enable New Engine +**.
 
-1. Click "Enable New Engine +".
+4. Choose **KV**.
 
-2. Choose "KV".
+5. Click **Next**.
 
-3. Click "Next".
+6. Leave the default path and choose **version 2** from the drop down. 
 
-4. Leave the default path and choose version 2 from the drop down. 
-
-5. Click "Enable Engine".
+7. Click **Enable Engine**.
   
 ### Vault Token Secret
 
-1. Add the root token as a secret to the k8s cluster so that the services can access Vault.
+1. Add the root token as a secret to the AKS cluster so that the services can access Vault.
 
     ```
     kubectl create secret generic vault --from-literal=vaultKey=<your-root-token>
@@ -360,9 +389,10 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
     Where:
 
-    - **&lt;your-root-token&gt;** is your *root_token* generated by Vault.
+    - **&lt;your-root-token&gt;** is your `root_token` generated by Vault.
 
 2. View the pods. All pods should now be Ready and Running.
+
     ```
     kubectl get pods
     ```
@@ -372,7 +402,6 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
         NAME                                                 READY   STATUS      RESTARTS   AGE
         mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
-        oactdb-697b55f885-g6l58                              1/1     Running     0          4m5s
         openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
         openamtstack-vault-0                                 1/1     Running     0          4m5s
         openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
