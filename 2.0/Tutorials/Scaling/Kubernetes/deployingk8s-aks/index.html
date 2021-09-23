@@ -1,0 +1,1371 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.2, mkdocs-material-7.3.0" name="generator"/>
+<title>AKS - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#azure-kubernetes-service-aks">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              AKS
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../GetStarted/prerequisites/">
+        Get Started
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../Deployment/overview/">
+        Deployment
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../uitoolkitReact/">
+        Tutorials
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../Reference/architectureOverview/">
+        Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../APIs/indexMPS/">
+        APIs
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../../assets/images/logo-white-75px.png"/>
+</a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../announcements/">
+        Announcements
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../release-notes/">
+        Release notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../license/">
+        License
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Get Started
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Get Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/prerequisites/">
+        Prerequisites
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/setup/">
+        Set Up
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          Configure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Configure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/loginToUI/">
+        Login to Sample Web UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/createCIRAConfig/">
+        Create a CIRA Config
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+          Create an AMT Profile
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Create an AMT Profile
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/createProfileCCM/">
+        Create a Profile with CCM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/createProfileACM/">
+        Create a Profile with ACM
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          Connect
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/buildRPC/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../GetStarted/manageDevice/">
+        Manage AMT Device
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Deployment/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Deployment/database/">
+        Database
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Deployment/secrets/">
+        Secret Provider
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../uitoolkitReact/">
+        UI Toolkit KVM Module
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../apiTutorial/">
+        REST API Call
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../createWiFiConfig/">
+        Wireless Activation
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
+          Scaling Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling Tutorials" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+          Scaling Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../docker-swarm/">
+        Docker Swarm*
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4_3" id="__nav_4_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4_3">
+          Kubernetes Deployments
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Kubernetes Deployments
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deployingk8s/">
+        Kubernetes (K8s)
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          AKS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        AKS
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get-the-toolkit">
+    Get the Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-ssh-key">
+    Create SSH Key
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploy-aks">
+    Deploy AKS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-to-aks-instance">
+    Connect to AKS Instance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-secrets">
+    Create Secrets
+  </a>
+<nav aria-label="Create Secrets" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-private-docker-registry-credentials">
+    1. Private Docker Registry Credentials
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-mpskong-jwt">
+    2. MPS/KONG JWT
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-kong-acl-for-jwt">
+    3. KONG ACL for JWT
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-mps-web-username-and-password">
+    4. MPS Web Username and Password
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-azure-storage-account-key">
+    5. Azure Storage Account Key
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-database-connection-strings">
+    6. Database connection strings
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
+    Update Configuration
+  </a>
+<nav aria-label="Update Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-valuesyaml">
+    Edit values.yaml
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#apply-volumes">
+    Apply Volumes
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases-and-schema">
+    Create Databases and Schema
+  </a>
+<nav aria-label="Create Databases and Schema" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enable-access-to-database">
+    Enable Access to Database
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-databases">
+    Create Databases
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deploy-open-amt-cloud-toolkit-using-helm">
+    Deploy Open AMT Cloud Toolkit using Helm
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initialize-and-unseal-vault">
+    Initialize and Unseal Vault
+  </a>
+<nav aria-label="Initialize and Unseal Vault" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vault-token-secret">
+    Vault Token Secret
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
+    Next Steps
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deployingk8s-eks/">
+        EKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../service-mesh/">
+        KUMA Service Mesh
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/architectureOverview/">
+        Architecture Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/powerstates/">
+        AMT Power States
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/guids/">
+        GUIDs in Intel® AMT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/logging/">
+        Logging
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_5" id="__nav_5_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_5">
+          Event Monitoring (MQTT)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring (MQTT)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_5">
+<span class="md-nav__icon md-icon"></span>
+          Event Monitoring (MQTT)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MQTT/customMqttEvents/">
+        Customizing MQTT Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MQTT/viewMqttEvents/">
+        Viewing MQTT Events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
+          Management Presence Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Management Presence Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MPS/securityMPS/">
+        Security Information
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
+          Remote Provisioning Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/RPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/RPS/networkConfig/">
+        Network Profiles
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/RPS/securityRPS/">
+        Security Information
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
+          Remote Provisioning Client
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Client
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC (Manual)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/RPC/commandsRPC/">
+        Command Examples
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
+          UI Toolkit
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+          UI Toolkit
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9_1" id="__nav_5_9_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9_1">
+          Controls
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_9_1">
+<span class="md-nav__icon md-icon"></span>
+          Controls
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/Controls/kvmControl/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/Controls/serialOverLANControl/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/localization/">
+        Localization
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9_3" id="__nav_5_9_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9_3">
+          React Bundles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_9_3">
+<span class="md-nav__icon md-icon"></span>
+          React Bundles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/Bundles/kvmReact/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/Bundles/serialOverLANReact/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/UIToolkit/webpackConfig/">
+        Webpack Configuration
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
+          Intel® MEBX
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MEBX/dnsSuffix/">
+        DNS Suffix
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/MEBX/unprovision/">
+        Unprovisioning
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../APIs/indexMPS/">
+        Management Presence Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../APIs/indexRPS/">
+        Remote Provisioning Server
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="azure-kubernetes-service-aks">Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>)<a class="headerlink" href="#azure-kubernetes-service-aks" title="Permanent link">¶</a></h1>
+<p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a Kubernetes cluster using <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See <a href="../deployingk8s/">Kubernetes (K8s)</a>.</p>
+<p>Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>) offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> <a href="https://docs.microsoft.com/en-us/azure/aks/">here</a>.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI (v2.24.0+)</a></li>
+<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
+</ul>
+<h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.0.1
+</code></pre></div>
+</li>
+</ol>
+<h2 id="create-ssh-key">Create SSH Key<a class="headerlink" href="#create-ssh-key" title="Permanent link">¶</a></h2>
+<p>This key is required by Azure to create VMs that use SSH keys for authentication. For more details, see <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-ssh-keys-detailed">Detailed steps: Create and manage SSH keys</a>.</p>
+<ol>
+<li>
+<p>Create a new ssh key.</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 2048
+</code></pre></div>
+</li>
+<li>
+<p>Take note of the location it was saved at. You will need the public key (<code>.pub</code> file) in a following step. </p>
+</li>
+</ol>
+<h2 id="deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr><a class="headerlink" href="#deploy-aks" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Login to Azure.
+  <div class="highlight"><pre><span></span><code>az login
+</code></pre></div></p>
+</li>
+<li>
+<p>Provide a name and region to create a new resource group.</p>
+<div class="highlight"><pre><span></span><code>az group create --name &lt;your-resource-group-name&gt; --location &lt;region&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Provide the name of your new resource group from the last step and start a deployment at that resource group based on <code>aks.json</code> in the <code>./open-amt-cloud-toolkit</code> directory.</p>
+<div class="highlight"><pre><span></span><code>az deployment group create --resource-group &lt;your-resource-group-name&gt; --template-file aks.json
+</code></pre></div>
+</li>
+<li>
+<p>After running the previous command, you will be prompted for 3 different strings. After the final prompt, it will take about 5 minutes to finish running.</p>
+<ul>
+<li>Provide a name for the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Cluster.</li>
+<li>Provide a name (e.g. your name) for the linux user admin name.</li>
+<li>Provide the string of the ssh key from the <code>.pub</code> file.</li>
+</ul>
+</li>
+<li>
+<p>Take note of the <code>fqdnSuffix</code> in the <code>outputs</code> section of the JSON response (e.g. <code>eastus.cloudapp.azure.com</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"outputs"</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">"controlPlaneFQDN"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"String"</span><span class="p">,</span>
+    <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"bwcluster-9c68035a.hcp.westus.azmk8s.io"</span>
+  <span class="p">},</span>
+  <span class="nt">"fqdnSuffix"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"String"</span><span class="p">,</span>
+<span class="hll">    <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"eastus.cloudapp.azure.com"</span>
+</span>  <span class="p">}</span>
+<span class="p">},</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="connect-to-aks-instance">Connect to <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Instance<a class="headerlink" href="#connect-to-aks-instance" title="Permanent link">¶</a></h2>
+<p>Ensure your <code>kubectl</code> is connected to the Kubernetes cluster you wish to deploy/manage.</p>
+<ol>
+<li>
+<p>Provide your resource group name and cluster name, respectively.</p>
+<div class="highlight"><pre><span></span><code>az aks get-credentials --resource-group &lt;your-resource-group-name&gt; --name &lt;your-cluster-name&gt;
+</code></pre></div>
+</li>
+</ol>
+<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">¶</a></h2>
+<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">¶</a></h3>
+<p>If you are using a private docker registry, you'll need to provide your credentials to K8S. 
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-username&gt; --docker-password<span class="o">=</span>&lt;your-password&gt;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
+<li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
+<li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
+</ul>
+<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">¶</a></h3>
+<p>This is the secret used for generating and verifying JWTs.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="&lt;your-secret&gt;"
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
+</ul>
+<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">¶</a></h3>
+<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
+</code></pre></div></p>
+<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">¶</a></h3>
+<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
+</code></pre></div></p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
+<li>
+<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
+<div class="admonition important">
+<p class="admonition-title">Important - Using Strong Passwords</p>
+<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
+<ul>
+<li>8 to 32 characters</li>
+<li>One uppercase, one lowercase, one numerical digit, one special character</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3 id="5-azure-storage-account-key">5. Azure Storage Account Key<a class="headerlink" href="#5-azure-storage-account-key" title="Permanent link">¶</a></h3>
+<p>Currently, we leverage Azure Storage Accounts for persistent storage of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> certificates that can be shared by multiple instances of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will likely change in a future release</p>
+</div>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=&lt;your-cluster-name&gt;stg --from-literal=azurestorageaccountkey=&lt;your-storage-key&gt;
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-cluster-name&gt;</strong> is the cluster name chosen in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</li>
+<li>
+<p><strong>&lt;your-storage-key&gt;</strong> is one of the generated access keys of the storage account.</p>
+<div class="admonition important">
+<p class="admonition-title">Important - Finding Access Keys</p>
+<p>An access key can be found by either:</p>
+<ul>
+<li>
+<p>Run <code>az storage account keys list --account-name &lt;your-cluster-name&gt;stg</code> to view access keys.</p>
+</li>
+<li>
+<p>Navigate to <code>Home &gt; Storage accounts &gt; cluster-name &gt; Access keys</code> using Microsoft Azure via online.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;USERNAME&gt;</strong> is the full username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
+<li><strong>&lt;PASSWORD&gt;</strong> is the password for the Postgres database.</li>
+<li><strong>&lt;SERVERURL&gt;</strong> is the url for the Azure-hosted Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
+</ul>
+</li>
+<li>
+<p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+</code></pre></div>
+</li>
+<li>
+<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
+</code></pre></div>
+</li>
+</ol>
+<h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h2>
+<h3 id="edit-valuesyaml">Edit values.yaml<a class="headerlink" href="#edit-valuesyaml" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
+</li>
+<li>
+<p>Update the <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <strong>kong</strong> section with the desired subdomain name for your URL you would like for your cluster (i.e. myopenamtk8s).</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
+  <span class="nt">proxy</span><span class="p">:</span>
+    <span class="nt">annotations</span><span class="p">:</span>
+<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;"</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
+<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mps:latest"</span>
+</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/rps:latest"</span>
+</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/webui:latest"</span>
+</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Update the following keys in the <code>mps</code> section.</p>
+<table>
+<thead>
+<tr>
+<th>Key Name</th>
+<th>Update to</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>commonName</td>
+<td>FQDN for your cluster</td>
+<td>For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</td>
+</tr>
+<tr>
+<td>storageAccessMode</td>
+<td>ReadWriteMany</td>
+<td>Must set to <code>ReadWriteMany</code> to scale. The default access mode for storage (<code>storageAccessMode</code>) is set to <code>ReadWriteOnce</code>. This only works with a one node cluster.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
+<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
+</span>    <span class="c1"># storageClassName: ""</span>
+<span class="hll">    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">"ReadWriteOnce"</span> <span class="c1">#Change to ReadWriteMany</span>
+</span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">"silly"</span>
+    <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
+</code></pre></div>
+</li>
+<li>
+<p>Save and close the file.</p>
+</li>
+</ol>
+<h3 id="apply-volumes">Apply Volumes<a class="headerlink" href="#apply-volumes" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For an <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> deployment, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/azure.yaml</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing storageAccessMode will update the PersistentVolumeClaim to request <code>ReadWriteMany</code>, this means you'll need to provide a <code>PersistentVolume</code> that can match that claim. The Azure deployment performed in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a> creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Provided azure.yaml Example</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-certs</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">capacity</span><span class="p">:</span>
+    <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+  <span class="nt">accessModes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span>
+  <span class="nt">azureFile</span><span class="p">:</span>
+    <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure-secret</span>
+    <span class="nt">secretNamespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+    <span class="nt">shareName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-certs</span>
+    <span class="nt">readOnly</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">mountOptions</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dir_mode=0755</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file_mode=0755</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">uid=1000</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gid=1000</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mfsymlinks</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nobrl</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>Apply it to your cluster.
+    <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="create-databases-and-schema">Create Databases and Schema<a class="headerlink" href="#create-databases-and-schema" title="Permanent link">¶</a></h2>
+<h3 id="enable-access-to-database">Enable Access to Database<a class="headerlink" href="#enable-access-to-database" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Navigate to <code>Home &gt; Resource Groups &gt; Resource Group Name</code> using Microsoft Azure via online.</p>
+</li>
+<li>
+<p>Select the Postgres DB. It will have a Type of <code>Azure Database for PostgreSQL Server</code>.</p>
+</li>
+<li>
+<p>Under Settings in the left-hand menu, select <strong>Connection Security</strong>.</p>
+</li>
+<li>
+<p>Under Firewall rules, select <strong>Add current client IP address</strong>.</p>
+</li>
+<li>
+<p>Select Save.</p>
+</li>
+<li>
+<p>Under the Overview tab, take note of the 'Server name' and 'Admin username'. They will be needed in the next steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to delete this firewall rule when finished.</p>
+</div>
+</li>
+</ol>
+<h3 id="create-databases">Create Databases<a class="headerlink" href="#create-databases" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Use the database schema files to initialize the hosted Postgres DB in the following steps.</p>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;HOST&gt;</strong> is the location of the Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
+</ul>
+</li>
+<li>
+<p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
+</code></pre></div>
+</li>
+<li>
+<p>Create tables for the new 'rpsdb' database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/init.sql
+</code></pre></div>
+</li>
+<li>
+<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+</code></pre></div>
+</li>
+</ol>
+<h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Deploy using Helm.
+    <div class="highlight"><pre><span></span><code>helm install openamtstack ./kubernetes/charts
+</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME: openamtstack
+LAST DEPLOYED: Thu Jul 15 11:17:38 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>openamtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
+<span class="hll">mps-69786bfb47-92mpc                                 0/1     Pending                      0          2m6s
+</span>mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
+openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
+<span class="hll">openamtstack-vault-0                                 0/1     Running                      0          2m6s
+</span>openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+<span class="hll">rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
+</span>webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
+</code></pre></div>
+</div>
+</li>
+</ol>
+<h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">¶</a></h2>
+<div class="admonition danger -">
+<p class="admonition-title">Danger - Download and Save Vault Keys</p>
+<p><strong>Make sure to download your Vault credentials</strong> and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip - Finding the Vault UI External IP Address<p>The external IP of your Vault UI service can be found by running:</p>
+<div class="highlight"><pre><span></span><code>kubectl get services openamtstack-vault-ui
+</code></pre></div>
+</p>
+</div>
+<ol>
+<li>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>. <strong>Stop and return here after signing in to Vault with the <code>root_token</code>.</strong></p>
+</li>
+<li>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
+</li>
+<li>
+<p>Click <strong>Enable New Engine +</strong>.</p>
+</li>
+<li>
+<p>Choose <strong>KV</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Leave the default path and choose <strong>version 2</strong> from the drop down. </p>
+</li>
+<li>
+<p>Click <strong>Enable Engine</strong>.</p>
+</li>
+</ol>
+<h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Add the root token as a secret to the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> cluster so that the services can access Vault.</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;your-root-token&gt;</strong> is your <code>root_token</code> generated by Vault.</li>
+</ul>
+</li>
+<li>
+<p>View the pods. All pods should now be Ready and Running.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS      RESTARTS   AGE
+mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
+mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
+openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
+openamtstack-vault-0                                 1/1     Running     0          4m5s
+openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
+rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
+webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
+</code></pre></div>
+</div>
+</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
+<p>Visit the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> using the FQDN name and <a href="../../../../GetStarted/loginToUI/"><strong>Continue from the Get Started steps</strong></a></p>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Application footer -->
+<footer class="md-footer">
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<!-- Social links -->
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+<script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

@@ -36,207 +36,172 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Docker/dockerCloud/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Deployment/database/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Docker/dockerLocal/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Deployment/overview/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Docker/dockerLocal_prodVault/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Deployment/secrets/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Docker/overview/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/buildRPC/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/buildRPC/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/createCIRAConfig/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/createCIRAConfig/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/createProfileACM/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/createProfileACM/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/createProfileCCM/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/createProfileCCM/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/loginToUI/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/createWiFiConfig/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/manageDevice/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/loginToRPS/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/prerequisites/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/manageDevice/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/GetStarted/setup/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/General/pagination/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/architectureOverview/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/overview/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/guids/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/troubleshooting/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/logging/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/MPS/configuration/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/powerstates/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/MPS/securityMPS/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/productionVault/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPC/buildRPC_Manual/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/troubleshooting/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPC/commandsRPC/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MEBX/dnsSuffix/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPS/configuration/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MEBX/unprovision/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPS/networkConfig/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MPS/configuration/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Microservices/RPS/securityRPS/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MPS/securityMPS/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/overview/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MQTT/customMqttEvents/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/Docker%20Swarm/docker-swarm/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/MQTT/viewMqttEvents/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s-aks/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPC/buildRPC_Manual/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s-eks/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPC/commandsRPC/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/deployingk8s/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/configuration/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Scaling/Kubernetes/service-mesh/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/networkConfig/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/guids/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/securityRPS/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/logging/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/localization/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/mqtt/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/webpackConfig/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/powerstates/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/Bundles/kvmReact/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/proxies/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/Bundles/serialOverLANReact/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/staticIP/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/Controls/kvmControl/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/database/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/overview/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/Deployment/secrets/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/MEBX/dnsSuffix/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Topics/MEBX/unprovision/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/addDatabase/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/addMqttEvents/</loc>
-         <lastmod>2021-09-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/addVault/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/UIToolkit/Controls/serialOverLANControl/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -246,37 +211,42 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/uitoolkit/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/createWiFiConfig/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Webpack-Configuration/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/uitoolkitReact/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/localization/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/docker-swarm/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Bundles/SerialOverLAN/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/overview/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Bundles/kvm/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Controls/kvmControl/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-eks/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/UIToolkit/Controls/serialOverLANControl/</loc>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s/</loc>
+         <lastmod>2021-09-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/service-mesh/</loc>
          <lastmod>2021-09-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
