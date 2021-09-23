@@ -7,7 +7,7 @@ This tutorial demonstrates how to generate a JWT token for Authorization and con
 **Figure 1: API Call to Get All Devices**
 
 !!! important
-    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../Docker/overview.md)** to install microservices locally with Docker*.
+    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../GetStarted/prerequisites.md)** to install microservices locally with Docker*.
 
 ## What You'll Need
 
@@ -109,7 +109,7 @@ See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/
         ```
     
         !!! important
-            This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e., [Power Actions](../Topics/powerstates.md), Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Topics/guids.md).
+            This is one way to retrieve a device's GUID in the *host* field.  **For *amt* path methods (i.e., [Power Actions](../Reference/powerstates.md), Audit Logs, etc), the device GUID is *required* as part of the GET path.** Save this value if you want to try other MPS methods. Other ways to retrieve a GUID can be found [here](../Reference/guids.md).
 
 
 
@@ -161,4 +161,4 @@ For all available methods, see:
 ## Explore the UI Toolkit
 In addition to REST API calls, the Open AMT Cloud Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
 
-[Get Started with the UI Toolkit](../Tutorials/uitoolkit.md){: .md-button .md-button--primary }
+[Get Started with the UI Toolkit](../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }
