@@ -8,7 +8,6 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ## Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [eksctl CLI](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
@@ -16,95 +15,122 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 - [PSQL CLI (11.13)](https://www.postgresql.org/download/)
 
 
-## Create EKS Cluster
-### 1. Configure AWS CLI
+## Create a New EKS Cluster
 
-Follow steps listed [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
-
-
-### 2. Create ssh key for cluster access
-
-Follow steps listed [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair).
+1. Follow steps for [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to finish configuration of AWS CLI.
 
 
-### 3. Create cluster
+2. Follow steps to [Create a key pair using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create a SSH key for accessing the cluster.
 
-Create a new EKS cluster and supporting components:
+3. Create a new EKS cluster and supporting components.
 
-```
-eksctl create cluster --name <name> --region <region> --with-oidc --ssh-access --ssh-public-key <ssh keypair name> --managed
-```
+    ```
+    eksctl create cluster --name <cluster-name> --region <region> --with-oidc --ssh-access --ssh-public-key <ssh-keypair-name> --managed
+    ```
 
-Parameters:
+    Where:
 
-- **&lt;name&gt;** name of eks stack.
-- **&lt;region&gt;** aws region to deploy stack. eg. 'us-2-west'.
-- **&lt;ssh keypair name&gt;** name of the ssh key from the previous step.
+    - **&lt;cluster-name&gt;** is the name of the new EKS cluster.
+    - **&lt;region&gt;** is the AWS region to deploy the stack (Ex: `us-west-2`).
+    - **&lt;ssh-keypair-name&gt;** is the name of the SSH key from the previous step.
 
 
-## Create postgres db in RPS
+## Create Postgres DB in RDS
 
-### 1. Create a managed instance of postres db
-[Creating Postgres DB steps](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html#CHAP_GettingStarted.Creating.PostgreSQL)
-Note: Use the vpc created from the cluster above (should begin with 'eksctl-**&lt;name&gt;**-cluster'). Select the default security group.
+1. Create a Postgres DB by following the steps for [Creating an Amazon RDS DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html).
 
-Where:
+    **Make sure to set the following configuration settings:**
 
-- **&lt;name&gt;** name of eks stack.
+    | Field                         | Set to | 
+    | --------------------------    | ------------------      |
+    | Virtual private cloud (VPC)   | Choose the VPC created from your cluster.  It should follow the format: 'eksctl-**&lt;cluster-name&gt;**-cluster/VPC' |
+    | Public access                 | Yes. In the next steps, we will create Security rules to limit access.         |
+    | VPC security group            | Choose existing         |
+    | Existing VPC security groups  | default                 |
 
-### 2. Configure Virtual Private Cloud (VPC) for access
+
+### Configure Virtual Private Cloud (VPC) for access
 
 1. Go to [RDS home](https://console.aws.amazon.com/rds/home).
-2. Select 'Databases' on the left hand side of the screen.
-3. Select the database created from above.
-4. Under the 'Connectivity & security' -> 'security', click on the VPC under 'VPC security groups'.  
-5. With the VPC selected, select 'Inbound rules' -> 'Edit inbound rules'.  
-a. Select 'Add rule'.  
-b. Under 'Type' select 'PostgresSQL'.  
-c. 'Source' scroll down to 'My IP'.  
-d. Select 'Add rule' once again.  
-e. Under 'Type' select 'PostgresSQL'.  
-f. With 'custom' selected for source, click in the search box. select the security group starting with the label 'eks-cluster-sg'.  
-g. Select 'Save rules'.  
+2. Select 'Databases' from the left-hand side menu.
+3. Select your created database (Ex: database-1).
+4. Under **Security** in **Connectivity & security**, click on the VPC under **VPC security groups** (Ex: `default (sg-01b4767ggdcb52825)`).  
+5. Select **Inbound rules**.
+6. Select **Edit inbound rules**.
 
-### 3. Create databases and schema
+    #### Add Two New Rules
+    Rule One:
 
-Use the database schema files to initialize the hosted postgres db.
+    1. Select **Add rule**.
+    2. Under 'Type' select **PostgresSQL**.
+    3. Under 'Source' select **My IP**.
 
-NOTE: The following commands will prompt for the database password.
+    Rule Two:
 
-```
-psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
-```
+    1. Select **Add rule**.
+    2. Under 'Type' select **PostgresSQL**.
+    3. Under 'Source' select **Custom**.
+    4. In the search box, select the security group starting with the label 'eks-cluster-sg'.
 
-```
-psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f <SCRIPTLOCATION>\init.sql
-```
+7. Select **Save rules**.
 
-```
-psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f <SCRIPTLOCATION>\initMPS.sql
-```
+
+### Create Databases and Schema
+
+1. Clone the Open AMT Cloud Toolkit.
+
+    ```
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    ```
+
+2. Use the database schema files to initialize the hosted Postgres DB in the following steps.
+
+    !!! note
+        The following commands will prompt for the database password you chose [here](#create-postgres-db-in-rds).
+
+    Where:
+
+    - **&lt;HOST&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
+    - **&lt;USERNAME&gt;** is the username for the Postgres database.
+
+3. Create the RPS database.
+
+    ```
+    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+    ```
+
+4. Create tables for the new 'rpsdb'.
+
+    ```
+    psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    ```
+
+5. Create the MPS database.
+
+    ```
+    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+    ```
 
 Where:
 
-- **&lt;USERNAME&gt;** username for the postgres database.
-- **&lt;HOST&gt;** location of the postgres database.
-- **&lt;SCRIPTLOCATION&gt;** location of the sql scripts '\open-amt-cloud-toolkit\data'.
+- **&lt;HOST&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
+- **&lt;USERNAME&gt;** is the username for the Postgres database.
 
 
-## Connect to AKS Instance
+## Connect to EKS Instance
 
-Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/manage.
+Ensure your `kubectl` is connected to the EKS cluster you wish to deploy/manage.
 
-1. Provide your resource group name and cluster name, respectively.
+1. Provide your region and cluster name.
 
     ```
-    aws eks update-kubeconfig --region <region> --name <name>
+    aws eks update-kubeconfig --region <region> --name <cluster-name>
     ```
-Where:
 
-- **&lt;name&gt;** name of eks stack.
-- **&lt;region&gt;** aws region to deploy stack. eg. 'us-2-west'.
+    Where:
+
+    - **&lt;cluster-name&gt;** is the name of your EKS cluster.
+    - **&lt;region&gt;** is the AWS region where the cluster is (Ex: `us-west-2`).
 
 
 ## Create Secrets 
@@ -112,7 +138,8 @@ Where:
 ### 1. Private Docker Registry Credentials
 
 If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-``` bash
+
+```
 kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
 ```
 
@@ -125,6 +152,7 @@ Where:
 ### 2. MPS/KONG JWT
 
 This is the secret used for generating and verifying JWTs.
+
 ```
 kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
 ```
@@ -136,12 +164,14 @@ Where:
 ### 3. KONG ACL for JWT
 
 This configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
+
 ```
 kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 ```
 
 ### 4. MPS Web Username and Password
 This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the Sample Web UI.
+
 ```
 kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
 ```
@@ -151,7 +181,7 @@ Where:
 - **&lt;your-username&gt;** is a username of your choice.
 - **&lt;your-password&gt;** is a strong password of your choice.
 
-    !!! important
+    !!! important "Important - Using Strong Passwords"
         The password must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
@@ -159,40 +189,48 @@ Where:
 
 
 
-### 6. Database connection strings
+### 5. Database connection strings
 
-Configure the database connection strings used by MPS, RPS, and MPS Router.  
-Note: Change sslmode to 'sslmode=require' to force postgres to use ssl.
+1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
 
-```
-kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
-```
+    Where:
 
-```
-kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
-```
+    - **&lt;USERNAME&gt;** is the username for the Postgres database.
+    - **&lt;PASSWORD&gt;** is the password for the Postgres database.
+    - **&lt;SERVERURL&gt;** is the url for the AWS-hosted Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
 
-```
-kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
-```
+2. Create RPS connection string secret.
 
-Where:
+    ```
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    ```
 
-- **&lt;USERNAME&gt;** username for the postgres database.
-- **&lt;PASSWORD&gt;** password for the postgres database.
-- **&lt;SERVERURL&gt;** url for the Amazon hosted postgres database.
+3. Create MPS Router connection string secret.
+
+    ```
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    ```
+
+4. Create MPS connection string secret.   
+
+    ```
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+    ```
+
 
 ## Update Configuration
 
-1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
+### Edit values.yaml
 
-2. Remove the section *service.beta.kubernetes.io/azure-dns-label-name* key in the `kong:` section.
+1. Open the `values.yaml` file in the `./open-amt-cloud-toolkit/kubernetes/charts/` directory.
 
-    ``` yaml hl_lines="4"
+2. Remove the **annotations** section and `service.beta.kubernetes.io/azure-dns-label-name` key in the `kong:` section. These are Azure-specific implementations.
+
+    ``` yaml hl_lines="3 4"
     kong:
       proxy:
-        annotations:
-          service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>"
+        annotations: # Delete this line
+          service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>" # Delete this line
     ```
 
 3. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
@@ -205,17 +243,12 @@ Where:
         mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
     ```
 
-4. Update the following keys in the `mps` section.
-
-    | Key Name | Update to | Description |
-    | -------------     | ------------------    | ------------ |
-    | storageClassName | ebs-sc         | Name of the storage class in AWS |
-
+4. Uncomment and update the `storageClassName` key in the **mps** section to **ebs-sc**.
 
     ``` yaml hl_lines="3"
     mps:
         commonName: ""
-        # storageClassName: "" #Change to "ebs-sc"
+        storageClassName: "ebs-sc" # Change to "ebs-sc"
         storageAccessMode: "ReadWriteOnce"
         replicaCount: 1
         logLevel: "silly"
@@ -225,19 +258,23 @@ Where:
 
 5. Save and close the file.
 
-6. Provide a `StorageClass` that can match the `PersisentVolumeClaim` for MPS. For an EKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/aws.yaml`.
+### Apply Volumes
+
+1. Provide a `StorageClass` that can match the `PersisentVolumeClaim` for MPS. For an EKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/aws.yaml`.
 
     !!! example "Provided aws.yaml Example"
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: ebs-sc
-provisioner: ebs.csi.aws.com
-volumeBindingMode: WaitForFirstConsumer
-```
 
-7. Apply it to your cluster.
+        ``` yaml
+        kind: StorageClass
+        apiVersion: storage.k8s.io/v1
+        metadata:
+          name: ebs-sc
+        provisioner: ebs.csi.aws.com
+        volumeBindingMode: WaitForFirstConsumer
+        ```
+
+2. Apply it to your cluster.
+
     ```
     kubectl apply -f ./kubernetes/charts/volumes/aws.yaml
     ```
@@ -245,6 +282,7 @@ volumeBindingMode: WaitForFirstConsumer
 ## Deploy Open AMT Cloud Toolkit using Helm
 
 1. Deploy using Helm.
+
     ```
     helm install openamtstack ./kubernetes/charts
     ```
@@ -261,33 +299,33 @@ volumeBindingMode: WaitForFirstConsumer
 
 ## Initialize and Unseal Vault
 
-1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault).
+!!! danger - "Danger - Download and Save Vault Keys"
+    **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
-    !!! important 
-        Make sure you download your credentials and save them in a secure location.
+!!! tip "Tip - Finding the Vault UI External IP Address"
+        The external IP of your Vault UI service can be found by running:
 
-    !!! note "Note - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by either:
+        ```
+        kubectl get services openamtstack-vault-ui
+        ```
 
-        - Run `kubectl get services` and view under the `openamtstack-vault-ui` service.
+1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 
-        - Navigate to `Home > Kubernetes services > cluster-name > Services and ingresses` using Microsoft Azure via online.
+2. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-After initializing and unsealing the vault, you need to enable the Key Value engine:
+3. Click **Enable New Engine +**.
 
-1. Click "Enable New Engine +".
+4. Choose **KV**.
 
-2. Choose "KV".
+5. Click **Next**.
 
-3. Click "Next".
+6. Leave the default path and choose **version 2** from the drop down. 
 
-4. Leave the default path and choose version 2 from the drop down. 
-
-5. Click "Enable Engine".
+7. Click **Enable Engine**.
   
 ### Vault Token Secret
 
-1. Add the root token as a secret to the k8s cluster so that the services can access Vault.
+1. Add the root token as a secret to the EKS cluster so that the services can access Vault.
 
     ```
     kubectl create secret generic vault --from-literal=vaultKey=<your-root-token>
@@ -295,23 +333,21 @@ After initializing and unsealing the vault, you need to enable the Key Value eng
 
     Where:
 
-    - **&lt;your-root-token&gt;** is your *root_token* generated by Vault.
+    - **&lt;your-root-token&gt;** is your `root_token` generated by Vault.
 
-### Update commonName
+### Update commonName in values.yml
 
-1. Run the following command.
+1. Get the External-IP for accessing the UI. Note and save the value under 'EXTERNAL-IP'.
 
     ```
-kubectl get service openamtstack-kong-proxy
+    kubectl get service openamtstack-kong-proxy
     ```
 
-2. Under the 'EXTERNAL-IP' column, record the url provided.
-
-3. Update the entry for MPS commonName in the values.yml file with the value from above.
+2. Update the value for `commonName` in the **mps** section in the `values.yml` file with the External-IP from above.  Recall that `values.yml` is located in `./kubernetes/charts/`.
 
     ``` yaml hl_lines="2"
     mps:
-        commonName: "" # change with value from above
+        commonName: "" # update with External-IP from `kubectl get service`
         storageClassName: "ebs-sc"
         storageAccessMode: "ReadWriteOnce"
         replicaCount: 1
@@ -319,30 +355,31 @@ kubectl get service openamtstack-kong-proxy
         jwtExpiration: 1440
     ```
 
-4. Run the following command to update the stack using helm.
+3. Update the stack using helm.
 
-```
-helm upgrade openamtstack ./kubernetes/charts 
-```
+    ```
+    helm upgrade openamtstack ./kubernetes/charts 
+    ```
 
 ## Amazon EBS CSI driver
 
-Enable persistent storage in the cluster be following the steps provided in the following [guide](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html).
+1. Follow steps 1-3 for [Deploying the Amazon EBS CSI driver to an Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). This will enable persistent storage in the cluster.  **Stop and return before deploying the sample application. This step is unnecessary.**
 
-NOTE: The sample application does not need to be deployed as well.
 
 ## Verify running pods
-View the pods. All pods should now be Ready and Running.
+
+1. View the pods. All pods should now be Ready and Running.
+
     ```
     kubectl get pods
     ```
 
     !!! success
+
         ```
         NAME                                                 READY   STATUS      RESTARTS   AGE
         mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
-        oactdb-697b55f885-g6l58                              1/1     Running     0          4m5s
         openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
         openamtstack-vault-0                                 1/1     Running     0          4m5s
         openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
@@ -352,5 +389,14 @@ View the pods. All pods should now be Ready and Running.
 
 ## Next Steps
 
-Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../General/loginToRPS.md).
+!!! tip "Tip - Accessing the Sample Web UI"
+    Find the External-IP/FQDN for the Sample Web UI by running:
 
+    ```
+    kubectl get services openamtstack-kong-proxy
+    ```
+
+!!! warning "Warning - Self-signed Certificates"
+    Make sure to accept the self-signed certificate by going to port 443 during the first visit to the Sample Web UI.
+
+Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../General/loginToRPS.md).

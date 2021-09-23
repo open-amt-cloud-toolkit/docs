@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 
 # Scaling Overview
-Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Kubernetes (K8s), Azure Kubernetes Service* (AKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
+Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service* (AKS), Amazon Elasic Kubernetes Service* (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
 
 
 ![../assets/images/HighLevelArchitectureScaling](../assets/images/HighLevelArchitectureScaling.png)
@@ -17,6 +17,7 @@ Figure 1 illustrates the basic high-level software flow:
 * The RPS microservices communicate with MPS microservices through the REST API. 
 * Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by MPS in Vault will increase the security of these assets.
 
+<br>
 
 ## Docker in Swarm Mode
 If you're new to scaling, Docker in swarm mode is a great way to start developing a scaling proof of concept. 
@@ -28,35 +29,24 @@ Docker in swarm mode is a container orchestration tool, software used to deploy 
 
 [Get Started with Docker Swarm](./Docker%20Swarm/docker-swarm.md){: .md-button .md-button--primary target="_blank"}
 
-## Kubernetes
-Kubernetes is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services.
-
-!!! Warning
-    The Kubernetes deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
-
-[Get Started with Kubernetes](../Scaling/Kubernetes/kubernetes.md){: .md-button .md-button--primary target="_blank"}
+<br>
 
 ## Kubernetes (K8s)
-K8s is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. The instructions use kubectl, a command line tool for managing Kubernetes clusters.
-
 
 !!! Warning
-    The K8s deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/).
+    The K8s deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about K8s, start with [Kubernetes](https://kubernetes.io/), [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/), or [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
+
+### Local Kubernetes
+K8s is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. The instructions use kubectl, a command line tool for managing Kubernetes clusters.
 
 [Get Started with K8s](../Scaling/Kubernetes/deployingk8s.md){: .md-button .md-button--primary target="_blank"}
 
-## Azure Kubernetes Service (AKS)
+### Azure Kubernetes Service (AKS)
 AKS is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. 
-
-!!! Warning
-    The AKS deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about AKS, start with [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/).
 
 [Get Started with AKS](../Scaling/Kubernetes/deployingk8s-aks.md){: .md-button .md-button--primary target="_blank"}
 
-## Amazon Elastic Kubernetes Service (EKS)
+### Amazon Elastic Kubernetes Service (EKS)
 EKS is a container orchestration system that enables administrators to deploy and manage large numbers of containers and services. 
-
-!!! Warning
-    The EKS deployment section is not a tutorial for beginners. It is intended for those who have prior knowledge of the service. To begin learning about EKS, start with [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html).
 
 [Get Started with EKS](../Scaling/Kubernetes/deployingk8s-eks.md){: .md-button .md-button--primary target="_blank"}
