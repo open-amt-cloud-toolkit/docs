@@ -11,7 +11,7 @@ After activation and configuration of an AMT device with a wireless profile, rem
 
 ## Find if a Device Support Wireless
 
-RPC can pull information to help determine if your current device supports wireless functionality.  See [Build RPC](buildRPC.md) for steps on how to obtain the binary.
+RPC can pull information to help determine if your current device supports wireless functionality.  See [Build RPC](../GetStarted/buildRPC.md) for steps on how to obtain the binary.
 
 1. Run RPC with the `--amtinfo all` argument.
 
