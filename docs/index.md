@@ -44,15 +44,10 @@ Integrate the Open AMT Cloud Toolkit into new and existing management consoles, 
 
 Set up microservices quickly as Docker containers with this recommended method.
 
-[Get Started Now](Docker/overview.md){: .md-button .md-button--primary }
+[Get Started Now](GetStarted/prerequisites.md){: .md-button .md-button--primary }
 
 Estimated completion time: **Approximately 30 minutes**
 
-## Additional Setup Options
-### Microservices on the Cloud
-Experienced Docker users may choose to deploy microservices straight to the cloud.
-
-[Get Started with Microservices on the Cloud](Docker/dockerCloud.md).
  
 -------
 ## Additional Intel® AMT Resources
