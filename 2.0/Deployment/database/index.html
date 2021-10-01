@@ -856,6 +856,7 @@
         string provisioning_cert_key
         datetime creation_date
         string created_by
+        string tenant_id
     }
 </div>
 <div class="mermaid">erDiagram
@@ -887,6 +888,7 @@
       int auth_method
       string mps_root_certificate
       string proxydetails
+      string tenant_id
     }
 
     WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
