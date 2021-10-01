@@ -44,6 +44,7 @@ For this guide, we'll be focusing on RPS. We'll walk through the primary steps r
           string provisioning_cert_key
           datetime creation_date
           string created_by
+          string tenant_id
       }
   ```
   ``` mermaid 
@@ -76,6 +77,7 @@ For this guide, we'll be focusing on RPS. We'll walk through the primary steps r
         int auth_method
         string mps_root_certificate
         string proxydetails
+        string tenant_id
       }
 
       WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
