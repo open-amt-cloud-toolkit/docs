@@ -105,7 +105,7 @@ The code snippet below adds KVM control to the React application.
     ``` javascript hl_lines="8 9 11"
     import React from "react";
     import "./App.css";
-    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit/reactjs/KVM";
+    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
 
     function App() {
         return (
