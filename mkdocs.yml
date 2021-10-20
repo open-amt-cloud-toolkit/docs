@@ -54,6 +54,7 @@ nav:
     - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
     - REST API Call: Tutorials/apiTutorial.md
     - Wireless Activation: Tutorials/createWiFiConfig.md
+    - Modify User Authentication: Tutorials/modifyUserAuth.md
     - Scaling Tutorials:
         - Overview: Tutorials/Scaling/overview.md
         - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
