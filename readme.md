@@ -13,7 +13,7 @@ In order to render and preview the site locally (without docker) you will need a
 
 2) After python is installed, you'll need the following python dependencies:
 `pip install mkdocs`
-`pip install mkdocs-material==7.3.0`
+`pip install mkdocs-material==7.3.4`
 `pip install mkdocs-render-swagger-plugin`
 `pip install mkdocs-mermaid2-plugin`
 

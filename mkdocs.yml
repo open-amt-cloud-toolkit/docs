@@ -10,8 +10,6 @@ theme:
   name: 'material'
   language: 'en'
   logo: 'assets/images/logo-white-75px.png'
-  analytics:
-    gtag: 'G-00QEDJW2TS'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
@@ -139,3 +137,5 @@ extra:
     version: 2.0.0
   uiClone:
     version: 2.0.0
+  analytics:
+    gtag: 'G-00QEDJW2TS'
