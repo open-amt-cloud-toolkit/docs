@@ -138,4 +138,5 @@ extra:
   uiClone:
     version: 2.0.0
   analytics:
-    gtag: 'G-00QEDJW2TS'
+    provider: google
+    property: 'G-00QEDJW2TS'
