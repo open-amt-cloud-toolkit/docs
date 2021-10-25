@@ -221,6 +221,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/modifyUserAuth/</loc>
+         <lastmod>2021-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Tutorials/uitoolkitReact/</loc>
          <lastmod>2021-10-25</lastmod>
          <changefreq>daily</changefreq>
