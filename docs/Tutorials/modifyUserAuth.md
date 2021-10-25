@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 
 
-As part of the Open AMT Cloud Toolkit reference implementation, there is a Kong API Gateway service that issues a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, etc.
+As part of the Open AMT Cloud Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, etc.
 
 !!! Warning
     In the current release, if you choose to modify the toolkit's default authentication, no keyboard, video and mouse (KVM) or serial over LAN (SOL) support will be available. 
