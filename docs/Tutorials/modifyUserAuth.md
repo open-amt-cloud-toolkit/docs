@@ -1,71 +1,69 @@
 --8<-- "References/abbreviations.md"
 
-#Modify User Authentication     
 
-The MPS hosts a default authentication service that issues a JSON Web Token (JWT) for user authentication. The default service offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, more robust authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, etc.
-
- The instructions below explain how to add an LDAP plugin to Kong.
-
-!!! Prerequisite
-    Install and run an LDAP server on the development system before running these instructions. For this tutorial, Go-lang LDAP Authentication* (GLAuth) is referenced.  
-    
-    1. To install, see the **Quickstart** section of the [GLAuth Readme](https://github.com/glauth/glauth). 
-    
-    2. Add users and groups as described in the **Configuration** section. 
-
-    3. Open a Terminal or Powershell/Command Prompt and start the LDAP server with your preconfigured configuration file (e.g., .\glauth-win64.exe -c .\yourfile.cfg)
-    
-    4. Allow the Terminal or Powershell to remain open to see LDAP activity as you proceed with the tutorial below.
+As part of the Open AMT Cloud Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, etc.
 
 !!! Warning
-    If you choose to modify the toolkit's default authentication, no keyboard, video and mouse (KVM) or serial over LAN (SOL) support will be available. 
+    In the current release, if you choose to modify the toolkit's default authentication, no keyboard, video and mouse (KVM) or serial over LAN (SOL) support will be available. 
 
-##Edit the kong.yaml File
+The instructions below explain how to add an LDAP plugin to Kong.
+
+## Prerequisites
+
+Install and start a local LDAP server on the development system. For this tutorial, Go-lang LDAP Authentication* (GLAuth) is referenced. [Find more info in the GLAuth Readme.](https://github.com/glauth/glauth) 
+    
+1. To install, see steps 1 - 3 of the **Quickstart** section of the [GLAuth Readme](https://github.com/glauth/glauth#quickstart). We do not need to alter the sample-simple.cfg file.
+
+2. Allow the Terminal or Powershell to remain open to see LDAP activity as you proceed with the tutorial below.
+
+3. Optionally, [download curl](https://curl.se/) for testing the authentication with APIs at the end of this tutorial.
+
+
+## Edit the kong.yaml File
 
 **Reconfigure the Kong* API Gateway to use a different user authentication service:**
 
-1. Open the `kong.yaml` file and comment out the `plugins` and `consumer` sections of the code by adding a `#` character at the beginning of each line. This disables default authentication.
+1. Open the `kong.yaml` file and comment out the `plugins` and `consumer` sections of the code by adding a `#` character at the beginning of each line. This disables the JWT authentication.
 
 2. Paste the new `plugins` section into the file. 
 
-    !!! Note
-        The following code was adapted for the toolkit. For configuration details, see **Enable the plugin on a route**, on the tab **Declarative YAML**, in [Kong documentation](https://docs.konghq.com/hub/kong-inc/ldap-auth/#main)
-
+3. Modify the `ldap_host` to that of your development system or cloud instance. 
     
-    ``` yaml
+    ``` yaml hl_lines="7 20"
     plugins:
     - name: cors
     - name: ldap-auth
-    route: <mps-route>
-    config: 
+      route: mps-route
+      config: 
         hide_credentials: true
-        ldap_host: ldap.example.com
-        ldap_port: 389
+        ldap_host: <Server IP-Address or FQDN> # Replace
+        ldap_port: 3893
         start_tls: false
         ldaps: false
-        base_dn: dc-vprodemo, dc-com
+        base_dn: dc=glauth,dc=com
         verify_ldap_host: false
         attribute: cn
         cache_ttl: 60
         header_type: ldap
-    name: ldap-auth
-    route: <rps-route>
-    config: 
+    - name: ldap-auth
+      route: rps-route
+      config: 
         hide_credentials: true
-        ldap_host: ldap.example.com
-        ldap_port: 389
+        ldap_host: <Server IP-Address or FQDN> # Replace
+        ldap_port: 3893
         start_tls: false
         ldaps: false
-        base_dn: dc-vprodemo, dc-com
+        base_dn: dc=glauth,dc=com
         verify_ldap_host: false
         attribute: cn
         cache_ttl: 60
         header_type: ldap
     ```
 
-3. Modify the `ldap_host` and `ldap_port` number to that of your development system. 
+    !!! Note
+        The following code was adapted for the toolkit. For the default configuration details, see **Enable the plugin on a route**, on the tab **Declarative YAML**, in [Kong documentation](https://docs.konghq.com/hub/kong-inc/ldap-auth/#main)
 
-##Restart the Gateway
+## Restart the Kong Gateway Container
 
 1. Open a Terminal or Powershell/Command Prompt and run the command to list the containers:
 
@@ -90,39 +88,38 @@ The MPS hosts a default authentication service that issues a JSON Web Token (JWT
         ```
 
 
-##Test the Configuration
+## Test the Configuration
 
-Authenticate a user to test the configuration. You will need to set the authorization header. For details about the authorization header, see the **Usage** section of the [Kong documentation](https://docs.konghq.com/hub/kong-inc/ldap-auth/#main).
-
-!!! Note
-    This example uses the MPS API method, `devices`, which lists all devices known to the MPS. For more information about MPS methods, see [MPS API Docs](./../APIs/indexMPS.md).
+Authenticate a user to test the configuration by using an API of your choice. You will need to set the Authorization header to `ldap base64encode(user:pass)`.
 
 **Test the configuration with curl:**
 
-1. Obtain a token for LDAP:
+In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as our encoded `user:pass`. This value is `am9obmRvZTpUZXN0QXBwUHcx`. These credentials are one of the default credentials in the `sample-simple.cfg` file provided by GLAuth*.
 
+=== "Get Devices (MPS Route)"     
     === "Linux"
-        ```
-        curl placeholder
+        ``` bash
+        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
+            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
     === "Windows"
+        ``` bash
+        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices ^
+            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
-        curl placeholder
-        ```
-    !!! example "Example - Response of Authorize Method"
-        placeholder 
-
-2. Use the token to verify user credentials. Fill in the authorization header with the base-64 token obtained from the previous step: 
-
+    See [Devices API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices) for more information and expected responses.
+=== "Get Profiles (RPS Route)"
     === "Linux"
-        ```
-        curl placeholder
+        ``` bash
+        curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles \
+            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
     === "Windows"
+        ``` bash
+        curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles ^
+            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
-        curl placeholder
-        ```
+    See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ rpsAPI.version }}#/Profiles/GetAllProfiles) for more information and expected responses.
 
-    !!! example "Example - Response of Devices Method"
-        placeholder 
-
+<br>
+<br>
