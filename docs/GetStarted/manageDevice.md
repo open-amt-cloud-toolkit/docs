@@ -16,11 +16,14 @@
     [![mps](../assets/images/MPS_ManageDevice.png)](../assets/images/MPS_ManageDevice.png)
 
     !!! note
-        If activated in Client Control Mode(CCM), the KVM and SOL features require entering a user consent code, which will be displayed on the device. To use KVM/SOL without user consent, follow the [ACM Activation Tutorial](createProfileACM.md) for how to configure a device into Admin Control Mode.
+        If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM) and serial over LAN (SOL) features require entering a user consent code, which will be displayed on the device. To use KVM/SOL without user consent, follow the [ACM Activation Tutorial](createProfileACM.md) for how to configure a device into Admin Control Mode.
 
     !!! note
-        Activated already? Try out the Keyboard, Video, Mouse (KVM) feature to remotely view and control the AMT device.  Issue a Reset to BIOS command to view and make live changes to BIOS settings.
+        Activated already? Try out the KVM feature to remotely view and control the AMT device.  Issue a Reset to BIOS command to view and make live changes to BIOS settings.
 
+    !!! warning
+        Turn off active redirection sessions, such as KVM or SOL, before power state transitions. Power Cycle Reset and Unconditional Power Down (Power Off) will be rejected as invalid if there is an active redirection session. 
+        
 5. When performing a KVM action, give the user consent code displayed on the client device.
     
     [![mps](../assets/images/MPS_UserConsent.png)](../assets/images/MPS_UserConsent.png)
