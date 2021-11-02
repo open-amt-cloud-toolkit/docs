@@ -81,7 +81,7 @@ nav:
           - Create Profile with TLS: Reference/createProfileTLSConfig.md
       - Remote Provisioning Client:
           - Build & Run RPC (Manual): Reference/RPC/buildRPC_Manual.md
-          - Command Examples: Reference/RPC/commandsRPC.md
+          - RPC CLI: Reference/RPC/commandsRPC.md
       - UI Toolkit:
           - Controls:
               - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md

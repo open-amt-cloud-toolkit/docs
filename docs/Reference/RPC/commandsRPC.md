@@ -1,100 +1,171 @@
 --8<-- "References/abbreviations.md"
 
-RPC is primarily used for communicating with the Remote Provision Server (RPS) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.
+On the managed device, a Remote Provisioning Client (RPC) communicates with the Remote Provision Server (RPS) in the process of activating or deactivating the device. In addition to activation and deactivation, the RPC provides informational and maintenance commands.
 
-All currently available arguments and their definitions are listed below along with example commands. 
+##List Commands
+On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
 
-### RPC Usage
-On Windows:
-``` bash
-rpc <required> [optional]
-rpc <informational>
-```
+Run the RPC application on the command line with no arguments to see supported commands:
 
-On Linux:
-``` bash
-sudo ./rpc <required> [optional]
-sudo ./rpc <informational>
-```
+=== "Linux"
+    ``` bash
+    sudo ./rpc 
+    ```
+=== "Windows"
+    ```
+    rpc
+    ```
 
-On Docker:
-``` bash
-sudo docker run --device=/dev/mei0 rpc:latest <required> [optional]
-sudo docker run --device=/dev/mei0 rpc:latest <informational>
-```
-### RPC Arguments
-
-#### Required
-
-| Argument&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Description |
+| COMMAND&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | EXAMPLE |
 | -------------------------- | ---------------------- | ----------- |
-| -c, --cmd &lt;command&gt;  | Server Command         | Activate or Deactivate command for AMT device. See example commands below. |
-| -u, --url &lt;url&gt;      | Websocket Server       | Address and Port of the RPS server, wss://localhost:8080. By default, RPS runs on port 8080. |
+| activate | Activate this device with a specified profile | ./rpc activate -u wss://server/activate --profile profilename  |
+| deactivate | Deactivate this device. You will be prompted for the AMT password.  | ./rpc deactivate -u wss://server/activate |
+| maintenance | Synchronize the managed device's AMT clock with operating system time | ./rpc maintenance -c -u wss://server/activate -n |
+| amtinfo | Display AMT status and configuration | ./rpc amtinfo |
+| version | Display the current version of RPC and the RPC Protocol version | ./rpc version |
 
-##### <a name="RPCexamples"></a>RPC Activate/Deactivate Examples  
+##List Command Options
 
-Activate a Device:
-``` bash
-rpc --url wss://localhost/activate --cmd "activate --profile profile1"
-```
+Run the application with a command to see available options for the command:
 
-Deactivate a Device:
-``` bash
-rpc -u wss://localhost/activate -c "deactivate --password P@ssw0rd"
-```
+=== "Linux"
+    ``` bash
+    sudo ./rpc [COMMANDS][OPTIONS]
+    ```
+=== "Windows"
+    ```
+    rpc [COMMANDS][OPTIONS]
+    ```
 
-!!! note
-	The **--password** nested argument uses the AMT password set at the time of provisioning of the device based on the RPS Profile. This password should be able to be retrieved from Vault, if unknown.
+### activate
 
-Deactivate a Device if Unknown by RPS (or Vault):
-``` bash
-rpc -u wss://localhost/activate -c "deactivate --password [AMT-Password] -f"
-```
+Activate this device with a specified profile: 
+=== "Linux"
+    ``` bash
+    sudo ./rpc activate -u wss://server/activate --profile profilename
+    ```
+=== "Windows"
+    ```
+    rpc activate -u wss://server/activate --profile profilename
+    ```
 
+| OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
+| -------------------------- | ---------------------- | 
+| -d string | DNS suffix override | 
+| -h string | Hostname override | 
+| -n | Skip WebSocket server certificate verification |
+| -p string | Proxy address and port |
+| --profile string | name of the profile to use |
+| -u string | WebSocket address of server to activate against |
+| -v string | Verbose output |
 
+For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
-<br>
+### deactivate
 
-#### Optional <a name="optional"></a>
+Deactivate this device:
 
-| Argument&emsp;&emsp;&emsp;&emsp; | Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   | Description |
-| -------------------------- | ------------------------ | ----------- |
-| -d, --dns &lt;dns&gt;      | DNS Suffix Override      | |
-| -n, --nocertcheck          | Certificate Verification | Disable certificate verification. Allows for the use of self-signed certificates during development testing. Not valid for production. Otherwise, a TLS Certificate from a trusted Certificate Authority provider is required. |
-| -p, --proxy &lt;addr&gt;   | Proxy Address and Port   | Allow for connection through a network proxy, http://proxy.com:1000 |
-| -v, --verbose              | Verbose Output           | Display WSMan communication with RPS when executing RPC |
+=== "Linux"
+    ``` bash
+    sudo ./rpc deactivate -u wss://server/activate
+    ```
+=== "Windows"
+    ```
+    rpc deactivate -u wss://server/activate
+    ```
 
-##### Examples
+| OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
+| -------------------------- | ---------------------- | 
+| -f | DNS suffix override | 
+| -n | Skip WebSocket server certificate verification |
+| -p string | Proxy address and port |
+| -password string | AMT password |
+| -u string | WebSocket address of server to activate against |
+| -v string | Verbose output |
 
-Override DNS detection and Activate device:
-```
-rpc --url wss://localhost/activate --cmd "activate --profile profile1" --dns corp.com
-```
+For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
-Connect through proxy and Deactivate device:
-```
-rpc -u wss://localhost/activate -c "deactivate --password P@ssw0rd" -p http://proxy.com:1000
-```
+### maintenance
 
+Synchronize the managed device's AMT clock with operating system time: 
 
-<br>
+=== "Linux"
+    ``` bash
+    sudo ./rpc maintenance -u wss://server/activate
+    ```
+=== "Windows"
+    ```
+    rpc maintenance -u wss://server/activate
+    ```
 
-#### Informational
+| OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
+| -------------------------- | ---------------------- | 
+| -c | Synchronize the AMT clock with the operating system time | 
+| -n | Skip WebSocket server certificate verification |
+| -p string | Proxy address and port |
+| -password string | AMT password |
+| -u string | WebSocket address of server to activate against |
+| -v string | Verbose output |
 
-| Argument                   | Name                   | Description |
-| -------------------------- | ---------------------- | ----------- |
-| --help                     | Help text              | Display help menu in-line |
-| --version                  | Version                | Current version of RPC |
-| --amtinfo &lt;item&gt;     | AMT info               | View available information<br><br>**Possible &lt;item&gt; Parameters:**<br>all - View all items<br>ver - BIOS version<br>bld - Build number<br>sku - Product SKU<br>uuid - [Device's Unique Identifier](../../Reference/guids.md)<br>mode - Current Control Mode, ACM or CCM<br>dns - Domain Name Suffix from AMT and from OS<br>fqdn - Fully aualified domain name and device hostname from OS<br>cert - Certificate hashes<br>ras - Remote access status<br>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses     |
+### amtinfo
 
-##### Examples
+ Display AMT status and configuration
 
-View All Information Items:
-``` bash
-rpc --amtinfo all
-```
+=== "Linux"
+    ``` bash
+    sudo ./rpc amtinfo
+    ```
+=== "Windows"
+    ```
+    rpc amtinfo
+    ```
 
-Find Current Device's GUID:
-``` bash
-rpc --amtinfo uuid
-```
+| AMT INFO &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
+| -------------------------- | ---------------------- |
+| Version | Intel AMT version.  | 
+| Build Number | Intel AMT Build Number. | 
+| SKU | | 
+| UUID |  | 
+| Control Mode |  Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in **client control mode** (c) activated in **admin control mode** | 
+|DNS Suffix | |
+|DNS Suffix (OS)| |
+|Hostname (OS) | |
+|RAS Network | |
+|RAS Remote Status | |
+|RAS Trigger| |
+|RAS MPS Hostname | |
+
+**---Wired Adapter---**
+
+| WIRED ADAPTER &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
+| -------------------------- | ---------------------- |
+| DHCP Enabled |   | 
+| DHCP Mode | | 
+| Link Status | | 
+| IP Address |  | 
+| MAC Address|   | 
+
+**---Wireless Adapter---**
+
+| WIRED ADAPTER &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
+| -------------------------- | ---------------------- |
+| DHCP Enabled | | 
+| DHCP Mode |  | 
+| Link Status | | 
+| IP Address |  | 
+| MAC Address|   | 
+
+For more information, see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
+
+### version
+
+Display the current version of RPC and the RPC Protocol version:
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc version
+    ```
+=== "Windows"
+    ```
+    rpc version
+    ```
