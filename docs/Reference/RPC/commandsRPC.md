@@ -76,7 +76,7 @@ Deactivate this device:
 
 | OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
 | -------------------------- | ---------------------- | 
-| -f | DNS suffix override | 
+| -d | DNS suffix override | 
 | -n | Skip WebSocket server certificate verification |
 | -p string | Proxy address and port |
 | -password string | AMT password |
