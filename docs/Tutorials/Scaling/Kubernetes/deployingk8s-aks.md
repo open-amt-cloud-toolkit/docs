@@ -131,30 +131,7 @@ Where:
         - 8 to 32 characters
         - One uppercase, one lowercase, one numerical digit, one special character
 
-
-### 5. Azure Storage Account Key 
-Currently, we leverage Azure Storage Accounts for persistent storage of MPS certificates that can be shared by multiple instances of MPS. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).
-
-!!! note 
-    This will likely change in a future release
-
-```
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=<your-cluster-name>stg --from-literal=azurestorageaccountkey=<your-storage-key>
-```
-
-Where:
-
-- **&lt;your-cluster-name&gt;** is the cluster name chosen in [Deploy AKS](#deploy-aks).
-- **&lt;your-storage-key&gt;** is one of the generated access keys of the storage account.
-
-    !!! important "Important - Finding Access Keys"
-        An access key can be found by either:
-
-        - Run `az storage account keys list --account-name <your-cluster-name>stg` to view access keys.
-
-        - Navigate to `Home > Storage accounts > cluster-name > Access keys` using Microsoft Azure via online.
-
-### 6. Database connection strings
+### 5. Database connection strings
 
 
 1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
@@ -216,14 +193,11 @@ Where:
     | Key Name | Update to | Description |
     | -------------     | ------------------    | ------------ |
     | commonName        | FQDN for your cluster | For AKS, the format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks). |
-    | storageAccessMode | ReadWriteMany         | Must set to `ReadWriteMany` to scale. The default access mode for storage (`storageAccessMode`) is set to `ReadWriteOnce`. This only works with a one node cluster. |
 
 
-    ``` yaml hl_lines="2 4"
+    ``` yaml hl_lines="2"
     mps:
         commonName: "<your-subdomain-name>.<location>.cloudapp.azure.com"
-        # storageClassName: ""
-        storageAccessMode: "ReadWriteOnce" #Change to ReadWriteMany
         replicaCount: 1
         logLevel: "silly"
         jwtExpiration: 1440
@@ -231,43 +205,6 @@ Where:
 
 
 5. Save and close the file.
-
-### Apply Volumes
-
-1. Provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For an AKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/azure.yaml`.
-
-    !!! note
-        Changing storageAccessMode will update the PersistentVolumeClaim to request `ReadWriteMany`, this means you'll need to provide a `PersistentVolume` that can match that claim. The Azure deployment performed in [Deploy AKS](#deploy-aks) creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster.
-
-    !!! example "Provided azure.yaml Example"
-        ```yaml
-        apiVersion: v1
-        kind: PersistentVolume
-        metadata:
-          name: mps-certs
-        spec:
-          capacity:
-            storage: 1Gi
-          accessModes:
-            - ReadWriteMany
-          azureFile:
-            secretName: azure-secret
-            secretNamespace: default
-            shareName: mps-certs
-            readOnly: false
-          mountOptions:
-          - dir_mode=0755
-          - file_mode=0755
-          - uid=1000
-          - gid=1000
-          - mfsymlinks
-          - nobrl
-        ```
-
-2. Apply it to your cluster.
-    ```
-    kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
-    ```
 
 ## Create Databases and Schema 
 

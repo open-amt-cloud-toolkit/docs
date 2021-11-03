@@ -125,41 +125,12 @@ Where:
     ``` yaml hl_lines="2"
     mps:
         commonName: "<your-ip-address>"
-        # storageClassName: ""
-        storageAccessMode: "ReadWriteOnce"
         replicaCount: 1
         logLevel: "silly"
         jwtExpiration: 1440
     ```
 
 5. Save and close the file.
-
-### Apply Volumes
-
-1. Provide a `PersistentVolume` that can match the `PersisentVolumeClaim` for MPS. For a local, single-node cluster, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/local.yaml`.
-
-    !!! example "Provided local.yaml Example"
-        ``` yaml
-        apiVersion: v1
-        kind: PersistentVolume
-        metadata:
-          name: mps-certs
-          labels:
-            type: local
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          capacity:
-            storage: 1Gi
-          hostPath:
-            path: "/mnt/data/mpscerts"
-        ```
-
-2. Apply it to your cluster.
-
-    ```
-    kubectl apply -f ./kubernetes/charts/volumes/local.yaml
-    ```
 
 ## Create Databases and Schema 
 
