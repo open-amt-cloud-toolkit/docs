@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/loginToUI/" rel="canonical"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Tutorials/modifyUserAuth/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
-<title>Login to Sample Web UI - Open Active Management Technology Cloud Toolkit</title>
+<title>Modify User Authentication - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#log-in">
+<a class="md-skip" href="#prerequisites">
           Skip to content
         </a>
 </div>
@@ -49,7 +49,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Login to Sample Web UI
+              Modify User Authentication
             
           </span>
 </div>
@@ -106,7 +106,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../prerequisites/">
+<a class="md-tabs__link" href="../../GetStarted/prerequisites/">
         Get Started
       </a>
 </li>
@@ -116,7 +116,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Tutorials/uitoolkitReact/">
+<a class="md-tabs__link md-tabs__link--active" href="../uitoolkitReact/">
         Tutorials
       </a>
 </li>
@@ -193,8 +193,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
           Get Started
           <span class="md-nav__icon md-icon"></span>
@@ -206,17 +206,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../prerequisites/">
+<a class="md-nav__link" href="../../GetStarted/prerequisites/">
         Prerequisites
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../setup/">
+<a class="md-nav__link" href="../../GetStarted/setup/">
         Set Up
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3">
           Configure
           <span class="md-nav__icon md-icon"></span>
@@ -227,36 +227,13 @@
           Configure
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Login to Sample Web UI
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/loginToUI/">
         Login to Sample Web UI
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#log-in">
-    Log In
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#next-up">
-    Next up
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../createCIRAConfig/">
+<a class="md-nav__link" href="../../GetStarted/createCIRAConfig/">
         Create a CIRA Config
       </a>
 </li>
@@ -273,12 +250,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../createProfileCCM/">
+<a class="md-nav__link" href="../../GetStarted/createProfileCCM/">
         Create a Profile with CCM
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../createProfileACM/">
+<a class="md-nav__link" href="../../GetStarted/createProfileACM/">
         Create a Profile with ACM
       </a>
 </li>
@@ -301,12 +278,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../buildRPC/">
+<a class="md-nav__link" href="../../GetStarted/buildRPC/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../manageDevice/">
+<a class="md-nav__link" href="../../GetStarted/manageDevice/">
         Manage AMT Device
       </a>
 </li>
@@ -366,8 +343,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4">
           Tutorials
           <span class="md-nav__icon md-icon"></span>
@@ -379,24 +356,57 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/uitoolkitReact/">
+<a class="md-nav__link" href="../uitoolkitReact/">
         UI Toolkit KVM Module
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/apiTutorial/">
+<a class="md-nav__link" href="../apiTutorial/">
         REST API Call
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/createWiFiConfig/">
+<a class="md-nav__link" href="../createWiFiConfig/">
         Wireless Activation
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/modifyUserAuth/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Modify User Authentication
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Modify User Authentication
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+    Prerequisites
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-the-kongyaml-file">
+    Edit the kong.yaml File
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#restart-the-kong-gateway-container">
+    Restart the Kong Gateway Container
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-the-configuration">
+    Test the Configuration
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
@@ -411,12 +421,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/overview/">
+<a class="md-nav__link" href="../Scaling/overview/">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/docker-swarm/">
+<a class="md-nav__link" href="../Scaling/docker-swarm/">
         Docker Swarm*
       </a>
 </li>
@@ -433,22 +443,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s/">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s/">
         Kubernetes (K8s)
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s-aks/">
         AKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s-eks/">
         EKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/service-mesh/">
+<a class="md-nav__link" href="../Scaling/Kubernetes/service-mesh/">
         KUMA Service Mesh
       </a>
 </li>
@@ -773,47 +783,137 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/GetStarted/loginToUI.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Tutorials/modifyUserAuth.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1>Login to Sample Web UI</h1>
-<p>The web portal is available for login after the deployment of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Make sure all three are successfully running before attempting to login.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><strong>Passwords</strong></p>
-<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview/#Passwords">Reference -&gt; Architecture Overview</a>.</p>
+<h1>Modify User Authentication</h1>
+<p>As part of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> reference implementation, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2<em>, Lightweight Directory Access Protocol (LDAP), Kerberos</em>, etc.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the current release, if you choose to modify the toolkit's default authentication, no keyboard, video and mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) or serial over LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) support will be available. </p>
 </div>
-<h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">¶</a></h2>
+<p>The instructions below explain how to add an LDAP plugin to Kong.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<p>Install and start a local LDAP server on the development system. For this tutorial, Go-lang LDAP Authentication* (GLAuth) is referenced. <a href="https://github.com/glauth/glauth">Find more info in the GLAuth Readme.</a> </p>
 <ol>
 <li>
-<p>Open any modern web browser and navigate to the following link.</p>
-<div class="highlight"><pre><span></span><code>https://&lt;Development-IP-Address&gt;
+<p>To install, see steps 1 - 3 of the <strong>Quickstart</strong> section of the <a href="https://github.com/glauth/glauth#quickstart">GLAuth Readme</a>. We do not need to alter the sample-simple.cfg file.</p>
+</li>
+<li>
+<p>Allow the Terminal or Powershell to remain open to see LDAP activity as you proceed with the tutorial below.</p>
+</li>
+<li>
+<p>Optionally, <a href="https://curl.se/">download curl</a> for testing the authentication with APIs at the end of this tutorial.</p>
+</li>
+</ol>
+<h2 id="edit-the-kongyaml-file">Edit the kong.yaml File<a class="headerlink" href="#edit-the-kongyaml-file" title="Permanent link">¶</a></h2>
+<p><strong>Reconfigure the Kong* API Gateway to use a different user authentication service:</strong></p>
+<ol>
+<li>
+<p>Open the <code>kong.yaml</code> file and comment out the <code>plugins</code> and <code>consumer</code> sections of the code by adding a <code>#</code> character at the beginning of each line. This disables the JWT authentication.</p>
+</li>
+<li>
+<p>Paste the new <code>plugins</code> section into the file. </p>
+</li>
+<li>
+<p>Modify the <code>ldap_host</code> to that of your development system or cloud instance. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cors</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
+  <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-route</span>
+  <span class="nt">config</span><span class="p">:</span> 
+    <span class="nt">hide_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll">    <span class="nt">ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span> <span class="c1"># Replace</span>
+</span>    <span class="nt">ldap_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3893</span>
+    <span class="nt">start_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">ldaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">base_dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
+    <span class="nt">verify_ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">attribute</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn</span>
+    <span class="nt">cache_ttl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+    <span class="nt">header_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
+  <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rps-route</span>
+  <span class="nt">config</span><span class="p">:</span> 
+    <span class="nt">hide_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll">    <span class="nt">ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span> <span class="c1"># Replace</span>
+</span>    <span class="nt">ldap_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3893</span>
+    <span class="nt">start_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">ldaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">base_dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
+    <span class="nt">verify_ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">attribute</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn</span>
+    <span class="nt">cache_ttl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+    <span class="nt">header_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap</span>
 </code></pre></div>
-<div class="admonition important">
-<p class="admonition-title">Important - URL of <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></p>
-<p>You <strong>must use</strong> the development system's IP address in the URL. <strong>Localhost or 127.0.0.1 will NOT work</strong>. <a href="https://konghq.com/kong/" target="_blank">Read more about Kong API Gateway to find out why</a>. The development system's IP address is where the Docker containers are running.</p>
-</div>
-</li>
-<li>
-<p>A warning screen will prompt because the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server is using self-signed certificates for testing. Click <strong>Advanced</strong> and then <strong>Proceed</strong> to continue to connect to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
-<div class="admonition example">
-<p class="admonition-title">Example - Chrome* Browser Warning Screen</p>
-<p><a href="../../assets/images/selfSignedConnect.png"><img alt="MPS Warning" src="../../assets/images/selfSignedConnect.png"/></a></p>
-</div>
-</li>
-<li>
-<p>Log in to the web portal with the login credentials set for the environment variables <code>MPS_WEB_ADMIN_USER</code> and <code>MPS_WEB_ADMIN_PASSWORD</code> in the <code>.env</code> file.</p>
-</li>
-<li>
-<p>The home page is shown below in Figure 1.</p>
-<div class="admonition example">
-<p class="admonition-title">Example - <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Home Page</p>
-<p><a href="../../assets/images/WebUI_Home.png"><img alt="WebUI" src="../../assets/images/WebUI_Home.png"/></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following code was adapted for the toolkit. For the default configuration details, see <strong>Enable the plugin on a route</strong>, on the tab <strong>Declarative YAML</strong>, in <a href="https://docs.konghq.com/hub/kong-inc/ldap-auth/#main">Kong documentation</a></p>
 </div>
 </li>
 </ol>
-<h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
-<p><strong><a href="../createCIRAConfig/">Create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</a></strong></p>
+<h2 id="restart-the-kong-gateway-container">Restart the Kong Gateway Container<a class="headerlink" href="#restart-the-kong-gateway-container" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker ps
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker ps
+</code></pre></div>
+</div>
+</input></input></div>
+</li>
+<li>
+<p>Restart the Kong container:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker restart &lt;container ID&gt;
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Windows (Powershell)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker restart &lt;container ID&gt;
+</code></pre></div>
+</div>
+</input></input></div>
+</li>
+</ol>
+<h2 id="test-the-configuration">Test the Configuration<a class="headerlink" href="#test-the-configuration" title="Permanent link">¶</a></h2>
+<p>Authenticate a user to test the configuration by using an API of your choice. You will need to set the Authorization header to <code>ldap base64encode(user:pass)</code>.</p>
+<p><strong>Test the configuration with curl:</strong></p>
+<p>In the following examples, we use the base64 encoding of <code>johndoe:TestAppPw1</code> as our encoded <code>user:pass</code>. This value is <code>am9obmRvZTpUZXN0QXBwUHcx</code>. These credentials are one of the default credentials in the <code>sample-simple.cfg</code> file provided by GLAuth*.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Get Devices (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Route)</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/devices <span class="se">\</span>
+    -H <span class="s2">"Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio"><label for="__tabbed_4_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/devices ^
+    -H <span class="s2">"Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</span>
+</code></pre></div>
+</div>
+</input></input></div>
+<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.0.0#/Devices/get_api_v1_devices">Devices API Docs</a> for more information and expected responses.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio"><label for="__tabbed_3_2">Get Profiles (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Route)</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><label for="__tabbed_5_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/rps/api/v1/admin/profiles <span class="se">\</span>
+    -H <span class="s2">"Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio"><label for="__tabbed_5_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/rps/api/v1/admin/profiles ^
+    -H <span class="s2">"Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</span>
+</code></pre></div>
+</div>
+</input></input></div>
+<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/2.0.0#/Profiles/GetAllProfiles">Get Profiles API Docs</a> for more information and expected responses.</p>
+</div>
+</input></input></div>
+<p><br/>
+<br/></p>
 </article>
 </div>
 </div>
