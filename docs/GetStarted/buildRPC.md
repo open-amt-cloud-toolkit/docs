@@ -80,6 +80,8 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
     === "Linux"
         ``` bash
         sudo apt install build-essential
+        ```
+        ``` bash
         go build -o rpc ./cmd
         ```
     === "Docker (On Linux Host Only)"
