@@ -4,7 +4,7 @@ site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2021 Intel Corporation'
-site_dir: site/2.0
+site_dir: site/2.1
 # Configuration
 theme:
   name: 'material'
@@ -52,6 +52,7 @@ nav:
     - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
     - REST API Call: Tutorials/apiTutorial.md
     - Wireless Activation: Tutorials/createWiFiConfig.md
+    - Modify User Authentication: Tutorials/modifyUserAuth.md
     - Scaling Tutorials:
         - Overview: Tutorials/Scaling/overview.md
         - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
@@ -117,6 +118,7 @@ markdown_extensions:
 extra_css:
   - assets\stylesheets\branding.css
   - assets\stylesheets\mermaid.css
+  - assets\stylesheets\index.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
@@ -137,6 +139,9 @@ extra:
     version: 2.0.0
   uiClone:
     version: 2.0.0
+  docsSite:
+    rapidVersion: 2.1
+    ltsVersion: 2.0
   analytics:
     provider: google
     property: 'G-00QEDJW2TS'
