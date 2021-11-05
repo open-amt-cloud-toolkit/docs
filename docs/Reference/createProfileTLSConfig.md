@@ -2,7 +2,13 @@
 
 ### Create a Profile
 
-Profiles provide configuration information to the firmware on platforms featuring Intel® AMT during the activation process with the Remote Provisioning Client (RPC).
+During the activation process with the Remote Provisioning Client (RPC), profiles provide configuration information to the firmware on platforms featuring Intel® AMT.
+
+In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Access (CIRA) connections, which use Transport Layer Security (TLS), and plain TLS. TLS connections encrypt Intel® AMT network traffic, increasing data security and privacy. 
+
+!!! Important
+    * TLS works with both ACM And CCM.
+    * Because CIRA connections already use TLS, the option to use both in a profile is not available, as it would double the amount of encryption/decryption and potentially impact performance.
 
 ## To create a profile with TLS Config
 
@@ -28,7 +34,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-10. select **Connection Configuration** to **TLS (Enterprise)**
+10. Select **Connection Configuration** to **TLS (Enterprise)**
 
 11. Under **TLS (Enterprise)**, select **TLS Mode from** the dropdown menu. 
 
