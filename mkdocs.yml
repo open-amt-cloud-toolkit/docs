@@ -129,16 +129,14 @@ plugins:
 extra:
   version:
     provider: mike
-  mpsAPI:
-    version: 2.0.0
-  rpsAPI: 
-    version: 2.0.0
-  baseClone:
-    version: 2.0.1
-  rpcClone:
-    version: 2.0.0
-  uiClone:
-    version: 2.0.0
+  repoVersion:
+    mpsAPI: 2.1.0
+    rpsAPI: 2.1.0
+    oamtct: 2.1.0
+    rpc_go: 2.1.0
+    rpc_c: 2.0.0
+    ui_toolkit: 2.1.0
+    ui_toolkit_react: 2.1.0
   docsSite:
     rapidVersion: 2.1
     ltsVersion: 2.0
