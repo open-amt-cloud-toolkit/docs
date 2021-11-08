@@ -135,7 +135,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        placeholder for Mike
+sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://192.168.1.34/activate -n  --profile p1
         ```
     === "Windows"
         ```
