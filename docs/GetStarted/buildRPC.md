@@ -104,7 +104,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```
     === "Windows"
         ``` bash
-        rpc version
+        .\rpc version
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
@@ -133,13 +133,13 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ``` bash
         sudo ./rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
         ```
+    === "Windows"
+        ```
+        .\rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
+        ```        
     === "Docker (On Linux Host Only)"
         ``` bash
         sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate --profile [profilename]
-        ```
-    === "Windows"
-        ```
-        rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"
