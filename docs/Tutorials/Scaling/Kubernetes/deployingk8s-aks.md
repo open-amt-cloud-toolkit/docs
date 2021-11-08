@@ -169,19 +169,19 @@ Where:
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
     ```
 
 3. Create MPS Router connection string secret.
 
     ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
     ```
 
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
     ```
 
 
@@ -341,7 +341,7 @@ Where:
     !!! success
         ``` hl_lines="2 5 7"
         NAME                                                 READY   STATUS                       RESTARTS   AGE
-        mps-69786bfb47-92mpc                                 0/1     Pending                      0          2m6s
+        mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
         openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
         openamtstack-vault-0                                 0/1     Running                      0          2m6s
