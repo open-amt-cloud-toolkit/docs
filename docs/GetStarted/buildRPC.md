@@ -86,7 +86,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        placeholder for Mike
+docker build -f "Dockerfile" -t rpc-go:latest .
         ```
     === "Windows"
         ``` bash
