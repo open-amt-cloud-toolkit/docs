@@ -78,6 +78,7 @@ nav:
           - Configuration: Reference/RPS/configuration.md
           - Network Profiles: Reference/RPS/networkConfig.md
           - Security Information: Reference/RPS/securityRPS.md
+          - Create Profile with TLS: Reference/createProfileTLSConfig.md
       - Remote Provisioning Client:
           - Build & Run RPC (Manual): Reference/RPC/buildRPC_Manual.md
           - Command Examples: Reference/RPC/commandsRPC.md
