@@ -62,7 +62,7 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
     **Figure 3: Login with the token**
 
-14. Choose the **Secrets** tab and then navigate to the path: **< kv <TLS < [profile name]**.
+15. Navigate to the path `secret/TLS/[profile name]` for a local dev mode Vault deployment. Or `kv/TLS/[profile name]` for a cloud deployment.
 
     !!! example "Example of Certificate Storage"
         ![CertExample](../assets/images/CertExample.png)
