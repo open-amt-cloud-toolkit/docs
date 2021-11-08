@@ -56,7 +56,9 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
         
         **Figure 2: Example profile with TLS Config.**
 
-13. To confirm the digital certificates generated for the profile, open a browser and navigate to the [Vault service](https://localhost:8200). Use the Vault token stored in the .env file. **Sign in to Vault** on the development system.
+13. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [https://localhost:8200](https://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
+
+14. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
 
     ![VaultLoginpng](../assets/images/VaultLogin.png)
 
