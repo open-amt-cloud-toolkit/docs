@@ -104,7 +104,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        placeholder for Mike
+sudo docker run --device=/dev/mei0 rpc-go:latest version
         ```
     === "Windows"
         ``` bash
