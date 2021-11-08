@@ -81,11 +81,13 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 8. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-9. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+9. Select **CIRA(Cloud)** for Connection Configuration.
 
-10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
+10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Click **Save.**
+11. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
+
+12. Click **Save.**
 
 !!! example "Example ACM Profile"
     
@@ -107,7 +109,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
     [![RPS New Domain](../assets/images/RPS_NewDomain.png)](../assets/images/RPS_NewDomain.png)
 
-    **Figure 3: Create Domain. **
+    **Figure 3: Create a new Domain profile. **
 
 3. Specify a name of your choice for the Domain Profile for the **Name** field. This does not have to be the actual network Domain Name/Suffix.
 

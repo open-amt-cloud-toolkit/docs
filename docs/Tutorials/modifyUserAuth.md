@@ -107,7 +107,7 @@ In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as
         curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices ^
             -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
-    See [Devices API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices) for more information and expected responses.
+    See [Devices API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices) for more information and expected responses.
 === "Get Profiles (RPS Route)"
     === "Linux"
         ``` bash
@@ -119,7 +119,7 @@ In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as
         curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles ^
             -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
-    See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ rpsAPI.version }}#/Profiles/GetAllProfiles) for more information and expected responses.
+    See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ repoVersion.rpsAPI }}#/Profiles/GetAllProfiles) for more information and expected responses.
 
 <br>
 <br>

@@ -1,6 +1,6 @@
 --8<-- "References/abbreviations.md"
 
-This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices) using [curl](https://curl.se/). This method will retrieve information about all devices, including device GUIDs.
+This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices) using [curl](https://curl.se/). This method will retrieve information about all devices, including device GUIDs.
 
 [![ConnectedDevices](../assets/images/ConnectedDevicesAPI.png)](../assets/images/ConnectedDevicesAPI.png)
 
@@ -34,7 +34,7 @@ The following sections describe how to:
 
 ## Generate a Token for Authorization
 
-See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Auth/post_api_v1_authorize){target=_blank} for more information.
+See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Auth/post_api_v1_authorize){target=_blank} for more information.
 
 1. Open a Terminal or Command Prompt.
 2. Copy and paste the example code below into a text editor.
@@ -68,7 +68,7 @@ See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/a
 
 ## Run API Call for Get Devices
 
-See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/get_api_v1_devices){target=_blank} for more information.
+See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices){target=_blank} for more information.
 
 1. Open a Terminal or Command Prompt.
 2. Copy and paste the example code below into a text editor.
@@ -128,7 +128,7 @@ The sample GET and POST curl commands below can be adapted for other MPS and RPS
         curl --insecure https://[IP-Address or FQDN]/mps/api/v1/amt/powercapabilities/[AMT-Device-GUID] ^
             -H "Authorization: Bearer [JWT-Token]"
         ```  
-    See [Power Capabilities API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/AMT/get_api_v1_amt_power_capabilities__guid_) for more information and expected responses.
+    See [Power Capabilities API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/get_api_v1_amt_power_capabilities__guid_) for more information and expected responses.
 === "Power Action (POST Template)"
     === "Linux"
         ``` bash
@@ -144,7 +144,7 @@ The sample GET and POST curl commands below can be adapted for other MPS and RPS
             -H "Authorization: Bearer [JWT-Token]" ^
             -d "{\"action\": [Power-Action], \"useSOL\": false}"
         ```
-    See [Power Action API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/AMT/post_api_v1_amt_power_action__guid_) for more information and expected responses.
+    See [Power Action API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/post_api_v1_amt_power_action__guid_) for more information and expected responses.
 
 ## Other Methods
 
