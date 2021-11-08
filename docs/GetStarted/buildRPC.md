@@ -84,13 +84,13 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ``` bash
         go build -o rpc ./cmd
         ```
-    === "Docker (On Linux Host Only)"
-        ``` bash
-        docker build -f "Dockerfile" -t rpc-go:latest .
-        ```
     === "Windows"
         ``` bash
         go build -o rpc.exe ./cmd
+        ```
+    === "Docker (On Linux Host Only)"
+        ``` bash
+        docker build -f "Dockerfile" -t rpc-go:latest .
         ```
     !!! note
         The image created with the Docker instruction above is only suitable for Docker on a Linux host.
@@ -100,15 +100,15 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
     === "Linux"
         ``` bash
-        sudo rpc version
-        ```
-    === "Docker (On Linux Host Only)"
-        ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest version
+        sudo ./rpc version
         ```
     === "Windows"
         ``` bash
         rpc version
+        ```        
+    === "Docker (On Linux Host Only)"
+        ``` bash
+        sudo docker run --device=/dev/mei0 rpc-go:latest version
         ```
 
 ## Run RPC to Activate and Connect the AMT Device
@@ -131,11 +131,11 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
 
     === "Linux"
         ``` bash
-        sudo rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://192.168.1.34/activate -n  --profile p1
+        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate --profile [profilename]
         ```
     === "Windows"
         ```
