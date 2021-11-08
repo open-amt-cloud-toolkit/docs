@@ -134,10 +134,11 @@ extra:
     mpsAPI: 2.1.0
     rpsAPI: 2.1.0
     oamtct: 2.1.0
-    rpc_go: 2.1.0
+    rpc_go: 2.0.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.1.0
-    ui_toolkit_react: 2.1.0
+    ui_toolkit: 2.0.3
+    ui_toolkit_react: 2.0.2
+    ui_toolkit_angular: 2.0.2
   docsSite:
     rapidVersion: 2.1
     ltsVersion: 2.0
