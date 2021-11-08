@@ -8,7 +8,7 @@
 <link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/createProfileTLSConfig/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
-<title>createProfileTLSConfig - Open Active Management Technology Cloud Toolkit</title>
+<title>Create Profile with TLS - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#create-a-profile">
+<a class="md-skip" href="#next-up">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              createProfileTLSConfig
+              Create Profile with TLS
             
           </span>
 </div>
@@ -122,7 +122,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../architectureOverview/">
+<a class="md-tabs__link md-tabs__link--active" href="../architectureOverview/">
         Reference
       </a>
 </li>
@@ -459,8 +459,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Reference
           <span class="md-nav__icon md-icon"></span>
@@ -541,8 +541,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_7">
           Remote Provisioning Server
           <span class="md-nav__icon md-icon"></span>
@@ -567,6 +567,29 @@
 <a class="md-nav__link" href="../RPS/securityRPS/">
         Security Information
       </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Create Profile with TLS
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Create Profile with TLS
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-up">
+    Next up
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -754,29 +777,26 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/createProfileTLSConfig.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1>createProfileTLSConfig</h1>
-<h3 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">¶</a></h3>
+<h1>Create Profile with TLS</h1>
 <p>During the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>), profiles provide configuration information to the firmware on platforms featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>.</p>
-<p>In <strong>Profiles</strong>, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> supports Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>) connections, which use Transport Layer Security (TLS), and plain TLS. TLS connections encrypt <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> network traffic, increasing data security and privacy. </p>
+<p>In <strong>Profiles</strong>, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> supports Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>) connections, which use Transport Layer Security (<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>). The toolkit also supports <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> without <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>. <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> connections encrypt <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> network traffic, increasing data security and privacy.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <ul>
-<li>TLS works with both <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> And <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>.</li>
-<li>Because <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connections already use TLS, the option to use both in a profile is not available, as it would double the amount of encryption/decryption and potentially impact performance.</li>
+<li><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> works with both <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> And <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>.</li>
+<li>Because <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connections already use <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, the option to use both in a profile is not available, as it would double the amount of encryption/decryption and potentially impact performance.</li>
 </ul>
 </div>
-<h2 id="to-create-a-profile-with-tls-config">To create a profile with TLS Config<a class="headerlink" href="#to-create-a-profile-with-tls-config" title="Permanent link">¶</a></h2>
+<p><strong>To create a profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config:</strong></p>
 <ol>
 <li>
 <p>Select the <strong>Profiles</strong> tab from the menu on the left.</p>
 </li>
 <li>
-<p>Under the <strong>Profiles</strong> tab, click <strong>New</strong> in the top-right corner to create a profile.</p>
-</li>
-</ol>
+<p>Under the <strong>Profiles</strong> tab, click <strong>+ Add New</strong> in the top-right corner to create a profile.</p>
 <p><a href="../../assets/images/RPS_NewProfile.png"><img alt="RPS" src="../../assets/images/RPS_NewProfile.png"/></a>
 <strong>Figure 1: Create a new profile.</strong></p>
-<ol>
+</li>
 <li>
 <p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
 </li>
@@ -785,8 +805,10 @@
 </li>
 <li>
 <p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
-<p>!!! tip
-    The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
+</div>
 </li>
 <li>
 <p>The <strong>MEBX Password</strong> field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) cannot be set when activating in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> due to the lower level of trust when compared to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</p>
@@ -798,10 +820,37 @@
 <p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
 </li>
 <li>
-<p>Select <strong>Connection Configuration</strong> to <strong>TLS (Enterprise)</strong></p>
+<p>Select <strong>Connection Configuration</strong> to <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (Enterprise)</strong></p>
 </li>
 <li>
-<p>Under <strong>TLS (Enterprise)</strong>, select <strong>TLS Mode from</strong> the dropdown menu. </p>
+<p>Under <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (Enterprise)</strong>, select the <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Mode from</strong> the dropdown menu. </p>
+<p>The toolkit offers four configuration modes to support various usage models: </p>
+<table>
+<thead>
+<tr>
+<th align="left">CONFIGURATION MODE</th>
+<th align="left">DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Server Authentication Only</td>
+<td align="left">The client authenticates the server request and accepts only those servers with a digital certificate.</td>
+</tr>
+<tr>
+<td align="left">Server and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
+<td align="left"><strong>Used primarily for testing.</strong> The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
+</tr>
+<tr>
+<td align="left">Mutual <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication Only</td>
+<td align="left">Both client and server <strong>must</strong> have certs. The client cert is signed by the server cert.</td>
+</tr>
+<tr>
+<td align="left">Mutual and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
+<td align="left"><strong>Used primarily for testing.</strong> Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../../Tutorials/createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
@@ -809,10 +858,26 @@
 <li>
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
-<p class="admonition-title">Example profile with TLS Config</p>
-<p><a href="../../assets/images/RPS_CreateProfileTLSConfig.png"><img alt="RPS" src="../assets/images/RPS_CreateProfileTLSConfig"/></a></p>
-<p><strong>Figure 2: Example profile with TLS Config.</strong></p>
+<p class="admonition-title">Example profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config</p>
+<p><img alt="RPS_CreateProfileTLSConfig.png" src="../../assets/images/RPS_CreateProfileTLSConfig.png"/></p>
+<p><strong>Figure 2: Example profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config.</strong></p>
 </div>
+</li>
+<li>
+<p>To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at <a href="https://localhost:8200">https://localhost:8200</a> for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.</p>
+</li>
+<li>
+<p>Sign in to Vault with the <code>VAULT_TOKEN</code> stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.</p>
+<p><img alt="VaultLoginpng" src="../../assets/images/VaultLogin.png"/></p>
+<p><strong>Figure 3: Login with the token</strong></p>
+</li>
+<li>
+<p>Navigate to the path <code>secret/TLS/[profile name]</code> for a local dev mode Vault deployment. Or <code>kv/TLS/[profile name]</code> for a cloud deployment.</p>
+<div class="admonition example">
+<p class="admonition-title">Example of Certificate Storage</p>
+<p><img alt="CertExample" src="../../assets/images/CertExample.png"/></p>
+</div>
+<p><strong>Figure 4: Digital Certificate</strong></p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
