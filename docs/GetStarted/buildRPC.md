@@ -114,4 +114,4 @@ docker build -f "Dockerfile" -t rpc:latest .
          
 
 ## Next up
-[Manage AMT Device](../GetStarted/manageDevice.md)
+**[Manage AMT Device](../GetStarted/manageDevice.md)**

@@ -21,7 +21,7 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 
 6. Leave **Port** as the default, 4433.
 
-7. Leave the **Username** as *admin* or choose your own. These credentials will be used when constructing API calls.
+7. Leave the **Username** as *admin* or choose your own.
 
 8. Leave the slider set on **Auto-load**.
 

@@ -105,7 +105,7 @@ Where:
 1. Clone the Open AMT Cloud Toolkit.
 
     ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
 2. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.

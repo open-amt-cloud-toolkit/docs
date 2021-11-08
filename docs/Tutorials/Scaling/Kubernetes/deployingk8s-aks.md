@@ -18,7 +18,7 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 1. Clone the Open AMT Cloud Toolkit.
 
     ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create SSH Key
