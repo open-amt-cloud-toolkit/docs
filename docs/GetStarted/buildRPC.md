@@ -131,15 +131,15 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
 
     === "Linux"
         ``` bash
-        sudo ./rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
         ```
     === "Windows"
         ```
-        .\rpc activate -u wss://[Development-IP-Address]/activate --profile [profilename]
+        .\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate --profile [profilename]
+        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"
