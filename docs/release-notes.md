@@ -2,77 +2,107 @@
 # Release Notes
 Please see the [release announcements](announcements.md) for additional information regarding this release.
 
-## Key Feature Changes for 2.0
-This section outlines key features changes between versions 1.5 and 2.0 for Open AMT Cloud Toolkit.
+## Feature Changes for 2.1
+This section outlines key features changes between versions 2.0 and 2.1 for Open AMT Cloud Toolkit.
+
+### Noteworthy Features and Changes
+**TLS Configuration:** In this release we have added the ability for a TLS configuration to be set for AMT devices not using an MPS to manage the Out-of-Band connection.  This feature encrypts communication between Intel(r) AMT devices and management consoles over a local network.  RPS automatically generates self-signed certificates to use for TLS in this version of the Toolkit.  To read more about the TLS feature please see our [TLS documentation](https://open-amt-cloud-toolkit.github.io/docs/2.1/Reference/createProfileTLSConfig/)
+
+**AMT Clock Sync Maintenance Task:** Intel&reg; AMT requires periodic maintenance to keep the real-time clock synced so that accurate certificate checking can be performed.  In this release, we have added this capability to both RPS and RPC.  A new "maintenance" command has been added to our RPC-Go application that will call back to RPS and perform the clock sync task.
+
+**Hostname Override:** In response to customer feedback, we have added the ability to override the hostname using a -h command in RPC-Go.  Instead of sending up the HostOS name, RPC will now send up the host name specified.  This is particularly helpful when running RPC from a container.
+
+**CIRA Connection & Disconnection Events:** When devices connect and disconnect from the MPS, an event will now be sent to the MQTT broker.  
+
+**Branch Renaming:** We have renamed "master" to "main" across all of our repositories.  To learn more about why we made this change, please see the [Diversity at Intel](https://www.intel.com/content/www/us/en/diversity/diversity-at-intel.html) web site.
 
 ### Additions, Modifications, and Removals
 #### Breaking Changes
-- tenantId is a new field in the db and all queries now require it
+- No breaking changes this release.  Hurray!
 #### Open AMT Cloud Toolkit
-- env.template: optimized reuse of settings
-- postgres: removed postgres deployment from K8S, AKS, and EKS.  Recommend using managed DB service from cloud provided for these deployments
-- postgres: enabled ssl communication for db connections
-- deployment: added EKS deployment scripts (Amazon Elastic Kubernetes Service)
-- deployment: added support for [Kuma](https://konghq.com/blog/introducing-kuma-universal-service-mesh/) service mesh.  This enables MTLS between containers to enhance security as well as adding additional productivity capabilities.
+- mqtt: added mqtt configuration (#8e458db)
+- mqtt: allow websocket connections for events in the UI (#d3e4435)
+- tls-config: update SQL scripts and azure deploy (#b9ffaca)
+- aks: leftover storage dependecy error (#6f96538)
+- aks: remove storage account requirement (#eade357)
+- docs: adds issue template (#35b10ab)
 #### RPS
-- ciraconfig: allow null values for ciraconfigname in profile edit (#f3b2659)
-- multitenancy: add support for multiple tenants (#bbbdf95)
-- multitenancy: device creation with MPS now includes tenantId (#e01cd79)
-- activation: update client response message (#23a7a0b)
-- activation: now device is saved after activation in acm ([#416](https://github.com/open-amt-cloud-toolkit/rps/issues/416)) (#c1b02f4)
-- mqtt: adds activation success message (#cfd6a34)
-- network: now removes all the profiles with priority 0 ([#424](https://github.com/open-amt-cloud-toolkit/rps/issues/424)) (#b00e6a9)
-- network: get wifi passphrase from vault ([#409](https://github.com/open-amt-cloud-toolkit/rps/issues/409)) (#35532d2)
-- wireless: Updated passphrase key name in vault to sync with other keys ([#419](https://github.com/open-amt-cloud-toolkit/rps/issues/419)) (#313daa2)
+- maintenance: added a task to sync time on AMT [#459](https://github.com/open-amt-cloud-toolkit/rps/issues/459) (#faa4b2c)
+- tls: configure amt device with tls (#6ed238e)
+- activation: sets mebx password if not updated [#463](https://github.com/open-amt-cloud-toolkit/rps/issues/463) (#95cdf41)
+- api: restricted 8 wi-fi profiles to amt profile [#452](https://github.com/open-amt-cloud-toolkit/rps/issues/452) (#8523955)
+- device: update tags execute after device exists check (#783a7b1)
+- vault: removed storing random ccm password in vault profile [#455](https://github.com/open-amt-cloud-toolkit/rps/issues/455) (#8107375)
+- api: remove password validation from domain cert upload (#d456103)
+- docs: adds issue template (#1958a08)
+- docs: add contributing guidlines (#05b3843)
+- github: add pull request template (#72aa4d8)
 #### MPS
-- api: added api for request, cancel and send user consent code to AMT ([#332](https://github.com/open-amt-cloud-toolkit/mps/issues/332)) (#e4fbe58)
-- api: cert now pulls from config instead of disk (#d9e04e3)
-- multitenancy: add multi tenancy support (#4e323c8)
-- docs: updated swagger documentation (#7aee48a)
-#### RPC
-- security: update to OpenSSL 1.1.1l
-- wireless: add AMT wireless adapter info to amtinfo LAN settings.
-- refactor: format json status messages
+- telemetry: add events for CIRA Disconnect/Connection (#1cde473)
+- fix: empty event log now returns empty array instead of null (#0c6dfc0)
+- api: updated version api test uri (#054762d)
+- certs: exit process if vault unavailable or error occurs on startup (#7df7a00)
+- certs: now self-signed certs are stored in vault (#b2d61a4)
+- login: username check should be case insensitive (#5767483)
+- docs: adds issue template (#2373ba3)
+- docs: add contributing guidelines (#c0673e9)
+- github: add pull request template (#01051ae)
+#### RPC-Go
+- add environment variable support
+- add heartbeat support
+- hostname: can now override hostname of device by passing -h as command line arg
+- maintenance: add time sync for AMT
+- fix: dns suffix and trim string outputs for commands
+- version: add version output to cli command
+- docs: add contributing guidelines
+- docs: add license and security guidelines
 #### Sample Web UI
-- amtfeatures: replaced enabled features box to work with checkboxes (#8a86c9f)
-- ciraconfig: allow clearing out cira config in profile (#abf0bee)
-- dashboard: add wireless config link to dashboard page (#5b4c61c)
-- device: now displays AMT FW and Provisioning Mode (#fdd439a)
-- devices: add power status to device list (#1b58bac)
-- notification: updated power actions notifications and resolved merge conflicts ([#390](https://github.com/open-amt-cloud-toolkit/rps/issues/390)) (#5610e60)
-- pagesize: updated page size options (#5b8b624)
-- paging: implemented paging for cira, domains, devices, profiles and wifi ([#370](https://github.com/open-amt-cloud-toolkit/rps/issues/370)) (#bfc554d)
-- userconsent: a dialog to enter user consent code ([#395](https://github.com/open-amt-cloud-toolkit/rps/issues/395)) (#269d1e2)
-- errors: show better error messages for deleting associated ciraconfig and wifi config (#e4651c8)
-- profile: fix no wifi config found message on input focus (#3802ea5)
-- wireless: table now hidden when no data (#ce50bca)
+- devices: update user consent field to a dropdown (#4fee063)
+- eventlog: add event log UI [#428](https://github.com/open-amt-cloud-toolkit/rps/issues/428) (#dd634ac)
+- profile: alert impact of random passwords (#1498067)
+- telemetry: event channel logs (#3eb6ca9)
+- tls: added tls option to AMT Profile [#429](https://github.com/open-amt-cloud-toolkit/rps/issues/429) (#92c63a1)
+- handle NOT_READY power action (#b398668)
+- KVM/SOL no longer tries to connect if device is offline (#0d0d4c3)
+- e2e: update e2e tests to coding standards (#1691c9c)
+- mqtt: protocol now defaults to wss for MQTT [#459](https://github.com/open-amt-cloud-toolkit/rps/issues/459) (#993b201)
+- userconsent: disable user consent selection in CCM activated devices (#dbdd22a)
+- eventlog: show recent event logs in device details page (#90cba3f)
+- docs: adds issue template (#73c7b3c)
+- docs: add contributing guidlines (#f374893)
+- github: add pull request template (#8d9c19c)
+#### UI Toolkit
+- docs: adds issue template (#3d2f2e0)
+- docs: add contributing guidlines (#8311a3a)
+- github: add pull request template (#85e95b8)
 
-## Resolved Issues in this release
-#### Intel&reg; AMT
-- **Intel&reg; AMT device fails to re-connect to MPS after MPS is not available for an extended period of time:** We have added this issue to our troubleshooting documentation
+## Resolved Issues
 #### Open AMT Cloud Toolkit
-- **[Power policy should be selected at BIOS under Intel®ME Power Control screen -Mobile: On in So, MEWake in S3, S4-5 –Power Package 2 for performing device poweron/off operations](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/19)**
-- **[Scaling- KVM shows white screen](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/39)**
-- **[Scaling- Connecting to SOL does not work correctly](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/40)**
+- **[Error: Not a supported method received from AMT device](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/101)**
 #### RPS
-- **[Wi-Fi config: Intel AMT system disconnects from mps stack after powering off the device](https://github.com/open-amt-cloud-toolkit/rps/issues/350)**
-- **[Software Event Notifications](https://github.com/open-amt-cloud-toolkit/rps/issues/9)**
+- **[MQTT messaging needs to be updated for some of the events](https://github.com/open-amt-cloud-toolkit/rps/issues/381):** Enhancement
+- **[Do not enforce password policy for domain certificate](https://github.com/open-amt-cloud-toolkit/rps/issues/456):** Enhancement
+- **[Wrong version on swagger file](https://github.com/open-amt-cloud-toolkit/rps/issues/457):** Bug
 #### MPS
-- **[AMT 12 dropping CIRA when sending command while system is off](https://github.com/open-amt-cloud-toolkit/mps/issues/196)**
-- **[MPS API /ciracert always reads from file](https://github.com/open-amt-cloud-toolkit/mps/issues/294)**
-#### UI-Toolkit
-- **KVM freeze intermittently:** We have root caused and implemented the fix in the UI-Toolkit KVM module.
+- **[MPS won't start when tls_offload is set to true or https is set to false](https://github.com/open-amt-cloud-toolkit/mps/issues/288):** Bug
+- **[MPS API /ciracert always reads from file](https://github.com/open-amt-cloud-toolkit/mps/issues/294):** Bug
 #### Sample-Web-UI
-- **[AMT Responses should return status (i.e. NOT_READY) instead of "Sent Succesfully"](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/276)**
-- **[Can't clear out CIRA config once selected in AMT Profile](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/367)**
-- **[WiFi Profiles drop-down says "No Wifi configs found" before typing anything](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/368)**
+- **[CIRA Config Name Smashed](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/278)**
+- **[Logging out of Sample-Web-UI page while on an active KVM session does not take user back to login page](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/283):** Bug
+- **[Logging out of UI if user performs power actions on a device with invalid amt password](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/301):** Bug
+- **[Error message misleading when using KVM in CCM Mode](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/362)**
+- **[Get 'Operation failed: Create [xxxx]' on Successful Creation](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/379):** Bug
+- **[cant login](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/400)**
 
-## Open Issues in 2.0
+## Open Issues and Requests
+#### Open AMT Cloud Toolkit
+- **[Kustomize Install](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/103):** Enhancement
 #### RPS
 - **[RPS should support wildcard domain suffix](https://github.com/open-amt-cloud-toolkit/rps/issues/97):** Enhancement
 - **[Data shouldn't be added if vault calls fail](https://github.com/open-amt-cloud-toolkit/rps/issues/254):** Bug
 - **[AMT Wi-Fi Configuration not supported on non-Windows systems](https://github.com/open-amt-cloud-toolkit/rps/issues/349):** Known Issue
-- **[MQTT messaging needs to be updated for some of the events](https://github.com/open-amt-cloud-toolkit/rps/issues/381):** Enhancement
+- **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/rps/issues/414):** Enhancement
+- **[Remove mpsRootCertificate parameter from createCiraConfig route](https://github.com/open-amt-cloud-toolkit/rps/issues/461):** Question
 - **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/rps/issues/414):** Enhancement
 #### MPS
 - **[Direct Connection from MPS to AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/10):** Enhancement
@@ -80,5 +110,7 @@ This section outlines key features changes between versions 1.5 and 2.0 for Open
 - **[AMT does not connect to MPS after configuration](https://github.com/open-amt-cloud-toolkit/mps/issues/300):** Known Issue
 - **[Audit Log calls never respond on specific versions of AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/301):** Known Issue
 - **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/mps/issues/360):** Enhancement
+#### Sample Web UI
+- **[UI always shows "Certificate Not Yet Uploaded"](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483):** Question
 
 
