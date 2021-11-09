@@ -197,11 +197,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#key-feature-changes-for-20">
-    Key Feature Changes for 2.0
+<a class="md-nav__link" href="#feature-changes-for-21">
+    Feature Changes for 2.1
   </a>
-<nav aria-label="Key Feature Changes for 2.0" class="md-nav">
+<nav aria-label="Feature Changes for 2.1" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#noteworthy-features-and-changes">
+    Noteworthy Features and Changes
+  </a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#additions-modifications-and-removals">
     Additions, Modifications, and Removals
@@ -229,8 +234,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rpc">
-    RPC
+<a class="md-nav__link" href="#rpc-go">
+    RPC-Go
   </a>
 </li>
 <li class="md-nav__item">
@@ -238,6 +243,11 @@
     Sample Web UI
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ui-toolkit">
+    UI Toolkit
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -245,16 +255,11 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#resolved-issues-in-this-release">
-    Resolved Issues in this release
+<a class="md-nav__link" href="#resolved-issues">
+    Resolved Issues
   </a>
-<nav aria-label="Resolved Issues in this release" class="md-nav">
+<nav aria-label="Resolved Issues" class="md-nav">
 <ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#intel-amt">
-    Intel® AMT
-  </a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#open-amt-cloud-toolkit_1">
     Open AMT Cloud Toolkit
@@ -271,11 +276,6 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ui-toolkit">
-    UI-Toolkit
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#sample-web-ui_1">
     Sample-Web-UI
   </a>
@@ -284,11 +284,16 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#open-issues-in-20">
-    Open Issues in 2.0
+<a class="md-nav__link" href="#open-issues-and-requests">
+    Open Issues and Requests
   </a>
-<nav aria-label="Open Issues in 2.0" class="md-nav">
+<nav aria-label="Open Issues and Requests" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-amt-cloud-toolkit_2">
+    Open AMT Cloud Toolkit
+  </a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rps_2">
     RPS
@@ -297,6 +302,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#mps_2">
     MPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-web-ui_2">
+    Sample Web UI
   </a>
 </li>
 </ul>
@@ -880,99 +890,124 @@
 </a>
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
 <p>Please see the <a href="../announcements/">release announcements</a> for additional information regarding this release.</p>
-<h2 id="key-feature-changes-for-20">Key Feature Changes for 2.0<a class="headerlink" href="#key-feature-changes-for-20" title="Permanent link">¶</a></h2>
-<p>This section outlines key features changes between versions 1.5 and 2.0 for <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<h2 id="feature-changes-for-21">Feature Changes for 2.1<a class="headerlink" href="#feature-changes-for-21" title="Permanent link">¶</a></h2>
+<p>This section outlines key features changes between versions 2.0 and 2.1 for <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<h3 id="noteworthy-features-and-changes">Noteworthy Features and Changes<a class="headerlink" href="#noteworthy-features-and-changes" title="Permanent link">¶</a></h3>
+<p><strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Configuration:</strong> In this release we have added the ability for a <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration to be set for AMT devices not using an <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage the Out-of-Band connection.  This feature encrypts communication between Intel(r) AMT devices and management consoles over a local network.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> automatically generates self-signed certificates to use for <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in this version of the Toolkit.  To read more about the <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> feature please see our <a href="https://open-amt-cloud-toolkit.github.io/docs/2.1/Reference/createProfileTLSConfig/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> documentation</a></p>
+<p><strong>AMT Clock Sync Maintenance Task:</strong> Intel® AMT requires periodic maintenance to keep the real-time clock synced so that accurate certificate checking can be performed.  In this release, we have added this capability to both <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.  A new "maintenance" command has been added to our <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go application that will call back to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and perform the clock sync task.</p>
+<p><strong>Hostname Override:</strong> In response to customer feedback, we have added the ability to override the hostname using a -h command in <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go.  Instead of sending up the HostOS name, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> will now send up the host name specified.  This is particularly helpful when running <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> from a container.</p>
+<p><strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Connection &amp; Disconnection Events:</strong> When devices connect and disconnect from the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, an event will now be sent to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> broker.  </p>
+<p><strong>Branch Renaming:</strong> We have renamed "master" to "main" across all of our repositories.  To learn more about why we made this change, please see the <a href="https://www.intel.com/content/www/us/en/diversity/diversity-at-intel.html">Diversity at Intel</a> web site.</p>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">¶</a></h3>
 <h4 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">¶</a></h4>
 <ul>
-<li>tenantId is a new field in the db and all queries now require it</li>
+<li>No breaking changes this release.  Hurray!</li>
 </ul>
 <h4 id="open-amt-cloud-toolkit"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit" title="Permanent link">¶</a></h4>
 <ul>
-<li>env.template: optimized reuse of settings</li>
-<li>postgres: removed postgres deployment from K8S, <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, and EKS.  Recommend using managed DB service from cloud provided for these deployments</li>
-<li>postgres: enabled ssl communication for db connections</li>
-<li>deployment: added EKS deployment scripts (Amazon Elastic Kubernetes Service)</li>
-<li>deployment: added support for <a href="https://konghq.com/blog/introducing-kuma-universal-service-mesh/">Kuma</a> service mesh.  This enables MTLS between containers to enhance security as well as adding additional productivity capabilities.</li>
+<li>mqtt: added mqtt configuration (#8e458db)</li>
+<li>mqtt: allow websocket connections for events in the UI (#d3e4435)</li>
+<li>tls-config: update SQL scripts and azure deploy (#b9ffaca)</li>
+<li>aks: leftover storage dependecy error (#6f96538)</li>
+<li>aks: remove storage account requirement (#eade357)</li>
+<li>docs: adds issue template (#35b10ab)</li>
 </ul>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">¶</a></h4>
 <ul>
-<li>ciraconfig: allow null values for ciraconfigname in profile edit (#f3b2659)</li>
-<li>multitenancy: add support for multiple tenants (#bbbdf95)</li>
-<li>multitenancy: device creation with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> now includes tenantId (#e01cd79)</li>
-<li>activation: update client response message (#23a7a0b)</li>
-<li>activation: now device is saved after activation in acm (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/416">#416</a>) (#c1b02f4)</li>
-<li>mqtt: adds activation success message (#cfd6a34)</li>
-<li>network: now removes all the profiles with priority 0 (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/424">#424</a>) (#b00e6a9)</li>
-<li>network: get wifi passphrase from vault (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/409">#409</a>) (#35532d2)</li>
-<li>wireless: Updated passphrase key name in vault to sync with other keys (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/419">#419</a>) (#313daa2)</li>
+<li>maintenance: added a task to sync time on AMT <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/459">#459</a> (#faa4b2c)</li>
+<li>tls: configure amt device with tls (#6ed238e)</li>
+<li>activation: sets mebx password if not updated <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/463">#463</a> (#95cdf41)</li>
+<li>api: restricted 8 wi-fi profiles to amt profile <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/452">#452</a> (#8523955)</li>
+<li>device: update tags execute after device exists check (#783a7b1)</li>
+<li>vault: removed storing random ccm password in vault profile <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/455">#455</a> (#8107375)</li>
+<li>api: remove password validation from domain cert upload (#d456103)</li>
+<li>docs: adds issue template (#1958a08)</li>
+<li>docs: add contributing guidlines (#05b3843)</li>
+<li>github: add pull request template (#72aa4d8)</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h4>
 <ul>
-<li>api: added api for request, cancel and send user consent code to AMT (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/332">#332</a>) (#e4fbe58)</li>
-<li>api: cert now pulls from config instead of disk (#d9e04e3)</li>
-<li>multitenancy: add multi tenancy support (#4e323c8)</li>
-<li>docs: updated swagger documentation (#7aee48a)</li>
+<li>telemetry: add events for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Disconnect/Connection (#1cde473)</li>
+<li>fix: empty event log now returns empty array instead of null (#0c6dfc0)</li>
+<li>api: updated version api test uri (#054762d)</li>
+<li>certs: exit process if vault unavailable or error occurs on startup (#7df7a00)</li>
+<li>certs: now self-signed certs are stored in vault (#b2d61a4)</li>
+<li>login: username check should be case insensitive (#5767483)</li>
+<li>docs: adds issue template (#2373ba3)</li>
+<li>docs: add contributing guidelines (#c0673e9)</li>
+<li>github: add pull request template (#01051ae)</li>
 </ul>
-<h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">¶</a></h4>
+<h4 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go" title="Permanent link">¶</a></h4>
 <ul>
-<li>security: update to OpenSSL 1.1.1l</li>
-<li>wireless: add AMT wireless adapter info to amtinfo LAN settings.</li>
-<li>refactor: format json status messages</li>
+<li>add environment variable support</li>
+<li>add heartbeat support</li>
+<li>hostname: can now override hostname of device by passing -h as command line arg</li>
+<li>maintenance: add time sync for AMT</li>
+<li>fix: dns suffix and trim string outputs for commands</li>
+<li>version: add version output to cli command</li>
+<li>docs: add contributing guidelines</li>
+<li>docs: add license and security guidelines</li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">¶</a></h4>
 <ul>
-<li>amtfeatures: replaced enabled features box to work with checkboxes (#8a86c9f)</li>
-<li>ciraconfig: allow clearing out cira config in profile (#abf0bee)</li>
-<li>dashboard: add wireless config link to dashboard page (#5b4c61c)</li>
-<li>device: now displays AMT FW and Provisioning Mode (#fdd439a)</li>
-<li>devices: add power status to device list (#1b58bac)</li>
-<li>notification: updated power actions notifications and resolved merge conflicts (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/390">#390</a>) (#5610e60)</li>
-<li>pagesize: updated page size options (#5b8b624)</li>
-<li>paging: implemented paging for cira, domains, devices, profiles and wifi (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/370">#370</a>) (#bfc554d)</li>
-<li>userconsent: a dialog to enter user consent code (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/395">#395</a>) (#269d1e2)</li>
-<li>errors: show better error messages for deleting associated ciraconfig and wifi config (#e4651c8)</li>
-<li>profile: fix no wifi config found message on input focus (#3802ea5)</li>
-<li>wireless: table now hidden when no data (#ce50bca)</li>
+<li>devices: update user consent field to a dropdown (#4fee063)</li>
+<li>eventlog: add event log UI <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/428">#428</a> (#dd634ac)</li>
+<li>profile: alert impact of random passwords (#1498067)</li>
+<li>telemetry: event channel logs (#3eb6ca9)</li>
+<li>tls: added tls option to AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/429">#429</a> (#92c63a1)</li>
+<li>handle NOT_READY power action (#b398668)</li>
+<li><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> no longer tries to connect if device is offline (#0d0d4c3)</li>
+<li>e2e: update e2e tests to coding standards (#1691c9c)</li>
+<li>mqtt: protocol now defaults to wss for <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> <a href="https://github.com/open-amt-cloud-toolkit/rps/issues/459">#459</a> (#993b201)</li>
+<li>userconsent: disable user consent selection in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> activated devices (#dbdd22a)</li>
+<li>eventlog: show recent event logs in device details page (#90cba3f)</li>
+<li>docs: adds issue template (#73c7b3c)</li>
+<li>docs: add contributing guidlines (#f374893)</li>
+<li>github: add pull request template (#8d9c19c)</li>
 </ul>
-<h2 id="resolved-issues-in-this-release">Resolved Issues in this release<a class="headerlink" href="#resolved-issues-in-this-release" title="Permanent link">¶</a></h2>
-<h4 id="intel-amt">Intel® AMT<a class="headerlink" href="#intel-amt" title="Permanent link">¶</a></h4>
+<h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>Intel® AMT device fails to re-connect to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> after <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is not available for an extended period of time:</strong> We have added this issue to our troubleshooting documentation</li>
+<li>docs: adds issue template (#3d2f2e0)</li>
+<li>docs: add contributing guidlines (#8311a3a)</li>
+<li>github: add pull request template (#85e95b8)</li>
 </ul>
+<h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">¶</a></h2>
 <h4 id="open-amt-cloud-toolkit_1"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/19">Power policy should be selected at BIOS under Intel®ME Power Control screen -Mobile: On in So, MEWake in S3, S4-5 –Power Package 2 for performing device poweron/off operations</a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/39">Scaling- <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> shows white screen</a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/40">Scaling- Connecting to <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> does not work correctly</a></strong></li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/101">Error: Not a supported method received from AMT device</a></strong></li>
 </ul>
 <h4 id="rps_1"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/350">Wi-Fi config: Intel AMT system disconnects from mps stack after powering off the device</a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/9">Software Event Notifications</a></strong></li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/381"><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> messaging needs to be updated for some of the events</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/456">Do not enforce password policy for domain certificate</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/457">Wrong version on swagger file</a>:</strong> Bug</li>
 </ul>
 <h4 id="mps_1"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/196">AMT 12 dropping <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> when sending command while system is off</a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/294"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API /ciracert always reads from file</a></strong></li>
-</ul>
-<h4 id="ui-toolkit">UI-Toolkit<a class="headerlink" href="#ui-toolkit" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> freeze intermittently:</strong> We have root caused and implemented the fix in the UI-Toolkit <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> module.</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/288"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> won't start when tls_offload is set to true or https is set to false</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/294"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API /ciracert always reads from file</a>:</strong> Bug</li>
 </ul>
 <h4 id="sample-web-ui_1">Sample-Web-UI<a class="headerlink" href="#sample-web-ui_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/276">AMT Responses should return status (i.e. NOT_READY) instead of "Sent Succesfully"</a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/367">Can't clear out <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> config once selected in AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></a></strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/368">WiFi Profiles drop-down says "No Wifi configs found" before typing anything</a></strong></li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/278"><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config Name Smashed</a></strong></li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/283">Logging out of Sample-Web-UI page while on an active <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session does not take user back to login page</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/301">Logging out of UI if user performs power actions on a device with invalid amt password</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/362">Error message misleading when using <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> Mode</a></strong></li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/379">Get 'Operation failed: Create [xxxx]' on Successful Creation</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/400">cant login</a></strong></li>
 </ul>
-<h2 id="open-issues-in-20">Open Issues in 2.0<a class="headerlink" href="#open-issues-in-20" title="Permanent link">¶</a></h2>
+<h2 id="open-issues-and-requests">Open Issues and Requests<a class="headerlink" href="#open-issues-and-requests" title="Permanent link">¶</a></h2>
+<h4 id="open-amt-cloud-toolkit_2"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit_2" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/103">Kustomize Install</a>:</strong> Enhancement</li>
+</ul>
 <h4 id="rps_2"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_2" title="Permanent link">¶</a></h4>
 <ul>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/97"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> should support wildcard <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr></a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/254">Data shouldn't be added if vault calls fail</a>:</strong> Bug</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/349">AMT Wi-Fi Configuration not supported on non-Windows systems</a>:</strong> Known Issue</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/381"><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> messaging needs to be updated for some of the events</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/414">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/461">Remove mpsRootCertificate parameter from createCiraConfig route</a>:</strong> Question</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/414">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
 </ul>
 <h4 id="mps_2"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_2" title="Permanent link">¶</a></h4>
@@ -982,6 +1017,10 @@
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/300">AMT does not connect to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> after configuration</a>:</strong> Known Issue</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/301">Audit Log calls never respond on specific versions of AMT</a>:</strong> Known Issue</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/360">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
+</ul>
+<h4 id="sample-web-ui_2"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_2" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483">UI always shows "Certificate Not Yet Uploaded"</a>:</strong> Question</li>
 </ul>
 </article>
 </div>
