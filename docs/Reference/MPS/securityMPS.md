@@ -21,7 +21,7 @@ Intel discourages reuse of passwords among managed devices. Use a strong, unique
 
 ### 2. Intel&reg; AMT CIRA credentials
 When a managed device attempts to establish a connection to the MPS, the MPS performs two checks prior to allowing the connection:  
-1. **The Intel&reg; AMT device's GUID:** This GUID must be stored in the MPS database and is typically added by using the [devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Devices/post_api_v1_devices) POST API.  
+1. **The Intel&reg; AMT device's GUID:** This GUID must be stored in the MPS database and is typically added by using the [devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/post_api_v1_devices) POST API.  
 2. **MPS CIRA Credential:** The Intel&reg; AMT device needs to supply the correct credentials to MPS.  These credentials are checked against the username, stored in the database, and password, stored in Vault.
 
 Use a strong, unique password for each device to enhance security.
@@ -37,7 +37,7 @@ To use secure protocols, MPS requires configured certificates and securely store
 For production deployment, purchase CA-signed certificates whose signatures can be independently verified.
 
 ### 5. Web User Credentials
-The Open AMT Cloud Toolkit is designed to operate behind an API gateway, such as Kong API Gateway. The API Gateway validates the Auth Tokens provided by an administrator who is requesting access to an API end point. Once verified, the API Gateway will forward the request to the appropriate microservice, MPS or RPS. To make evaluation easy, MPS has implemented an [Authorize](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ mpsAPI.version }}#/Auth/post_api_v1_authorize) API end point that will issue a JWT when the proper web user credentials are provided. The Web User credentials are global credentials that are configured in the MPS configuration file and do not provide any fine-grain permissions.  Integration with other user authentication models and fine-grain endpoint permissions are supported through Kong [plug-ins](https://konghq.com/products/kong-gateway/kong-plugins/) and modification of the Kong API Gateway configuration file, respectively.
+The Open AMT Cloud Toolkit is designed to operate behind an API gateway, such as Kong API Gateway. The API Gateway validates the Auth Tokens provided by an administrator who is requesting access to an API end point. Once verified, the API Gateway will forward the request to the appropriate microservice, MPS or RPS. To make evaluation easy, MPS has implemented an [Authorize](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Auth/post_api_v1_authorize) API end point that will issue a JWT when the proper web user credentials are provided. The Web User credentials are global credentials that are configured in the MPS configuration file and do not provide any fine-grain permissions.  Integration with other user authentication models and fine-grain endpoint permissions are supported through Kong [plug-ins](https://konghq.com/products/kong-gateway/kong-plugins/) and modification of the Kong API Gateway configuration file, respectively.
 
 
 ## Best Known Security Methods

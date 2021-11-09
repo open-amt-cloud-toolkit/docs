@@ -29,7 +29,7 @@ The steps below assume the following directory structure where rpc is the clone 
 2. Clone the RPC repository.
 
     ``` bash
-    git clone --branch v{{ rpcClone.version }} https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
+    git clone --branch v{{ repoVersion.rpc_c }} https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
     ```
 
 ### Install Prerequisites and Build RPC
@@ -236,4 +236,4 @@ The following example command shows how to activate and configure an Intel® AMT
 
 Example Success Output:
 
-[![RPC Success](../../assets/images/RPC_Success.png)](../../assets/images/RPC_Success.png)
+[![RPC Success](../../assets/images/RPC_Success_C.png)](../../assets/images/RPC_Success_C.png)

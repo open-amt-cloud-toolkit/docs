@@ -10,7 +10,7 @@ This setup installs the MPS and RPS microservices as Docker* containers, standar
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
   
 2. Change to the cloned `open-amt-cloud-toolkit` directory.
@@ -46,7 +46,6 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_WEB_ADMIN_USER     | Username of your choice            | For logging into the Sample Web UI |
     | MPS_WEB_ADMIN_PASSWORD | **Strong** password of your choice | For logging into the Sample Web UI |
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256bit string. See another example in [code snippet below](./#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
-    | POSTGRES_USER          | Username of your choice            | For logging into the Postgres |
     | POSTGRES_PASSWORD      | **Strong** password of your choice | For logging into the Postgres |
     | VAULT_TOKEN            | **Strong** token of your choice    | For logging into the vault |
 
