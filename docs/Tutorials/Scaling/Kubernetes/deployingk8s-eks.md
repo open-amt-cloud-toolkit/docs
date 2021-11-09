@@ -80,7 +80,7 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 1. Clone the Open AMT Cloud Toolkit.
 
     ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ baseClone.version }}
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
 2. Use the database schema files to initialize the hosted Postgres DB in the following steps.

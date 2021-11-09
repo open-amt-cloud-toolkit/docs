@@ -157,4 +157,4 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
          
 
 ## Next up
-[Manage AMT Device](../GetStarted/manageDevice.md)
+**[Manage AMT Device](../GetStarted/manageDevice.md)**
