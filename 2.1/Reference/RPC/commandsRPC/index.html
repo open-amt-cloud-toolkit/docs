@@ -8,7 +8,7 @@
 <link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/RPC/commandsRPC/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
-<title>Command Examples - Open Active Management Technology Cloud Toolkit</title>
+<title>RPC CLI - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#rpc-usage">
+<a class="md-skip" href="#list-commands">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Command Examples
+              RPC CLI
             
           </span>
 </div>
@@ -596,11 +596,11 @@
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Command Examples
+          RPC CLI
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Command Examples
+        RPC CLI
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -609,57 +609,40 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rpc-usage">
-    RPC Usage
+<a class="md-nav__link" href="#list-commands">
+    List Commands
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rpc-arguments">
-    RPC Arguments
+<a class="md-nav__link" href="#list-command-options">
+    List Command Options
   </a>
-<nav aria-label="RPC Arguments" class="md-nav">
+<nav aria-label="List Command Options" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#required">
-    Required
-  </a>
-<nav aria-label="Required" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#rpc-activatedeactivate-examples">
-    RPC Activate/Deactivate Examples
+<a class="md-nav__link" href="#activate">
+    activate
   </a>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#optional">
-    Optional 
-  </a>
-<nav aria-label="Optional " class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#examples">
-    Examples
+<a class="md-nav__link" href="#deactivate">
+    deactivate
   </a>
 </li>
-</ul>
-</nav>
-</li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#informational">
-    Informational
-  </a>
-<nav aria-label="Informational" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#examples_1">
-    Examples
+<a class="md-nav__link" href="#maintenance">
+    maintenance
   </a>
 </li>
-</ul>
-</nav>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#amtinfo">
+    amtinfo
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version">
+    version
+  </a>
 </li>
 </ul>
 </nav>
@@ -828,134 +811,351 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/RPC/commandsRPC.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1>Command Examples</h1>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> is primarily used for communicating with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) for activating and/or deactivating AMT devices. Optional arguments allow for things such as easier development testing or for use in network environments utilizing proxies.</p>
-<p>All currently available arguments and their definitions are listed below along with example commands. </p>
-<h3 id="rpc-usage"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Usage<a class="headerlink" href="#rpc-usage" title="Permanent link">¶</a></h3>
-<p>On Windows:
-<div class="highlight"><pre><span></span><code>rpc &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
-rpc &lt;informational&gt;
-</code></pre></div></p>
-<p>On Linux:
-<div class="highlight"><pre><span></span><code>sudo ./rpc &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
-sudo ./rpc &lt;informational&gt;
-</code></pre></div></p>
-<p>On Docker:
-<div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;required&gt; <span class="o">[</span>optional<span class="o">]</span>
-sudo docker run --device<span class="o">=</span>/dev/mei0 rpc:latest &lt;informational&gt;
-</code></pre></div></p>
-<h3 id="rpc-arguments"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Arguments<a class="headerlink" href="#rpc-arguments" title="Permanent link">¶</a></h3>
-<h4 id="required">Required<a class="headerlink" href="#required" title="Permanent link">¶</a></h4>
+<h1>RPC CLI</h1>
+<p>On the managed device, a Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) communicates with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) in the process of activating or deactivating the device. In addition to activation and deactivation, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> provides informational and maintenance commands.</p>
+<h2 id="list-commands">List Commands<a class="headerlink" href="#list-commands" title="Permanent link">¶</a></h2>
+<p>On the managed device, open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows).</p>
+<p>Run the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application on the command line with no arguments to see supported commands:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc 
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc
+</code></pre></div>
+</div>
+</input></input></div>
 <table>
 <thead>
 <tr>
-<th>Argument      </th>
-<th>Name         </th>
-<th>Description</th>
+<th>COMMAND      </th>
+<th>DESCRIPTION         </th>
+<th>EXAMPLE</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-c, --cmd &lt;command&gt;</td>
-<td>Server Command</td>
-<td>Activate or Deactivate command for AMT device. See example commands below.</td>
+<td>activate</td>
+<td>Activate this device with a specified profile</td>
+<td>./rpc activate -u wss://server/activate --profile profilename</td>
 </tr>
 <tr>
-<td>-u, --url &lt;url&gt;</td>
-<td>Websocket Server</td>
-<td>Address and Port of the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server, wss://localhost:8080. By default, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> runs on port 8080.</td>
+<td>deactivate</td>
+<td>Deactivate this device. You will be prompted for the AMT password.</td>
+<td>./rpc deactivate -u wss://server/activate</td>
+</tr>
+<tr>
+<td>maintenance</td>
+<td>Synchronize the managed device's AMT clock with operating system time</td>
+<td>./rpc maintenance -c -u wss://server/activate -n</td>
+</tr>
+<tr>
+<td>amtinfo</td>
+<td>Display AMT status and configuration</td>
+<td>./rpc amtinfo</td>
+</tr>
+<tr>
+<td>version</td>
+<td>Display the current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Protocol version</td>
+<td>./rpc version</td>
 </tr>
 </tbody>
 </table>
-<h5 id="rpc-activatedeactivate-examples"><a name="RPCexamples"></a><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples<a class="headerlink" href="#rpc-activatedeactivate-examples" title="Permanent link">¶</a></h5>
-<p>Activate a Device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd <span class="s2">"activate --profile profile1"</span>
-</code></pre></div></p>
-<p>Deactivate a Device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"deactivate --password P@ssw0rd"</span>
-</code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <strong>--password</strong> nested argument uses the AMT password set at the time of provisioning of the device based on the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>. This password should be able to be retrieved from Vault, if unknown.</p>
+<h2 id="list-command-options">List Command Options<a class="headerlink" href="#list-command-options" title="Permanent link">¶</a></h2>
+<p>Run the application with a command to see available options for the command:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc <span class="o">[</span>COMMANDS<span class="o">][</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
 </div>
-<p>Deactivate a Device if Unknown by <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (or Vault):
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c <span class="s2">"deactivate --password [AMT-Password] -f"</span>
-</code></pre></div></p>
-<p><br/></p>
-<h4 id="optional">Optional <a name="optional"></a><a class="headerlink" href="#optional" title="Permanent link">¶</a></h4>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc [COMMANDS][OPTIONS]
+</code></pre></div>
+</div>
+</input></input></div>
+<h3 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">¶</a></h3>
+<p>Activate this device with a specified profile: </p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc activate -u wss://server/activate --profile profilename
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio"><label for="__tabbed_3_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc activate -u wss://server/activate --profile profilename
+</code></pre></div>
+</div>
+</input></input></div>
 <table>
 <thead>
 <tr>
-<th>Argument    </th>
-<th>Name      </th>
-<th>Description</th>
+<th>OPTION      </th>
+<th>DESCRIPTION</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-d, --dns &lt;dns&gt;</td>
-<td>DNS Suffix Override</td>
+<td>-d string</td>
+<td><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> override</td>
+</tr>
+<tr>
+<td>-h string</td>
+<td>Hostname override</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>Skip WebSocket server certificate verification</td>
+</tr>
+<tr>
+<td>-p string</td>
+<td>Proxy address and port</td>
+</tr>
+<tr>
+<td>--profile string</td>
+<td>name of the profile to use</td>
+</tr>
+<tr>
+<td>-u string</td>
+<td>WebSocket address of server to activate against</td>
+</tr>
+<tr>
+<td>-v string</td>
+<td>Verbose output</td>
+</tr>
+</tbody>
+</table>
+<p>For more information, see <a href="../../../GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
+<h3 id="deactivate">deactivate<a class="headerlink" href="#deactivate" title="Permanent link">¶</a></h3>
+<p>Deactivate this device:</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc deactivate -u wss://server/activate
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio"><label for="__tabbed_4_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc deactivate -u wss://server/activate
+</code></pre></div>
+</div>
+</input></input></div>
+<table>
+<thead>
+<tr>
+<th>OPTION      </th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> override</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>Skip WebSocket server certificate verification</td>
+</tr>
+<tr>
+<td>-p string</td>
+<td>Proxy address and port</td>
+</tr>
+<tr>
+<td>-password string</td>
+<td>AMT password</td>
+</tr>
+<tr>
+<td>-u string</td>
+<td>WebSocket address of server to activate against</td>
+</tr>
+<tr>
+<td>-v string</td>
+<td>Verbose output</td>
+</tr>
+</tbody>
+</table>
+<p>For more information, see <a href="../../../GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
+<h3 id="maintenance">maintenance<a class="headerlink" href="#maintenance" title="Permanent link">¶</a></h3>
+<p>Synchronize the managed device's AMT clock with operating system time: </p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><label for="__tabbed_5_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance -u wss://server/activate
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio"><label for="__tabbed_5_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc maintenance -u wss://server/activate
+</code></pre></div>
+</div>
+</input></input></div>
+<table>
+<thead>
+<tr>
+<th>OPTION      </th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>Synchronize the AMT clock with the operating system time</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>Skip WebSocket server certificate verification</td>
+</tr>
+<tr>
+<td>-p string</td>
+<td>Proxy address and port</td>
+</tr>
+<tr>
+<td>-password string</td>
+<td>AMT password</td>
+</tr>
+<tr>
+<td>-u string</td>
+<td>WebSocket address of server to activate against</td>
+</tr>
+<tr>
+<td>-v string</td>
+<td>Verbose output</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amtinfo">amtinfo<a class="headerlink" href="#amtinfo" title="Permanent link">¶</a></h3>
+<p>Display AMT status and configuration</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><label for="__tabbed_6_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc amtinfo
+</code></pre></div>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio"><label for="__tabbed_6_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc amtinfo
+</code></pre></div>
+</div>
+</input></input></div>
+<table>
+<thead>
+<tr>
+<th>AMT INFO       </th>
+<th>DESCRIPTION         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>Intel AMT version.</td>
+</tr>
+<tr>
+<td>Build Number</td>
+<td>Intel AMT Build Number.</td>
+</tr>
+<tr>
+<td>SKU</td>
 <td></td>
 </tr>
 <tr>
-<td>-n, --nocertcheck</td>
-<td>Certificate Verification</td>
-<td>Disable certificate verification. Allows for the use of self-signed certificates during development testing. Not valid for production. Otherwise, a <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Certificate from a trusted Certificate Authority provider is required.</td>
+<td>UUID</td>
+<td></td>
 </tr>
 <tr>
-<td>-p, --proxy &lt;addr&gt;</td>
-<td>Proxy Address and Port</td>
-<td>Allow for connection through a network proxy, http://proxy.com:1000</td>
+<td>Control Mode</td>
+<td>Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in <strong>client control mode</strong> (c) activated in <strong>admin control mode</strong></td>
 </tr>
 <tr>
-<td>-v, --verbose</td>
-<td>Verbose Output</td>
-<td>Display WSMan communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> when executing <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></td>
+<td>DNS Suffix</td>
+<td></td>
+</tr>
+<tr>
+<td>DNS Suffix (OS)</td>
+<td></td>
+</tr>
+<tr>
+<td>Hostname (OS)</td>
+<td></td>
+</tr>
+<tr>
+<td>RAS Network</td>
+<td></td>
+</tr>
+<tr>
+<td>RAS Remote Status</td>
+<td></td>
+</tr>
+<tr>
+<td>RAS Trigger</td>
+<td></td>
+</tr>
+<tr>
+<td>RAS <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Hostname</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">¶</a></h5>
-<p>Override DNS detection and Activate device:
-<div class="highlight"><pre><span></span><code>rpc --url wss://localhost/activate --cmd "activate --profile profile1" --dns corp.com
-</code></pre></div></p>
-<p>Connect through proxy and Deactivate device:
-<div class="highlight"><pre><span></span><code>rpc -u wss://localhost/activate -c "deactivate --password P@ssw0rd" -p http://proxy.com:1000
-</code></pre></div></p>
-<p><br/></p>
-<h4 id="informational">Informational<a class="headerlink" href="#informational" title="Permanent link">¶</a></h4>
+<p><strong>---Wired Adapter---</strong></p>
 <table>
 <thead>
 <tr>
-<th>Argument</th>
-<th>Name</th>
-<th>Description</th>
+<th>WIRED ADAPTER       </th>
+<th>DESCRIPTION         </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>--help</td>
-<td>Help text</td>
-<td>Display help menu in-line</td>
+<td>DHCP Enabled</td>
+<td></td>
 </tr>
 <tr>
-<td>--version</td>
-<td>Version</td>
-<td>Current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></td>
+<td>DHCP Mode</td>
+<td></td>
 </tr>
 <tr>
-<td>--amtinfo &lt;item&gt;</td>
-<td>AMT info</td>
-<td>View available information<br/><br/><strong>Possible &lt;item&gt; Parameters:</strong><br/>all - View all items<br/>ver - BIOS version<br/>bld - Build number<br/>sku - Product SKU<br/>uuid - <a href="../../guids/">Device's Unique Identifier</a><br/>mode - Current Control Mode, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> or <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr><br/>dns - Domain Name Suffix from AMT and from OS<br/>fqdn - Fully aualified domain name and device hostname from OS<br/>cert - Certificate hashes<br/>ras - Remote access status<br/>lan - LAN settings, i.e. DHCP Enabled, Link Status, and IP/MAC Addresses</td>
+<td>Link Status</td>
+<td></td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td></td>
+</tr>
+<tr>
+<td>MAC Address</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h5 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">¶</a></h5>
-<p>View All Information Items:
-<div class="highlight"><pre><span></span><code>rpc --amtinfo all
-</code></pre></div></p>
-<p>Find Current Device's GUID:
-<div class="highlight"><pre><span></span><code>rpc --amtinfo uuid
-</code></pre></div></p>
+<p><strong>---Wireless Adapter---</strong></p>
+<table>
+<thead>
+<tr>
+<th>WIRED ADAPTER       </th>
+<th>DESCRIPTION         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DHCP Enabled</td>
+<td></td>
+</tr>
+<tr>
+<td>DHCP Mode</td>
+<td></td>
+</tr>
+<tr>
+<td>Link Status</td>
+<td></td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td></td>
+</tr>
+<tr>
+<td>MAC Address</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For more information, see <a href="../../../Tutorials/createWiFiConfig/">Wireless Activation</a>.</p>
+<h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">¶</a></h3>
+<p>Display the current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Protocol version:</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><label for="__tabbed_7_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc version
+</code></pre></div>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio"><label for="__tabbed_7_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rpc version
+</code></pre></div>
+</div>
+</input></input></div>
 </article>
 </div>
 </div>
