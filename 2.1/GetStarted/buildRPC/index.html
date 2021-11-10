@@ -628,7 +628,7 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Reference/RPC/buildRPC_Manual/">
-        Build &amp; Run RPC (Manual)
+        Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
@@ -804,7 +804,7 @@
 <p>However, it is a <strong>Beta version release.</strong> </p>
 <p>If you are unable to complete the installation below or you simply require an older release of the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, see <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> 2.0:</p>
 <ul>
-<li><a href="https://open-amt-cloud-toolkit.github.io/docs/2.0/GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> (Legacy)</a></li>
+<li><a href="https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> (Legacy)</a></li>
 <li><a href="https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Commands (Legacy)</a></li>
 </ul>
 </p>
@@ -863,7 +863,7 @@
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
-   <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/rpc-go
+   <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/2.0.0
 </code></pre></div></p>
 </li>
 <li>
@@ -890,11 +890,23 @@
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio"><label for="__tabbed_2_3">Docker (On Linux Host Only)</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker build -f <span class="s2">"Dockerfile"</span> -t rpc-go:latest .
 </code></pre></div>
-</div>
-</input></input></input></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The image created with the Docker instruction above is only suitable for Docker on a Linux host.</p>
+</div>
+</div>
+</input></input></input></div>
+<div class="admonition warning">
+<p class="admonition-title"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Go Build Warnings</p>
+<p>You may see the <code>go build</code> command output a series of warnings similar to below. <strong>The binary still successfully built</strong>. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.</p>
+<div class="highlight"><pre><span></span><code>$ go build -o rpc ./cmd
+# rpc/internal/amt
+In file included from internal/amt/commands.go:14:
+internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
+internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
+  129 |  ILibSpawnNormalThread((voidfp)(&amp;LME_Thread), module);
+  ...
+</code></pre></div>
 </div>
 </li>
 <li>
