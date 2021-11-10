@@ -482,13 +482,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#5-azure-storage-account-key">
-    5. Azure Storage Account Key
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#6-database-connection-strings">
-    6. Database connection strings
+<a class="md-nav__link" href="#5-database-connection-strings">
+    5. Database connection strings
   </a>
 </li>
 </ul>
@@ -503,11 +498,6 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#edit-valuesyaml">
     Edit values.yaml
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#apply-volumes">
-    Apply Volumes
   </a>
 </li>
 </ul>
@@ -1019,34 +1009,7 @@
 </div>
 </li>
 </ul>
-<h3 id="5-azure-storage-account-key">5. Azure Storage Account Key<a class="headerlink" href="#5-azure-storage-account-key" title="Permanent link">¶</a></h3>
-<p>Currently, we leverage Azure Storage Accounts for persistent storage of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> certificates that can be shared by multiple instances of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. This creates the secret to access the provisioned Azure Storage account for use in a persistent volume (PV).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This will likely change in a future release</p>
-</div>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=&lt;your-cluster-name&gt;stg --from-literal=azurestorageaccountkey=&lt;your-storage-key&gt;
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-cluster-name&gt;</strong> is the cluster name chosen in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</li>
-<li>
-<p><strong>&lt;your-storage-key&gt;</strong> is one of the generated access keys of the storage account.</p>
-<div class="admonition important">
-<p class="admonition-title">Important - Finding Access Keys</p>
-<p>An access key can be found by either:</p>
-<ul>
-<li>
-<p>Run <code>az storage account keys list --account-name &lt;your-cluster-name&gt;stg</code> to view access keys.</p>
-</li>
-<li>
-<p>Navigate to <code>Home &gt; Storage accounts &gt; cluster-name &gt; Access keys</code> using Microsoft Azure via online.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-<h3 id="6-database-connection-strings">6. Database connection strings<a class="headerlink" href="#6-database-connection-strings" title="Permanent link">¶</a></h3>
+<h3 id="5-database-connection-strings">5. Database connection strings<a class="headerlink" href="#5-database-connection-strings" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
@@ -1112,17 +1075,10 @@
 <td>FQDN for your cluster</td>
 <td>For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</td>
 </tr>
-<tr>
-<td>storageAccessMode</td>
-<td>ReadWriteMany</td>
-<td>Must set to <code>ReadWriteMany</code> to scale. The default access mode for storage (<code>storageAccessMode</code>) is set to <code>ReadWriteOnce</code>. This only works with a one node cluster.</td>
-</tr>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
 <span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
-</span>    <span class="c1"># storageClassName: ""</span>
-<span class="hll">    <span class="nt">storageAccessMode</span><span class="p">:</span> <span class="s">"ReadWriteOnce"</span> <span class="c1">#Change to ReadWriteMany</span>
 </span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
     <span class="nt">logLevel</span><span class="p">:</span> <span class="s">"silly"</span>
     <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
@@ -1130,46 +1086,6 @@
 </li>
 <li>
 <p>Save and close the file.</p>
-</li>
-</ol>
-<h3 id="apply-volumes">Apply Volumes<a class="headerlink" href="#apply-volumes" title="Permanent link">¶</a></h3>
-<ol>
-<li>
-<p>Provide a <code>PersistentVolume</code> that can match the <code>PersisentVolumeClaim</code> for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For an <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> deployment, you can use the following example YAML. It is provided in <code>./kubernetes/charts/volumes/azure.yaml</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Changing storageAccessMode will update the PersistentVolumeClaim to request <code>ReadWriteMany</code>, this means you'll need to provide a <code>PersistentVolume</code> that can match that claim. The Azure deployment performed in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a> creates a Storage Account that can be used. Use the following yaml to provision the volume for the cluster.</p>
-</div>
-<div class="admonition example">
-<p class="admonition-title">Provided azure.yaml Example</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-certs</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">capacity</span><span class="p">:</span>
-    <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1Gi</span>
-  <span class="nt">accessModes</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span>
-  <span class="nt">azureFile</span><span class="p">:</span>
-    <span class="nt">secretName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">azure-secret</span>
-    <span class="nt">secretNamespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
-    <span class="nt">shareName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-certs</span>
-    <span class="nt">readOnly</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">mountOptions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dir_mode=0755</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file_mode=0755</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">uid=1000</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gid=1000</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mfsymlinks</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nobrl</span>
-</code></pre></div>
-</div>
-</li>
-<li>
-<p>Apply it to your cluster.
-    <div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/volumes/azure.yaml
-</code></pre></div></p>
 </li>
 </ol>
 <h2 id="create-databases-and-schema">Create Databases and Schema<a class="headerlink" href="#create-databases-and-schema" title="Permanent link">¶</a></h2>
