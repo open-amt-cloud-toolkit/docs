@@ -1,239 +1,172 @@
 --8<-- "References/abbreviations.md"
 
-In addition to using GitHub Actions to obtain a binary, the RPC binary can also be manually built. The steps below walk through how to build RPC on Windows® 10, Ubuntu* (18.04 or 20.04), and CentOS 7/8.
+Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device and communicates with the Remote Provisioning Server (RPS) microservice on the development system. The RPC and RPS configure and activate Intel® AMT on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS. See Figure 1.
 
-### Required Software
+!!! Warning "Beta Version Instructions Ahead"
+        This version of the RPC application contains functional enhancements. See [Release Notes](../../../release-notes).
 
-- [git](https://git-scm.com/downloads)
-
-Additionally, if using Windows® 10:
-
-- [Microsoft Visual Studio*](https://visualstudio.microsoft.com/): 2019 or newer version of Visual Studio Community/Professional
-    - Make sure to install the **Desktop development with C++** package at time of installation or via the 'Get tools and extensions' menu within Microsoft Visual Studio*.
-
-<br>
-
-The steps below assume the following directory structure where rpc is the clone of the [rpc repository](https://github.com/open-amt-cloud-toolkit/rpc), vcpkg is a clone of the VCPKG tool source and build is the RPC build directory. Both vcpkg and build directories will be created in later steps.
-
-```
-\rpc
-  |__vcpkg
-  |__build
-```
-
-
-### Clone the Repository
-
-1. On your development system, navigate to a directory of your choice to clone and build RPC.
-
-2. Clone the RPC repository.
-
-    ``` bash
-    git clone --branch v{{ repoVersion.rpc_c }} https://github.com/open-amt-cloud-toolkit/rpc.git && cd rpc
-    ```
-
-### Install Prerequisites and Build RPC
-
-=== "Windows"
-    Open 'x64 Native Tools Command Prompt for VS 20XX' on your development system.  **This is NOT a regular Windows Command Prompt.**  This specific tool is used for compiling the RPC executable.
-    
-    ![NTCP](../../assets/images/x64NativeToolsCP.png)
-
-    **Build VCPKG and C++ REST SDK**
-
-
-    1. In the `rpc` directory, clone the VCPKG repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it [here](https://github.com/microsoft/vcpkg).
-    ``` bash
-    git clone --branch 2020.11-1 https://github.com/microsoft/vcpkg.git && cd vcpkg
-    ```
-
-    2. Build vcpkg.exe using the following command.
-    ``` bash
-    bootstrap-vcpkg.bat
-    ```
+        However, it is a **Beta version release.** 
         
-    3. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-    ``` bash
-    vcpkg install cpprestsdk[websockets]:x64-windows-static
-    ```
+        If you are unable to complete the installation below or you simply require an older release of the RPC, see Open AMT Cloud Toolkit 2.0:
 
-    **Build RPC**
+        * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/)
+        * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
 
-    1. Return to the `rpc` directory and create a new `build` directory.
-    ``` bash
-    cd .. && mkdir build && cd build
-    ```
-    
-    2. Generate the CMake config.
-    ``` bash
-    cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake ..
-    ```
+!!! tip "Production Environment"
+        In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
-    3. Build the RPC executable.
-    ```bash
-    cmake --build . --config Release
-    ```
-    
-        !!! note
-            RPC can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-            ```
-            cmake --build . --config Debug
-            ```
+[![RPC](../../assets/images/RPC_Overview.png)](../../assets/images/RPC_Overview.png)
+**Figure 1: RPC Configuration** 
 
-    4. Change to `Release` directory.
-    ``` bash
-    cd Release
-    ```
+!!! note "Figure 1 Details"
+    The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../../GetStarted/createCIRAConfig.md) or [Create an AMT Profile](../../GetStarted/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
+
+## Prerequisites
+**Before installing and building the RPC, install:**
+
+* Go* Programming Language
+* tdm-gcc (On Windows* only)
+
+    === "Linux"
+         **To install prerequisites on Linux*:**
+
+         1. See Go's [Download and Install](https://golang.org/doc/install).
+         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
+         3. Extract the archive in the location indicated in Go's installation instructions.
+         4. Follow the remaining instructions. 
+
+    === "Windows"
+         **To install prerequisites on Windows:**
+
+         1. See Go's [Download and Install](https://golang.org/doc/install).
+         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
+         3. Run the downloaded file and follow prompts to install. 
+         4. See [tdm-gcc](https://jmeubank.github.io/tdm-gcc/).
+         5. Choose a version and download the .exe. 
+         6. Run the downloaded file and follow prompts to install. For a new installation, choose **Create** and accept all default installation options.
 
 
-=== "Ubuntu/CentOS 8"
-    The following steps are for Ubuntu 18.04, Ubuntu 20.04, or CentOS8.
+**To verify Go and tdm-gcc installations:**
 
-    **Build VCPKG and C++ REST SDK**
+1. Open a Terminal or Command Prompt: 
+   ``` bash
+   go version
+   ```
+   For Windows only: 
+   ``` bash
+   gcc -v
+   ```
+2. Confirm the version numbers.
 
-    1. To install the required dependencies; enter the following command.
+## Get the RPC
 
-        === "Ubuntu"
+**To clone the repository:**
+
+1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
+   ``` bash
+   git clone https://github.com/open-amt-cloud-toolkit/{{ repoVersion.rpc_go }}
+   ```
+  
+2. Change to the cloned `rpc-go` directory:
+   ``` bash
+   cd rpc-go
+   ```
+
+## Build the RPC
+
+**To build the executable:**
+
+1. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
+
+    === "Linux"
         ``` bash
-        sudo apt install git cmake build-essential curl zip unzip tar pkg-config
+        sudo apt install build-essential
         ```
-    
-        === "CentOS8"
         ``` bash
-        sudo yum install cmake
+        go build -o rpc ./cmd
+        ```
+    === "Windows"
+        ``` bash
+        go build -o rpc.exe ./cmd
+        ```
+    === "Docker (On Linux Host Only)"
+        ``` bash
+        docker build -f "Dockerfile" -t rpc-go:latest .
+        ```
+        !!! note
+            The image created with the Docker instruction above is only suitable for Docker on a Linux host.
+
+    !!! warning "RPC Go Build Warnings"
+        You may see the `go build` command output a series of warnings similar to below. **The binary still successfully built**. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.
+
+        ```
+        $ go build -o rpc ./cmd
+        # rpc/internal/amt
+        In file included from internal/amt/commands.go:14:
+        internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
+        internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
+          129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
+          ...
+        ```    
+
+2. Confirm a successful build:
+
+    === "Linux"
+        ``` bash
+        sudo ./rpc version
+        ```
+    === "Windows"
+        ```
+        .\rpc version
+        ```        
+    === "Docker (On Linux Host Only)"
+        ``` bash
+        sudo docker run --device=/dev/mei0 rpc-go:latest version
         ```
 
-    2. In the `rpc` directory, clone the Vcpkg repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it [here](https://github.com/microsoft/vcpkg).
-    ``` bash
-    git clone --branch 2020.11-1 https://github.com/microsoft/vcpkg.git && cd vcpkg
-    ```
+## Run RPC to Activate and Connect the AMT Device
 
-    3. Build vcpkg.exe using the following command.
-    ``` bash
-    ./bootstrap-vcpkg.sh
-    ```
-        
-    4. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-    ``` bash
-    ./vcpkg install cpprestsdk[websockets]
-    ```
+The toolkit provides a reference implementation called the Sample Web UI to manage the device. After running device activation instructions below, your device will be listed on the **Devices** tab in the Sample Web UI. 
 
-    **Build RPC**
-
-    1. Return to the `rpc` directory and create a new 'build' directory.
-    ``` bash
-    cd .. && mkdir build && cd build
-    ```
-    
-    2. Generate the CMake config.
-    ``` bash
-    cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release ..
-    ```
-
-        !!! note
-            RPC can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-            ```
-            cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug ..
-            ```
-
-    3. Build the RPC executable.
-    ```bash
-    cmake --build .
-    ```
-
-=== "CentOS 7"
-    !!! important
-        **All commands should be executed in the same Terminal. The "export PATH=..." (for CMake and Git), and "scl enable devtoolset-7 bash" (for GCC) are temporary changes which only affect the current Terminal session.**
-
-    **Install Dependencies**
-
-    1. Download CMake. CMake 3.10.2 is recommended and can be downloaded from [here](https://cmake.org/files/v3.10/). Other CMake binary versions are available [here](https://cmake.org/download/).
-    ``` bash
-    ./cmake-3.10.2-Linux-x86_64.sh
-    export PATH=/home/user/Downloads/cmake-3.10.2-Linux-x86_64/bin:$PATH
-    ```
-
-    2. Update GCC toolchain.
-    ```
-    sudo yum install centos-release-scl
-    sudo yum install devtoolset-7
-    scl enable devtoolset-7 bash
-    ```
-
-    3. Build Git source control system.
-    ``` bash
-    sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-develperl-CPAN perl-devel
-    git clone https://github.com/git/git.git
-    make configure
-    make
-    export PATH=/home/user/Downloads/git:$PATH
-    ```
-
-    **Build VCPKG and C++ REST SDK**
-        
-    1. In the `rpc` directory, clone the VCPKG repository. Vcpkg is a C/C++ Library Manager for Windows that was created by Microsoft.  Find out more about it [here](https://github.com/microsoft/vcpkg).
-    ``` bash
-    git clone --branch 2020.11-1 https://github.com/microsoft/vcpkg.git && cd vcpkg
-    ```
-
-    3. Build vcpkg.exe using the following command.
-    ``` bash
-    ./bootstrap-vcpkg.sh
-    ```
-        
-    4. Install C++ REST SDK. This can take anywhere from 8 - 15 minutes depending on download speeds and installation times.
-    ``` bash
-    ./vcpkg install cpprestsdk[websockets]
-    ```
-
-    **Build RPC**
-
-    1. Return to the `rpc` directory and create a new 'build' directory.
-    ``` bash
-    cd .. && mkdir build && cd build
-    ```
-    
-    2. Generate the CMake config
-    ``` bash
-    cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release -DNO_SELECT=ON ..
-    ```
-
-        !!! note
-            RPC can also be built in a non-production debug mode rather than release using the following command. The debug mode includes debug symbols.
-            ```
-            cmake -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Debug -DNO_SELECT=ON ..
-            ```
-
-    3. Build the RPC executable
-    ```bash
-    cmake --build .
-    ```
-
-### Run RPC
-
-For additional information on possible arguments when invoking RPC, see [Command Examples](commandsRPC.md).
-
-The following example command shows how to activate and configure an Intel® AMT device using a pre-defined profile on your local network.
-
+**To run the application and connect the managed device:**
 
 1. After building the RPC, copy the executable to the managed device.
-2. Run the RPC.
+   
+2. On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
 
-=== "Windows"
-    !!! important
-        On a Windows® 10 system, the Command Prompt must be run as Adminstrator.
-    ```
-    rpc --url wss://localhost/activate --nocertcheck --cmd "-t activate --profile profile1"
-    ```
+3. Navigate to the directory containing the RPC application. 
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc --url wss://localhost/activate --nocertcheck --cmd "-t activate --profile profile1"
-    ```
+4. Running RPC with the **activate** command configures or *provisions* Intel® AMT. It will take 1-2 minutes to finish provisioning the device. 
+     In the instruction below:
 
-!!! note
-    The **--nocertcheck** flag allows for the use of self-signed certificates for development purposes. Find more information [here](commandsRPC.md#optional)
+    - Replace **[Development-IP-Address]** with the development system's IP address, where the MPS and RPS servers are running.
+    - Replace **[profile-name]** with your created profile in the Sample Web UI. The RPC application command line parameters are case-sensitive.
 
-Example Success Output:
+    === "Linux"
+        ``` bash
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        ```
+    === "Windows"
+        ```
+        .\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        ```        
+    === "Docker (On Linux Host Only)"
+        ``` bash
+        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        ```
 
-[![RPC Success](../../assets/images/RPC_Success_C.png)](../../assets/images/RPC_Success_C.png)
+    !!! note "Note - RPC Arguments"
+        Find out more information about the [flag and other arguments](./commandsRPC.md).
+
+
+!!! success
+    Example Output after Activating and Configuring a device into ACM:
+
+    [![RPC Success](../../assets/images/RPC_Success.png)](../../assets/images/RPC_Success.png)
+
+
+    !!! error "Troubleshooting"
+        Run into an issue? Try these [troubleshooting steps](../troubleshooting.md).
+         
+
+
