@@ -8,7 +8,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         
         If you are unable to complete the installation below or you simply require an older release of the RPC, see Open AMT Cloud Toolkit 2.0:
 
-        * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/GetStarted/buildRPC/)
+        * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/)
         * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
 
 !!! tip "Production Environment"
@@ -63,7 +63,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
    ``` bash
-   git clone https://github.com/open-amt-cloud-toolkit/rpc-go
+   git clone https://github.com/open-amt-cloud-toolkit/repoVersion.rpc_go
    ```
   
 2. Change to the cloned `rpc-go` directory:
@@ -92,9 +92,21 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ``` bash
         docker build -f "Dockerfile" -t rpc-go:latest .
         ```
-    !!! note
-        The image created with the Docker instruction above is only suitable for Docker on a Linux host.
+        !!! note
+            The image created with the Docker instruction above is only suitable for Docker on a Linux host.
 
+    !!! warning "RPC Go Build Warnings"
+        You may see the `go build` command output a series of warnings similar to below. **The binary still successfully built**. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.
+
+        ```
+        $ go build -o rpc ./cmd
+        # rpc/internal/amt
+        In file included from internal/amt/commands.go:14:
+        internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
+        internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
+          129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
+          ...
+        ```
 
 2. Confirm a successful build:
 
@@ -103,7 +115,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         sudo ./rpc version
         ```
     === "Windows"
-        ``` bash
+        ```
         .\rpc version
         ```        
     === "Docker (On Linux Host Only)"

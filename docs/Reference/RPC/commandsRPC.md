@@ -13,7 +13,7 @@ Run the RPC application on the command line with no arguments to see supported c
     ```
 === "Windows"
     ```
-    rpc
+    .\rpc
     ```
 
 | COMMAND&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | EXAMPLE |
@@ -34,7 +34,7 @@ Run the application with a command to see available options for the command:
     ```
 === "Windows"
     ```
-    rpc [COMMANDS][OPTIONS]
+    .\rpc [COMMANDS][OPTIONS]
     ```
 
 ### activate
@@ -46,7 +46,7 @@ Activate this device with a specified profile:
     ```
 === "Windows"
     ```
-    rpc activate -u wss://server/activate --profile profilename
+    .\rpc activate -u wss://server/activate --profile profilename
     ```
 
 | OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
@@ -71,7 +71,7 @@ Deactivate this device:
     ```
 === "Windows"
     ```
-    rpc deactivate -u wss://server/activate
+    .\rpc deactivate -u wss://server/activate
     ```
 
 | OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
@@ -95,7 +95,7 @@ Synchronize the managed device's AMT clock with operating system time:
     ```
 === "Windows"
     ```
-    rpc maintenance -u wss://server/activate
+    .\rpc maintenance -u wss://server/activate
     ```
 
 | OPTION&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION |
@@ -117,7 +117,7 @@ Synchronize the managed device's AMT clock with operating system time:
     ```
 === "Windows"
     ```
-    rpc amtinfo
+    .\rpc amtinfo
     ```
 
 | AMT INFO &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
@@ -125,35 +125,26 @@ Synchronize the managed device's AMT clock with operating system time:
 | Version | Intel AMT version.  | 
 | Build Number | Intel AMT Build Number. | 
 | SKU | | 
-| UUID |  | 
+| UUID | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path. | 
 | Control Mode |  Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in **client control mode** (c) activated in **admin control mode** | 
-|DNS Suffix | |
+|DNS Suffix | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation. |
 |DNS Suffix (OS)| |
-|Hostname (OS) | |
+|Hostname (OS) | Device's hostname as set in the Operating System. |
 |RAS Network | |
-|RAS Remote Status | |
-|RAS Trigger| |
-|RAS MPS Hostname | |
+|RAS Remote Status | Unconnected or connected. State of connection to a management server. |
+|RAS Trigger| User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
+|RAS MPS Hostname | IP Address or FQDN of the MPS server. |
 
-**---Wired Adapter---**
+**---Wired/Wireless Adapters---**
 
-| WIRED ADAPTER &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
+| WIRED/WIRELESS ADAPTER &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
 | -------------------------- | ---------------------- |
-| DHCP Enabled |   | 
+| DHCP Enabled | True/False. Whether or not the network is using DHCP or Static IPs.  | 
 | DHCP Mode | | 
-| Link Status | | 
-| IP Address |  | 
-| MAC Address|   | 
+| Link Status | Up/Down. Shows whether or not this adapter is being used by Intel AMT. | 
+| IP Address | If using CIRA or the device is unactivated, this field will show 0.0.0.0 | 
+| MAC Address| Device's MAC Address  | 
 
-**---Wireless Adapter---**
-
-| WIRED ADAPTER &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | DESCRIPTION &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | 
-| -------------------------- | ---------------------- |
-| DHCP Enabled | | 
-| DHCP Mode |  | 
-| Link Status | | 
-| IP Address |  | 
-| MAC Address|   | 
 
 For more information, see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
 
@@ -167,5 +158,5 @@ Display the current version of RPC and the RPC Protocol version:
     ```
 === "Windows"
     ```
-    rpc version
+    .\rpc version
     ```
