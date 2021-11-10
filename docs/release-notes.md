@@ -1,6 +1,5 @@
 --8<-- "References/abbreviations.md"
 # Release Notes
-Please see the [release announcements](announcements.md) for additional information regarding this release.
 
 ## Feature Changes for 2.1
 This section outlines key features changes between versions 2.0 and 2.1 for Open AMT Cloud Toolkit.
