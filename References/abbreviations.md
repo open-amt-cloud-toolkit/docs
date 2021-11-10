@@ -42,6 +42,8 @@
 
 *[SOL]: Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.
 
+*[TLS]: Transport Layer Security - A protocol for encrypting network traffic.
+
 *[UI Toolkit]: UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console. 
 
 *[Webpack]: A module bundler that packages various assets and files (e.g., CSS, JS, JPG, etc.).

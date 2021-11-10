@@ -4,6 +4,42 @@
 
  **Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® Platforms.
 
+<div class="home-nav-row">
+  <div class="home-nav-column">
+    <div class="home-nav-card">
+        <h4><img class="home-nav-icons" src="./assets/images/intel/blazing-performance.png"><b>Get Started</b></h4>
+        <p>Jump in to the Open AMT Cloud Toolkit by deploying locally with Docker containers.</p>
+        <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.rapidVersion }}/GetStarted/prerequisites/">Get Started Now</a>
+    </div>
+  </div>
+  <div class="home-nav-column">
+    <div class="home-nav-card">
+        <h4><img class="home-nav-icons" src="./assets/images/intel/document.png"><b>LTS Release</b></h4>
+        <p>Not looking for the current rapid release? See the documentation for our Long-Term Support release.</p>
+        <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }}">View LTS Documentation</a>
+    </div>
+  </div>
+  <div class="home-nav-column">
+    <div class="home-nav-card">
+        <h4><img class="home-nav-icons" src="./assets/images/intel/solutions.png"><b>Tutorials</b></h4>
+        <p>Get hands-on with tutorials for topics like the UI-Toolkit, APIs, and Scaling (Docker, Kubernetes, and more).</p>
+        <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.rapidVersion }}/Tutorials/uitoolkitReact/">Explore Tutorials</a>
+    </div>
+  </div>
+  <div class="home-nav-column">
+    <div class="home-nav-card">
+        <h4><img class="home-nav-icons" src="./assets/images/intel/edge-compute.png"><b>APIs</b></h4>
+        <p>Check out the supported APIs for both the Management Presence Server (MPS) and the Remote Provisioning Server (RPS).</p>
+        <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.rapidVersion }}/APIs/indexMPS/">See APIs</a>
+    </div>
+  </div>
+</div>
+<p class="divider"></p>
+
+The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Management for remote devices. No matter if the device is powered off or the operating system has crashed, issue power actions and take over keyboard, video, mouse (KVM) control.
+
+Reduce the need for costly on-site IT, minimize the downtime of key, business-critical devices, and more. [Read more about the Intel vPro® Platform](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html).
+
 ![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
 
  **Figure 1: Open AMT Cloud Toolkit features OOB Management.**
@@ -54,6 +90,6 @@ Estimated completion time: **Approximately 30 minutes**
 
 For additional information about Intel® AMT, see the following links:
 
-- [Intel vPro® Platform Overview](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
+- [Intel vPro® Platform Overview](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html)
 - [Video Link](https://www.intel.com/content/www/us/en/support/articles/000026592/technologies.html)
 - [Detailed Setup document](https://software.intel.com/en-us/articles/getting-started-with-intel-active-management-technology-amt)

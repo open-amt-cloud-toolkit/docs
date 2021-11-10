@@ -78,9 +78,10 @@ nav:
           - Configuration: Reference/RPS/configuration.md
           - Network Profiles: Reference/RPS/networkConfig.md
           - Security Information: Reference/RPS/securityRPS.md
+          - Create Profile with TLS: Reference/createProfileTLSConfig.md
       - Remote Provisioning Client:
           - Build & Run RPC (Manual): Reference/RPC/buildRPC_Manual.md
-          - Command Examples: Reference/RPC/commandsRPC.md
+          - RPC CLI: Reference/RPC/commandsRPC.md
       - UI Toolkit:
           - Controls:
               - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md
@@ -118,6 +119,7 @@ markdown_extensions:
 extra_css:
   - assets\stylesheets\branding.css
   - assets\stylesheets\mermaid.css
+  - assets\stylesheets\index.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
@@ -128,16 +130,18 @@ plugins:
 extra:
   version:
     provider: mike
-  mpsAPI:
-    version: 2.0.0
-  rpsAPI: 
-    version: 2.0.0
-  baseClone:
-    version: 2.0.1
-  rpcClone:
-    version: 2.0.0
-  uiClone:
-    version: 2.0.0
+  repoVersion:
+    mpsAPI: 2.1.0
+    rpsAPI: 2.1.0
+    oamtct: 2.1.0
+    rpc_go: 2.0.0
+    rpc_c: 2.0.0
+    ui_toolkit: 2.0.3
+    ui_toolkit_react: 2.0.2
+    ui_toolkit_angular: 2.0.2
+  docsSite:
+    rapidVersion: 2.1
+    ltsVersion: 2.0
   analytics:
     provider: google
     property: 'G-00QEDJW2TS'
