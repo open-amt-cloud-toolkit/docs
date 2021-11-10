@@ -243,41 +243,8 @@ Where:
         mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
     ```
 
-4. Uncomment and update the `storageClassName` key in the **mps** section to **ebs-sc**.
-
-    ``` yaml hl_lines="3"
-    mps:
-        commonName: ""
-        storageClassName: "ebs-sc" # Change to "ebs-sc"
-        storageAccessMode: "ReadWriteOnce"
-        replicaCount: 1
-        logLevel: "silly"
-        jwtExpiration: 1440
-    ```
-
-
 5. Save and close the file.
 
-### Apply Volumes
-
-1. Provide a `StorageClass` that can match the `PersisentVolumeClaim` for MPS. For an EKS deployment, you can use the following example YAML. It is provided in `./kubernetes/charts/volumes/aws.yaml`.
-
-    !!! example "Provided aws.yaml Example"
-
-        ``` yaml
-        kind: StorageClass
-        apiVersion: storage.k8s.io/v1
-        metadata:
-          name: ebs-sc
-        provisioner: ebs.csi.aws.com
-        volumeBindingMode: WaitForFirstConsumer
-        ```
-
-2. Apply it to your cluster.
-
-    ```
-    kubectl apply -f ./kubernetes/charts/volumes/aws.yaml
-    ```
 
 ## Deploy Open AMT Cloud Toolkit using Helm
 
@@ -360,10 +327,6 @@ Where:
     ```
     helm upgrade openamtstack ./kubernetes/charts 
     ```
-
-## Amazon EBS CSI driver
-
-1. Follow steps 1-3 for [Deploying the Amazon EBS CSI driver to an Amazon EKS cluster](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). This will enable persistent storage in the cluster.  **Stop and return before deploying the sample application. This step is unnecessary.**
 
 
 ## Verify running pods
