@@ -1,6 +1,5 @@
 --8<-- "References/abbreviations.md"
 
-### Introduction
 This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: 
 
 - All images are built and tested with docker-compose. To learn more about building the images with docker-compose, refer to [**Express Setup**](../../GetStarted/setup.md). 
@@ -11,7 +10,20 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 !!! important
     Not for production use. 
 
-### Deploy the stack to the swarm
+## Get the Toolkit
+
+1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
+
+    ``` bash
+    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    ```
+  
+2. Change to the cloned `open-amt-cloud-toolkit` directory.
+    ``` bash
+    cd open-amt-cloud-toolkit
+    ```
+
+## Deploy the stack to the swarm
 
 !!! important "Important - For Linux"
     Before running the following commands on Linux, confirm that the user has been added to the docker group. For instructions, refer to [**Add docker group**](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user). Otherwise, prefix each command with `sudo`.

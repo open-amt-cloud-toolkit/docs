@@ -18,7 +18,7 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 1. Clone the Open AMT Cloud Toolkit.
 
     ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create SSH Key
@@ -169,7 +169,7 @@ Where:
 
 1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
 
-2. Update the `service.beta.kubernetes.io/azure-dns-label-name` key in the **kong** section with the desired subdomain name for your URL you would like for your cluster (i.e. myopenamtk8s).
+2. Update the `service.beta.kubernetes.io/azure-dns-label-name` key in the **kong** section with a desired subdomain name for the URL that you would like for your cluster (i.e. myopenamtk8s).
 
     ``` yaml hl_lines="4"
     kong:
@@ -188,12 +188,7 @@ Where:
         mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
     ```
 
-4. Update the following keys in the `mps` section.
-
-    | Key Name | Update to | Description |
-    | -------------     | ------------------    | ------------ |
-    | commonName        | FQDN for your cluster | For AKS, the format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks). |
-
+4. Update the `commonName` key to your FQDN in the `mps` section.  For AKS, the format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks).
 
     ``` yaml hl_lines="2"
     mps:
@@ -231,25 +226,25 @@ Where:
 
     Where:
 
-    - **&lt;HOST&gt;** is the location of the Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
+    - **&lt;SERVERURL&gt;** is the location of the Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
     - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
 
 2. Create the RPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
     ```
 
 3. Create tables for the new 'rpsdb' database.
 
     ```
-    psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./data/init.sql
     ```
 
 4. Create the MPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/initMPS.sql
     ```
 
 ## Deploy Open AMT Cloud Toolkit using Helm

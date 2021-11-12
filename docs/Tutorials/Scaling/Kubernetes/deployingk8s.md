@@ -14,6 +14,14 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 !!!important "Important - For Linux"
     If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 
+## Get the Toolkit
+
+1. Clone the Open AMT Cloud Toolkit.
+
+    ```
+    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    ```
+
 ## Create Kubernetes Secrets 
 
 ### 1. Private Docker Registry Credentials
@@ -102,15 +110,9 @@ Where:
 
 ### Edit values.yaml
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
 
-    ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
-    ```
-
-2. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
-
-3. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
+2. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
 
     ```yaml hl_lines="2-5"
     images:
@@ -120,7 +122,7 @@ Where:
         mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
     ```
 
-4. Update the `commonName` key in the **mps** section with the IP Address of your development device.
+3. Update the `commonName` key in the **mps** section with the IP Address of your development device.
 
     ``` yaml hl_lines="2"
     mps:
@@ -130,7 +132,7 @@ Where:
         jwtExpiration: 1440
     ```
 
-5. Save and close the file.
+4. Save and close the file.
 
 ## Create Databases and Schema 
 
@@ -138,25 +140,25 @@ Where:
 
     Where:
 
-    - **&lt;HOST&gt;** is the location of the Postgres database.
+    - **&lt;SERVERURL&gt;** is the location of the Postgres database.
     - **&lt;USERNAME&gt;** is the username for the Postgres database.
 
 2. Create the RPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
     ```
 
 3. Create tables for the new 'rpsdb'.
 
     ```
-    psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./data/init.sql
     ```
 
 4. Create the MPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/initMPS.sql
     ```
 
 ## Deploy Open AMT Cloud Toolkit Using Helm
