@@ -9,9 +9,9 @@ After activation and configuration of an AMT device with a wireless profile, rem
 
 **For devices to be activated in Admin Control Mode (ACM)**: The managed, AMT device **MUST have a wired connection** during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.
 
-## Find if a Device Support Wireless
+## Determine Device Wireless Support
 
-RPC can pull information to help determine if your current device supports wireless functionality.  See [Build RPC](../Reference/RPC/buildRPC_Manual.md) for steps on how to obtain the binary.
+Use RPC's `amtinfo` feature to determine if your current device supports wireless functionality. For steps on how to obtain the RPC binary, see [Build RPC](../Reference/RPC/buildRPC_Manual.md).
 
 1. Run RPC with the `amtinfo` argument.
 
