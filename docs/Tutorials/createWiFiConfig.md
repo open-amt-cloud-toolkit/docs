@@ -11,22 +11,22 @@ After activation and configuration of an AMT device with a wireless profile, rem
 
 ## Find if a Device Support Wireless
 
-RPC can pull information to help determine if your current device supports wireless functionality.  See [Build RPC](../GetStarted/buildRPC.md) for steps on how to obtain the binary.
+RPC can pull information to help determine if your current device supports wireless functionality.  See [Build RPC](../Reference/RPC/buildRPC_Manual.md) for steps on how to obtain the binary.
 
-1. Run RPC with the `--amtinfo all` argument.
+1. Run RPC with the `amtinfo` argument.
 
     === "Linux"
         ``` bash
-        sudo ./rpc --amtinfo all"
+        sudo ./rpc amtinfo
         ```
     === "Windows"
         ```
-        .\rpc.exe --amtinfo all"
+        .\rpc amtinfo
         ```
 
 2. Look at the output for the LAN Interface section as highlighted below. **If RPC does NOT return a section for wireless**, then the AMT device does not support wireless functionality. 
 
-    ``` hl_lines="20-25"
+    ``` hl_lines="19-24"
     Version                : 15.0.10
     Build Number           : 1447
     SKU                    : 16392
@@ -34,19 +34,18 @@ RPC can pull information to help determine if your current device supports wirel
     Control Mode           : pre-provisioning state
     DNS Suffix             : vprodemo.com
     DNS Suffix (OS)        :
-    FQDN                   :
     Hostname (OS)          : DESKTOP-3YM6MPN
     RAS Network            : outside enterprise
     RAS Remote Status      : not connected
     RAS Trigger            : user initiated
     RAS MPS Hostname       :
-    LAN Inteface           : wired
+    ---Wired Adapter---
     DHCP Enabled           : true
     DHCP Mode              : passive
     Link Status            : up
     IP Address             : 0.0.0.0
     MAC Address            : 80:c4:a8:58:df:e9
-    LAN Inteface           : wireless
+    ---Wireless Adapter---
     DHCP Enabled           : true
     DHCP Mode              : passive
     Link Status            : down
