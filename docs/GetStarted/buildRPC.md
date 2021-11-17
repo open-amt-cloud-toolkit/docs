@@ -63,7 +63,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
    ``` bash
-   git clone https://github.com/open-amt-cloud-toolkit/{{ repoVersion.rpc_go }}
+   git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
    ```
   
 2. Change to the cloned `rpc-go` directory:
