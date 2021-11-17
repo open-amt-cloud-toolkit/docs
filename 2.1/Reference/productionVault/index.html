@@ -8,7 +8,7 @@
 <link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/productionVault/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
-<title>productionVault - Open Active Management Technology Cloud Toolkit</title>
+<title>Production Mode Vault - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#use-docker-and-vault-in-production-mode">
+<a class="md-skip" href="#configure-the-toolkit">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              productionVault
+              Production Mode Vault
             
           </span>
 </div>
@@ -122,7 +122,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../architectureOverview/">
+<a class="md-tabs__link md-tabs__link--active" href="../architectureOverview/">
         Reference
       </a>
 </li>
@@ -459,8 +459,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Reference
           <span class="md-nav__icon md-icon"></span>
@@ -491,14 +491,52 @@
         Logging
       </a>
 </li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Production Mode Vault
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Production Mode Vault
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configure-the-toolkit">
+    Configure the Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#initialize-and-unseal-vault">
+    Initialize and Unseal Vault
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-env-variables">
+    Update ENV Variables
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
+    Next Steps
+  </a>
+</li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_5" id="__nav_5_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_5">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
           Event Monitoring (MQTT)
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Event Monitoring (MQTT)" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_5">
+<label class="md-nav__title" for="__nav_5_6">
 <span class="md-nav__icon md-icon"></span>
           Event Monitoring (MQTT)
         </label>
@@ -517,13 +555,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_6">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
           Management Presence Server
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_6">
+<label class="md-nav__title" for="__nav_5_7">
 <span class="md-nav__icon md-icon"></span>
           Management Presence Server
         </label>
@@ -542,13 +580,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_7">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
           Remote Provisioning Server
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_7">
+<label class="md-nav__title" for="__nav_5_8">
 <span class="md-nav__icon md-icon"></span>
           Remote Provisioning Server
         </label>
@@ -577,13 +615,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_8">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
           Remote Provisioning Client
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_8">
+<label class="md-nav__title" for="__nav_5_9">
 <span class="md-nav__icon md-icon"></span>
           Remote Provisioning Client
         </label>
@@ -602,25 +640,25 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_9">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
           UI Toolkit
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_9">
+<label class="md-nav__title" for="__nav_5_10">
 <span class="md-nav__icon md-icon"></span>
           UI Toolkit
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9_1" id="__nav_5_9_1" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_9_1">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_1" id="__nav_5_10_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_1">
           Controls
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Controls" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_5_9_1">
+<label class="md-nav__title" for="__nav_5_10_1">
 <span class="md-nav__icon md-icon"></span>
           Controls
         </label>
@@ -644,13 +682,13 @@
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9_3" id="__nav_5_9_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_9_3">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_3" id="__nav_5_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_3">
           React Bundles
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="React Bundles" class="md-nav" data-md-level="3">
-<label class="md-nav__title" for="__nav_5_9_3">
+<label class="md-nav__title" for="__nav_5_10_3">
 <span class="md-nav__icon md-icon"></span>
           React Bundles
         </label>
@@ -677,13 +715,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_10">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
           Intel® MEBX
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_10">
+<label class="md-nav__title" for="__nav_5_11">
 <span class="md-nav__icon md-icon"></span>
           Intel® MEBX
         </label>
@@ -702,13 +740,13 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5_11">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
           Get Help
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Get Help" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_11">
+<label class="md-nav__title" for="__nav_5_12">
 <span class="md-nav__icon md-icon"></span>
           Get Help
         </label>
@@ -759,117 +797,121 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/productionVault.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="use-docker-and-vault-in-production-mode">Use Docker and Vault in Production Mode<a class="headerlink" href="#use-docker-and-vault-in-production-mode" title="Permanent link">¶</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
-<p>This document describes how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.</p>
+<h1>Production Mode Vault</h1>
+<p>Learn how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using Vault in production server mode. The current local docker-compose file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist after the container restarts.</p>
+<h2 id="configure-the-toolkit">Configure the Toolkit<a class="headerlink" href="#configure-the-toolkit" title="Permanent link">¶</a></h2>
 <ol>
 <li>
-<p>Update the vault section in the docker-compose file (<code>scripts\docker-compose\docker-compose.yaml</code>) with the section below: 
-   <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
-   <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vault</span>
-   <span class="nt">container_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">prodvault</span>
-   <span class="nt">environment</span><span class="p">:</span>
-      <span class="nt">VAULT_ADDR</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://127.0.0.1:8200</span>
-   <span class="nt">ports</span><span class="p">:</span>
+<p>Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the <a href="../../GetStarted/setup">Get Started guide</a>.</p>
+</li>
+<li>
+<p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.
+    <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="s">"vault"</span>
+    <span class="nt">networks</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
+    <span class="nt">ports</span><span class="p">:</span> 
       <span class="p p-Indicator">-</span> <span class="s">"8200:8200"</span>
-   <span class="nt">volumes</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">private-volume:/vault/file:rw</span>
+    <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">private-volume:/vault/data:rw</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./vault:/vault/config:rw</span>
-   <span class="nt">cap_add</span><span class="p">:</span>
+    <span class="nt">environment</span><span class="p">:</span> 
+      <span class="nt">VAULT_DEV_ROOT_TOKEN_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span>
+      <span class="nt">VAULT_DEV_LISTEN_ADDRESS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0:8200</span>
+    <span class="nt">cap_add</span><span class="p">:</span> 
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span>
-   <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vault server -config=/vault/config/vault.json</span>
+    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vault server -config=/vault/config/vault.json</span>
 </code></pre></div></p>
 </li>
 <li>
-<p>Create a folder named <code>vault</code> located in <code>scripts\docker-compose\</code> and add a file named <code>vault.json</code> with the contents below:
-   <div class="highlight"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">"backend"</span><span class="p">:{</span>
-      <span class="nt">"file"</span><span class="p">:{</span>
-         <span class="nt">"path"</span><span class="p">:</span><span class="s2">"/vault/file"</span>
-      <span class="p">}</span>
-   <span class="p">},</span>
-   <span class="nt">"listener"</span><span class="p">:{</span>
-      <span class="nt">"tcp"</span><span class="p">:{</span>
-         <span class="nt">"address"</span><span class="p">:</span><span class="s2">"0.0.0.0:8200"</span><span class="p">,</span>
-         <span class="nt">"tls_disable"</span><span class="p">:</span><span class="mi">1</span>
-      <span class="p">}</span>
-   <span class="p">},</span>
-   <span class="nt">"default_lease_ttl"</span><span class="p">:</span><span class="s2">"168h"</span><span class="p">,</span>
-   <span class="nt">"max_lease_ttl"</span><span class="p">:</span><span class="s2">"0h"</span><span class="p">,</span>
-   <span class="nt">"ui"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-   <span class="nt">"log_level"</span><span class="p">:</span><span class="s2">"Debug"</span>
+<p>Create a folder named <code>vault</code> located in <code>./open-amt-cloud-toolkit</code> driectory and create a new file named <code>vault.json</code> with the contents below:
+    <div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"storage"</span><span class="p">:{</span>
+        <span class="nt">"file"</span><span class="p">:{</span>
+            <span class="nt">"path"</span><span class="p">:</span><span class="s2">"/vault/data"</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"listener"</span><span class="p">:{</span>
+        <span class="nt">"tcp"</span><span class="p">:{</span>
+            <span class="nt">"address"</span><span class="p">:</span><span class="s2">"0.0.0.0:8200"</span><span class="p">,</span>
+            <span class="nt">"tls_disable"</span><span class="p">:</span> <span class="s2">"true"</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">"default_lease_ttl"</span><span class="p">:</span><span class="s2">"168h"</span><span class="p">,</span>
+    <span class="nt">"max_lease_ttl"</span><span class="p">:</span><span class="s2">"0h"</span><span class="p">,</span>
+    <span class="nt">"ui"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+    <span class="nt">"log_level"</span><span class="p">:</span><span class="s2">"Debug"</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </li>
 <li>
-<p>Run docker command to start the stack:
-   <div class="highlight"><pre><span></span><code>docker-compose up
+<p>Run docker-compose to start the containers from the ./open-amt-cloud-toolkit directory.
+    <div class="highlight"><pre><span></span><code>docker-compose up -d --build
 </code></pre></div></p>
-</li>
-<li>
-<p>Run the following command to initialize the vault instance.</p>
 </li>
 </ol>
-<p><div class="highlight"><pre><span></span><code>docker exec -it prodvault vault operator init -n 1 -t 1
-</code></pre></div>
-   Make note of unseal key 1 and initial root token. </p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>Unseal Key 1: 0H8sK2QvVsqBKnUz6okBtDOqTVFSgJpdSKVe+colgXM=
-Initial Root Token: s.1glIfXnANPSnEmKLCzk4PQCO
+<h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Navigate to <code>http://localhost:8200</code> to initialize and unseal Vault.</p>
+<div class="admonition danger -">
+<p class="admonition-title">Danger - Download and Save Vault Keys</p>
+<p><strong>Make sure to download your Vault credentials</strong> and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.</p>
+</div>
+</li>
+<li>
+<p>Please refer to HashiCorp documentation on how to <a href="https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault">Initialize and unseal Vault</a>. <strong>Stop and return here after signing in to Vault with the <code>root_token</code>.</strong></p>
+</li>
+<li>
+<p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
+</li>
+<li>
+<p>Click <strong>Enable New Engine +</strong>.</p>
+</li>
+<li>
+<p>Choose <strong>KV</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Leave the default path and choose <strong>version 2</strong> from the drop down under Method Options. </p>
+</li>
+<li>
+<p>Click <strong>Enable Engine</strong>.</p>
+</li>
+</ol>
+<h2 id="update-env-variables">Update ENV Variables<a class="headerlink" href="#update-env-variables" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Open your <code>.env</code> file.</p>
+</li>
+<li>
+<p>Change the <code>SECRETS_PATH</code> to <code>kv/data/</code>.</p>
+</li>
+<li>
+<p>Update the <code>VAULT_TOKEN</code> to the Root Token generated by Vault.</p>
+<div class="admonition example -">
+<p class="admonition-title">Example - Vault Section of .env file</p>
+<div class="highlight"><pre><span></span><code># VAULT
+SECRETS_PATH=kv/data/
+VAULT_ADDRESS=http://vault:8200
+VAULT_TOKEN=s.Mw7t070naY4PfyJk5KEkcX3I
 </code></pre></div>
 </div>
-<p>5. Run the unseal command to decrypt the contents of the vault. Note: this step has to be performed each time the vault container is restarted.</p>
-<div class="highlight"><pre><span></span><code>docker exec -it prodvault vault operator unseal [unseal key 1]
+</li>
+<li>
+<p>Rebuild and restart your Docker images and containers.</p>
+<div class="highlight"><pre><span></span><code>docker-compose up -d --build
 </code></pre></div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>docker exec -it prodvault vault operator unseal 0H8sK2QvVsqBKnUz6okBtDOqTVFSgJpdSKVe+colgXM=
-</code></pre></div>
-</div>
-<p>The response to the command should look similar to this:</p>
-<div class="highlight"><pre><span></span><code>Key             Value
----             -----
-Seal Type       shamir
-Initialized     true
-Sealed          false
-Total Shares    1
-Threshold       1
-Version         1.6.0
-Storage Type    file
-Cluster Name    vault-cluster-a39d7ef8
-Cluster ID      d1bc85f9-f405-44b3-0553-50f5e10b140e
-HA Enabled      false
-</code></pre></div>
-<p>6. Login to vault with the following command using the initial root token:   </p>
-<div class="highlight"><pre><span></span><code>docker exec -it prodvault vault login [Initial Root Token]
-</code></pre></div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>docker exec -it prodvault vault login s.1glIfXnANPSnEmKLCzk4PQCO
-</code></pre></div>
-</div>
-<p>7. Enable the kv secrets engine <br/>
-<div class="highlight"><pre><span></span><code>docker exec -it prodvault vault secrets enable -version=2 kv
-</code></pre></div></p>
-<p>8. Update env variables located in <code>scripts\docker-compose\.env</code></p>
-<p>a) Update vault tokens used in each service</p>
-<div class="highlight"><pre><span></span><code>RPS_VAULT_TOKEN=[initial root token]
-MPS_VAULT_TOKEN=[initial root token]
-</code></pre></div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code>RPS_VAULT_TOKEN=s.1glIfXnANPSnEmKLCzk4PQCO
-MPS_VAULT_TOKEN=s.1glIfXnANPSnEmKLCzk4PQCO
-</code></pre></div>
-</div>
-<p>b) update secrets path
-<div class="highlight"><pre><span></span><code>MPS_SECRETS_PATH=kv/data/
-RPS_SECRETS_PATH=kv/data/
-</code></pre></div></p>
-<p>9. Press ctrl-c to stop the stack
-10. Restart the stack using the command <code>docker-compose up</code>.
-11. Rerun command in step 5 to unseal the vault.</p>
+</li>
+<li>
+<p>Unseal Vault at <code>https://localhost:8200</code> after restarting the container.</p>
+</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
+<p><a href="../../GetStarted/loginToUI/"><strong>Continue from the Get Started steps</strong></a> to log in to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and activate a device.</p>
+<p><br/></p>
 </article>
 </div>
 </div>
