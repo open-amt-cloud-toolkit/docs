@@ -68,6 +68,7 @@ nav:
       - AMT Power States: Reference/powerstates.md
       - GUIDs in Intel® AMT: Reference/guids.md
       - Logging: Reference/logging.md
+      - Production Mode Vault: Reference/productionVault.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
