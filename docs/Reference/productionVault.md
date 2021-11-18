@@ -1,131 +1,103 @@
 --8<-- "References/abbreviations.md"
-# Use Docker and Vault in Production Mode
-## Introduction
-This document describes how to run MPS and RPS using vault in production server mode. The current local docker-compose file runs vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing vault is not required. The downside to this approach is all vault data is stored only in memory which is lost once the vault container is stopped. Running vault in production mode requires more steps but allows vault data to persist after container restarts.
 
+Learn how to run MPS and RPS using Vault in production server mode. The current local docker-compose file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist after the container restarts.
 
-1. Update the vault section in the docker-compose file (`scripts\docker-compose\docker-compose.yaml`) with the section below: 
-   ``` yaml
-   vault:
-      image: vault
-      container_name: prodvault
-      environment:
-         VAULT_ADDR: http://127.0.0.1:8200
-      ports:
-         - "8200:8200"
-      volumes:
-         - private-volume:/vault/file:rw
-         - ./vault:/vault/config:rw
-      cap_add:
-         - IPC_LOCK
-      entrypoint: vault server -config=/vault/config/vault.json
-   ```
+## Configure the Toolkit
 
-2. Create a folder named `vault` located in `scripts\docker-compose\` and add a file named `vault.json` with the contents below:
-   ``` json
-   {
-      "backend":{
-         "file":{
-            "path":"/vault/file"
-         }
-      },
-      "listener":{
-         "tcp":{
-            "address":"0.0.0.0:8200",
-            "tls_disable":1
-         }
-      },
-      "default_lease_ttl":"168h",
-      "max_lease_ttl":"0h",
-      "ui":true,
-      "log_level":"Debug"
-   }
-   ```
+1. Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the [Get Started guide](../../GetStarted/setup).
 
-3. Run docker command to start the stack:
-   ```
-   docker-compose up
-   ```
-
-4. Run the following command to initialize the vault instance.
-
-   ```
-   docker exec -it prodvault vault operator init -n 1 -t 1
-   ```
-   Make note of unseal key 1 and initial root token. 
-
-!!! example
-      ```
-      Unseal Key 1: 0H8sK2QvVsqBKnUz6okBtDOqTVFSgJpdSKVe+colgXM=
-      Initial Root Token: s.1glIfXnANPSnEmKLCzk4PQCO
-      ```
-
-
-5\. Run the unseal command to decrypt the contents of the vault. Note: this step has to be performed each time the vault container is restarted.
-
-   ```
-   docker exec -it prodvault vault operator unseal [unseal key 1]
-   ```
-
-!!! example
-      ```
-      docker exec -it prodvault vault operator unseal 0H8sK2QvVsqBKnUz6okBtDOqTVFSgJpdSKVe+colgXM=
-      ```
-    
-The response to the command should look similar to this:
-
-```    
-Key             Value
----             -----
-Seal Type       shamir
-Initialized     true
-Sealed          false
-Total Shares    1
-Threshold       1
-Version         1.6.0
-Storage Type    file
-Cluster Name    vault-cluster-a39d7ef8
-Cluster ID      d1bc85f9-f405-44b3-0553-50f5e10b140e
-HA Enabled      false
-```
-   
-6\. Login to vault with the following command using the initial root token:   
-
-```
-docker exec -it prodvault vault login [Initial Root Token]
-```
-!!! example
+2. Update the vault section in the `docker-compose.yml` file with the section below.
+    ``` yaml
+    vault:
+        image: "vault"
+        networks:
+          - openamtnetwork
+        ports: 
+          - "8200:8200"
+        volumes:
+          - private-volume:/vault/data:rw
+          - ./vault:/vault/config:rw
+        environment: 
+          VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_TOKEN}
+          VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+        cap_add: 
+          - IPC_LOCK
+        entrypoint: vault server -config=/vault/config/vault.json
     ```
-    docker exec -it prodvault vault login s.1glIfXnANPSnEmKLCzk4PQCO
+
+3. Create a folder named `vault` located in `./open-amt-cloud-toolkit` driectory and create a new file named `vault.json` with the contents below:
+    ``` json
+    {
+        "storage":{
+            "file":{
+                "path":"/vault/data"
+            }
+        },
+        "listener":{
+            "tcp":{
+                "address":"0.0.0.0:8200",
+                "tls_disable": "true"
+            }
+        },
+        "default_lease_ttl":"168h",
+        "max_lease_ttl":"0h",
+        "ui":true,
+        "log_level":"Debug"
+    }
     ```
+
+4. Run docker-compose to start the containers from the ./open-amt-cloud-toolkit directory.
+    ```
+    docker-compose up -d --build
+    ```
+
+## Initialize and Unseal Vault
+
+1. Navigate to `http://localhost:8200` to initialize and unseal Vault.
+
+    !!! danger - "Danger - Download and Save Vault Keys"
+        **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
+
+2. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
+
+3. After initializing and unsealing the vault, you need to enable the Key Value engine.
+
+4. Click **Enable New Engine +**.
+
+5. Choose **KV**.
+
+6. Click **Next**.
+
+7. Leave the default path and choose **version 2** from the drop down under Method Options. 
+
+8. Click **Enable Engine**.
+
+## Update ENV Variables
     
-7\. Enable the kv secrets engine   
-```
-docker exec -it prodvault vault secrets enable -version=2 kv
-```
-    
-8\. Update env variables located in `scripts\docker-compose\.env`
+1. Open your `.env` file.
 
-a) Update vault tokens used in each service
+2. Change the `SECRETS_PATH` to `kv/data/`.
 
-```
-RPS_VAULT_TOKEN=[initial root token]
-MPS_VAULT_TOKEN=[initial root token]
-```
-!!! example
-      ```
-      RPS_VAULT_TOKEN=s.1glIfXnANPSnEmKLCzk4PQCO
-      MPS_VAULT_TOKEN=s.1glIfXnANPSnEmKLCzk4PQCO
-      ```
+3. Update the `VAULT_TOKEN` to the Root Token generated by Vault.
 
-b) update secrets path
-```
-MPS_SECRETS_PATH=kv/data/
-RPS_SECRETS_PATH=kv/data/
-``` 
+    !!! example - "Example - Vault Section of .env file"
+        ```
+        # VAULT
+        SECRETS_PATH=kv/data/
+        VAULT_ADDRESS=http://vault:8200
+        VAULT_TOKEN=s.Mw7t070naY4PfyJk5KEkcX3I
+        ```
 
-9\. Press ctrl-c to stop the stack
-10\. Restart the stack using the command `docker-compose up`.
-11\. Rerun command in step 5 to unseal the vault.
- 
+4. Rebuild and restart your Docker images and containers.
 
+    ```
+    docker-compose up -d --build
+    ```
+
+5. Unseal Vault at `https://localhost:8200` after restarting the container.
+
+
+## Next Steps
+[**Continue from the Get Started steps**](../GetStarted/loginToUI.md) to log in to the Sample Web UI and activate a device.
+
+<br>
