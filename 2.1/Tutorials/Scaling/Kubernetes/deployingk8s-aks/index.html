@@ -907,7 +907,7 @@
 <ol>
 <li>
 <p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
-<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.1.0
+<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.1.0
 </code></pre></div>
 </li>
 </ol>
@@ -1048,7 +1048,7 @@
 <p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
 </li>
 <li>
-<p>Update the <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <strong>kong</strong> section with the desired subdomain name for your URL you would like for your cluster (i.e. myopenamtk8s).</p>
+<p>Update the <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <strong>kong</strong> section with a desired subdomain name for the URL that you would like for your cluster (i.e. myopenamtk8s).</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
   <span class="nt">proxy</span><span class="p">:</span>
     <span class="nt">annotations</span><span class="p">:</span>
@@ -1065,23 +1065,7 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>Update the following keys in the <code>mps</code> section.</p>
-<table>
-<thead>
-<tr>
-<th>Key Name</th>
-<th>Update to</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>commonName</td>
-<td>FQDN for your cluster</td>
-<td>For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</td>
-</tr>
-</tbody>
-</table>
+<p>Update the <code>commonName</code> key to your FQDN in the <code>mps</code> section.  For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
 <span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
 </span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -1125,23 +1109,23 @@
 <p>Use the database schema files to initialize the hosted Postgres DB in the following steps.</p>
 <p>Where:</p>
 <ul>
-<li><strong>&lt;HOST&gt;</strong> is the location of the Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
+<li><strong>&lt;SERVERURL&gt;</strong> is the location of the Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
 <li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
 </ul>
 </li>
 <li>
 <p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c "CREATE DATABASE rpsdb"
 </code></pre></div>
 </li>
 <li>
 <p>Create tables for the new 'rpsdb' database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/init.sql
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./data/init.sql
 </code></pre></div>
 </li>
 <li>
 <p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;HOST&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/initMPS.sql
 </code></pre></div>
 </li>
 </ol>

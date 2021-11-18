@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#introduction">
+<a class="md-skip" href="#get-the-toolkit">
           Skip to content
         </a>
 </div>
@@ -409,8 +409,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-    Introduction
+<a class="md-nav__link" href="#get-the-toolkit">
+    Get the Toolkit
   </a>
 </li>
 <li class="md-nav__item">
@@ -788,7 +788,6 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1>Docker Swarm*</h1>
-<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h3>
 <p>This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: </p>
 <ul>
 <li>All images are built and tested with docker-compose. To learn more about building the images with docker-compose, refer to <a href="../../../GetStarted/setup/"><strong>Express Setup</strong></a>. </li>
@@ -799,7 +798,20 @@
 <p class="admonition-title">Important</p>
 <p>Not for production use. </p>
 </div>
-<h3 id="deploy-the-stack-to-the-swarm">Deploy the stack to the swarm<a class="headerlink" href="#deploy-the-stack-to-the-swarm" title="Permanent link">¶</a></h3>
+<h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
+<div class="highlight"><pre><span></span><code>git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.1.0
+</code></pre></div>
+</li>
+<li>
+<p>Change to the cloned <code>open-amt-cloud-toolkit</code> directory.
+    <div class="highlight"><pre><span></span><code><span class="nb">cd</span> open-amt-cloud-toolkit
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="deploy-the-stack-to-the-swarm">Deploy the stack to the swarm<a class="headerlink" href="#deploy-the-stack-to-the-swarm" title="Permanent link">¶</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important - For Linux</p>
 <p>Before running the following commands on Linux, confirm that the user has been added to the docker group. For instructions, refer to <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user"><strong>Add docker group</strong></a>. Otherwise, prefix each command with <code>sudo</code>.</p>
