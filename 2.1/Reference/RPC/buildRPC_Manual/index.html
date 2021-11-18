@@ -628,6 +628,11 @@
     Run RPC to Activate and Connect the AMT Device
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#transition-activated-device">
+    Transition Activated Device
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -974,6 +979,59 @@ internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argume
 <p>Run into an issue? Try these <a href="../../troubleshooting/">troubleshooting steps</a>.</p>
 </div>
 </div>
+<h2 id="transition-activated-device"><a name="TransitionDevice"></a>Transition Activated Device<a class="headerlink" href="#transition-activated-device" title="Permanent link">¶</a></h2>
+<p>If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> control with the rpc-go application. </p>
+<p>Additionally, use the following instructions to transition from a previously established toolkit stack to a fresh installation on a new development system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the following instructions to transition devices to either <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> or <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profiles. You will need the AMT password.</p>
+<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../architectureOverview/#Passwords">Reference -&gt; Architecture Overview</a>.</p>
+</div>
+<p><strong>To transition the activated device:</strong></p>
+<ol>
+<li>
+<p>Check the activation status with <strong>amtinfo</strong> flag:</p>
+<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><label for="__tabbed_5_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc amtinfo
+</code></pre></div>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio"><label for="__tabbed_5_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>.\rpc amtinfo
+</code></pre></div>
+</div>
+<input id="__tabbed_5_3" name="__tabbed_5" type="radio"><label for="__tabbed_5_3">Docker (On Linux Host Only)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc-go:latest amtinfo
+</code></pre></div>
+</div>
+</input></input></input></div>
+<p>The <strong>control mode</strong> indicates the managed device's state:</p>
+<ul>
+<li>pre-provisioning or deactivated</li>
+<li>activated in client control mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</li>
+<li>activated in admin control mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</li>
+</ul>
+</li>
+<li>
+<p>Run the rpc-go application with the <strong>activate</strong> command and the <strong>password</strong> flag:</p>
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><label for="__tabbed_6_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo ./rpc activate -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate -n --profile <span class="o">[</span>profilename<span class="o">]</span> -password <span class="o">[</span>AMT password<span class="o">]</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio"><label for="__tabbed_6_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename] -password [AMT password]
+</code></pre></div>
+</div>
+<input id="__tabbed_6_3" name="__tabbed_6" type="radio"><label for="__tabbed_6_3">Docker (On Linux Host Only)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc-go:latest activate -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate -n --profile <span class="o">[</span>profilename<span class="o">]</span> -password <span class="o">[</span>AMT password<span class="o">]</span>
+</code></pre></div>
+</div>
+</input></input></input></div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>To verify the managed devices list after transitioning, log into the <a href="../../../GetStarted/loginToUI/"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></a> on the development system. Go to the Devices tab. Alternatively, learn how to list the managed devices via a <a href="../../../Tutorials/apiTutorial/"><abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API Call</a>. </p>
+</div>
+</li>
+</ol>
 </article>
 </div>
 </div>
