@@ -55,11 +55,13 @@ Activate this device with a specified profile:
 | -h string | Hostname override | 
 | -n | Skip WebSocket server certificate verification |
 | -p string | Proxy address and port |
-| --profile string | name of the profile to use |
+| -profile string | name of the profile to use |
 | -u string | WebSocket address of server to activate against |
 | -v string | Verbose output |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
+
+To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
 ### deactivate
 

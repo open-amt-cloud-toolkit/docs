@@ -155,7 +155,10 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```
 
     !!! note "Note - RPC Arguments"
-        Find out more information about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
+        See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
+
+    !!! note "Transition Activated Device"
+        To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
 
 !!! success
