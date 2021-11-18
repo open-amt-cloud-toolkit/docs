@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#find-if-a-device-support-wireless">
+<a class="md-skip" href="#determine-device-wireless-support">
           Skip to content
         </a>
 </div>
@@ -382,8 +382,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#find-if-a-device-support-wireless">
-    Find if a Device Support Wireless
+<a class="md-nav__link" href="#determine-device-wireless-support">
+    Determine Device Wireless Support
   </a>
 </li>
 <li class="md-nav__item">
@@ -800,17 +800,17 @@
 <p>After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.</p>
 <p><strong>For devices to be activated in Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</strong>: The managed, AMT device can be activated and configured on a wireless connection.</p>
 <p><strong>For devices to be activated in Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>: The managed, AMT device <strong>MUST have a wired connection</strong> during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.</p>
-<h2 id="find-if-a-device-support-wireless">Find if a Device Support Wireless<a class="headerlink" href="#find-if-a-device-support-wireless" title="Permanent link">¶</a></h2>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can pull information to help determine if your current device supports wireless functionality.  See <a href="../../GetStarted/buildRPC/">Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a> for steps on how to obtain the binary.</p>
+<h2 id="determine-device-wireless-support">Determine Device Wireless Support<a class="headerlink" href="#determine-device-wireless-support" title="Permanent link">¶</a></h2>
+<p>Use <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>'s <code>amtinfo</code> feature to determine if your current device supports wireless functionality. For steps on how to obtain the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> binary, see <a href="../../Reference/RPC/buildRPC_Manual/">Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
 <ol>
 <li>
-<p>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>--amtinfo all</code> argument.</p>
+<p>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>amtinfo</code> argument.</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sudo ./rpc --amtinfo all<span class="s2">"</span>
+<div class="highlight"><pre><span></span><code>sudo ./rpc amtinfo
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>.\rpc.exe --amtinfo all"
+<div class="highlight"><pre><span></span><code>.\rpc amtinfo
 </code></pre></div>
 </div>
 </input></input></div>
@@ -824,19 +824,18 @@ UUID                   : 4c4b4568-195a-4260-8097-a4c14f566733
 Control Mode           : pre-provisioning state
 DNS Suffix             : vprodemo.com
 DNS Suffix (OS)        :
-FQDN                   :
 Hostname (OS)          : DESKTOP-3YM6MPN
 RAS Network            : outside enterprise
 RAS Remote Status      : not connected
 RAS Trigger            : user initiated
 RAS MPS Hostname       :
-LAN Inteface           : wired
+---Wired Adapter---
 DHCP Enabled           : true
 DHCP Mode              : passive
 Link Status            : up
 IP Address             : 0.0.0.0
 MAC Address            : 80:c4:a8:58:df:e9
-<span class="hll">LAN Inteface           : wireless
+<span class="hll">---Wireless Adapter---
 </span><span class="hll">DHCP Enabled           : true
 </span><span class="hll">DHCP Mode              : passive
 </span><span class="hll">Link Status            : down
