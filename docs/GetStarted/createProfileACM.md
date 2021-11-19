@@ -77,6 +77,9 @@ A Profile provides configuration information to the AMT Firmware during the acti
    
 6. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
+    !!! note
+        By default both AMT Password and MEBX Password auto generation checkboxes are selected (checked). To enter static passwords, unselect the respective auto generation checkboxes.
+
 7. Leave DHCP as the default for **Network Configuration**.
 
 8. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
