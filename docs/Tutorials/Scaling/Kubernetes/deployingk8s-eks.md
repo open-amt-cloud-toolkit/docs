@@ -15,6 +15,14 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 - [PSQL CLI (11.13)](https://www.postgresql.org/download/)
 
 
+## Get the Toolkit
+
+1. Clone the Open AMT Cloud Toolkit.
+
+    ```
+    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    ```
+
 ## Create a New EKS Cluster
 
 1. Follow steps for [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to finish configuration of AWS CLI.
@@ -77,45 +85,33 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ### Create Databases and Schema
 
-1. Clone the Open AMT Cloud Toolkit.
-
-    ```
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
-    ```
-
-2. Use the database schema files to initialize the hosted Postgres DB in the following steps.
+1. Use the database schema files to initialize the hosted Postgres DB in the following steps.
 
     !!! note
         The following commands will prompt for the database password you chose [here](#create-postgres-db-in-rds).
 
     Where:
 
-    - **&lt;HOST&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
+    - **&lt;SERVERURL&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
     - **&lt;USERNAME&gt;** is the username for the Postgres database.
 
-3. Create the RPS database.
+2. Create the RPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
     ```
 
-4. Create tables for the new 'rpsdb'.
+3. Create tables for the new 'rpsdb'.
 
     ```
-    psql -h <HOST> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
     ```
 
-5. Create the MPS database.
+4. Create the MPS database.
 
     ```
-    psql -h <HOST> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
     ```
-
-Where:
-
-- **&lt;HOST&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
-- **&lt;USERNAME&gt;** is the username for the Postgres database.
-
 
 ## Connect to EKS Instance
 
@@ -314,9 +310,7 @@ Where:
 
     ``` yaml hl_lines="2"
     mps:
-        commonName: "" # update with External-IP from `kubectl get service`
-        storageClassName: "ebs-sc"
-        storageAccessMode: "ReadWriteOnce"
+        commonName: "" # update with External-IP from `kubectl get services`
         replicaCount: 1
         logLevel: "silly"
         jwtExpiration: 1440
@@ -351,15 +345,5 @@ Where:
         ```
 
 ## Next Steps
-
-!!! tip "Tip - Accessing the Sample Web UI"
-    Find the External-IP/FQDN for the Sample Web UI by running:
-
-    ```
-    kubectl get services openamtstack-kong-proxy
-    ```
-
-!!! warning "Warning - Self-signed Certificates"
-    Make sure to accept the self-signed certificate by going to port 443 during the first visit to the Sample Web UI.
 
 Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../../GetStarted/loginToUI.md).
