@@ -70,7 +70,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 2. Confirm the version numbers.
 
 ## Get the RPC
-If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC]((#build-the-rpc). 
+If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC](#build-the-rpc). 
 
 If you want to clone only the rpc-go repository, follow the steps below.
 
