@@ -70,7 +70,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 2. Confirm the version numbers.
 
 ## Get the RPC
-If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC](#buildtherpc). 
+If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC]((#build-the-rpc). 
 
 If you want to clone only the rpc-go repository, follow the steps below.
 
@@ -86,7 +86,7 @@ If you want to clone only the rpc-go repository, follow the steps below.
    cd rpc-go
    ```
 
-##  <a name="buildtherpc"></a>Build the RPC
+##  Build the RPC
 
 **To build the executable:**
 
@@ -124,7 +124,7 @@ If you are building on a development system, copy the resulting executable to th
           129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
           ...
         ```
-2. Copy to the executable to a managed device. 
+2. Copy the executable to a managed device. 
 
 3. Confirm a successful build:
 
@@ -134,7 +134,7 @@ If you are building on a development system, copy the resulting executable to th
         ```
     === "Windows"
         ``` bash
-        rpc version
+        .\rpc version
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
