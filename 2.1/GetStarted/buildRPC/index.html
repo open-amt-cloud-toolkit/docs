@@ -832,23 +832,21 @@
 <p>tdm-gcc (On Windows* only)</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
 <p><strong>To install prerequisites on Linux*:</strong></p>
-<ol>
-<li>See Go's <a href="https://golang.org/doc/install">Download and Install</a>.</li>
-<li>Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).</li>
-<li>Extract the archive in the location indicated in Go's installation instructions.</li>
-<li>Follow the remaining instructions. </li>
-</ol>
+<p>1.) See Go's <a href="https://golang.org/doc/install">Download and Install</a>.</p>
+<p>2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).</p>
+<p>3.) Extract the archive in the location indicated in Go's installation instructions.</p>
+<p>4.) Follow the remaining instructions. </p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
 <p><strong>To install prerequisites on Windows:</strong></p>
-<ol>
-<li>See Go's <a href="https://golang.org/doc/install">Download and Install</a>.</li>
-<li>Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).</li>
-<li>Run the downloaded file and follow prompts to install. </li>
-<li>See <a href="https://jmeubank.github.io/tdm-gcc/">tdm-gcc</a>.</li>
-<li>Choose a version and download the .exe. </li>
-<li>Run the downloaded file and follow prompts to install. For a new installation, choose <strong>Create</strong> and accept all default installation options.</li>
-</ol>
+<p><strong>Go Programming Language </strong></p>
+<p>1.) See Go's <a href="https://golang.org/doc/install">Download and Install</a>.</p>
+<p>2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).</p>
+<p>3.) Run the downloaded file and follow prompts to install. </p>
+<p><strong> tdm-gcc </strong></p>
+<p>1.) See <a href="https://jmeubank.github.io/tdm-gcc/">tdm-gcc</a>.</p>
+<p>2.) Choose a version and download the .exe. </p>
+<p>3.) Run the downloaded file and follow prompts to install. For a new installation, choose <strong>Create</strong> and accept all default installation options.</p>
 </div>
 </input></input></div>
 </li>
@@ -864,6 +862,8 @@
 <li>Confirm the version numbers.</li>
 </ol>
 <h2 id="get-the-rpc">Get the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#get-the-rpc" title="Permanent link">¶</a></h2>
+<p>If you have already cloned the toolkit repository as described in <a href="../setup/">Set Up</a>, change to the cloned <code>rpc-go</code> directory and see <a href="#build-the-rpc">Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>. </p>
+<p>If you want to clone only the rpc-go repository, follow the steps below.</p>
 <p><strong>To clone the repository:</strong></p>
 <ol>
 <li>
@@ -879,6 +879,7 @@
 </ol>
 <h2 id="build-the-rpc">Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#build-the-rpc" title="Permanent link">¶</a></h2>
 <p><strong>To build the executable:</strong></p>
+<p>If you are building on a development system, copy the resulting executable to the managed device.</p>
 <ol>
 <li>
 <p>Open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows):</p>
@@ -913,6 +914,9 @@ internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argume
   ...
 </code></pre></div>
 </div>
+<ol>
+<li>Copy the executable to a managed device. </li>
+</ol>
 </li>
 <li>
 <p>Confirm a successful build:</p>
