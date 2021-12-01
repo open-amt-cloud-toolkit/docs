@@ -27,22 +27,34 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 * tdm-gcc (On Windows* only)
 
     === "Linux"
-         **To install prerequisites on Linux*:**
+        **To install prerequisites on Linux*:**
 
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
-         3. Extract the archive in the location indicated in Go's installation instructions.
-         4. Follow the remaining instructions. 
+         1.) See Go's [Download and Install](https://golang.org/doc/install).
+
+         2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
+
+         3.) Extract the archive in the location indicated in Go's installation instructions.
+
+         4.) Follow the remaining instructions. 
 
     === "Windows"
          **To install prerequisites on Windows:**
 
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
-         3. Run the downloaded file and follow prompts to install. 
-         4. See [tdm-gcc](https://jmeubank.github.io/tdm-gcc/).
-         5. Choose a version and download the .exe. 
-         6. Run the downloaded file and follow prompts to install. For a new installation, choose **Create** and accept all default installation options.
+         **Go Programming Language **
+
+         1.) See Go's [Download and Install](https://golang.org/doc/install).
+ 
+         2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
+
+         3.) Run the downloaded file and follow prompts to install. 
+
+         ** tdm-gcc **
+
+         1.) See [tdm-gcc](https://jmeubank.github.io/tdm-gcc/).
+         
+         2.) Choose a version and download the .exe. 
+         
+         3.) Run the downloaded file and follow prompts to install. For a new installation, choose **Create** and accept all default installation options.
 
 
 **To verify Go and tdm-gcc installations:**
@@ -58,6 +70,9 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 2. Confirm the version numbers.
 
 ## Get the RPC
+If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC](#build-the-rpc). 
+
+If you want to clone only the rpc-go repository, follow the steps below.
 
 **To clone the repository:**
 
@@ -71,9 +86,11 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
    cd rpc-go
    ```
 
-## Build the RPC
+##  Build the RPC
 
 **To build the executable:**
+
+If you are building on a development system, copy the resulting executable to the managed device.
 
 1. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
 
@@ -107,8 +124,9 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
           129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
           ...
         ```
+2. Copy the executable to a managed device. 
 
-2. Confirm a successful build:
+3. Confirm a successful build:
 
     === "Linux"
         ``` bash
@@ -155,7 +173,10 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```
 
     !!! note "Note - RPC Arguments"
-        Find out more information about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
+        See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
+
+    !!! note "Transition Activated Device"
+        To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
 
 !!! success
