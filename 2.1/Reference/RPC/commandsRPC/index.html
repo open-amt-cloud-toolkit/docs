@@ -833,8 +833,8 @@
 <table>
 <thead>
 <tr>
-<th>COMMAND      </th>
-<th>DESCRIPTION         </th>
+<th>COMMAND</th>
+<th>DESCRIPTION</th>
 <th>EXAMPLE</th>
 </tr>
 </thead>
@@ -891,7 +891,7 @@
 <table>
 <thead>
 <tr>
-<th>OPTION      </th>
+<th>OPTION</th>
 <th>DESCRIPTION</th>
 </tr>
 </thead>
@@ -903,6 +903,10 @@
 <tr>
 <td>-h string</td>
 <td>Hostname override</td>
+</tr>
+<tr>
+<td>-json</td>
+<td>JSON output</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -942,7 +946,7 @@
 <table>
 <thead>
 <tr>
-<th>OPTION      </th>
+<th>OPTION</th>
 <th>DESCRIPTION</th>
 </tr>
 </thead>
@@ -950,6 +954,10 @@
 <tr>
 <td>-d</td>
 <td><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> override</td>
+</tr>
+<tr>
+<td>-json</td>
+<td>JSON output</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -988,7 +996,7 @@
 <table>
 <thead>
 <tr>
-<th>OPTION      </th>
+<th>OPTION</th>
 <th>DESCRIPTION</th>
 </tr>
 </thead>
@@ -996,6 +1004,10 @@
 <tr>
 <td>-c</td>
 <td>Synchronize the AMT clock with the operating system time</td>
+</tr>
+<tr>
+<td>-json</td>
+<td>JSON output</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -1030,60 +1042,83 @@
 </code></pre></div>
 </div>
 </input></input></div>
+<div class="admonition note">
+<p class="admonition-title">Command Without Options</p>
+<p>Using amtinfo without any of the options below (or only -json) 
+will return the info for all of the most common options</p>
+</div>
 <table>
 <thead>
 <tr>
-<th>AMT INFO       </th>
-<th>DESCRIPTION         </th>
+<th>AMT INFO</th>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td></td>
+<td>-json</td>
+<td>JSON Output</td>
+</tr>
+<tr>
 <td>Version</td>
+<td>-ver</td>
 <td>Intel AMT version.</td>
 </tr>
 <tr>
 <td>Build Number</td>
+<td>-bld</td>
 <td>Intel AMT Build Number.</td>
 </tr>
 <tr>
 <td>SKU</td>
-<td></td>
+<td>-sku</td>
+<td>Product SKU</td>
 </tr>
 <tr>
 <td>UUID</td>
+<td>-uuid</td>
 <td>Unique Universal Identifier of the device. Used when creating device-specific <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API calls as part of the <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API's URL path.</td>
 </tr>
 <tr>
 <td>Control Mode</td>
+<td>-mode</td>
 <td>Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in <strong>client control mode</strong> (c) activated in <strong>admin control mode</strong></td>
 </tr>
 <tr>
 <td>DNS Suffix</td>
+<td>-dns</td>
 <td>DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation.</td>
 </tr>
 <tr>
 <td>DNS Suffix (OS)</td>
+<td>-dns</td>
 <td></td>
 </tr>
 <tr>
 <td>Hostname (OS)</td>
+<td>-hostname</td>
 <td>Device's hostname as set in the Operating System.</td>
 </tr>
 <tr>
 <td>RAS Network</td>
+<td>-ras</td>
 <td></td>
 </tr>
 <tr>
 <td>RAS Remote Status</td>
+<td>-ras</td>
 <td>Unconnected or connected. State of connection to a management server.</td>
 </tr>
 <tr>
 <td>RAS Trigger</td>
+<td>-ras</td>
 <td>User initiated or periodic. When activated, periodic signifies <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> established. By default, <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> sends a heartbeat to the server every 30 seconds to verify and maintain connection.</td>
 </tr>
 <tr>
 <td>RAS <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Hostname</td>
+<td>-ras</td>
 <td>IP Address or FQDN of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server.</td>
 </tr>
 </tbody>
@@ -1092,29 +1127,35 @@
 <table>
 <thead>
 <tr>
-<th>WIRED/WIRELESS ADAPTER       </th>
-<th>DESCRIPTION         </th>
+<th>WIRED/WIRELESS ADAPTER</th>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>DHCP Enabled</td>
+<td>-lan</td>
 <td>True/False. Whether or not the network is using DHCP or Static IPs.</td>
 </tr>
 <tr>
 <td>DHCP Mode</td>
+<td>-lan</td>
 <td></td>
 </tr>
 <tr>
 <td>Link Status</td>
+<td>-lan</td>
 <td>Up/Down. Shows whether or not this adapter is being used by Intel AMT.</td>
 </tr>
 <tr>
 <td>IP Address</td>
+<td>-lan</td>
 <td>If using <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> or the device is unactivated, this field will show 0.0.0.0</td>
 </tr>
 <tr>
 <td>MAC Address</td>
+<td>-lan</td>
 <td>Device's MAC Address</td>
 </tr>
 </tbody>
