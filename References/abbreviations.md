@@ -6,6 +6,8 @@
 
 *[CIRA]: Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server. 
 
+*[curl]: command line URL - A command line tool and library for transferring data with URLs.
+
 *[DNS suffix]: Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.
 
 *[Domain Profile]: Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.
