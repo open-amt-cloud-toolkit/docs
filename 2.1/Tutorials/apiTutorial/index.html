@@ -813,9 +813,11 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1>REST API Call</h1>
-<p>This tutorial demonstrates how to generate a JWT token for Authorization and construct a API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/">curl</a>. This method will retrieve information about all devices, including device GUIDs.</p>
-<p><a href="../../assets/images/ConnectedDevicesAPI.png"><img alt="ConnectedDevices" src="../../assets/images/ConnectedDevicesAPI.png"/></a></p>
+<p>This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a>. This method will retrieve information about all devices, including device GUIDs.</p>
+<p><a href="../../assets/images/CURLTutorial.png"><img alt="RESTTutorialFlow" src="../../assets/images/CURLTutorial.png"/></a></p>
 <p><strong>Figure 1: API Call to Get All Devices</strong></p>
+<p>Figure 1 illustrates the flow of the tutorial below. </p>
+<p>Consult the API documentation for the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs (Steps A and C). Use the generated JWT, the return value from the Authorize method in Step B, with any of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API methods that require a BearerAuth, an HTTP security scheme that provides access to the bearer of a token. The GetDevices method accepts the JWT as an authentication and returns a list of devices and associated data.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Successfully deploy the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and connect an Intel® vPro device to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> before constructing the API call. Start <a href="../../GetStarted/prerequisites/">here</a>*<em> to install microservices locally with Docker</em>.</p>
@@ -830,7 +832,7 @@
 <p><strong>Software on the Development System</strong> </p>
 <ul>
 <li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
-<li><a href="https://curl.se/download.html">curl</a></li>
+<li><a href="https://curl.se/download.html"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a></li>
 <li>Any Text Editor</li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
@@ -923,7 +925,7 @@ Example JSON Pretty Print:</p>
 </li>
 </ol>
 <h2 id="example-getpost-templates">Example GET/POST Templates<a class="headerlink" href="#example-getpost-templates" title="Permanent link">¶</a></h2>
-<p>The sample GET and POST curl commands below can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods <strong>by changing the URL path and modifying the request body data, if applicable</strong>.</p>
+<p>The sample GET and POST <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr> commands below can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods <strong>by changing the URL path and modifying the request body data, if applicable</strong>.</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Power Capabilities (GET Template)</label><div class="tabbed-content">
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>curl --insecure https://<span class="o">[</span>IP-Address or FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span> <span class="se">\</span>

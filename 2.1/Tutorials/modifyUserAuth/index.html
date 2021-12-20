@@ -814,7 +814,7 @@
 <p>Allow the Terminal or Powershell to remain open to see LDAP activity as you proceed with the tutorial below.</p>
 </li>
 <li>
-<p>Optionally, <a href="https://curl.se/">download curl</a> for testing the authentication with APIs at the end of this tutorial.</p>
+<p>Optionally, <a href="https://curl.se/">download <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a> for testing the authentication with APIs at the end of this tutorial.</p>
 </li>
 </ol>
 <h2 id="edit-the-kongyaml-file">Edit the kong.yaml File<a class="headerlink" href="#edit-the-kongyaml-file" title="Permanent link">¶</a></h2>
@@ -892,7 +892,7 @@
 </ol>
 <h2 id="test-the-configuration">Test the Configuration<a class="headerlink" href="#test-the-configuration" title="Permanent link">¶</a></h2>
 <p>Authenticate a user to test the configuration by using an API of your choice. You will need to set the Authorization header to <code>ldap base64encode(user:pass)</code>.</p>
-<p><strong>Test the configuration with curl:</strong></p>
+<p><strong>Test the configuration with <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr>:</strong></p>
 <p>In the following examples, we use the base64 encoding of <code>johndoe:TestAppPw1</code> as our encoded <code>user:pass</code>. This value is <code>am9obmRvZTpUZXN0QXBwUHcx</code>. These credentials are one of the default credentials in the <code>sample-simple.cfg</code> file provided by GLAuth*.</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Get Devices (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Route)</label><div class="tabbed-content">
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
