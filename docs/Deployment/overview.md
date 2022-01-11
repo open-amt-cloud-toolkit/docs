@@ -1,57 +1,63 @@
-When it comes time to deploy the Open AMT Cloud Toolkit to production there are some crucial decisions that need to made in order to determine the work to be done to prepare the toolkit properly. For each topic below we list what is provided as a reference implementation and as well as some recommended options that can be used as a replacement for the reference implementation.
+--8<-- "References/abbreviations.md"
+To deploy the Open AMT Cloud Toolkit to a production environment, replace default reference implementation components with more robust or full-featured components. Each section below lists the default reference implementation component included with toolkit along with suggestions for replacement. 
 
 ## Database Selection
-The docker based PostgreSQL image that is used in the `docker-compose.yml` is great for proof-of-concept of and development with the Open AMT Cloud Toolkit. However, when gearing up for production it is recommended to leverage a managed database instance offered by a public cloud provider or perhaps a database hosted by your internal IT. Regardless of your deployment scenario (ie. a VM, Kubernetes, Docker Swarm, a native environment), managing state in your own cluster comes with a higher risk of data loss than that of a managed database instance. 
+The Docker-based PostgreSQL* image used in `docker-compose.yml` provides enough functionality for proof-of-concept creation and development. However, to enable the toolkit for production, leverage a managed database instance offered by a public cloud provider or a database hosted by your internal IT. 
 
-#### Reference Implementation
+Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a native environment), managing state in your cluster comes with a higher risk of data loss than that of a managed database instance.
+
+### Default Component
 
 <img src="./../../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/>
 
-- Postgres
+- [PostgreSQL](https://www.postgresql.org/)
 
-
-#### Example Replacements
-
-- Azure Managed Postgres
-- Azure MSSQL
-- Amazon RDS
-- MySQL
-- MariaDB
-
-For a short guide on how to swap out the database read [this guide](./database.md).
-## Secret Management/Handling
-
-Secret Management is essential in a microservice architecture as it provides a secure repository for the services to access required sensitive assets. The Open AMT Cloud toolkit uses Hashicorp Vault as its tool for securely accessing these assets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log. Similar to the database section above, when it comes time to scale Open AMT Cloud Toolkit for production, managing state can be difficult. While Vault has a comprehensive solution for managing and persisting state in a K8s cluster, we recommend leveraging a managed secret provider such as Azure Key Vault to offload this role and help reduce the overhead of managing this aspect of the toolkit. Additionally, you may consider that a Secret Provider is not necessary for your deployment and may wish to remove it leveraging some other backing store for secrets.
-
-#### Reference Implementation
-<img src="./../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/>
-
-- HashiCorp Vault
-
-
-#### Example Replacements
-- Azure Key Vault
-- AWS Key Management Service      
-
-For a short guide on how to swap out the secret provider read [this guide](./secrets.md).
-
-
-
-## API Gateway 
-
-The API gateway is an important concept in microservices architecture. It provides an entry point for external clients(anything that is not part of the microservice system). It is a component that acts as an entry point for the Open AMT Cloud toolkit. We have chosen Kong as our reference implementation as it is open source and provides a comprehensive suite of plugins for various scenarios.
-
-
-
-### Reference Implementation
-
-<img src="./../../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/>
-
-- Kong
 
 ### Example Replacements
 
-- Azure API Gateway
-- Amazon API Gateway
-- Google Cloud Endpoints
-- Tyk 
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgresql/)
+- [Azure SQL Database](https://azure.microsoft.com/en-us/products/azure-sql/database)
+- [Amazon Relational Database Service (RDS)](https://aws.amazon.com/rds/)
+- [MS SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+- [MariaDB](https://mariadb.org/)
+
+For more information about replacing the default toolkit database, see the [database guide](./database.md).
+
+## Secrets Management
+
+A secret is any asset requiring controlled access, such as API keys, passwords, or certificates. 
+
+The toolkit enables secrets management with HashiCorp Vault*, which provides a secure repository for storing and accessing sensitive assets. Vault offers a unified interface to any secret, tight access control, and a detailed audit log. 
+
+While Vault provides a comprehensive solution for managing and persisting state in a K8s cluster, use of a managed secret provider, such as Azure Key Vault, offloads this role and helps reduce the overhead of secrets management in the toolkit. 
+
+Additionally, if a secret provider is not necessary for your deployment, consider removing it and leveraging some other backing store for secrets.
+
+### Default Component
+<img src="./../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/>
+
+- [HashiCorp Vault](https://www.vaultproject.io/)
+
+
+### Example Replacements
+- [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/)
+- [AWS Key Management Service (KMS)](https://aws.amazon.com/kms/)
+
+For more information about replacing the default secret provider, see the [secrets guide](./secrets.md).
+
+## API Gateway 
+
+The toolkit uses Kong as its open source API gateway. Kong provides an entry point for external clients, anything not a part of the microservice system, and a comprehensive suite of plugins for various scenarios.
+
+### Default Component
+
+<img src="./../../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/>
+
+- [Kong](https://konghq.com/)
+
+### Example Replacements
+
+- [Azure API Gateway](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway)
+- [Amazon API Gateway](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway)
+- [Google Cloud Endpoints](https://cloud.google.com/endpoints)
+- [Tyk](https://tyk.io/)
