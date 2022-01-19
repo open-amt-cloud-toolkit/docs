@@ -333,12 +333,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/database/">
-        Database
+        Database Replacement
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/secrets/">
-        Secret Provider
+        Secrets Management
       </a>
 </li>
 </ul>
@@ -806,42 +806,42 @@
 </li>
 <li>
 <p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.
-    <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span> <span class="s">"vault"</span>
-    <span class="nt">networks</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
-    <span class="nt">ports</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="s">"8200:8200"</span>
-    <span class="nt">volumes</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">private-volume:/vault/data:rw</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./vault:/vault/config:rw</span>
-    <span class="nt">environment</span><span class="p">:</span> 
-      <span class="nt">VAULT_DEV_ROOT_TOKEN_ID</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span>
-      <span class="nt">VAULT_DEV_LISTEN_ADDRESS</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0:8200</span>
-    <span class="nt">cap_add</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span>
-    <span class="nt">entrypoint</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">vault server -config=/vault/config/vault.json</span>
+    <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"vault"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8200:8200"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private-volume:/vault/data:rw</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vault:/vault/config:rw</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">VAULT_DEV_ROOT_TOKEN_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span><span class="w"></span>
+<span class="w">      </span><span class="nt">VAULT_DEV_LISTEN_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:8200</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span><span class="w"></span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault server -config=/vault/config/vault.json</span><span class="w"></span>
 </code></pre></div></p>
 </li>
 <li>
 <p>Create a folder named <code>vault</code> located in <code>./open-amt-cloud-toolkit</code> driectory and create a new file named <code>vault.json</code> with the contents below:
-    <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">"storage"</span><span class="p">:{</span>
-        <span class="nt">"file"</span><span class="p">:{</span>
-            <span class="nt">"path"</span><span class="p">:</span><span class="s2">"/vault/data"</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">"listener"</span><span class="p">:{</span>
-        <span class="nt">"tcp"</span><span class="p">:{</span>
-            <span class="nt">"address"</span><span class="p">:</span><span class="s2">"0.0.0.0:8200"</span><span class="p">,</span>
-            <span class="nt">"tls_disable"</span><span class="p">:</span> <span class="s2">"true"</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">"default_lease_ttl"</span><span class="p">:</span><span class="s2">"168h"</span><span class="p">,</span>
-    <span class="nt">"max_lease_ttl"</span><span class="p">:</span><span class="s2">"0h"</span><span class="p">,</span>
-    <span class="nt">"ui"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-    <span class="nt">"log_level"</span><span class="p">:</span><span class="s2">"Debug"</span>
-<span class="p">}</span>
+    <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"storage"</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"file"</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="s2">"/vault/data"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"listener"</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"tcp"</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"0.0.0.0:8200"</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"tls_disable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"default_lease_ttl"</span><span class="p">:</span><span class="s2">"168h"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"max_lease_ttl"</span><span class="p">:</span><span class="s2">"0h"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"ui"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"log_level"</span><span class="p">:</span><span class="s2">"Debug"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 </li>
 <li>

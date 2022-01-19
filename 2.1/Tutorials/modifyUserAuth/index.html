@@ -333,12 +333,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/database/">
-        Database
+        Database Replacement
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/secrets/">
-        Secret Provider
+        Secrets Management
       </a>
 </li>
 </ul>
@@ -828,34 +828,34 @@
 </li>
 <li>
 <p>Modify the <code>ldap_host</code> to that of your development system or cloud instance. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cors</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
-  <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mps-route</span>
-  <span class="nt">config</span><span class="p">:</span> 
-    <span class="nt">hide_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="hll">    <span class="nt">ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span> <span class="c1"># Replace</span>
-</span>    <span class="nt">ldap_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3893</span>
-    <span class="nt">start_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">ldaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">base_dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
-    <span class="nt">verify_ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">attribute</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn</span>
-    <span class="nt">cache_ttl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
-    <span class="nt">header_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
-  <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rps-route</span>
-  <span class="nt">config</span><span class="p">:</span> 
-    <span class="nt">hide_credentials</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="hll">    <span class="nt">ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span> <span class="c1"># Replace</span>
-</span>    <span class="nt">ldap_port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3893</span>
-    <span class="nt">start_tls</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">ldaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">base_dn</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
-    <span class="nt">verify_ldap_host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="nt">attribute</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cn</span>
-    <span class="nt">cache_ttl</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
-    <span class="nt">header_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ldap</span>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cors</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap-auth</span><span class="w"></span>
+<span class="w">  </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mps-route</span><span class="w"></span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">hide_credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span><span class="w"> </span><span class="c1"># Replace</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">ldap_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3893</span><span class="w"></span>
+<span class="w">    </span><span class="nt">start_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ldaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">base_dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verify_ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cn</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cache_ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">    </span><span class="nt">header_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap-auth</span><span class="w"></span>
+<span class="w">  </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps-route</span><span class="w"></span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">hide_credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span><span class="w"> </span><span class="c1"># Replace</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">ldap_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3893</span><span class="w"></span>
+<span class="w">    </span><span class="nt">start_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ldaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">base_dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verify_ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cn</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cache_ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">    </span><span class="nt">header_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

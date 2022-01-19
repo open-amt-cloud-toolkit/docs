@@ -333,12 +333,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../Deployment/database/">
-        Database
+        Database Replacement
       </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../Deployment/secrets/">
-        Secret Provider
+        Secrets Management
       </a>
 </li>
 </ul>
@@ -950,16 +950,16 @@
 </li>
 <li>
 <p>Take note of the <code>fqdnSuffix</code> in the <code>outputs</code> section of the JSON response (e.g. <code>eastus.cloudapp.azure.com</code>)</p>
-<div class="highlight"><pre><span></span><code><span class="nt">"outputs"</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nt">"controlPlaneFQDN"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"String"</span><span class="p">,</span>
-    <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"bwcluster-9c68035a.hcp.westus.azmk8s.io"</span>
-  <span class="p">},</span>
-  <span class="nt">"fqdnSuffix"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"String"</span><span class="p">,</span>
-<span class="hll">    <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"eastus.cloudapp.azure.com"</span>
-</span>  <span class="p">}</span>
-<span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"controlPlaneFQDN"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bwcluster-9c68035a.hcp.westus.azmk8s.io"</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">"fqdnSuffix"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eastus.cloudapp.azure.com"</span><span class="w"></span>
+</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
 </code></pre></div>
 </li>
 </ol>
@@ -1049,28 +1049,28 @@
 </li>
 <li>
 <p>Update the <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <strong>kong</strong> section with a desired subdomain name for the URL that you would like for your cluster (i.e. myopenamtk8s).</p>
-<div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
-  <span class="nt">proxy</span><span class="p">:</span>
-    <span class="nt">annotations</span><span class="p">:</span>
-<span class="hll">      <span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;"</span>
+<div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">proxy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">      </span><span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;your-subdomain-name&gt;"</span><span class="w"></span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
-<span class="hll">    <span class="nt">mps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mps:latest"</span>
-</span><span class="hll">    <span class="nt">rps</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/rps:latest"</span>
-</span><span class="hll">    <span class="nt">webui</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/webui:latest"</span>
-</span><span class="hll">    <span class="nt">mpsrouter</span><span class="p">:</span> <span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/mps:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/rps:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/webui:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span><span class="w"></span>
 </span></code></pre></div>
 </li>
 <li>
 <p>Update the <code>commonName</code> key to your FQDN in the <code>mps</code> section.  For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-<span class="hll">    <span class="nt">commonName</span><span class="p">:</span> <span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span>
-</span>    <span class="nt">replicaCount</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">logLevel</span><span class="p">:</span> <span class="s">"silly"</span>
-    <span class="nt">jwtExpiration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1440</span>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com"</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">"silly"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jwtExpiration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1440</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
