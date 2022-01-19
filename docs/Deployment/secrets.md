@@ -1,31 +1,28 @@
-Secret Management is essential in a microservice architecture as it provides a secure repository for the services to access required sensitive assets. The Open AMT Cloud toolkit uses Hashicorp Vault as its tool for securely accessing these assets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log. Similar to the database section above, when it comes time to scale Open AMT Cloud Toolkit for production, managing state can be difficult. While Vault has a comprehensive solution for managing and persisting state in a K8s cluster, we recommend leveraging a managed secret provider such as Azure Key Vault to offload this role and help reduce the overhead of managing this aspect of the toolkit. Additionally, you may consider that a Secret Provider is not necessary for your deployment and may wish to remove it leveraging some other backing store for secrets.
+--8<-- "References/abbreviations.md"
+To prepare for a production environment, replace Hashicorp Vault* with a secrets management provider. 
 
-#### Reference Implementation
-<img src="./../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/>
-
-- HashiCorp Vault
-
-
-#### Example Replacements
-- Azure Key Vault
-- AWS Key Management Service      
-
-## Services That Require Updating
+To replace secrets management, update these services:
 
 - MPS
-- RPS
+- RPS 
 
-## What you need to do
+## What You'll Do
+This guide focuses on updating the secrets management with Azure Key Vault*. 
 
-
-We'll walk through the primary steps required to swap out the secret provider with another provider. In this example, we'll be using Azure Key Vault.  At a high level, there are a few main tasks to accomplish:
+Here are the main tasks:
 
 - Review Vault Schema
 - Add Secret Provider Dependency (if necessary)
-- Configuration
-- Code Implementation
+- Update Configuration
+- Implement the Code
 
-### Review Vault Schema
+!!! warning "Secrets Management Recipe"
+    The example implementation below provides a step-by-step outline of secrets management deployment. However, it is intended as a general guideline. You will need to write specific source code to support your custom solution. 
+
+!!! note
+    This guide will assume Azure Key Vault is already configured and ready for use as it focuses on the code that needs to be implemented in the microservices.
+
+## Review Vault Schema
 
 Below are the paths/keys in the vault that are used by the Open AMT Cloud Toolkit.
 
@@ -47,99 +44,140 @@ devices/[device_guid]/MEBX_PASSWORD
 devices/[device_guid]/MPS_PASSWORD
 ```
 
-### Add Secret Provider Dependency
+## Add Dependency
 
-For this example, we'll swap out the Hashicorp Vault for Azure Key Vault. We first need to install the required dependencies. 
-```
-npm install @azure/keyvault-secrets
-```
-```
-npm install @azure/identity
-```
-To read more about this dependency check out [https://www.npmjs.com/package/@azure/keyvault-secrets](https://www.npmjs.com/package/@azure/keyvault-secrets). 
+**To install the required dependencies:**
 
-!!! note
-    This guide will assume Azure Key Vault is already configured and ready for use as it focuses on the code that needs to be implemented in the microservices.
+Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
-### Configuration
-For Hashicorp Vault, we have the following three properties that need to be configured. 
-``` json
-{
-  "secrets_path": "secret/data/",
-  "vault_address": "http://localhost:8200",
-  "vault_token": "myroot",
-}
-```
-For Azure Key Vault, we don't need all of these so we'll set just the address:
-```json
-{
-  "secrets_path": "",
-  "vault_address": "https://<YOUR KEYVAULT NAME>.vault.azure.net",
-  "vault_token": "",
-}
-```
-Additionally, the following three ENV variables must be set:
-``` bash 
-AZURE_TENANT_ID=<YOUR-TENANT-ID>
-AZURE_CLIENT_ID=<YOUR-CLIENT-ID>
-AZURE_CLIENT_SECRET=<YOUR-CLIENT-SECRET>
-```
-### Code
+   ```
+   npm install @azure/keyvault-secrets
+   ```
 
-Let's take a look at our `ISecretManagerService` interface: 
-``` typescript
-export interface ISecretManagerService {
-  getSecretFromKey: (path: string, key: string) => Promise<string>
-  getSecretAtPath: (path: string) => Promise<any>
-  listSecretsAtPath: (path: string) => Promise<any>
-  readJsonFromKey: (path: string, key: string) => Promise<string>
-  writeSecretWithKey: (path: string, key: string, keyvalue: any) => Promise<void>
-  writeSecretWithObject: (path: string, data: any) => Promise<void>
-  deleteSecretWithPath: (path: string) => Promise<void>
-}
-```
-For this example, we'll focus on setup and implementing the `getSecretFromKey`.
-``` typescript
-const { DefaultAzureCredential } = require("@azure/identity")
-const { SecretClient } = require("@azure/keyvault-secrets")
+   ```
+   npm install @azure/identity
+   ```
 
-export class AzureSecretManagerService implements ISecretManagerService {
- vaultClient: SecretClient
- logger: ILogger
+!!! note 
+    To read more about this dependency, check out [Azure Key Value Secret Client library for JavaScript](https://www.npmjs.com/package/@azure/keyvault-secrets). 
 
- constructor (logger: ILogger) {
-    // DefaultAzureCredential expects the following three environment variables:
-    // * AZURE_TENANT_ID: The tenant ID in Azure Active Directory
-    // * AZURE_CLIENT_ID: The application (client) ID registered in the AAD tenant
-    // * AZURE_CLIENT_SECRET: The client secret for the registered application
-    const credential = new DefaultAzureCredential()
 
-    // Lastly, create our secrets client and connect to the service
-    const client = new SecretClient(EnvReader.GlobalEnvConfig.VaultConfig.address, credential);
- }
 
- async getSecretFromKey (path: string, key: string): Promise<string> {
-    try {
-      this.logger.verbose(`getting secret from vault: ${path}, ${key}`)
-       const latestSecret = await client.getSecret(key);
-      this.logger.debug(`got data back from vault: ${path}, ${key}`)
-      return latestSecret
-    } catch (error) {
-      this.logger.error('getSecretFromKey error \r\n')
-      this.logger.error(error)
-      return null
+## Update Configuration
+
+**To modify the configuration:**
+
+1. Modify the properties for Hashicorp Vault:
+
+     **Before:**
+
+     ``` json
+     {
+        "secrets_path": "secret/data/",
+        "vault_address": "http://localhost:8200",
+        "vault_token": "myroot",
+     }
+     ```
+
+     **After:**
+
+     For Azure Key Vault, you only need the address:
+
+     ```json
+     {
+        "secrets_path": "",
+        "vault_address": "https://<YOUR KEYVAULT NAME>.vault.azure.net",
+        "vault_token": "",
+     }
+     ```
+
+2. Set these three ENV variables:
+
+     ``` bash 
+     AZURE_TENANT_ID=<YOUR-TENANT-ID>
+     AZURE_CLIENT_ID=<YOUR-CLIENT-ID>
+     AZURE_CLIENT_SECRET=<YOUR-CLIENT-SECRET>
+     ```
+
+
+## Implement the Code
+
+**To support secrets management:**
+
+1. Consider the exported interface `ISecretManagerService`.  
+
+    ``` typescript
+    export interface ISecretManagerService 
+    {
+      getSecretFromKey: (path: string, key: string) => Promise<string>
+      getSecretAtPath: (path: string) => Promise<any>
+      listSecretsAtPath: (path: string) => Promise<any>
+      readJsonFromKey: (path: string, key: string) => Promise<string>
+      writeSecretWithKey: (path: string, key: string, keyvalue: any) => Promise<void>
+      writeSecretWithObject: (path: string, data: any) => Promise<void>
+      deleteSecretWithPath: (path: string) => Promise<void>
     }
-  }
-}
-```
-After all the functions have been implemented, the last step is to wire it up. This is done in the `src/Configurator.ts` file.
-``` typescript
-constructor(){
-    //existing
-    //this.secretsManager = new SecretManagerService(new Logger('SecretManagerService'))
-    this.secretsManager = new AzureSecretManagerService(new Logger('AzureSecretManagerService'))
-}
-```
+    ```
 
-That's it! After implementing the interface in both RPS and MPS. It's a good idea to run the Postman API tests located in `./src/test/collections` to ensure everything is in working order.
+2. This example focuses on `getSecretFromKey`, set up and implemented below:
+
+
+     ``` typescript
+       const { DefaultAzureCredential } = require("@azure/identity")
+       const { SecretClient } = require("@azure/keyvault-secrets")
+
+       export class AzureSecretManagerService implements ISecretManagerService 
+       {
+            vaultClient: SecretClient
+            logger: ILogger
+
+            constructor (logger: ILogger) 
+            {
+               // DefaultAzureCredential expects the following three environment variables:
+               // * AZURE_TENANT_ID: The tenant ID in Azure Active Directory
+               // * AZURE_CLIENT_ID: The application (client) ID registered in the AAD tenant
+               // * AZURE_CLIENT_SECRET: The client secret for the registered application
+               const credential = new DefaultAzureCredential()
+
+               // Lastly, create our secrets client and connect to the service
+               const client = new SecretClient(EnvReader.GlobalEnvConfig.VaultConfig.address, credential);
+            }
+
+            async getSecretFromKey (path: string, key: string): Promise<string> 
+            {
+               try
+               {
+                this.logger.verbose(`getting secret from vault: ${path}, ${key}`)
+                 const latestSecret = await client.getSecret(key);
+                 this.logger.debug(`got data back from vault: ${path}, ${key}`)
+                 return latestSecret
+               } 
+               catch (error) 
+               {
+                 this.logger.error('getSecretFromKey error \r\n')
+                 this.logger.error(error)
+                 return null
+               }
+            }
+       }
+     ```
+   
+     The example above is for one interface. You'll need to implement each interface defined in `ISecretManagerService`. 
+   
+3. After all the functions have been implemented, finish up by instantiating the `AzureSecretManagerService` in the `src/Configurator.ts` file.
+
+     ``` typescript
+       constructor()
+       {
+        //existing
+        //this.secretsManager = new SecretManagerService(new Logger('SecretManagerService'))
+        //new implementation
+        this.secretsManager = new AzureSecretManagerService(new Logger('AzureSecretManagerService'))
+       }
+     ```
+
+!!! tip "Best Practice"
+    That's it! Deployment complete.
+
+    After replacing the secrets management, ensure all the APIs are working as expected by running the API Tests with the Postman* application. You'll find the tests in the `./src/test/collections` folder.
 

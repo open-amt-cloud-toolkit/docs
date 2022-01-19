@@ -46,8 +46,8 @@ nav:
           - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
       - Overview: Deployment/overview.md
-      - Database: Deployment/database.md
-      - Secret Provider: Deployment/secrets.md
+      - Database Replacement: Deployment/database.md
+      - Secrets Management: Deployment/secrets.md
   - Tutorials:
     - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
     - REST API Call: Tutorials/apiTutorial.md

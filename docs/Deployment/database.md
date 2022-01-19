@@ -1,39 +1,28 @@
 --8<-- "References/abbreviations.md"
+To prepare for a production environment, replace the PostgreSQL* database with that of another provider. 
 
-The docker based PostgreSQL image that is used in the `docker-compose.yml` is great for proof-of-concept of and development with the Open AMT Cloud Toolkit. However, when gearing up for production it is recommended to leverage a managed database instance offered by a public cloud provider or perhaps a database hosted by your internal IT. Regardless of your deployment scenario (ie. a VM, Kubernetes, Docker Swarm, a native environment), managing state in your own cluster comes with a higher risk of data loss than that of a managed database instance. 
-
-#### Reference Implementation
-
-<img src="./../../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/>
-
-- Postgres
-
-#### Example Replacements
-
-- Azure Managed Postgres
-- Azure MSSQL
-- Amazon RDS
-- MySQL
-- MariaDB
-
-## Services That Require Updating
+To replace the database, update these services:
 
 - MPS
 - RPS 
 
-## What you need to do
+## What You'll Do
+This guide focuses on updating the RPS with an MS SQL Server (MSSQL) relational database. 
 
-
-For this guide, we'll be focusing on RPS. We'll walk through the primary steps required to swap out the database with another provider. In this example, we'll be using mssql.  At a high level, there are a few main tasks to accomplish:
+Here are the main tasks:
 
 - Review DB Schema
 - Add DB Client Dependency
-- Configuration
-- Code Implementation
+- Update Configuration
+- Implement the Code
 
-### DB Schema Overview
+!!! warning "Database Recipe"
+    The example implementation below provides a step-by-step outline of database deployment. However, it is intended as a general guideline. You will need to write specific source code to support your custom solution. 
 
-#### RPS
+## Review DB Schema
+The diagrams below illustrates the database schema and relationships. 
+
+### RPS
   ```mermaid
   erDiagram
       DOMAIN {
@@ -101,7 +90,7 @@ For this guide, we'll be focusing on RPS. We'll walk through the primary steps r
         string tenant_id
       }
   ```
-#### MPS
+### MPS
   ```mermaid
   erDiagram
       DEVICE {
@@ -115,93 +104,109 @@ For this guide, we'll be focusing on RPS. We'll walk through the primary steps r
       }
   ```
 
-### Add DB Client
-The first step is to add your database client library that you will use to connect to your database. Since this example is for mssql, we will use [`node-mssql`](https://www.npmjs.com/package/mssql).
+## Add DB Client
+Add the database client library you will use to connect to your database. To support MSSQL, this example uses the Microsoft SQL Server client* for Node.js, [`node-mssql`](https://www.npmjs.com/package/mssql).
+
+**To add the database:**
+
+Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
 ```
 npm install node-mssql --save
 ```
 
-### Update Configuration
+## Update Configuration
 
-Next, you'll need to update the connection string and a folder name for your db either in your ENV or .rc file:
+Update the connection string and a folder name for your db either in your ENV or .rc file.
+
+**To modify the configuration:**
+
 ``` json
-"db_provider":"mssql", //this needs to  match the folder name you create in the next step
+"db_provider":"mssql", //This will be the name of the folder you create in the next section.
 "connection_string":"Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true'",
 ```
 
-### Write Code
+## Implement the Code
 
-After you've got your configuration correct and db client added, next is to update the code to support the new database. 
+**To support the new database:**
 
+1. Create a new folder in `./src/data`. The name of the new folder should be the name you supplied for the `db_provider` property, which is `mssql` in the example above.
 
-Add a new folder named exactly as what you provided for the `db_provider` property to the `./src/data` folder. For our example we'll use `mssql`.
+    <img src="./../../assets/images/DbFolder.png" alt="vault" style="width:150px;"/>
 
-<img src="./../../assets/images/DbFolder.png" alt="vault" style="width:150px;"/>
+2. Create a file called `index.ts` that implements our IDB interface. Below is an example interface and query method:
 
-Next, we'll need to create an `index.ts` file that implements our IDB interface. Take a look at the interface below:
-``` typescript
-export interface IDB {
-  ciraConfigs: ICiraConfigTable
-  domains: IDomainsTable
-  profiles: IProfilesTable
-  wirelessProfiles: IWirelessProfilesTable
-  profileWirelessConfigs: IProfilesWifiConfigsTable
-  query: (text: string, params?: any) => Promise<any>
-}
-```
-We'll first implement the `query` method:
-``` typescript
-async query <T>(text: string, params?: any): Promise<mssql.IResult<T>> {
-    let result
-    const start = Date.now()
-    return await new Promise((resolve, reject) => {
-      this.sqlPool.connect(async (err) => {
-        if (err) {
-          this.log.error(err)
-          reject(err)
-        }
-        result = await this.sqlPool.request().query(text)
-        const duration = Date.now() - start
-        this.log.verbose(`executed query: ${JSON.stringify({ text, duration, rows: result.recordset.length })}`)
-        resolve(result)
-      })
-    })
-  }
-```
+     **Interface**
 
-The above is just an example to demonstrate that this function should be responsible for taking in the query and parameters and performing the execution.
+     ``` typescript
+     export interface IDB {
+       ciraConfigs: ICiraConfigTable
+       domains: IDomainsTable
+       profiles: IProfilesTable
+       wirelessProfiles: IWirelessProfilesTable
+       profileWirelessConfigs: IProfilesWifiConfigsTable
+       query: (text: string, params?: any) => Promise<any>
+     }
+     ```
 
-Next, You'll need to implement each one of the table interfaces. The base interface looks like this: 
-``` typescript
-export interface ITable<T> {
-  getCount: (tenantId?: string) => Promise<number>
-  get: (limit: number, offset: number, tenantId?: string) => Promise<T[]>
-  getByName: (name: string, tenantId?: string) => Promise<T>
-  delete: (name: string, tenantId?: string) => Promise<boolean>
-  insert: (item: T) => Promise<T>
-  update: (item: T) => Promise<T>
-}
-```
-There are interfaces for each table in the `./interfaces/database` that adds specific functions on top of the the base `ITable<>` interface.
-Here's an example of the get implementation for Domains:
-``` typescript
+     **Query Method**
 
-  /**
-   * @description Get all Domains from DB
-   * @param {number} top
-   * @param {number} skip
-   * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB
-   */
-  async get (top: number = DEFAULT_TOP, skip: number = DEFAULT_SKIP, tenantId: string = ''): Promise<AMTDomain[]> {
-    const results = await this.db.query(`
-    SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId
-    FROM domains 
-    ORDER BY name`)
-    return result
-  }
+     This query function is responsible for taking in the query parameters and performing the execution.
 
-```
+     ``` typescript
+     async query <T>(text: string, params?: any): Promise<mssql.IResult<T>> {
+        let result
+        const start = Date.now()
+        return await new Promise((resolve, reject) => {
+          this.sqlPool.connect(async (err) => {
+            if (err) {
+              this.log.error(err)
+              reject(err)
+            }
+            result = await this.sqlPool.request().query(text)
+            const duration = Date.now() - start
+            this.log.verbose(`executed query: ${JSON.stringify({ text, duration, rows: result.recordset.length })}`)
+            resolve(result)
+            })
+        })
+     }
+     ```
 
-Once you've completed all of the queries for each function for each table, you should be good to go! It's a good idea to run our API Tests w/ Postman provided in the `./src/test/collections` folder to ensure all the APIs are working as expected when implementing a new database provider. 
+3. Implement each of the table interfaces. The base interface looks like this: 
+    ``` typescript
+    export interface ITable<T> {
+      getCount: (tenantId?: string) => Promise<number>
+      get: (limit: number, offset: number, tenantId?: string) => Promise<T[]>
+      getByName: (name: string, tenantId?: string) => Promise<T>
+      delete: (name: string, tenantId?: string) => Promise<boolean>
+      insert: (item: T) => Promise<T>
+      update: (item: T) => Promise<T>
+    }
+    ```
+    There are interfaces for each table in the `./interfaces/database` which adds specific functions on top of the base `ITable<>` interface.
+    
+    Here's an example of the get implementation for Domains:
 
+    ``` typescript
+    /**
+     * @description Get all Domains from DB
+     * @param {number} top
+     * @param {number} skip
+     * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB
+     */
+    async get (top: number = DEFAULT_TOP, skip: number = DEFAULT_SKIP, tenantId: string = ''): Promise<AMTDomain[]> {
+       const results = await this.db.query(`
+       SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId
+       FROM domains 
+      ORDER BY name`)
+      return result
+     }
+
+    ```
+
+  4. Complete all the queries for each table's functions to finish the implementation.
+
+!!! tip "Best Practice"
+    That's it! Deployment complete.
+
+    After replacing the database, ensure all the APIs are working as expected by running the API Tests with the Postman* application. You'll find the tests in the `./src/test/collections` folder.
