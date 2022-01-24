@@ -37,6 +37,7 @@ jobs:
           pip install mkdocs-render-swagger-plugin
           pip install mkdocs-macros-plugin
           pip install mkdocs-mermaid2-plugin
+          pip install mkdocs-img2fig-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
       - uses: actions/checkout@v2
