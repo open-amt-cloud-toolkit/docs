@@ -10,9 +10,10 @@ These features require user consent:
 - IDE-Redirection for sharing and mounting images remotely
 - Serial-over-LAN (SOL)
 
-![assets/images/Profiles.png](../assets/images/Profiles.png)
-
-**Figure 1: Set up configuration and profiles for N number of clients. **
+<figure class="figure-image">
+<img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
+</figure>
 
 ## Create a Profile
 
@@ -23,9 +24,10 @@ Profiles provide configuration information to the firmware on platforms featurin
 1. Select the **Profiles** tab from the menu on the left.
 
 2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
-
-    [![RPS](../assets/images/RPS_NewProfile.png)](../assets/images/RPS_NewProfile.png)
-    **Figure 1: Create a new profile.**
+   <figure class="figure-image">
+   <img src="..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+   <figcaption>Figure 2: Create a new profile</figcaption>
+   </figure>
 
 3. Specify a **Profile Name** of your choice.
 
@@ -51,10 +53,11 @@ Profiles provide configuration information to the firmware on platforms featurin
 12. Click **Save.**
 
     !!! example "Example CCM Profile"
-        
-        [![RPS](../assets/images/RPS_CreateProfile.png)](../assets/images/RPS_CreateProfile.png)
-        
-        **Figure 2: Example CCM profile.**
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_CreateProfile.png" alt="Figure 3: Example CCM profile">
+        <figcaption>Figure 3: Example CCM profile</figcaption>
+        </figure>
+
 
 ## Next up
 **[Build & Run RPC](buildRPC.md)**

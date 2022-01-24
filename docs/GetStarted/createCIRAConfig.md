@@ -10,8 +10,11 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 1. Select the **CIRA Configs** tab from the left-hand menu.
 
 2. In the top-right corner, click **Add New.**
-    [![RPS](../assets/images/RPS_NewCIRAConfig.png)](../assets/images/RPS_NewCIRAConfig.png)
-    **Figure 1: Create a new CIRA Config.**
+     <figure class="figure-image">
+     <img src="..\..\assets\images\RPS_NewCIRAConfig.png" alt="Figure 1: Create a new CIRA Config">
+     <figcaption>Figure 1: Create a new CIRA Config</figcaption>
+     </figure>
+
 
 3. Specify a **Config Name** of your choice.
 
@@ -28,11 +31,11 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 9. Click **Save.**
     
     !!! example "Example CIRA Config"
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_CreateCIRAConfig.png" alt="Figure 2: Example CIRA Config">
+        <figcaption>Figure 2: Example CIRA Config</figcaption>
+        </figure>
             
-        [![RPS](../assets/images/RPS_CreateCIRAConfig.png)](../assets/images/RPS_CreateCIRAConfig.png)
-        
-        **Figure 2: Example CIRA Config.** 
-
 ## Next up
 
 Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC). Profiles also distinguish between activating in: 

@@ -35,8 +35,10 @@ Follow the steps in these sections sequentially:
 - Create a new React app
 - Add UI controls to the React app
 
-
-[![UI Toolkit](../assets/images/HelloWorld.png)](../assets/images/HelloWorld.png)
+<figure class="figure-image">
+<img src="..\..\assets\images\HelloWorld.png" alt="Figure 1: UI Toolkit">
+<figcaption>Figure 1: UI toolkit</figcaption>
+</figure>
 
 ## Create a New React App
 
@@ -67,17 +69,17 @@ The React app can be created in any preferred development directory. The MPS can
     npm start
     ```
 
-By default, React apps run on port `3000`. If port `3000` is already used by the MPS server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.
+    By default, React apps run on port `3000`. If port `3000` is already used by the MPS server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.
 
-!!! success
+    !!! success
+        <figure class="figure-image">
+        <img src="..\..\assets\images\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
+        <figcaption>Figure 2: React reports successful deployment</figcaption>
+        </figure>
 
-    [![UI Toolkit start](../assets/images/UIToolkit_npmstart.png)](../assets/images/UIToolkit_npmstart.png)
-
-    **Figure 2: React reports successful deployment.**
-
-!!! Note "Note - Using Chromium Browser and Refreshing"
-    By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
-    When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
+    !!! Note "Note - Using Chromium Browser and Refreshing"
+        By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
+        When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
 
 
 ## Add a Sample Control

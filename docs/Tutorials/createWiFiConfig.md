@@ -60,8 +60,11 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
 1. Select the **Wireless** tab from the left-hand menu.
 
 2. In the top-right corner, click **Add New.**
-    [![RPS New Wireless Profile](../assets/images/RPS_NewWireless.png)](../assets/images/RPS_NewWireless.png)
-    **Figure 1: Create a new WiFi Config.**
+
+    <figure class="figure-image">
+    <img src="..\..\assets\images\RPS_NewWireless.png" alt="Figure 1: Create a new WiFi Config">
+    <figcaption>Figure 1: Create a new WiFi Config</figcaption>
+    </figure>
 
 3. Specify a **Wireless Profile Name** of your choice.
 
@@ -76,14 +79,18 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
 8. Click **Save.**
 
     !!! example "Example Wireless Profile"
-        [![RPS Wireless Profile](../assets/images/RPS_WirelessCreate.png)](../assets/images/RPS_WirelessCreate.png)
-        **Figure 2: Example Wireless Profile.** 
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_WirelessCreate.png" alt="Figure 1: Example Wireless Profile">
+        <figcaption>Figure 1: Example wireless profile</figcaption>
+        </figure>
 
 9. **Important**: After saving, continue on to create either a CCM or ACM profile. When prompted, search for and select your new Wireless Profile from the drop-down menu. The selected Wi-Fi Profiles will be shown under **Associated Wireless Profiles** and can be re-ordered by dragging them to give priority.
 
     !!! example "Example - Select Wireless Profile"
-        [![RPS Bottom of Profile](../assets/images/RPS_CreateProfile_withWiFi.png)](../assets/images/RPS_CreateProfile_withWiFi.png)
-        **Figure 3: Selection of Wireless Profile in CCM/ACM Profile**
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_CreateProfile_withWiFi.png" alt="Figure 3: RPS Bottom of Profile">
+        <figcaption>Figure 3: RPS bottom of profile</figcaption>
+        </figure>
 
 ## Next up
 

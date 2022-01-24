@@ -21,17 +21,23 @@ The web portal is available for login after the deployment of the MPS, RPS, and 
 
 2.  A warning screen will prompt because the MPS Server is using self-signed certificates for testing. Click **Advanced** and then **Proceed** to continue to connect to the Sample Web UI.
 
-    !!! example "Example - Chrome* Browser Warning Screen"
-        [![MPS Warning](../assets/images/selfSignedConnect.png)](../assets/images/selfSignedConnect.png)
+    !!! example "Example - Chrome* Browser Warning Message"
+        <figure class="figure-image">
+        <img src="..\..\assets\images\selfSignedConnect.png" alt="Figure 1: MPS Warning Message">
+        <figcaption>Figure 1: MPS warning message</figcaption>
+        </figure>
 
 
 3. Log in to the web portal with the login credentials set for the environment variables `MPS_WEB_ADMIN_USER` and `MPS_WEB_ADMIN_PASSWORD` in the `.env` file.
 
 
-4. The home page is shown below in Figure 1.
+4. The home page is shown below in Figure 2.
 
     !!! example "Example - Sample Web UI Home Page"
-        [![WebUI](../assets/images/WebUI_Home.png)](../assets/images/WebUI_Home.png)
+        <figure class="figure-image">
+        <img src="..\..\assets\images\WebUI_Home.png" alt="Figure 2: Sample Web UI Home Pageg">
+        <figcaption>Figure 2: Sample Web UI home page</figcaption>
+        </figure>
     
 
 ## Next up
