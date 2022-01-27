@@ -7,12 +7,17 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) with [Kubernetes Enabled](https://docs.docker.com/desktop/kubernetes/)
+
+    !!!important "Important - For Linux"
+        If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
+
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Helm CLI (v3.5+)](https://helm.sh/)
-- [PSQL CLI (11.13)](https://www.postgresql.org/download/)
+- [Local PostgreSQL server](https://www.postgresql.org/download/) or PostgreSQL Docker Container
 
-!!!important "Important - For Linux"
-    If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
+    !!!note "Note - Database Required"
+        This guide requires a standalone database for storage. This can be done either as a local Postgres server on your local IP (192.168.0.X) or as a Docker container.
+
 
 ## Get the Toolkit
 
@@ -22,11 +27,12 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
+
 ## Create Kubernetes Secrets 
 
 ### 1. Private Docker Registry Credentials
 
-If you are using a private docker registry, you'll need to provide your credentials to K8S. 
+**If you are using a private docker registry**, you'll need to provide your credentials to K8S. 
 
 ```
 kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
@@ -178,21 +184,21 @@ Where:
         TEST SUITE: None
         ```
 
-3. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+3. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. MPS and RPS will both have a status of CreateContainerConfigError until Vault is Ready.
     ```
     kubectl get pods
     ```
 
     !!! success
         ``` hl_lines="5"
-        NAME                                                 READY   STATUS    RESTARTS   AGE
-        mps-6984b7c69d-8d5gf                                 1/1     Running   0          5m
-        mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          5m
-        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          5m
-        openamtstack-vault-0                                 0/1     Running   0          5m
-        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          5m
-        rps-79877bf5c5-hnv8t                                 1/1     Running   0          5m
-        webui-784cd49976-bj7z5                               1/1     Running   0          5m
+        NAME                                                 READY   STATUS                       RESTARTS   AGE
+        mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
+        mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
+        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
+        openamtstack-vault-0                                 0/1     Running                      0          5m
+        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
+        rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
+        webui-784cd49976-bj7z5                               1/1     Running                      0          5m
         ```
 
 ## Initialize and Unseal Vault
@@ -200,24 +206,27 @@ Where:
 !!! danger - "Danger - Download and Save Vault Keys"
     **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
-!!! tip "Tip - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by running:
+1. Connect to the Vault UI using a web browser.
 
+    ```
+    http://localhost:8200
+    ```
+
+    !!!note "Troubleshoot - Vault UI External IP"
+        If you cannot connect, verify the External IP Address by running:
         ```
         kubectl get services openamtstack-vault-ui
         ```
 
-1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
+2. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 
-2. After initializing and unsealing the vault, you need to enable the Key Value engine.
+3. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-3. Click **Enable New Engine +**.
+4. Click **Enable New Engine +**.
 
-4. Choose **KV**.
+5. Choose **KV**.
 
-5. Click **Next**.
-
-6. Leave the default path and choose **version 2** from the drop down. 
+6. Click **Next**.
 
 7. Click **Enable Engine**.
   
