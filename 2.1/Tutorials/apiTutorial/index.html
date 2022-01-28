@@ -814,7 +814,10 @@
 </a>
 <h1>REST API Call</h1>
 <p>This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a>. This method will retrieve information about all devices, including device GUIDs.</p>
-<p><a href="../../assets/images/CURLTutorial.png"><img alt="RESTTutorialFlow" src="../../assets/images/CURLTutorial.png"/></a></p>
+<figure class="figure-image">
+<img alt="Figure 1: Tutorial Flow Using curl" src="..\..\assets\images\CURLTutorial.png"/>
+<figcaption>Figure 1: Tutorial flow using curl</figcaption>
+</figure>
 <p><strong>Figure 1: API Call to Get All Devices</strong></p>
 <p>Figure 1 illustrates the flow of the tutorial below. </p>
 <p>Consult the API documentation for the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs (Steps A and C). Use the generated JWT, the return value from the Authorize method in Step B, with any of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API methods that require a BearerAuth, an HTTP security scheme that provides access to the bearer of a token. The GetDevices method accepts the JWT as an authentication and returns a list of devices and associated data.</p>
@@ -960,17 +963,10 @@ Example JSON Pretty Print:</p>
 </div>
 </input></input></div>
 <h2 id="other-methods">Other Methods<a class="headerlink" href="#other-methods" title="Permanent link">¶</a></h2>
-<p>For all available methods, see: </p>
-<ul>
-<li>
-<p><a href="../../APIs/indexMPS/" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Methods to manage a device:</a></p>
+<p>For <a href="../../APIs/indexMPS/" target="_blank"><strong><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods</strong></a> to manage a device, see: </p>
 <p><a class="md-button md-button--primary" href="../../APIs/indexMPS/" target="_blank"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Docs</a></p>
-</li>
-<li>
-<p><a href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods for server configuration and provisioning:</a></p>
+<p>For <a href="../../APIs/indexRPS/" target="_blank"><strong><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Methods</strong></a> for server configuration and provisioning, see</p>
 <p><a class="md-button md-button--primary" href="../../APIs/indexRPS/" target="_blank"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Docs</a></p>
-</li>
-</ul>
 <h2 id="explore-the-ui-toolkit">Explore the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#explore-the-ui-toolkit" title="Permanent link">¶</a></h2>
 <p>In addition to <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API calls, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>).</p>
 <p><a class="md-button md-button--primary" href="../uitoolkitReact/">Get Started with the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></a></p>

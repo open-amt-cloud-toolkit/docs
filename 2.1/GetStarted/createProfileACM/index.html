@@ -813,8 +813,10 @@
 </a>
 <h1>Create a Profile with ACM</h1>
 <p>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>) provides full access to Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>) functionality. User consent is optional for redirection features.</p>
-<p><img alt="assets/images/Profiles.png" src="../../assets/images/Profiles.png"/></p>
-<p><strong>Figure 1: Set up configuration and profiles for N number of clients. </strong></p>
+<figure class="figure-image">
+<img alt="Figure 1: Set up configuration and profiles for N number of clients" src="..\..\assets\images\Profiles.png"/>
+<figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
+</figure>
 <h3 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">¶</a></h3>
 <h4 id="provisioning-certificate">Provisioning Certificate<a class="headerlink" href="#provisioning-certificate" title="Permanent link">¶</a></h4>
 <p>By purchasing a certificate, you'll be able to remotely activate an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities:</p>
@@ -868,8 +870,10 @@
 </li>
 <li>
 <p>Under the <strong>Profiles</strong> tab, click <strong>Add New</strong> in the top-right corner to create a profile.</p>
-<p><a href="../../assets/images/RPS_NewProfile.png"><img alt="RPS" src="../../assets/images/RPS_NewProfile.png"/></a>
-<strong>Figure 1: Create a new profile.</strong></p>
+<p><figure class="figure-image">
+<img alt="Figure 2: Create a new profile" src="..\..\assets\images\RPS_NewProfile.png"/>
+<figcaption>Figure 2: Create a new profile</figcaption>
+</figure></p>
 </li>
 <li>
 <p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
@@ -908,13 +912,15 @@
 </li>
 <li>
 <p>Click <strong>Save.</strong></p>
-</li>
-</ol>
 <div class="admonition example">
 <p class="admonition-title">Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
-<p><a href="../../assets/images/RPS_CreateProfile_ACM.png"><img alt="RPS ACM Profile" src="../../assets/images/RPS_CreateProfile_ACM.png"/></a></p>
-<p><strong>Figure 2: Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile.</strong></p>
+<p><figure class="figure-image">
+<img alt="Figure 3: Example ACM profile" src="..\..\assets\images\RPS_CreateProfile_ACM.png"/>
+<figcaption>Figure 3: Example <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile</figcaption>
+</figure></p>
 </div>
+</li>
+</ol>
 <h3 id="create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-a-domain-profile" title="Permanent link">¶</a></h3>
 <p>In addition to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config and an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> requires the creation of a Domain profile.</p>
 <p><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> checks the network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.</p>
@@ -924,9 +930,11 @@
 <p>Select the <strong>Domains</strong> tab from the left-hand menu.</p>
 </li>
 <li>
-<p>In the top-right corner, click <strong>Add New.</strong></p>
-<p><a href="../../assets/images/RPS_NewDomain.png"><img alt="RPS New Domain" src="../../assets/images/RPS_NewDomain.png"/></a></p>
-<p><strong>Figure 3: Create a new Domain profile. </strong></p>
+<p>In the top-right corner, click <strong>Add New.</strong>
+<figure class="figure-image">
+<img alt="Figure 4: Create a new Domain profile" src="..\..\assets\images\RPS_NewDomain.png"/>
+<figcaption>Figure 4: Create a new Domain profile</figcaption>
+</figure></p>
 </li>
 <li>
 <p>Specify a name of your choice for the <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr> for the <strong>Name</strong> field. This does not have to be the actual network Domain Name/Suffix.</p>
@@ -944,8 +952,10 @@
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">Example Domain</p>
-<p><a href="../../assets/images/RPS_CreateDomain.png"><img alt="RPS Domain Creation" src="../../assets/images/RPS_CreateDomain.png"/></a></p>
-<p><strong>Figure 4: Example Domain profile. </strong></p>
+<p><figure class="figure-image">
+<img alt="Figure 5: Example Domain profile" src="..\..\assets\images\RPS_CreateDomain.png"/>
+<figcaption>Figure 5: Example Domain profile</figcaption>
+</figure></p>
 </div>
 </li>
 </ol>

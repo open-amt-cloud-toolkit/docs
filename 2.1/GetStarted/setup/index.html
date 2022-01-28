@@ -865,8 +865,8 @@
 </tr>
 <tr>
 <td>MPS_JWT_SECRET</td>
-<td>A strong secret of your choice (Example: A unique, random 256bit string. See another example in <a href="./#set-kong-json-web-token-jwt">code snippet below</a>).</td>
-<td>Used when generating a JSON Web Token for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
+<td>A strong secret of your choice (Example: A unique, random 256-bit string. See another example in <a href="./#set-kong-json-web-token-jwt">code snippet below</a>).</td>
+<td>Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
 </tr>
 <tr>
 <td>POSTGRES_PASSWORD</td>
@@ -931,12 +931,15 @@
 </input></input></div>
 <div class="admonition important">
 <p class="admonition-title">Important - For Windows* 10</p>
-<p>While the <code>docker-compose up</code> command is running, you may see a number of pop-ups asking for permission for Docker Desktop Filesharing. You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
-<p><img alt="Image of filesharing" src="../../assets/images/DockerFileSharing.png"/></p>
+<p>While the <code>docker-compose up</code> command is running, you may see a number of pop-ups asking for permission for Docker Desktop Filesharing (Figure 1). You must select <strong>Share It</strong> for the <code>docker-compose up</code> command to execute successfully.  If the pop-up expires,<code>docker-compose up</code> will fail.  You must run <code>docker-compose down -v</code> and then rerun <code>docker-compose up</code> to successfully start the containers.</p>
 </div>
+<p><figure class="figure-image">
+<img alt="Figure 1: Docker Desktop Filesharing" src="..\..\assets\images\DockerFileSharing.png"/>
+<figcaption>Figure 1: Docker Desktop Filesharing</figcaption>
+</figure></p>
 </li>
 <li>
-<p>Check that all of the containers are running.</p>
+<p>Check that all the containers are running.</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
 </code></pre></div>

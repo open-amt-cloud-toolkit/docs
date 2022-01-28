@@ -798,9 +798,11 @@
 <p>Select the <strong>Profiles</strong> tab from the menu on the left.</p>
 </li>
 <li>
-<p>Under the <strong>Profiles</strong> tab, click <strong>+ Add New</strong> in the top-right corner to create a profile.</p>
-<p><a href="../../assets/images/RPS_NewProfile.png"><img alt="RPS" src="../../assets/images/RPS_NewProfile.png"/></a>
-<strong>Figure 1: Create a new profile.</strong></p>
+<p>Under the <strong>Profiles</strong> tab, click <strong>+ Add New</strong> in the top-right corner to create a profile.
+    <figure class="figure-image">
+<img alt="Figure 1: Create a new profile" src="..\..\assets\images\RPS_NewProfile.png"/>
+<figcaption>Figure 1: Create a new profile</figcaption>
+</figure></p>
 </li>
 <li>
 <p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
@@ -864,8 +866,10 @@
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
 <p class="admonition-title">Example profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config</p>
-<p><img alt="RPS_CreateProfileTLSConfig.png" src="../../assets/images/RPS_CreateProfileTLSConfig.png"/></p>
-<p><strong>Figure 2: Example profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config.</strong></p>
+<p><figure class="figure-image">
+<img alt="Figure 2: Example profile with TLS Config" src="..\..\assets\images\RPS_CreateProfileTLSConfig.png"/>
+<figcaption>Figure 2: Example profile with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Config</figcaption>
+</figure></p>
 </div>
 </li>
 <li>
@@ -873,16 +877,22 @@
 </li>
 <li>
 <p>Sign in to Vault with the <code>VAULT_TOKEN</code> stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.</p>
-<p><img alt="VaultLoginpng" src="../../assets/images/VaultLogin.png"/></p>
-<p><strong>Figure 3: Login with the token</strong></p>
 </li>
+</ol>
+<figure class="figure-image">
+<img alt="Figure 3: Login with the token" src="..\..\assets\images\VaultLogin.png"/>
+<figcaption>Figure 3: Login with the token</figcaption>
+</figure>
+<ol>
 <li>
 <p>Navigate to the path <code>secret/TLS/[profile name]</code> for a local dev mode Vault deployment. Or <code>kv/TLS/[profile name]</code> for a cloud deployment.</p>
 <div class="admonition example">
 <p class="admonition-title">Example of Certificate Storage</p>
-<p><img alt="CertExample" src="../../assets/images/CertExample.png"/></p>
+<p><figure class="figure-image">
+<img alt="Figure 4: Digital Certificate" src="..\..\assets\images\CertExample.png"/>
+<figcaption>Figure 4: Digital Certificate</figcaption>
+</figure></p>
 </div>
-<p><strong>Figure 4: Digital Certificate</strong></p>
 </li>
 </ol>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>

@@ -788,8 +788,10 @@
 <p class="admonition-title">Important</p>
 <p>Currently, the implementation publishes all <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call events to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker. </p>
 </div>
-<p><img alt="../../assets/images/MQTT.png" src="../../../assets/images/MQTT.png">
-<strong>Figure 1: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Eventing Examples</strong></img></p>
+<figure class="figure-image">
+<img alt="Figure 1: MQTT Eventing Examples" src="..\..\..\assets\images\MQTT.png"/>
+<figcaption>Figure 1: MQTT Eventing Examples</figcaption>
+</figure>
 <p><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> send JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. As shown in Figure 1, proactive notifications are published in the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker container.  </p>
 <h2 id="set-up-mqtt-support">Set Up <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Support<a class="headerlink" href="#set-up-mqtt-support" title="Permanent link">¶</a></h2>
 <p><strong>To enable support:</strong></p>
@@ -840,9 +842,11 @@
 <p>Do not set a port.</p>
 </li>
 <li>
-<p>Verify the <strong>Path</strong> is <code>/mosquitto</code>.</p>
-<p><img alt="../../assets/images/MQTTEvents_View.png" src="../../../assets/images/MQTTEvents_View.png">
-<strong>Figure 2: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events Connection</strong></img></p>
+<p>Verify the <strong>Path</strong> is <code>/mosquitto</code>.
+    <figure class="figure-image">
+<img alt="Figure 2: MQTT Events Connection" src="..\..\..\assets\images\MQTTEvents_View.png"/>
+<figcaption>Figure 2: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events Connection</figcaption>
+</figure></p>
 <div class="admonition troubleshooting">
 <p class="admonition-title">Troubleshooting</p>
 <p>If successful, the Connect circle should update to blue. If it is red, verify your Hostname and <code>.env</code> file is correct.</p>
@@ -853,7 +857,10 @@
 <p><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events can be customized to add, edit, or remove events. Read more in <a href="../customMqttEvents/">Customizing <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events</a>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events</p>
-<p><img alt="../../assets/images/MQTTEvents_View_Example.png" src="../../../assets/images/MQTTEvents_View_Example.png"/></p>
+<p><figure class="figure-image">
+<img alt="Figure 3: MQTT Events Connection" src="..\..\..\assets\images\/MQTTEvents_View_Example.png"/>
+<figcaption>Figure 3: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events Connection</figcaption>
+</figure></p>
 </div>
 </li>
 </ol>
