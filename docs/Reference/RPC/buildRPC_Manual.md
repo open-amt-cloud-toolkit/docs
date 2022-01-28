@@ -15,8 +15,10 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 !!! tip "Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
-[![RPC](../../assets/images/RPC_Overview.png)](../../assets/images/RPC_Overview.png)
-**Figure 1: RPC Configuration** 
+<figure class="figure-image">
+<img src="..\..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<figcaption>Figure 1: RPC Configuration</figcaption>
+</figure>
 
 !!! note "Figure 1 Details"
     The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../../GetStarted/createCIRAConfig.md) or [Create an AMT Profile](../../GetStarted/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
@@ -159,11 +161,12 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         Find out more information about the [flag and other arguments](./commandsRPC.md).
 
 
-!!! success
-    Example Output after Activating and Configuring a device into ACM:
-
-    [![RPC Success](../../assets/images/RPC_Success.png)](../../assets/images/RPC_Success.png)
-
+    !!! success
+        Example Output after Activating and Configuring a device into ACM:
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\RPC_Success.png" alt="Figure 1: RPC Success">
+        <figcaption>Figure 1: RPC Success</figcaption>
+        </figure>
 
     !!! error "Troubleshooting"
         Run into an issue? Try these [troubleshooting steps](../troubleshooting.md).
