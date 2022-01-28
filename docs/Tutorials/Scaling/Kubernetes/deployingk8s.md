@@ -4,6 +4,7 @@ This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local K
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes [here](https://kubernetes.io/docs/home/).
 
+
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) with [Kubernetes Enabled](https://docs.docker.com/desktop/kubernetes/)
@@ -16,8 +17,78 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 - [Local PostgreSQL server](https://www.postgresql.org/download/) or PostgreSQL Docker Container
 
     !!!note "Note - Database Required"
-        This guide requires a standalone database for storage. This can be done either as a local Postgres server on your local IP (192.168.0.X) or as a Docker container.
+        This guide requires a standalone database for storage. This can be done either as a local Postgres server on your local IP (192.168.XX.X) or as a Docker container.
 
+    ??? note "Optional - How to Set up Local PostgreSQL server on local IP Address"
+    
+        ### Download and Configure
+    
+        1. [Download and Install PostgreSQL](https://www.postgresql.org/download/). You may have to add `.\bin` and `.\lib` to your PATH on Windows.
+    
+        2. Open the `pg_hba.conf` file under `.\PostgreSQL\14\data`.
+    
+        3. Add your device's IP Address under **IPv4 local connections**.
+    
+            ???+ example "Example - pg_hba.conf File"
+    
+                ``` hl_lines="7"
+    
+                # TYPE  DATABASE        USER            ADDRESS                 METHOD
+    
+                # "local" is for Unix domain socket connections only
+                local   all             all                                             scram-sha-256
+                # IPv4 local connections:
+                host    all             all             127.0.0.1/32                    scram-sha-256
+                host    all             all             <Your-IP-Address>/24            scram-sha-256
+                # IPv6 local connections:
+                host    all             all             ::1/128                         scram-sha-256
+                # Allow replication connections from localhost, by a user with the
+                # replication privilege.
+                local   replication     all                                             scram-sha-256
+                host    replication     all             127.0.0.1/32                    scram-sha-256
+                host    replication     all             ::1/128                         scram-sha-256
+                ```
+    
+        4. Reload the configuration file to use the updated values.
+    
+            ```
+            psql -U <user> -p 5432 -c "SELECT pg_reload_conf();"
+            ```
+    
+        5. **From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **
+
+
+    ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
+    
+        ### Build and Start
+    
+        1. Clone the Open AMT Cloud Toolkit.
+
+            ```
+            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+            ```
+    
+        2. Copy the `.env.template` file to `.env`.
+
+            === "Windows (Cmd Prompt)"
+                ```
+                copy .env.template .env
+                ```
+
+            === "Linux/Powershell"
+                ```
+                cp .env.template .env
+                ```
+
+        3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
+
+        4. Build and start the container.
+
+            ```
+            docker-compose  -f "docker-compose.yml" up -d db
+            ```
+
+        5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
 
 ## Get the Toolkit
 
@@ -94,22 +165,25 @@ Where:
     - **&lt;PASSWORD&gt;** is the password for the Postgres database.
     - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
 
+    !!! warning "Warning - Using an SSL Connection"
+        In this guide, we will disable SSL for ease of setup for local Kubernetes. In a production environment, an SSL connection is highly encouraged for added security and data encryption.
+
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=disable
     ```
 
 3. Create MPS Router connection string secret.
 
     ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 ## Update Configuration
