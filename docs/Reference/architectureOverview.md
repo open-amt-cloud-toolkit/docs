@@ -2,9 +2,10 @@
 
 Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit microservice architecture.
 
-![../assets/images/AEHighLevelArch.png](../assets/images/ArchitecturalFlow.png)
-
-**Figure 1: Deploy Open AMT Cloud Toolkit**
+<figure class="figure-image">
+  <img src="..\..\assets\images\ArchitecturalFlow.png" alt="Figure 1: Deploy Open AMT Cloud Toolkit">
+  <figcaption>Figure 1: Deploy Open AMT Cloud Toolkit</figcaption>
+</figure>
 
 Figure 1 illustrates the high-level steps for basic deployment: 
 

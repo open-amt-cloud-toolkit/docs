@@ -3,8 +3,10 @@
 1. Go back to the Sample Web UI on your development system.
 	
 2. Click the Devices tab from the menu on the left.
-
-    [![mps](../assets/images/MPS_ConnectedDevice.png)](../assets/images/MPS_ConnectedDevice.png)
+     <figure class="figure-image">
+     <img src="..\..\assets\images\/MPS_ConnectedDevice.png" alt="Figure 1: Devices tab">
+     <figcaption>Figure 1: Devices tab</figcaption>
+     </figure>
 
     !!! troubleshooting
         If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After successfully restarting the device, refresh the Sample Web UI to see if the *Status* changes to *connected*.
@@ -13,7 +15,10 @@
 
 4. Select an action to perform from the options in the top-right.
 
-    [![mps](../assets/images/MPS_ManageDevice.png)](../assets/images/MPS_ManageDevice.png)
+     <figure class="figure-image">
+     <img src="..\..\assets\images\MPS_ManageDevice.png" alt="Figure 2: Action options">
+     <figcaption>Figure 2: Action options</figcaption>
+     </figure>
 
     !!! note
         If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM) and serial over LAN (SOL) features require entering a user consent code, which will be displayed on the device. To use KVM/SOL without user consent, follow the [ACM Activation Path](createProfileACM.md) for how to configure a device into Admin Control Mode.
@@ -22,8 +27,11 @@
         Turn off active redirection sessions, such as KVM or SOL, before power state transitions. Power Cycle Reset and Unconditional Power Down (Power Off) will be rejected as invalid if there is an active redirection session. 
         
 5. When performing a KVM action for a device activated in CCM or ACM with user consent enabled, input the user consent code displayed on the client device.
-    
-    [![mps](../assets/images/MPS_UserConsent.png)](../assets/images/MPS_UserConsent.png)
+
+     <figure class="figure-image">
+     <img src="..\..\assets\images\MPS_UserConsent.png" alt="Figure 2: User Consent">
+     <figcaption>Figure 3: User Consent</figcaption>
+     </figure>
   
 <br>
 

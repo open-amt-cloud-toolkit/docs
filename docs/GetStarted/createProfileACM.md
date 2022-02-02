@@ -2,9 +2,10 @@
 
 Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.
 
-![assets/images/Profiles.png](../assets/images/Profiles.png)
-
-**Figure 1: Set up configuration and profiles for N number of clients. **
+<figure class="figure-image">
+<img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
+</figure>
 
 ### What You'll Need
 
@@ -63,8 +64,10 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
 
-    [![RPS](../assets/images/RPS_NewProfile.png)](../assets/images/RPS_NewProfile.png)
-    **Figure 1: Create a new profile.**
+    <figure class="figure-image">
+    <img src="..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+    <figcaption>Figure 2: Create a new profile</figcaption>
+    </figure>
 
 3. Specify a **Profile Name** of your choice.
 
@@ -92,11 +95,11 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 12. Click **Save.**
 
-!!! example "Example ACM Profile"
-    
-    [![RPS ACM Profile](../assets/images/RPS_CreateProfile_ACM.png)](../assets/images/RPS_CreateProfile_ACM.png)
-
-    **Figure 2: Example ACM profile.**
+    !!! example "Example ACM Profile"
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
+        <figcaption>Figure 3: Example ACM profile</figcaption>
+        </figure>
 
 ### Create a Domain Profile
 
@@ -109,10 +112,10 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 1. Select the **Domains** tab from the left-hand menu.
 
 2. In the top-right corner, click **Add New.**
-
-    [![RPS New Domain](../assets/images/RPS_NewDomain.png)](../assets/images/RPS_NewDomain.png)
-
-    **Figure 3: Create a new Domain profile. **
+    <figure class="figure-image">
+    <img src="..\..\assets\images\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
+    <figcaption>Figure 4: Create a new Domain profile</figcaption>
+    </figure>
 
 3. Specify a name of your choice for the Domain Profile for the **Name** field. This does not have to be the actual network Domain Name/Suffix.
 
@@ -125,10 +128,10 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 7. Click **Save.**
 
     !!! example "Example Domain"
-                    
-        [![RPS Domain Creation](../assets/images/RPS_CreateDomain.png)](../assets/images/RPS_CreateDomain.png)
-
-        **Figure 4: Example Domain profile. **
+        <figure class="figure-image">
+        <img src="..\..\assets\images\RPS_CreateDomain.png" alt="Figure 5: Example Domain profile">
+        <figcaption>Figure 5: Example Domain profile</figcaption>
+        </figure>
 
 
 ## Next Up

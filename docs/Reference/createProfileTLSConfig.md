@@ -14,9 +14,10 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 1. Select the **Profiles** tab from the menu on the left.
 
 2. Under the **Profiles** tab, click **+ Add New** in the top-right corner to create a profile.
-
-    [![RPS](../assets/images/RPS_NewProfile.png)](../assets/images/RPS_NewProfile.png)
-    **Figure 1: Create a new profile.**
+    <figure class="figure-image">
+    <img src="..\..\assets\images\RPS_NewProfile.png" alt="Figure 1: Create a new profile">
+    <figcaption>Figure 1: Create a new profile</figcaption>
+    </figure>
 
 3. Specify a **Profile Name** of your choice.
 
@@ -51,26 +52,27 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 12. Click **Save.**
 
     !!! example "Example profile with TLS Config"
-        
-        ![RPS_CreateProfileTLSConfig.png](../assets/images/RPS_CreateProfileTLSConfig.png)
-        
-        **Figure 2: Example profile with TLS Config.**
+         <figure class="figure-image">
+         <img src="..\..\assets\images\RPS_CreateProfileTLSConfig.png" alt="Figure 2: Example profile with TLS Config">
+         <figcaption>Figure 2: Example profile with TLS Config</figcaption>
+         </figure>
 
 13. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [https://localhost:8200](https://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
 
 14. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
 
-    ![VaultLoginpng](../assets/images/VaultLogin.png)
-
-    **Figure 3: Login with the token**
+<figure class="figure-image">
+         <img src="..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
+         <figcaption>Figure 3: Login with the token</figcaption>
+         </figure>
 
 15. Navigate to the path `secret/TLS/[profile name]` for a local dev mode Vault deployment. Or `kv/TLS/[profile name]` for a cloud deployment.
 
     !!! example "Example of Certificate Storage"
-        ![CertExample](../assets/images/CertExample.png)
-
-    **Figure 4: Digital Certificate**
-
+        <figure class="figure-image">
+        <img src="..\..\assets\images\CertExample.png" alt="Figure 4: Digital Certificate">
+        <figcaption>Figure 4: Digital Certificate</figcaption>
+        </figure>
 
 ## Next up
 **[Build & Run RPC](../GetStarted/buildRPC.md)**

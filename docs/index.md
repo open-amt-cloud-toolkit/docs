@@ -40,9 +40,10 @@ The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Mana
 
 Reduce the need for costly on-site IT, minimize the downtime of key, business-critical devices, and more. [Read more about the Intel vPro® Platform](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html).
 
-![assets/images/OOBManagement.png](assets/images/OOBManagement.png)
-
- **Figure 1: Open AMT Cloud Toolkit features OOB Management.**
+<figure class="figure-image">
+  <img src="assets\images\OOBManagement.png" alt="Figure 1: Open AMT Cloud Toolkit features OOB Management">
+  <figcaption>Figure 1: Open AMT Cloud Toolkit features OOB Management</figcaption>
+</figure>
  
  Intel® AMT supports remote manageability with: 
 
@@ -60,9 +61,10 @@ The toolkit guide provides instructions to:
 
 Additional sections provide guidance on the reference implementation UI Toolkit, REST API usage, asset security, and more. 
 
-![assets/images/AEHighLevelArch.png](assets/images/HiLevelArchitecture.png)
-
- **Figure 2: High-level architecture consists of four major software components.**
+<figure class="figure-image">
+  <img src="assets\images\HiLevelArchitecture.png" alt="Figure 2: High-level architecture consists of four major software components">
+  <figcaption>Figure 2: High-level architecture: major software components</figcaption>
+</figure>
 
 As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of five components:
 

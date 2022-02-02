@@ -17,10 +17,10 @@ There are a number of ways to obtain the GUID on the Intel® AMT device:
 2. Navigate to the Devices tab.
 
 3. Your AMT device's GUID is listed in the 2nd column.
-
-    [![GUID](../assets/images/MPS_ConnectedDevice.png)](../assets/images/MPS_ConnectedDevice.png)
-
-
+     <figure class="figure-image">
+     <img src="..\..\assets\images\MPS_ConnectedDevice.png" alt="Figure 1: MPS Connected Device">
+     <figcaption>Figure 1: MPS Connected Device</figcaption>
+     </figure>
 
 ## Via API Method
 

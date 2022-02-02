@@ -3,10 +3,10 @@
 
 This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
 
-[![Docker Local Overview](../assets/images/LocalDockerWorkflow.png)](../assets/images/LocalDockerWorkflow.png)
-
-
-**Figure 1: Deploy microservices on a local development system as Docker containers. **
+<figure class="figure-image">
+  <img src="..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
+  <figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
+</figure>
 
 ## What You'll Need
 

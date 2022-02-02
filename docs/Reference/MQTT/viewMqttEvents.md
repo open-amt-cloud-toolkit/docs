@@ -7,8 +7,10 @@ Open AMT Cloud Toolkit supports Eventing using Message Queuing Telemetry Transpo
 !!! important
     Currently, the implementation publishes all MPS and RPS REST API call events to the MQTT Broker. 
 
-![../../assets/images/MQTT.png](../../assets/images/MQTT.png)
-**Figure 1: MQTT Eventing Examples**
+<figure class="figure-image">
+<img src="..\..\..\assets\images\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
+<figcaption>Figure 1: MQTT Eventing Examples</figcaption>
+</figure>
 
 MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. As shown in Figure 1, proactive notifications are published in the MQTT Broker container.  
 
@@ -45,9 +47,10 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 3. Do not set a port.
 
 4. Verify the **Path** is `/mosquitto`.
-
-    ![../../assets/images/MQTTEvents_View.png](../../assets/images/MQTTEvents_View.png)
-    **Figure 2: MQTT Events Connection**
+    <figure class="figure-image">
+    <img src="..\..\..\assets\images\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
+    <figcaption>Figure 2: MQTT Events Connection</figcaption>
+    </figure>
 
     !!! troubleshooting
         If successful, the Connect circle should update to blue. If it is red, verify your Hostname and `.env` file is correct.
@@ -57,6 +60,9 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
     MQTT Events can be customized to add, edit, or remove events. Read more in [Customizing MQTT Events](./customMqttEvents.md).
 
     !!! example "Example MQTT Events"
-        ![../../assets/images/MQTTEvents_View_Example.png](../../assets/images/MQTTEvents_View_Example.png)
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
+        <figcaption>Figure 3: MQTT Events Connection</figcaption>
+        </figure>
 
 <br><br>

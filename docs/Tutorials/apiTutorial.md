@@ -2,7 +2,10 @@
 
 This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices) using [curl](https://curl.se/). This method will retrieve information about all devices, including device GUIDs.
 
-[![RESTTutorialFlow](../assets/images/CURLTutorial.png)](../assets/images/CURLTutorial.png)
+<figure class="figure-image">
+<img src="..\..\assets\images\CURLTutorial.png" alt="Figure 1: Tutorial Flow Using curl">
+<figcaption>Figure 1: Tutorial flow using curl</figcaption>
+</figure>
 
 **Figure 1: API Call to Get All Devices**
 
@@ -152,15 +155,13 @@ The sample GET and POST curl commands below can be adapted for other MPS and RPS
 
 ## Other Methods
 
-For all available methods, see: 
+For [**MPS methods**](./../APIs/indexMPS.md){target=_blank} to manage a device, see: 
 
-- [MPS Methods to manage a device:](./../APIs/indexMPS.md){target=_blank}
+[MPS API Docs](./../APIs/indexMPS.md){: .md-button .md-button--primary target=_blank }
 
-    [MPS API Docs](./../APIs/indexMPS.md){: .md-button .md-button--primary target=_blank }
+For [**RPS Methods**](./../APIs/indexRPS.md){target=_blank} for server configuration and provisioning, see
 
-- [RPS Methods for server configuration and provisioning:](./../APIs/indexRPS.md){target=_blank}
-
-    [RPS API Docs](./../APIs/indexRPS.md){: .md-button .md-button--primary target=_blank }
+[RPS API Docs](./../APIs/indexRPS.md){: .md-button .md-button--primary target=_blank }
 
 ## Explore the UI Toolkit
 In addition to REST API calls, the Open AMT Cloud Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
