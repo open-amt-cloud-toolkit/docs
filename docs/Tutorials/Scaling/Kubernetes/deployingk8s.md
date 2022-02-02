@@ -4,15 +4,91 @@ This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local K
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes [here](https://kubernetes.io/docs/home/).
 
+
 ## Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) with [Kubernetes Enabled](https://docs.docker.com/desktop/kubernetes/)
+
+    !!!important "Important - For Linux"
+        If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
+
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Helm CLI (v3.5+)](https://helm.sh/)
-- [PSQL CLI (11.13)](https://www.postgresql.org/download/)
+- [Local PostgreSQL server](https://www.postgresql.org/download/) or PostgreSQL Docker Container
 
-!!!important "Important - For Linux"
-    If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
+    !!!note "Note - Database Required"
+        This guide requires a standalone database for storage. This can be done either as a local Postgres server on your local IP (192.168.XX.X) or as a Docker container.
+
+    ??? note "Optional - How to Set up Local PostgreSQL server on local IP Address"
+    
+        ### Download and Configure
+    
+        1. [Download and Install PostgreSQL](https://www.postgresql.org/download/). You may have to add `.\bin` and `.\lib` to your PATH on Windows.
+    
+        2. Open the `pg_hba.conf` file under `.\PostgreSQL\14\data`.
+    
+        3. Add your device's IP Address under **IPv4 local connections**.
+    
+            ???+ example "Example - pg_hba.conf File"
+    
+                ``` hl_lines="7"
+    
+                # TYPE  DATABASE        USER            ADDRESS                 METHOD
+    
+                # "local" is for Unix domain socket connections only
+                local   all             all                                             scram-sha-256
+                # IPv4 local connections:
+                host    all             all             127.0.0.1/32                    scram-sha-256
+                host    all             all             <Your-IP-Address>/24            scram-sha-256
+                # IPv6 local connections:
+                host    all             all             ::1/128                         scram-sha-256
+                # Allow replication connections from localhost, by a user with the
+                # replication privilege.
+                local   replication     all                                             scram-sha-256
+                host    replication     all             127.0.0.1/32                    scram-sha-256
+                host    replication     all             ::1/128                         scram-sha-256
+                ```
+    
+        4. Reload the configuration file to use the updated values.
+    
+            ```
+            psql -U <user> -p 5432 -c "SELECT pg_reload_conf();"
+            ```
+    
+        5. **From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **
+
+
+    ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
+    
+        ### Build and Start
+    
+        1. Clone the Open AMT Cloud Toolkit.
+
+            ```
+            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+            ```
+    
+        2. Copy the `.env.template` file to `.env`.
+
+            === "Windows (Cmd Prompt)"
+                ```
+                copy .env.template .env
+                ```
+
+            === "Linux/Powershell"
+                ```
+                cp .env.template .env
+                ```
+
+        3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
+
+        4. Build and start the container.
+
+            ```
+            docker-compose  -f "docker-compose.yml" up -d db
+            ```
+
+        5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
 
 ## Get the Toolkit
 
@@ -22,11 +98,12 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
 
+
 ## Create Kubernetes Secrets 
 
 ### 1. Private Docker Registry Credentials
 
-If you are using a private docker registry, you'll need to provide your credentials to K8S. 
+**If you are using a private docker registry**, you'll need to provide your credentials to K8S. 
 
 ```
 kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
@@ -88,22 +165,25 @@ Where:
     - **&lt;PASSWORD&gt;** is the password for the Postgres database.
     - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
 
+    !!! warning "Warning - Using an SSL Connection"
+        In this guide, we will disable SSL for ease of setup for local Kubernetes. In a production environment, an SSL connection is highly encouraged for added security and data encryption.
+
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=disable
     ```
 
 3. Create MPS Router connection string secret.
 
     ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 ## Update Configuration
@@ -178,21 +258,21 @@ Where:
         TEST SUITE: None
         ```
 
-3. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+3. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. MPS and RPS will both have a status of CreateContainerConfigError until Vault is Ready.
     ```
     kubectl get pods
     ```
 
     !!! success
         ``` hl_lines="5"
-        NAME                                                 READY   STATUS    RESTARTS   AGE
-        mps-6984b7c69d-8d5gf                                 1/1     Running   0          5m
-        mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          5m
-        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          5m
-        openamtstack-vault-0                                 0/1     Running   0          5m
-        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          5m
-        rps-79877bf5c5-hnv8t                                 1/1     Running   0          5m
-        webui-784cd49976-bj7z5                               1/1     Running   0          5m
+        NAME                                                 READY   STATUS                       RESTARTS   AGE
+        mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
+        mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
+        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
+        openamtstack-vault-0                                 0/1     Running                      0          5m
+        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
+        rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
+        webui-784cd49976-bj7z5                               1/1     Running                      0          5m
         ```
 
 ## Initialize and Unseal Vault
@@ -200,24 +280,27 @@ Where:
 !!! danger - "Danger - Download and Save Vault Keys"
     **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
-!!! tip "Tip - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by running:
+1. Connect to the Vault UI using a web browser.
 
+    ```
+    http://localhost:8200
+    ```
+
+    !!!note "Troubleshoot - Vault UI External IP"
+        If you cannot connect, verify the External IP Address by running:
         ```
         kubectl get services openamtstack-vault-ui
         ```
 
-1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
+2. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 
-2. After initializing and unsealing the vault, you need to enable the Key Value engine.
+3. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-3. Click **Enable New Engine +**.
+4. Click **Enable New Engine +**.
 
-4. Choose **KV**.
+5. Choose **KV**.
 
-5. Click **Next**.
-
-6. Leave the default path and choose **version 2** from the drop down. 
+6. Click **Next**.
 
 7. Click **Enable Engine**.
   
