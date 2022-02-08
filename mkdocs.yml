@@ -105,6 +105,9 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.tabbed
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
   - abbr
   - pymdownx.snippets
   - attr_list
