@@ -14,12 +14,46 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Helm CLI (v3.5+)](https://helm.sh/)
-- [Local PostgreSQL server](https://www.postgresql.org/download/) or PostgreSQL Docker Container
+- PostgreSQL Docker Container or [Local PostgreSQL server](https://www.postgresql.org/download/)
 
     !!!note "Note - Database Required"
-        This guide requires a standalone database for storage. This can be done either as a local Postgres server on your local IP (192.168.XX.X) or as a Docker container.
+        This guide requires a standalone database for storage. This can be done either as a Docker container or as a local Postgres server on your local IP. For production, a managed database instance, either by a cloud service provider or your enterprise IT, is highly recommended.
 
-    ??? note "Optional - How to Set up Local PostgreSQL server on local IP Address"
+    
+    ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
+    
+        ### Build and Start
+    
+        1. Clone the Open AMT Cloud Toolkit.
+
+            ```
+            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+            ```
+    
+        2. Copy the `.env.template` file to `.env`.
+
+            === "Windows (Cmd Prompt)"
+                ```
+                copy .env.template .env
+                ```
+
+            === "Linux/Powershell"
+                ```
+                cp .env.template .env
+                ```
+
+        3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
+
+        4. Build and start the container.
+
+            ```
+            docker-compose  -f "docker-compose.yml" up -d db
+            ```
+
+        5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
+
+
+    ??? note "Optional (Not Recommended) - How to Set up Local PostgreSQL server on local IP Address"
     
         ### Download and Configure
     
@@ -56,39 +90,6 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
             ```
     
         5. **From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **
-
-
-    ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
-    
-        ### Build and Start
-    
-        1. Clone the Open AMT Cloud Toolkit.
-
-            ```
-            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
-            ```
-    
-        2. Copy the `.env.template` file to `.env`.
-
-            === "Windows (Cmd Prompt)"
-                ```
-                copy .env.template .env
-                ```
-
-            === "Linux/Powershell"
-                ```
-                cp .env.template .env
-                ```
-
-        3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
-
-        4. Build and start the container.
-
-            ```
-            docker-compose  -f "docker-compose.yml" up -d db
-            ```
-
-        5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
 
 ## Get the Toolkit
 
@@ -166,12 +167,12 @@ Where:
     - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
 
     !!! warning "Warning - Using an SSL Connection"
-        In this guide, we will disable SSL for ease of setup for local Kubernetes. In a production environment, an SSL connection is highly encouraged for added security and data encryption.
+        In this guide, we will set SSL to `no-verify` for ease of setup for local Kubernetes. In a production environment, an SSL connection is highly encouraged for added security and data encryption for your managed database.
 
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=disable
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
     ```
 
 3. Create MPS Router connection string secret.
@@ -183,7 +184,7 @@ Where:
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
     ```
 
 ## Update Configuration
