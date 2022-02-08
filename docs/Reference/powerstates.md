@@ -16,17 +16,17 @@ Possible power actions are listed in the following table:
    | **14** | Soft reset | Powered up/on | Perform a shutdown and then a hardware reset | N/A | Yes |
    | **100** | Power up to BIOS settings | Powered down/off | Power to BIOS to verify or modify system configuration | G2/S5 | Yes  |
    | **101** | Reset to BIOS settings | Powered up/on | Perform hardware reset on the bus to BIOS to verify or modify system configuration | G2/S5 | Yes  |
-   | **104** | Reset to secure erase | Powered up/on |  Perform hardware reset on the bus to secure erase, a process of completely erasing a solid state drive (SSD) | G2/S5 | Yes |
    | **400** | Reset to PXE | Powered up/on | Reset to pre-boot execution environment (PXE)(i.e., a network boot | N/A | Yes |
    | **401** | Power on to PXE | Powered down/off | Power up/on fully to pre-boot execution environment (PXE) (i.e., a network boot) | N/A | Yes|
    
 
 ## Alternative Boot Options
 
-Currently, the Toolkit doesn't natively support the 200-level calls.
+Currently, the Toolkit doesn't natively support secure erase or 200-level calls.
 
 | Action #       | Power Action | [Start State^1^](#start-state) | Transition Description | 
 | :----------- | :------------------------ |   :------------------------ |:------------------------ |
+| **104** | Reset to secure erase | Powered up/on | Perform hardware reset on the bus to secure erase, a process of completely erasing a solid state drive (SSD)|
 | **200** | Reset to IDE-R floppy disc | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R drive, usually reserved for a remote ISO boot |
 | **201** | Power on to IDE-R floppy disc| Powered down/off | Power up/on fully to a peripheral IDE-R drive, usually reserved for a remote ISO boot
 | **202** | Reset to IDE-R CD-ROM | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot | 
