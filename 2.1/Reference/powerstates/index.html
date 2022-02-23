@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#alternative-boot-options">
+<a class="md-skip" href="#out-of-band">
           Skip to content
         </a>
 </div>
@@ -492,18 +492,18 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#out-of-band">
+    Out-of-band
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#in-band-required">
+    In-band Required
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#alternative-boot-options">
     Alternative Boot Options
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#start-state">
-    Start State
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#in-band-agent-required">
-    In-band Agent Required
   </a>
 </li>
 </ul>
@@ -793,17 +793,33 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1>AMT Power States</h1>
-<p>Actions are specified by number. Use the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_capabilities__guid_">PowerCapabilities</a> method to return the actions available for a specific device. Use the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_state__guid_">PowerState</a> method to obtain the current power state.</p>
-<p>Possible power actions are listed in the following table:</p>
+<p>Possible power actions are listed in the tables below. Power actions are specified by number. </p>
+<p>To obtain information about power actions, use the following methods:</p>
+<ul>
+<li><strong><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_capabilities__guid_">PowerCapabilities</a>:</strong> returns the poqwe actions available for a specific device.</li>
+<li><strong><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_state__guid_">PowerState</a>:</strong> returns current power state.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Start State or Current Power State</p>
+<p>Consider the current state of the system when implementing a possible action, for example: </p>
+<ul>
+<li><strong>Reset to BIOS</strong> implies that the current system state is on or powered up.</li>
+<li><strong>Power up to BIOS</strong> implies that current system state is off or powered down.</li>
+<li><strong>Hibernate</strong> implies that the current system state is powered up. </li>
+</ul>
+<p>If the system is already powered up, choosing to <strong>Power Up to BIOS</strong> will not have any effect on the system. A better choice is <strong>Reset to BIOS</strong>.</p>
+</div>
+<h2 id="out-of-band">Out-of-band<a class="headerlink" href="#out-of-band" title="Permanent link">¶</a></h2>
+<p>The power actions below can be used in-band or out-of-band. </p>
+<p>Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot option, such as <strong>Boot to BIOS</strong>.</p>
 <table>
 <thead>
 <tr>
 <th align="left">Action #</th>
 <th align="left">Power Action</th>
-<th align="left"><a href="#start-state">Start State<sup>1</sup></a></th>
+<th align="left">Start State</th>
 <th align="left">Transition Description</th>
 <th align="left">ACPI State(s)</th>
-<th align="left"><a href="#in-band-agent-required">In-band Agent Required<sup>2</sup></a></th>
 </tr>
 </thead>
 <tbody>
@@ -813,15 +829,6 @@
 <td align="left">Powered down/off, Asleep, Hibernating</td>
 <td align="left">Power up/on fully</td>
 <td align="left">G0/S0</td>
-<td align="left">No</td>
-</tr>
-<tr>
-<td align="left"><strong>4</strong></td>
-<td align="left">Sleep (deep)</td>
-<td align="left">Powered up/on</td>
-<td align="left">Transition to a standby state of low-power usage and store system context (e.g., open applications) in memory</td>
-<td align="left">G1/S3</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>5</strong></td>
@@ -829,15 +836,6 @@
 <td align="left">Powered up/on</td>
 <td align="left">Transition to minimal power state and then power up/on fully</td>
 <td align="left">G2/S5 &gt; G0/S0</td>
-<td align="left">No</td>
-</tr>
-<tr>
-<td align="left"><strong>7</strong></td>
-<td align="left">Hibernate</td>
-<td align="left">Powered up/on</td>
-<td align="left">Transition to zero power usage and store system context in non-volatile storage</td>
-<td align="left">G1/S4</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>8</strong></td>
@@ -845,7 +843,6 @@
 <td align="left">Powered up/on</td>
 <td align="left">Transition to a fully powered down state</td>
 <td align="left">G2/S5</td>
-<td align="left">No</td>
 </tr>
 <tr>
 <td align="left"><strong>10</strong></td>
@@ -853,23 +850,6 @@
 <td align="left">Powered up/on</td>
 <td align="left">Perform hardware reset on the bus</td>
 <td align="left">N/A</td>
-<td align="left">No</td>
-</tr>
-<tr>
-<td align="left"><strong>12</strong></td>
-<td align="left">Power down/off (soft)</td>
-<td align="left">Powered up/on</td>
-<td align="left">Transition to a very minimal power state</td>
-<td align="left">G2/S5</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left"><strong>14</strong></td>
-<td align="left">Soft reset</td>
-<td align="left">Powered up/on</td>
-<td align="left">Perform a shutdown and then a hardware reset</td>
-<td align="left">N/A</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>100</strong></td>
@@ -877,7 +857,6 @@
 <td align="left">Powered down/off</td>
 <td align="left">Power to BIOS to verify or modify system configuration</td>
 <td align="left">G2/S5</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>101</strong></td>
@@ -885,7 +864,6 @@
 <td align="left">Powered up/on</td>
 <td align="left">Perform hardware reset on the bus to BIOS to verify or modify system configuration</td>
 <td align="left">G2/S5</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>400</strong></td>
@@ -893,7 +871,6 @@
 <td align="left">Powered up/on</td>
 <td align="left">Reset to pre-boot execution environment (PXE)(i.e., a network boot</td>
 <td align="left">N/A</td>
-<td align="left">Yes</td>
 </tr>
 <tr>
 <td align="left"><strong>401</strong></td>
@@ -901,7 +878,49 @@
 <td align="left">Powered down/off</td>
 <td align="left">Power up/on fully to pre-boot execution environment (PXE) (i.e., a network boot)</td>
 <td align="left">N/A</td>
-<td align="left">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-band-required">In-band Required<a class="headerlink" href="#in-band-required" title="Permanent link">¶</a></h2>
+<p>The power actions below require an in-band agent or Intel® Integrated Management and Security Status (Intel® IMSS).</p>
+<table>
+<thead>
+<tr>
+<th align="left">Action #</th>
+<th align="left">Power Action</th>
+<th align="left">Start State</th>
+<th align="left">Transition Description</th>
+<th align="left">ACPI State(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>4</strong></td>
+<td align="left">Sleep (deep)</td>
+<td align="left">Powered up/on</td>
+<td align="left">Transition to a standby state of low-power usage and store system context (e.g., open applications) in memory</td>
+<td align="left">G1/S3</td>
+</tr>
+<tr>
+<td align="left"><strong>7</strong></td>
+<td align="left">Hibernate</td>
+<td align="left">Powered up/on</td>
+<td align="left">Transition to zero power usage and store system context in non-volatile storage</td>
+<td align="left">G1/S4</td>
+</tr>
+<tr>
+<td align="left"><strong>12</strong></td>
+<td align="left">Power down/off (soft)</td>
+<td align="left">Powered up/on</td>
+<td align="left">Transition to a very minimal power state</td>
+<td align="left">G2/S5</td>
+</tr>
+<tr>
+<td align="left"><strong>14</strong></td>
+<td align="left">Soft reset</td>
+<td align="left">Powered up/on</td>
+<td align="left">Perform a shutdown and then a hardware reset</td>
+<td align="left">N/A</td>
 </tr>
 </tbody>
 </table>
@@ -912,7 +931,7 @@
 <tr>
 <th align="left">Action #</th>
 <th align="left">Power Action</th>
-<th align="left"><a href="#start-state">Start State<sup>1</sup></a></th>
+<th align="left">Start State</th>
 <th align="left">Transition Description</th>
 </tr>
 </thead>
@@ -949,16 +968,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="start-state">Start State<a class="headerlink" href="#start-state" title="Permanent link">¶</a></h2>
-<p>Consider the current state of the system when implementing a possible action, for example: </p>
-<ul>
-<li><strong>Reset to BIOS</strong> implies that the current system state is on or powered up.</li>
-<li><strong>Power up to BIOS</strong> implies that current system state is off or powered down.</li>
-<li><strong>Hibernate</strong> implies that the current system state is powered up. </li>
-</ul>
-<p>If the system is already powered up, choosing to <strong>Power Up to BIOS</strong> will not have any effect on the system. A better choice is <strong>Reset to BIOS</strong>.</p>
-<h2 id="in-band-agent-required">In-band Agent Required<a class="headerlink" href="#in-band-agent-required" title="Permanent link">¶</a></h2>
-<p>Certain power actions require either an in-band agent or Intel® MSS. Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot option, such as <strong>Boot to BIOS</strong>.</p>
 </article>
 </div>
 </div>
