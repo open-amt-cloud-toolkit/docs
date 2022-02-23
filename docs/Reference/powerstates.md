@@ -16,21 +16,9 @@ To obtain information about power actions, use the following methods:
 
     If the system is already powered up, choosing to **Power Up to BIOS** will not have any effect on the system. A better choice is **Reset to BIOS**.
 
-## In-band Required
-
-The power actions below require an in-band agent or Intel® Integrated Management and Security Status (Intel® IMSS).
-
-   | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
-   | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ | 
-   | **4** | Sleep (deep) | Powered up/on | Transition to a standby state of low-power usage and store system context (e.g., open applications) in memory | G1/S3 |
-   | **7** | Hibernate | Powered up/on | Transition to zero power usage and store system context in non-volatile storage | G1/S4 | 
-   | **12** | Power down/off (soft) | Powered up/on | Transition to a very minimal power state | G2/S5 | 
-   | **14** | Soft reset | Powered up/on | Perform a shutdown and then a hardware reset | N/A |
-
-
 ## Out-of-band
 
-The power actions below can be used in-band or out-of-band scenarios. 
+The power actions below can be used in-band or out-of-band. 
 
 Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot option, such as **Boot to BIOS**.
 
@@ -45,6 +33,16 @@ Commands 100 and above use a combination of HW level power controls (i.e., 2, 5,
    | **400** | Reset to PXE | Powered up/on | Reset to pre-boot execution environment (PXE)(i.e., a network boot | N/A | 
    | **401** | Power on to PXE | Powered down/off | Power up/on fully to pre-boot execution environment (PXE) (i.e., a network boot) | N/A | 
 
+## In-band Required
+
+The power actions below require an in-band agent or Intel® Integrated Management and Security Status (Intel® IMSS).
+
+   | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
+   | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ | 
+   | **4** | Sleep (deep) | Powered up/on | Transition to a standby state of low-power usage and store system context (e.g., open applications) in memory | G1/S3 |
+   | **7** | Hibernate | Powered up/on | Transition to zero power usage and store system context in non-volatile storage | G1/S4 | 
+   | **12** | Power down/off (soft) | Powered up/on | Transition to a very minimal power state | G2/S5 | 
+   | **14** | Soft reset | Powered up/on | Perform a shutdown and then a hardware reset | N/A |
 
 ## Alternative Boot Options
 
