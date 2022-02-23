@@ -48,7 +48,7 @@ The power actions below require an in-band agent or Intel® Integrated Managemen
 
 Currently, the Toolkit doesn't natively support secure erase or 200-level calls.
 
-| Action #       | Power Action | [Start State | Transition Description | 
+| Action #       | Power Action | Start State | Transition Description | 
 | :----------- | :------------------------ |   :------------------------ |:------------------------ |
 | **104** | Reset to secure erase | Powered up/on | Perform hardware reset on the bus to secure erase, a process of completely erasing a solid state drive (SSD)|
 | **200** | Reset to IDE-R floppy disc | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R drive, usually reserved for a remote ISO boot |
