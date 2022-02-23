@@ -167,7 +167,7 @@ Where:
     - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
 
     !!! warning "Warning - Using an SSL Connection"
-        In this guide, we will set SSL to `no-verify` for ease of setup for local Kubernetes. In a production environment, an SSL connection is highly encouraged for added security and data encryption for your managed database.
+        This tutorial uses the connection string setting of 'no-verify' for ease of setup. **For production, it is recommended to use a SSL connection.**
 
 2. Create RPS connection string secret.
 

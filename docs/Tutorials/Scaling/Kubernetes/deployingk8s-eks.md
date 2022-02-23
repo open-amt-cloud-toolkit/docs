@@ -188,7 +188,7 @@ Where:
 ### 5. Database connection strings
 
 !!! warning "Warning - Using SSL/TLS with AWS RDS"
-    For production, using an SSL connection is highly recommended. For this tutorial, we will set it to `no-verify` for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/TLS with a RDS DB instance.
+    This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/TLS with a RDS DB instance. **For production, it is recommended to use a SSL connection.**
     
     Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and also at [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
 
@@ -359,7 +359,9 @@ Where:
 
     ??? warning "Troubleshoot - `Issued to` field showing NaN or blank"
 
-        **If you're certificate is incorrect, we must take a few steps to correct it before continuing.** Otherwise, the AMT device will not be able to connect to the MPS server.
+        **If your certificate is incorrect, the AMT device will not connect to the MPS server. See Figure 1.**
+
+        Follow the steps below to correct the problem.
 
         !!! example "Example - Incorrect MPS Certificate"
             <figure class="figure-image">
