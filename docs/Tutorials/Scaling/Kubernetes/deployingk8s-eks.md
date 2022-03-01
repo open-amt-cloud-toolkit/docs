@@ -187,6 +187,11 @@ Where:
 
 ### 5. Database connection strings
 
+!!! warning "Warning - Using SSL/TLS with AWS RDS"
+    This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/TLS with a RDS DB instance. **For production, it is recommended to use a SSL connection.**
+    
+    Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and also at [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
+
 1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
 
     Where:
@@ -198,19 +203,19 @@ Where:
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
     ```
 
 3. Create MPS Router connection string secret.
 
     ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
     ```
 
 
@@ -343,6 +348,51 @@ Where:
         rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
         webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
         ```
+
+2. Check that the MPS Certificate is correct in your browser. Go to your FQDN at port 4433.
+
+    ```
+    https://<Your-AWS-FQDN>:4433
+    ```
+
+3. Verify the MPS Certificate in your browser has the correct Issuer information and is Issued to your FQDN.
+
+    ??? warning "Troubleshoot - `Issued to` field showing NaN or blank"
+
+        **If your certificate is incorrect, the AMT device will not connect to the MPS server. See Figure 1.**
+
+        Follow the steps below to correct the problem.
+
+        !!! example "Example - Incorrect MPS Certificate"
+            <figure class="figure-image">
+                <img src="..\..\..\..\assets\images\MPS_Certificate.png" alt="Figure 1: Incorrect Certificate">
+                <figcaption>Figure 1: Incorrect Certificate</figcaption>
+            </figure>
+            
+        1. Open and Login to Vault UI.
+
+        2. Go to `kv/data/MPSCerts/` directory.
+
+        3. Delete the existing MPS Certificate.
+
+        4. In a terminal, run the following command.
+
+            ```
+            kubectl rollout restart deployment mps 
+            ```
+
+        5. A new, correct MPS Cert should be generated.
+
+        6. Go back to the webserver in your browser.
+
+            ```
+            https://<Your-AWS-FQDN>:4433
+            ```
+        
+        7. Verify the `Issued to:` field is no longer NaN/blank and now shows the correct FQDN.
+
+        8. Continue to Next Steps section.
+
 
 ## Next Steps
 
