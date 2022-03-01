@@ -796,7 +796,7 @@
 <p>Possible power actions are listed in the tables below. Power actions are specified by number. </p>
 <p>To obtain information about power actions, use the following methods:</p>
 <ul>
-<li><strong><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_capabilities__guid_">PowerCapabilities</a>:</strong> returns the poqwe actions available for a specific device.</li>
+<li><strong><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_capabilities__guid_">PowerCapabilities</a>:</strong> returns the power actions available for a specific device.</li>
 <li><strong><a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.1.0#/AMT/get_api_v1_amt_power_state__guid_">PowerState</a>:</strong> returns current power state.</li>
 </ul>
 <div class="admonition info">
@@ -882,7 +882,13 @@
 </tbody>
 </table>
 <h2 id="in-band-required">In-band Required<a class="headerlink" href="#in-band-required" title="Permanent link">¶</a></h2>
-<p>The power actions below require an in-band agent or Intel® Integrated Management and Security Status (Intel® IMSS).</p>
+<p>The power actions below require an in-band agent, Local Management Service (LMS), or Intel® Integrated Management and Security Status (Intel® IMSS).</p>
+<p>LMS is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The LMS  listens for and intercepts requests directed to the Intel AMT local host and routes them to to the Management Engine via the Intel Management Engine Interface (MEI) driver.</p>
+<div class="admonition info">
+<p class="admonition-title">Installing LMS and Drivers</p>
+<p>The service installer is packaged with the Intel MEI drivers on the OEM websites. If Windows OS is reimaged or reinstalled, only the Intel MEI Driver is reinstalled, not LMS or IMSS.</p>
+<p>If the LMS is not installed, visit the OEM website and look for download packages for Intel® IMSS or the Intel CSME driver.</p>
+</div>
 <table>
 <thead>
 <tr>
