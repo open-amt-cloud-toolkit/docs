@@ -27,7 +27,7 @@ This key is required by Azure to create VMs that use SSH keys for authentication
 1. Create a new ssh key.
 
     ```
-    ssh-keygen -t rsa -b 2048
+    ssh-keygen -m PEM -t rsa -b 4096
     ```
 
 2. Take note of the location it was saved at. You will need the public key (`.pub` file) in a following step. 
