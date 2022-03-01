@@ -1094,6 +1094,11 @@
 </li>
 </ul>
 <h3 id="5-database-connection-strings">5. Database connection strings<a class="headerlink" href="#5-database-connection-strings" title="Permanent link">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning - Using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with AWS RDS</p>
+<p>This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with a RDS DB instance. <strong>For production, it is recommended to use a SSL connection.</strong></p>
+<p>Find more information at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a> and also at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html">Updating applications to connect to PostgreSQL DB instances using new SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates</a>.</p>
+</div>
 <ol>
 <li>
 <p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
@@ -1106,17 +1111,17 @@
 </li>
 <li>
 <p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
 </code></pre></div>
 </li>
 <li>
 <p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
 </code></pre></div>
 </li>
 <li>
 <p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
 </code></pre></div>
 </li>
 </ol>
@@ -1251,6 +1256,56 @@ rps-79877bf5c5-dsg5p                                 1/1     Running     0      
 webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
 </code></pre></div>
 </div>
+</li>
+<li>
+<p>Check that the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate is correct in your browser. Go to your FQDN at port 4433.</p>
+<div class="highlight"><pre><span></span><code>https://&lt;Your-AWS-FQDN&gt;:4433
+</code></pre></div>
+</li>
+<li>
+<p>Verify the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate in your browser has the correct Issuer information and is Issued to your FQDN.</p>
+<details class="warning">
+<summary>Troubleshoot - <code>Issued to</code> field showing NaN or blank</summary>
+<p><strong>If your certificate is incorrect, the AMT device will not connect to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. See Figure 1.</strong></p>
+<p>Follow the steps below to correct the problem.</p>
+<div class="admonition example">
+<p class="admonition-title">Example - Incorrect <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate</p>
+<p><figure class="figure-image">
+<img alt="Figure 1: Incorrect Certificate" src="..\..\..\..\assets\images\MPS_Certificate.png"/>
+<figcaption>Figure 1: Incorrect Certificate</figcaption>
+</figure></p>
+</div>
+<ol>
+<li>
+<p>Open and Login to Vault UI.</p>
+</li>
+<li>
+<p>Go to <code>kv/data/MPSCerts/</code> directory.</p>
+</li>
+<li>
+<p>Delete the existing <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate.</p>
+</li>
+<li>
+<p>In a terminal, run the following command.</p>
+<div class="highlight"><pre><span></span><code>kubectl rollout restart deployment mps 
+</code></pre></div>
+</li>
+<li>
+<p>A new, correct <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Cert should be generated.</p>
+</li>
+<li>
+<p>Go back to the webserver in your browser.</p>
+<div class="highlight"><pre><span></span><code>https://&lt;Your-AWS-FQDN&gt;:4433
+</code></pre></div>
+</li>
+<li>
+<p>Verify the <code>Issued to:</code> field is no longer NaN/blank and now shows the correct FQDN.</p>
+</li>
+<li>
+<p>Continue to Next Steps section.</p>
+</li>
+</ol>
+</details>
 </li>
 </ol>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
