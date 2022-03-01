@@ -4,7 +4,7 @@ Possible power actions are listed in the tables below. Power actions are specifi
 
 To obtain information about power actions, use the following methods:
 
-* **[PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/get_api_v1_amt_power_capabilities__guid_):** returns the poqwe actions available for a specific device.
+* **[PowerCapabilities](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/get_api_v1_amt_power_capabilities__guid_):** returns the power actions available for a specific device.
 * **[PowerState](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/get_api_v1_amt_power_state__guid_):** returns current power state.
 
 !!! Info "Start State or Current Power State"
@@ -35,7 +35,14 @@ Commands 100 and above use a combination of HW level power controls (i.e., 2, 5,
 
 ## In-band Required
 
-The power actions below require an in-band agent or Intel® Integrated Management and Security Status (Intel® IMSS).
+The power actions below require an in-band agent, Local Management Service (LMS), or Intel® Integrated Management and Security Status (Intel® IMSS).
+
+LMS is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The LMS  listens for and intercepts requests directed to the Intel AMT local host and routes them to to the Management Engine via the Intel Management Engine Interface (MEI) driver.
+
+!!! Info "Installing LMS and Drivers"
+    The service installer is packaged with the Intel MEI drivers on the OEM websites. If Windows OS is reimaged or reinstalled, only the Intel MEI Driver is reinstalled, not LMS or IMSS.
+    
+    If the LMS is not installed, visit the OEM website and look for download packages for Intel® IMSS or the Intel CSME driver.
 
    | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
    | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ | 
