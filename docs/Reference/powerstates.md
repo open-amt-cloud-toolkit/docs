@@ -42,7 +42,7 @@ LMS is a service that runs locally on an Intel AMT device and enables local mana
 !!! Info "Installing LMS and Drivers"
     The service installer is packaged with the Intel MEI drivers on the OEM websites. If Windows OS is reimaged or reinstalled, only the Intel MEI Driver is reinstalled, not LMS or IMSS.
     
-    If the LMS is not installed, go to the OEM website and download the Intel CSME driver. It is usually under the Chipset Driver category.
+    If the LMS is not installed, visit the OEM website and look for download packages for Intel® IMSS or the Intel CSME driver.
 
    | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
    | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ | 
