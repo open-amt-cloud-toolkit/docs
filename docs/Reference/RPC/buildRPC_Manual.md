@@ -209,15 +209,15 @@ Additionally, use the following instructions to transition from a previously est
 
     === "Linux"
         ``` bash
-        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename] -password [AMT password]
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
         ```
     === "Windows"
         ```
-        .\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename] -password [AMT password]
+        .\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename] -password [AMT password]
+        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
         ```
 
     !!! success

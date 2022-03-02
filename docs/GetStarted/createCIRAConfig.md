@@ -18,17 +18,19 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 
 3. Specify a **Config Name** of your choice.
 
-4. Select **IPv4**, and provide your development system's IP Address.
+4. Select **IPv4**.
 
-5. **Cert Common Name (CN=)** should auto-populate. If not, provide your development system's IP Address.
+5. For **MPS Address**, provide your development system's IP Address.
 
-6. Leave **Port** as the default, 4433.
+6. **Cert Common Name (CN=)** should auto-populate. If not, provide your development system's IP Address.
 
-7. Leave the **Username** as *admin* or choose your own.
+7. Leave **Port** as the default, 4433.
 
-8. Leave the slider set on **Auto-load**.
+8. Leave the **Username** as *admin* or choose your own.
 
-9. Click **Save.**
+9. Leave the slider set on **Auto-load**.
+
+10. Click **Save.**
     
     !!! example "Example CIRA Config"
         <figure class="figure-image">

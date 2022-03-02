@@ -1,7 +1,6 @@
 --8<-- "References/abbreviations.md"
-#Express Setup
 
-This setup installs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+This setup runs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
 ## Get the Toolkit
 
@@ -10,7 +9,7 @@ This setup installs the MPS and RPS microservices as Docker* containers, standar
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
     ```
   
 2. Change to the cloned `open-amt-cloud-toolkit` directory.
@@ -76,34 +75,25 @@ Set the shared secret used in Kong for JWT authentication.
 3. Save and close the file.
 
 
-## <a name="Builddockerimages"></a>Build and Run the Docker Images
+## <a name="Builddockerimages"></a>Pull and Run the Docker Images
 
-Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
+Pull the MPS, RPS, and Sample Web UI Docker images and launch the stack.
 
 
-1.  Run docker-compose to start the containers from the `./open-amt-cloud-toolkit` directory.
+1.  Run docker-compose to pull the containers from [Intel's Dockerhub image respository](https://hub.docker.com/search?q=oact&type=image).
     
     === "Linux"
         ```
-        sudo docker-compose -f "docker-compose.yml" up -d --build
+        sudo docker-compose -f "docker-compose.yml" up -d
         ```
     
     === "Windows"
         ```
-        docker-compose -f "docker-compose.yml" up -d --build
+        docker-compose -f "docker-compose.yml" up -d
         ```
-    
-    !!! important "Important - For Windows* 10"
-        While the `docker-compose up` command is running, you may see a number of pop-ups asking for permission for Docker Desktop Filesharing (Figure 1). You must select **Share It** for the `docker-compose up` command to execute successfully.  If the pop-up expires,`docker-compose up` will fail.  You must run `docker-compose down -v` and then rerun `docker-compose up` to successfully start the containers.
-
-     <figure class="figure-image">
-     <img src="..\..\assets\images\DockerFileSharing.png" alt="Figure 1: Docker Desktop Filesharing">
-     <figcaption>Figure 1: Docker Desktop Filesharing</figcaption>
-     </figure>
 
 2. Check that all the containers are running.
 
-    
     === "Linux"
         ```
         {% raw %}
@@ -119,15 +109,16 @@ Build the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         ```
     
     !!! success
-        ``` bash    
-        IMAGE               STATUS                             NAMES
-        kong:2.3            Up 4 seconds (health: starting)    open-amt-cloud-toolkit_kong_1
-        sslpostgres         Up 9 seconds                       open-amt-cloud-toolkit_db_1
-        webui:latest        Up 10 seconds                      open-amt-cloud-toolkit_webui_1
-        mpsrouter:latest    Up 11 seconds                      open-amt-cloud-toolkit_mpsrouter_1
-        rps:latest          Up 11 seconds                      open-amt-cloud-toolkit_rps_1
-        mps:latest          Up 10 seconds                      open-amt-cloud-toolkit_mps_1
-        vault               Up 10 seconds                      open-amt-cloud-toolkit_vault_1
+        ``` bash
+        IMAGE                               STATUS                        NAMES
+        intel/oact-rps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_rps_1      
+        eclipse-mosquitto                   Up 2 minutes                  open-amt-cloud-toolkit_mosquitto_1
+        vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
+        intel/oact-mpsrouter:v2.0.0         Up 2 minutes                  open-amt-cloud-toolkit_mpsrouter_1
+        sslpostgres                         Up 2 minutes                  open-amt-cloud-toolkit_db_1       
+        intel/oact-webui:v2.1.1             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
+        kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
+        intel/oact-mps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
         ```
 
   
