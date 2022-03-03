@@ -114,8 +114,8 @@ Pull the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         intel/oact-rps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_rps_1      
         eclipse-mosquitto                   Up 2 minutes                  open-amt-cloud-toolkit_mosquitto_1
         vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
-        intel/oact-mpsrouter:v2.0.0         Up 2 minutes                  open-amt-cloud-toolkit_mpsrouter_1
-        sslpostgres                         Up 2 minutes                  open-amt-cloud-toolkit_db_1       
+        intel/oact-mpsrouter:v2.0.0         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
+        sslpostgres                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
         intel/oact-webui:v2.1.1             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
         kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
         intel/oact-mps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
