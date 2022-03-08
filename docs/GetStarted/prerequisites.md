@@ -22,8 +22,9 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 
 ###Development System Software
 
-**Before MPS and RPS installation, install the following software:**
+**Before MPS and RPS installation, install the following software on your development system:**
 
+- [git*](https://git-scm.com/downloads)
 - [Docker* Desktop](https://www.docker.com/products/docker-desktop) for Windows* or Linux*
   
     !!! Info
@@ -32,15 +33,19 @@ Both systems must use a wired (i.e., cable) connection on the same network.
         (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
         (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/){target=_blank}.
 
-- [git*](https://git-scm.com/downloads)
+
+**For RPC setup, install the following software on your development system:**
+
+* [Go* Programming Language](https://go.dev/)
+* [tdm-gcc](https://jmeubank.github.io/tdm-gcc/download/) (On Windows* only)
 
 ## What You'll Do
 
 **To complete a deployment:**
 
 - Install the prerequisites.
-- Run setup to build and deploy microservices with Docker.
-- Login and configure RPS.
+- Pull and deploy microservices with Docker.
+- Login to the Sample Web UI and configure profiles.
 - Build RPC.
 - Copy RPC to a managed device.
 
@@ -48,7 +53,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 **To connect the managed device:**
 
 - Run RPC on a managed device.
-- Manage the device with MPS.
+- Manage the device with MPS through the Sample Web UI.
 
 These sections include instructions for Windows and Linux* environments. Run instructions in a terminal window, the Windows Command Prompt in Administrator mode or the Linux shell/terminal.
 
@@ -59,5 +64,5 @@ A Docker container is the instantiation of a Docker image as a virtualized unit 
 Get more information about Docker images and containers at [Docker resources.](https://www.docker.com/resources/what-container)   
 
 ## Next up
-[**Setup - Build Docker* Images**](setup.md)
+[**Setup - Pull Docker* Images**](setup.md)
 

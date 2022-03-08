@@ -22,65 +22,14 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 !!! note "Figure 1 Details"
     The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../GetStarted/createCIRAConfig.md) or [Create an AMT Profile](../GetStarted/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
 
-## Prerequisites
-**Before installing and building the RPC, install:**
-
-* Go* Programming Language
-* tdm-gcc (On Windows* only)
-
-    === "Linux"
-        **To install prerequisites on Linux*:**
-
-         1.) See Go's [Download and Install](https://golang.org/doc/install).
-
-         2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
-
-         3.) Extract the archive in the location indicated in Go's installation instructions.
-
-         4.) Follow the remaining instructions. 
-
-    === "Windows"
-         **To install prerequisites on Windows:**
-
-         **Go Programming Language **
-
-         1.) See Go's [Download and Install](https://golang.org/doc/install).
- 
-         2.) Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
-
-         3.) Run the downloaded file and follow prompts to install. 
-
-         ** tdm-gcc **
-
-         1.) See [tdm-gcc](https://jmeubank.github.io/tdm-gcc/).
-         
-         2.) Choose a version and download the .exe. 
-         
-         3.) Run the downloaded file and follow prompts to install. For a new installation, choose **Create** and accept all default installation options.
-
-
-**To verify Go and tdm-gcc installations:**
-
-1. Open a Terminal or Command Prompt: 
-   ``` bash
-   go version
-   ```
-   For Windows only: 
-   ``` bash
-   gcc -v
-   ```
-2. Confirm the version numbers.
 
 ## Get the RPC
-If you have already cloned the toolkit repository as described in [Set Up](setup.md), change to the cloned `rpc-go` directory and see [Build the RPC](#build-the-rpc). 
-
-If you want to clone only the rpc-go repository, follow the steps below.
 
 **To clone the repository:**
 
-1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
+1. In the `open-amt-cloud-toolkit` directory, run:
    ``` bash
-   git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+   git submodule update --init rpc-go
    ```
   
 2. Change to the cloned `rpc-go` directory:
@@ -164,22 +113,22 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
 
     === "Linux"
         ``` bash
-        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profilename]
         ```
     === "Windows"
         ```
-        .\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        .\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profilename]
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"
         See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
 
     !!! note "Transition Activated Device"
-        To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
+        To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform device, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
 
     !!! success

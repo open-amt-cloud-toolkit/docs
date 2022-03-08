@@ -36,6 +36,10 @@
 </div>
 <p class="divider"></p>
 
+<div style="text-align:center;">
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/ovpvPQi7UGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Management for remote devices. No matter if the device is powered off or the operating system has crashed, issue power actions and take over keyboard, video, mouse (KVM) control.
 
 Reduce the need for costly on-site IT, minimize the downtime of key, business-critical devices, and more. [Read more about the Intel vPro® Platform](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html).

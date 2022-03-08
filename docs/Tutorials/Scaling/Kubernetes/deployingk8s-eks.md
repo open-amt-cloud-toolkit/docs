@@ -128,24 +128,9 @@ Ensure your `kubectl` is connected to the EKS cluster you wish to deploy/manage.
     - **&lt;cluster-name&gt;** is the name of your EKS cluster.
     - **&lt;region&gt;** is the AWS region where the cluster is (Ex: `us-west-2`).
 
-
 ## Create Secrets 
 
-### 1. Private Docker Registry Credentials
-
-If you are using a private docker registry, you'll need to provide your credentials to K8S. 
-
-```
-kubectl create secret docker-registry registrycredentials --docker-server=<your-registry-server> --docker-username=<your-username> --docker-password=<your-password>
-```
-
-Where:
-
-- **&lt;your-registry-server&gt;** is your Private Docker Registry FQDN.
-- **&lt;your-username&gt;** is your Docker username.
-- **&lt;your-password&gt;** is your Docker password.
-
-### 2. MPS/KONG JWT
+### 1. MPS/KONG JWT
 
 This is the secret used for generating and verifying JWTs.
 
@@ -157,7 +142,7 @@ Where:
 
 - **&lt;your-secret&gt;** is your chosen strong secret.
 
-### 3. KONG ACL for JWT
+### 2. KONG ACL for JWT
 
 This configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
 
@@ -165,7 +150,7 @@ This configures KONG with an Access Control List (ACL) to allow an admin user `o
 kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 ```
 
-### 4. MPS Web Username and Password
+### 3. MPS Web Username and Password
 This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the Sample Web UI.
 
 ```
@@ -184,8 +169,7 @@ Where:
         - One uppercase, one lowercase, one numerical digit, one special character
 
 
-
-### 5. Database connection strings
+### 4. Database connection strings
 
 !!! warning "Warning - Using SSL/TLS with AWS RDS"
     This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/TLS with a RDS DB instance. **For production, it is recommended to use a SSL connection.**
@@ -234,17 +218,7 @@ Where:
           service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>" # Delete this line
     ```
 
-3. Update the *mps*, *rps*, *webui*, and *mpsrouter* keys to point to your own container registries.
-
-    ```yaml hl_lines="2-5"
-    images:
-        mps: "vprodemo.azurecr.io/mps:latest"
-        rps: "vprodemo.azurecr.io/rps:latest"
-        webui: "vprodemo.azurecr.io/webui:latest"
-        mpsrouter: "vprodemo.azurecr.io/mpsrouter:latest"
-    ```
-
-5. Save and close the file.
+3. Save and close the file.
 
 
 ## Deploy Open AMT Cloud Toolkit using Helm
