@@ -827,8 +827,9 @@
 </ul>
 <p>Both systems must use a wired (i.e., cable) connection on the same network.</p>
 <h3 id="development-system-software">Development System Software<a class="headerlink" href="#development-system-software" title="Permanent link">¶</a></h3>
-<p><strong>Before <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install the following software:</strong></p>
+<p><strong>Before <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install the following software on your development system:</strong></p>
 <ul>
+<li><a href="https://git-scm.com/downloads">git*</a></li>
 <li>
 <p><a href="https://www.docker.com/products/docker-desktop">Docker* Desktop</a> for Windows<em> or Linux</em></p>
 <div class="admonition info">
@@ -839,30 +840,32 @@
 (3) To troubleshoot the installation, <a href="https:/docs.docker.com/docker-for-windows/troubleshoot/" target="_blank">see the troubleshooting guide</a>.</p>
 </div>
 </li>
-<li>
-<p><a href="https://git-scm.com/downloads">git*</a></p>
-</li>
+</ul>
+<p><strong>For <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> setup, install the following software on your development system:</strong></p>
+<ul>
+<li><a href="https://go.dev/">Go* Programming Language</a></li>
+<li><a href="https://jmeubank.github.io/tdm-gcc/download/">tdm-gcc</a> (On Windows* only)</li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
 <p><strong>To complete a deployment:</strong></p>
 <ul>
 <li>Install the prerequisites.</li>
-<li>Run setup to build and deploy microservices with Docker.</li>
-<li>Login and configure <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</li>
+<li>Pull and deploy microservices with Docker.</li>
+<li>Login to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and configure profiles.</li>
 <li>Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.</li>
 <li>Copy <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to a managed device.</li>
 </ul>
 <p><strong>To connect the managed device:</strong></p>
 <ul>
 <li>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on a managed device.</li>
-<li>Manage the device with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
+<li>Manage the device with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> through the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</li>
 </ul>
 <p>These sections include instructions for Windows and Linux* environments. Run instructions in a terminal window, the Windows Command Prompt in Administrator mode or the Linux shell/terminal.</p>
 <h2 id="why-docker">Why Docker*?<a class="headerlink" href="#why-docker" title="Permanent link">¶</a></h2>
 <p>A Docker container is the instantiation of a Docker image as a virtualized unit that separates the application from the environment. Docker containers start and run reliably, securely, and portably inside different environments, eliminating some of the problems that occur with software deployment on varying platforms. Docker streamlines installation to get you up and running faster.</p>
 <p>Get more information about Docker images and containers at <a href="https://www.docker.com/resources/what-container">Docker resources.</a> </p>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
-<p><a href="../setup/"><strong>Setup - Build Docker* Images</strong></a></p>
+<p><a href="../setup/"><strong>Setup - Pull Docker* Images</strong></a></p>
 </article>
 </div>
 </div>

@@ -456,28 +456,23 @@
 <nav aria-label="Create Kubernetes Secrets" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-private-docker-registry-credentials">
-    1. Private Docker Registry Credentials
+<a class="md-nav__link" href="#1-mpskong-jwt">
+    1. MPS/KONG JWT
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-mpskong-jwt">
-    2. MPS/KONG JWT
+<a class="md-nav__link" href="#2-kong-acl-for-jwt">
+    2. KONG ACL for JWT
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#3-kong-acl-for-jwt">
-    3. KONG ACL for JWT
+<a class="md-nav__link" href="#3-mps-web-username-and-password">
+    3. MPS Web Username and Password
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#4-mps-web-username-and-password">
-    4. MPS Web Username and Password
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#5-database-connection-strings">
-    5. Database connection strings
+<a class="md-nav__link" href="#4-database-connection-strings">
+    4. Database connection strings
   </a>
 </li>
 </ul>
@@ -906,7 +901,7 @@
 <ol>
 <li>
 <p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.1.0
+<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.2.0
 </code></pre></div>
 </li>
 <li>
@@ -981,22 +976,12 @@ host    replication     all             ::1/128                         scram-sh
 <ol>
 <li>
 <p>Clone the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.1.0
+<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.2.0
 </code></pre></div>
 </li>
 </ol>
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">¶</a></h2>
-<h3 id="1-private-docker-registry-credentials">1. Private Docker Registry Credentials<a class="headerlink" href="#1-private-docker-registry-credentials" title="Permanent link">¶</a></h3>
-<p><strong>If you are using a private docker registry</strong>, you'll need to provide your credentials to K8S. </p>
-<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry registrycredentials --docker-server=&lt;your-registry-server&gt; --docker-username=&lt;your-username&gt; --docker-password=&lt;your-password&gt;
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-registry-server&gt;</strong> is your Private Docker Registry FQDN.</li>
-<li><strong>&lt;your-username&gt;</strong> is your Docker username.</li>
-<li><strong>&lt;your-password&gt;</strong> is your Docker password.</li>
-</ul>
-<h3 id="2-mpskong-jwt">2. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#2-mpskong-jwt" title="Permanent link">¶</a></h3>
+<h3 id="1-mpskong-jwt">1. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#1-mpskong-jwt" title="Permanent link">¶</a></h3>
 <p>This is the secret used for generating and verifying JWTs.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="&lt;your-secret&gt;"
 </code></pre></div>
@@ -1004,11 +989,11 @@ host    replication     all             ::1/128                         scram-sh
 <ul>
 <li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
 </ul>
-<h3 id="3-kong-acl-for-jwt">3. KONG ACL for JWT<a class="headerlink" href="#3-kong-acl-for-jwt" title="Permanent link">¶</a></h3>
+<h3 id="2-kong-acl-for-jwt">2. KONG ACL for JWT<a class="headerlink" href="#2-kong-acl-for-jwt" title="Permanent link">¶</a></h3>
 <p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
 </code></pre></div>
-<h3 id="4-mps-web-username-and-password">4. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#4-mps-web-username-and-password" title="Permanent link">¶</a></h3>
+<h3 id="3-mps-web-username-and-password">3. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#3-mps-web-username-and-password" title="Permanent link">¶</a></h3>
 <p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
 </code></pre></div>
@@ -1027,7 +1012,7 @@ host    replication     all             ::1/128                         scram-sh
 </div>
 </li>
 </ul>
-<h3 id="5-database-connection-strings">5. Database connection strings<a class="headerlink" href="#5-database-connection-strings" title="Permanent link">¶</a></h3>
+<h3 id="4-database-connection-strings">4. Database connection strings<a class="headerlink" href="#4-database-connection-strings" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
@@ -1063,15 +1048,6 @@ host    replication     all             ::1/128                         scram-sh
 <ol>
 <li>
 <p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
-</li>
-<li>
-<p>Update the <em>mps</em>, <em>rps</em>, <em>webui</em>, and <em>mpsrouter</em> keys to point to your own container registries.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/mps:latest"</span><span class="w"></span>
-</span><span class="hll"><span class="w">    </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/rps:latest"</span><span class="w"></span>
-</span><span class="hll"><span class="w">    </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/webui:latest"</span><span class="w"></span>
-</span><span class="hll"><span class="w">    </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">"vprodemo.azurecr.io/mpsrouter:latest"</span><span class="w"></span>
-</span></code></pre></div>
 </li>
 <li>
 <p>Update the <code>commonName</code> key in the <strong>mps</strong> section with the IP Address of your development device.</p>
