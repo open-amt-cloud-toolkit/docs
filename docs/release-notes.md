@@ -9,16 +9,15 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 </div>
 
 ### Noteworthy Features and Changes
-**Major Refactoring & WSMAN-MESSAGES Library:** At the end of 2021, the team began refactoring parts of the toolkit source code to improve the communication method between the toolkit and Intel® AMT devices.  This part of the code was fundamental in how the rest of the Open AMT Cloud Toolkit talked to Intel&reg; AMT devices. Much of this code was inherited from another open source project also developed at Intel.  While this inherited code is well validated and stable, it is also very difficult to use automated testing tools to validate when changes are required.  For those who care about code coverage indicators when assessing if they should use open source libraries, this made the Open AMT Cloud Toolkit an unattractive solution.  With these factors in mind, we created [WSMAN-MESSAGES](https://github.com/open-amt-cloud-toolkit/wsman-messages) a portable and testable library that handles the creation of wsman based messages for talking to Intel&reg; AMT devices.  Wsman-Messages is used by both MPS and RPS is available on NPM as [@open-amt-cloud-toolkit/wsman-message](https://www.npmjs.com/package/@open-amt-cloud-toolkit/wsman-messages).  Developers can independently make use of this library if they want to create and send messages to Intel&reg; AMT devices.  The net result from this refactoring effort is that code coverage in MPS went from 24% to 91% and RPS went from 29% to 70%.  This is a huge leap in reducing the overall technical debt of the project and should provide our customers with more confidence adopting the Open AMT Cloud Toolkit.  As we move forward, we'll continue to work towards our goal of 80% code coverage across all repositories and these additional improvements will happen through the course of our normal release cadence.
+**Major Refactoring & WSMAN-MESSAGES Library:** At the end of 2021, the team began refactoring parts of the toolkit source code to improve the communication method between the toolkit and Intel® AMT devices.  Much of this code was inherited from another open source project also developed at Intel. While this inherited code was well-validated and stable, it was difficult to modify and maintain. Validation with automated testing posed a challenge, and code coverage metrics were lackluster. The new portable and testable design of [WSMAN-MESSAGES](https://github.com/open-amt-cloud-toolkit/wsman-messages) addresses these issues with a library of wsman-based messages for communication with Intel® AMT devices. Both MPS and RPS use WSMAN-MESSAGES, available on NPM as [@open-amt-cloud-toolkit/wsman-message](https://www.npmjs.com/package/@open-amt-cloud-toolkit/wsman-messages). **CODE COVERAGE NET RESULT:** Both MPS and RPS code coverage improved dramatically, from 24% to 91% and 29% to 70% respectively. **BOTTOM LINE:** This reduces the overall technical debt of the project substantially and provides users with another reason to adopt the Open AMT Cloud Toolkit. As we move forward, we'll continue to push toward our goal of 80% code coverage across all repositories. Future improvements will happen through the course of our normal release cadence.
 
-**Device Migration:** Through working with our customers, we've had several requests for a way to move an Intel&reg; AMT device from one management console to the the Open AMT Cloud Toolkit.  With 2.2, you can perform this migration with RPC by using the activate command and provide the profile you wish to use to activate the device.  By providing the AMT credential at the prompt, RPS will use this credential to add the device to Open AMT Cloud Toolkit and then apply the configuration profile, completing the migration without needing to deactivate the device.
+**Device Migration:** Several customers have requested a method to migrate an Intel® AMT device from a management console to the Open AMT Cloud Toolkit. Now with 2.2, perform this migration with RPC without deactivating and reactivating the device. Use the activate command and provide the desired profile. The prompt will ask for the AMT credential. RPS will use this credential to add the device to Open AMT Cloud Toolkit and apply the configuration profile.
 
-**Healthcheck API:** This new API provides you the ability to check the status of MPS and RPS to know that they have a connection with both the database and secret provider.  This is particularly helpful when Open AMT Cloud Toolkit is deployed in Kubernetes or Docker Swarm so that you know they are up and ready to respond to requests.
+**Healthcheck API:** This new API provides the ability to check the connection status of MPS and RPS with both the database and secret provider. This is particularly helpful when Open AMT Cloud Toolkit is deployed in Kubernetes or Docker Swarm so that you know they are up and ready to respond to requests.
 
-**RPC -json flag:** We have added a new -json flag to the RPC application.  This will convert the output to json format making the output machine parsable.  Big thanks to [Portainer](https://www.portainer.io/) for this contribution!
+**RPC -json flag:** The RPC-Go application sports a new -json flag. With this flag, convert application output to json format making it machine parsable. Big thanks to [Portainer](https://www.portainer.io/) for this contribution!
 
 ### Additions, Modifications, and Removals
-#### Breaking Changes
 #### Changes to /AMT routes
 - Method property is removed from wsman header in response and is now a property of the wsman body
 
@@ -193,10 +192,11 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - **[RPS should support wildcard domain suffix](https://github.com/open-amt-cloud-toolkit/rps/issues/97):** Enhancement
 - **[Data shouldn't be added if vault calls fail](https://github.com/open-amt-cloud-toolkit/rps/issues/254):** Bug
 - **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/rps/issues/414):** Enhancement
-- **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/rps/issues/414):** Enhancement
 - **[Support Intel AMT Alarm Clock feature](https://github.com/open-amt-cloud-toolkit/rps/issues/524):** Enhancement
+- **[Poor error msg related WiFi profile issues](https://github.com/open-amt-cloud-toolkit/rps/issues/594):** Enhancement
+- **[RPS not able to remove wifi profile from already configured deviceEnhancement](https://github.com/open-amt-cloud-toolkit/rps/issues/597):** Bug 
 #### MPS
-- CIM_PhysicalPackage may not return all results compared to v2.1
+- **CIM_PhysicalPackage may not return all results compared to v2.1**
 - **[Direct Connection from MPS to AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/10):** Enhancement
 - **[Should return error on additional KVM connections for a single device](https://github.com/open-amt-cloud-toolkit/mps/issues/104):** Enhancement
 - **[AMT does not connect to MPS after configuration](https://github.com/open-amt-cloud-toolkit/mps/issues/300):** Known Issue
@@ -205,8 +205,15 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - **[CIRA connection getting dropped randomly](https://github.com/open-amt-cloud-toolkit/mps/issues/441):** Bug
 - **[Short Lived Bearer Token for KVM Session Support](https://github.com/open-amt-cloud-toolkit/mps/issues/527):** Enhancement
 - **[Allow filtering devices by hostname](https://github.com/open-amt-cloud-toolkit/mps/issues/548):** Enhancement
+#### RPC
+- **[rpc-go missing some output compared to the c version, and intermittently misses other pieces](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25):** Bug
+- **[both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26):** Needs More Investigation
+- **[activation failures would benefit from passing the RPS error code to the client](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27):** Enhancement
+- **[Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27):** Enhancement
+- **[possible timing issues in rpc-go?](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/30):** Enhancement
 #### Sample Web UI
 - **[UI always shows "Certificate Not Yet Uploaded"](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483):** Question
+- **[Websocket Connection Failures should be propagated to UI](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586):** Enhancement
 #### UI Toolkit
 - **[Command string generated from "Add a New Device" dialog does not activate a machine.](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/451):** Bug
 
