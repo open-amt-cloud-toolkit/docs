@@ -138,50 +138,49 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - see change log for full list of changes
 #### WSMAN-MESSAGES
 *Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the Open AMT Cloud Toolkit.  Since this is new, adding the full set of changes since 1.0.0.*
-#### v2.1.0 - 2022-03-15
-- **amt:** add wifiportconfiguration service PUT and GET calls (#b9767cf)
-#### v2.0.1 - 2022-03-02
-- **AMT:** update wifi_port naming convention ([#86](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86)) (#4d2830d) 
-#### v2.0.0 - 2022-03-02
-- **tls-configuration:** add support for TLS Connection type (#0bcddb6) 
-##### BREAKING CHANGE
-- messageID is no longer passed in to functions and is tracked internally
-#### v1.7.0 - 2022-02-24
-- **general-settings:** adds PUT method for AMT_GeneralSettings (#f39c0df) 
-#### v1.6.0 - 2022-02-23
-- **amt:** adds WiFiPortConfigurationService to amt. (#d2a2f0e) 
-#### v1.5.0 - 2022-02-15
-- **amt:** adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) 
-#### v1.4.1 - 2022-02-08
-- **exports:** align exports with expected types from breaking change in PR[#29](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29) (#99e1ea7) 
-#### v1.4.0 - 2022-02-07
-- **amt:** adds AMT Authorization and Time Synchronization services (#747988d) 
-#### v1.3.1 - 2022-02-03
-- **ips:** updates methods and actions for HostBasedService ([#66](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66)) (#f777de0) 
-#### v1.3.0 - 2022-02-02
-- **cim:** adds WiFiPort method ([#62](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62)) (#faf4aac) 
-#### v1.2.0 - 2022-01-31
-- **ips:** adds methods to HostbasedSetupService (#1f196f1) 
-#### v1.1.0 - 2022-01-25
-- **amt:** adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) 
-- **codecov:** sets acceptable range to 99-100 (#a95ffa3) 
-#### v1.0.0 - 2022-01-07
-- initialize workflow (#ede3a3d) 
-- add cp step for package.json (#7223e97) 
-- **badge:** adds badges ([#20](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20)) (#dd036ca) 
-- **badge:** adds snyk and codecov ([#21](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21)) (#747b9df) 
-- **build:** remove dist folder (#7bb6840) 
-- **release:** remove step (#94ce849) 
-- **release:** update release to build (#6dec446) 
-- **release:** add step (#b1ba3e3) 
-- **semantic-release:** adds automation for releasing (#114517e) 
-- **semantic-release:** fixes workflow name (#817c9dc) 
-- **semantic-release:** change pkgRoot to dist (#579e722) 
-- **semantic-release:** updates comment (#ed4b16e) 
-- **workflow:** optimizes node CI (#ae84187) 
-- renames AMT, CIM, IPS classes to Messages (#4470042) 
-- models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) 
-- **wsman:** initial migration (#94e261e) 
+- v2.1.0 - 2022-03-15
+    - **amt:** add wifiportconfiguration service PUT and GET calls (#b9767cf)
+- v2.0.1 - 2022-03-02
+    - **AMT:** update wifi_port naming convention ([#86](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86)) (#4d2830d) 
+- v2.0.0 - 2022-03-02
+    - **tls-configuration:** add support for TLS Connection type (#0bcddb6) 
+    - **BREAKING CHANGE:** messageID is no longer passed in to functions and is tracked internally
+- v1.7.0 - 2022-02-24
+    - **general-settings:** adds PUT method for AMT_GeneralSettings (#f39c0df) 
+- v1.6.0 - 2022-02-23
+    - **amt:** adds WiFiPortConfigurationService to amt. (#d2a2f0e) 
+- v1.5.0 - 2022-02-15
+    - **amt:** adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) 
+- v1.4.1 - 2022-02-08
+    - **exports:** align exports with expected types from breaking change in PR[#29](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29) (#99e1ea7) 
+- v1.4.0 - 2022-02-07
+    - **amt:** adds AMT Authorization and Time Synchronization services (#747988d) 
+- v1.3.1 - 2022-02-03
+    - **ips:** updates methods and actions for HostBasedService ([#66](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66)) (#f777de0) 
+- v1.3.0 - 2022-02-02
+    - **cim:** adds WiFiPort method ([#62](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62)) (#faf4aac) 
+- v1.2.0 - 2022-01-31
+    - **ips:** adds methods to HostbasedSetupService (#1f196f1) 
+- v1.1.0 - 2022-01-25
+    - **amt:** adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) 
+    - **codecov:** sets acceptable range to 99-100 (#a95ffa3) 
+- v1.0.0 - 2022-01-07
+    - initialize workflow (#ede3a3d) 
+    - add cp step for package.json (#7223e97) 
+    - **badge:** adds badges ([#20](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20)) (#dd036ca) 
+    - **badge:** adds snyk and codecov ([#21](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21)) (#747b9df) 
+    - **build:** remove dist folder (#7bb6840) 
+    - **release:** remove step (#94ce849) 
+    - **release:** update release to build (#6dec446) 
+    - **release:** add step (#b1ba3e3) 
+    - **semantic-release:** adds automation for releasing (#114517e) 
+    - **semantic-release:** fixes workflow name (#817c9dc) 
+    - **semantic-release:** change pkgRoot to dist (#579e722) 
+    - **semantic-release:** updates comment (#ed4b16e) 
+    - **workflow:** optimizes node CI (#ae84187) 
+    - renames AMT, CIM, IPS classes to Messages (#4470042) 
+    - models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) 
+    - **wsman:** initial migration (#94e261e) 
 
 ## Resolved Issues
 #### RPS
