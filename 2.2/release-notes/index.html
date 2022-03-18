@@ -990,33 +990,39 @@
 <p>Method property is removed from wsman header in response and is now a property of the wsman body</p>
 <p>before:
 <div class="highlight"><pre><span></span><code><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-0000000000FA"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CIM_ComputerSystemPackage"</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-0000000000FA"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CIM_ComputerSystemPackage"</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 </code></pre></div>
 after:
 <div class="highlight"><pre><span></span><code><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-000000000002"</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="w"></span>
-<span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">"CIM_ComputerSystemPackage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</code></pre></div>
-- SelectorSet values no longer includes @name and Value properties
-- While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time</p>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-000000000002"</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">"CIM_ComputerSystemPackage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>SelectorSet values no longer includes @name and Value properties</p>
+</li>
+<li>
+<p>While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time</p>
+</li>
+</ul>
 <h4 id="open-amt-cloud-toolkit"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit" title="Permanent link">¶</a></h4>
 <ul>
 <li>deployment: update to use dockerhub imgs </li>
@@ -1033,6 +1039,11 @@ after:
 <li><strong>activator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/541">#541</a>) (#68f96a9) </li>
 <li><strong>activator:</strong> optimize code readability (#67e5950) </li>
 <li><strong>cira:</strong> adds wsman-messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/567">#567</a>) (#841bfb1) </li>
+<li><strong>validator.ts:</strong> handles ccm activation flow when device is already in ccm (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/598">#598</a>) (#d8824d7)</li>
+<li><strong>activation:</strong> handle when too many auth failures (#fa566f4) </li>
+<li><strong>activator:</strong> optimize code readability (#67e5950) </li>
+<li><strong>activator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/541">#541</a>) (#68f96a9) </li>
+<li><strong>cira:</strong> adds wsman-messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/567">#567</a>) (#841bfb1) </li>
 <li><strong>clientManager:</strong> simplify client manager (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/563">#563</a>) (#05b7180) </li>
 <li><strong>deactivator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/545">#545</a>) (#36f97d5) </li>
 <li><strong>dto:</strong> convert AMTdeviceDTO from class to interface type in /models (#a517218) </li>
@@ -1044,6 +1055,7 @@ after:
 <li><strong>rps:</strong> remove node-vault This PR replaces node-vault with standard <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> calls to vault using got. (#0385eab) </li>
 <li><strong>test:</strong> move tests to live alongside file (#7005c38) </li>
 <li><strong>tls:</strong> removes use of js amt-libraries (#4c1074a)</li>
+<li><strong>wifi:</strong> ensures wifi configuration completes successfully (#5b8b51f) </li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h4>
@@ -1094,7 +1106,9 @@ after:
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">¶</a></h4>
 <ul>
-<li>see change log for full list of changes (no feat, fix, or refactor changes)</li>
+<li>add-dialog: uses rpc-go syntax (#c729709)</li>
+<li>cypress: consolidate http codes (#0ebdb3f)</li>
+<li>see change log for full list of changes</li>
 </ul>
 <h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">¶</a></h4>
 <ul>
@@ -1172,8 +1186,6 @@ after:
 <li>renames AMT, CIM, IPS classes to Messages (#4470042) </li>
 <li>models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) </li>
 <li><strong>wsman:</strong> initial migration (#94e261e) </li>
-</ul>
-</li>
 </ul>
 <h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">¶</a></h2>
 <h4 id="rps_1"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_1" title="Permanent link">¶</a></h4>
