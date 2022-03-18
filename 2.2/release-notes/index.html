@@ -253,80 +253,6 @@
     WSMAN-MESSAGES
   </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v210-2022-03-15">
-    v2.1.0 - 2022-03-15
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v201-2022-03-02">
-    v2.0.1 - 2022-03-02
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v200-2022-03-02">
-    v2.0.0 - 2022-03-02
-  </a>
-<nav aria-label="v2.0.0 - 2022-03-02" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#breaking-change">
-    BREAKING CHANGE
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v170-2022-02-24">
-    v1.7.0 - 2022-02-24
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v160-2022-02-23">
-    v1.6.0 - 2022-02-23
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v150-2022-02-15">
-    v1.5.0 - 2022-02-15
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v141-2022-02-08">
-    v1.4.1 - 2022-02-08
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v140-2022-02-07">
-    v1.4.0 - 2022-02-07
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v131-2022-02-03">
-    v1.3.1 - 2022-02-03
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v130-2022-02-02">
-    v1.3.0 - 2022-02-02
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v120-2022-01-31">
-    v1.2.0 - 2022-01-31
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v110-2022-01-25">
-    v1.1.0 - 2022-01-25
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#v100-2022-01-07">
-    v1.0.0 - 2022-01-07
-  </a>
-</li>
 </ul>
 </nav>
 </li>
@@ -1123,79 +1049,50 @@ after:
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="wsman-messages">WSMAN-MESSAGES<a class="headerlink" href="#wsman-messages" title="Permanent link">¶</a></h4>
-<p><em>Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.  Since this is new, adding the full set of changes since 1.0.0.</em></p>
-<h4 id="v210-2022-03-15">v2.1.0 - 2022-03-15<a class="headerlink" href="#v210-2022-03-15" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>amt:</strong> add wifiportconfiguration service PUT and GET calls (#b9767cf)</li>
-</ul>
-<h4 id="v201-2022-03-02">v2.0.1 - 2022-03-02<a class="headerlink" href="#v201-2022-03-02" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>AMT:</strong> update wifi_port naming convention (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86">#86</a>) (#4d2830d) </li>
-</ul>
-<h4 id="v200-2022-03-02">v2.0.0 - 2022-03-02<a class="headerlink" href="#v200-2022-03-02" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>tls-configuration:</strong> add support for <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Connection type (#0bcddb6) </li>
-</ul>
-<h5 id="breaking-change">BREAKING CHANGE<a class="headerlink" href="#breaking-change" title="Permanent link">¶</a></h5>
-<ul>
-<li>messageID is no longer passed in to functions and is tracked internally</li>
-</ul>
-<h4 id="v170-2022-02-24">v1.7.0 - 2022-02-24<a class="headerlink" href="#v170-2022-02-24" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>general-settings:</strong> adds PUT method for AMT_GeneralSettings (#f39c0df) </li>
-</ul>
-<h4 id="v160-2022-02-23">v1.6.0 - 2022-02-23<a class="headerlink" href="#v160-2022-02-23" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>amt:</strong> adds WiFiPortConfigurationService to amt. (#d2a2f0e) </li>
-</ul>
-<h4 id="v150-2022-02-15">v1.5.0 - 2022-02-15<a class="headerlink" href="#v150-2022-02-15" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>amt:</strong> adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) </li>
-</ul>
-<h4 id="v141-2022-02-08">v1.4.1 - 2022-02-08<a class="headerlink" href="#v141-2022-02-08" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>exports:</strong> align exports with expected types from breaking change in PR<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29">#29</a> (#99e1ea7) </li>
-</ul>
-<h4 id="v140-2022-02-07">v1.4.0 - 2022-02-07<a class="headerlink" href="#v140-2022-02-07" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>amt:</strong> adds AMT Authorization and Time Synchronization services (#747988d) </li>
-</ul>
-<h4 id="v131-2022-02-03">v1.3.1 - 2022-02-03<a class="headerlink" href="#v131-2022-02-03" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>ips:</strong> updates methods and actions for HostBasedService (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66">#66</a>) (#f777de0) </li>
-</ul>
-<h4 id="v130-2022-02-02">v1.3.0 - 2022-02-02<a class="headerlink" href="#v130-2022-02-02" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>cim:</strong> adds WiFiPort method (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62">#62</a>) (#faf4aac) </li>
-</ul>
-<h4 id="v120-2022-01-31">v1.2.0 - 2022-01-31<a class="headerlink" href="#v120-2022-01-31" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>ips:</strong> adds methods to HostbasedSetupService (#1f196f1) </li>
-</ul>
-<h4 id="v110-2022-01-25">v1.1.0 - 2022-01-25<a class="headerlink" href="#v110-2022-01-25" title="Permanent link">¶</a></h4>
-<ul>
-<li><strong>amt:</strong> adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) </li>
-<li><strong>codecov:</strong> sets acceptable range to 99-100 (#a95ffa3) </li>
-</ul>
-<h4 id="v100-2022-01-07">v1.0.0 - 2022-01-07<a class="headerlink" href="#v100-2022-01-07" title="Permanent link">¶</a></h4>
-<ul>
-<li>initialize workflow (#ede3a3d) </li>
-<li>add cp step for package.json (#7223e97) </li>
-<li><strong>badge:</strong> adds badges (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20">#20</a>) (#dd036ca) </li>
-<li><strong>badge:</strong> adds snyk and codecov (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21">#21</a>) (#747b9df) </li>
-<li><strong>build:</strong> remove dist folder (#7bb6840) </li>
-<li><strong>release:</strong> remove step (#94ce849) </li>
-<li><strong>release:</strong> update release to build (#6dec446) </li>
-<li><strong>release:</strong> add step (#b1ba3e3) </li>
-<li><strong>semantic-release:</strong> adds automation for releasing (#114517e) </li>
-<li><strong>semantic-release:</strong> fixes workflow name (#817c9dc) </li>
-<li><strong>semantic-release:</strong> change pkgRoot to dist (#579e722) </li>
-<li><strong>semantic-release:</strong> updates comment (#ed4b16e) </li>
-<li><strong>workflow:</strong> optimizes node CI (#ae84187) </li>
-<li>renames AMT, CIM, IPS classes to Messages (#4470042) </li>
-<li>models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) </li>
-<li><strong>wsman:</strong> initial migration (#94e261e) </li>
-</ul>
+<p><em>Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.  Since this is new, adding the full set of changes since 1.0.0.</em>
+- v2.1.0 - 2022-03-15
+    - <strong>amt:</strong> add wifiportconfiguration service PUT and GET calls (#b9767cf)
+- v2.0.1 - 2022-03-02
+    - <strong>AMT:</strong> update wifi_port naming convention (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86">#86</a>) (#4d2830d) 
+- v2.0.0 - 2022-03-02
+    - <strong>tls-configuration:</strong> add support for <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Connection type (#0bcddb6) 
+    - <strong>BREAKING CHANGE:</strong> messageID is no longer passed in to functions and is tracked internally
+- v1.7.0 - 2022-02-24
+    - <strong>general-settings:</strong> adds PUT method for AMT_GeneralSettings (#f39c0df) 
+- v1.6.0 - 2022-02-23
+    - <strong>amt:</strong> adds WiFiPortConfigurationService to amt. (#d2a2f0e) 
+- v1.5.0 - 2022-02-15
+    - <strong>amt:</strong> adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) 
+- v1.4.1 - 2022-02-08
+    - <strong>exports:</strong> align exports with expected types from breaking change in PR<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29">#29</a> (#99e1ea7) 
+- v1.4.0 - 2022-02-07
+    - <strong>amt:</strong> adds AMT Authorization and Time Synchronization services (#747988d) 
+- v1.3.1 - 2022-02-03
+    - <strong>ips:</strong> updates methods and actions for HostBasedService (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66">#66</a>) (#f777de0) 
+- v1.3.0 - 2022-02-02
+    - <strong>cim:</strong> adds WiFiPort method (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62">#62</a>) (#faf4aac) 
+- v1.2.0 - 2022-01-31
+    - <strong>ips:</strong> adds methods to HostbasedSetupService (#1f196f1) 
+- v1.1.0 - 2022-01-25
+    - <strong>amt:</strong> adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) 
+    - <strong>codecov:</strong> sets acceptable range to 99-100 (#a95ffa3) 
+- v1.0.0 - 2022-01-07
+    - initialize workflow (#ede3a3d) 
+    - add cp step for package.json (#7223e97) 
+    - <strong>badge:</strong> adds badges (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20">#20</a>) (#dd036ca) 
+    - <strong>badge:</strong> adds snyk and codecov (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21">#21</a>) (#747b9df) 
+    - <strong>build:</strong> remove dist folder (#7bb6840) 
+    - <strong>release:</strong> remove step (#94ce849) 
+    - <strong>release:</strong> update release to build (#6dec446) 
+    - <strong>release:</strong> add step (#b1ba3e3) 
+    - <strong>semantic-release:</strong> adds automation for releasing (#114517e) 
+    - <strong>semantic-release:</strong> fixes workflow name (#817c9dc) 
+    - <strong>semantic-release:</strong> change pkgRoot to dist (#579e722) 
+    - <strong>semantic-release:</strong> updates comment (#ed4b16e) 
+    - <strong>workflow:</strong> optimizes node CI (#ae84187) 
+    - renames AMT, CIM, IPS classes to Messages (#4470042) 
+    - models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) 
+    - <strong>wsman:</strong> initial migration (#94e261e) </p>
 <h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">¶</a></h2>
 <h4 id="rps_1"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_1" title="Permanent link">¶</a></h4>
 <ul>
