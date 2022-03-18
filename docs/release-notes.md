@@ -138,6 +138,8 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - see change log for full list of changes
 #### WSMAN-MESSAGES
 *Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the Open AMT Cloud Toolkit.  Since this is new, adding the full set of changes since 1.0.0.*
+#### v2.1.0 - 2022-03-15
+- **amt:** add wifiportconfiguration service PUT and GET calls (#b9767cf)
 #### v2.0.1 - 2022-03-02
 - **AMT:** update wifi_port naming convention ([#86](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86)) (#4d2830d) 
 #### v2.0.0 - 2022-03-02
