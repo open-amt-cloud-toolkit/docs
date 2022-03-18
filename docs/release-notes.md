@@ -24,33 +24,35 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
     before:
     ``` json
     "responses": {
-                "Header": {
-                    "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
-                    "RelatesTo": "1",
-                    "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
-                    "MessageID": "uuid:00000000-8086-8086-8086-0000000000FA",
-                    "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage",
-                    "Method": "CIM_ComputerSystemPackage"
-                },
-                "Body": {
-                    "Antecedent": {
+        "Header": {
+            "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
+            "RelatesTo": "1",
+            "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
+            "MessageID": "uuid:00000000-8086-8086-8086-0000000000FA",
+            "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage",
+            "Method": "CIM_ComputerSystemPackage"
+        },
+        "Body": {
+            "Antecedent": {
     ```
     after:
     ``` json
     "responses": [
-                {
-                    "Header": {
-                        "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
-                        "RelatesTo": 0,
-                        "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
-                        "MessageID": "uuid:00000000-8086-8086-8086-000000000002",
-                        "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"
-                    },
-                    "Body": {
-                        "CIM_ComputerSystemPackage": {
-                            "Antecedent": {
+        {
+            "Header": {
+                "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
+                "RelatesTo": 0,
+                "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
+                "MessageID": "uuid:00000000-8086-8086-8086-000000000002",
+                "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"
+            },
+            "Body": {
+                "CIM_ComputerSystemPackage": {
+                    "Antecedent": {
     ```
+
 - SelectorSet values no longer includes @name and Value properties
+
 - While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time
 #### Open AMT Cloud Toolkit
 - deployment: update to use dockerhub imgs 
@@ -65,6 +67,11 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - **activator:** adds wmsan_messages and unit tests ([#541](https://github.com/open-amt-cloud-toolkit/rps/issues/541)) (#68f96a9) 
 - **activator:** optimize code readability (#67e5950) 
 - **cira:** adds wsman-messages and unit tests ([#567](https://github.com/open-amt-cloud-toolkit/rps/issues/567)) (#841bfb1) 
+- **validator.ts:** handles ccm activation flow when device is already in ccm ([#598](https://github.com/open-amt-cloud-toolkit/rps/issues/598)) (#d8824d7)
+- **activation:** handle when too many auth failures (#fa566f4) 
+- **activator:** optimize code readability (#67e5950) 
+- **activator:** adds wmsan_messages and unit tests ([#541](https://github.com/open-amt-cloud-toolkit/rps/issues/541)) (#68f96a9) 
+- **cira:** adds wsman-messages and unit tests ([#567](https://github.com/open-amt-cloud-toolkit/rps/issues/567)) (#841bfb1) 
 - **clientManager:** simplify client manager ([#563](https://github.com/open-amt-cloud-toolkit/rps/issues/563)) (#05b7180) 
 - **deactivator:** adds wmsan_messages and unit tests ([#545](https://github.com/open-amt-cloud-toolkit/rps/issues/545)) (#36f97d5) 
 - **dto:** convert AMTdeviceDTO from class to interface type in /models (#a517218) 
@@ -76,6 +83,7 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - **rps:** remove node-vault This PR replaces node-vault with standard REST calls to vault using got. (#0385eab) 
 - **test:** move tests to live alongside file (#7005c38) 
 - **tls:** removes use of js amt-libraries (#4c1074a)
+- **wifi:** ensures wifi configuration completes successfully (#5b8b51f) 
 - see change log for full list of changes
 #### MPS
 - **healthcheck:** adds API endpoint for healthcheck (#5085569) 
@@ -120,7 +128,9 @@ This section outlines key features changes between versions 2.1 and 2.2 for Open
 - **pthi:** converts amt and pthi commands to go from C
 - see change log for full list of changes
 #### Sample Web UI
-- see change log for full list of changes (no feat, fix, or refactor changes)
+- add-dialog: uses rpc-go syntax (#c729709)
+- cypress: consolidate http codes (#0ebdb3f)
+- see change log for full list of changes
 #### UI Toolkit
 - upgrade ws from 8.4.2 to 8.5.0 (#228166b)
 - **npm:** add job to publish to npm (#33bdf7e) 
