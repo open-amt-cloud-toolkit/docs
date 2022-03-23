@@ -5,10 +5,13 @@
 
 Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.
 
-1. In the values.yaml file, update the images to the new version wanted. In this scenario, we've only updated the MPS, RPS, and WebUI to the newer versions.
+!!! note "Note - Using Private Images"
+    The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.
+
+1. In the values.yaml file, update the images to the new version wanted. In this scenario, we've only updated the MPS, RPS, and WebUI to the newer versions. 
 
     !!! example "Example - values.yaml File"
-        ```
+        ```yaml hl_lines="2-4"
         images:
           mps: "intel/oact-mps:v2.2.0"
           rps: "intel/oact-rps:v2.2.0"
@@ -17,15 +20,6 @@ Upgrading from a previous minor version to a new minor version release is simple
         mps:
           ...
         ```
-
-2. In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.
-
-    ```
-    cd ./YOUR-DIRECTORY-PATH/open-amt-cloud-toolkit
-    ```
-
-
-3. Use Helm to upgrade and deploy the new images.
 
     !!! warning "Warning - Upgrading when Using `latest` Image Tags"    
         It is recommended to use versioned tags for deployment for easier tracking and troubleshooting. 
@@ -67,11 +61,21 @@ Upgrading from a previous minor version to a new minor version release is simple
                 {% endraw %}            
                 ```
 
+
+2. In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.
+
+    ```
+    cd ./YOUR-DIRECTORY-PATH/open-amt-cloud-toolkit
+    ```
+
+
+3. Use Helm to upgrade and deploy the new images.
+
     ```
     helm upgrade openamtstack ./kubernetes/charts
     ```
 
-    !!! example "Example - Successful Helm Upgrade"
+    !!! success "Successful Helm Upgrade"
         ```
         Release "openamtstack" has been upgraded. Happy Helming!
         NAME: openamtstack
@@ -97,6 +101,21 @@ Upgrading from a previous minor version to a new minor version release is simple
         openamtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
         rps-597d7894b5-mbdz5                                 1/1     Running   0          2m47s
         webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
+        ```
+
+## Rollback a Version
+
+Is the functionality not working as expected? Rollback to the previous deployment using Helm.
+
+1. Use the Helm rollback command with the Revision you want to rollback to. In this example deployment, we would rollback to the original deployment revision which would be 1.
+
+    ```
+    helm rollback openamtstack [Revision-Number]
+    ```
+    
+    !!! success - "Successful Rollback" 
+        ```
+        Rollback was a success! Happy Helming!
         ```
 
 <!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->
