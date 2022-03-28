@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/setup/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
+<meta content="mkdocs-1.3.0, mkdocs-material-7.3.0" name="generator"/>
 <title>Set Up - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
@@ -88,7 +88,7 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
 </div>
@@ -149,7 +149,7 @@
     Open Active Management Technology Cloud Toolkit
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
 </div>
@@ -377,6 +377,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/secrets/">
         Secrets Management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/upgradeVersion/">
+        Upgrade Toolkit Version
       </a>
 </li>
 </ul>
@@ -809,7 +814,7 @@
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.2.0
+<div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.2.0 --recursive
 </code></pre></div>
 </li>
 <li>
@@ -916,27 +921,38 @@
 </li>
 </ol>
 <h2 id="pull-and-run-the-docker-images"><a name="Builddockerimages"></a>Pull and Run the Docker Images<a class="headerlink" href="#pull-and-run-the-docker-images" title="Permanent link">¶</a></h2>
-<p>Pull the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Docker images and launch the stack.</p>
 <ol>
 <li>
-<p>Run docker-compose to pull the containers from <a href="https://hub.docker.com/search?q=oact&amp;type=image">Intel's Dockerhub image respository</a>.</p>
+<p>Pull the Docker images from <a href="https://hub.docker.com/search?q=oact&amp;type=image">Intel's Docker Hub repository</a>.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sudo docker-compose -f "docker-compose.yml" up -d
+<div class="highlight"><pre><span></span><code>sudo docker-compose pull
 </code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>docker-compose -f "docker-compose.yml" up -d
+<div class="highlight"><pre><span></span><code>docker-compose pull
 </code></pre></div>
 </div>
 </input></input></div>
 </li>
 <li>
-<p>Check that all the containers are running.</p>
+<p>Start the containers.</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><label for="__tabbed_3_1">Linux</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+<div class="highlight"><pre><span></span><code>sudo docker-compose up -d
 </code></pre></div>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio"><label for="__tabbed_3_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>docker-compose up -d
+</code></pre></div>
+</div>
+</input></input></div>
+</li>
+<li>
+<p>Check that all the containers are running and healthy.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio"><label for="__tabbed_4_2">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
 </code></pre></div>
 </div>
@@ -949,7 +965,7 @@ eclipse-mosquitto                   Up <span class="m">2</span> minutes         
 vault                               Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_vault_1    
 intel/oact-mpsrouter:v2.0.0         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mpsrouter_1
 sslpostgres                         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_db_1       
-intel/oact-webui:v2.1.1             Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_webui_1    
+intel/oact-webui:v2.2.0             Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_webui_1    
 kong:2.3                            Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_kong_1     
 intel/oact-mps:v2.2.0               Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mps_1
 </code></pre></div>
@@ -1021,7 +1037,7 @@ intel/oact-mps:v2.2.0               Up <span class="m">2</span> minutes <span cl
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>

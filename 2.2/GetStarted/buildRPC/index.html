@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/buildRPC/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.2.3, mkdocs-material-7.3.0" name="generator"/>
+<meta content="mkdocs-1.3.0, mkdocs-material-7.3.0" name="generator"/>
 <title>Build &amp; Run RPC - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#get-the-rpc">
+<a class="md-skip" href="#build-the-rpc">
           Skip to content
         </a>
 </div>
@@ -88,7 +88,7 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
 </div>
@@ -149,7 +149,7 @@
     Open Active Management Technology Cloud Toolkit
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
 </div>
@@ -294,11 +294,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#get-the-rpc">
-    Get the RPC
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#build-the-rpc">
     Build the RPC
   </a>
@@ -372,6 +367,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../Deployment/secrets/">
         Secrets Management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/upgradeVersion/">
+        Upgrade Toolkit Version
       </a>
 </li>
 </ul>
@@ -821,24 +821,26 @@
 <p class="admonition-title">Figure 1 Details</p>
 <p>The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) interfaces. The Driver uses the Intel® MEI to talk to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> activates <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> with an AMT profile, which is associated with a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration (Step 3). The profile, which also distinguishes between Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) or Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>), and configuration were created in <a href="../createCIRAConfig/">Create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</a> or <a href="../createProfileACM/">Create an AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></a>. After running <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with a profile, <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> will establish a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection with the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> (Step 4) allowing <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage the remote device and issue AMT commands (Step 5).</p>
 </div>
-<h2 id="get-the-rpc">Get the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#get-the-rpc" title="Permanent link">¶</a></h2>
-<p><strong>To clone the repository:</strong></p>
-<ol>
-<li>
-<p>In the <code>open-amt-cloud-toolkit</code> directory, run:
-   <div class="highlight"><pre><span></span><code>git submodule update --init rpc-go
-</code></pre></div></p>
-</li>
-<li>
-<p>Change to the cloned <code>rpc-go</code> directory:
-   <div class="highlight"><pre><span></span><code><span class="nb">cd</span> rpc-go
-</code></pre></div></p>
-</li>
-</ol>
 <h2 id="build-the-rpc">Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#build-the-rpc" title="Permanent link">¶</a></h2>
 <p><strong>To build the executable:</strong></p>
 <p>If you are building on a development system, copy the resulting executable to the managed device.</p>
 <ol>
+<li>
+<p>Change to the <code>rpc-go</code> directory of the cloned <code>open-amt-cloud-toolkit</code> repository.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> rpc-go
+</code></pre></div>
+<details class="note">
+<summary>Haven't Cloned the <code>open-amt-cloud-toolkit</code> Repository?</summary>
+<ol>
+<li>Clone the whole toolkit repository:
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.2.0 --recursive
+</code></pre></div></li>
+<li>Only clone the <code>rpc-go</code> repository:
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v2.1.0
+</code></pre></div></li>
+</ol>
+</details>
+</li>
 <li>
 <p>Open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows):</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
@@ -1003,7 +1005,7 @@ internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argume
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
