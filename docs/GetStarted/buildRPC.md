@@ -22,28 +22,29 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 !!! note "Figure 1 Details"
     The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../GetStarted/createCIRAConfig.md) or [Create an AMT Profile](../GetStarted/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
 
-
-## Get the RPC
-
-**To clone the repository:**
-
-1. In the `open-amt-cloud-toolkit` directory, run:
-   ``` bash
-   git submodule update --init rpc-go
-   ```
-  
-2. Change to the cloned `rpc-go` directory:
-   ``` bash
-   cd rpc-go
-   ```
-
 ##  Build the RPC
 
 **To build the executable:**
 
 If you are building on a development system, copy the resulting executable to the managed device.
 
-1. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
+1. Change to the `rpc-go` directory of the cloned `open-amt-cloud-toolkit` repository.
+   
+    ``` bash
+    cd rpc-go
+    ```
+    ??? note "Haven't Cloned the `open-amt-cloud-toolkit` Repository?"
+
+        1. Clone the whole toolkit repository:
+            ``` bash
+            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
+            ```
+        2. Only clone the `rpc-go` repository:
+            ``` bash
+            git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+            ```
+
+2. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
 
     === "Linux"
         ``` bash
@@ -76,9 +77,9 @@ If you are building on a development system, copy the resulting executable to th
           ...
         ```
 
-2. Copy the executable to a managed device. 
+3. Copy the executable to a managed device. 
 
-3. Confirm a successful build:
+4. Confirm a successful build:
 
     === "Linux"
         ``` bash
