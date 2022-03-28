@@ -9,7 +9,7 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
     ```
   
 2. Change to the cloned `open-amt-cloud-toolkit` directory.
@@ -77,22 +77,31 @@ Set the shared secret used in Kong for JWT authentication.
 
 ## <a name="Builddockerimages"></a>Pull and Run the Docker Images
 
-Pull the MPS, RPS, and Sample Web UI Docker images and launch the stack.
+1. Pull the Docker images from [Intel's Docker Hub repository](https://hub.docker.com/search?q=oact&type=image).
 
-
-1.  Run docker-compose to pull the containers from [Intel's Dockerhub image respository](https://hub.docker.com/search?q=oact&type=image).
-    
     === "Linux"
         ```
-        sudo docker-compose -f "docker-compose.yml" up -d
+        sudo docker-compose pull
         ```
     
     === "Windows"
         ```
-        docker-compose -f "docker-compose.yml" up -d
+        docker-compose pull
         ```
 
-2. Check that all the containers are running.
+2.  Start the containers.
+    
+    === "Linux"
+        ```
+        sudo docker-compose up -d
+        ```
+    
+    === "Windows"
+        ```
+        docker-compose up -d
+        ```
+
+3. Check that all the containers are running and healthy.
 
     === "Linux"
         ```
@@ -116,7 +125,7 @@ Pull the MPS, RPS, and Sample Web UI Docker images and launch the stack.
         vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
         intel/oact-mpsrouter:v2.0.0         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
         sslpostgres                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
-        intel/oact-webui:v2.1.1             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
+        intel/oact-webui:v2.2.0             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
         kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
         intel/oact-mps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
         ```

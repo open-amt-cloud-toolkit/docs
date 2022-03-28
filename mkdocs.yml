@@ -142,9 +142,9 @@ extra:
     oamtct: 2.2.0
     rpc_go: 2.1.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.0.4
+    ui_toolkit: 2.0.5
     ui_toolkit_react: 2.0.3
-    ui_toolkit_angular: 2.0.3
+    ui_toolkit_angular: 2.0.4
   docsSite:
     rapidVersion: 2.2
     ltsVersion: 2.0
