@@ -859,12 +859,12 @@
 <p>Add the development environment to the  <code>webpack.config.dev.js</code> file:**</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="nx">mode</span><span class="o">:</span> <span class="s2">"development"</span><span class="p">,</span>
-     <span class="nx">entry</span><span class="o">:</span> <span class="s1">'./src/reactjs/components/KVM/index.tsx'</span><span class="p">,</span> <span class="c1">// entry points can be multiple</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span><span class="w"></span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">"development"</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nx">entry</span><span class="o">:</span><span class="w"> </span><span class="s1">'./src/reactjs/components/KVM/index.tsx'</span><span class="p">,</span><span class="w"> </span><span class="c1">// entry points can be multiple</span><span class="w"></span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="add-typescript">Add Typescript<a class="headerlink" href="#add-typescript" title="Permanent link">¶</a></h2>
 <p>The example code below resolves the file extensions, .tsx, .ts and .js. Files with the extensions .tsx or .ts are processed by awesome-typescript-loader.</p>
@@ -876,21 +876,21 @@
 </code></pre></div>
 2. Add the configuration to the <code>webpack.config.dev.js</code> file:</p>
 <p>Example: 
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
- <span class="p">....</span>
-<span class="nx">resolve</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">".tsx"</span><span class="p">,</span> <span class="s2">".ts"</span><span class="p">,</span> <span class="s2">".js"</span><span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span> 
-        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.tsx?$/</span><span class="p">,</span> 
-        <span class="nx">loader</span><span class="o">:</span> <span class="s1">'awesome-typescript-loader'</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span><span class="w"></span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="p">....</span><span class="w"></span>
+<span class="nx">resolve</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">extensions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">".tsx"</span><span class="p">,</span><span class="w"> </span><span class="s2">".ts"</span><span class="p">,</span><span class="w"> </span><span class="s2">".js"</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.tsx?$/</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s1">'awesome-typescript-loader'</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="add-styles">Add Styles<a class="headerlink" href="#add-styles" title="Permanent link">¶</a></h2>
 <p><strong>To Add Styles support:</strong></p>
@@ -900,19 +900,19 @@
 </code></pre></div></li>
 <li>Add the configuration to the <code>webpack.config.dev.js</code> file:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
- <span class="p">....</span>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="p">....</span><span class="w"></span>
 
-  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">...</span>
-       <span class="p">{</span>
-        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(sc|sa|c)ss$/</span><span class="p">,</span>
-        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">],</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nx">module</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">rules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.(sc|sa|c)ss$/</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span><span class="w"> </span><span class="s1">'css-loader'</span><span class="p">,</span><span class="w"> </span><span class="s1">'sass-loader'</span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="add-html">Add HTML<a class="headerlink" href="#add-html" title="Permanent link">¶</a></h2>
 <p><strong>To add HTML support:</strong></p>
@@ -926,20 +926,20 @@
 <p>Add the configuration to the <code>webpack.config.dev.js</code> file:</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">HtmlWebpackPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span><span class="w"></span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
- <span class="p">....</span>
-  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
-    <span class="ow">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
-      <span class="nx">filename</span><span class="o">:</span> <span class="s2">"kvm.htm"</span><span class="p">,</span>
-      <span class="nx">template</span><span class="o">:</span> <span class="s2">"./src/sample/sampleKVM.htm"</span><span class="p">,</span>
-      <span class="nx">inject</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nx">chunks</span><span class="o">:</span> <span class="p">[</span><span class="s2">"kvm"</span><span class="p">],</span>
-    <span class="p">}),</span>
-  <span class="p">]</span>
-<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="p">....</span><span class="w"></span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">HtmlWebpackPlugin</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s2">"kvm.htm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="s2">"./src/sample/sampleKVM.htm"</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nx">chunks</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"kvm"</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="development-server">Development Server<a class="headerlink" href="#development-server" title="Permanent link">¶</a></h2>
 <p>Set up a development server using the webpack-dev-server. This server opens a default browser upon npm start and provide us with live reloading.</p>
@@ -947,9 +947,9 @@
 </code></pre></div>
 <h2 id="update-packagejson">Update Package.json<a class="headerlink" href="#update-packagejson" title="Permanent link">¶</a></h2>
 <p>Add webpack-dev-server to the <code>Package.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span> <span class="p">{</span> 
-  <span class="s2">"start"</span><span class="o">:</span> <span class="s2">"webpack-dev-server --config webpack.config.dev.js"</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="s2">"start"</span><span class="o">:</span><span class="w"> </span><span class="s2">"webpack-dev-server --config webpack.config.dev.js"</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -969,22 +969,22 @@
 <p>Add the configuration to the <code>webpack.config.prod.js</code> file: </p>
 </li>
 </ol>
-<p><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+<p><div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span><span class="w"></span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="nx">mode</span><span class="o">:</span> <span class="s2">"production"</span><span class="p">,</span>
-     <span class="nx">entry</span><span class="o">:</span> <span class="s1">'./src/reactjs/components/KVM/index.tsx'</span><span class="p">,</span> <span class="c1">// entry points can be multiple</span>
-    <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
-        <span class="nx">filename</span><span class="o">:</span> <span class="s2">"[name].min.js"</span><span class="p">,</span>
-        <span class="nx">path</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"./dist"</span><span class="p">)</span>
-    <span class="p">},</span>
-  <span class="p">....</span>
-<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">"production"</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nx">entry</span><span class="o">:</span><span class="w"> </span><span class="s1">'./src/reactjs/components/KVM/index.tsx'</span><span class="p">,</span><span class="w"> </span><span class="c1">// entry points can be multiple</span><span class="w"></span>
+<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s2">"[name].min.js"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s2">"./dist"</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">....</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 3. Update Package.json:</p>
-<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span> <span class="p">{</span> 
- <span class="s2">"build"</span><span class="o">:</span> <span class="s2">"webpack --config webpack.config.prod.js"</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w"> </span><span class="s2">"build"</span><span class="o">:</span><span class="w"> </span><span class="s2">"webpack --config webpack.config.prod.js"</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -1003,19 +1003,19 @@
 </code></pre></div></li>
 <li>The webpack-node-externals library creates an externals function that ignores node_modules when bundling in <abbr title="A module bundler that packages various assets and files (e.g., CSS, JS, JPG, etc.).">Webpack</abbr>. Add the following to <code>webpack.config.externals.js</code>:</li>
 </ol>
-<p><div class="highlight"><pre><span></span><code> <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span> <span class="c1">//No ES6 in webpack config </span>
- <span class="kd">const</span> <span class="nx">nodeExternals</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack-node-externals'</span><span class="p">);</span>
+<p><div class="highlight"><pre><span></span><code><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span><span class="w"> </span><span class="c1">//No ES6 in webpack config </span><span class="w"></span>
+<span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">nodeExternals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'webpack-node-externals'</span><span class="p">);</span><span class="w"></span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="p">....</span>
-  <span class="nx">externals</span><span class="o">:</span> <span class="p">[</span><span class="nx">nodeExternals</span><span class="p">()],</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">....</span><span class="w"></span>
+<span class="w">  </span><span class="nx">externals</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">nodeExternals</span><span class="p">()],</span><span class="w"></span>
 
-<span class="p">};</span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 3. Update Package.json:</p>
-<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span> <span class="p">{</span> 
- <span class="s2">"build-ext"</span><span class="o">:</span> <span class="s2">"webpack --config webpack.config.externals.js"</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w"> </span><span class="s2">"build-ext"</span><span class="o">:</span><span class="w"> </span><span class="s2">"webpack --config webpack.config.externals.js"</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>

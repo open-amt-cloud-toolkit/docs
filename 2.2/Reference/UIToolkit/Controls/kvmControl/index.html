@@ -796,24 +796,24 @@ Open <code>src/App.js</code> and add the code shown below:</p>
 <p class="admonition-title">Note</p>
 <p>Change <code>deviceId</code> value to your device GUID, <code>mpsServer</code> value to your <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server address, and pass in a valid JWT  for <code>authToken</code>.</p>
 </div>
-<div class="highlight"><pre><span></span><code>    <span class="k">import</span> <span class="nx">React</span> <span class="kr">from</span> <span class="s2">"react"</span><span class="p">;</span>
-    <span class="k">import</span> <span class="s2">"./App.css"</span><span class="p">;</span>
-    <span class="k">import</span> <span class="p">{</span> <span class="nx">KVM</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">"@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle"</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="s2">"./App.css"</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle"</span><span class="p">;</span><span class="w"></span>
 
-    <span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"App"</span><span class="o">&gt;</span>
-<span class="hll">                <span class="o">&lt;</span><span class="nx">KVM</span> <span class="nx">deviceId</span><span class="o">=</span><span class="s2">"038d0240-045c-05f4-7706-980700080009"</span> <span class="c1">//Replace with AMT Device GUID</span>
-</span><span class="hll">                <span class="nx">mpsServer</span><span class="o">=</span><span class="s2">"https://localhost/mps/ws/relay"</span> <span class="c1">//Replace 'localhost' with Development System or MPS Server IP Address</span>
-</span>                <span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">"200"</span>
-<span class="hll">                <span class="nx">authToken</span><span class="o">=</span><span class="s2">""</span> <span class="c1">// Replace with a valid JWT provided during login of MPS</span>
-</span>                <span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">"100%"</span>
-                <span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">"100%"</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
-            <span class="o">&lt;</span><span class="err">/div&gt;</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">"App"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="hll"><span class="w">                </span><span class="o">&lt;</span><span class="nx">KVM</span><span class="w"> </span><span class="nx">deviceId</span><span class="o">=</span><span class="s2">"038d0240-045c-05f4-7706-980700080009"</span><span class="w"> </span><span class="c1">//Replace with AMT Device GUID</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nx">mpsServer</span><span class="o">=</span><span class="s2">"https://localhost/mps/ws/relay"</span><span class="w"> </span><span class="c1">//Replace 'localhost' with Development System or MPS Server IP Address</span><span class="w"></span>
+</span><span class="w">                </span><span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">"200"</span><span class="w"></span>
+<span class="hll"><span class="w">                </span><span class="nx">authToken</span><span class="o">=</span><span class="s2">""</span><span class="w"> </span><span class="c1">// Replace with a valid JWT provided during login of MPS</span><span class="w"></span>
+</span><span class="w">                </span><span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"></span>
+<span class="w">                </span><span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">"100%"</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </article>
 </div>
