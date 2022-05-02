@@ -96,6 +96,9 @@ nav:
       - Intel&reg; MEBX:
           - DNS Suffix: Reference/MEBX/dnsSuffix.md
           - Unprovisioning: Reference/MEBX/unprovision.md
+      - Certificates:
+          - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
+          - TLS Certificate: Reference/Certificates/tls.md
       - Get Help:
           - Troubleshooting: Reference/troubleshooting.md
   - APIs:

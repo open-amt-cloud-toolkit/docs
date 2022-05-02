@@ -20,6 +20,8 @@
 
 *[KVM]: Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.
 
+*[Hybrid Cloud]: Hybrid Cloud - a mixture of public and private on-premises infrastructure. 
+
 *[Intel® MEBX]: Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.
 
 *[microservice architecture]: microservice architecture - An architecture in which the component parts are broken into discrete services, called microservices, that perform specific, limited functions. 
