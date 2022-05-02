@@ -741,11 +741,36 @@
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_12">
+          Certificates
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Certificates" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+          Certificates
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Certificates/remoteProvisioning/">
+        Provisioning Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Certificates/tls/">
+        TLS Certificate
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
           Get Help
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="Get Help" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_5_12">
+<label class="md-nav__title" for="__nav_5_13">
 <span class="md-nav__icon md-icon"></span>
           Get Help
         </label>
@@ -798,23 +823,41 @@
 </a>
 <h1>Unprovisioning</h1>
 <h2 id="manageability-engine-bios-extensions-mebx">Manageability Engine BIOS Extensions (MEBX)<a class="headerlink" href="#manageability-engine-bios-extensions-mebx" title="Permanent link">¶</a></h2>
-<p>Intel® MEBX allows for configuration of the Intel Manageability Engine (ME) platform. Through this interface, you can provision AMT and customize a variety of settings manually.</p>
+<p>Intel® MEBX allows for configuration of the Intel Manageability Engine (ME) platform. Use this interface to provision and unprovision AMT. It also provides a variety of settings to configure manually. </p>
+<p>Use the unprovision functionality to remove a device from MPS control. </p>
 <h3 id="unprovision-an-amt-device-through-mebx">Unprovision an AMT Device Through MEBX<a class="headerlink" href="#unprovision-an-amt-device-through-mebx" title="Permanent link">¶</a></h3>
-<p>1. Restart or power on the device </p>
-<p>2. While the device is booting up, press <code>Ctrl+P</code> to reach the MEBX login screen </p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>In the example above, <code>Ctrl+P</code> reaches the MEBX login screen. BIOS screen activation may vary among manufacturers. Check your system documentation.</p>
-</div>
-<p>3. Enter the AMT password</p>
+<p><strong>To unprovision in the BIOS:</strong></p>
+<ol>
+<li>
+<p>Restart or power on the device. </p>
+</li>
+<li>
+<p>While the device is booting up, press <strong>Ctrl+P</strong> to reach the MEBX login screen </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If it is the first time entering MEBX, the default password is <code>admin</code>. It will prompt you to create a new password.</p>
+<p>The keystroke combination <strong>Ctrl+P</strong> typically invokes the BIOS to display the MEBX login screen. If this does not work, check the manufacturer's instructions or try function keys (e.g., F2, F12).</p>
 </div>
-<p>4. Select ‘Intel AMT configuration’ </p>
-<p>5. Select ‘Unconfigure Network access’ </p>
-<p>6. Select ‘Full unprovision’, and then press 'y' to continue </p>
-<p>7. It takes 30 seconds to a minute to unprovision the device. While it is unprovisioning, the up/down arrow keys will not work.</p>
+</li>
+<li>
+<p>Enter the AMT password.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If it is the first time entering MEBX and the device has not been provisioned previously, the default password is <code>admin</code>. Create a new password when prompted.</p>
+</div>
+</li>
+<li>
+<p>Select <strong>Intel AMT configuration</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Unconfigure Network access</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Full unprovision</strong>, and then press <strong>y</strong> to continue </p>
+</li>
+<li>
+<p>It takes 30 seconds to a minute to unprovision the device. While it is unprovisioning, the up/down arrow keys will not work.</p>
+</li>
+</ol>
 </article>
 </div>
 </div>
