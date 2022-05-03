@@ -54,15 +54,20 @@ Activate this device with a specified profile:
 | -d string | DNS suffix override | 
 | -h string | Hostname override | 
 | -json | JSON output |
+| -lmsaddress string | lms address (default "localhost") |
+| -lmsport string | lms port (default "16992") |
 | -n | Skip WebSocket server certificate verification |
 | -p string | Proxy address and port |
 | -profile string | name of the profile to use |
 | -u string | WebSocket address of server to activate against |
-| -v string | Verbose output |
+| -v | Verbose output |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
-To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
+To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
+
+!!! note "LMS Options"
+    These options enable changing the location of LMS. This can be useful during debug.
 
 ### deactivate
 
@@ -85,7 +90,7 @@ Deactivate this device:
 | -p string | Proxy address and port |
 | -password string | AMT password |
 | -u string | WebSocket address of server to activate against |
-| -v string | Verbose output |
+| -v | Verbose output |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -110,7 +115,7 @@ Synchronize the managed device's AMT clock with operating system time:
 | -p string | Proxy address and port |
 | -password string | AMT password |
 | -u string | WebSocket address of server to activate against |
-| -v string | Verbose output |
+| -v | Verbose output |
 
 ### amtinfo
 

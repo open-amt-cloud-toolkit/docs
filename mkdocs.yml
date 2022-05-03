@@ -84,6 +84,7 @@ nav:
       - Remote Provisioning Client:
           - Build & Run RPC: Reference/RPC/buildRPC_Manual.md
           - RPC CLI: Reference/RPC/commandsRPC.md
+          - RPC Library: Reference/RPC/libraryRPC.md
       - UI Toolkit:
           - Controls:
               - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md
