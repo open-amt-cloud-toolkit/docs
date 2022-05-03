@@ -646,6 +646,11 @@
         RPC CLI
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../libraryRPC/">
+        RPC Library
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -859,9 +864,8 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <p><strong>Before installing and building the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, install:</strong></p>
 <ul>
-<li>Go* Programming Language</li>
 <li>
-<p>tdm-gcc (On Windows* only)</p>
+<p>Go* Programming Language</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
 <p><strong>To install prerequisites on Linux*:</strong></p>
 <ol>
@@ -877,9 +881,6 @@
 <li>See Go's <a href="https://golang.org/doc/install">Download and Install</a>.</li>
 <li>Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).</li>
 <li>Run the downloaded file and follow prompts to install. </li>
-<li>See <a href="https://jmeubank.github.io/tdm-gcc/">tdm-gcc</a>.</li>
-<li>Choose a version and download the .exe. </li>
-<li>Run the downloaded file and follow prompts to install. For a new installation, choose <strong>Create</strong> and accept all default installation options.</li>
 </ol>
 </div>
 </input></input></div>
@@ -887,13 +888,14 @@
 </ul>
 <p><strong>To verify Go and tdm-gcc installations:</strong></p>
 <ol>
-<li>Open a Terminal or Command Prompt: 
+<li>
+<p>Open a Terminal or Command Prompt: 
    <div class="highlight"><pre><span></span><code>go version
-</code></pre></div>
-   For Windows only: 
-   <div class="highlight"><pre><span></span><code>gcc -v
-</code></pre></div></li>
-<li>Confirm the version numbers.</li>
+</code></pre></div></p>
+</li>
+<li>
+<p>Confirm the version numbers.</p>
+</li>
 </ol>
 <h2 id="get-the-rpc">Get the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#get-the-rpc" title="Permanent link">¶</a></h2>
 <p><strong>To clone the repository:</strong></p>
@@ -910,15 +912,17 @@
 </li>
 </ol>
 <h2 id="build-the-rpc">Build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#build-the-rpc" title="Permanent link">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Flexible Deployment - <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a Library<p>The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. <a href="./libraryRPC/">Read more about building <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a library here</a>.</p>
+</p>
+</div>
 <p><strong>To build the executable:</strong></p>
 <ol>
 <li>
 <p>Open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows):</p>
 <div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><label for="__tabbed_2_1">Linux</label><div class="tabbed-content">
-<p><div class="highlight"><pre><span></span><code>sudo apt install build-essential
-</code></pre></div>
 <div class="highlight"><pre><span></span><code>go build -o rpc ./cmd
-</code></pre></div></p>
+</code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio"><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>go build -o rpc.exe ./cmd
@@ -933,18 +937,6 @@
 </div>
 </div>
 </input></input></input></div>
-<div class="admonition warning">
-<p class="admonition-title"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Go Build Warnings</p>
-<p>You may see the <code>go build</code> command output a series of warnings similar to below. <strong>The binary still successfully built</strong>. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.</p>
-<div class="highlight"><pre><span></span><code>$ go build -o rpc ./cmd
-# rpc/internal/amt
-In file included from internal/amt/commands.go:14:
-internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
-internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
-  129 |  ILibSpawnNormalThread((voidfp)(&amp;LME_Thread), module);
-  ...
-</code></pre></div>
-</div>
 </li>
 <li>
 <p>Confirm a successful build:</p>
@@ -953,7 +945,7 @@ internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argume
 </code></pre></div>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio"><label for="__tabbed_3_2">Windows</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>.\rpc version
+<div class="highlight"><pre><span></span><code>.<span class="se">\r</span>pc version
 </code></pre></div>
 </div>
 <input id="__tabbed_3_3" name="__tabbed_3" type="radio"><label for="__tabbed_3_3">Docker (On Linux Host Only)</label><div class="tabbed-content">
@@ -1014,7 +1006,7 @@ internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argume
 </div>
 </li>
 </ol>
-<h2 id="transition-activated-device"><a name="TransitionDevice"></a>Transition Activated Device<a class="headerlink" href="#transition-activated-device" title="Permanent link">¶</a></h2>
+<h2 id="transition-activated-device">Transition Activated Device<a class="headerlink" href="#transition-activated-device" title="Permanent link">¶</a></h2>
 <p>If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> control with the rpc-go application. </p>
 <p>Additionally, use the following instructions to transition from a previously established toolkit stack to a fresh installation on a new development system.</p>
 <div class="admonition note">

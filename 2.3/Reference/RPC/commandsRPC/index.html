@@ -660,6 +660,11 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../libraryRPC/">
+        RPC Library
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -939,6 +944,14 @@
 <td>JSON output</td>
 </tr>
 <tr>
+<td>-lmsaddress string</td>
+<td>lms address (default "localhost")</td>
+</tr>
+<tr>
+<td>-lmsport string</td>
+<td>lms port (default "16992")</td>
+</tr>
+<tr>
 <td>-n</td>
 <td>Skip WebSocket server certificate verification</td>
 </tr>
@@ -955,13 +968,17 @@
 <td>WebSocket address of server to activate against</td>
 </tr>
 <tr>
-<td>-v string</td>
+<td>-v</td>
 <td>Verbose output</td>
 </tr>
 </tbody>
 </table>
 <p>For more information, see <a href="../../../GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
-<p>To learn how to use the rpc application to transition an already activated (provisioned) Intel vPro® Platform, see <a href="../buildRPC_Manual/#TransitionDevice">Transition Activated Device</a>.</p>
+<p>To learn how to use the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application to transition an already activated (provisioned) Intel vPro® Platform, see <a href="../buildRPC_Manual/#TransitionDevice">Transition Activated Device</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">LMS Options</p>
+<p>These options enable changing the location of LMS. This can be useful during debug.</p>
+</div>
 <h3 id="deactivate">deactivate<a class="headerlink" href="#deactivate" title="Permanent link">¶</a></h3>
 <p>Deactivate this device:</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><label for="__tabbed_4_1">Linux</label><div class="tabbed-content">
@@ -1006,7 +1023,7 @@
 <td>WebSocket address of server to activate against</td>
 </tr>
 <tr>
-<td>-v string</td>
+<td>-v</td>
 <td>Verbose output</td>
 </tr>
 </tbody>
@@ -1056,7 +1073,7 @@
 <td>WebSocket address of server to activate against</td>
 </tr>
 <tr>
-<td>-v string</td>
+<td>-v</td>
 <td>Verbose output</td>
 </tr>
 </tbody>

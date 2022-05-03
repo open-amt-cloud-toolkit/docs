@@ -5,28 +5,28 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/createCIRAConfig/" rel="canonical"/>
-<link href="../../assets/images/favicon.png" rel="icon"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/RPC/libraryRPC/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.0, mkdocs-material-7.3.0" name="generator"/>
-<title>Create a CIRA Config - Open Active Management Technology Cloud Toolkit</title>
-<link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<title>RPC Library - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-<link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/index.css" rel="stylesheet"/>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
 </head>
 <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
-<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#next-up">
+<a class="md-skip" href="#build-library">
           Skip to content
         </a>
 </div>
@@ -34,8 +34,8 @@
 </div>
 <header class="md-header md-header--lifted" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
-<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../assets/images/logo-white-75px.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Create a CIRA Config
+              RPC Library
             
           </span>
 </div>
@@ -102,32 +102,32 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../..">
+<a class="md-tabs__link" href="../../..">
         Home
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../prerequisites/">
+<a class="md-tabs__link" href="../../../GetStarted/prerequisites/">
         Get Started
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Deployment/overview/">
+<a class="md-tabs__link" href="../../../Deployment/overview/">
         Deployment
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Tutorials/uitoolkitReact/">
+<a class="md-tabs__link" href="../../../Tutorials/uitoolkitReact/">
         Tutorials
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Reference/architectureOverview/">
+<a class="md-tabs__link md-tabs__link--active" href="../../architectureOverview/">
         Reference
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../APIs/indexMPS/">
+<a class="md-tabs__link" href="../../../APIs/indexMPS/">
         APIs
       </a>
 </li>
@@ -143,8 +143,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
-<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../../assets/images/logo-white-75px.png"/>
 </a>
     Open Active Management Technology Cloud Toolkit
   </label>
@@ -172,30 +172,30 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../..">
+<a class="md-nav__link" href="../../..">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../announcements/">
+<a class="md-nav__link" href="../../../announcements/">
         Announcements
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../release-notes/">
+<a class="md-nav__link" href="../../../release-notes/">
         Release notes
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../license/">
+<a class="md-nav__link" href="../../../license/">
         License
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
           Get Started
           <span class="md-nav__icon md-icon"></span>
@@ -207,17 +207,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../prerequisites/">
+<a class="md-nav__link" href="../../../GetStarted/prerequisites/">
         Prerequisites
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../setup/">
+<a class="md-nav__link" href="../../../GetStarted/setup/">
         Set Up
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3">
           Configure
           <span class="md-nav__icon md-icon"></span>
@@ -229,32 +229,14 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../loginToUI/">
+<a class="md-nav__link" href="../../../GetStarted/loginToUI/">
         Login to Sample Web UI
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Create a CIRA Config
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../GetStarted/createCIRAConfig/">
         Create a CIRA Config
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#next-up">
-    Next up
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
@@ -269,12 +251,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../createProfileCCM/">
+<a class="md-nav__link" href="../../../GetStarted/createProfileCCM/">
         Create a Profile with CCM
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../createProfileACM/">
+<a class="md-nav__link" href="../../../GetStarted/createProfileACM/">
         Create a Profile with ACM
       </a>
 </li>
@@ -297,12 +279,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../buildRPC/">
+<a class="md-nav__link" href="../../../GetStarted/buildRPC/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../manageDevice/">
+<a class="md-nav__link" href="../../../GetStarted/manageDevice/">
         Manage AMT Device
       </a>
 </li>
@@ -322,7 +304,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -345,22 +327,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Deployment/overview/">
+<a class="md-nav__link" href="../../../Deployment/overview/">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Deployment/database/">
+<a class="md-nav__link" href="../../../Deployment/database/">
         Database Replacement
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Deployment/secrets/">
+<a class="md-nav__link" href="../../../Deployment/secrets/">
         Secrets Management
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Deployment/upgradeVersion/">
+<a class="md-nav__link" href="../../../Deployment/upgradeVersion/">
         Upgrade Toolkit Version
       </a>
 </li>
@@ -380,22 +362,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/uitoolkitReact/">
+<a class="md-nav__link" href="../../../Tutorials/uitoolkitReact/">
         UI Toolkit KVM Module
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/apiTutorial/">
+<a class="md-nav__link" href="../../../Tutorials/apiTutorial/">
         REST API Call
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/createWiFiConfig/">
+<a class="md-nav__link" href="../../../Tutorials/createWiFiConfig/">
         Wireless Activation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/modifyUserAuth/">
+<a class="md-nav__link" href="../../../Tutorials/modifyUserAuth/">
         Modify User Authentication
       </a>
 </li>
@@ -412,12 +394,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/overview/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/overview/">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/docker-swarm/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/docker-swarm/">
         Docker Swarm*
       </a>
 </li>
@@ -434,22 +416,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/Kubernetes/deployingk8s/">
         Kubernetes (K8s)
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
         AKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
         EKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/service-mesh/">
+<a class="md-nav__link" href="../../../Tutorials/Scaling/Kubernetes/service-mesh/">
         KUMA Service Mesh
       </a>
 </li>
@@ -472,7 +454,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -482,8 +464,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Reference
           <span class="md-nav__icon md-icon"></span>
@@ -495,27 +477,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/architectureOverview/">
+<a class="md-nav__link" href="../../architectureOverview/">
         Architecture Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/powerstates/">
+<a class="md-nav__link" href="../../powerstates/">
         AMT Power States
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/guids/">
+<a class="md-nav__link" href="../../guids/">
         GUIDs in Intel® AMT
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/logging/">
+<a class="md-nav__link" href="../../logging/">
         Logging
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/productionVault/">
+<a class="md-nav__link" href="../../productionVault/">
         Production Mode Vault
       </a>
 </li>
@@ -532,12 +514,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MQTT/customMqttEvents/">
+<a class="md-nav__link" href="../../MQTT/customMqttEvents/">
         Customizing MQTT Events
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MQTT/viewMqttEvents/">
+<a class="md-nav__link" href="../../MQTT/viewMqttEvents/">
         Viewing MQTT Events
       </a>
 </li>
@@ -557,12 +539,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MPS/configuration/">
+<a class="md-nav__link" href="../../MPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MPS/securityMPS/">
+<a class="md-nav__link" href="../../MPS/securityMPS/">
         Security Information
       </a>
 </li>
@@ -582,30 +564,30 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/configuration/">
+<a class="md-nav__link" href="../../RPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/networkConfig/">
+<a class="md-nav__link" href="../../RPS/networkConfig/">
         Network Profiles
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/securityRPS/">
+<a class="md-nav__link" href="../../RPS/securityRPS/">
         Security Information
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/createProfileTLSConfig/">
+<a class="md-nav__link" href="../../createProfileTLSConfig/">
         Create Profile with TLS
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5_9">
           Remote Provisioning Client
           <span class="md-nav__icon md-icon"></span>
@@ -617,19 +599,61 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/buildRPC_Manual/">
+<a class="md-nav__link" href="../buildRPC_Manual/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/commandsRPC/">
+<a class="md-nav__link" href="../commandsRPC/">
         RPC CLI
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/libraryRPC/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          RPC Library
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         RPC Library
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#build-library">
+    Build Library
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#library-functions">
+    Library Functions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-client-in-c">
+    Sample Client in C#
+  </a>
+<nav aria-label="Sample Client in C#" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#include-in-c">
+    Include in C#
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#call-a-function">
+    Call a Function
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -659,12 +683,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/kvmControl/">
+<a class="md-nav__link" href="../../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/serialOverLANControl/">
+<a class="md-nav__link" href="../../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
 </li>
@@ -672,7 +696,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/localization/">
+<a class="md-nav__link" href="../../UIToolkit/localization/">
         Localization
       </a>
 </li>
@@ -689,12 +713,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/kvmReact/">
+<a class="md-nav__link" href="../../UIToolkit/Bundles/kvmReact/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/serialOverLANReact/">
+<a class="md-nav__link" href="../../UIToolkit/Bundles/serialOverLANReact/">
         Serial Over LAN
       </a>
 </li>
@@ -702,7 +726,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/webpackConfig/">
+<a class="md-nav__link" href="../../UIToolkit/webpackConfig/">
         Webpack Configuration
       </a>
 </li>
@@ -722,12 +746,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MEBX/dnsSuffix/">
+<a class="md-nav__link" href="../../MEBX/dnsSuffix/">
         DNS Suffix
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MEBX/unprovision/">
+<a class="md-nav__link" href="../../MEBX/unprovision/">
         Unprovisioning
       </a>
 </li>
@@ -747,12 +771,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/Certificates/remoteProvisioning/">
+<a class="md-nav__link" href="../../Certificates/remoteProvisioning/">
         Provisioning Certificate
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/Certificates/tls/">
+<a class="md-nav__link" href="../../Certificates/tls/">
         TLS Certificate
       </a>
 </li>
@@ -772,7 +796,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -795,12 +819,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../APIs/indexMPS/">
+<a class="md-nav__link" href="../../../APIs/indexMPS/">
         Management Presence Server
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../APIs/indexRPS/">
+<a class="md-nav__link" href="../../../APIs/indexRPS/">
         Remote Provisioning Server
       </a>
 </li>
@@ -814,65 +838,67 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/GetStarted/createCIRAConfig.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/RPC/libraryRPC.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1>Create a CIRA Config</h1>
-<p>Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>) enables a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>-capable edge device to initiate and establish a persistent connection to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.</p>
-<div class="admonition note">
-<p class="admonition-title">Note - Wireless Activations</p>
-<p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../../Tutorials/createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
+<h1>RPC Library</h1>
+<p>On the managed device, a Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) communicates with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) in the process of activating or deactivating the device. In addition to activation and deactivation, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> provides informational and maintenance commands. </p>
+<p>Find all <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> commands <a href="../commandsRPC/">here</a>.</p>
+<h2 id="build-library">Build Library<a class="headerlink" href="#build-library" title="Permanent link">¶</a></h2>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><label for="__tabbed_1_1">Linux Lib (.so file)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>go build -buildmode<span class="o">=</span>c-shared -o rpc.so ./cmd 
+</code></pre></div>
 </div>
-<p><strong>To create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config:</strong></p>
-<ol>
-<li>
-<p>Select the <strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Configs</strong> tab from the left-hand menu.</p>
-</li>
-<li>
-<p>In the top-right corner, click <strong>Add New.</strong>
-<figure class="figure-image">
-<img alt="Figure 1: Create a new CIRA Config" src="..\..\assets\images\RPS_NewCIRAConfig.png"/>
-<figcaption>Figure 1: Create a new <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Specify a <strong>Config Name</strong> of your choice.</p>
-</li>
-<li>
-<p>Select <strong>IPv4</strong>.</p>
-</li>
-<li>
-<p>For <strong><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Address</strong>, provide your development system's IP Address.</p>
-</li>
-<li>
-<p><strong>Cert Common Name (CN=)</strong> should auto-populate. If not, provide your development system's IP Address.</p>
-</li>
-<li>
-<p>Leave <strong>Port</strong> as the default, 4433.</p>
-</li>
-<li>
-<p>Leave the <strong>Username</strong> as <em>admin</em> or choose your own.</p>
-</li>
-<li>
-<p>Leave the slider set on <strong>Auto-load</strong>.</p>
-</li>
-<li>
-<p>Click <strong>Save.</strong></p>
-<div class="admonition example">
-<p class="admonition-title">Example <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</p>
-<p><figure class="figure-image">
-<img alt="Figure 2: Example CIRA Config" src="..\..\assets\images\RPS_CreateCIRAConfig.png"/>
-<figcaption>Figure 2: Example <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</figcaption>
-</figure></p>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio"><label for="__tabbed_1_2">Windows Lib (.dll file)</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>go build -buildmode<span class="o">=</span>c-shared -o rpc.dll ./cmd
+</code></pre></div>
 </div>
-</li>
-</ol>
-<h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
-<p>Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>). Profiles also distinguish between activating in: </p>
-<p><strong><a href="../createProfileCCM/">Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>):</a></strong> This mode offers all manageability features including, but not limited to, power control, audit logs, and hardware info. Redirection features, such as <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, <strong>require user consent</strong>. The managed device will display a 6-digit code that <strong>must</strong> be entered by the remote admin to access the remote device via redirection.</p>
-<p><a class="md-button md-button--primary" href="../createProfileCCM/">Create a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></a></p>
-<p><strong><a href="../createProfileACM/">Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>):</a></strong> <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode supports all manageability features <strong>without requiring user consent</strong>. This means it is <strong>not necessary</strong> to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
-<p><a class="md-button md-button--primary" href="../createProfileACM/">Create an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></a></p>
+</input></input></div>
+<h2 id="library-functions">Library Functions<a class="headerlink" href="#library-functions" title="Permanent link">¶</a></h2>
+<p>The library contains two functions:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>checkAccess</strong></td>
+<td>Determines if <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> is being run as admin, the ME driver is installed, and AMT is available.</td>
+<td>Use this function to check for basic AMT availability conditions.</td>
+</tr>
+<tr>
+<td><strong>rpcExec</strong></td>
+<td>Executes <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> commands.</td>
+<td>Use this function as you would the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> executable, passing in arguments to activate, deactivate, perform maintenance, etc.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sample-client-in-c">Sample Client in <code>C#</code><a class="headerlink" href="#sample-client-in-c" title="Permanent link">¶</a></h2>
+<p>Find a simple sample client in the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-go's <a href="https://github.com/open-amt-cloud-toolkit/rpc-go/tree/main/samples/dotnet">dotnet folder</a>. </p>
+<h3 id="include-in-c">Include in <code>C#</code><a class="headerlink" href="#include-in-c" title="Permanent link">¶</a></h3>
+<p>This sample code demonstrates how to import the DLL's functions:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Linux-style example (.so extenstion)</span>
+<span class="w">    </span><span class="na">[DllImport("rpclib.so", EntryPoint = "checkAccess")]</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">checkAccess</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<h3 id="call-a-function">Call a Function<a class="headerlink" href="#call-a-function" title="Permanent link">¶</a></h3>
+<p>This sample provides an example of calling the <code>rpcExec</code> function to activate a device:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Import</span>
+<span class="w">    </span><span class="na">[DllImport("rpclib.so", EntryPoint = "rpcExec")]</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">rpc</span><span class="p">([</span><span class="n">In</span><span class="p">]</span><span class="w"> </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">rpccmd</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//Activate the device. To use, substitute your IP Address and Profile Name below.</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"activate -u wss://192.168.1.96/activate -n -profile Test_Profile"</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//string res = "amtinfo";</span>
+
+<span class="w">    </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rpc</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">res</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Output from RunRPC: "</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Marshal</span><span class="p">.</span><span class="n">PtrToStringAnsi</span><span class="p">(</span><span class="n">output</span><span class="p">));</span><span class="w"></span>
+</code></pre></div>
 </article>
 </div>
 </div>
@@ -926,8 +952,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
-<script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
 </html>
