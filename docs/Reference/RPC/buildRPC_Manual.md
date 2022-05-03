@@ -27,7 +27,6 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 **Before installing and building the RPC, install:**
 
 * Go* Programming Language
-* tdm-gcc (On Windows* only)
 
     === "Linux"
          **To install prerequisites on Linux*:**
@@ -43,9 +42,6 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
          1. See Go's [Download and Install](https://golang.org/doc/install).
          2. Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
          3. Run the downloaded file and follow prompts to install. 
-         4. See [tdm-gcc](https://jmeubank.github.io/tdm-gcc/).
-         5. Choose a version and download the .exe. 
-         6. Run the downloaded file and follow prompts to install. For a new installation, choose **Create** and accept all default installation options.
 
 
 **To verify Go and tdm-gcc installations:**
@@ -54,10 +50,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
    ``` bash
    go version
    ```
-   For Windows only: 
-   ``` bash
-   gcc -v
-   ```
+
 2. Confirm the version numbers.
 
 ## Get the RPC
@@ -76,14 +69,14 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 ## Build the RPC
 
+!!! tip "Flexible Deployment - RPC as a Library"  
+        The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](./libraryRPC/).
+
 **To build the executable:**
 
 1. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
 
     === "Linux"
-        ``` bash
-        sudo apt install build-essential
-        ```
         ``` bash
         go build -o rpc ./cmd
         ```
@@ -98,19 +91,6 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         !!! note
             The image created with the Docker instruction above is only suitable for Docker on a Linux host.
 
-    !!! warning "RPC Go Build Warnings"
-        You may see the `go build` command output a series of warnings similar to below. **The binary still successfully built**. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.
-
-        ```
-        $ go build -o rpc ./cmd
-        # rpc/internal/amt
-        In file included from internal/amt/commands.go:14:
-        internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
-        internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
-          129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
-          ...
-        ```    
-
 2. Confirm a successful build:
 
     === "Linux"
@@ -118,7 +98,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         sudo ./rpc version
         ```
     === "Windows"
-        ```
+        ``` bash
         .\rpc version
         ```        
     === "Docker (On Linux Host Only)"
@@ -171,7 +151,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
     !!! error "Troubleshooting"
         Run into an issue? Try these [troubleshooting steps](../troubleshooting.md).
          
-## <a name="TransitionDevice"></a>Transition Activated Device
+## Transition Activated Device
 
 If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under Open AMT Cloud Toolkit control with the rpc-go application. 
 

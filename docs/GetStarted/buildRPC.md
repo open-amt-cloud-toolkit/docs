@@ -11,8 +11,10 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/)
         * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
 
+
 !!! tip "Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
+
 
 <figure class="figure-image">
 <img src="..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
@@ -24,9 +26,12 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 ##  Build the RPC
 
+!!! tip "Flexible Deployment - RPC as a Library"  
+        The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/libraryRPC/).
+
 **To build the executable:**
 
-If you are building on a development system, copy the resulting executable to the managed device.
+If you are building an executable on a development system, you will copy the executable to the managed device. 
 
 1. Change to the `rpc-go` directory of the cloned `open-amt-cloud-toolkit` repository.
    
@@ -48,9 +53,6 @@ If you are building on a development system, copy the resulting executable to th
 
     === "Linux"
         ``` bash
-        sudo apt install build-essential
-        ```
-        ``` bash
         go build -o rpc ./cmd
         ```
     === "Windows"
@@ -62,24 +64,9 @@ If you are building on a development system, copy the resulting executable to th
         docker build -f "Dockerfile" -t rpc-go:latest .
         ```
         !!! note
-            The image created with the Docker instruction above is only suitable for Docker on a Linux host.
+            The image created with the Docker instruction above is only suitable for Docker on a Linux host. 
 
-    !!! warning "RPC Go Build Warnings"
-        You may see the `go build` command output a series of warnings similar to below. **The binary still successfully built**. These warnings show due to LMS, which is based on C, and it's interactions with AMT firmware. In the future, this may change.
-
-        ```
-        $ go build -o rpc ./cmd
-        # rpc/internal/amt
-        In file included from internal/amt/commands.go:14:
-        internal/amt/../../microlms/heci/LMEConnection.c: In function 'LME_Init':
-        internal/amt/../../microlms/heci/LMEConnection.c:129:24: warning: passing argument 1 of 'ILibSpawnNormalThread' from incompatible pointer type [-Wincompatible-pointer-types]
-          129 |  ILibSpawnNormalThread((voidfp)(&LME_Thread), module);
-          ...
-        ```
-
-3. Copy the executable to a managed device. 
-
-4. Confirm a successful build:
+3. Confirm a successful build:
 
     === "Linux"
         ``` bash
@@ -129,7 +116,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
 
     !!! note "Transition Activated Device"
-        To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform device, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
+        To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform device, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#transition-activated-device).
 
 
     !!! success
