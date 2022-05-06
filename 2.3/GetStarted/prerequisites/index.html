@@ -17,6 +17,7 @@
 <link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
 </head>
@@ -183,7 +184,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../release-notes/">
-        Release notes
+        Release Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Video Walkthroughs
       </a>
 </li>
 <li class="md-nav__item">
@@ -848,10 +854,10 @@
 </a>
 <h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h1>
 <p>This section contains prerequisites for deploying <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>'s <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices on a local development system as Docker* containers. </p>
-<figure class="figure-image">
-<img alt="Figure 1: Deploy microservices on a local development system as Docker containers" src="..\..\assets\images\LocalDockerWorkflow.png"/>
-<figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
-</figure>
+<div style="text-align:center;">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="337" src="https://www.youtube.com/embed/Nuwm4SxbvjA" title="YouTube video player" width="600"></iframe>
+<figcaption><b>Getting Started Part 1</b>: Follow along to learn about the prerequisites, environment configuration, and using Docker to get your stack started</figcaption>
+</div>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">¶</a></h2>
 <h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">¶</a></h3>
 <p><strong>Configure a network that includes:</strong></p>
@@ -882,6 +888,10 @@
 <li><a href="https://jmeubank.github.io/tdm-gcc/download/">tdm-gcc</a> (On Windows* only)</li>
 </ul>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
+<figure class="figure-image">
+<img alt="Figure 1: Deploy microservices on a local development system as Docker containers" height="450" src="..\..\assets\images\LocalDockerWorkflow.png" width="800"/>
+<figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
+</figure>
 <p><strong>To complete a deployment:</strong></p>
 <ul>
 <li>Install the prerequisites.</li>

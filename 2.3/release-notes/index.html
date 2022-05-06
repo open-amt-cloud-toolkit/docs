@@ -8,7 +8,7 @@
 <link href="https://open-amt-cloud-toolkit.github.io/docs/release-notes/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.0, mkdocs-material-7.3.0" name="generator"/>
-<title>Release notes - Open Active Management Technology Cloud Toolkit</title>
+<title>Release Notes - Open Active Management Technology Cloud Toolkit</title>
 <link href="../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
 <link href="../assets/stylesheets/branding.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/mermaid.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/videos.css" rel="stylesheet"/>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
 </head>
@@ -50,7 +51,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Release notes
+              Release Notes
             
           </span>
 </div>
@@ -184,11 +185,11 @@
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Release notes
+          Release Notes
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Release notes
+        Release Notes
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -197,10 +198,10 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#feature-changes-for-22">
-    Feature Changes for 2.2
+<a class="md-nav__link" href="#feature-changes-for-23">
+    Feature Changes for 2.3
   </a>
-<nav aria-label="Feature Changes for 2.2" class="md-nav">
+<nav aria-label="Feature Changes for 2.3" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#noteworthy-features-and-changes">
@@ -324,6 +325,11 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../videos/">
+        Video Walkthroughs
+      </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../license/">
@@ -939,10 +945,10 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
-<h2 id="feature-changes-for-22">Feature Changes for 2.2<a class="headerlink" href="#feature-changes-for-22" title="Permanent link">¶</a></h2>
-<p>This section outlines key features changes between versions 2.1 and 2.2 for <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<h2 id="feature-changes-for-23">Feature Changes for 2.3<a class="headerlink" href="#feature-changes-for-23" title="Permanent link">¶</a></h2>
+<p>This section outlines key features changes between versions 2.2 and 2.3 for <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
 <div style="text-align:center;">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/1yf0ZBafRdA" title="YouTube video player" width="800"></iframe>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/jh_NCEvLWHs" title="YouTube video player" width="800"></iframe>
 </div>
 <h3 id="noteworthy-features-and-changes">Noteworthy Features and Changes<a class="headerlink" href="#noteworthy-features-and-changes" title="Permanent link">¶</a></h3>
 <p><strong>Major Refactoring &amp; WSMAN-MESSAGES Library:</strong> At the end of 2021, the team began refactoring parts of the toolkit source code to improve the communication method between the toolkit and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices.  Much of this code was inherited from another open source project also developed at Intel. While this inherited code was well-validated and stable, it was difficult to modify and maintain. Validation with automated testing posed a challenge, and code coverage metrics were lackluster. The new portable and testable design of <a href="https://github.com/open-amt-cloud-toolkit/wsman-messages">WSMAN-MESSAGES</a> addresses these issues with a library of wsman-based messages for communication with <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices. Both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> use WSMAN-MESSAGES, available on NPM as <a href="https://www.npmjs.com/package/@open-amt-cloud-toolkit/wsman-messages">@open-amt-cloud-toolkit/wsman-message</a>. <strong>CODE COVERAGE NET RESULT:</strong> Both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> code coverage improved dramatically, from 24% to 91% and 29% to 70% respectively. <strong>BOTTOM LINE:</strong> This reduces the overall technical debt of the project substantially and provides users with another reason to adopt the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>. As we move forward, we'll continue to push toward our goal of 80% code coverage across all repositories. Future improvements will happen through the course of our normal release cadence.</p>

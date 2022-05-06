@@ -17,6 +17,7 @@
 <link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
 </head>
@@ -183,7 +184,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../release-notes/">
-        Release notes
+        Release Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Video Walkthroughs
       </a>
 </li>
 <li class="md-nav__item">
@@ -837,6 +843,11 @@
 </figure>
 <h2 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">¶</a></h2>
 <p>Profiles provide configuration information to the firmware on platforms featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
+<div class="admonition info">
+<p class="admonition-title">Info - Passwords</p>
+<p><strong>Passwords</strong></p>
+<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview#passwords">Reference -&gt; Architecture Overview</a>.</p>
+</div>
 <p><strong>To create a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile:</strong></p>
 <ol>
 <li>

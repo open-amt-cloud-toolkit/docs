@@ -17,6 +17,7 @@
 <link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
 </head>
@@ -183,7 +184,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../release-notes/">
-        Release notes
+        Release Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Video Walkthroughs
       </a>
 </li>
 <li class="md-nav__item">
@@ -823,11 +829,10 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1>Login to Sample Web UI</h1>
-<p>The web portal is available for login after the deployment of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Make sure all three are successfully running before attempting to login.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><strong>Passwords</strong></p>
-<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview/#Passwords">Reference -&gt; Architecture Overview</a>.</p>
+<p>The web portal is available for login after the deployment of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. Make sure all microservices are successfully running before attempting to login.</p>
+<div style="text-align:center;">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="337" src="https://www.youtube.com/embed/RYzrHHpMIas" title="YouTube video player" width="600"></iframe>
+<figcaption><b>Getting Started Part 2</b>: Follow along to learn about the Sample Web UI and the various profiles: CIRA Configs, AMT Profiles, and Domain Profiles. <b>Additional Resources: </b><a href="../../Reference/architectureOverview#passwords">Passwords and What They Mean</a> and <a href="../../Reference/Certificates/remoteProvisioning.md">Provisioning Certificates</a></figcaption>
 </div>
 <h2 id="log-in">Log In<a class="headerlink" href="#log-in" title="Permanent link">¶</a></h2>
 <ol>
