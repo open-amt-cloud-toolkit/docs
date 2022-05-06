@@ -1,5 +1,12 @@
 --8<-- "References/abbreviations.md"
 
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/NyOO3QrD7_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>Getting Started Part 4</b>: Follow along to learn about the different Out-of-Band capabilities of Intel AMT. <b>Next Steps: </b><a href="../Tutorials/apiTutorial.md">Using REST APIs</a> and <a href="../Tutorials/Scaling/Kubernetes/deployingk8s-aks.md">Deploying with Kubernetes</a></figcaption>
+</div>
+
+## Try out Intel AMT Capabilities
+
 1. Go back to the Sample Web UI on your development system.
 	
 2. Click the Devices tab from the menu on the left.

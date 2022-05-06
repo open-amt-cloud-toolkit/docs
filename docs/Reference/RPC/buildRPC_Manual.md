@@ -78,11 +78,11 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
     === "Linux"
         ``` bash
-        go build -o rpc ./cmd
+        go build -o rpc ./cmd/main.go
         ```
     === "Windows"
         ``` bash
-        go build -o rpc.exe ./cmd
+        go build -o rpc.exe ./cmd/main.go
         ```
     === "Docker (On Linux Host Only)"
         ``` bash

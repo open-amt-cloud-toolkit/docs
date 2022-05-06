@@ -1,6 +1,11 @@
 --8<-- "References/abbreviations.md"
 Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device and communicates with the Remote Provisioning Server (RPS) microservice on the development system. The RPC and RPS configure and activate Intel® AMT on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS. See Figure 1.
 
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/z9Ia317L0Kk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../Reference/RPC/libraryRPC.md">RPC as a Library</a> and <a href="../Reference/RPC/commandsRPC.md">RPC Commands and Flags</a></figcaption>
+</div>
+
 !!! Warning "Beta Version Instructions Ahead"
         This version of the RPC application contains functional enhancements. See [Release Notes](../release-notes.md).
 
@@ -17,7 +22,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 
 <figure class="figure-image">
-<img src="..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img width="800" height="450" src="..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC configuration</figcaption>
 </figure>
 
@@ -53,11 +58,11 @@ If you are building an executable on a development system, you will copy the exe
 
     === "Linux"
         ``` bash
-        go build -o rpc ./cmd
+        go build -o rpc ./cmd/main.go
         ```
     === "Windows"
         ``` bash
-        go build -o rpc.exe ./cmd
+        go build -o rpc.exe ./cmd/main.go
         ```
     === "Docker (On Linux Host Only)"
         ``` bash

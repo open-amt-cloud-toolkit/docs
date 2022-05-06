@@ -1,11 +1,11 @@
 --8<-- "References/abbreviations.md"
 # Release Notes
 
-## Feature Changes for 2.2
-This section outlines key features changes between versions 2.1 and 2.2 for Open AMT Cloud Toolkit.
+## Feature Changes for 2.3
+This section outlines key features changes between versions 2.2 and 2.3 for Open AMT Cloud Toolkit.
 
 <div style="text-align:center;">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/1yf0ZBafRdA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/jh_NCEvLWHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ### Noteworthy Features and Changes

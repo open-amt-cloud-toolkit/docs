@@ -3,10 +3,10 @@
 
 This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
 
-<figure class="figure-image">
-  <img src="..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
-  <figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
-</figure>
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/Nuwm4SxbvjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>Getting Started Part 1</b>: Follow along to learn about the prerequisites, environment configuration, and using Docker to get your stack started</figcaption>
+</div>
 
 ## What You'll Need
 
@@ -40,6 +40,11 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 * [tdm-gcc](https://jmeubank.github.io/tdm-gcc/download/) (On Windows* only)
 
 ## What You'll Do
+
+<figure class="figure-image">
+  <img width="800" height="450" src="..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
+  <figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
+</figure>
 
 **To complete a deployment:**
 
