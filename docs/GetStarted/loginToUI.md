@@ -1,11 +1,12 @@
 --8<-- "References/abbreviations.md"
 
-The web portal is available for login after the deployment of the MPS, RPS, and Sample Web UI. Make sure all three are successfully running before attempting to login.
+The web portal is available for login after the deployment of the MPS, RPS, and Sample Web UI. Make sure all microservices are successfully running before attempting to login.
 
-!!! example
-    **Passwords**
 
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../Reference/architectureOverview.md#Passwords).
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/RYzrHHpMIas" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>Getting Started Part 2</b>: Follow along to learn about the Sample Web UI and the various profiles: CIRA Configs, AMT Profiles, and Domain Profiles. <b>Additional Resources: </b><a href="../../Reference/architectureOverview#passwords">Passwords and What They Mean</a> and <a href="../../Reference/Certificates/remoteProvisioning.md">Provisioning Certificates</a></figcaption>
+</div>
 
 ## Log In
 

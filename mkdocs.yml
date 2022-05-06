@@ -28,7 +28,8 @@ nav:
   - Home:
       - Overview: index.md
       - Announcements: announcements.md
-      - Release notes: release-notes.md
+      - Release Notes: release-notes.md
+      - Video Walkthroughs: videos.md
       - License: license.md
   - Get Started:
       - Prerequisites: GetStarted/prerequisites.md
@@ -132,6 +133,7 @@ extra_css:
   - assets\stylesheets\branding.css
   - assets\stylesheets\mermaid.css
   - assets\stylesheets\index.css
+  - assets\stylesheets\videos.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:

@@ -19,6 +19,11 @@ These features require user consent:
 
 Profiles provide configuration information to the firmware on platforms featuring Intel® AMT during the activation process with the Remote Provisioning Client (RPC).
 
+!!! info "Info - Passwords"
+    **Passwords**
+
+    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview#passwords).
+
 **To create a CCM profile:**
 
 1. Select the **Profiles** tab from the menu on the left.

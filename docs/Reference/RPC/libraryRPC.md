@@ -4,6 +4,18 @@ On the managed device, a Remote Provisioning Client (RPC) communicates with the 
 
 Find all RPC commands [here](./commandsRPC.md).
 
+## Prerequisites
+
+A GCC toolchain is required to compile RPC as a library.
+
+=== "Linux"
+    Run the following command to install:
+    ``` bash
+    sudo apt install build-essential
+    ```
+=== "Windows"
+    Download and Install [tdm-gcc](https://jmeubank.github.io/tdm-gcc/download/).
+
 
 ## Build Library
 
