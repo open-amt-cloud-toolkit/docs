@@ -3,7 +3,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/z9Ia317L0Kk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../Reference/RPC/libraryRPC.md">RPC as a Library</a> and <a href="../Reference/RPC/commandsRPC.md">RPC Commands and Flags</a></figcaption>
+  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../../Reference/RPC/commandsRPC">RPC Commands and Flags</a></figcaption>
 </div>
 
 !!! Warning "Beta Version Instructions Ahead"

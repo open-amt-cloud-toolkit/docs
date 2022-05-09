@@ -5,7 +5,7 @@ This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS a
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/Nuwm4SxbvjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <figcaption><b>Getting Started Part 1</b>: Follow along to learn about the prerequisites, environment configuration, and using Docker to get your stack started</figcaption>
+  <figcaption><b>Getting Started Part 1</b>: Follow along to learn about the prerequisites, environment configuration, and using Docker to get your stack started. <b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></figcaption>
 </div>
 
 ## What You'll Need
