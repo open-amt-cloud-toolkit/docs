@@ -1,230 +1,124 @@
 --8<-- "References/abbreviations.md"
-# Release Notes
-
-## Feature Changes for 2.3
-This section outlines key features changes between versions 2.2 and 2.3 for Open AMT Cloud Toolkit.
+## Release Highlights
 
 <div style="text-align:center;">
   <iframe width="800" height="450" src="https://www.youtube.com/embed/jh_NCEvLWHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+<br>
 
-### Noteworthy Features and Changes
-**Major Refactoring & WSMAN-MESSAGES Library:** At the end of 2021, the team began refactoring parts of the toolkit source code to improve the communication method between the toolkit and Intel® AMT devices.  Much of this code was inherited from another open source project also developed at Intel. While this inherited code was well-validated and stable, it was difficult to modify and maintain. Validation with automated testing posed a challenge, and code coverage metrics were lackluster. The new portable and testable design of [WSMAN-MESSAGES](https://github.com/open-amt-cloud-toolkit/wsman-messages) addresses these issues with a library of wsman-based messages for communication with Intel® AMT devices. Both MPS and RPS use WSMAN-MESSAGES, available on NPM as [@open-amt-cloud-toolkit/wsman-message](https://www.npmjs.com/package/@open-amt-cloud-toolkit/wsman-messages). **CODE COVERAGE NET RESULT:** Both MPS and RPS code coverage improved dramatically, from 24% to 91% and 29% to 70% respectively. **BOTTOM LINE:** This reduces the overall technical debt of the project substantially and provides users with another reason to adopt the Open AMT Cloud Toolkit. As we move forward, we'll continue to push toward our goal of 80% code coverage across all repositories. Future improvements will happen through the course of our normal release cadence.
+<p class="divider"></p>
+## Note From the Team
 
-**Device Migration:** Several customers have requested a method to migrate an Intel® AMT device from a management console to the Open AMT Cloud Toolkit. Now with 2.2, perform this migration with RPC without deactivating and reactivating the device. Use the activate command and provide the desired profile. The prompt will ask for the AMT credential. RPS will use this credential to add the device to Open AMT Cloud Toolkit and apply the configuration profile.
+Hey everyone,
 
-**Healthcheck API:** This new API provides the ability to check the connection status of MPS and RPS with both the database and secret provider. This is particularly helpful when Open AMT Cloud Toolkit is deployed in Kubernetes or Docker Swarm so that you know they are up and ready to respond to requests.
+It has been a very quick 6 weeks and the team is very excited to deliver Open AMT Cloud Toolkit version 2.3.  Unlike previous releases, every component of the Toolkit has been updated in some way.  If you haven't had a chance yet, I encourage you to watch the release video where Mike provides some highlights from this release.  Additionally, we've added a [Video Walkthroughs](https://open-amt-cloud-toolkit.github.io/docs/2.3/videos/) section to our documentation where Bryan Wendlandt has been creating video tutorials of our [Getting Started Guide](https://open-amt-cloud-toolkit.github.io/docs/2.3/GetStarted/prerequisites/).  Watch that space for additional video content to be delivered there.
 
-**RPC -json flag:** The RPC-Go application sports a new -json flag. With this flag, convert application output to json format making it machine parsable. Big thanks to [Portainer](https://www.portainer.io/) for this contribution!
+Find out [what's new](#whats-new) and delve into the [details](#get-the-details) below-- and enjoy our new release of the toolkit.
+
+*Best wishes,*<br>
+*Matt Primrose | Product Owner | The Open AMT Cloud Toolkit Team*
+<br>
+<p class="divider"></p>
+
+## What's New?
+
+:material-star:** Customer Request: RPC-Go as a library**
+
+We added an option to build RPC as a library, allowing developers to import RPC into their applications as a dynamically linked library (.dll) or shared object (.so). Rather than deploy and execute the RPC as an application, developers can now call and monitor RPC directly within their own applications. GCC is still required.
+
+:material-auto-fix:** Improvement: RPC-Go Refactoring**
+
+Our Go version of RPC underwent significant refactoring to eliminate all C/C++ code. By transitioning to 100% Go code, we removed the requirement of the GCC toolchain to build RPC as an application. Developers can cross-compile RPC on Linux or Windows and use it on any Go-supported OS (e.g., We tested on Fedora, and it worked without any code changes). The build time is greatly reduced. This version of RPC is still in beta.
+
+:material-star:** Customer Request: GET Device by hostname**
+
+Our GET Devices REST API call now supports a new hostname query parameter. If you know the hostname, it is easy to find the specific device connected to MPS. Provide the hostname of the device with the hostname= query parameter, and MPS will return the device with the matching hostname.
+
+:material-new-box:** Feature: Add CIRA support for static IP devices**
+
+With this release we added support for CIRA configurations with static IP addresses. AMT will now connect to an MPS when it is configured with a static IP address.
+
+:material-new-box:** Feature: MQTT events for redirection start and stop **
+
+When redirection sessions start or stop (KVM or SOL), MPS will now send an event to the MQTT broker
+
+:material-auto-fix:** Improvement: UI Toolkit Angular - v13 support**
+
+With this release, UI-Toolkit-Angular supports Angular v13. This breaking change is indicated by the major version transition to 3.x.x. If you are still on Angular 12, stick with UI-Toolkit-Angular 2.0.5 until you migrate Angular v13.
+
+:material-auto-fix:** Improvement: UI Toolkit - KVM mouse alignment when scrolled**
+
+We fixed a remote and local mouse pointers misalignment problem that occurred during downward scrolling in KVM.  This is implemented in version 2.0.6 of the UI Toolkit
+
+## Get the Details
 
 ### Additions, Modifications, and Removals
-#### Changes to /AMT routes
-- Method property is removed from wsman header in response and is now a property of the wsman body
-
-    before:
-    ``` json
-    "responses": {
-        "Header": {
-            "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
-            "RelatesTo": "1",
-            "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
-            "MessageID": "uuid:00000000-8086-8086-8086-0000000000FA",
-            "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage",
-            "Method": "CIM_ComputerSystemPackage"
-        },
-        "Body": {
-            "Antecedent": {
-    ```
-    after:
-    ``` json
-    "responses": [
-        {
-            "Header": {
-                "To": "http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous",
-                "RelatesTo": 0,
-                "Action": "http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse",
-                "MessageID": "uuid:00000000-8086-8086-8086-000000000002",
-                "ResourceURI": "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"
-            },
-            "Body": {
-                "CIM_ComputerSystemPackage": {
-                    "Antecedent": {
-    ```
-
-- SelectorSet values no longer includes @name and Value properties
-
-- While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time
 #### Open AMT Cloud Toolkit
-- deployment: update to use dockerhub imgs 
-- dep: update k8s helm dependencies to support v1.22
-- healthcheck: adds healthcheck to docker-compose
-- see changelog for full list of changes
+- **deployment:** updated Kong routes for Docker, K8S, and ACI deployments
 #### RPS
-- **activation:** add already activated device to toolkit ([#476](https://github.com/open-amt-cloud-toolkit/rps/issues/476)) (#ae11da5) 
-- **healthcheck:** provides API Route for status of vault and db (#9572d85) 
-- verifies amt password if device is already activated and exists in toolkit ([#478](https://github.com/open-amt-cloud-toolkit/rps/issues/478)) (#ecbdb96) 
-- **cira:** randomly generate environment detection ([#554](https://github.com/open-amt-cloud-toolkit/rps/issues/554)) (#484a927)
-- **activator:** adds wmsan_messages and unit tests ([#541](https://github.com/open-amt-cloud-toolkit/rps/issues/541)) (#68f96a9) 
-- **activator:** optimize code readability (#67e5950) 
-- **cira:** adds wsman-messages and unit tests ([#567](https://github.com/open-amt-cloud-toolkit/rps/issues/567)) (#841bfb1) 
-- **validator.ts:** handles ccm activation flow when device is already in ccm ([#598](https://github.com/open-amt-cloud-toolkit/rps/issues/598)) (#d8824d7)
-- **activation:** handle when too many auth failures (#fa566f4) 
-- **activator:** optimize code readability (#67e5950) 
-- **activator:** adds wmsan_messages and unit tests ([#541](https://github.com/open-amt-cloud-toolkit/rps/issues/541)) (#68f96a9) 
-- **cira:** adds wsman-messages and unit tests ([#567](https://github.com/open-amt-cloud-toolkit/rps/issues/567)) (#841bfb1) 
-- **clientManager:** simplify client manager ([#563](https://github.com/open-amt-cloud-toolkit/rps/issues/563)) (#05b7180) 
-- **deactivator:** adds wmsan_messages and unit tests ([#545](https://github.com/open-amt-cloud-toolkit/rps/issues/545)) (#36f97d5) 
-- **dto:** convert AMTdeviceDTO from class to interface type in /models (#a517218) 
-- **maintenance:** adds wmsan_messages and unit tests ([#559](https://github.com/open-amt-cloud-toolkit/rps/issues/559)) (#9907289) 
-- **network:** adds wsman-messages and unittests (#0f147f4) 
-- **node-forge:** migrate base64 encode/decode to use Buffer instead of node forge ([#555](https://github.com/open-amt-cloud-toolkit/rps/issues/555)) (#4873f89) 
-- **randPass:** removes '&' from server side random password generation (#dfc813a) 
-- **routes:** rename route filenames and add test skeletons (#8715943) 
-- **rps:** remove node-vault This PR replaces node-vault with standard REST calls to vault using got. (#0385eab) 
-- **test:** move tests to live alongside file (#7005c38) 
-- **tls:** removes use of js amt-libraries (#4c1074a)
-- **wifi:** ensures wifi configuration completes successfully (#5b8b51f) 
+- **cira:** adds setting MpsType to 'both' (#a4a0017)
+- **cira:** removes DHCP check (#8ef1d52) 
+- **healthcheck:** handle vault missing (#5cd1627) 
+- **network:** handles put response for AMT_generalsettings ([#638](https://github.com/open-amt-cloud-toolkit/rps/issues/638)) (#5234e9b) 
+- **network:** handles when only one ethernet port setting (#5db81fc) 
+- **nonce:** set nonce to 8 character hexadecimal ([#609](https://github.com/open-amt-cloud-toolkit/rps/issues/609)) (#01fda14) 
+- **websockets:** add input validation checks (#0725fce) 
 - see change log for full list of changes
 #### MPS
-- **healthcheck:** adds API endpoint for healthcheck (#5085569) 
-- CIRA race condition and add 30 sec keepalive time (#f84f6a2) 
-- **api:** connection status query parameter now matches API docs for devices (#3091294) 
-- **api:** removed common tag envelope from AMT responses ([#481](https://github.com/open-amt-cloud-toolkit/mps/issues/481)) (#eb8603f) 
-- **api:** updated return value code with value type (#5124aa1) 
-- **api:** reverts auditlog field names back to being capitalized (#ff15aa8) 
-- **cira:** close cira channel after request (#6738d7b) 
-- **cira:** clears the wsman response messages once parsed ([#468](https://github.com/open-amt-cloud-toolkit/mps/issues/468)) (#2187eeb) 
-- **cira:** handle chunked http message (#2c44300) 
-- **test:** added unit test for secret manager ([#436](https://github.com/open-amt-cloud-toolkit/mps/issues/436)) (#bed8025) 
-- **test:** added unit test for db(pg) ([#430](https://github.com/open-amt-cloud-toolkit/mps/issues/430)) (#ecc42f7) 
-- **amt_models:** matching case ([#453](https://github.com/open-amt-cloud-toolkit/mps/issues/453)) (#3071866) 
-- **api:** updates audit log to leverage refactored device connection (#52044e7) 
-- **api:** get version uses new amt libraries ([#446](https://github.com/open-amt-cloud-toolkit/mps/issues/446)) (#977ba3d) 
-- **api:** general settings uses new amt library ([#456](https://github.com/open-amt-cloud-toolkit/mps/issues/456)) (#722975c) 
-- **api:** updates audit log and adds unit tests for it to connected devices (#9adf30f) 
-- **api:** get amt features was missing userConsent property (#c29cee4) 
-- **api:** set amt features uses new CIRA connection (#7087eb3) 
-- **api:** user consent ([#458](https://github.com/open-amt-cloud-toolkit/mps/issues/458)) (#04d9923) 
-- **api:** update getAMTFeatures to use new CIRA connections (#019895e) 
-- **api:** power actions leverage new connection libraries (#6806237) 
-- **api:** updated event log ([#463](https://github.com/open-amt-cloud-toolkit/mps/issues/463)) (#2438bbd) 
-- **api:** hardware information ([#460](https://github.com/open-amt-cloud-toolkit/mps/issues/460)) (#48f4576) 
-- **cira:** fix cira channel distruption across multiple API Calls (#ef4fdb8) 
-- **cira:** remove javascript libraries and leverage new refactored AMT libraries (#fa68566) 
-- **logging:** centralizes logging and mqtt messages into messages.ts (#de32b04) 
-- **logging:** fixes spelling mistakes (#d0f9a4b) 
-- **mps:** remove node-vault (#9d4963e) 
-- **power:** use new device handling (#27c5c28) 
-- **websockets:** KVM and SOL now use new CIRA connection (#e075539) 
-- **wsman:** use new dependency wsman-message (#2f0c65c) 
+- **API:** Adds hostname query parameter to getDevices (#d67cc3d) 
+- **redirection:** adds mqtt start and stop events for redirection ([#573](https://github.com/open-amt-cloud-toolkit/mps/issues/573)) (#e51906e) 
+- **ws:** prevents multiple KVM/SOL session attempts ([#587](https://github.com/open-amt-cloud-toolkit/mps/issues/587)) (#8051abb) 
+- **dockerfile:** set user as non-root (#4808186) 
+- **nonce:** set nonce to 8 character hexadecimal (#2135830) 
+- **healthcheck:** improves testability and code coverage (#02ff45f) 
+- **mps:** Input validation checks in APFProcessor for max size ([#597](https://github.com/open-amt-cloud-toolkit/mps/issues/597)) (#82e3efd) 
 - see change log for full list of changes
 #### RPC-Go
-- **activate:** prompts for password when device is activated
-- **cli:** Remove ControlModeRaw from json
-- **cli:** Add json flag to version command
-- **log:** adds -json option to all rpc commands
-- **output:** adds json output for amtinfo command
-- update password with user input
-- **pthi:** converts amt and pthi commands to go from C
+- **build:** adds support for c-shared buildmode
+- **logging:** adds support for fine grained control of log output
+- **heci:** adds retry for device busy
+- **lms:** rewrite lme communication in go
+- **main:** eliminate need for CGO if not building library
+- see change log for full list of changes
+#### MPS Router
+- **env:** add option to override default mps host (#0b5fdd9) 
+- **healthcheck:** adds flag for checking db status (#b3360c7) 
 - see change log for full list of changes
 #### Sample Web UI
-- add-dialog: uses rpc-go syntax (#c729709)
-- cypress: consolidate http codes (#0ebdb3f)
+- cira + static ip configuration (#9c0f06a) 
+- Show DHCP/Static on Profiles page (#22432c2) 
+- **redirection:** adds property to track redirection state (#aaaaff8) 
+- fix status code expectation (#2f080e9) 
 - see change log for full list of changes
 #### UI Toolkit
-- upgrade ws from 8.4.2 to 8.5.0 (#228166b)
-- **npm:** add job to publish to npm (#33bdf7e) 
-- **semantic-release:** adds automated releases (#fde186b)
+- aligns cursor properly when scrolling (#f4d4669) 
+- **kvm:** scrolling offset for mouse is fixed in ui-toolkit 2.0.6 (#dabc394)
+- UI Toolkit - Angular *** Breaking Change ***  components now require angular 13
 - see change log for full list of changes
 #### WSMAN-MESSAGES
-*Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the Open AMT Cloud Toolkit.  Since this is new, adding the full set of changes since 1.0.0.*
-
-v2.1.0 - 2022-03-15: 
-
-- **amt:** add wifiportconfiguration service PUT and GET calls (#b9767cf)
-
-v2.0.1 - 2022-03-02: 
-
-- **AMT:** update wifi_port naming convention ([#86](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86)) (#4d2830d) 
-
-v2.0.0 - 2022-03-02: 
-
-- **tls-configuration:** add support for TLS Connection type (#0bcddb6) 
-- **BREAKING CHANGE:** messageID is no longer passed in to functions and is tracked internally
-
-v1.7.0 - 2022-02-24
-
-- **general-settings:** adds PUT method for AMT_GeneralSettings (#f39c0df) 
-
-v1.6.0 - 2022-02-23
-
-- **amt:** adds WiFiPortConfigurationService to amt. (#d2a2f0e) 
-
-v1.5.0 - 2022-02-15
-
-- **amt:** adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) 
-
-v1.4.1 - 2022-02-08
-
-- **exports:** align exports with expected types from breaking change in PR[#29](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29) (#99e1ea7) 
-
-v1.4.0 - 2022-02-07
-
-- **amt:** adds AMT Authorization and Time Synchronization services (#747988d) 
-
-v1.3.1 - 2022-02-03
-
-- **ips:** updates methods and actions for HostBasedService ([#66](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66)) (#f777de0) 
-
-v1.3.0 - 2022-02-02
-
-- **cim:** adds WiFiPort method ([#62](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62)) (#faf4aac) 
-
-v1.2.0 - 2022-01-31
-
-- **ips:** adds methods to HostbasedSetupService (#1f196f1) 
-
-v1.1.0 - 2022-01-25
-
-- **amt:** adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) 
-- **codecov:** sets acceptable range to 99-100 (#a95ffa3) 
-
-v1.0.0 - 2022-01-07
-
-- initialize workflow (#ede3a3d) 
-- add cp step for package.json (#7223e97) 
-- **badge:** adds badges ([#20](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20)) (#dd036ca) 
-- **badge:** adds snyk and codecov ([#21](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21)) (#747b9df) 
-- **build:** remove dist folder (#7bb6840) 
-- **release:** remove step (#94ce849) 
-- **release:** update release to build (#6dec446) 
-- **release:** add step (#b1ba3e3) 
-- **semantic-release:** adds automation for releasing (#114517e) 
-- **semantic-release:** fixes workflow name (#817c9dc) 
-- **semantic-release:** change pkgRoot to dist (#579e722) 
-- **semantic-release:** updates comment (#ed4b16e) 
-- **workflow:** optimizes node CI (#ae84187) 
-- renames AMT, CIM, IPS classes to Messages (#4470042) 
-- models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) 
-- **wsman:** initial migration (#94e261e) 
+- **createBody:** handles LinkPolicy arrays (#96ba28e) 
+- **amt:** remove un-implemented method (#07bf552)
+- see change log for full list of changes
+- **cira:** adds MpsType set to both (#5fb6763)
+- **AMT:** Adds Remote Access Policy Applies to MPS (#b8ca4b9) 
 
 ## Resolved Issues
 #### RPS
-- **[AMT Wi-Fi Configuration not supported on non-Windows systems](https://github.com/open-amt-cloud-toolkit/rps/issues/349):** Known Issue
-- **[Remove mpsRootCertificate parameter from createCiraConfig route](https://github.com/open-amt-cloud-toolkit/rps/issues/461):** Question
+- **[Vault health check can return a false positive result](https://github.com/open-amt-cloud-toolkit/rps/issues/629):** Bug
 #### MPS
-- **[req.query.$status should be req.query.status instead in src/routes/devices/getAll.ts](https://github.com/open-amt-cloud-toolkit/mps/issues/508):** Bug
-- **[Audit Log calls never respond on specific versions of AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/301):** Known Issue
+- **[Allow filtering devices by hostname](https://github.com/open-amt-cloud-toolkit/mps/issues/548):** Enhancement
 #### RPC-Go
-- **[json output](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/22):** Enhancement
-- **[Invalid comment lines on Dockerfile](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/18):** Bug
-
+- **[Root certificates not present in AMT device](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/42):** Bug
+- **[both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26):** Needs More Investigation
+- **[rpc-go missing some output compared to the c version, and intermittently misses other pieces](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25):** Bug
+#### Sample Web UI
+- **[Websocket Connection Failures should be propagated to UI](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586):** Enhancement
 
 ## Open Issues and Requests
 #### Open AMT Cloud Toolkit
 - **[Kustomize Install](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/103):** Enhancement
 - **[After proxy, where to config the proxy or change the npm repository before docker-compose?](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/110):** Documentation
-- **[More explanation over documentation](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/112):** Documentation
+- **[Support for MongoDB in addition to PostgreSQL](https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/117):** Enhancement
 #### RPS
 - **[RPS should support wildcard domain suffix](https://github.com/open-amt-cloud-toolkit/rps/issues/97):** Enhancement
 - **[Data shouldn't be added if vault calls fail](https://github.com/open-amt-cloud-toolkit/rps/issues/254):** Bug
@@ -233,24 +127,18 @@ v1.0.0 - 2022-01-07
 - **[Poor error msg related WiFi profile issues](https://github.com/open-amt-cloud-toolkit/rps/issues/594):** Enhancement
 - **[RPS not able to remove wifi profile from already configured deviceEnhancement](https://github.com/open-amt-cloud-toolkit/rps/issues/597):** Bug 
 #### MPS
-- **CIM_PhysicalPackage may not return all results compared to v2.1**
-- **[Direct Connection from MPS to AMT](https://github.com/open-amt-cloud-toolkit/mps/issues/10):** Enhancement
 - **[Should return error on additional KVM connections for a single device](https://github.com/open-amt-cloud-toolkit/mps/issues/104):** Enhancement
 - **[AMT does not connect to MPS after configuration](https://github.com/open-amt-cloud-toolkit/mps/issues/300):** Known Issue
 - **[Use database abstraction/ORM layer to support multiple SQL-based database](https://github.com/open-amt-cloud-toolkit/mps/issues/360):** Enhancement
 - **[Feature Request: Create configuration parameter to disable "Auth" Service from MPS](https://github.com/open-amt-cloud-toolkit/mps/issues/439):** Enhancement
 - **[CIRA connection getting dropped randomly](https://github.com/open-amt-cloud-toolkit/mps/issues/441):** Bug
 - **[Short Lived Bearer Token for KVM Session Support](https://github.com/open-amt-cloud-toolkit/mps/issues/527):** Enhancement
-- **[Allow filtering devices by hostname](https://github.com/open-amt-cloud-toolkit/mps/issues/548):** Enhancement
 #### RPC
-- **[rpc-go missing some output compared to the c version, and intermittently misses other pieces](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25):** Bug
-- **[both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26):** Needs More Investigation
 - **[activation failures would benefit from passing the RPS error code to the client](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27):** Enhancement
-- **[Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27):** Enhancement
+- **[Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/28):** Enhancement
 - **[possible timing issues in rpc-go?](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/30):** Enhancement
 #### Sample Web UI
 - **[UI always shows "Certificate Not Yet Uploaded"](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483):** Question
-- **[Websocket Connection Failures should be propagated to UI](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586):** Enhancement
 #### UI Toolkit
 - **[Command string generated from "Add a New Device" dialog does not activate a machine.](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/451):** Bug
 
