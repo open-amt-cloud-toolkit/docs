@@ -146,9 +146,9 @@ extra:
   version:
     provider: mike
   repoVersion:
-    mpsAPI: 2.3.0
+    mpsAPI: 2.3.1
     rpsAPI: 2.3.0
-    oamtct: 2.3.0
+    oamtct: 2.3.1
     rpc_go: 2.2.0
     rpc_c: 2.0.0
     ui_toolkit: 2.0.6
