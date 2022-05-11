@@ -27,7 +27,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#release-notes">
+<a class="md-skip" href="#release-highlights">
           Skip to content
         </a>
 </div>
@@ -198,27 +198,32 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#feature-changes-for-23">
-    Feature Changes for 2.3
-  </a>
-<nav aria-label="Feature Changes for 2.3" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#noteworthy-features-and-changes">
-    Noteworthy Features and Changes
+<a class="md-nav__link" href="#release-highlights">
+    Release Highlights
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#note-from-the-team">
+    Note From the Team
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-new">
+    What's New?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get-the-details">
+    Get the Details
+  </a>
+<nav aria-label="Get the Details" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#additions-modifications-and-removals">
     Additions, Modifications, and Removals
   </a>
 <nav aria-label="Additions, Modifications, and Removals" class="md-nav">
 <ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#changes-to-amt-routes">
-    Changes to /AMT routes
-  </a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#open-amt-cloud-toolkit">
     Open AMT Cloud Toolkit
@@ -237,6 +242,11 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rpc-go">
     RPC-Go
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps-router">
+    MPS Router
   </a>
 </li>
 <li class="md-nav__item">
@@ -281,6 +291,11 @@
     RPC-Go
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-web-ui_1">
+    Sample Web UI
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -311,7 +326,7 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#sample-web-ui_1">
+<a class="md-nav__link" href="#sample-web-ui_2">
     Sample Web UI
   </a>
 </li>
@@ -944,244 +959,127 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/release-notes.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
-<h2 id="feature-changes-for-23">Feature Changes for 2.3<a class="headerlink" href="#feature-changes-for-23" title="Permanent link">¶</a></h2>
-<p>This section outlines key features changes between versions 2.2 and 2.3 for <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.</p>
+<h1>Release Notes</h1>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">¶</a></h2>
 <div style="text-align:center;">
 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/jh_NCEvLWHs" title="YouTube video player" width="800"></iframe>
 </div>
-<h3 id="noteworthy-features-and-changes">Noteworthy Features and Changes<a class="headerlink" href="#noteworthy-features-and-changes" title="Permanent link">¶</a></h3>
-<p><strong>Major Refactoring &amp; WSMAN-MESSAGES Library:</strong> At the end of 2021, the team began refactoring parts of the toolkit source code to improve the communication method between the toolkit and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices.  Much of this code was inherited from another open source project also developed at Intel. While this inherited code was well-validated and stable, it was difficult to modify and maintain. Validation with automated testing posed a challenge, and code coverage metrics were lackluster. The new portable and testable design of <a href="https://github.com/open-amt-cloud-toolkit/wsman-messages">WSMAN-MESSAGES</a> addresses these issues with a library of wsman-based messages for communication with <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices. Both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> use WSMAN-MESSAGES, available on NPM as <a href="https://www.npmjs.com/package/@open-amt-cloud-toolkit/wsman-messages">@open-amt-cloud-toolkit/wsman-message</a>. <strong>CODE COVERAGE NET RESULT:</strong> Both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> code coverage improved dramatically, from 24% to 91% and 29% to 70% respectively. <strong>BOTTOM LINE:</strong> This reduces the overall technical debt of the project substantially and provides users with another reason to adopt the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>. As we move forward, we'll continue to push toward our goal of 80% code coverage across all repositories. Future improvements will happen through the course of our normal release cadence.</p>
-<p><strong>Device Migration:</strong> Several customers have requested a method to migrate an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device from a management console to the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>. Now with 2.2, perform this migration with <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> without deactivating and reactivating the device. Use the activate command and provide the desired profile. The prompt will ask for the AMT credential. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will use this credential to add the device to <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> and apply the configuration profile.</p>
-<p><strong>Healthcheck API:</strong> This new API provides the ability to check the connection status of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> with both the database and secret provider. This is particularly helpful when <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> is deployed in Kubernetes or Docker Swarm so that you know they are up and ready to respond to requests.</p>
-<p><strong><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> -json flag:</strong> The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go application sports a new -json flag. With this flag, convert application output to json format making it machine parsable. Big thanks to <a href="https://www.portainer.io/">Portainer</a> for this contribution!</p>
+<p><br/></p>
+<p class="divider"></p>
+<h2 id="note-from-the-team">Note From the Team<a class="headerlink" href="#note-from-the-team" title="Permanent link">¶</a></h2>
+<p>Hey everyone,</p>
+<p>It has been a very quick 6 weeks and the team is very excited to deliver <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> version 2.3.  Unlike previous releases, every component of the Toolkit has been updated in some way.  If you haven't had a chance yet, I encourage you to watch the release video where Mike provides some highlights from this release.  Additionally, we've added a <a href="https://open-amt-cloud-toolkit.github.io/docs/2.3/videos/">Video Walkthroughs</a> section to our documentation where Bryan Wendlandt has been creating video tutorials of our <a href="https://open-amt-cloud-toolkit.github.io/docs/2.3/GetStarted/prerequisites/">Getting Started Guide</a>.  Watch that space for additional video content to be delivered there.</p>
+<p>Find out <a href="#whats-new">what's new</a> and delve into the <a href="#get-the-details">details</a> below-- and enjoy our new release of the toolkit.</p>
+<p><em>Best wishes,</em><br/>
+<em>Matt Primrose | Product Owner | The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em>
+<br/></p>
+<p class="divider"></p>
+<h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">¶</a></h2>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z"></path></svg></span><strong> Customer Request: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go as a library</strong></p>
+<p>We added an option to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a library, allowing developers to import <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> into their applications as a dynamically linked library (.dll) or shared object (.so). Rather than deploy and execute the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as an application, developers can now call and monitor <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> directly within their own applications. GCC is still required.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Refactoring</strong></p>
+<p>Our Go version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> underwent significant refactoring to eliminate all C/C++ code. By transitioning to 100% Go code, we removed the requirement of the GCC toolchain to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as an application. Developers can cross-compile <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on Linux or Windows and use it on any Go-supported OS (e.g., We tested on Fedora, and it worked without any code changes). The build time is greatly reduced. This version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> is still in beta.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z"></path></svg></span><strong> Customer Request: GET Device by hostname</strong></p>
+<p>Our GET Devices <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call now supports a new hostname query parameter. If you know the hostname, it is easy to find the specific device connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Provide the hostname of the device with the hostname= query parameter, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will return the device with the matching hostname.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1z"></path></svg></span><strong> Feature: Add <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> support for static IP devices</strong></p>
+<p>With this release we added support for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configurations with static IP addresses. AMT will now connect to an <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> when it is configured with a static IP address.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1z"></path></svg></span><strong> Feature: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> events for redirection start and stop </strong></p>
+<p>When redirection sessions start or stop (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>), <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will now send an event to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> broker</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Angular - v13 support</strong></p>
+<p>With this release, UI-Toolkit-Angular supports Angular v13. This breaking change is indicated by the major version transition to 3.x.x. If you are still on Angular 12, stick with UI-Toolkit-Angular 2.0.5 until you migrate Angular v13.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> - <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> mouse alignment when scrolled</strong></p>
+<p>We fixed a remote and local mouse pointers misalignment problem that occurred during downward scrolling in <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>.  This is implemented in version 2.0.6 of the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></p>
+<h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">¶</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">¶</a></h3>
-<h4 id="changes-to-amt-routes">Changes to /AMT routes<a class="headerlink" href="#changes-to-amt-routes" title="Permanent link">¶</a></h4>
-<ul>
-<li>
-<p>Method property is removed from wsman header in response and is now a property of the wsman body</p>
-<p>before:
-<div class="highlight"><pre><span></span><code><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-0000000000FA"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CIM_ComputerSystemPackage"</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</code></pre></div>
-after:
-<div class="highlight"><pre><span></span><code><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"To"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"RelatesTo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"MessageID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid:00000000-8086-8086-8086-000000000002"</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"ResourceURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ComputerSystemPackage"</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">"CIM_ComputerSystemPackage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">"Antecedent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</code></pre></div></p>
-</li>
-<li>
-<p>SelectorSet values no longer includes @name and Value properties</p>
-</li>
-<li>
-<p>While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time</p>
-</li>
-</ul>
 <h4 id="open-amt-cloud-toolkit"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit" title="Permanent link">¶</a></h4>
 <ul>
-<li>deployment: update to use dockerhub imgs </li>
-<li>dep: update k8s helm dependencies to support v1.22</li>
-<li>healthcheck: adds healthcheck to docker-compose</li>
-<li>see changelog for full list of changes</li>
+<li><strong>deployment:</strong> updated Kong routes for Docker, K8S, and ACI deployments</li>
 </ul>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>activation:</strong> add already activated device to toolkit (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/476">#476</a>) (#ae11da5) </li>
-<li><strong>healthcheck:</strong> provides API Route for status of vault and db (#9572d85) </li>
-<li>verifies amt password if device is already activated and exists in toolkit (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/478">#478</a>) (#ecbdb96) </li>
-<li><strong>cira:</strong> randomly generate environment detection (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/554">#554</a>) (#484a927)</li>
-<li><strong>activator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/541">#541</a>) (#68f96a9) </li>
-<li><strong>activator:</strong> optimize code readability (#67e5950) </li>
-<li><strong>cira:</strong> adds wsman-messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/567">#567</a>) (#841bfb1) </li>
-<li><strong>validator.ts:</strong> handles ccm activation flow when device is already in ccm (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/598">#598</a>) (#d8824d7)</li>
-<li><strong>activation:</strong> handle when too many auth failures (#fa566f4) </li>
-<li><strong>activator:</strong> optimize code readability (#67e5950) </li>
-<li><strong>activator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/541">#541</a>) (#68f96a9) </li>
-<li><strong>cira:</strong> adds wsman-messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/567">#567</a>) (#841bfb1) </li>
-<li><strong>clientManager:</strong> simplify client manager (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/563">#563</a>) (#05b7180) </li>
-<li><strong>deactivator:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/545">#545</a>) (#36f97d5) </li>
-<li><strong>dto:</strong> convert AMTdeviceDTO from class to interface type in /models (#a517218) </li>
-<li><strong>maintenance:</strong> adds wmsan_messages and unit tests (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/559">#559</a>) (#9907289) </li>
-<li><strong>network:</strong> adds wsman-messages and unittests (#0f147f4) </li>
-<li><strong>node-forge:</strong> migrate base64 encode/decode to use Buffer instead of node forge (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/555">#555</a>) (#4873f89) </li>
-<li><strong>randPass:</strong> removes '&amp;' from server side random password generation (#dfc813a) </li>
-<li><strong>routes:</strong> rename route filenames and add test skeletons (#8715943) </li>
-<li><strong>rps:</strong> remove node-vault This PR replaces node-vault with standard <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> calls to vault using got. (#0385eab) </li>
-<li><strong>test:</strong> move tests to live alongside file (#7005c38) </li>
-<li><strong>tls:</strong> removes use of js amt-libraries (#4c1074a)</li>
-<li><strong>wifi:</strong> ensures wifi configuration completes successfully (#5b8b51f) </li>
+<li><strong>cira:</strong> adds setting MpsType to 'both' (#a4a0017)</li>
+<li><strong>cira:</strong> removes DHCP check (#8ef1d52) </li>
+<li><strong>healthcheck:</strong> handle vault missing (#5cd1627) </li>
+<li><strong>network:</strong> handles put response for AMT_generalsettings (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/638">#638</a>) (#5234e9b) </li>
+<li><strong>network:</strong> handles when only one ethernet port setting (#5db81fc) </li>
+<li><strong>nonce:</strong> set nonce to 8 character hexadecimal (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/609">#609</a>) (#01fda14) </li>
+<li><strong>websockets:</strong> add input validation checks (#0725fce) </li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>healthcheck:</strong> adds API endpoint for healthcheck (#5085569) </li>
-<li><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> race condition and add 30 sec keepalive time (#f84f6a2) </li>
-<li><strong>api:</strong> connection status query parameter now matches API docs for devices (#3091294) </li>
-<li><strong>api:</strong> removed common tag envelope from AMT responses (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/481">#481</a>) (#eb8603f) </li>
-<li><strong>api:</strong> updated return value code with value type (#5124aa1) </li>
-<li><strong>api:</strong> reverts auditlog field names back to being capitalized (#ff15aa8) </li>
-<li><strong>cira:</strong> close cira channel after request (#6738d7b) </li>
-<li><strong>cira:</strong> clears the wsman response messages once parsed (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/468">#468</a>) (#2187eeb) </li>
-<li><strong>cira:</strong> handle chunked http message (#2c44300) </li>
-<li><strong>test:</strong> added unit test for secret manager (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/436">#436</a>) (#bed8025) </li>
-<li><strong>test:</strong> added unit test for db(pg) (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/430">#430</a>) (#ecc42f7) </li>
-<li><strong>amt_models:</strong> matching case (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/453">#453</a>) (#3071866) </li>
-<li><strong>api:</strong> updates audit log to leverage refactored device connection (#52044e7) </li>
-<li><strong>api:</strong> get version uses new amt libraries (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/446">#446</a>) (#977ba3d) </li>
-<li><strong>api:</strong> general settings uses new amt library (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/456">#456</a>) (#722975c) </li>
-<li><strong>api:</strong> updates audit log and adds unit tests for it to connected devices (#9adf30f) </li>
-<li><strong>api:</strong> get amt features was missing userConsent property (#c29cee4) </li>
-<li><strong>api:</strong> set amt features uses new <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection (#7087eb3) </li>
-<li><strong>api:</strong> user consent (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/458">#458</a>) (#04d9923) </li>
-<li><strong>api:</strong> update getAMTFeatures to use new <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connections (#019895e) </li>
-<li><strong>api:</strong> power actions leverage new connection libraries (#6806237) </li>
-<li><strong>api:</strong> updated event log (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/463">#463</a>) (#2438bbd) </li>
-<li><strong>api:</strong> hardware information (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/460">#460</a>) (#48f4576) </li>
-<li><strong>cira:</strong> fix cira channel distruption across multiple API Calls (#ef4fdb8) </li>
-<li><strong>cira:</strong> remove javascript libraries and leverage new refactored AMT libraries (#fa68566) </li>
-<li><strong>logging:</strong> centralizes logging and mqtt messages into messages.ts (#de32b04) </li>
-<li><strong>logging:</strong> fixes spelling mistakes (#d0f9a4b) </li>
-<li><strong>mps:</strong> remove node-vault (#9d4963e) </li>
-<li><strong>power:</strong> use new device handling (#27c5c28) </li>
-<li><strong>websockets:</strong> <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> now use new <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection (#e075539) </li>
-<li><strong>wsman:</strong> use new dependency wsman-message (#2f0c65c) </li>
+<li><strong>API:</strong> Adds hostname query parameter to getDevices (#d67cc3d) </li>
+<li><strong>redirection:</strong> adds mqtt start and stop events for redirection (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/573">#573</a>) (#e51906e) </li>
+<li><strong>ws:</strong> prevents multiple <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> session attempts (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/587">#587</a>) (#8051abb) </li>
+<li><strong>dockerfile:</strong> set user as non-root (#4808186) </li>
+<li><strong>nonce:</strong> set nonce to 8 character hexadecimal (#2135830) </li>
+<li><strong>healthcheck:</strong> improves testability and code coverage (#02ff45f) </li>
+<li><strong>mps:</strong> Input validation checks in APFProcessor for max size (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/597">#597</a>) (#82e3efd) </li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>activate:</strong> prompts for password when device is activated</li>
-<li><strong>cli:</strong> Remove ControlModeRaw from json</li>
-<li><strong>cli:</strong> Add json flag to version command</li>
-<li><strong>log:</strong> adds -json option to all rpc commands</li>
-<li><strong>output:</strong> adds json output for amtinfo command</li>
-<li>update password with user input</li>
-<li><strong>pthi:</strong> converts amt and pthi commands to go from C</li>
+<li><strong>build:</strong> adds support for c-shared buildmode</li>
+<li><strong>logging:</strong> adds support for fine grained control of log output</li>
+<li><strong>heci:</strong> adds retry for device busy</li>
+<li><strong>lms:</strong> rewrite lme communication in go</li>
+<li><strong>main:</strong> eliminate need for CGO if not building library</li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="mps-router"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<a class="headerlink" href="#mps-router" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>env:</strong> add option to override default mps host (#0b5fdd9) </li>
+<li><strong>healthcheck:</strong> adds flag for checking db status (#b3360c7) </li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">¶</a></h4>
 <ul>
-<li>add-dialog: uses rpc-go syntax (#c729709)</li>
-<li>cypress: consolidate http codes (#0ebdb3f)</li>
+<li>cira + static ip configuration (#9c0f06a) </li>
+<li>Show DHCP/Static on Profiles page (#22432c2) </li>
+<li><strong>redirection:</strong> adds property to track redirection state (#aaaaff8) </li>
+<li>fix status code expectation (#2f080e9) </li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">¶</a></h4>
 <ul>
-<li>upgrade ws from 8.4.2 to 8.5.0 (#228166b)</li>
-<li><strong>npm:</strong> add job to publish to npm (#33bdf7e) </li>
-<li><strong>semantic-release:</strong> adds automated releases (#fde186b)</li>
+<li>aligns cursor properly when scrolling (#f4d4669) </li>
+<li><strong>kvm:</strong> scrolling offset for mouse is fixed in ui-toolkit 2.0.6 (#dabc394)</li>
+<li><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> - Angular <strong><em> Breaking Change </em></strong>  components now require angular 13</li>
 <li>see change log for full list of changes</li>
 </ul>
 <h4 id="wsman-messages">WSMAN-MESSAGES<a class="headerlink" href="#wsman-messages" title="Permanent link">¶</a></h4>
-<p><em>Expect this set of libraries to version up very fast as we continue to enhance its capabilities to support the rest of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.  Since this is new, adding the full set of changes since 1.0.0.</em></p>
-<p>v2.1.0 - 2022-03-15: </p>
 <ul>
-<li><strong>amt:</strong> add wifiportconfiguration service PUT and GET calls (#b9767cf)</li>
-</ul>
-<p>v2.0.1 - 2022-03-02: </p>
-<ul>
-<li><strong>AMT:</strong> update wifi_port naming convention (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/86">#86</a>) (#4d2830d) </li>
-</ul>
-<p>v2.0.0 - 2022-03-02: </p>
-<ul>
-<li><strong>tls-configuration:</strong> add support for <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Connection type (#0bcddb6) </li>
-<li><strong>BREAKING CHANGE:</strong> messageID is no longer passed in to functions and is tracked internally</li>
-</ul>
-<p>v1.7.0 - 2022-02-24</p>
-<ul>
-<li><strong>general-settings:</strong> adds PUT method for AMT_GeneralSettings (#f39c0df) </li>
-</ul>
-<p>v1.6.0 - 2022-02-23</p>
-<ul>
-<li><strong>amt:</strong> adds WiFiPortConfigurationService to amt. (#d2a2f0e) </li>
-</ul>
-<p>v1.5.0 - 2022-02-15</p>
-<ul>
-<li><strong>amt:</strong> adds delete method to ManagementPresenceRemoteSAP and PublicKeyCertificate (#919794e) </li>
-</ul>
-<p>v1.4.1 - 2022-02-08</p>
-<ul>
-<li><strong>exports:</strong> align exports with expected types from breaking change in PR<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/29">#29</a> (#99e1ea7) </li>
-</ul>
-<p>v1.4.0 - 2022-02-07</p>
-<ul>
-<li><strong>amt:</strong> adds AMT Authorization and Time Synchronization services (#747988d) </li>
-</ul>
-<p>v1.3.1 - 2022-02-03</p>
-<ul>
-<li><strong>ips:</strong> updates methods and actions for HostBasedService (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/66">#66</a>) (#f777de0) </li>
-</ul>
-<p>v1.3.0 - 2022-02-02</p>
-<ul>
-<li><strong>cim:</strong> adds WiFiPort method (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/62">#62</a>) (#faf4aac) </li>
-</ul>
-<p>v1.2.0 - 2022-01-31</p>
-<ul>
-<li><strong>ips:</strong> adds methods to HostbasedSetupService (#1f196f1) </li>
-</ul>
-<p>v1.1.0 - 2022-01-25</p>
-<ul>
-<li><strong>amt:</strong> adds Unprovision and SetMEBXPassword methods to setup and configuration service (#8cff7c0) </li>
-<li><strong>codecov:</strong> sets acceptable range to 99-100 (#a95ffa3) </li>
-</ul>
-<p>v1.0.0 - 2022-01-07</p>
-<ul>
-<li>initialize workflow (#ede3a3d) </li>
-<li>add cp step for package.json (#7223e97) </li>
-<li><strong>badge:</strong> adds badges (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/20">#20</a>) (#dd036ca) </li>
-<li><strong>badge:</strong> adds snyk and codecov (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/21">#21</a>) (#747b9df) </li>
-<li><strong>build:</strong> remove dist folder (#7bb6840) </li>
-<li><strong>release:</strong> remove step (#94ce849) </li>
-<li><strong>release:</strong> update release to build (#6dec446) </li>
-<li><strong>release:</strong> add step (#b1ba3e3) </li>
-<li><strong>semantic-release:</strong> adds automation for releasing (#114517e) </li>
-<li><strong>semantic-release:</strong> fixes workflow name (#817c9dc) </li>
-<li><strong>semantic-release:</strong> change pkgRoot to dist (#579e722) </li>
-<li><strong>semantic-release:</strong> updates comment (#ed4b16e) </li>
-<li><strong>workflow:</strong> optimizes node CI (#ae84187) </li>
-<li>renames AMT, CIM, IPS classes to Messages (#4470042) </li>
-<li>models and exports now under respective calls AMT, IPS, CIM (#a89ab8d) </li>
-<li><strong>wsman:</strong> initial migration (#94e261e) </li>
+<li><strong>createBody:</strong> handles LinkPolicy arrays (#96ba28e) </li>
+<li><strong>amt:</strong> remove un-implemented method (#07bf552)</li>
+<li>see change log for full list of changes</li>
+<li><strong>cira:</strong> adds MpsType set to both (#5fb6763)</li>
+<li><strong>AMT:</strong> Adds Remote Access Policy Applies to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> (#b8ca4b9) </li>
 </ul>
 <h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">¶</a></h2>
 <h4 id="rps_1"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/349">AMT Wi-Fi Configuration not supported on non-Windows systems</a>:</strong> Known Issue</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/461">Remove mpsRootCertificate parameter from createCiraConfig route</a>:</strong> Question</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/629">Vault health check can return a false positive result</a>:</strong> Bug</li>
 </ul>
 <h4 id="mps_1"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/508">req.query.$status should be req.query.status instead in src/routes/devices/getAll.ts</a>:</strong> Bug</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/301">Audit Log calls never respond on specific versions of AMT</a>:</strong> Known Issue</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/548">Allow filtering devices by hostname</a>:</strong> Enhancement</li>
 </ul>
 <h4 id="rpc-go_1"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go_1" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/22">json output</a>:</strong> Enhancement</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/18">Invalid comment lines on Dockerfile</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/42">Root certificates not present in AMT device</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26">both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx</a>:</strong> Needs More Investigation</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25">rpc-go missing some output compared to the c version, and intermittently misses other pieces</a>:</strong> Bug</li>
+</ul>
+<h4 id="sample-web-ui_1"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586">Websocket Connection Failures should be propagated to UI</a>:</strong> Enhancement</li>
 </ul>
 <h2 id="open-issues-and-requests">Open Issues and Requests<a class="headerlink" href="#open-issues-and-requests" title="Permanent link">¶</a></h2>
 <h4 id="open-amt-cloud-toolkit_1"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit_1" title="Permanent link">¶</a></h4>
 <ul>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/103">Kustomize Install</a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/110">After proxy, where to config the proxy or change the npm repository before docker-compose?</a>:</strong> Documentation</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/112">More explanation over documentation</a>:</strong> Documentation</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/117">Support for MongoDB in addition to PostgreSQL</a>:</strong> Enhancement</li>
 </ul>
 <h4 id="rps_2"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_2" title="Permanent link">¶</a></h4>
 <ul>
@@ -1194,28 +1092,22 @@ after:
 </ul>
 <h4 id="mps_2"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_2" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>CIM_PhysicalPackage may not return all results compared to v2.1</strong></li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/10">Direct Connection from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to AMT</a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/104">Should return error on additional <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> connections for a single device</a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/300">AMT does not connect to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> after configuration</a>:</strong> Known Issue</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/360">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/439">Feature Request: Create configuration parameter to disable "Auth" Service from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/441"><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection getting dropped randomly</a>:</strong> Bug</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/527">Short Lived Bearer Token for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Session Support</a>:</strong> Enhancement</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/548">Allow filtering devices by hostname</a>:</strong> Enhancement</li>
 </ul>
 <h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25">rpc-go missing some output compared to the c version, and intermittently misses other pieces</a>:</strong> Bug</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26">both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx</a>:</strong> Needs More Investigation</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27">activation failures would benefit from passing the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> error code to the client</a>:</strong> Enhancement</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27">Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/28">Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device</a>:</strong> Enhancement</li>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/30">possible timing issues in rpc-go?</a>:</strong> Enhancement</li>
 </ul>
-<h4 id="sample-web-ui_1"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_1" title="Permanent link">¶</a></h4>
+<h4 id="sample-web-ui_2"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_2" title="Permanent link">¶</a></h4>
 <ul>
 <li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483">UI always shows "Certificate Not Yet Uploaded"</a>:</strong> Question</li>
-<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586">Websocket Connection Failures should be propagated to UI</a>:</strong> Enhancement</li>
 </ul>
 <h4 id="ui-toolkit_1"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit_1" title="Permanent link">¶</a></h4>
 <ul>
