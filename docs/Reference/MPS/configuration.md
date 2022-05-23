@@ -14,6 +14,7 @@
 | MPS_WEB_PORT               | 3000                 | |
 | MPS_WEB_ADMIN_USER         | n/a                  | Specifies the username for API authentication |
 | MPS_WEB_ADMIN_PASSWORD     | n/a                  | Specifies the password for API authentication |
+| MPS_WEB_AUTH_ENABLED       | n/a                  | Specifies whether or not to enable MPS authentication |
 | MPS_HTTPS                  | true                 | Specifies whether or not to enable https      |
 | MPS_TLS_OFFLOAD            | false                | |
 | MPS_LOG_LEVEL              | info                 | Controls the level of logging provided in the service. Options are (in order of increasing detail): `error`, `warn`, `info`, `verbose`, `debug`, and `silly`. |
