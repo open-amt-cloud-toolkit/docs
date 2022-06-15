@@ -3,15 +3,20 @@
 !!! important "Important - Windows 10 Supported Only"
     This feature is currently only supported for systems on Windows 10 operating systems.
 
+!!! warning "Warning - No Support for Cellular"
+    While Open AMT Cloud Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. [Cradlepoint* products](https://cradlepoint.com/) offers a workaround for cellular connections.
+
 After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.
 
-**For devices to be activated in Client Control Mode (CCM)**: The managed, AMT device can be activated and configured on a wireless connection.
+**For devices to be activated in Client Control Mode (CCM)**: The managed AMT device can be activated and configured on a wireless connection.
 
-**For devices to be activated in Admin Control Mode (ACM)**: The managed, AMT device **MUST have a wired connection** during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.
+**For devices to be activated in Admin Control Mode (ACM)**: The managed AMT device **MUST have a wired connection** during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.
 
 ## Determine Device Wireless Support
+!!! important "Legacy RPC Support Only"
+    This section uses the legacy version of RPC. Support for this feature in RPC-Go is planned in future releases.
 
-Use RPC's `amtinfo` feature to determine if your current device supports wireless functionality. For steps on how to obtain the RPC binary, see [Build RPC](../Reference/RPC/buildRPC_Manual.md).
+Use RPC's `amtinfo` feature to determine if your current device supports wireless functionality. For steps to obtain the RPC binary, see [Build RPC](../Reference/RPC/buildRPC_Manual.md).
 
 1. Run RPC with the `amtinfo` argument.
 
@@ -24,7 +29,7 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
         .\rpc amtinfo
         ```
 
-2. Look at the output for the LAN Interface section as highlighted below. **If RPC does NOT return a section for wireless**, then the AMT device does not support wireless functionality. 
+2. Look at the output for the LAN Interface section as highlighted below. **If RPC does NOT return a section for wireless**, the AMT device does not support wireless functionality. 
 
     ``` hl_lines="19-24"
     Version                : 15.0.10
@@ -84,7 +89,7 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
         <figcaption>Figure 1: Example wireless profile</figcaption>
         </figure>
 
-9. **Important**: After saving, continue on to create either a CCM or ACM profile. When prompted, search for and select your new Wireless Profile from the drop-down menu. The selected Wi-Fi Profiles will be shown under **Associated Wireless Profiles** and can be re-ordered by dragging them to give priority.
+9. **Important**: After saving, continue on to create either a CCM or ACM profile. When prompted, search for and select your new Wireless Profile from the drop-down menu. The selected Wi-Fi Profiles will be shown under **Associated Wireless Profiles** and can be reordered by dragging them to give priority.
 
     !!! example "Example - Select Wireless Profile"
         <figure class="figure-image">
@@ -96,10 +101,10 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
 
 Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC). Profiles also distinguish between activating in: 
 
-**[Client Control Mode (CCM):](../GetStarted/createProfileCCM.md)** This mode offers all manageability features including, but not limited to, power control, audit logs, and hardware info. Redirection features, such as KVM or SOL, **require user consent**. The managed device will display a 6-digit code that **must** be entered by the remote admin to access the remote device via redirection.
+**[Client Control Mode (CCM):](../GetStarted/createProfileCCM.md)** This mode offers all manageability features, including but not limited to, power control, audit logs, and hardware info. Redirection features, such as KVM or SOL, **require user consent**. The managed device will display a 6-digit code that **must** be entered by the remote admin to access the remote device via redirection.
 
 [Create a CCM Profile](../GetStarted/createProfileCCM.md){: .md-button .md-button--primary }
 
-**[Admin Control Mode (ACM):](../GetStarted/createProfileACM.md)** ACM mode supports all manageability features **without requiring user consent**. This means it is **not necessary** to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices such as digital signage or kiosks may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.
+**[Admin Control Mode (ACM):](../GetStarted/createProfileACM.md)** ACM mode supports all manageability features **without requiring user consent**. This means it is **not necessary** to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices, such as digital signage or kiosks, may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 [Create an ACM Profile](../GetStarted/createProfileACM.md){: .md-button .md-button--primary }
