@@ -2,9 +2,12 @@
 
 Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for supported redirection features:
 
-- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive).
+- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 - **Keyboard, Video, Mouse (KVM):** Control multiple devices with one keyboard, monitor, and mouse.
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
+
+!!! Important "IDE Redirection"
+    While AMT supports this feature, the toolkit doesn't natively support it currently. 
 
 <figure class="figure-image">
 <img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
@@ -84,7 +87,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
     !!! info "Info - Customized Redirection"        
-        Associating these features with a profile enables allows administrators to opt into desired redirection.
+        Associating these features with a profile enables administrators to opt into desired redirection.
 
         The toolkit defaults to enabling all redirection features.
 
