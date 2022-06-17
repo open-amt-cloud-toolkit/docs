@@ -23,5 +23,3 @@
 | MPS_JWT_EXPIRATION         | 1440                 | The default expiration in minutes for the JWT Token. Default is 24 hours. |
 | MPS_MQTT_ADDRESS            | No Value   | Address of where the mqtt broker is hosted. Mqtt container is named `mosquitto` and is open to port `8883`. Thus unless setting are changed the value should be either empty (off) or `mqtt://mosquitto:8883` (on) |
 | MPS_CONNECTION_STRING        | `postgresql://postgresadmin@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string | 
-| MPS_MINVERSION        | `TLSv1` | minimum TLS version. TLSv1, TLSv1.1, TLSv1.2, TLSv1.3 are the supported TLS versions |
-
