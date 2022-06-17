@@ -7,7 +7,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
 
 !!! Important "IDE Redirection"
-    While AMT supports this feature, the toolkit doesn't natively support it currently. 
+    While AMT supports this feature, the toolkit doesn't natively support it. 
 
 <figure class="figure-image">
 <img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
