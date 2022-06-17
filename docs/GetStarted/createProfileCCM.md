@@ -10,6 +10,9 @@ These features require user consent:
 - **Keyboard, Video, Mouse (KVM):** Control multiple devices with one keyboard, monitor, and mouse.
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
 
+!!! Important "IDE Redirection"
+    While AMT supports this feature, the toolkit doesn't natively support it. 
+
 <figure class="figure-image">
 <img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
@@ -41,7 +44,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
     !!! info "Info - Customized Redirection"        
-        Associating these features with a profile enables allows administrators to opt into desired redirection.
+        Associating these features with a profile enables administrators to opt into desired redirection.
 
         The toolkit defaults to enabling all redirection features.
 
