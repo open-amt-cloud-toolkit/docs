@@ -1,0 +1,1173 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/release-notes/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.0, mkdocs-material-7.3.0" name="generator"/>
+<title>Release Notes - Open Active Management Technology Cloud Toolkit</title>
+<link href="../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/videos.css" rel="stylesheet"/>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#release-highlights">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href=".." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Release Notes
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../GetStarted/prerequisites/">
+        Get Started
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../Deployment/overview/">
+        Deployment
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../Tutorials/uitoolkitReact/">
+        Tutorials
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../Reference/architectureOverview/">
+        Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../APIs/indexMPS/">
+        APIs
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../assets/images/logo-white-75px.png"/>
+</a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../announcements/">
+        Announcements
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Release Notes
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Release Notes
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#release-highlights">
+    Release Highlights
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#note-from-the-team">
+    Note From the Team
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-new">
+    What's New?
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get-the-details">
+    Get the Details
+  </a>
+<nav aria-label="Get the Details" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#additions-modifications-and-removals">
+    Additions, Modifications, and Removals
+  </a>
+<nav aria-label="Additions, Modifications, and Removals" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-amt-cloud-toolkit">
+    Open AMT Cloud Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps">
+    RPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps">
+    MPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rpc-go">
+    RPC-Go
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps-router">
+    MPS Router
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-web-ui">
+    Sample Web UI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ui-toolkit">
+    UI Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wsman-messages">
+    WSMAN-MESSAGES
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resolved-issues">
+    Resolved Issues
+  </a>
+<nav aria-label="Resolved Issues" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps_1">
+    RPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps_1">
+    MPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rpc-go_1">
+    RPC-Go
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-web-ui_1">
+    Sample Web UI
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-issues-and-requests">
+    Open Issues and Requests
+  </a>
+<nav aria-label="Open Issues and Requests" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#open-amt-cloud-toolkit_1">
+    Open AMT Cloud Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps_2">
+    RPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps_2">
+    MPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rpc">
+    RPC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-web-ui_2">
+    Sample Web UI
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ui-toolkit_1">
+    UI Toolkit
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../videos/">
+        Video Walkthroughs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../license/">
+        License
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Get Started
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Get Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/prerequisites/">
+        Prerequisites
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/setup/">
+        Set Up
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          Configure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Configure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/loginToUI/">
+        Login to Sample Web UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/createCIRAConfig/">
+        Create a CIRA Config
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+          Create an AMT Profile
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Create an AMT Profile
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/createProfileCCM/">
+        Create a Profile with CCM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/createProfileACM/">
+        Create a Profile with ACM
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          Connect
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/buildRPC/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GetStarted/manageDevice/">
+        Manage AMT Device
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Deployment/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Deployment/database/">
+        Database Replacement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Deployment/secrets/">
+        Secrets Management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Deployment/upgradeVersion/">
+        Upgrade Toolkit Version
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/uitoolkitReact/">
+        UI Toolkit KVM Module
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/apiTutorial/">
+        REST API Call
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/createWiFiConfig/">
+        Wireless Activation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/modifyUserAuth/">
+        Modify User Authentication
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5">
+          Scaling Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling Tutorials" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+          Scaling Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/docker-swarm/">
+        Docker Swarm*
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5_3" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3">
+          Kubernetes Deployments
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Kubernetes Deployments
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s/">
+        Kubernetes (K8s)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
+        AKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
+        EKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/service-mesh/">
+        KUMA Service Mesh
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_6" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/architectureOverview/">
+        Architecture Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/powerstates/">
+        AMT Power States
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/guids/">
+        GUIDs in Intel® AMT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/logging/">
+        Logging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/productionVault/">
+        Production Mode Vault
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
+          Event Monitoring (MQTT)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring (MQTT)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Event Monitoring (MQTT)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MQTT/customMqttEvents/">
+        Customizing MQTT Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MQTT/viewMqttEvents/">
+        Viewing MQTT Events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
+          Management Presence Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Management Presence Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MPS/securityMPS/">
+        Security Information
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
+          Remote Provisioning Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPS/networkConfig/">
+        Network Profiles
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPS/securityRPS/">
+        Security Information
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/createProfileTLSConfig/">
+        Create Profile with TLS
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
+          Remote Provisioning Client
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Client
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPC/commandsRPC/">
+        RPC CLI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/RPC/libraryRPC/">
+        RPC Library
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
+          UI Toolkit
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+          UI Toolkit
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_1" id="__nav_5_10_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_1">
+          Controls
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_1">
+<span class="md-nav__icon md-icon"></span>
+          Controls
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/Controls/kvmControl/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/Controls/serialOverLANControl/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/localization/">
+        Localization
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_3" id="__nav_5_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_3">
+          React Bundles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_3">
+<span class="md-nav__icon md-icon"></span>
+          React Bundles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/Bundles/kvmReact/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/Bundles/serialOverLANReact/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/UIToolkit/webpackConfig/">
+        Webpack Configuration
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
+          Intel® MEBX
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MEBX/dnsSuffix/">
+        DNS Suffix
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/MEBX/unprovision/">
+        Unprovisioning
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
+          Certificates
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Certificates" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+          Certificates
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/Certificates/remoteProvisioning/">
+        Provisioning Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/Certificates/tls/">
+        TLS Certificate
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../APIs/indexMPS/">
+        Management Presence Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../APIs/indexRPS/">
+        Remote Provisioning Server
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/release-notes.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1>Release Notes</h1>
+<h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">¶</a></h2>
+<div style="text-align:center;">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/jh_NCEvLWHs" title="YouTube video player" width="800"></iframe>
+</div>
+<p><br/></p>
+<p class="divider"></p>
+<h2 id="note-from-the-team">Note From the Team<a class="headerlink" href="#note-from-the-team" title="Permanent link">¶</a></h2>
+<p>Hey everyone,</p>
+<p>It has been a very quick 6 weeks and the team is very excited to deliver <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> version 2.3.  Unlike previous releases, every component of the Toolkit has been updated in some way.  If you haven't had a chance yet, I encourage you to watch the release video where Mike provides some highlights from this release.  Additionally, we've added a <a href="https://open-amt-cloud-toolkit.github.io/docs/2.3/videos/">Video Walkthroughs</a> section to our documentation where Bryan Wendlandt has been creating video tutorials of our <a href="https://open-amt-cloud-toolkit.github.io/docs/2.3/GetStarted/prerequisites/">Getting Started Guide</a>.  Watch that space for additional video content to be delivered there.</p>
+<p>Find out <a href="#whats-new">what's new</a> and delve into the <a href="#get-the-details">details</a> below-- and enjoy our new release of the toolkit.</p>
+<p><em>Best wishes,</em><br/>
+<em>Matt Primrose | Product Owner | The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em>
+<br/></p>
+<p class="divider"></p>
+<h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">¶</a></h2>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z"></path></svg></span><strong> Customer Request: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go as a library</strong></p>
+<p>We added an option to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a library, allowing developers to import <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> into their applications as a dynamically linked library (.dll) or shared object (.so). Rather than deploy and execute the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as an application, developers can now call and monitor <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> directly within their own applications. GCC is still required.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Refactoring</strong></p>
+<p>Our Go version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> underwent significant refactoring to eliminate all C/C++ code. By transitioning to 100% Go code, we removed the requirement of the GCC toolchain to build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as an application. Developers can cross-compile <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on Linux or Windows and use it on any Go-supported OS (e.g., We tested on Fedora, and it worked without any code changes). The build time is greatly reduced. This version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> is still in beta.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z"></path></svg></span><strong> Customer Request: GET Device by hostname</strong></p>
+<p>Our GET Devices <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call now supports a new hostname query parameter. If you know the hostname, it is easy to find the specific device connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. Provide the hostname of the device with the hostname= query parameter, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will return the device with the matching hostname.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1z"></path></svg></span><strong> Feature: Add <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> support for static IP devices</strong></p>
+<p>With this release we added support for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configurations with static IP addresses. AMT will now connect to an <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> when it is configured with a static IP address.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1z"></path></svg></span><strong> Feature: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> events for redirection start and stop </strong></p>
+<p>When redirection sessions start or stop (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>), <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will now send an event to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> broker</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Angular - v13 support</strong></p>
+<p>With this release, UI-Toolkit-Angular supports Angular v13. This breaking change is indicated by the major version transition to 3.x.x. If you are still on Angular 12, stick with UI-Toolkit-Angular 2.0.5 until you migrate Angular v13.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 5.6 5 7l1.4-2.5L5 2l2.5 1.4L10 2 8.6 4.5 10 7 7.5 5.6m12 9.8L22 14l-1.4 2.5L22 19l-2.5-1.4L17 19l1.4-2.5L17 14l2.5 1.4M22 2l-1.4 2.5L22 7l-2.5-1.4L17 7l1.4-2.5L17 2l2.5 1.4L22 2m-8.66 10.78 2.44-2.44-2.12-2.12-2.44 2.44 2.12 2.12m1.03-5.49 2.34 2.34c.39.37.39 1.02 0 1.41L5.04 22.71c-.39.39-1.04.39-1.41 0l-2.34-2.34c-.39-.37-.39-1.02 0-1.41L12.96 7.29c.39-.39 1.04-.39 1.41 0z"></path></svg></span><strong> Improvement: <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> - <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> mouse alignment when scrolled</strong></p>
+<p>We fixed a remote and local mouse pointers misalignment problem that occurred during downward scrolling in <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>.  This is implemented in version 2.0.6 of the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></p>
+<h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">¶</a></h2>
+<h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">¶</a></h3>
+<h4 id="open-amt-cloud-toolkit"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>deployment:</strong> updated Kong routes for Docker, K8S, and ACI deployments</li>
+</ul>
+<h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>cira:</strong> adds setting MpsType to 'both' (#a4a0017)</li>
+<li><strong>cira:</strong> removes DHCP check (#8ef1d52) </li>
+<li><strong>healthcheck:</strong> handle vault missing (#5cd1627) </li>
+<li><strong>network:</strong> handles put response for AMT_generalsettings (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/638">#638</a>) (#5234e9b) </li>
+<li><strong>network:</strong> handles when only one ethernet port setting (#5db81fc) </li>
+<li><strong>nonce:</strong> set nonce to 8 character hexadecimal (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/609">#609</a>) (#01fda14) </li>
+<li><strong>websockets:</strong> add input validation checks (#0725fce) </li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>API:</strong> Adds hostname query parameter to getDevices (#d67cc3d) </li>
+<li><strong>redirection:</strong> adds mqtt start and stop events for redirection (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/573">#573</a>) (#e51906e) </li>
+<li><strong>ws:</strong> prevents multiple <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> session attempts (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/587">#587</a>) (#8051abb) </li>
+<li><strong>dockerfile:</strong> set user as non-root (#4808186) </li>
+<li><strong>nonce:</strong> set nonce to 8 character hexadecimal (#2135830) </li>
+<li><strong>healthcheck:</strong> improves testability and code coverage (#02ff45f) </li>
+<li><strong>mps:</strong> Input validation checks in APFProcessor for max size (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/597">#597</a>) (#82e3efd) </li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>build:</strong> adds support for c-shared buildmode</li>
+<li><strong>logging:</strong> adds support for fine grained control of log output</li>
+<li><strong>heci:</strong> adds retry for device busy</li>
+<li><strong>lms:</strong> rewrite lme communication in go</li>
+<li><strong>main:</strong> eliminate need for CGO if not building library</li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="mps-router"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<a class="headerlink" href="#mps-router" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>env:</strong> add option to override default mps host (#0b5fdd9) </li>
+<li><strong>healthcheck:</strong> adds flag for checking db status (#b3360c7) </li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">¶</a></h4>
+<ul>
+<li>cira + static ip configuration (#9c0f06a) </li>
+<li>Show DHCP/Static on Profiles page (#22432c2) </li>
+<li><strong>redirection:</strong> adds property to track redirection state (#aaaaff8) </li>
+<li>fix status code expectation (#2f080e9) </li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">¶</a></h4>
+<ul>
+<li>aligns cursor properly when scrolling (#f4d4669) </li>
+<li><strong>kvm:</strong> scrolling offset for mouse is fixed in ui-toolkit 2.0.6 (#dabc394)</li>
+<li><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> - Angular <strong><em> Breaking Change </em></strong>  components now require angular 13</li>
+<li>see change log for full list of changes</li>
+</ul>
+<h4 id="wsman-messages">WSMAN-MESSAGES<a class="headerlink" href="#wsman-messages" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>createBody:</strong> handles LinkPolicy arrays (#96ba28e) </li>
+<li><strong>amt:</strong> remove un-implemented method (#07bf552)</li>
+<li>see change log for full list of changes</li>
+<li><strong>cira:</strong> adds MpsType set to both (#5fb6763)</li>
+<li><strong>AMT:</strong> Adds Remote Access Policy Applies to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> (#b8ca4b9) </li>
+</ul>
+<h2 id="resolved-issues">Resolved Issues<a class="headerlink" href="#resolved-issues" title="Permanent link">¶</a></h2>
+<h4 id="rps_1"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/629">Vault health check can return a false positive result</a>:</strong> Bug</li>
+</ul>
+<h4 id="mps_1"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/548">Allow filtering devices by hostname</a>:</strong> Enhancement</li>
+</ul>
+<h4 id="rpc-go_1"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/42">Root certificates not present in AMT device</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/26">both c rpc and rpc-go seem to be missing the DNS Suffix set in MEBx</a>:</strong> Needs More Investigation</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/25">rpc-go missing some output compared to the c version, and intermittently misses other pieces</a>:</strong> Bug</li>
+</ul>
+<h4 id="sample-web-ui_1"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/586">Websocket Connection Failures should be propagated to UI</a>:</strong> Enhancement</li>
+</ul>
+<h2 id="open-issues-and-requests">Open Issues and Requests<a class="headerlink" href="#open-issues-and-requests" title="Permanent link">¶</a></h2>
+<h4 id="open-amt-cloud-toolkit_1"><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#open-amt-cloud-toolkit_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/103">Kustomize Install</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/110">After proxy, where to config the proxy or change the npm repository before docker-compose?</a>:</strong> Documentation</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues/117">Support for MongoDB in addition to PostgreSQL</a>:</strong> Enhancement</li>
+</ul>
+<h4 id="rps_2"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps_2" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/97"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> should support wildcard <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr></a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/254">Data shouldn't be added if vault calls fail</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/414">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/524">Support Intel AMT Alarm Clock feature</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/594">Poor error msg related WiFi profile issues</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rps/issues/597"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> not able to remove wifi profile from already configured deviceEnhancement</a>:</strong> Bug </li>
+</ul>
+<h4 id="mps_2"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps_2" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/104">Should return error on additional <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> connections for a single device</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/300">AMT does not connect to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> after configuration</a>:</strong> Known Issue</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/360">Use database abstraction/ORM layer to support multiple SQL-based database</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/439">Feature Request: Create configuration parameter to disable "Auth" Service from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/441"><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection getting dropped randomly</a>:</strong> Bug</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/mps/issues/527">Short Lived Bearer Token for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Session Support</a>:</strong> Enhancement</li>
+</ul>
+<h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/27">activation failures would benefit from passing the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> error code to the client</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/28">Gosh it would be excellent if rpc could tell the user that they don't have an AMT compatible network device</a>:</strong> Enhancement</li>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/30">possible timing issues in rpc-go?</a>:</strong> Enhancement</li>
+</ul>
+<h4 id="sample-web-ui_2"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui_2" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/483">UI always shows "Certificate Not Yet Uploaded"</a>:</strong> Question</li>
+</ul>
+<h4 id="ui-toolkit_1"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit_1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><a href="https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/451">Command string generated from "Add a New Device" dialog does not activate a machine.</a>:</strong> Bug</li>
+</ul>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Application footer -->
+<footer class="md-footer">
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<!-- Social links -->
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
