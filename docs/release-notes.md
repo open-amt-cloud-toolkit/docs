@@ -12,27 +12,27 @@
 
 :material-star:** Customer Request: Support for configuring Wi-Fi only platforms**
 
-With this release, Customers can now provision and manage vPro AMT plaforms which only have a vPro AMT supported Wi-Fi adapter. These platforms can only be activated in CCM. For ACM activation, we can either do it through MEBx (which requires a manual touch) or platform should have a vPro AMT supported ethernet adapter.
+With this release, Customers can now provision and manage vPro AMT platforms which only have a vPro AMT supported Wi-Fi adapter. These platforms can only be activated in CCM. For ACM activation, manual touch through MEBx is required.
 
-:material-star:** Customer Request: Short lived bearer token for redirection sessions**
+:material-star:** Customer Request: Short lived JWT for redirection sessions**
 
-MPS can now issue a short-lived bearer token that can be used to authenticate Redirection sessions between the console and MPS so that Redirection sessions can only be initiated by an authenticated and authorized user. This short-lived token can be configured using "redirection_expiration_time" property in mpsrc file within MPS. You can find more details about the API under User Authentication section of MPS APIs.
+MPS can now issue a short-lived JWT (default 5 min) that can be used to authenticate Redirection sessions between the console and MPS so that Redirection sessions can only be initiated by an authenticated and authorized user. This short-lived token can be configured using "redirection_expiration_time" property in `.mpsrc` file within MPS or overridden with ENV. You can find more details about the API under User Authentication section of MPS APIs.
 
-:material-new-box:** Feature: HTTP Entity Tag Support in RPS**
+:material-new-box:** Feature: HTTP Entity Conflict Support in RPS**
 
-We added support for Entity Tag (Etag) in RPS, so that we can pre-check if profile data is fresh before updating it (to avoid mid-air collisions). This will help avoid situations where profile data has been changed prior to sending updates.
+We added support for entity conflicts in RPS, so that we can pre-check if profile data is fresh before updating it (to avoid mid-air collisions). This will help avoid situations where profile data has been changed prior to sending updates. This adds a new `version` property to the APIs and will be required to be sent in the payload for updates or the value must be present in the `if-match` header.
 
 :material-star:** Customer Request: Configuration setting to disable/enable MPS auth**
 
-When customers use their own authentication server, there should be a way to disable default MPS JWT User Authentication. Configuration setting "web_auth_enabled" in MPS lets users to enable/disable default MPS JWT User Authentication. This configuration is enabled by default and recommend to set it to false only when using a different authentication server.
+When customers use their own authentication server, there should be a way to disable default MPS JWT User Authentication. The configuration setting "web_auth_enabled" in MPS lets users to enable/disable default MPS JWT User Authentication. This configuration is enabled by default and recommend to set it to false only when using a different authentication server. This setting will not affect the new API Endpoint for Short Lived JWTs that is required for Redirection sessions.
 
 :material-new-box:** Improvement: Set minimum TLS version for CIRA connections**
 
-Some versions of TLS encryption algorithms supported by AMT are weaker than others. This lets users to enforce minimum TLS version to restrict CIRA connections (connection betwween MPS and AMT) from older versions of AMT. By deafult, "minVersion" property (within "mps_tls_config") is set to TLSv1 as the older versions of AMT (i.e., AMT version <=10) use TLSv1.
+Some versions of TLS encryption algorithms supported by AMT are weaker than others. This configuration option lets users to enforce minimum TLS version to restrict CIRA connections (connection betwween MPS and AMT) from older versions of AMT. By default, `minVersion` property (within `mps_tls_config`) in `.mpsrc` is set to TLSv1 as the older versions of AMT (i.e., AMT version <=10) use TLSv1. Changing this value to newer versions of TLS will effectively prevent older versions of AMT from connecting.
 
-:material-new-box:** Improvement: Remove auto-load slider and always auto-load certificate**
+:material-new-box:** Improvement: Removed auto-load toggle and always auto-load certificate**
 
-Removed CIRA certificate auto-load slider because sample-web-ui is typically hosted with the full Open AMT Cloud Toolkit stack/services together. Sample-Web-UI will now auto-load the CIRA certificate so that the UI is more simplified.
+We removed the auto-load toggle from the CIRA Config page on our Sample Web UI as it is typically used with the full Open AMT Cloud Toolkit. By default, the CIRA certificate will always auto-load so that the UI is more simplified. If you wish to manually provide the CIRA certificate, you may do so using the RPS API directly.
 
 
 ## Get the Details
