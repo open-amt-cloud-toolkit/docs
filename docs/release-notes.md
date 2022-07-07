@@ -43,6 +43,17 @@ Some versions of TLS encryption algorithms supported by AMT are weaker than othe
 
 We removed the auto-load toggle from the CIRA Config page on our Sample Web UI as it is typically used with the full Open AMT Cloud Toolkit. By default, the CIRA certificate will always auto-load so that the UI is more simplified. If you wish to manually provide the CIRA certificate, you may do so using the RPS API directly.
 
+:material-star:** Coming Soon: Set AMT Features with AMT Profile**
+
+In our next release, we will be supporting the ability to set AMT Features as part of the AMT Profile during activation. This includes settings such as IDE Redirection, and User Consent Mode for KVM.  This feature will eliminate the need for setting these features post-activation.  While we wanted to complete this feature for this release, we weren't quite able to get everything in. However, the database changes to support it are included with this release. If you are migrating from v2.3.0 version of the toolkit, you'll need to add the following columns to the `profiles` table in the RPS Database.
+
+tls_mode integer NULL,<br>
+user_consent varchar(7) NULL,<br>
+ider_enabled BOOLEAN NULL,<br>
+kvm_enabled BOOLEAN NULL,<br>
+sol_enabled BOOLEAN NULL,<br>
+
+This will prepare the database for the feature to come.
 
 ## Get the Details
 
