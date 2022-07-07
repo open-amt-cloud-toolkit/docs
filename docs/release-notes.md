@@ -11,7 +11,7 @@
 
 Hey everyone,
 
-We are very excited to release Open AMT Cloud Toolkit version 2.4.  For this releases, team majorly focused on adding features requested by customer and making improvements to automation tests. You can find more details under [what's new](#whats-new) section which outlines key features added to this release. Also, If you haven't had a chance yet, I encourage you to watch the release video where Mike provides some highlights from this release.
+We are very excited to release Open AMT Cloud Toolkit version 2.4. For this release, the team primarily focused on adding features requested by customers and making improvements to automation tests. You can find more details under [what's new](#whats-new) section which outlines key features added to this release. Also, If you haven't had a chance yet, I encourage you to watch the release video where Mike provides some highlights from this release.
 
 *Best wishes,*<br>
 *The Open AMT Cloud Toolkit Team*
