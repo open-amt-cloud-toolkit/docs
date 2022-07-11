@@ -21,7 +21,7 @@ We are very excited to release Open AMT Cloud Toolkit version 2.4. For this rele
 
 :material-star:** Customer Request: Support for configuring Wi-Fi only platforms**
 
-With this release, Customers can now provision and manage vPro AMT platforms which only have a vPro AMT supported Wi-Fi adapter. These platforms can only be activated in CCM. For ACM activation, manual touch through MEBx is required.
+With this release, customers can now provision and manage vPro AMT platforms which only have a vPro AMT supported Wi-Fi adapter. These platforms can only be activated in CCM. For ACM activation, manual touch through MEBx is required.
 
 :material-star:** Customer Request: Short lived JWT for redirection sessions**
 
@@ -29,15 +29,15 @@ MPS can now issue a short-lived JWT (default 5 min) that can be used to authenti
 
 :material-new-box:** Feature: HTTP Entity Conflict Support in RPS**
 
-We added support for entity conflicts in RPS, so that we can pre-check if profile data is fresh before updating it (to avoid mid-air collisions). This will help avoid situations where profile data has been changed prior to sending updates. This adds a new `version` property to the APIs and will be required to be sent in the payload for updates or the value must be present in the `if-match` header.
+We now check for entity conflicts in RPS, running a pre-check to determine if profile data is fresh before updating it. This helps avoids collisions between fresh and stale profile data, which may occur if the profile has been changed prior to sending updates. Entity conflict support adds a new `version` property to the APIs and will be required to be sent in the payload for updates or the value must be present in the `if-match` header.
 
 :material-star:** Customer Request: Configuration setting to disable/enable MPS auth**
 
-When customers use their own authentication server, there should be a way to disable default MPS JWT User Authentication. The configuration setting "web_auth_enabled" in MPS lets users to enable/disable default MPS JWT User Authentication. This configuration is enabled by default and recommend to set it to false only when using a different authentication server. This setting will not affect the new API Endpoint for Short Lived JWTs that is required for Redirection sessions.
+Customers using their own authentication server needed a way to disable default MPS JWT User Authentication. The configuration setting `web_auth_enabled` in MPS allows users to enable/disable default MPS JWT User Authentication. This configuration is enabled by default. We recommend a value of false only when using a different authentication server. This setting will not affect the new API Endpoint for Short Lived JWTs that is required for Redirection sessions.
 
 :material-new-box:** Improvement: Set minimum TLS version for CIRA connections**
 
-Some versions of TLS encryption algorithms supported by AMT are weaker than others. This configuration option lets users to enforce minimum TLS version to restrict CIRA connections (connection betwween MPS and AMT) from older versions of AMT. By default, `minVersion` property (within `mps_tls_config`) in `.mpsrc` is set to TLSv1 as the older versions of AMT (i.e., AMT version <=10) use TLSv1. Changing this value to newer versions of TLS will effectively prevent older versions of AMT from connecting.
+Some versions of TLS encryption algorithms supported by AMT are weaker than others. This configuration option lets users enforce a minimum TLS version to restrict CIRA connections, the connection between MPS and AMT, from older versions of AMT. In `.mpsrc` within `mps_tls_config`, the default value of `minVersion` property is set to TLSv1, as the older versions of AMT, version 10 and older, use TLSv1. Changing this value to newer versions of TLS will effectively prevent older versions of AMT from connecting.
 
 :material-new-box:** Improvement: Removed auto-load toggle and always auto-load certificate**
 
@@ -45,7 +45,7 @@ We removed the auto-load toggle from the CIRA Config page on our Sample Web UI a
 
 :material-star:** Coming Soon: Set AMT Features with AMT Profile**
 
-In our next release, we will be supporting the ability to set AMT Features as part of the AMT Profile during activation. This includes settings such as IDE Redirection, and User Consent Mode for KVM.  This feature will eliminate the need for setting these features post-activation.  While we wanted to complete this feature for this release, we weren't quite able to get everything in. However, the database changes to support it are included with this release. If you are migrating from v2.3.0 version of the toolkit, you'll need to add the following columns to the `profiles` table in the RPS Database.
+In our next release, we will support the ability to set AMT Features as part of the AMT Profile during activation. This includes settings such as IDE Redirection and User Consent Mode for KVM. This feature eliminates the need for setting these features post-activation. While we wanted to complete this feature for this release, we weren't quite able to get everything in. However, the database changes to support this feature are included with this release. If you are migrating from v2.3.0 version of the toolkit, you'll need to add the following columns to the `profiles` table in the RPS Database:
 
 ```sql
 tls_mode integer NULL,
