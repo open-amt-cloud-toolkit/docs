@@ -71,6 +71,7 @@ nav:
       - GUIDs in Intel® AMT: Reference/guids.md
       - Logging: Reference/logging.md
       - Production Mode Vault: Reference/productionVault.md
+      - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
