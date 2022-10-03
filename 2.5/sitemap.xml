@@ -136,6 +136,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/sslpostgresLocal/</loc>
+         <lastmod>2022-10-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/troubleshooting/</loc>
          <lastmod>2022-10-03</lastmod>
          <changefreq>daily</changefreq>

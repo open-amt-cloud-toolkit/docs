@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/createProfileCCM/" rel="canonical"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/sslpostgresLocal/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.0, mkdocs-material-7.3.0" name="generator"/>
-<title>Create a Profile with CCM - Open Active Management Technology Cloud Toolkit</title>
+<title>SSL with Local Postgres - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -27,7 +27,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#create-a-profile">
+<a class="md-skip" href="#edit-docker-composeyml">
           Skip to content
         </a>
 </div>
@@ -51,7 +51,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Create a Profile with CCM
+              SSL with Local Postgres
             
           </span>
 </div>
@@ -108,7 +108,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../prerequisites/">
+<a class="md-tabs__link" href="../../GetStarted/prerequisites/">
         Get Started
       </a>
 </li>
@@ -123,7 +123,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../Reference/architectureOverview/">
+<a class="md-tabs__link md-tabs__link--active" href="../architectureOverview/">
         Reference
       </a>
 </li>
@@ -200,8 +200,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2">
           Get Started
           <span class="md-nav__icon md-icon"></span>
@@ -213,17 +213,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../prerequisites/">
+<a class="md-nav__link" href="../../GetStarted/prerequisites/">
         Prerequisites
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../setup/">
+<a class="md-nav__link" href="../../GetStarted/setup/">
         Set Up
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3">
           Configure
           <span class="md-nav__icon md-icon"></span>
@@ -235,17 +235,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../loginToUI/">
+<a class="md-nav__link" href="../../GetStarted/loginToUI/">
         Login to Sample Web UI
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../createCIRAConfig/">
+<a class="md-nav__link" href="../../GetStarted/createCIRAConfig/">
         Create a CIRA Config
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3_3">
           Create an AMT Profile
           <span class="md-nav__icon md-icon"></span>
@@ -256,36 +256,13 @@
           Create an AMT Profile
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Create a Profile with CCM
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createProfileCCM/">
         Create a Profile with CCM
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-a-profile">
-    Create a Profile
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#next-up">
-    Next up
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../createProfileACM/">
+<a class="md-nav__link" href="../../GetStarted/createProfileACM/">
         Create a Profile with ACM
       </a>
 </li>
@@ -308,12 +285,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../buildRPC/">
+<a class="md-nav__link" href="../../GetStarted/buildRPC/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../manageDevice/">
+<a class="md-nav__link" href="../../GetStarted/manageDevice/">
         Manage AMT Device
       </a>
 </li>
@@ -333,7 +310,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -483,7 +460,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -493,8 +470,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Reference
           <span class="md-nav__icon md-icon"></span>
@@ -506,34 +483,57 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/architectureOverview/">
+<a class="md-nav__link" href="../architectureOverview/">
         Architecture Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/powerstates/">
+<a class="md-nav__link" href="../powerstates/">
         AMT Power States
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/guids/">
+<a class="md-nav__link" href="../guids/">
         GUIDs in Intel® AMT
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/logging/">
+<a class="md-nav__link" href="../logging/">
         Logging
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/productionVault/">
+<a class="md-nav__link" href="../productionVault/">
         Production Mode Vault
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/sslpostgresLocal/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          SSL with Local Postgres
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         SSL with Local Postgres
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#edit-docker-composeyml">
+    Edit 'docker-compose.yml'
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#build-image">
+    Build Image
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item md-nav__item--section md-nav__item--nested">
 <input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
@@ -548,12 +548,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MQTT/customMqttEvents/">
+<a class="md-nav__link" href="../MQTT/customMqttEvents/">
         Customizing MQTT Events
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MQTT/viewMqttEvents/">
+<a class="md-nav__link" href="../MQTT/viewMqttEvents/">
         Viewing MQTT Events
       </a>
 </li>
@@ -573,12 +573,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MPS/configuration/">
+<a class="md-nav__link" href="../MPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MPS/securityMPS/">
+<a class="md-nav__link" href="../MPS/securityMPS/">
         Security Information
       </a>
 </li>
@@ -598,22 +598,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/configuration/">
+<a class="md-nav__link" href="../RPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/networkConfig/">
+<a class="md-nav__link" href="../RPS/networkConfig/">
         Network Profiles
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPS/securityRPS/">
+<a class="md-nav__link" href="../RPS/securityRPS/">
         Security Information
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/createProfileTLSConfig/">
+<a class="md-nav__link" href="../createProfileTLSConfig/">
         Create Profile with TLS
       </a>
 </li>
@@ -633,17 +633,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/buildRPC_Manual/">
+<a class="md-nav__link" href="../RPC/buildRPC_Manual/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/commandsRPC/">
+<a class="md-nav__link" href="../RPC/commandsRPC/">
         RPC CLI
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/RPC/libraryRPC/">
+<a class="md-nav__link" href="../RPC/libraryRPC/">
         RPC Library
       </a>
 </li>
@@ -675,12 +675,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/kvmControl/">
+<a class="md-nav__link" href="../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/serialOverLANControl/">
+<a class="md-nav__link" href="../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
 </li>
@@ -688,7 +688,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/localization/">
+<a class="md-nav__link" href="../UIToolkit/localization/">
         Localization
       </a>
 </li>
@@ -705,12 +705,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/kvmReact/">
+<a class="md-nav__link" href="../UIToolkit/Bundles/kvmReact/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/serialOverLANReact/">
+<a class="md-nav__link" href="../UIToolkit/Bundles/serialOverLANReact/">
         Serial Over LAN
       </a>
 </li>
@@ -718,7 +718,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/UIToolkit/webpackConfig/">
+<a class="md-nav__link" href="../UIToolkit/webpackConfig/">
         Webpack Configuration
       </a>
 </li>
@@ -738,12 +738,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MEBX/dnsSuffix/">
+<a class="md-nav__link" href="../MEBX/dnsSuffix/">
         DNS Suffix
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/MEBX/unprovision/">
+<a class="md-nav__link" href="../MEBX/unprovision/">
         Unprovisioning
       </a>
 </li>
@@ -763,12 +763,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/Certificates/remoteProvisioning/">
+<a class="md-nav__link" href="../Certificates/remoteProvisioning/">
         Provisioning Certificate
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/Certificates/tls/">
+<a class="md-nav__link" href="../Certificates/tls/">
         TLS Certificate
       </a>
 </li>
@@ -788,7 +788,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -830,87 +830,56 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/GetStarted/createProfileCCM.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/sslpostgresLocal.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1>Create a Profile with CCM</h1>
-<p>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) provides full access to features of Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>), but it does require user consent for all redirection features.</p>
-<p><strong>While <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> includes the ability to use the features listed below with user consent in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> does not currently support it.</strong></p>
-<p>These features require user consent:</p>
-<ul>
-<li>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Control</li>
-<li>IDE-Redirection for sharing and mounting images remotely</li>
-<li>Serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>)</li>
-</ul>
-<figure class="figure-image">
-<img alt="Figure 1: Set up configuration and profiles for N number of clients" src="..\..\assets\images\Profiles.png"/>
-<figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
-</figure>
-<h2 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">¶</a></h2>
-<p>Profiles provide configuration information to the firmware on platforms featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
-<div class="admonition info">
-<p class="admonition-title">Info - Passwords</p>
-<p><strong>Passwords</strong></p>
-<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview#passwords">Reference -&gt; Architecture Overview</a>.</p>
-</div>
-<p><strong>To create a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile:</strong></p>
+<h1>SSL with Local Postgres</h1>
+<p>This guide will walk through how to enable an SSL connection in the Postgres Docker container. By default in the Getting Started Guide, we disable it to ease the setup process and environment for development.</p>
+<p>For production environments, using a cloud-hosted database with an SSL connection to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for <a href="../../Tutorials/Scaling/overview/">Azure or AWS here</a>.</p>
+<h2 id="edit-docker-composeyml">Edit 'docker-compose.yml'<a class="headerlink" href="#edit-docker-composeyml" title="Permanent link">¶</a></h2>
 <ol>
 <li>
-<p>Select the <strong>Profiles</strong> tab from the menu on the left.</p>
+<p>Update the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection strings to <code>no-verify</code> instead of <code>disable</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">RPS_MPS_SERVER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://mps:3000</span><span class="w"></span>
+<span class="w">  </span><span class="nt">RPS_SECRETS_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SECRETS_PATH}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">RPS_VAULT_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">RPS_VAULT_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_ADDRESS}</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">RPS_CONNECTION_STRING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/rpsdb?sslmode=no-verify</span><span class="w"></span>
+</span><span class="nn">...</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">MPS_INSTANCE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">'{{.Task.Name}}'</span><span class="w"></span>
+<span class="w">  </span><span class="nt">MPS_SECRETS_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SECRETS_PATH}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">MPS_VAULT_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">MPS_VAULT_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_ADDRESS}</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">MPS_CONNECTION_STRING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/mpsdb?sslmode=no-verify</span><span class="w"></span>
+</span><span class="nn">...</span><span class="w"></span>
+</code></pre></div>
 </li>
 <li>
-<p>Under the <strong>Profiles</strong> tab, click <strong>New</strong> in the top-right corner to create a profile.
- <br/>
-<figure class="figure-image">
-<img alt="Figure 2: Create a new profile" src="..\..\assets\images\RPS_NewProfile.png"/>
-<figcaption>Figure 2: Create a new profile</figcaption>
-</figure>
-</p>
-</li>
-<li>
-<p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
-</li>
-<li>
-<p>Under <strong>Activation Mode</strong>, select <strong>Client Control Mode</strong> from the dropdown menu.</p>
-</li>
-<li>
-<p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
-</div>
-</li>
-<li>
-<p>The <strong>MEBX Password</strong> field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) cannot be set when activating in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> due to the lower level of trust when compared to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</p>
-</li>
-<li>
-<p>Leave DHCP as the default for <strong>Network Configuration</strong>.</p>
-</li>
-<li>
-<p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
-</li>
-<li>
-<p>Select <strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>(Cloud)</strong> for Connection Configuration.</p>
-</li>
-<li>
-<p>Select the name of the <strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Configuration</strong> you created previously from the drop-down menu.</p>
-</li>
-<li>
-<p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../../Tutorials/createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
-</li>
-<li>
-<p>Click <strong>Save.</strong></p>
-<div class="admonition example">
-<p class="admonition-title">Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></p>
-<p><figure class="figure-image">
-<img alt="Figure 3: Example CCM profile" src="..\..\assets\images\RPS_CreateProfile.png"/>
-<figcaption>Figure 3: Example <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile</figcaption>
-</figure></p>
-</div>
+<p>Uncomment the <code>command:</code> line in the <code>db</code> section.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
+<span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./pg</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./Dockerfile</span><span class="w"></span>
+<span class="hll"><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key</span><span class="w"></span>
+</span><span class="nt">networks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span><span class="w"></span>
+<span class="nn">...</span><span class="w"></span>
+</code></pre></div>
 </li>
 </ol>
-<h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
-<p><strong><a href="../buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a></strong></p>
+<h2 id="build-image">Build Image<a class="headerlink" href="#build-image" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Build the new Postgres image with SSL enabled. </p>
+<div class="highlight"><pre><span></span><code>docker-compose up -d --build
+</code></pre></div>
+</li>
+</ol>
 </article>
 </div>
 </div>
