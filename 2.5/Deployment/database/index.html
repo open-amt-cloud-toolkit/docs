@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Deployment/database/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-7.3.0" name="generator"/>
+<title>Database Replacement - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#what-youll-do">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Database Replacement
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../GetStarted/prerequisites/">
+        Get Started
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../overview/">
+        Deployment
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Tutorials/uitoolkitReact/">
+        Tutorials
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Reference/architectureOverview/">
+        Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../APIs/indexMPS/">
+        APIs
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../announcements/">
+        Announcements
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../release-notes/">
+        Release Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Video Walkthroughs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../license/">
+        License
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Get Started
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Get Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/prerequisites/">
+        Prerequisites
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/setup/">
+        Set Up
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          Configure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Configure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/loginToUI/">
+        Login to Sample Web UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createCIRAConfig/">
+        Create a CIRA Config
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+          Create an AMT Profile
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Create an AMT Profile
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createProfileCCM/">
+        Create a Profile with CCM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createProfileACM/">
+        Create a Profile with ACM
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          Connect
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/buildRPC/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/manageDevice/">
+        Manage AMT Device
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Database Replacement
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Database Replacement
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-youll-do">
+    What You'll Do
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#review-db-schema">
+    Review DB Schema
+  </a>
+<nav aria-label="Review DB Schema" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rps">
+    RPS
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mps">
+    MPS
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-db-client">
+    Add DB Client
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-configuration">
+    Update Configuration
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implement-the-code">
+    Implement the Code
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../secrets/">
+        Secrets Management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../upgradeVersion/">
+        Upgrade Toolkit Version
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/uitoolkitReact/">
+        UI Toolkit KVM Module
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/apiTutorial/">
+        REST API Call
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/createWiFiConfig/">
+        Wireless Activation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/modifyUserAuth/">
+        Modify User Authentication
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5">
+          Scaling Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling Tutorials" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+          Scaling Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/docker-swarm/">
+        Docker Swarm*
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5_3" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3">
+          Kubernetes Deployments
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Kubernetes Deployments
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s/">
+        Kubernetes (K8s)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
+        AKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
+        EKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/service-mesh/">
+        KUMA Service Mesh
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_6" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/architectureOverview/">
+        Architecture Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/powerstates/">
+        AMT Power States
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/guids/">
+        GUIDs in Intel® AMT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/logging/">
+        Logging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/productionVault/">
+        Production Mode Vault
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
+          Event Monitoring (MQTT)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring (MQTT)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Event Monitoring (MQTT)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MQTT/customMqttEvents/">
+        Customizing MQTT Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MQTT/viewMqttEvents/">
+        Viewing MQTT Events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
+          Management Presence Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Management Presence Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MPS/securityMPS/">
+        Security Information
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
+          Remote Provisioning Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/networkConfig/">
+        Network Profiles
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/securityRPS/">
+        Security Information
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/createProfileTLSConfig/">
+        Create Profile with TLS
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
+          Remote Provisioning Client
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Client
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/commandsRPC/">
+        RPC CLI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/libraryRPC/">
+        RPC Library
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
+          UI Toolkit
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+          UI Toolkit
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_1" id="__nav_5_10_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_1">
+          Controls
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_1">
+<span class="md-nav__icon md-icon"></span>
+          Controls
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/kvmControl/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/serialOverLANControl/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/localization/">
+        Localization
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_3" id="__nav_5_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_3">
+          React Bundles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_3">
+<span class="md-nav__icon md-icon"></span>
+          React Bundles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/kvmReact/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/serialOverLANReact/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/webpackConfig/">
+        Webpack Configuration
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
+          Intel® MEBX
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MEBX/dnsSuffix/">
+        DNS Suffix
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MEBX/unprovision/">
+        Unprovisioning
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
+          Certificates
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Certificates" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+          Certificates
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/Certificates/remoteProvisioning/">
+        Provisioning Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/Certificates/tls/">
+        TLS Certificate
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexMPS/">
+        Management Presence Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexRPS/">
+        Remote Provisioning Server
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Deployment/database.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1>Database Replacement</h1>
+<p>To prepare for a production environment, replace the PostgreSQL* database with that of another provider. </p>
+<p>To replace the database, update these services:</p>
+<ul>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
+<li><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> </li>
+</ul>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
+<p>This guide focuses on updating the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> with an MS SQL Server (MSSQL) relational database. </p>
+<p>Here are the main tasks:</p>
+<ul>
+<li>Review DB Schema</li>
+<li>Add DB Client Dependency</li>
+<li>Update Configuration</li>
+<li>Implement the Code</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Database Recipe</p>
+<p>The example implementation below provides a step-by-step outline of database deployment. However, it is intended as a general guideline. You will need to write specific source code to support your custom solution. </p>
+</div>
+<h2 id="review-db-schema">Review DB Schema<a class="headerlink" href="#review-db-schema" title="Permanent link">¶</a></h2>
+<p>The diagrams below illustrates the database schema and relationships. </p>
+<h3 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">¶</a></h3>
+<p><div class="mermaid">erDiagram
+    DOMAIN {
+        string name
+        string domain_suffix
+        string provisioning_cert
+        string provisioning_cert_storage_format
+        string provisioning_cert_key
+        datetime creation_date
+        string created_by
+        string tenant_id
+    }
+</div>
+<div class="mermaid">erDiagram
+    PROFILE o|--o| CIRACONFIG : has
+    PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
+    PROFILE {
+      string profile_name
+      string activation
+      string amt_password
+      string cira_config_name
+      datetime creation_date
+      string created_by
+      string mebx_password
+      string tags
+      boolean dhcp_enabled
+      string tenant_id
+    }
+    CIRACONFIG 
+    CIRACONFIG {
+      string cira_config_name
+      string mps_server_address
+      int mps_port
+      string user_name
+      string password
+      string generate_random_password
+      string random_password_length
+      string common_name
+      int server_address_format
+      int auth_method
+      string mps_root_certificate
+      string proxydetails
+      string tenant_id
+    }
+
+    WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
+    WIRELESSCONFIGS {
+      string wireless_profile_name 
+      integer authentication_method 
+      integer encryption_method 
+      string ssid 
+      int psk_value 
+      string psk_passphrase 
+      int link_policy 
+      datetime creation_date 
+      string created_by 
+      string tenant_id 
+    }
+    PROFILES_WIRELESSCONFIGS {
+      string wireless_profile_name
+      string profile_name
+      datetime creation_date
+      string created_by
+      string tenant_id
+    }
+</div></p>
+<h3 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">¶</a></h3>
+<div class="mermaid">erDiagram
+    DEVICE {
+        guid uuid
+        string tags
+        string hostname
+        string mpsinstance
+        boolean connectionstatus
+        string mpsusername
+        string tenantid
+    }
+</div>
+<h2 id="add-db-client">Add DB Client<a class="headerlink" href="#add-db-client" title="Permanent link">¶</a></h2>
+<p>Add the database client library you will use to connect to your database. To support MSSQL, this example uses the Microsoft SQL Server client* for Node.js, <a href="https://www.npmjs.com/package/mssql"><code>node-mssql</code></a>.</p>
+<p><strong>To add the database:</strong></p>
+<p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
+<div class="highlight"><pre><span></span><code>npm install node-mssql --save
+</code></pre></div>
+<h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">¶</a></h2>
+<p>Update the connection string and a folder name for your db either in your ENV or .rc file.</p>
+<p><strong>To modify the configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">"db_provider"</span><span class="p">:</span><span class="s2">"mssql"</span><span class="p">,</span><span class="w"> </span><span class="c1">//This will be the name of the folder you create in the next section.</span><span class="w"></span>
+<span class="nt">"connection_string"</span><span class="p">:</span><span class="s2">"Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true'"</span><span class="p">,</span><span class="w"></span>
+</code></pre></div>
+<h2 id="implement-the-code">Implement the Code<a class="headerlink" href="#implement-the-code" title="Permanent link">¶</a></h2>
+<p><strong>To support the new database:</strong></p>
+<ol>
+<li>
+<p>Create a new folder in <code>./src/data</code>. The name of the new folder should be the name you supplied for the <code>db_provider</code> property, which is <code>mssql</code> in the example above.</p>
+<p><figure class="figure-image">
+<img alt="Figure 2: New folder mssql" src="..\..\assets\images\DbFolder.png" style="width:224px"/>
+<figcaption>Figure 2: New folder mssql</figcaption>
+</figure></p>
+</li>
+<li>
+<p>Create a file called <code>index.ts</code> that implements our IDB interface. Below is an example interface and query method:</p>
+<p><strong>Interface</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IDB</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">ciraConfigs</span><span class="o">:</span><span class="w"> </span><span class="kt">ICiraConfigTable</span><span class="w"></span>
+<span class="w">  </span><span class="nx">domains</span><span class="o">:</span><span class="w"> </span><span class="kt">IDomainsTable</span><span class="w"></span>
+<span class="w">  </span><span class="nx">profiles</span><span class="o">:</span><span class="w"> </span><span class="kt">IProfilesTable</span><span class="w"></span>
+<span class="w">  </span><span class="nx">wirelessProfiles</span><span class="o">:</span><span class="w"> </span><span class="kt">IWirelessProfilesTable</span><span class="w"></span>
+<span class="w">  </span><span class="nx">profileWirelessConfigs</span><span class="o">:</span><span class="w"> </span><span class="kt">IProfilesWifiConfigsTable</span><span class="w"></span>
+<span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Query Method</strong></p>
+<p>This query function is responsible for taking in the query parameters and performing the execution.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">mssql</span><span class="p">.</span><span class="nx">IResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"></span>
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">       </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">request</span><span class="p">().</span><span class="nx">query</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span><span class="w"></span>
+<span class="w">       </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">verbose</span><span class="p">(</span><span class="sb">`executed query: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="p">,</span><span class="w"> </span><span class="nx">rows</span><span class="o">:</span><span class="w"> </span><span class="kt">result.recordset.length</span><span class="w"> </span><span class="si">}</span><span class="sb">)}`</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"></span>
+<span class="w">       </span><span class="p">})</span><span class="w"></span>
+<span class="w">   </span><span class="p">})</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Implement each of the table interfaces. The base interface looks like this: 
+    <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ITable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">getCount</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">offset</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">getByName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="ow">delete</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">insert</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+    There are interfaces for each table in the <code>./interfaces/database</code> which adds specific functions on top of the base <code>ITable&lt;&gt;</code> interface.</p>
+<p>Here's an example of the get implementation for Domains:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * @description Get all Domains from DB</span>
+<span class="cm"> * @param {number} top</span>
+<span class="cm"> * @param {number} skip</span>
+<span class="cm"> * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">async</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="p">(</span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DEFAULT_TOP</span><span class="p">,</span><span class="w"> </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DEFAULT_SKIP</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AMTDomain</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+<span class="sb">   SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId</span>
+<span class="sb">   FROM domains </span>
+<span class="sb">  ORDER BY name`</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Complete all the queries for each table's functions to finish the implementation.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Best Practice</p>
+<p>That's it! Deployment complete.</p>
+<p>After replacing the database, ensure all the APIs are working as expected by running the API Tests with the Postman* application. You'll find the tests in the <code>./src/test/collections</code> folder.</p>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Application footer -->
+<footer class="md-footer">
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<!-- Social links -->
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({});</script></body>
+</html>

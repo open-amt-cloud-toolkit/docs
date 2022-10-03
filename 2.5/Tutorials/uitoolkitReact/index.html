@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Tutorials/uitoolkitReact/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-7.3.0" name="generator"/>
+<title>UI Toolkit KVM Module - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../assets/stylesheets/main.8b42a75e.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.3f5d1f46.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+<link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-00QEDJW2TS",{page_path:t.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS"></script>
+</head>
+<body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+<script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#add-mps-ui-toolkit-controls-to-a-webui">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--lifted" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              UI Toolkit KVM Module
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+</nav>
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../GetStarted/prerequisites/">
+        Get Started
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Deployment/overview/">
+        Deployment
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="./">
+        Tutorials
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../Reference/architectureOverview/">
+        Reference
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../APIs/indexMPS/">
+        APIs
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
+</a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../announcements/">
+        Announcements
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../release-notes/">
+        Release Notes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../videos/">
+        Video Walkthroughs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../license/">
+        License
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Get Started
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Started" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Get Started
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/prerequisites/">
+        Prerequisites
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/setup/">
+        Set Up
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3">
+          Configure
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configure" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Configure
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/loginToUI/">
+        Login to Sample Web UI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createCIRAConfig/">
+        Create a CIRA Config
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3">
+          Create an AMT Profile
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Create an AMT Profile" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          Create an AMT Profile
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createProfileCCM/">
+        Create a Profile with CCM
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/createProfileACM/">
+        Create a Profile with ACM
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          Connect
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Connect" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Connect
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/buildRPC/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../GetStarted/manageDevice/">
+        Manage AMT Device
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Deployment" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/database/">
+        Database Replacement
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/secrets/">
+        Secrets Management
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Deployment/upgradeVersion/">
+        Upgrade Toolkit Version
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Tutorials" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          UI Toolkit KVM Module
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        UI Toolkit KVM Module
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-youll-need">
+    What You'll Need
+  </a>
+<nav aria-label="What You'll Need" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+    Hardware
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#software">
+    Software
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-youll-do">
+    What You'll Do
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create-a-new-react-app">
+    Create a New React App
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-ui-toolkit">
+    Add UI Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-a-sample-control">
+    Add a Sample Control
+  </a>
+<nav aria-label="Add a Sample Control" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-keyboard-video-mouse-kvm-redirection">
+    Add Keyboard, Video, Mouse (KVM) Redirection
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-steps">
+    Next Steps
+  </a>
+<nav aria-label="Next Steps" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#try-other-controls">
+    Try Other Controls
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#customize-and-create-bundles">
+    Customize and Create Bundles
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#license-note">
+    License Note
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../apiTutorial/">
+        REST API Call
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../createWiFiConfig/">
+        Wireless Activation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modifyUserAuth/">
+        Modify User Authentication
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5" id="__nav_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5">
+          Scaling Tutorials
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Scaling Tutorials" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_5">
+<span class="md-nav__icon md-icon"></span>
+          Scaling Tutorials
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/docker-swarm/">
+        Docker Swarm*
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_5_3" id="__nav_4_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_5_3">
+          Kubernetes Deployments
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Kubernetes Deployments" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Kubernetes Deployments
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s/">
+        Kubernetes (K8s)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s-aks/">
+        AKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/Kubernetes/deployingk8s-eks/">
+        EKS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Scaling/Kubernetes/service-mesh/">
+        KUMA Service Mesh
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_4_6" id="__nav_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_6">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_6">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/architectureOverview/">
+        Architecture Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/powerstates/">
+        AMT Power States
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/guids/">
+        GUIDs in Intel® AMT
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/logging/">
+        Logging
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/productionVault/">
+        Production Mode Vault
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_6" id="__nav_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_6">
+          Event Monitoring (MQTT)
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Event Monitoring (MQTT)" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_6">
+<span class="md-nav__icon md-icon"></span>
+          Event Monitoring (MQTT)
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MQTT/customMqttEvents/">
+        Customizing MQTT Events
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MQTT/viewMqttEvents/">
+        Viewing MQTT Events
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_7" id="__nav_5_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_7">
+          Management Presence Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Management Presence Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_7">
+<span class="md-nav__icon md-icon"></span>
+          Management Presence Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MPS/securityMPS/">
+        Security Information
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_8" id="__nav_5_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_8">
+          Remote Provisioning Server
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Server" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_8">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Server
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/configuration/">
+        Configuration
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/networkConfig/">
+        Network Profiles
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPS/securityRPS/">
+        Security Information
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/createProfileTLSConfig/">
+        Create Profile with TLS
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_9" id="__nav_5_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_9">
+          Remote Provisioning Client
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Remote Provisioning Client" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_9">
+<span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Client
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/buildRPC_Manual/">
+        Build &amp; Run RPC
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/commandsRPC/">
+        RPC CLI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/RPC/libraryRPC/">
+        RPC Library
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10" id="__nav_5_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10">
+          UI Toolkit
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="UI Toolkit" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_10">
+<span class="md-nav__icon md-icon"></span>
+          UI Toolkit
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_1" id="__nav_5_10_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_1">
+          Controls
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Controls" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_1">
+<span class="md-nav__icon md-icon"></span>
+          Controls
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/kvmControl/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Controls/serialOverLANControl/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/localization/">
+        Localization
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_10_3" id="__nav_5_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_10_3">
+          React Bundles
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="React Bundles" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_10_3">
+<span class="md-nav__icon md-icon"></span>
+          React Bundles
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/kvmReact/">
+        Keyboard, Video, Mouse
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/Bundles/serialOverLANReact/">
+        Serial Over LAN
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/UIToolkit/webpackConfig/">
+        Webpack Configuration
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_11" id="__nav_5_11" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_11">
+          Intel® MEBX
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Intel® MEBX" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_11">
+<span class="md-nav__icon md-icon"></span>
+          Intel® MEBX
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MEBX/dnsSuffix/">
+        DNS Suffix
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/MEBX/unprovision/">
+        Unprovisioning
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_12" id="__nav_5_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_12">
+          Certificates
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Certificates" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_12">
+<span class="md-nav__icon md-icon"></span>
+          Certificates
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/Certificates/remoteProvisioning/">
+        Provisioning Certificate
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/Certificates/tls/">
+        TLS Certificate
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_5_13" id="__nav_5_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_13">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Get Help" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_13">
+<span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Reference/troubleshooting/">
+        Troubleshooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-state="indeterminate" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="APIs" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexMPS/">
+        Management Presence Server
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../APIs/indexRPS/">
+        Remote Provisioning Server
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Tutorials/uitoolkitReact.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="add-mps-ui-toolkit-controls-to-a-webui">Add <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Controls to a WebUI<a class="headerlink" href="#add-mps-ui-toolkit-controls-to-a-webui" title="Permanent link">¶</a></h1>
+<p>The <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as the Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>). A sample web application, based on React.js, is provided for test and development. </p>
+<p>The tutorial outlines how to add various controls to the sample React web application provided. Developers can use the sample code below as a springboard for developing their own consoles.</p>
+<h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">¶</a></h2>
+<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">¶</a></h3>
+<p><strong>Configure a network that includes:</strong></p>
+<ul>
+<li>A development system running Windows® 10 or Ubuntu* 18.04 or newer</li>
+<li>At least one Intel vPro® Platform to manage</li>
+</ul>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://github.com/open-amt-cloud-toolkit/MPS"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>, the Management Presence Server</li>
+<li><a href="https://github.com/open-amt-cloud-toolkit/RCS"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></a>, the Remote Provisioning Server</li>
+<li>Intel® vPro device, configured and connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For instructions to setup the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers to connect a managed device, see the <a href="../../GetStarted/prerequisites/">Get Started Guide</a></p>
+</div>
+<ul>
+<li>The <strong>development system</strong> requires the following software:<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE</li>
+<li><a href="https://nodejs.org/">Node.js* LTS 12.x.x or newer</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
+<p>Follow the steps in these sections sequentially: </p>
+<ul>
+<li>Create a new React app</li>
+<li>Add UI controls to the React app</li>
+</ul>
+<figure class="figure-image">
+<img alt="Figure 1: UI Toolkit" src="..\..\assets\images\HelloWorld.png"/>
+<figcaption>Figure 1: UI toolkit</figcaption>
+</figure>
+<h2 id="create-a-new-react-app">Create a New React App<a class="headerlink" href="#create-a-new-react-app" title="Permanent link">¶</a></h2>
+<p>The React app can be created in any preferred development directory. The <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> can continue to run while creating and running the app.</p>
+<ol>
+<li>
+<p>In a Terminal or Command Prompt, go to your preferred development directory. </p>
+</li>
+<li>
+<p>Run the following commands to create sample React app named <code>my-app</code>.</p>
+</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>npx create-react-app my-app
+</code></pre></div>
+3. Change to the my-app directory:
+   <div class="highlight"><pre><span></span><code><span class="nb">cd</span> my-app
+</code></pre></div></p>
+<h2 id="add-ui-toolkit">Add <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#add-ui-toolkit" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Run the following command to add the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> and install the required dependencies:</p>
+<div class="highlight"><pre><span></span><code>npm install @open-amt-cloud-toolkit/ui-toolkit-react@2.0.7
+</code></pre></div>
+</li>
+<li>
+<p>Run the following commands to start the web UI locally:</p>
+<div class="highlight"><pre><span></span><code>npm start
+</code></pre></div>
+<p>By default, React apps run on port <code>3000</code>. If port <code>3000</code> is already used by the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p><figure class="figure-image">
+<img alt="Figure 2: React reports successful deployment" src="..\..\assets\images\UIToolkit_npmstart.png"/>
+<figcaption>Figure 2: React reports successful deployment</figcaption>
+</figure></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note - Using Chromium Browser and Refreshing</p>
+<p>By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
+When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.</p>
+</div>
+</li>
+</ol>
+<h2 id="add-a-sample-control">Add a Sample Control<a class="headerlink" href="#add-a-sample-control" title="Permanent link">¶</a></h2>
+<p>The following sections outline how to add controls. To use the code snippets provided, replace what is in the <code>App.js</code> file with the provided code snippet.</p>
+<p>Refresh the web browser after adding a control if it does not update automatically after a few seconds.</p>
+<h3 id="add-keyboard-video-mouse-kvm-redirection">Add Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Redirection<a class="headerlink" href="#add-keyboard-video-mouse-kvm-redirection" title="Permanent link">¶</a></h3>
+<p>The code snippet below adds <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control to the React application. </p>
+<ol>
+<li>
+<p>Open <code>./my-app/src/App.js</code> in a text editor or IDE of choice, such as Visual Studio Code or Notepad.</p>
+</li>
+<li>
+<p>Delete the current code and replace with the code snippet below.</p>
+</li>
+<li>
+<p>Change the following values:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>deviceId</code></td>
+<td align="left"><strong>Replace the example deviceId</strong> value with the GUID of the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device.  See <a href="../../Reference/guids/">How to Find GUIDs in <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr></a>.</td>
+</tr>
+<tr>
+<td align="left"><code>mpsServer</code></td>
+<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. When using KONG, <code>/mps/ws/relay</code> must be appeneded to the IP or FQDN.</td>
+</tr>
+<tr>
+<td align="left"><code>authToken</code></td>
+<td align="left"><strong>Provide valid JWT.</strong> See instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="s2">"./App.css"</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle"</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">"App"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">&lt;</span><span class="nx">KVM</span><span class="w"> </span><span class="nx">deviceId</span><span class="o">=</span><span class="s2">"038d0240-045c-05f4-7706-980700080009"</span><span class="w"> </span><span class="c1">//Replace with AMT Device GUID</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nx">mpsServer</span><span class="o">=</span><span class="s2">"https://localhost/mps/ws/relay"</span><span class="w"> </span><span class="c1">//Replace 'localhost' with Development System or MPS Server IP Address</span><span class="w"></span>
+</span><span class="w">            </span><span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">"200"</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nx">authToken</span><span class="o">=</span><span class="s2">""</span><span class="w"> </span><span class="c1">// Replace with a valid JWT token from 'Authorize' API Method</span><span class="w"></span>
+</span><span class="w">            </span><span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">"100%"</span><span class="w"></span>
+<span class="w">            </span><span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">"100%"</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Save and close the file.</p>
+</li>
+<li>
+<p>If the React app hasn't updated automatically, refresh the page.</p>
+</li>
+</ol>
+<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using Keyboard, Video, Mouse control.</p>
+<p>You will see the errors in the following scenarios:</p>
+<ul>
+<li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server not running, appropriate controls will fail to work.</li>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server running and device not connected.</li>
+<li>If your browser is IE/Edge, there might be compatibility issues.</li>
+<li>
+<p>Incorrect or invalid JWT for authToken, see instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example authToken Format</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</li>
+</ul>
+<p><br/></p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
+<h3 id="try-other-controls">Try Other Controls<a class="headerlink" href="#try-other-controls" title="Permanent link">¶</a></h3>
+<p>Try out other React controls such as <a href="../../Reference/UIToolkit/Controls/serialOverLANControl/">Serial Over LAN</a>.</p>
+<h3 id="customize-and-create-bundles">Customize and Create Bundles<a class="headerlink" href="#customize-and-create-bundles" title="Permanent link">¶</a></h3>
+<p>Try out creating and customizing React bundles for things such as Serial Over LAN or <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> <a href="../../Reference/UIToolkit/Bundles/kvmReact/">here</a>.</p>
+<h2 id="license-note">License Note<a class="headerlink" href="#license-note" title="Permanent link">¶</a></h2>
+<p>If you are distributing the FortAwesome Icons, please provide attribution to the source per the <a href="https://creativecommons.org/licenses/by/4.0/deed.ast">CC-by 4.0</a> license obligations.</p>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+            Back to top
+          </a>
+</main>
+<!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+<!-- Application footer -->
+<footer class="md-footer">
+<!-- Further information -->
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<!-- Copyright and theme information -->
+<div class="md-footer-copyright">
+<div class="md-footer-copyright__highlight">
+            Copyright © 2021 Intel Corporation
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<!-- Social links -->
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
