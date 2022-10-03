@@ -130,10 +130,10 @@ markdown_extensions:
   - toc:
       permalink: true
 extra_css:
-  - assets\stylesheets\branding.css
-  - assets\stylesheets\mermaid.css
-  - assets\stylesheets\index.css
-  - assets\stylesheets\videos.css
+  - assets/stylesheets/branding.css
+  - assets/stylesheets/mermaid.css
+  - assets/stylesheets/index.css
+  - assets/stylesheets/videos.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
