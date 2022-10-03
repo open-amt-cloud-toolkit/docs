@@ -130,10 +130,10 @@ markdown_extensions:
   - toc:
       permalink: true
 extra_css:
-  - assets/stylesheets/branding.css
-  - assets/stylesheets/mermaid.css
-  - assets/stylesheets/index.css
-  - assets/stylesheets/videos.css
+  - assets\stylesheets\branding.css
+  - assets\stylesheets\mermaid.css
+  - assets\stylesheets\index.css
+  - assets\stylesheets\videos.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
@@ -146,16 +146,16 @@ extra:
   version:
     provider: mike
   repoVersion:
-    mpsAPI: 2.5.0
-    rpsAPI: 2.5.0
-    oamtct: 2.5.0
-    rpc_go: 2.3.0
+    mpsAPI: 2.4.0
+    rpsAPI: 2.4.0
+    oamtct: 2.4.0
+    rpc_go: 2.2.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.0.8
-    ui_toolkit_react: 2.0.7
-    ui_toolkit_angular: 4.0.1
+    ui_toolkit: 2.0.7
+    ui_toolkit_react: 2.0.4
+    ui_toolkit_angular: 3.0.2
   docsSite:
-    rapidVersion: 2.5
+    rapidVersion: 2.4
     ltsVersion: 2.0
   analytics:
     provider: google
