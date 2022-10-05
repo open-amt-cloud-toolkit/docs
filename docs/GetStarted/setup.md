@@ -88,6 +88,9 @@ Set the shared secret used in Kong for JWT authentication.
         ```
         docker-compose pull
         ```
+    
+    !!! note "Note - Using SSL with Postgres Container"
+        By default in the Getting Started Guide, we do not enable an SSL connection for Postgres for ease of development. See [SSL with Local Postgres](../Reference/sslpostgresLocal.md) for how to enable SSL in your local Postgres container. For production environments, using a cloud-hosted database with an SSL connection to MPS/RPS is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for [Azure or AWS here](../Tutorials/Scaling/overview.md).
 
 2.  Start the containers.
     

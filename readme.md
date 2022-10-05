@@ -12,9 +12,13 @@ In order to render and preview the site locally (without docker) you will need a
 1) You will need to install python and pip
 
 2) After python is installed, you'll need the following python dependencies:
-`pip install mkdocs`
-`pip install mkdocs-material==7.3.4`
-`pip install mkdocs-render-swagger-plugin`
-`pip install mkdocs-mermaid2-plugin`
+- `pip install mkdocs`
+- `pip install mkdocs-material==7.3.4`
+- `pip install mkdocs-render-swagger-plugin`
+- `pip install mkdocs-mermaid2-plugin`
+- `pip install mkdocs-macros-plugin`
+- `pip install mkdocs-img2fig-plugin`
+
+  **Single line command:** `pip install mkdocs mkdocs-material==7.3.4 mkdocs-render-swagger-plugin mkdocs-mermaid2-plugin mkdocs-macros-plugin mkdocs-img2fig-plugin`
 
 3) Once you have all the pre-reqs installed. You can simply run `mkdocs serve` and view the rendered content locally and makes changes to your documentation and preview them in realtime with a browser open. 

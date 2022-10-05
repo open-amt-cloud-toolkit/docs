@@ -7,4 +7,4 @@
   }
 </style>
 
-!!swagger-http https://api.swaggerhub.com/apis/rbheopenamt/mps/2.3.0!!
+!!swagger-http https://api.swaggerhub.com/apis/rbheopenamt/mps/2.5.0!!

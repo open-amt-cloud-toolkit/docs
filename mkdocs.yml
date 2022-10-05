@@ -4,7 +4,7 @@ site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2021 Intel Corporation'
-site_dir: site/2.3
+site_dir: site/2.5
 # Configuration
 theme:
   name: 'material'
@@ -71,6 +71,7 @@ nav:
       - GUIDs in Intel® AMT: Reference/guids.md
       - Logging: Reference/logging.md
       - Production Mode Vault: Reference/productionVault.md
+      - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
@@ -130,10 +131,10 @@ markdown_extensions:
   - toc:
       permalink: true
 extra_css:
-  - assets\stylesheets\branding.css
-  - assets\stylesheets\mermaid.css
-  - assets\stylesheets\index.css
-  - assets\stylesheets\videos.css
+  - assets/stylesheets/branding.css
+  - assets/stylesheets/mermaid.css
+  - assets/stylesheets/index.css
+  - assets/stylesheets/videos.css
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
 plugins:
@@ -146,16 +147,16 @@ extra:
   version:
     provider: mike
   repoVersion:
-    mpsAPI: 2.3.0
-    rpsAPI: 2.3.0
-    oamtct: 2.3.4
-    rpc_go: 2.2.0
+    mpsAPI: 2.5.0
+    rpsAPI: 2.5.0
+    oamtct: 2.5.0
+    rpc_go: 2.3.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.0.6
-    ui_toolkit_react: 2.0.3
-    ui_toolkit_angular: 3.0.1
+    ui_toolkit: 2.0.8
+    ui_toolkit_react: 2.0.7
+    ui_toolkit_angular: 4.0.1
   docsSite:
-    rapidVersion: 2.3
+    rapidVersion: 2.5
     ltsVersion: 2.0
   analytics:
     provider: google
