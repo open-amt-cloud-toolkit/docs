@@ -2,12 +2,12 @@
 
 Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for supported redirection features:
 
-- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 - **Keyboard, Video, Mouse (KVM):** Control multiple devices with one keyboard, monitor, and mouse.
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
+- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 
-!!! Important "IDE Redirection"
-    While AMT supports this feature, the toolkit doesn't natively support it. 
+!!! Important "Important - IDE Redirection"
+    While AMT supports this feature, the toolkit doesn't natively support it.
 
 <figure class="figure-image">
 <img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
@@ -25,7 +25,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 - [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
-!!! Important "Important - AMT and using CAs"
+!!! Important "Important - Intel AMT and using CAs"
     For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 
@@ -39,7 +39,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
  **To set the DNS suffix: **
 
-1. Manually set it using MEBX on the managed device. Find instructions [here](../Reference/MEBX/dnsSuffix.md)
+1. Manually set it using MEBX on the managed device. Find instructions [here](../Reference/MEBX/dnsSuffix.md).
 
 2. Alternately, change the DHCP Option 15 to DNS suffix within the Router settings.
 
@@ -61,10 +61,10 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
-!!! important "Production Environment"
+!!! important "Important - Production Environment"
         In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
-!!! info "Info - Passwords"
+!!! note "Note - Passwords"
     **Passwords**
 
     Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview#passwords).
@@ -86,32 +86,31 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
-    !!! info "Info - Customized Redirection"        
+    !!! note "Note - Customized Redirection"        
         Associating these features with a profile enables administrators to opt into desired redirection.
 
         The toolkit defaults to enabling all redirection features.
 
-6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
+6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
+
+7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
-    !!! tip
-        The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
+    !!! warning "Warning - Viewing and Losing Random Passwords"
+        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
-7. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
+8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
-    !!! note
-        By default both AMT Password and MEBX Password auto generation checkboxes are selected (checked). To enter static passwords, unselect the respective auto generation checkboxes.
+9. Leave DHCP as the default for **Network Configuration**.
 
-8. Leave DHCP as the default for **Network Configuration**.
+10. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+11. Select **CIRA(Cloud)** for Connection Configuration.
 
-10. Select **CIRA(Cloud)** for Connection Configuration.
+12. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+13. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-12. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
-
-13. Click **Save.**
+14. Click **Save.**
 
     !!! example "Example ACM Profile"
         <figure class="figure-image">

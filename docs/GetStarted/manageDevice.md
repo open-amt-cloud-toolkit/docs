@@ -20,26 +20,29 @@
 
 3. Click on your connected device.
 
-4. Select an action to perform from the options in the top-right.
+4. Select an action to perform from the Power Actions in the center screen or Redirection options in the top-right.
+
+    !!! warning "Warning - Power Actions in KVM"
+        Turn off active redirection sessions, such as KVM or SOL, before specific power state transitions. Power Cycle (Code 5) and Unconditional Power Down (Power Off, Code 8) will be rejected as invalid if there is an active redirection session. Reset (Code 10) **will function** in KVM along with the [other unmentioned Power Actions](../Reference/powerstates.md#out-of-band).
 
      <figure class="figure-image">
      <img src="..\..\assets\images\MPS_ManageDevice.png" alt="Figure 2: Action options">
      <figcaption>Figure 2: Action options</figcaption>
      </figure>
 
-    !!! note
-        If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM) and serial over LAN (SOL) features require entering a user consent code, which will be displayed on the device. To use KVM/SOL without user consent, follow the [ACM Activation Path](createProfileACM.md) for how to configure a device into Admin Control Mode.
+### User Consent
 
-    !!! warning
-        Turn off active redirection sessions, such as KVM or SOL, before power state transitions. Power Cycle Reset and Unconditional Power Down (Power Off) will be rejected as invalid if there is an active redirection session. 
+  If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM) and serial-over-LAN (SOL) features require entering a user consent code, which will be displayed on the managed device.
         
-5. When performing a KVM action for a device activated in CCM or ACM with user consent enabled, input the user consent code displayed on the client device.
+  To use KVM/SOL without user consent, follow the [ACM Activation Path](createProfileACM.md) for how to configure a device into Admin Control Mode.
 
-     <figure class="figure-image">
-     <img src="..\..\assets\images\MPS_UserConsent.png" alt="Figure 2: User Consent">
-     <figcaption>Figure 3: User Consent</figcaption>
-     </figure>
-  
+  1. When performing a KVM action for a device activated in CCM or ACM with user consent enabled, input the user consent code displayed on the client device.
+
+    <figure class="figure-image">
+    <img src="..\..\assets\images\MPS_UserConsent.png" alt="Figure 2: User    Consent">
+    <figcaption>Figure 3: User Consent</figcaption>
+    </figure>
+
 <br>
 
 ## Next steps

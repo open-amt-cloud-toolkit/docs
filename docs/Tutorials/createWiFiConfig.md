@@ -1,20 +1,16 @@
 --8<-- "References/abbreviations.md"
 
-!!! important "Important - Windows 10 Supported Only"
-    This feature is currently only supported for systems on Windows 10 operating systems.
+!!! important "Important - Windows 10 or Newer Supported Only"
+    This feature is currently only supported for systems on Windows 10 or newer (including Windows 11) operating systems. **Wireless on Linux is not currently supported by Intel AMT.**
 
-!!! warning "Warning - No Support for Cellular"
-    While Open AMT Cloud Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. [Cradlepoint* products](https://cradlepoint.com/) offers a workaround for cellular connections.
+!!! warning "Warning - Support for Cellular"
+    While Open AMT Cloud Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. Products like [Cradlepoint*](https://cradlepoint.com/) offer a workaround for cellular connections.
 
 After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.
 
 **For devices to be activated in Client Control Mode (CCM)**: The managed AMT device can be activated and configured on a wireless connection.
 
 **For devices to be activated in Admin Control Mode (ACM)**: The managed AMT device **MUST have a wired connection** during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.
-
-## Determine Device Wireless Support
-!!! important "Legacy RPC Support Only"
-    This section uses the legacy version of RPC. Support for this feature in RPC-Go is planned in future releases.
 
 Use RPC's `amtinfo` feature to determine if your current device supports wireless functionality. For steps to obtain the RPC binary, see [Build RPC](../Reference/RPC/buildRPC_Manual.md).
 
