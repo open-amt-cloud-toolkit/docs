@@ -9,6 +9,3 @@ services:
       dockerfile: ./Dockerfile
     ports:
         - 9000:8000
-    volumes:
-      - .:/docs  
-    
