@@ -88,8 +88,6 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ``` bash
         docker build -f "Dockerfile" -t rpc-go:latest .
         ```
-        !!! note
-            The image created with the Docker instruction above is only suitable for Docker on a Linux host.
 
 2. Confirm a successful build:
 

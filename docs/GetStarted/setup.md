@@ -123,25 +123,23 @@ Set the shared secret used in Kong for JWT authentication.
     !!! success
         ``` bash
         IMAGE                               STATUS                        NAMES
-        intel/oact-rps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_rps_1      
+        intel/oact-rps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit_rps_1      
         eclipse-mosquitto                   Up 2 minutes                  open-amt-cloud-toolkit_mosquitto_1
         vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
-        intel/oact-mpsrouter:v2.0.0         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
-        sslpostgres                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
-        intel/oact-webui:v2.2.0             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
+        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
+        postgres:14                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
+        intel/oact-webui:latest             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
         kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
-        intel/oact-mps:v2.2.0               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
+        intel/oact-mps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
         ```
-
   
-!!! important 
-    ** Container Issues **
+    !!! warning "Warning - Container Issues" 
 
-    If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+        If any of the above containers are not running, walk through the steps  again    or file a GitHub issue [here]( https://github.com/  open-amt-cloud-toolkit/  open-amt-cloud-toolkit/issues).
 
-    If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
+        If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
 
-!!! important
+!!! important "Important - Losing Data without Prod Mode Vault"
     Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](../Reference/productionVault.md).
 
     

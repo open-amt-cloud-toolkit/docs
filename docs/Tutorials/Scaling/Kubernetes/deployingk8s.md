@@ -153,12 +153,12 @@ Where:
     - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
 
     !!! warning "Warning - Using an SSL Connection"
-        This tutorial uses the connection string setting of 'no-verify' for ease of setup. **For production, it is recommended to use a SSL connection.**
+        This tutorial uses the connection string setting of 'disable' for ease of setup. **For production, it is recommended to use a SSL connection.**
 
 2. Create RPS connection string secret.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=disable
     ```
 
 3. Create MPS Router connection string secret.
@@ -170,7 +170,7 @@ Where:
 4. Create MPS connection string secret.   
 
     ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
     ```
 
 ## Update Configuration

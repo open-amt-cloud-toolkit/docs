@@ -17,7 +17,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
 
 
-!!! tip "Production Environment"
+!!! important "Important - Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
 
@@ -120,7 +120,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
     !!! note "Note - RPC Arguments"
         See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
 
-    !!! note "Transition Activated Device"
+    !!! note "Note - Transition Activated Device"
         To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform device, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#transition-activated-device).
 
 

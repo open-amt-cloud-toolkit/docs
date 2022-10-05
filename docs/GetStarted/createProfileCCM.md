@@ -2,15 +2,13 @@
 
 Client Control Mode (CCM) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 
-**While Intel® AMT includes the ability to use the features listed below with user consent in CCM, the Open AMT Cloud Toolkit does not currently support it.**
+These features require user consent in CCM:
 
-These features require user consent:
-
-- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive).
 - **Keyboard, Video, Mouse (KVM):** Control multiple devices with one keyboard, monitor, and mouse.
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
+- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive).
 
-!!! Important "IDE Redirection"
+!!! Important "Important - IDE Redirection"
     While AMT supports this feature, the toolkit doesn't natively support it. 
 
 <figure class="figure-image">
@@ -22,8 +20,7 @@ These features require user consent:
 
 Profiles provide configuration information to the firmware on platforms featuring Intel® AMT during the activation process with the Remote Provisioning Client (RPC).
 
-!!! info "Info - Passwords"
-    **Passwords**
+!!! note "Note - Passwords"
 
     Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview#passwords).
 
@@ -43,7 +40,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
-    !!! info "Info - Customized Redirection"        
+    !!! note "Note - Customized Redirection"        
         Associating these features with a profile enables administrators to opt into desired redirection.
 
         The toolkit defaults to enabling all redirection features.
@@ -51,10 +48,10 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
-    !!! tip
-        The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
+    !!! warning "Warning - Viewing and Losing Random Passwords"
+        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
-7. The **MEBX Password** field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
+7. The **MEBX Password** field is disabled. The password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
 8. Leave DHCP as the default for **Network Configuration**.
 
