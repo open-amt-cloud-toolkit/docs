@@ -1,6 +1,13 @@
 --8<-- "References/abbreviations.md"
 
-Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for redirection features.
+Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for supported redirection features:
+
+- **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
+- **Keyboard, Video, Mouse (KVM):** Control multiple devices with one keyboard, monitor, and mouse.
+- **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
+
+!!! Important "IDE Redirection"
+    While AMT supports this feature, the toolkit doesn't natively support it. 
 
 <figure class="figure-image">
 <img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
@@ -77,27 +84,34 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
+5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
+
+    !!! info "Info - Customized Redirection"        
+        Associating these features with a profile enables administrators to opt into desired redirection.
+
+        The toolkit defaults to enabling all redirection features.
+
+6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
     !!! tip
         The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
-6. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
+7. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
     !!! note
         By default both AMT Password and MEBX Password auto generation checkboxes are selected (checked). To enter static passwords, unselect the respective auto generation checkboxes.
 
-7. Leave DHCP as the default for **Network Configuration**.
+8. Leave DHCP as the default for **Network Configuration**.
 
-8. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-9. Select **CIRA(Cloud)** for Connection Configuration.
+10. Select **CIRA(Cloud)** for Connection Configuration.
 
-10. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+11. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-11. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
+12. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-12. Click **Save.**
+13. Click **Save.**
 
     !!! example "Example ACM Profile"
         <figure class="figure-image">

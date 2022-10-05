@@ -4,7 +4,7 @@ site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
 repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
 copyright: 'Copyright &copy; 2021 Intel Corporation'
-site_dir: site/2.4
+site_dir: site/2.5
 # Configuration
 theme:
   name: 'material'
@@ -71,6 +71,7 @@ nav:
       - GUIDs in Intel® AMT: Reference/guids.md
       - Logging: Reference/logging.md
       - Production Mode Vault: Reference/productionVault.md
+      - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
@@ -110,7 +111,8 @@ nav:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
