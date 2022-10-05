@@ -838,10 +838,14 @@
 <p><strong>While <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> includes the ability to use the features listed below with user consent in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> does not currently support it.</strong></p>
 <p>These features require user consent:</p>
 <ul>
-<li>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Control</li>
-<li>IDE-Redirection for sharing and mounting images remotely</li>
-<li>Serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>)</li>
+<li><strong>IDE Redirection:</strong> Share and mount images remotely with a specified storage media (e.g., USB flash drive).</li>
+<li><strong>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>):</strong> Control multiple devices with one keyboard, monitor, and mouse.</li>
+<li><strong>Serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>):</strong> Manage devices with a command line interface (CLI) through <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>.</li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">IDE Redirection</p>
+<p>While AMT supports this feature, the toolkit doesn't natively support it. </p>
+</div>
 <figure class="figure-image">
 <img alt="Figure 1: Set up configuration and profiles for N number of clients" src="..\..\assets\images\Profiles.png"/>
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
@@ -872,6 +876,14 @@
 </li>
 <li>
 <p>Under <strong>Activation Mode</strong>, select <strong>Client Control Mode</strong> from the dropdown menu.</p>
+</li>
+<li>
+<p>Enable redirection features for the profile under <strong>AMT Features - Enable/Disable features.</strong> </p>
+<div class="admonition info">
+<p class="admonition-title">Info - Customized Redirection</p>
+<p>Associating these features with a profile enables administrators to opt into desired redirection.</p>
+<p>The toolkit defaults to enabling all redirection features.</p>
+</div>
 </li>
 <li>
 <p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>

@@ -858,7 +858,16 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1>Create a Profile with ACM</h1>
-<p>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>) provides full access to Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>) functionality. User consent is optional for redirection features.</p>
+<p>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>) provides full access to Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>) functionality. User consent is optional for supported redirection features:</p>
+<ul>
+<li><strong>IDE Redirection:</strong> Share and mount images remotely with a specified storage media (e.g., USB flash drive). </li>
+<li><strong>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>):</strong> Control multiple devices with one keyboard, monitor, and mouse.</li>
+<li><strong>Serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>):</strong> Manage devices with a command line interface (CLI) through <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">IDE Redirection</p>
+<p>While AMT supports this feature, the toolkit doesn't natively support it. </p>
+</div>
 <figure class="figure-image">
 <img alt="Figure 1: Set up configuration and profiles for N number of clients" src="..\..\assets\images\Profiles.png"/>
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
@@ -931,6 +940,14 @@
 </li>
 <li>
 <p>Under <strong>Activation</strong>, select <strong>Admin Control Mode</strong> from the dropdown menu.</p>
+</li>
+<li>
+<p>Enable redirection features for the profile under <strong>AMT Features - Enable/Disable features.</strong> </p>
+<div class="admonition info">
+<p class="admonition-title">Info - Customized Redirection</p>
+<p>Associating these features with a profile enables administrators to opt into desired redirection.</p>
+<p>The toolkit defaults to enabling all redirection features.</p>
+</div>
 </li>
 <li>
 <p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
