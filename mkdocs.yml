@@ -111,7 +111,8 @@ nav:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
