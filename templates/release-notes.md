@@ -5,18 +5,16 @@
 </div>
 <br>
 
-<p class="divider"></p>
-## Note From the Team
+!!! note "Note From the Team"
+    Hey everyone,
 
-Hey everyone,
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Find out [what's new](#whats-new) and delve into the [details](#get-the-details) below-- and enjoy our new release of the toolkit.
 
-Find out [what's new](#whats-new) and delve into the [details](#get-the-details) below-- and enjoy our new release of the toolkit.
+    *Best wishes,*  
+    *Team Member | Team Member's Title | The Open AMT Cloud Toolkit Team*
 
-*Best wishes,*
-*Team Member | Team Member's Title | The Open AMT Cloud Toolkit Team*
-<p class="divider"></p>
 
 ## What's New?
 
