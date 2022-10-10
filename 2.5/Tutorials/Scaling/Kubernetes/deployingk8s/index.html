@@ -1075,12 +1075,12 @@ host    replication     all             ::1/128                         scram-sh
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning - Using an SSL Connection</p>
-<p>This tutorial uses the connection string setting of 'no-verify' for ease of setup. <strong>For production, it is recommended to use a SSL connection.</strong></p>
+<p>This tutorial uses the connection string setting of 'disable' for ease of setup. <strong>For production, it is recommended to use a SSL connection.</strong></p>
 </div>
 </li>
 <li>
 <p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=disable
 </code></pre></div>
 </li>
 <li>
@@ -1090,7 +1090,7 @@ host    replication     all             ::1/128                         scram-sh
 </li>
 <li>
 <p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
 </code></pre></div>
 </li>
 </ol>

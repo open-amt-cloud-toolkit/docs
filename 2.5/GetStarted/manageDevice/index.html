@@ -310,6 +310,15 @@
 <a class="md-nav__link" href="#try-out-intel-amt-capabilities">
     Try out Intel AMT Capabilities
   </a>
+<nav aria-label="Try out Intel AMT Capabilities" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-consent">
+    User Consent
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#next-steps">
@@ -879,24 +888,25 @@
 <p>Click on your connected device.</p>
 </li>
 <li>
-<p>Select an action to perform from the options in the top-right.</p>
+<p>Select an action to perform from the Power Actions in the center screen or Redirection options in the top-right.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning - Power Actions in <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr></p>
+<p>Turn off active redirection sessions, such as <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, before specific power state transitions. Power Cycle (Code 5) and Unconditional Power Down (Power Off, Code 8) will be rejected as invalid if there is an active redirection session. Reset (Code 10) <strong>will function</strong> in <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> along with the <a href="../../Reference/powerstates/#out-of-band">other unmentioned Power Actions</a>.</p>
+</div>
 <p><figure class="figure-image">
 <img alt="Figure 2: Action options" src="..\..\assets\images\MPS_ManageDevice.png"/>
 <figcaption>Figure 2: Action options</figcaption>
 </figure></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If activated in Client Control Mode(<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>), the keyboard, video, mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) and serial over LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) features require entering a user consent code, which will be displayed on the device. To use <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> without user consent, follow the <a href="../createProfileACM/"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> Activation Path</a> for how to configure a device into Admin Control Mode.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Turn off active redirection sessions, such as <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, before power state transitions. Power Cycle Reset and Unconditional Power Down (Power Off) will be rejected as invalid if there is an active redirection session. </p>
-</div>
 </li>
+</ol>
+<h3 id="user-consent">User Consent<a class="headerlink" href="#user-consent" title="Permanent link">¶</a></h3>
+<p>If activated in Client Control Mode(<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>), the keyboard, video, mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) and serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) features require entering a user consent code, which will be displayed on the managed device.</p>
+<p>To use <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> without user consent, follow the <a href="../createProfileACM/"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> Activation Path</a> for how to configure a device into Admin Control Mode.</p>
+<ol>
 <li>
 <p>When performing a <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> action for a device activated in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> or <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> with user consent enabled, input the user consent code displayed on the client device.</p>
 <p><figure class="figure-image">
-<img alt="Figure 2: User Consent" src="..\..\assets\images\MPS_UserConsent.png"/>
+<img alt="Figure 2: User    Consent" src="..\..\assets\images\MPS_UserConsent.png"/>
 <figcaption>Figure 3: User Consent</figcaption>
 </figure></p>
 </li>

@@ -837,15 +837,14 @@
 </a>
 <h1>Create a Profile with CCM</h1>
 <p>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) provides full access to features of Intel® Active Management Technology (<abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>), but it does require user consent for all redirection features.</p>
-<p><strong>While <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> includes the ability to use the features listed below with user consent in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> does not currently support it.</strong></p>
-<p>These features require user consent:</p>
+<p>These features require user consent in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>:</p>
 <ul>
-<li><strong>IDE Redirection:</strong> Share and mount images remotely with a specified storage media (e.g., USB flash drive).</li>
 <li><strong>Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>):</strong> Control multiple devices with one keyboard, monitor, and mouse.</li>
 <li><strong>Serial-over-LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>):</strong> Manage devices with a command line interface (CLI) through <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>.</li>
+<li><strong>IDE Redirection:</strong> Share and mount images remotely with a specified storage media (e.g., USB flash drive).</li>
 </ul>
 <div class="admonition important">
-<p class="admonition-title">IDE Redirection</p>
+<p class="admonition-title">Important - IDE Redirection</p>
 <p>While AMT supports this feature, the toolkit doesn't natively support it. </p>
 </div>
 <figure class="figure-image">
@@ -854,9 +853,8 @@
 </figure>
 <h2 id="create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#create-a-profile" title="Permanent link">¶</a></h2>
 <p>Profiles provide configuration information to the firmware on platforms featuring <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
-<div class="admonition info">
-<p class="admonition-title">Info - Passwords</p>
-<p><strong>Passwords</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note - Passwords</p>
 <p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview#passwords">Reference -&gt; Architecture Overview</a>.</p>
 </div>
 <p><strong>To create a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profile:</strong></p>
@@ -881,21 +879,21 @@
 </li>
 <li>
 <p>Enable redirection features for the profile under <strong>AMT Features - Enable/Disable features.</strong> </p>
-<div class="admonition info">
-<p class="admonition-title">Info - Customized Redirection</p>
+<div class="admonition note">
+<p class="admonition-title">Note - Customized Redirection</p>
 <p>Associating these features with a profile enables administrators to opt into desired redirection.</p>
 <p>The toolkit defaults to enabling all redirection features.</p>
 </div>
 </li>
 <li>
 <p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that <strong>if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning - Viewing and Losing Random Passwords</p>
+<p>The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that <strong>if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.</strong> There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!</p>
 </div>
 </li>
 <li>
-<p>The <strong>MEBX Password</strong> field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) cannot be set when activating in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> due to the lower level of trust when compared to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</p>
+<p>The <strong>MEBX Password</strong> field is disabled. The password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) cannot be set when activating in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> due to the lower level of trust when compared to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</p>
 </li>
 <li>
 <p>Leave DHCP as the default for <strong>Network Configuration</strong>.</p>

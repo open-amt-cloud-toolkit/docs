@@ -1019,26 +1019,25 @@
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <div class="highlight"><pre><span></span><code>IMAGE                               STATUS                        NAMES
-intel/oact-rps:v2.2.0               Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_rps_1      
+intel/oact-rps:latest               Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_rps_1      
 eclipse-mosquitto                   Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_mosquitto_1
 vault                               Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_vault_1    
-intel/oact-mpsrouter:v2.0.0         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mpsrouter_1
-sslpostgres                         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_db_1       
-intel/oact-webui:v2.2.0             Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_webui_1    
+intel/oact-mpsrouter:latest         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mpsrouter_1
+postgres:14                         Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_db_1       
+intel/oact-webui:latest             Up <span class="m">2</span> minutes                  open-amt-cloud-toolkit_webui_1    
 kong:2.3                            Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_kong_1     
-intel/oact-mps:v2.2.0               Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mps_1
+intel/oact-mps:latest               Up <span class="m">2</span> minutes <span class="o">(</span>healthy<span class="o">)</span>        open-amt-cloud-toolkit_mps_1
 </code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning - Container Issues</p>
+<p>If any of the above containers are not running, walk through the steps  again    or file a GitHub issue <a href="https://github.com/  open-amt-cloud-toolkit/  open-amt-cloud-toolkit/issues">here</a>.</p>
+<p>If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.</p>
 </div>
 </li>
 </ol>
 <div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><strong> Container Issues </strong></p>
-<p>If any of the above containers are not running, walk through the steps again or file a GitHub issue <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues">here</a>.</p>
-<p>If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.</p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
+<p class="admonition-title">Important - Losing Data without Prod Mode Vault</p>
 <p>Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run <code>docker-compose down -v</code> when bringing down the stack, which removes the volumes, and start fresh upon <code>docker-compose up</code>.  To run vault in production mode, follow the guide <a href="../../Reference/productionVault/">here</a>.</p>
 </div>
 <h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">¶</a></h2>
