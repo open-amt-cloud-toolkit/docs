@@ -86,7 +86,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        docker build -f "Dockerfile" -t rpc-go:latest .
+        docker build -f "Dockerfile" -t openamt/rpc-go:v{{ repoVersion.rpc_go }} .
         ```
 
 2. Confirm a successful build:
@@ -101,7 +101,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest version
+        sudo docker run --rm -it --device=/dev/mei0 openamt/rpc-go:v{{ repoVersion.rpc_go }} version
         ```
 
 ## Run RPC to Activate and Connect the AMT Device
@@ -132,7 +132,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"
@@ -174,7 +174,7 @@ Additionally, use the following instructions to transition from a previously est
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest amtinfo
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest amtinfo
         ```
     
     The **control mode** indicates the managed device's state:
@@ -195,7 +195,7 @@ Additionally, use the following instructions to transition from a previously est
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
         ```
 
     !!! success
