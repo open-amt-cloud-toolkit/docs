@@ -26,34 +26,9 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 ## Prerequisites
 **Before installing and building the RPC, install:**
 
-* Go* Programming Language
+* [Go* Programming Language](https://golang.org/doc/install)
 
-    === "Linux"
-         **To install prerequisites on Linux*:**
-
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
-         3. Extract the archive in the location indicated in Go's installation instructions.
-         4. Follow the remaining instructions. 
-
-    === "Windows"
-         **To install prerequisites on Windows:**
-
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
-         3. Run the downloaded file and follow prompts to install. 
-
-
-**To verify Go and tdm-gcc installations:**
-
-1. Open a Terminal or Command Prompt: 
-   ``` bash
-   go version
-   ```
-
-2. Confirm the version numbers.
-
-## Get the RPC
+## Get RPC
 
 **To clone the repository:**
 
@@ -67,7 +42,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
    cd rpc-go
    ```
 
-## Build the RPC
+## Build RPC
 
 !!! tip "Flexible Deployment - RPC as a Library"  
         The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](./libraryRPC/).
@@ -86,7 +61,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```
     === "Docker (On Linux Host Only)"
         ``` bash
-        docker build -f "Dockerfile" -t openamt/rpc-go:v{{ repoVersion.rpc_go }} .
+        docker build -f "Dockerfile" -t rpc-go:latest .
         ```
 
 2. Confirm a successful build:
@@ -101,7 +76,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --rm -it --device=/dev/mei0 openamt/rpc-go:v{{ repoVersion.rpc_go }} version
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest version
         ```
 
 ## Run RPC to Activate and Connect the AMT Device

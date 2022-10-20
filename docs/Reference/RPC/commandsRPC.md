@@ -1,29 +1,24 @@
 --8<-- "References/abbreviations.md"
 
-On the managed device, a Remote Provisioning Client (RPC) communicates with the
-Remote Provision Server (RPS) in the process of activating or deactivating the
-device. In addition to activation and deactivation, the RPC provides
-informational and maintenance commands.
+On the managed device, a Remote Provisioning Client (RPC) communicates with the Remote Provision Server (RPS) in the process of activating or deactivating the device. In addition to activation and deactivation, the RPC provides informational and maintenance commands.
 
-##List Commands
-On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as
-Administrator** (Windows).
+## List Commands
+On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
 
-Run the RPC application on the command line with no arguments to see supported
-commands:
+Run the RPC application on the command line with no arguments to see supported commands:
 
 === "Linux"
-``` bash
-sudo ./rpc
-```
+    ``` bash
+    sudo ./rpc
+    ```
 === "Windows"
-```
-.\rpc.exe
-```
+    ```
+    .\rpc.exe
+    ```
 
 | COMMAND     | DESCRIPTION                                                                           | EXAMPLE                                                       |
 |-------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| activate    | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate --profile profilename |
+| activate    | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate -profile profilename |
 | deactivate  | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                     |
 | maintenance | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate          |
 | amtinfo     | Display AMT status and configuration                                                  | ./rpc amtinfo                                                 |
@@ -34,91 +29,95 @@ sudo ./rpc
 Run the application with a command to see available options for the command:
 
 === "Linux"
-``` bash
-sudo ./rpc [COMMAND]
-```
+    ``` bash
+    sudo ./rpc [COMMAND]
+    ```
 === "Windows"
-```
-.\rpc [COMMAND]
-```
+    ```
+    .\rpc [COMMAND]
+    ```
 
 ### activate
 
-Activate this device with a specified profile:
+Activate the device with a specified profile:
 === "Linux"
-``` bash
-sudo ./rpc activate -u wss://server/activate --profile profilename
-```
+    ``` bash
+    sudo ./rpc activate -u wss://server/activate -profile profilename
+    ```
 === "Windows"
-```xx
-.\rpc activate -u wss://server/activate --profile profilename
-```
+    ```xx
+    .\rpc activate -u wss://server/activate -profile profilename
+    ```
 
-| OPTION             | DESCRIPTION                                                          |
-|--------------------|----------------------------------------------------------------------|
-| -d string          | DNS suffix override                                                  |
-| -h string          | Hostname override                                                    |
-| -json              | JSON output                                                          |
-| -l string          | log level (panic,fatal,error,warn,info,debug,trace) (default "info") |
-| -lmsaddress string | lms address (default "localhost")                                    |
-| -lmsport string    | lms port (default "16992")                                           |
-| -n                 | Skip WebSocket server certificate verification                       |
-| -p string          | Proxy address and port                                               |
-| -password          | AMT password                                                         |
-| -profile string    | name of the profile to use                                           |
-| -u string          | WebSocket address of server to activate against                      |
-| -v                 | Verbose output                                                       |
+| OPTION             | DESCRIPTION                                                                              |
+|--------------------|----------------------------------------------------------------------------------------- |
+| -d string          | DNS suffix override                                                                      |
+| -h string          | Hostname override                                                                        |
+| -json              | JSON output                                                                              |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                     |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.  |
+| -lmsport string    | LMS port (default "16992")                                                               |
+| -n                 | Skip WebSocket server certificate verification                                           |
+| -p string          | Proxy address and port                                                                   |
+| -password          | AMT password                                                                             |
+| -profile string    | Name of the profile to use                                                               |
+| -u string          | WebSocket address of server to activate against                                          |
+| -v                 | Verbose output                                                                           |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
-To learn how to use the RPC application to transition an already activated (
-provisioned) Intel vPro® Platform,
-see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice)
-.
-
-!!! note "LMS Options"
-These options enable changing the location of LMS. This can be useful during
-debug.
+To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
 ### deactivate
 
-Deactivate this device:
+Deactivate the device:
 
 === "Linux"
-``` bash
-sudo ./rpc deactivate -u wss://server/activate
-```
+    ``` bash
+    sudo ./rpc deactivate -u wss://server/activate
+    ```
 === "Windows"
-```
-.\rpc deactivate -u wss://server/activate
-```
+    ```
+    .\rpc deactivate -u wss://server/activate
+    ```
 
-| OPTION             | DESCRIPTION                                                          |
-|--------------------|----------------------------------------------------------------------|
-| -f                 | force deactivate even if device is not registered with a server      |
-| -json              | JSON output                                                          |
-| -l  string         | log level (panic,fatal,error,warn,info,debug,trace) (default "info") |
-| -lmsaddress string | lms address (default "localhost")                                    |
-| -lmsport string    | lms port (default "16992")                                           |
-| -n                 | Skip WebSocket server certificate verification                       |
-| -p string          | Proxy address and port                                               |
-| -password string   | AMT password                                                         |
-| -u string          | WebSocket address of server to activate against                      |
-| -v                 | Verbose output                                                       |
+| OPTION             | DESCRIPTION                                                                              |
+|--------------------|----------------------------------------------------------------------------------------- |
+| -f                 | force deactivate even if device is not registered with a server                          |
+| -json              | JSON output                                                                              |
+| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                     |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.  |
+| -lmsport string    | LMS port (default "16992")                                                               |
+| -n                 | Skip WebSocket server certificate verification                                           |
+| -p string          | Proxy address and port                                                                   |
+| -password string   | AMT password                                                                             |
+| -u string          | WebSocket address of server to activate against                                          |
+| -v                 | Verbose output                                                                           |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
 ### maintenance
 
-Execute a maintenance task for the managed device.  
-Supported Maintenance Commands:
+Execute a maintenance task for the managed device:
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc maintenance changepassword -u wss://server/activate
+    sudo ./rpc maintenance syncclock -u wss://server/activate
+    sudo ./rpc maintenance syncip -u wss://server/activate
+    ```
+=== "Windows"
+    ```
+    .\rpc maintenance changepassword -u wss://server/activate
+    .\rpc maintenance syncclock -u wss://server/activate
+    .\rpc maintenance syncip -u wss://server/activate
+    ```
 
 | SUBCOMMAND     | DESCRIPTION                                                                                                                           |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| changepassword | Change the AMT password. <br>A random password is generated by default. <br>Specify -static to set manually. AMT password is required |
+| changepassword | Change the AMT password. <br>A random password is generated by default. <br>Specify `-static newpassword` to set manually. AMT password is required |
 | syncclock      | Sync the host OS clock to AMT. AMT password is required                                                                               |
 | syncip         | Sync the static IP of host OS to AMT Network Settings. AMT password is required                                                       |
-
 
 | OPTION             | DESCRIPTION                                                          |
 |--------------------|----------------------------------------------------------------------|
@@ -132,36 +131,20 @@ Supported Maintenance Commands:
 | -u string          | WebSocket address of server to activate against                      |
 | -v                 | Verbose output                                                       |
 
-=== "Linux"
-
-``` bash
-sudo ./rpc maintenance changepassword -u wss://server/activate
-sudo ./rpc maintenance syncclock -u wss://server/activate
-sudo ./rpc maintenance syncip -u wss://server/activate
-```
-=== "Windows"
-```
-.\rpc maintenance changepassword -u wss://server/activate
-.\rpc maintenance syncclock -u wss://server/activate
-.\rpc maintenance syncip -u wss://server/activate
-```
-
 ### amtinfo
 
-Display AMT status and configuration
+Display AMT status and configuration:
 
 === "Linux"
-``` bash
-sudo ./rpc amtinfo [OPTIONS]
-```
+    ``` bash
+    sudo ./rpc amtinfo [OPTIONS]
+    ```
 === "Windows"
-```
-.\rpc amtinfo [OPTIONS]
-```
+    ```
+    .\rpc amtinfo [OPTIONS]
+    ```
 
-!!! note "Command Without Options"
-Using amtinfo without any of the options below (or only -json)
-will return the info for all of the most common options
+**Not passing `[OPTIONS]` will print all information.**
 
 | AMT INFO          | OPTION    | DESCRIPTION                                                                                                                                                                           | 
 |-------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -198,10 +181,10 @@ see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
 Display the current version of RPC and the RPC Protocol version:
 
 === "Linux"
-``` bash
-sudo ./rpc version
-```
+    ``` bash
+    sudo ./rpc version
+    ```
 === "Windows"
-```
-.\rpc version
-```
+    ```
+    .\rpc version
+    ```
