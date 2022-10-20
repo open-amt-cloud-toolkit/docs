@@ -64,7 +64,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 !!! important "Important - Production Environment"
         In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
-!!! note "Note - Passwords"
+??? note "Note - More Information about Passwords"
     **Passwords**
 
     Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview#passwords).
@@ -84,18 +84,13 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
-
-    !!! note "Note - Customized Redirection"        
-        Associating these features with a profile enables administrators to opt into desired redirection.
-
-        The toolkit defaults to enabling all redirection features.
+5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
 6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
 
 7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
-    !!! warning "Warning - Viewing and Losing Random Passwords"
+    ??? warning "Warning - Viewing and Losing Random Passwords"
         The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
 8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.

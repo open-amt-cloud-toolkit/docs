@@ -25,19 +25,13 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 **Before MPS and RPS installation, install the following software on your development system:**
 
 - [git*](https://git-scm.com/downloads)
-- [Docker* Desktop](https://www.docker.com/products/docker-desktop) for Windows* or Linux*
-  
-    !!! Info
-        **Docker Configuration Details: **
-        (1) The Docker for Windows installer defaults to enable all the required settings for this tutorial.
-        (2) After successful installation, the Docker icon (whale), will appear on the task bar. 
-        (3) To troubleshoot the installation, [see the troubleshooting guide](https:/docs.docker.com/docker-for-windows/troubleshoot/){target=_blank}.
-
+- [Docker* for Windows*](https://docs.docker.com/desktop/install/windows-install/) or [Docker* for Linux*](https://docs.docker.com/desktop/install/linux-install/)
 
 **For RPC setup, install the following software on your development system:**
 
 * [Go* Programming Language](https://go.dev/)
-* [tdm-gcc](https://jmeubank.github.io/tdm-gcc/download/) (On Windows* only)
+
+<br>
 
 ## What You'll Do
 
