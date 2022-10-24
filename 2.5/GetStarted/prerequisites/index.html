@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/prerequisites/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
+<meta content="mkdocs-1.4.1, mkdocs-material-8.5.6" name="generator"/>
 <title>Prerequisites - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
@@ -878,22 +878,13 @@
 <p><strong>Before <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> installation, install the following software on your development system:</strong></p>
 <ul>
 <li><a href="https://git-scm.com/downloads">git*</a></li>
-<li>
-<p><a href="https://www.docker.com/products/docker-desktop">Docker* Desktop</a> for Windows<em> or Linux</em></p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong>Docker Configuration Details: </strong>
-(1) The Docker for Windows installer defaults to enable all the required settings for this tutorial.
-(2) After successful installation, the Docker icon (whale), will appear on the task bar. 
-(3) To troubleshoot the installation, <a href="https:/docs.docker.com/docker-for-windows/troubleshoot/" target="_blank">see the troubleshooting guide</a>.</p>
-</div>
-</li>
+<li><a href="https://docs.docker.com/desktop/install/windows-install/">Docker<em> for Windows</em></a> or <a href="https://docs.docker.com/desktop/install/linux-install/">Docker<em> for Linux</em></a></li>
 </ul>
 <p><strong>For <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> setup, install the following software on your development system:</strong></p>
 <ul>
 <li><a href="https://go.dev/">Go* Programming Language</a></li>
-<li><a href="https://jmeubank.github.io/tdm-gcc/download/">tdm-gcc</a> (On Windows* only)</li>
 </ul>
+<p><br/></p>
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">¶</a></h2>
 <figure class="figure-image">
 <img alt="Figure 1: Deploy microservices on a local development system as Docker containers" height="450" src="..\..\assets\images\LocalDockerWorkflow.png" width="800"/>

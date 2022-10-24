@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://open-amt-cloud-toolkit.github.io/docs/GetStarted/setup/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
+<meta content="mkdocs-1.4.1, mkdocs-material-8.5.6" name="generator"/>
 <title>Set Up - Open Active Management Technology Cloud Toolkit</title>
 <link href="../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
@@ -982,10 +982,16 @@
 </div>
 </div>
 </input></input></div>
-<div class="admonition note">
-<p class="admonition-title">Note - Using SSL with Postgres Container</p>
+<details class="note">
+<summary>Note - Using an ARM-based Device?</summary>
+<p>ARM-based devices (i.e. newer-generation Mac products and others) will need to build the images rather than use the prebuilt Dockerhub images.
+<div class="highlight"><pre><span></span><code>docker-compose up -d --build
+</code></pre></div></p>
+</details>
+<details class="note">
+<summary>Note - Using SSL with Postgres Container</summary>
 <p>By default in the Getting Started Guide, we do not enable an SSL connection for Postgres for ease of development. See <a href="../../Reference/sslpostgresLocal/">SSL with Local Postgres</a> for how to enable SSL in your local Postgres container. For production environments, using a cloud-hosted database with an SSL connection to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for <a href="../../Tutorials/Scaling/overview/">Azure or AWS here</a>.</p>
-</div>
+</details>
 </li>
 <li>
 <p>Start the containers.</p>
