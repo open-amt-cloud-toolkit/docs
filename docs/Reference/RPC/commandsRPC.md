@@ -83,7 +83,7 @@ Deactivate the device:
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | force deactivate even if device is not registered with a server                         |
+| -f                 | Force deactivate even if device is not registered with a server                         |
 | -json              | JSON output                                                                             |
 | -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
@@ -141,13 +141,13 @@ Common Maintenance Subcommand Options
 
 #### syncip options
 
-| OPTION        | DESCRIPTION                                                                                                                  |
-|---------------|------------------------------------------------------------------------------------------------------------------------------|
-| -staticip     | specific ip to be assigned to AMT<br>if not specified, the ip address of the active OS newtork interface is used             |
-| -netmask      | specific network mask to be assigned to AMT<br>if not specified, the network mask of the active OS newtork interface is used |
-| -gateway      | gateway address to be assigned to AMT                                                                                        |
-| -primarydns   | primary dns address to be assigned to AMT                                                                                    |
-| -secondarydns | secondary dns address to be assigned to AMT                                                                                  |
+| OPTION        | DESCRIPTION                                                                                                         |
+|---------------|---------------------------------------------------------------------------------------------------------------------|
+| -staticip     | IP address to be assigned to AMT<br>if not specified, the IP address of the active OS newtork interface is used     |
+| -netmask      | Network mask to be assigned to AMT<br>if not specified, the network mask of the active OS newtork interface is used |
+| -gateway      | Gateway address to be assigned to AMT                                                                               |
+| -primarydns   | Primary DNS address to be assigned to AMT                                                                           |
+| -secondarydns | Secondary DNS address to be assigned to AMT                                                                         |
 
 === "Linux"
 
