@@ -16,13 +16,13 @@ Run the RPC application on the command line with no arguments to see supported c
     .\rpc.exe
     ```
 
-| COMMAND     | DESCRIPTION                                                                           | EXAMPLE                                                       |
-|-------------|---------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| COMMAND     | DESCRIPTION                                                                           | EXAMPLE                                                      |
+|-------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | activate    | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate -profile profilename |
-| deactivate  | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                     |
-| maintenance | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate          |
-| amtinfo     | Display AMT status and configuration                                                  | ./rpc amtinfo                                                 |
-| version     | Display the current version of RPC and the RPC Protocol version                       | ./rpc version                                                 |
+| deactivate  | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                    |
+| maintenance | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate         |
+| amtinfo     | Display AMT status and configuration                                                  | ./rpc amtinfo                                                |
+| version     | Display the current version of RPC and the RPC Protocol version                       | ./rpc version                                                |
 
 ##List Command Options
 
@@ -49,20 +49,20 @@ Activate the device with a specified profile:
     .\rpc activate -u wss://server/activate -profile profilename
     ```
 
-| OPTION             | DESCRIPTION                                                                              |
-|--------------------|----------------------------------------------------------------------------------------- |
-| -d string          | DNS suffix override                                                                      |
-| -h string          | Hostname override                                                                        |
-| -json              | JSON output                                                                              |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                     |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.  |
-| -lmsport string    | LMS port (default "16992")                                                               |
-| -n                 | Skip WebSocket server certificate verification                                           |
-| -p string          | Proxy address and port                                                                   |
-| -password          | AMT password                                                                             |
-| -profile string    | Name of the profile to use                                                               |
-| -u string          | WebSocket address of server to activate against                                          |
-| -v                 | Verbose output                                                                           |
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -d string          | DNS suffix override                                                                     |
+| -h string          | Hostname override                                                                       |
+| -json              | JSON output                                                                             |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password          | AMT password                                                                            |
+| -profile string    | Name of the profile to use                                                              |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -81,24 +81,24 @@ Deactivate the device:
     .\rpc deactivate -u wss://server/activate
     ```
 
-| OPTION             | DESCRIPTION                                                                              |
-|--------------------|----------------------------------------------------------------------------------------- |
-| -f                 | force deactivate even if device is not registered with a server                          |
-| -json              | JSON output                                                                              |
-| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                     |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.  |
-| -lmsport string    | LMS port (default "16992")                                                               |
-| -n                 | Skip WebSocket server certificate verification                                           |
-| -p string          | Proxy address and port                                                                   |
-| -password string   | AMT password                                                                             |
-| -u string          | WebSocket address of server to activate against                                          |
-| -v                 | Verbose output                                                                           |
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | force deactivate even if device is not registered with a server                         |
+| -json              | JSON output                                                                             |
+| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password string   | AMT password                                                                            |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
 ### maintenance
 
-Execute a maintenance task for the managed device:
+Execute a maintenance command for the managed device:
 
 === "Linux"
     ``` bash
@@ -113,23 +113,55 @@ Execute a maintenance task for the managed device:
     .\rpc maintenance syncip -u wss://server/activate
     ```
 
-| SUBCOMMAND     | DESCRIPTION                                                                                                                           |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| changepassword | Change the AMT password. <br>A random password is generated by default. <br>Specify `-static newpassword` to set manually. AMT password is required |
-| syncclock      | Sync the host OS clock to AMT. AMT password is required                                                                               |
-| syncip         | Sync the static IP of host OS to AMT Network Settings. AMT password is required                                                       |
+| SUBCOMMAND     | DESCRIPTION                                                              |
+|----------------|--------------------------------------------------------------------------|
+| changepassword | Change the AMT password. <br> A random password is generated by default. |
+| syncclock      | Sync the host OS clock to AMT.                                           |
+| syncip         | Sync the static IP of host OS to AMT Network Settings.                   |
 
-| OPTION             | DESCRIPTION                                                          |
-|--------------------|----------------------------------------------------------------------|
-| -json              | JSON output                                                          |
-| -l string          | log level (panic,fatal,error,warn,info,debug,trace) (default "info") |
-| -lmsaddress string | lms address (default "localhost")                                    |
-| -lmsport string    | lms port (default "16992")                                           |
-| -n                 | Skip WebSocket server certificate verification                       |
-| -p string          | Proxy address and port                                               |
-| -password string   | AMT password                                                         |
-| -u string          | WebSocket address of server to activate against                      |
-| -v                 | Verbose output                                                       |
+Common Maintenance Subcommand Options
+
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                             |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password string   | AMT password                                                                            |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
+
+#### changepassword options
+
+| OPTION  | DESCRIPTION             |
+|---------|-------------------------|
+| -static | new password to be used |
+
+#### syncip options
+
+| OPTION        | DESCRIPTION                                                                                                                  |
+|---------------|------------------------------------------------------------------------------------------------------------------------------|
+| -staticip     | specific ip to be assigned to AMT<br>if not specified, the ip address of the active OS newtork interface is used             |
+| -netmask      | specific network mask to be assigned to AMT<br>if not specified, the network mask of the active OS newtork interface is used |
+| -gateway      | gateway address to be assigned to AMT                                                                                        |
+| -primarydns   | primary dns address to be assigned to AMT                                                                                    |
+| -secondarydns | secondary dns address to be assigned to AMT                                                                                  |
+
+=== "Linux"
+
+``` bash
+sudo ./rpc maintenance changepassword -u wss://server/activate
+sudo ./rpc maintenance syncclock -u wss://server/activate
+sudo ./rpc maintenance syncip -u wss://server/activate
+```
+=== "Windows"
+```
+.\rpc maintenance changepassword -u wss://server/activate
+.\rpc maintenance syncclock -u wss://server/activate
+.\rpc maintenance syncip -u wss://server/activate
+```
 
 ### amtinfo
 
