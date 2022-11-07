@@ -26,34 +26,9 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 ## Prerequisites
 **Before installing and building the RPC, install:**
 
-* Go* Programming Language
+* [Go* Programming Language](https://golang.org/doc/install)
 
-    === "Linux"
-         **To install prerequisites on Linux*:**
-
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., tar.gz).
-         3. Extract the archive in the location indicated in Go's installation instructions.
-         4. Follow the remaining instructions. 
-
-    === "Windows"
-         **To install prerequisites on Windows:**
-
-         1. See Go's [Download and Install](https://golang.org/doc/install).
-         2. Choose and download a distribution appropriate for your managed device and operating system (e.g., msi).
-         3. Run the downloaded file and follow prompts to install. 
-
-
-**To verify Go and tdm-gcc installations:**
-
-1. Open a Terminal or Command Prompt: 
-   ``` bash
-   go version
-   ```
-
-2. Confirm the version numbers.
-
-## Get the RPC
+## Get RPC
 
 **To clone the repository:**
 
@@ -67,7 +42,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
    cd rpc-go
    ```
 
-## Build the RPC
+## Build RPC
 
 !!! tip "Flexible Deployment - RPC as a Library"  
         The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](./libraryRPC/).
@@ -101,7 +76,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest version
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest version
         ```
 
 ## Run RPC to Activate and Connect the AMT Device
@@ -132,7 +107,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"
@@ -174,7 +149,7 @@ Additionally, use the following instructions to transition from a previously est
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest amtinfo
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest amtinfo
         ```
     
     The **control mode** indicates the managed device's state:
@@ -195,7 +170,7 @@ Additionally, use the following instructions to transition from a previously est
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
         ```
 
     !!! success

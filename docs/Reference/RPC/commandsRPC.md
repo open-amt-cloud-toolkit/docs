@@ -2,27 +2,27 @@
 
 On the managed device, a Remote Provisioning Client (RPC) communicates with the Remote Provision Server (RPS) in the process of activating or deactivating the device. In addition to activation and deactivation, the RPC provides informational and maintenance commands.
 
-##List Commands
+## List Commands
 On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
 
 Run the RPC application on the command line with no arguments to see supported commands:
 
 === "Linux"
     ``` bash
-    sudo ./rpc 
+    sudo ./rpc
     ```
 === "Windows"
     ```
-    .\rpc
+    .\rpc.exe
     ```
 
-| COMMAND | DESCRIPTION | EXAMPLE |
-| -------------------------- | ---------------------- | ----------- |
-| activate | Activate this device with a specified profile | ./rpc activate -u wss://server/activate --profile profilename  |
-| deactivate | Deactivate this device. You will be prompted for the AMT password.  | ./rpc deactivate -u wss://server/activate |
-| maintenance | Synchronize the managed device's AMT clock with operating system time | ./rpc maintenance -c -u wss://server/activate -n |
-| amtinfo | Display AMT status and configuration | ./rpc amtinfo |
-| version | Display the current version of RPC and the RPC Protocol version | ./rpc version |
+| COMMAND     | DESCRIPTION                                                                           | EXAMPLE                                                      |
+|-------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| activate    | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate -profile profilename |
+| deactivate  | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                    |
+| maintenance | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate         |
+| amtinfo     | Display AMT status and configuration                                                  | ./rpc amtinfo                                                |
+| version     | Display the current version of RPC and the RPC Protocol version                       | ./rpc version                                                |
 
 ##List Command Options
 
@@ -30,48 +30,47 @@ Run the application with a command to see available options for the command:
 
 === "Linux"
     ``` bash
-    sudo ./rpc [COMMANDS][OPTIONS]
+    sudo ./rpc [COMMAND]
     ```
 === "Windows"
     ```
-    .\rpc [COMMANDS][OPTIONS]
+    .\rpc [COMMAND]
     ```
 
 ### activate
 
-Activate this device with a specified profile: 
+Activate the device with a specified profile:
 === "Linux"
     ``` bash
-    sudo ./rpc activate -u wss://server/activate --profile profilename
+    sudo ./rpc activate -u wss://server/activate -profile profilename
     ```
 === "Windows"
-    ```
-    .\rpc activate -u wss://server/activate --profile profilename
+    ```xx
+    .\rpc activate -u wss://server/activate -profile profilename
     ```
 
-| OPTION | DESCRIPTION |
-| -------------------------- | ---------------------- | 
-| -d string | DNS suffix override | 
-| -h string | Hostname override | 
-| -json | JSON output |
-| -lmsaddress string | lms address (default "localhost") |
-| -lmsport string | lms port (default "16992") |
-| -n | Skip WebSocket server certificate verification |
-| -p string | Proxy address and port |
-| -profile string | name of the profile to use |
-| -u string | WebSocket address of server to activate against |
-| -v | Verbose output |
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -d string          | DNS suffix override                                                                     |
+| -h string          | Hostname override                                                                       |
+| -json              | JSON output                                                                             |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password          | AMT password                                                                            |
+| -profile string    | Name of the profile to use                                                              |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
 To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
 
-!!! note "LMS Options"
-    These options enable changing the location of LMS. This can be useful during debug.
-
 ### deactivate
 
-Deactivate this device:
+Deactivate the device:
 
 === "Linux"
     ``` bash
@@ -82,86 +81,147 @@ Deactivate this device:
     .\rpc deactivate -u wss://server/activate
     ```
 
-| OPTION | DESCRIPTION |
-| -------------------------- | ---------------------- | 
-| -d | DNS suffix override | 
-| -json | JSON output |
-| -n | Skip WebSocket server certificate verification |
-| -p string | Proxy address and port |
-| -password string | AMT password |
-| -u string | WebSocket address of server to activate against |
-| -v | Verbose output |
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | Force deactivate even if device is not registered with a server                         |
+| -json              | JSON output                                                                             |
+| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password string   | AMT password                                                                            |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
 ### maintenance
 
-Synchronize the managed device's AMT clock with operating system time: 
+Execute a maintenance command for the managed device:
+
+| SUBCOMMAND                        | DESCRIPTION                                                              |
+|-----------------------------------|--------------------------------------------------------------------------|
+| [changepassword](#changepassword) | Change the AMT password. <br> A random password is generated by default. |
+| [syncclock](#syncclock)           | Sync the host OS clock to AMT.                                           |
+| [syncip](#syncip)                 | Sync the static IP of host OS to AMT Network Settings.                   |
+
+Common Maintenance Subcommand Options:
+
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                             |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
+| -lmsport string    | LMS port (default "16992")                                                              |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
+| -password string   | AMT password                                                                            |
+| -u string          | WebSocket address of server to activate against                                         |
+| -v                 | Verbose output                                                                          |
+
+<br>
+
+#### changepassword
+
+Change the AMT password. A random password is generated by default if `static` option is not passed.
 
 === "Linux"
     ``` bash
-    sudo ./rpc maintenance -u wss://server/activate
+    sudo ./rpc maintenance changepassword -u wss://server/activate
     ```
 === "Windows"
     ```
-    .\rpc maintenance -u wss://server/activate
+    .\rpc maintenance changepassword -u wss://server/activate
     ```
 
-| OPTION | DESCRIPTION |
-| -------------------------- | ---------------------- | 
-| -c | Synchronize the AMT clock with the operating system time | 
-| -json | JSON output |
-| -n | Skip WebSocket server certificate verification |
-| -p string | Proxy address and port |
-| -password string | AMT password |
-| -u string | WebSocket address of server to activate against |
-| -v | Verbose output |
+| OPTION  | DESCRIPTION             |
+|---------|-------------------------|
+| -static | New password to be used |
+
+<br>
+
+#### syncclock
+
+Syncs the host OS clock to AMT.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc maintenance syncclock -u wss://server/activate
+    ```
+=== "Windows"
+    ```
+    .\rpc maintenance syncclock -u wss://server/activate
+    ```
+
+<br>
+
+#### syncip
+
+Sync the static IP of host OS to AMT Network Settings.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc maintenance syncip -u wss://server/activate
+    ```
+=== "Windows"
+    ```
+    .\rpc maintenance syncip -u wss://server/activate
+    ```
+
+| OPTION        | DESCRIPTION                                                                                                         |
+|---------------|---------------------------------------------------------------------------------------------------------------------|
+| -staticip     | IP address to be assigned to AMT<br>If not specified, the IP address of the active OS newtork interface is used     |
+| -netmask      | Network mask to be assigned to AMT<br>If not specified, the network mask of the active OS newtork interface is used |
+| -gateway      | Gateway address to be assigned to AMT                                                                               |
+| -primarydns   | Primary DNS address to be assigned to AMT                                                                           |
+| -secondarydns | Secondary DNS address to be assigned to AMT                                                                         |
+
 
 ### amtinfo
 
- Display AMT status and configuration
+Display AMT status and configuration:
 
 === "Linux"
     ``` bash
-    sudo ./rpc amtinfo
+    sudo ./rpc amtinfo [OPTIONS]
     ```
 === "Windows"
     ```
-    .\rpc amtinfo
+    .\rpc amtinfo [OPTIONS]
     ```
 
-!!! note "Command Without Options"
-    Using amtinfo without any of the options below (or only -json) 
-    will return the info for all of the most common options
+**Not passing `[OPTIONS]` will print all information.**
 
-| AMT INFO | OPTION | DESCRIPTION | 
-| -------------------------- | ------------- | ---------------------- |
-| | -json | JSON Output |
-| Version | -ver | Intel AMT version.  | 
-| Build Number | -bld | Intel AMT Build Number. | 
-| SKU | -sku | Product SKU | 
-| UUID | -uuid | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path. | 
-| Control Mode | -mode | Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in **client control mode** (c) activated in **admin control mode** | 
-|DNS Suffix | -dns | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation. |
-|DNS Suffix (OS)| -dns | |
-|Hostname (OS) | -hostname | Device's hostname as set in the Operating System. |
-|RAS Network | -ras | |
-|RAS Remote Status | -ras | Unconnected or connected. State of connection to a management server. |
-|RAS Trigger | -ras | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
-|RAS MPS Hostname | -ras | IP Address or FQDN of the MPS server. |
+| AMT INFO          | OPTION    | DESCRIPTION                                                                                                                                                                           | 
+|-------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                   | -json     | JSON Output                                                                                                                                                                           |
+| Version           | -ver      | Intel AMT version.                                                                                                                                                                    | 
+| Build Number      | -bld      | Intel AMT Build Number.                                                                                                                                                               |
+| Certificate       | -cert     | Certificate Hashes                                                                                                                                                                    |
+| SKU               | -sku      | Product SKU                                                                                                                                                                           | 
+| UUID              | -uuid     | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path.                                                       | 
+| Control Mode      | -mode     | Control Mode below indicates the managed device's state: a) pre-provisioning or deactivated (b) activated in **client control mode** (c) activated in **admin control mode**          | 
+| DNS Suffix        | -dns      | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation.                                                                      |
+| DNS Suffix (OS)   | -dns      |                                                                                                                                                                                       |
+| Hostname (OS)     | -hostname | Device's hostname as set in the Operating System.                                                                                                                                     |
+| RAS Network       | -ras      |                                                                                                                                                                                       |
+| RAS Remote Status | -ras      | Unconnected or connected. State of connection to a management server.                                                                                                                 |
+| RAS Trigger       | -ras      | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
+| RAS MPS Hostname  | -ras      | IP Address or FQDN of the MPS server.                                                                                                                                                 |
 
 **---Wired/Wireless Adapters---**
 
-| WIRED/WIRELESS ADAPTER | OPTION | DESCRIPTION | 
-| -------------------------- | ----- | ---------------------- |
-| DHCP Enabled | -lan | True/False. Whether or not the network is using DHCP or Static IPs.  | 
-| DHCP Mode | -lan | | 
-| Link Status | -lan | Up/Down. Shows whether or not this adapter is being used by Intel AMT. | 
-| IP Address | -lan | If using CIRA or the device is unactivated, this field will show 0.0.0.0 | 
-| MAC Address| -lan | Device's MAC Address  | 
+| WIRED/WIRELESS ADAPTER | OPTION | DESCRIPTION                                                              | 
+|------------------------|--------|--------------------------------------------------------------------------|
+| DHCP Enabled           | -lan   | True/False. Whether or not the network is using DHCP or Static IPs.      | 
+| DHCP Mode              | -lan   |                                                                          | 
+| Link Status            | -lan   | Up/Down. Shows whether or not this adapter is being used by Intel AMT.   | 
+| IP Address             | -lan   | If using CIRA or the device is unactivated, this field will show 0.0.0.0 | 
+| MAC Address            | -lan   | Device's MAC Address                                                     | 
 
-
-For more information, see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
+For more information,
+see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
 
 ### version
 

@@ -45,13 +45,14 @@ If you are building an executable on a development system, you will copy the exe
     ```
     ??? note "Haven't Cloned the `open-amt-cloud-toolkit` Repository?"
 
-        1. Clone the whole toolkit repository:
-            ``` bash
-            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
-            ```
-        2. Only clone the `rpc-go` repository:
+        * Only clone the `rpc-go` repository:
             ``` bash
             git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+            ```
+
+        * Alternatively, clone the whole toolkit repository:
+            ``` bash
+            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
             ```
 
 2. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
@@ -83,7 +84,7 @@ If you are building an executable on a development system, you will copy the exe
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest version
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest version
         ```
 
 ## Run RPC to Activate and Connect the AMT Device
@@ -114,7 +115,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profilename]
         ```
 
     !!! note "Note - RPC Arguments"

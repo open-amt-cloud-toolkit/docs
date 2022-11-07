@@ -21,7 +21,7 @@ A GCC toolchain is required to compile RPC as a library.
 
 === "Linux Lib (.so file)"
     ``` bash
-    go build -buildmode=c-shared -o rpc.so ./cmd 
+    go build -buildmode=c-shared -o librpc.so ./cmd 
     ```
 === "Windows Lib (.dll file)"
     ``` bash
@@ -32,10 +32,10 @@ A GCC toolchain is required to compile RPC as a library.
 
 The library contains two functions:
 
-| Function | Description | Usage |
-| ------------- | ------------------ | ------------ |
-| **checkAccess**  | Determines if RPC is being run as admin, the ME driver is installed, and AMT is available. | Use this function to check for basic AMT availability conditions.|
-| **rpcExec**  | Executes RPC commands. | Use this function as you would the RPC executable, passing in arguments to activate, deactivate, perform maintenance, etc. |
+| Function        | Description                                                                                | Usage                                                                                                                      |
+|-----------------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| **checkAccess** | Determines if RPC is being run as admin, the ME driver is installed, and AMT is available. | Use this function to check for basic AMT availability conditions.                                                          |
+| **rpcExec**     | Executes RPC commands.                                                                     | Use this function as you would the RPC executable, passing in arguments to activate, deactivate, perform maintenance, etc. |
 
 ## Sample Client in `C#`
 
@@ -47,8 +47,8 @@ This sample code demonstrates how to import the DLL's functions:
 
 ``` c#
     //Linux-style example (.so extenstion)
-    [DllImport("rpclib.so", EntryPoint = "checkAccess")]
-    static extern void checkAccess();
+    [DllImport("rpc")]
+    static extern int rpcCheckAccess();
 ```
 
 ### Call a Function
@@ -57,15 +57,29 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 
 ``` c#
     //Import
-    [DllImport("rpclib.so", EntryPoint = "rpcExec")]
-    static extern string rpc([In] byte[] rpccmd, ref IntPtr output);
+    [DllImport("rpc")]
+    static extern int rpcExec([In] byte[] rpccmd, ref IntPtr output);
 
-    //Activate the device. To use, substitute your IP Address and Profile Name below.
-    string res = "activate -u wss://192.168.1.96/activate -n -profile Test_Profile";
-    //string res = "amtinfo";
+    int returnCode;
+
+    Console.WriteLine("... CALLING rpcCheckAccess ...");
+    returnCode = rpcCheckAccess();
+    Console.WriteLine("... rpcCheckAccess completed: return code[" + returnCode + "] ");
+    Console.WriteLine();
+
+    var res = "";
+    foreach (var arg in args)
+    {
+        res += $"{arg} ";
+    }
+
+    // Example commands to be passed in
+    // string res = "activate -u wss://192.168.1.96/activate -n -profile Test_Profile";
+    // string res = "amtinfo";
 
     IntPtr output = IntPtr.Zero;
-    rpc(Encoding.ASCII.GetBytes(res), ref output);
-    Console.WriteLine("Output from RunRPC: " + Marshal.PtrToStringAnsi(output));
+    Console.WriteLine("... CALLING rpcExec with argument string: " + res);
+    returnCode = rpcExec(Encoding.ASCII.GetBytes(res), ref output);
+    Console.WriteLine("... rpcExec completed: return code[" + returnCode + "] " + Marshal.PtrToStringAnsi(output));
 
 ```
