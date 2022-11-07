@@ -880,7 +880,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux Lib (.so file)</label><label for="__tabbed_2_2">Windows Lib (.dll file)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go build -buildmode<span class="o">=</span>c-shared -o rpc.so ./cmd 
+<div class="highlight"><pre><span></span><code>go build -buildmode<span class="o">=</span>c-shared -o librpc.so ./cmd 
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -917,22 +917,36 @@
 <h3 id="include-in-c">Include in <code>C#</code><a class="headerlink" href="#include-in-c" title="Permanent link">¶</a></h3>
 <p>This sample code demonstrates how to import the DLL's functions:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Linux-style example (.so extenstion)</span>
-<span class="w">    </span><span class="na">[DllImport("rpclib.so", EntryPoint = "checkAccess")]</span><span class="w"></span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">checkAccess</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="na">[DllImport("rpc")]</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">rpcCheckAccess</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <h3 id="call-a-function">Call a Function<a class="headerlink" href="#call-a-function" title="Permanent link">¶</a></h3>
 <p>This sample provides an example of calling the <code>rpcExec</code> function to activate a device:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Import</span>
-<span class="w">    </span><span class="na">[DllImport("rpclib.so", EntryPoint = "rpcExec")]</span><span class="w"></span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">rpc</span><span class="p">([</span><span class="n">In</span><span class="p">]</span><span class="w"> </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">rpccmd</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="na">[DllImport("rpc")]</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">rpcExec</span><span class="p">([</span><span class="n">In</span><span class="p">]</span><span class="w"> </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">rpccmd</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">//Activate the device. To use, substitute your IP Address and Profile Name below.</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"activate -u wss://192.168.1.96/activate -n -profile Test_Profile"</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="c1">//string res = "amtinfo";</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">returnCode</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"... CALLING rpcCheckAccess ..."</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">returnCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rpcCheckAccess</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"... rpcCheckAccess completed: return code["</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">returnCode</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">"] "</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="s">$"{arg} "</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Example commands to be passed in</span>
+<span class="w">    </span><span class="c1">// string res = "activate -u wss://192.168.1.96/activate -n -profile Test_Profile";</span>
+<span class="w">    </span><span class="c1">// string res = "amtinfo";</span>
 
 <span class="w">    </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">rpc</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">res</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Output from RunRPC: "</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Marshal</span><span class="p">.</span><span class="n">PtrToStringAnsi</span><span class="p">(</span><span class="n">output</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"... CALLING rpcExec with argument string: "</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">returnCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rpcExec</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">res</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"... rpcExec completed: return code["</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">returnCode</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">"] "</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">Marshal</span><span class="p">.</span><span class="n">PtrToStringAnsi</span><span class="p">(</span><span class="n">output</span><span class="p">));</span><span class="w"></span>
 </code></pre></div>
 </article>
 </div>

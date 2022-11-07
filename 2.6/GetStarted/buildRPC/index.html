@@ -882,14 +882,18 @@
 </code></pre></div>
 <details class="note">
 <summary>Haven't Cloned the <code>open-amt-cloud-toolkit</code> Repository?</summary>
-<ol>
-<li>Clone the whole toolkit repository:
-    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.6.0 --recursive
-</code></pre></div></li>
-<li>Only clone the <code>rpc-go</code> repository:
+<ul>
+<li>
+<p>Only clone the <code>rpc-go</code> repository:
     <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v2.4.0
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
+</li>
+<li>
+<p>Alternatively, clone the whole toolkit repository:
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v2.6.0 --recursive
+</code></pre></div></p>
+</li>
+</ul>
 </details>
 </li>
 <li>
@@ -928,7 +932,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc-go:latest version
+<div class="highlight"><pre><span></span><code>sudo docker run --rm -it --device<span class="o">=</span>/dev/mei0 rpc-go:latest version
 </code></pre></div>
 </div>
 </div>
@@ -966,7 +970,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker run --device<span class="o">=</span>/dev/mei0 rpc-go:latest activate -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate -n -profile <span class="o">[</span>profilename<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>sudo docker run --rm -it --device<span class="o">=</span>/dev/mei0 rpc-go:latest activate -u wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate -n -profile <span class="o">[</span>profilename<span class="o">]</span>
 </code></pre></div>
 </div>
 </div>

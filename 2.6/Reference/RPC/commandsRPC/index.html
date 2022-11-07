@@ -656,6 +656,25 @@
 <a class="md-nav__link" href="#maintenance">
     maintenance
   </a>
+<nav aria-label="maintenance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#changepassword">
+    changepassword
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syncclock">
+    syncclock
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syncip">
+    syncip
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#amtinfo">
@@ -872,11 +891,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc 
+<div class="highlight"><pre><span></span><code>sudo ./rpc
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc
+<div class="highlight"><pre><span></span><code>.\rpc.exe
 </code></pre></div>
 </div>
 </div>
@@ -893,7 +912,7 @@
 <tr>
 <td>activate</td>
 <td>Activate this device with a specified profile</td>
-<td>./rpc activate -u wss://server/activate --profile profilename</td>
+<td>./rpc activate -u wss://server/activate -profile profilename</td>
 </tr>
 <tr>
 <td>deactivate</td>
@@ -902,8 +921,8 @@
 </tr>
 <tr>
 <td>maintenance</td>
-<td>Synchronize the managed device's AMT clock with operating system time</td>
-<td>./rpc maintenance -c -u wss://server/activate -n</td>
+<td>Execute a maintenance task for the device. You will be prompted for the AMT password.</td>
+<td>./rpc maintenance syncclock -u wss://server/activate</td>
 </tr>
 <tr>
 <td>amtinfo</td>
@@ -922,25 +941,25 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc <span class="o">[</span>COMMANDS<span class="o">][</span>OPTIONS<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>sudo ./rpc <span class="o">[</span>COMMAND<span class="o">]</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc [COMMANDS][OPTIONS]
+<div class="highlight"><pre><span></span><code>.\rpc [COMMAND]
 </code></pre></div>
 </div>
 </div>
 </input></input></div>
 <h3 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">¶</a></h3>
-<p>Activate this device with a specified profile: </p>
+<p>Activate the device with a specified profile:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc activate -u wss://server/activate --profile profilename
+<div class="highlight"><pre><span></span><code>sudo ./rpc activate -u wss://server/activate -profile profilename
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://server/activate --profile profilename
+<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://server/activate -profile profilename
 </code></pre></div>
 </div>
 </div>
@@ -966,12 +985,16 @@
 <td>JSON output</td>
 </tr>
 <tr>
+<td>-l string</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+</tr>
+<tr>
 <td>-lmsaddress string</td>
-<td>lms address (default "localhost")</td>
+<td>LMS address (default "localhost"). Can be used to change location of LMS for debugging.</td>
 </tr>
 <tr>
 <td>-lmsport string</td>
-<td>lms port (default "16992")</td>
+<td>LMS port (default "16992")</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -982,8 +1005,12 @@
 <td>Proxy address and port</td>
 </tr>
 <tr>
+<td>-password</td>
+<td>AMT password</td>
+</tr>
+<tr>
 <td>-profile string</td>
-<td>name of the profile to use</td>
+<td>Name of the profile to use</td>
 </tr>
 <tr>
 <td>-u string</td>
@@ -997,12 +1024,8 @@
 </table>
 <p>For more information, see <a href="../../../GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
 <p>To learn how to use the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application to transition an already activated (provisioned) Intel vPro® Platform, see <a href="../buildRPC_Manual/#TransitionDevice">Transition Activated Device</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">LMS Options</p>
-<p>These options enable changing the location of LMS. This can be useful during debug.</p>
-</div>
 <h3 id="deactivate">deactivate<a class="headerlink" href="#deactivate" title="Permanent link">¶</a></h3>
-<p>Deactivate this device:</p>
+<p>Deactivate the device:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1024,12 +1047,24 @@
 </thead>
 <tbody>
 <tr>
-<td>-d</td>
-<td><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> override</td>
+<td>-f</td>
+<td>Force deactivate even if device is not registered with a server</td>
 </tr>
 <tr>
 <td>-json</td>
 <td>JSON output</td>
+</tr>
+<tr>
+<td>-l  string</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+</tr>
+<tr>
+<td>-lmsaddress string</td>
+<td>LMS address (default "localhost"). Can be used to change location of LMS for debugging.</td>
+</tr>
+<tr>
+<td>-lmsport string</td>
+<td>LMS port (default "16992")</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -1055,19 +1090,30 @@
 </table>
 <p>For more information, see <a href="../../../GetStarted/buildRPC/">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
 <h3 id="maintenance">maintenance<a class="headerlink" href="#maintenance" title="Permanent link">¶</a></h3>
-<p>Synchronize the managed device's AMT clock with operating system time: </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance -u wss://server/activate
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance -u wss://server/activate
-</code></pre></div>
-</div>
-</div>
-</input></input></div>
+<p>Execute a maintenance command for the managed device:</p>
+<table>
+<thead>
+<tr>
+<th>SUBCOMMAND</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#changepassword">changepassword</a></td>
+<td>Change the AMT password. <br/> A random password is generated by default.</td>
+</tr>
+<tr>
+<td><a href="#syncclock">syncclock</a></td>
+<td>Sync the host OS clock to AMT.</td>
+</tr>
+<tr>
+<td><a href="#syncip">syncip</a></td>
+<td>Sync the static IP of host OS to AMT Network Settings.</td>
+</tr>
+</tbody>
+</table>
+<p>Common Maintenance Subcommand Options:</p>
 <table>
 <thead>
 <tr>
@@ -1077,12 +1123,20 @@
 </thead>
 <tbody>
 <tr>
-<td>-c</td>
-<td>Synchronize the AMT clock with the operating system time</td>
-</tr>
-<tr>
 <td>-json</td>
 <td>JSON output</td>
+</tr>
+<tr>
+<td>-l string</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+</tr>
+<tr>
+<td>-lmsaddress string</td>
+<td>LMS address (default "localhost"). Can be used to change location of LMS for debugging.</td>
+</tr>
+<tr>
+<td>-lmsport string</td>
+<td>LMS port (default "16992")</td>
 </tr>
 <tr>
 <td>-n</td>
@@ -1106,25 +1160,110 @@
 </tr>
 </tbody>
 </table>
-<h3 id="amtinfo">amtinfo<a class="headerlink" href="#amtinfo" title="Permanent link">¶</a></h3>
-<p>Display AMT status and configuration</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows</label></div>
+<p><br/></p>
+<h4 id="changepassword">changepassword<a class="headerlink" href="#changepassword" title="Permanent link">¶</a></h4>
+<p>Change the AMT password. A random password is generated by default if <code>static</code> option is not passed.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc amtinfo
+<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance changepassword -u wss://server/activate
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc amtinfo
+<div class="highlight"><pre><span></span><code>.\rpc maintenance changepassword -u wss://server/activate
 </code></pre></div>
 </div>
 </div>
 </input></input></div>
-<div class="admonition note">
-<p class="admonition-title">Command Without Options</p>
-<p>Using amtinfo without any of the options below (or only -json) 
-will return the info for all of the most common options</p>
+<table>
+<thead>
+<tr>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-static</td>
+<td>New password to be used</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h4 id="syncclock">syncclock<a class="headerlink" href="#syncclock" title="Permanent link">¶</a></h4>
+<p>Syncs the host OS clock to AMT.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance syncclock -u wss://server/activate
+</code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>.\rpc maintenance syncclock -u wss://server/activate
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<p><br/></p>
+<h4 id="syncip">syncip<a class="headerlink" href="#syncip" title="Permanent link">¶</a></h4>
+<p>Sync the static IP of host OS to AMT Network Settings.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance syncip -u wss://server/activate
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>.\rpc maintenance syncip -u wss://server/activate
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<table>
+<thead>
+<tr>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-staticip</td>
+<td>IP address to be assigned to AMT<br/>If not specified, the IP address of the active OS newtork interface is used</td>
+</tr>
+<tr>
+<td>-netmask</td>
+<td>Network mask to be assigned to AMT<br/>If not specified, the network mask of the active OS newtork interface is used</td>
+</tr>
+<tr>
+<td>-gateway</td>
+<td>Gateway address to be assigned to AMT</td>
+</tr>
+<tr>
+<td>-primarydns</td>
+<td>Primary DNS address to be assigned to AMT</td>
+</tr>
+<tr>
+<td>-secondarydns</td>
+<td>Secondary DNS address to be assigned to AMT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amtinfo">amtinfo<a class="headerlink" href="#amtinfo" title="Permanent link">¶</a></h3>
+<p>Display AMT status and configuration:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Linux</label><label for="__tabbed_8_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo ./rpc amtinfo <span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>.\rpc amtinfo [OPTIONS]
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<p><strong>Not passing <code>[OPTIONS]</code> will print all information.</strong></p>
 <table>
 <thead>
 <tr>
@@ -1148,6 +1287,11 @@ will return the info for all of the most common options</p>
 <td>Build Number</td>
 <td>-bld</td>
 <td>Intel AMT Build Number.</td>
+</tr>
+<tr>
+<td>Certificate</td>
+<td>-cert</td>
+<td>Certificate Hashes</td>
 </tr>
 <tr>
 <td>SKU</td>
@@ -1238,10 +1382,11 @@ will return the info for all of the most common options</p>
 </tr>
 </tbody>
 </table>
-<p>For more information, see <a href="../../../Tutorials/createWiFiConfig/">Wireless Activation</a>.</p>
+<p>For more information,
+see <a href="../../../Tutorials/createWiFiConfig/">Wireless Activation</a>.</p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">¶</a></h3>
 <p>Display the current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Protocol version:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Linux</label><label for="__tabbed_9_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>sudo ./rpc version
