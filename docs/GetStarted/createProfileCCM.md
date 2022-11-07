@@ -20,7 +20,7 @@ These features require user consent in CCM:
 
 Profiles provide configuration information to the firmware on platforms featuring Intel® AMT during the activation process with the Remote Provisioning Client (RPC).
 
-!!! note "Note - Passwords"
+??? note "Note - More Information about Passwords"
 
     Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview#passwords).
 
@@ -38,17 +38,11 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 4. Under **Activation Mode**, select **Client Control Mode** from the dropdown menu.
 
-5. Enable redirection features for the profile under **AMT Features - Enable/Disable features.** 
-
-    !!! note "Note - Customized Redirection"        
-        Associating these features with a profile enables administrators to opt into desired redirection.
-
-        The toolkit defaults to enabling all redirection features.
-
+5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features.** 
 
 6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
    
-    !!! warning "Warning - Viewing and Losing Random Passwords"
+    ??? warning "Warning - Viewing and Losing Random Passwords"
         The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
 7. The **MEBX Password** field is disabled. The password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
