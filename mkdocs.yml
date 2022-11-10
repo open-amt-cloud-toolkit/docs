@@ -150,7 +150,7 @@ extra:
   repoVersion:
     mpsAPI: 2.6.0
     rpsAPI: 2.6.0
-    oamtct: 2.6.0
+    oamtct: 2.6.1
     rpc_go: 2.4.0
     rpc_c: 2.0.0
     ui_toolkit: 2.0.8
