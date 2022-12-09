@@ -1,5 +1,20 @@
 
+# Specific Changes Required
 
+## Upgrade from 2.6 to 2.7
+
+The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
+
+1. Run the following SQL script to add two new columns before upgrading the services:
+
+    ``` sql
+    ALTER TABLE devices 
+    ADD COLUMN IF NOT EXISTS friendlyname varchar(256);
+    ALTER TABLE devices 
+    ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);
+    ```
+
+2. Continue below to finish upgrading the services using the typical process.
 
 ## Upgrade a Minor Version (i.e. 2.X to 2.Y)
 
@@ -21,7 +36,7 @@ Upgrading from a previous minor version to a new minor version release is simple
           ...
         ```
 
-    !!! warning "Warning - Upgrading when Using `latest` Image Tags"    
+    ??? warning "Warning - Upgrading when Using `latest` Image Tags"    
         It is recommended to use versioned tags for deployment for easier tracking and troubleshooting. 
         
         If your instance is using `latest` image tags, for example `intel/oact-mps:latest` rather than `intel/oact-mps:v2.2.0`, some extra configuration is required. Helm will not check for new `latest` images by default since it doesn't detect a change in.

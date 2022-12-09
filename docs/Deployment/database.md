@@ -101,6 +101,8 @@ The diagrams below illustrates the database schema and relationships.
           boolean connectionstatus
           string mpsusername
           string tenantid
+          string friendlyname
+          string dnssuffix
       }
   ```
 
