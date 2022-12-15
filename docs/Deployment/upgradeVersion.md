@@ -1,5 +1,5 @@
 
-# Specific Changes Required
+# Specific Changes Required for Version Upgrades
 
 ## Upgrade from 2.6 to 2.7
 
@@ -9,73 +9,65 @@ The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
 
     ``` sql
     ALTER TABLE devices 
-    ADD COLUMN IF NOT EXISTS friendlyname varchar(256);
-    ALTER TABLE devices 
+    ADD COLUMN IF NOT EXISTS friendlyname varchar(256),
     ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);
     ```
 
-2. Continue below to finish upgrading the services using the typical process.
+    ???+ example "Example - Adding Columns to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql.
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the databse, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+            ```
+            psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+            ```
+
+            ??? example "Example Commands"
+                ```
+                Azure:
+                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+                AWS:
+                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
+                ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statement.
+            ``` sql
+            ALTER TABLE devices 
+            ADD COLUMN IF NOT EXISTS friendlyname varchar(256),
+            ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);
+            ```
+
+        5. Verify the columns were added to the table.
+            ``` sql
+            SELECT * FROM devices;
+            ```
+
+2. Continue with general upgrade steps below.
+
 
 ## Upgrade a Minor Version (i.e. 2.X to 2.Y)
 
 Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.
 
-!!! note "Note - Using Private Images"
+??? note "Note - Using Private Images"
     The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.
 
-1. In the values.yaml file, update the images to the new version wanted. In this scenario, we've only updated the MPS, RPS, and WebUI to the newer versions. 
+1. In the values.yaml file, update the images to the new version wanted. Alternatively, you can use the `latest` tags.
 
     !!! example "Example - values.yaml File"
-        ```yaml hl_lines="2-4"
+        ```yaml hl_lines="2-5"
         images:
-          mps: "intel/oact-mps:v2.2.0"
-          rps: "intel/oact-rps:v2.2.0"
-          webui: "intel/oact-webui:v2.2.0"
-          mpsrouter: "intel/oact-mpsrouter:v2.0.0"
+          mps: "intel/oact-mps:latest"
+          rps: "intel/oact-rps:latest"
+          webui: "intel/oact-webui:latest"
+          mpsrouter: "intel/oact-mpsrouter:latest"
         mps:
           ...
         ```
-
-    ??? warning "Warning - Upgrading when Using `latest` Image Tags"    
-        It is recommended to use versioned tags for deployment for easier tracking and troubleshooting. 
-        
-        If your instance is using `latest` image tags, for example `intel/oact-mps:latest` rather than `intel/oact-mps:v2.2.0`, some extra configuration is required. Helm will not check for new `latest` images by default since it doesn't detect a change in.
-
-        1. To force Helm to always attempt to pull new images, set the `imagePullPolicy` for each image in their respective template files.
-
-            Files to update:
-            ```
-            ./kubernetes/charts/templates/mps.yaml
-            ./kubernetes/charts/templates/mpsrouter.yaml
-            ./kubernetes/charts/templates/rps.yaml
-            ./kubernetes/charts/templates/webui.yaml
-            ```
-
-            ??? example "Example - Setting `imagePullPolicy` in `mps.yaml`"
-
-                ```yaml hl_lines="15"
-                {% raw %}
-                spec:
-                  replicas: {{ .Values.mps.replicaCount }}
-                  selector:
-                    matchLabels:
-                      app: mps
-                  template:
-                    metadata:
-                      labels:
-                        app: mps
-                    spec:
-                      imagePullSecrets:
-                        - name: registrycredentials
-                      containers:
-                        - name: mps
-                          imagePullPolicy: Always
-                          image: {{ .Values.images.mps }}
-                          env:
-                            ...
-                {% endraw %}            
-                ```
-
 
 2. In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.
 
