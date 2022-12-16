@@ -27,7 +27,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#specific-changes-required">
+<a class="md-skip" href="#specific-changes-required-for-version-upgrades">
           Skip to content
         </a>
 </div>
@@ -840,80 +840,79 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Deployment/upgradeVersion.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="specific-changes-required">Specific Changes Required<a class="headerlink" href="#specific-changes-required" title="Permanent link">¶</a></h1>
+<h1 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">¶</a></h1>
 <h2 id="upgrade-from-26-to-27">Upgrade from 2.6 to 2.7<a class="headerlink" href="#upgrade-from-26-to-27" title="Permanent link">¶</a></h2>
 <p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add two new columns before upgrading the services:</p>
 <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span><span class="w"></span>
-<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span><span class="w"></span>
 <span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
+<details class="example" open="open">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Continue below to finish upgrading the services using the typical process.</p>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the databse, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statement.
+    <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span><span class="w"></span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Verify the columns were added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
 </li>
 </ol>
 <h2 id="upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version (i.e. 2.X to 2.Y)<a class="headerlink" href="#upgrade-a-minor-version-ie-2x-to-2y" title="Permanent link">¶</a></h2>
 <p>Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.</p>
-<div class="admonition note">
-<p class="admonition-title">Note - Using Private Images</p>
+<details class="note">
+<summary>Note - Using Private Images</summary>
 <p>The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.</p>
-</div>
+</details>
 <ol>
 <li>
-<p>In the values.yaml file, update the images to the new version wanted. In this scenario, we've only updated the MPS, RPS, and WebUI to the newer versions. </p>
+<p>In the values.yaml file, update the images to the new version wanted. Alternatively, you can use the <code>latest</code> tags.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - values.yaml File</p>
 <div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">  </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-mps:v2.2.0"</span><span class="w"></span>
-</span><span class="hll"><span class="w">  </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-rps:v2.2.0"</span><span class="w"></span>
-</span><span class="hll"><span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-webui:v2.2.0"</span><span class="w"></span>
-</span><span class="w">  </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-mpsrouter:v2.0.0"</span><span class="w"></span>
-<span class="nt">mps</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-mps:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-rps:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-webui:latest"</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">"intel/oact-mpsrouter:latest"</span><span class="w"></span>
+</span><span class="nt">mps</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
 </code></pre></div>
 </div>
-<details class="warning">
-<summary>Warning - Upgrading when Using <code>latest</code> Image Tags</summary>
-<p>It is recommended to use versioned tags for deployment for easier tracking and troubleshooting. </p>
-<p>If your instance is using <code>latest</code> image tags, for example <code>intel/oact-mps:latest</code> rather than <code>intel/oact-mps:v2.2.0</code>, some extra configuration is required. Helm will not check for new <code>latest</code> images by default since it doesn't detect a change in.</p>
-<ol>
-<li>
-<p>To force Helm to always attempt to pull new images, set the <code>imagePullPolicy</code> for each image in their respective template files.</p>
-<p>Files to update:
-<div class="highlight"><pre><span></span><code>./kubernetes/charts/templates/mps.yaml
-./kubernetes/charts/templates/mpsrouter.yaml
-./kubernetes/charts/templates/rps.yaml
-./kubernetes/charts/templates/webui.yaml
-</code></pre></div></p>
-<details class="example">
-<summary>Example - Setting <code>imagePullPolicy</code> in <code>mps.yaml</code></summary>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.mps.replicaCount</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"></span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mps</span><span class="w"></span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mps</span><span class="w"></span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registrycredentials</span><span class="w"></span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mps</span><span class="w"></span>
-<span class="hll"><span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
-</span><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.images.mps</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"></span>
-<span class="w">          </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
-</code></pre></div>
-</details>
-</li>
-</ol>
-</details>
 </li>
 <li>
 <p>In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.</p>
