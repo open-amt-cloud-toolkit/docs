@@ -21,10 +21,11 @@
 An upgrade to the `mpsdb` database is required. Please run the following SQL script to add two new columns before upgrading the services:
 ``` sql
 ALTER TABLE devices 
-ADD COLUMN IF NOT EXISTS friendlyname varchar(256);
-ALTER TABLE devices 
+ADD COLUMN IF NOT EXISTS friendlyname varchar(256),
 ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);
 ```
+
+Need help? Find more information at [Upgrade Toolkit Version](../Deployment/upgradeVersion).
 
 :material-new-box:** Feature: AMT Maintenance command **
 
