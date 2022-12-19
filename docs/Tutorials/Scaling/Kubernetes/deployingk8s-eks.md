@@ -27,8 +27,7 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 1. Follow steps for [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to finish configuration of AWS CLI.
 
-
-2. Follow steps to [Create a key pair using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) to create a SSH key for accessing the cluster.
+2. Follow steps to [Create a key pair using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) to create a SSH key for accessing the cluster.
 
 3. Create a new EKS cluster and supporting components.
 
@@ -42,6 +41,91 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
     - **&lt;region&gt;** is the AWS region to deploy the stack (Ex: `us-west-2`).
     - **&lt;ssh-keypair-name&gt;** is the name of the SSH key from the previous step.
 
+## Configure EKS Instance
+
+Ensure your `kubectl` is connected to the correct EKS cluster to manage.
+
+1. Provide your region and cluster name.
+
+    ```
+    aws eks update-kubeconfig --region <region> --name <cluster-name>
+    ```
+
+    Where:
+
+    - **&lt;cluster-name&gt;** is the name of your EKS cluster.
+    - **&lt;region&gt;** is the AWS region where the cluster is (Ex: `us-west-2`).
+
+### Update Access Permissions
+
+In order to be able to see cluster details like resources, networking, and more with the Amazon EKS console, we must configure permissions in the `ConfigMap`. More information can be found at [How do I resolve the "Your current user or role does not have access to Kubernetes objects on this EKS cluster" error in Amazon EKS?](https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/)
+
+1. Get the configuration of your AWS CLI user or role.
+
+    ```
+    aws sts get-caller-identity
+    ```
+
+2. Edit `aws-auth ConfigMap` in a text editor.
+
+    ```
+    kubectl edit configmap aws-auth -n kube-system
+    ```
+
+3. Add the IAM user **OR** IAM role to the ConfigMap. To allow superuser access for performing any action on any resource, add `system:masters` instead of `system:bootstrappers` and `system:nodes`.
+
+    === "Add a Role"
+        ```
+        # Add under existing mapRoles section
+        # Replace [ROLE-NAME] with your IAM Role
+
+        mapRoles: |
+          - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[ROLE-NAME]
+          username: [ROLE-NAME]
+          groups:
+          - system:bootstrappers
+          - system:nodes
+        ```
+    === "Add a User"
+        ```
+        # Alternatively, you can create permissions for a single User rather than a Role
+        # Create a new mapUsers section
+        # Replace [USER-NAME] with your IAM User
+
+        mapUsers: |
+          - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[USER-NAME]
+          username: [USER-NAME]
+          groups:
+          - system:bootstrappers
+          - system:nodes
+        ```
+
+4. Save and close the text editor window. A success or error message will print to the console after closing the text editor window. If an error shows, verify the correct syntax was used. Additionally, a more detailed error message will be printed within the ConfigMap text file.
+
+### Add EBS CSI driver to Cluster
+
+The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created. This is a new requirement starting in Kubernetes 1.23 and later.
+
+Find additional information at [Creating the Amazon EBS CSI driver IAM role for service accounts](https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html).
+
+1. Create a new IAM role and attach the required Amazon managed policy. Replace `<cluster-name>` with the name of your cluster.
+
+    ```
+    eksctl create iamserviceaccount \
+        --name ebs-csi-controller-sa \
+        --namespace kube-system \
+        --cluster <cluster-name> \
+        --attach-policy-arn arn:aws-cn:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+        --approve \
+        --role-only \
+        --role-name AmazonEKS_EBS_CSI_DriverRole
+    ```
+
+2. Add the EBS CSI add-on to the cluster. Replace `<cluster-name>` with the name of your cluster and `<account-ID>` with your Account ID. Find more information at [Managing the Amazon EBS CSI driver as an Amazon EKS add-on](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
+
+    ```
+    eksctl create addon --name aws-ebs-csi-driver --cluster <cluster-name> --service-account-role-arn arn:aws:iam::<account-ID>:role/AmazonEKS_EBS_CSI_DriverRole --force
+    ```
 
 ## Create Postgres DB in RDS
 
@@ -112,21 +196,6 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
     ```
     psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
     ```
-
-## Connect to EKS Instance
-
-Ensure your `kubectl` is connected to the EKS cluster you wish to deploy/manage.
-
-1. Provide your region and cluster name.
-
-    ```
-    aws eks update-kubeconfig --region <region> --name <cluster-name>
-    ```
-
-    Where:
-
-    - **&lt;cluster-name&gt;** is the name of your EKS cluster.
-    - **&lt;region&gt;** is the AWS region where the cluster is (Ex: `us-west-2`).
 
 ## Create Secrets 
 
