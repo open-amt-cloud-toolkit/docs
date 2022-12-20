@@ -464,6 +464,25 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#configure-eks-instance">
+    Configure EKS Instance
+  </a>
+<nav aria-label="Configure EKS Instance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update-access-permissions">
+    Update Access Permissions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-ebs-csi-driver-to-cluster">
+    Add EBS CSI driver to Cluster
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#create-postgres-db-in-rds">
     Create Postgres DB in RDS
   </a>
@@ -490,11 +509,6 @@
 </li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#connect-to-eks-instance">
-    Connect to EKS Instance
-  </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#create-secrets">
@@ -975,7 +989,7 @@
 <p>Follow steps for <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">aws configure</a> to finish configuration of AWS CLI.</p>
 </li>
 <li>
-<p>Follow steps to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">Create a key pair using Amazon EC2</a> to create a SSH key for accessing the cluster.</p>
+<p>Follow steps to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html">Create a key pair using Amazon EC2</a> to create a SSH key for accessing the cluster.</p>
 </li>
 <li>
 <p>Create a new EKS cluster and supporting components.</p>
@@ -987,6 +1001,91 @@
 <li><strong>&lt;region&gt;</strong> is the AWS region to deploy the stack (Ex: <code>us-west-2</code>).</li>
 <li><strong>&lt;ssh-keypair-name&gt;</strong> is the name of the SSH key from the previous step.</li>
 </ul>
+</li>
+</ol>
+<h2 id="configure-eks-instance">Configure EKS Instance<a class="headerlink" href="#configure-eks-instance" title="Permanent link">¶</a></h2>
+<p>Ensure your <code>kubectl</code> is connected to the correct EKS cluster to manage.</p>
+<ol>
+<li>
+<p>Provide your region and cluster name.</p>
+<div class="highlight"><pre><span></span><code>aws eks update-kubeconfig --region &lt;region&gt; --name &lt;cluster-name&gt;
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><strong>&lt;cluster-name&gt;</strong> is the name of your EKS cluster.</li>
+<li><strong>&lt;region&gt;</strong> is the AWS region where the cluster is (Ex: <code>us-west-2</code>).</li>
+</ul>
+</li>
+</ol>
+<h3 id="update-access-permissions">Update Access Permissions<a class="headerlink" href="#update-access-permissions" title="Permanent link">¶</a></h3>
+<p>In order to be able to see cluster details like resources, networking, and more with the Amazon EKS console, we must configure permissions in the <code>ConfigMap</code>. More information can be found at <a href="https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/">How do I resolve the "Your current user or role does not have access to Kubernetes objects on this EKS cluster" error in Amazon EKS?</a></p>
+<ol>
+<li>
+<p>Get the configuration of your AWS CLI user or role.</p>
+<div class="highlight"><pre><span></span><code>aws sts get-caller-identity
+</code></pre></div>
+</li>
+<li>
+<p>Edit <code>aws-auth ConfigMap</code> in a text editor.</p>
+<div class="highlight"><pre><span></span><code>kubectl edit configmap aws-auth -n kube-system
+</code></pre></div>
+</li>
+<li>
+<p>Add the IAM user <strong>OR</strong> IAM role to the ConfigMap. To allow superuser access for performing any action on any resource, add <code>system:masters</code> instead of <code>system:bootstrappers</code> and <code>system:nodes</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Add a Role</label><label for="__tabbed_1_2">Add a User</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code># Add under existing mapRoles section
+# Replace [ROLE-NAME] with your IAM Role
+
+mapRoles: |
+  - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[ROLE-NAME]
+  username: [ROLE-NAME]
+  groups:
+  - system:bootstrappers
+  - system:nodes
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code># Alternatively, you can create permissions for a single User rather than a Role
+# Create a new mapUsers section
+# Replace [USER-NAME] with your IAM User
+
+mapUsers: |
+  - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[USER-NAME]
+  username: [USER-NAME]
+  groups:
+  - system:bootstrappers
+  - system:nodes
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+</li>
+<li>
+<p>Save and close the text editor window. A success or error message will print to the console after closing the text editor window. If an error shows, verify the correct syntax was used. Additionally, a more detailed error message will be printed within the ConfigMap text file.</p>
+</li>
+</ol>
+<h3 id="add-ebs-csi-driver-to-cluster">Add EBS CSI driver to Cluster<a class="headerlink" href="#add-ebs-csi-driver-to-cluster" title="Permanent link">¶</a></h3>
+<p>The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created. This is a new requirement starting in Kubernetes 1.23 and later.</p>
+<p>Find additional information at <a href="https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html">Creating the Amazon EBS CSI driver IAM role for service accounts</a>.</p>
+<ol>
+<li>
+<p>Create a new IAM role and attach the required Amazon managed policy. Replace <code>&lt;cluster-name&gt;</code> with the name of your cluster.</p>
+<div class="highlight"><pre><span></span><code>eksctl create iamserviceaccount \
+    --name ebs-csi-controller-sa \
+    --namespace kube-system \
+    --cluster &lt;cluster-name&gt; \
+    --attach-policy-arn arn:aws-cn:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+    --approve \
+    --role-only \
+    --role-name AmazonEKS_EBS_CSI_DriverRole
+</code></pre></div>
+</li>
+<li>
+<p>Add the EBS CSI add-on to the cluster. Replace <code>&lt;cluster-name&gt;</code> with the name of your cluster and <code>&lt;account-ID&gt;</code> with your Account ID. Find more information at <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html">Managing the Amazon EBS CSI driver as an Amazon EKS add-on</a>.</p>
+<div class="highlight"><pre><span></span><code>eksctl create addon --name aws-ebs-csi-driver --cluster &lt;cluster-name&gt; --service-account-role-arn arn:aws:iam::&lt;account-ID&gt;:role/AmazonEKS_EBS_CSI_DriverRole --force
+</code></pre></div>
 </li>
 </ol>
 <h2 id="create-postgres-db-in-rds">Create Postgres DB in RDS<a class="headerlink" href="#create-postgres-db-in-rds" title="Permanent link">¶</a></h2>
@@ -1078,20 +1177,6 @@
 <p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
 <div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
 </code></pre></div>
-</li>
-</ol>
-<h2 id="connect-to-eks-instance">Connect to EKS Instance<a class="headerlink" href="#connect-to-eks-instance" title="Permanent link">¶</a></h2>
-<p>Ensure your <code>kubectl</code> is connected to the EKS cluster you wish to deploy/manage.</p>
-<ol>
-<li>
-<p>Provide your region and cluster name.</p>
-<div class="highlight"><pre><span></span><code>aws eks update-kubeconfig --region &lt;region&gt; --name &lt;cluster-name&gt;
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;cluster-name&gt;</strong> is the name of your EKS cluster.</li>
-<li><strong>&lt;region&gt;</strong> is the AWS region where the cluster is (Ex: <code>us-west-2</code>).</li>
-</ul>
 </li>
 </ol>
 <h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">¶</a></h2>
