@@ -32,9 +32,9 @@ A GCC toolchain is required to compile RPC as a library.
 
 The library contains two functions:
 
-| Function        | Description                                                                                | Usage                                                                                                                      |
-|-----------------|--------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| **checkAccess** | Determines if RPC is being run as admin, the ME driver is installed, and AMT is available. | Use this function to check for basic AMT availability conditions.                                                          |
+| Function        | Description                                                                                | Usage                      |
+|-----------------|--------------------------------------------------------------------------------------------|----------------------------|
+| **checkAccess** | Determines if RPC is being run as admin, the ME driver is installed, and AMT is available. | Use this function to check for basic AMT availability conditions. |
 | **rpcExec**     | Executes RPC commands.                                                                     | Use this function as you would the RPC executable, passing in arguments to activate, deactivate, perform maintenance, etc. |
 
 ## Sample Client in `C#`
@@ -83,8 +83,11 @@ This sample provides an example of calling the `rpcExec` function to activate a 
     Console.WriteLine("... rpcExec completed: return code[" + returnCode + "] " + Marshal.PtrToStringAnsi(output));
 
 ```
-## RPC Error Code Charts 
-**(1-19) Basic Errors Outside of Open AMT Cloud Toolkit**
+## RPC Error Code Charts
+
+###  General Errors
+
+#### (1-19) Basic Errors Outside of Open AMT Cloud Toolkit
 
 |Error Code| Message                                 |
 | -------- | --------------------------------------- |
@@ -93,7 +96,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |3         |AMT not detected                         |
 |4         |AMT not ready                            |
 
-**(20-69) Input errors to RPC**
+#### (20-69) Input errors to RPC
 
 |Error Code| Message                                 |
 | -------- | --------------------------------------- |
@@ -106,13 +109,15 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |26        |Missing proxy address and port           |
 |27        |Missing static IP information            |
 
-**(70-99) Connection Errors**
+#### (70-99) Connection Errors
 
 |Error Code| Message                                 |
 | -------- | --------------------------------------- |
 |70        |RPS authentication failed                |
 
-**(100-149) Activation and Configuration Errors**
+### AMT-Specific Errors
+
+#### (100-149) Activation and Configuration Errors
 
 |Error Code| Message                                 |
 |----------|-----------------------------------------|
@@ -126,11 +131,10 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |107       |AMT features configuration failed        |
 |108       |802.1x configuration failed              |
 
-**(150-199) Maintenance Errors**
+#### (150-199) Maintenance Errors
 
 |Error Code| Message                                 |
 |----------|-----------------------------------------|
 |150       |Clock sync failed                        |
 |151       |Hostname sync failed                     |
 |152       |Network sync failed                      |
-
