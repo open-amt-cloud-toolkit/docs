@@ -670,6 +670,58 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rpc-error-code-charts">
+    RPC Error Code Charts
+  </a>
+<nav aria-label="RPC Error Code Charts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-errors">
+    General Errors
+  </a>
+<nav aria-label="General Errors" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-19-basic-errors-outside-of-open-amt-cloud-toolkit">
+    (1-19) Basic Errors Outside of Open AMT Cloud Toolkit
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#20-69-input-errors-to-rpc">
+    (20-69) Input errors to RPC
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#70-99-connection-errors">
+    (70-99) Connection Errors
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#amt-specific-errors">
+    AMT-Specific Errors
+  </a>
+<nav aria-label="AMT-Specific Errors" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#100-149-activation-and-configuration-errors">
+    (100-149) Activation and Configuration Errors
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#150-199-maintenance-errors">
+    (150-199) Maintenance Errors
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </li>
@@ -948,6 +1000,164 @@
 <span class="w">    </span><span class="n">returnCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpcExec</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">res</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">output</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"... rpcExec completed: return code["</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">returnCode</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"] "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Marshal</span><span class="p">.</span><span class="n">PtrToStringAnsi</span><span class="p">(</span><span class="n">output</span><span class="p">));</span>
 </code></pre></div>
+<h2 id="rpc-error-code-charts"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Error Code Charts<a class="headerlink" href="#rpc-error-code-charts" title="Permanent link">¶</a></h2>
+<h3 id="general-errors">General Errors<a class="headerlink" href="#general-errors" title="Permanent link">¶</a></h3>
+<h4 id="1-19-basic-errors-outside-of-open-amt-cloud-toolkit">(1-19) Basic Errors Outside of <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr><a class="headerlink" href="#1-19-basic-errors-outside-of-open-amt-cloud-toolkit" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Incorrect permissions (not admin or sudo)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HECI driver not detected</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AMT not detected</td>
+</tr>
+<tr>
+<td>4</td>
+<td>AMT not ready</td>
+</tr>
+</tbody>
+</table>
+<h4 id="20-69-input-errors-to-rpc">(20-69) Input errors to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#20-69-input-errors-to-rpc" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td>Missing or incorrect URL</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Missing or incorrect profile</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Server certificate verification failed</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Missing or incorrect password</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Missing DNS Suffix</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Missing hostname</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Missing proxy address and port</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Missing static IP information</td>
+</tr>
+</tbody>
+</table>
+<h4 id="70-99-connection-errors">(70-99) Connection Errors<a class="headerlink" href="#70-99-connection-errors" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70</td>
+<td><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> authentication failed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="amt-specific-errors">AMT-Specific Errors<a class="headerlink" href="#amt-specific-errors" title="Permanent link">¶</a></h3>
+<h4 id="100-149-activation-and-configuration-errors">(100-149) Activation and Configuration Errors<a class="headerlink" href="#100-149-activation-and-configuration-errors" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>AMT authentication failed</td>
+</tr>
+<tr>
+<td>101</td>
+<td>WSMAN message error</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Activation failed</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Network configuration failed</td>
+</tr>
+<tr>
+<td>104</td>
+<td><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration failed</td>
+</tr>
+<tr>
+<td>105</td>
+<td><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration failed</td>
+</tr>
+<tr>
+<td>106</td>
+<td>WiFi configuration failed</td>
+</tr>
+<tr>
+<td>107</td>
+<td>AMT features configuration failed</td>
+</tr>
+<tr>
+<td>108</td>
+<td>802.1x configuration failed</td>
+</tr>
+</tbody>
+</table>
+<h4 id="150-199-maintenance-errors">(150-199) Maintenance Errors<a class="headerlink" href="#150-199-maintenance-errors" title="Permanent link">¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150</td>
+<td>Clock sync failed</td>
+</tr>
+<tr>
+<td>151</td>
+<td>Hostname sync failed</td>
+</tr>
+<tr>
+<td>152</td>
+<td>Network sync failed</td>
+</tr>
+</tbody>
+</table>
 </article>
 </div>
 </div>
