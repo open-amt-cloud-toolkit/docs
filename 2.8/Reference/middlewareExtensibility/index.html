@@ -5,20 +5,20 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://open-amt-cloud-toolkit.github.io/docs/announcements/" rel="canonical"/>
-<link href="../assets/images/favicon.png" rel="icon"/>
+<link href="https://open-amt-cloud-toolkit.github.io/docs/Reference/middlewareExtensibility/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.5.6" name="generator"/>
-<title>Announcements - Open Active Management Technology Cloud Toolkit</title>
-<link href="../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<title>Middleware Extensibility - Open Active Management Technology Cloud Toolkit</title>
+<link href="../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-<link href="../assets/stylesheets/branding.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/mermaid.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/index.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/videos.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../assets/stylesheets/branding.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/mermaid.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/index.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/videos.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-00QEDJW2TS",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
 </head>
@@ -27,7 +27,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#announcements">
+<a class="md-skip" href="#add-a-custom-middleware-function">
           Skip to content
         </a>
 </div>
@@ -37,8 +37,8 @@
 </div>
 <header class="md-header md-header--lifted" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href=".." title="Open Active Management Technology Cloud Toolkit">
-<img alt="logo" src="../assets/images/logo-white-75px.png"/>
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
@@ -53,7 +53,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Announcements
+              Middleware Extensibility
             
           </span>
 </div>
@@ -105,32 +105,32 @@
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="..">
+<a class="md-tabs__link" href="../..">
         Home
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../GetStarted/prerequisites/">
+<a class="md-tabs__link" href="../../GetStarted/prerequisites/">
         Get Started
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../Deployment/overview/">
+<a class="md-tabs__link" href="../../Deployment/overview/">
         Deployment
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../Tutorials/uitoolkitReact/">
+<a class="md-tabs__link" href="../../Tutorials/uitoolkitReact/">
         Tutorials
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../Reference/architectureOverview/">
+<a class="md-tabs__link md-tabs__link--active" href="../architectureOverview/">
         Reference
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../APIs/indexMPS/">
+<a class="md-tabs__link" href="../../APIs/indexMPS/">
         APIs
       </a>
 </li>
@@ -146,8 +146,8 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Open Active Management Technology Cloud Toolkit">
-<img alt="logo" src="../assets/images/logo-white-75px.png"/>
+<a aria-label="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Open Active Management Technology Cloud Toolkit">
+<img alt="logo" src="../../assets/images/logo-white-75px.png"/>
 </a>
     Open Active Management Technology Cloud Toolkit
   </label>
@@ -162,8 +162,8 @@
 </a>
 </div>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_1">
           Home
           <span class="md-nav__icon md-icon"></span>
@@ -175,64 +175,27 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="..">
+<a class="md-nav__link" href="../..">
         Overview
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Announcements
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../announcements/">
         Announcements
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#open-amt-cloud-toolkit-20-is-here">
-    Open AMT Cloud Toolkit 2.0 is here!
-  </a>
-<nav aria-label="Open AMT Cloud Toolkit 2.0 is here!" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-does-having-an-lts-release-mean">
-    What does having an LTS release mean?
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#compatibility-between-versions">
-    Compatibility between versions
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#changes-coming-for-remote-provisioning-client">
-    Changes coming for Remote Provisioning Client
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../release-notes/">
+<a class="md-nav__link" href="../../release-notes/">
         Release Notes
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../videos/">
+<a class="md-nav__link" href="../../videos/">
         Video Walkthroughs
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../license/">
+<a class="md-nav__link" href="../../license/">
         License
       </a>
 </li>
@@ -252,12 +215,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/prerequisites/">
+<a class="md-nav__link" href="../../GetStarted/prerequisites/">
         Prerequisites
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/setup/">
+<a class="md-nav__link" href="../../GetStarted/setup/">
         Set Up
       </a>
 </li>
@@ -274,12 +237,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/loginToUI/">
+<a class="md-nav__link" href="../../GetStarted/loginToUI/">
         Login to Sample Web UI
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/createCIRAConfig/">
+<a class="md-nav__link" href="../../GetStarted/createCIRAConfig/">
         Create a CIRA Config
       </a>
 </li>
@@ -296,12 +259,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/createProfileCCM/">
+<a class="md-nav__link" href="../../GetStarted/createProfileCCM/">
         Create a Profile with CCM
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/createProfileACM/">
+<a class="md-nav__link" href="../../GetStarted/createProfileACM/">
         Create a Profile with ACM
       </a>
 </li>
@@ -324,12 +287,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/buildRPC/">
+<a class="md-nav__link" href="../../GetStarted/buildRPC/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../GetStarted/manageDevice/">
+<a class="md-nav__link" href="../../GetStarted/manageDevice/">
         Manage AMT Device
       </a>
 </li>
@@ -349,7 +312,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -372,22 +335,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Deployment/overview/">
+<a class="md-nav__link" href="../../Deployment/overview/">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Deployment/database/">
+<a class="md-nav__link" href="../../Deployment/database/">
         Database Replacement
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Deployment/secrets/">
+<a class="md-nav__link" href="../../Deployment/secrets/">
         Secrets Management
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Deployment/upgradeVersion/">
+<a class="md-nav__link" href="../../Deployment/upgradeVersion/">
         Upgrade Toolkit Version
       </a>
 </li>
@@ -407,22 +370,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/uitoolkitReact/">
+<a class="md-nav__link" href="../../Tutorials/uitoolkitReact/">
         UI Toolkit KVM Module
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/apiTutorial/">
+<a class="md-nav__link" href="../../Tutorials/apiTutorial/">
         REST API Call
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/createWiFiConfig/">
+<a class="md-nav__link" href="../../Tutorials/createWiFiConfig/">
         Wireless Activation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/modifyUserAuth/">
+<a class="md-nav__link" href="../../Tutorials/modifyUserAuth/">
         Modify User Authentication
       </a>
 </li>
@@ -439,12 +402,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/overview/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/overview/">
         Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/docker-swarm/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/docker-swarm/">
         Docker Swarm*
       </a>
 </li>
@@ -461,22 +424,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s/">
         Kubernetes (K8s)
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/">
         AKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/">
         EKS
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Tutorials/Scaling/Kubernetes/service-mesh/">
+<a class="md-nav__link" href="../../Tutorials/Scaling/Kubernetes/service-mesh/">
         KUMA Service Mesh
       </a>
 </li>
@@ -499,7 +462,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -509,8 +472,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Reference
           <span class="md-nav__icon md-icon"></span>
@@ -522,37 +485,64 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/architectureOverview/">
+<a class="md-nav__link" href="../architectureOverview/">
         Architecture Overview
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/powerstates/">
+<a class="md-nav__link" href="../powerstates/">
         AMT Power States
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/guids/">
+<a class="md-nav__link" href="../guids/">
         GUIDs in Intel® AMT
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/logging/">
+<a class="md-nav__link" href="../logging/">
         Logging
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/middlewareExtensibility/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Middleware Extensibility
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
         Middleware Extensibility
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-a-custom-middleware-function">
+    Add a Custom Middleware Function
+  </a>
+<nav aria-label="Add a Custom Middleware Function" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multitenancy-code-example">
+    Multitenancy Code Example
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/productionVault/">
+<a class="md-nav__link" href="../productionVault/">
         Production Mode Vault
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/sslpostgresLocal/">
+<a class="md-nav__link" href="../sslpostgresLocal/">
         SSL with Local Postgres
       </a>
 </li>
@@ -569,12 +559,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MQTT/customMqttEvents/">
+<a class="md-nav__link" href="../MQTT/customMqttEvents/">
         Customizing MQTT Events
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MQTT/viewMqttEvents/">
+<a class="md-nav__link" href="../MQTT/viewMqttEvents/">
         Viewing MQTT Events
       </a>
 </li>
@@ -594,12 +584,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MPS/configuration/">
+<a class="md-nav__link" href="../MPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MPS/securityMPS/">
+<a class="md-nav__link" href="../MPS/securityMPS/">
         Security Information
       </a>
 </li>
@@ -619,22 +609,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPS/configuration/">
+<a class="md-nav__link" href="../RPS/configuration/">
         Configuration
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPS/networkConfig/">
+<a class="md-nav__link" href="../RPS/networkConfig/">
         Network Profiles
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPS/securityRPS/">
+<a class="md-nav__link" href="../RPS/securityRPS/">
         Security Information
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/createProfileTLSConfig/">
+<a class="md-nav__link" href="../createProfileTLSConfig/">
         Create Profile with TLS
       </a>
 </li>
@@ -654,17 +644,17 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPC/buildRPC_Manual/">
+<a class="md-nav__link" href="../RPC/buildRPC_Manual/">
         Build &amp; Run RPC
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPC/commandsRPC/">
+<a class="md-nav__link" href="../RPC/commandsRPC/">
         RPC CLI
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/RPC/libraryRPC/">
+<a class="md-nav__link" href="../RPC/libraryRPC/">
         RPC Library
       </a>
 </li>
@@ -696,12 +686,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/Controls/kvmControl/">
+<a class="md-nav__link" href="../UIToolkit/Controls/kvmControl/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/Controls/serialOverLANControl/">
+<a class="md-nav__link" href="../UIToolkit/Controls/serialOverLANControl/">
         Serial Over LAN
       </a>
 </li>
@@ -709,7 +699,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/localization/">
+<a class="md-nav__link" href="../UIToolkit/localization/">
         Localization
       </a>
 </li>
@@ -726,12 +716,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/Bundles/kvmReact/">
+<a class="md-nav__link" href="../UIToolkit/Bundles/kvmReact/">
         Keyboard, Video, Mouse
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/Bundles/serialOverLANReact/">
+<a class="md-nav__link" href="../UIToolkit/Bundles/serialOverLANReact/">
         Serial Over LAN
       </a>
 </li>
@@ -739,7 +729,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/UIToolkit/webpackConfig/">
+<a class="md-nav__link" href="../UIToolkit/webpackConfig/">
         Webpack Configuration
       </a>
 </li>
@@ -759,12 +749,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MEBX/dnsSuffix/">
+<a class="md-nav__link" href="../MEBX/dnsSuffix/">
         DNS Suffix
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/MEBX/unprovision/">
+<a class="md-nav__link" href="../MEBX/unprovision/">
         Unprovisioning
       </a>
 </li>
@@ -784,12 +774,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/Certificates/remoteProvisioning/">
+<a class="md-nav__link" href="../Certificates/remoteProvisioning/">
         Provisioning Certificate
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/Certificates/tls/">
+<a class="md-nav__link" href="../Certificates/tls/">
         TLS Certificate
       </a>
 </li>
@@ -809,7 +799,7 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../Reference/troubleshooting/">
+<a class="md-nav__link" href="../troubleshooting/">
         Troubleshooting
       </a>
 </li>
@@ -832,12 +822,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../APIs/indexMPS/">
+<a class="md-nav__link" href="../../APIs/indexMPS/">
         Management Presence Server
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../APIs/indexRPS/">
+<a class="md-nav__link" href="../../APIs/indexRPS/">
         Remote Provisioning Server
       </a>
 </li>
@@ -851,19 +841,57 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/announcements.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Reference/middlewareExtensibility.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="announcements">Announcements<a class="headerlink" href="#announcements" title="Permanent link">¶</a></h1>
-<h3 id="open-amt-cloud-toolkit-20-is-here"><b><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> 2.0 is here!</b><a class="headerlink" href="#open-amt-cloud-toolkit-20-is-here" title="Permanent link">¶</a></h3>
-<p>We have been preparing for this for quite a while and we know many of our customers have been eagerly awaiting this announcement, our Long Term Support (LTS) release is here!  </p>
-<h4 id="what-does-having-an-lts-release-mean"><b>What does having an LTS release mean?</b><a class="headerlink" href="#what-does-having-an-lts-release-mean" title="Permanent link">¶</a></h4>
-<p>Starting with LTS, <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> will now have two release streams that customers can use.  The current Rapid release stream continues to operate as it has been since the beginning of this year.  Every six weeks we'll release new features and fixes that customers can use to add out-of-band functionality to their device management solution.  For Long Term Support releases, new features will be added roughly every six months.  Only critical security and bug fixes will be applied between feature releases, maintaining a stable feature set for the LTS release.  When we release a new LTS version, all of the features in the current Rapid release stream will be merged to the LTS release stream.  Similar to Rapid Releases, only the latest LTS release will be actively supported and maintained.  With this release, both the Rapid and LTS releases are set to 2.0 and have the exact same feature set.  As we continue to release new Rapid releases, the Rapid release stream will continue to add new features while the LTS release stream will continue with the 2.0 feature set.</p>
-<h4 id="compatibility-between-versions"><b>Compatibility between versions</b><a class="headerlink" href="#compatibility-between-versions" title="Permanent link">¶</a></h4>
-<p>As we previously announced, with the major version change, we are strictly following semantic versioning, making all 2.X components compatible with each other.  It also means that our 1.X components are not supported with 2.X components.  In this release, all of our components have been versioned up to 2.0 and validated together to ensure compatibility.  While both Rapid and LTS releases that share the same major version <em>should</em> be compatible with each other, we won't be validating Rapid and LTS combinations, so it is recommended that customers use either all Rapid or all LTS components.</p>
-<h3 id="changes-coming-for-remote-provisioning-client"><b>Changes coming for Remote Provisioning Client</b><a class="headerlink" href="#changes-coming-for-remote-provisioning-client" title="Permanent link">¶</a></h3>
-<p>For 2.0, we are deprecating the C++ version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> in favor of our Go-based implementation. The reason for this is two-fold. First, we want to be able to take advantage of more modern tooling such as Snyk for Vulnerability Scanning, and Dependabot for dependency updates, among others. Secondly, the cloud focused technologies and protocols we use, which include <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> and Websockets, have better support in modern languages. We still needed to balance the interaction between the AMT Firmware and the cloud which led to Go being a natural choice to use.  With the 2.0 release, we are providing an early look at the Go version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>.  Over the next few Rapid releases the functionality of the Go version will exceed that of the C++ version and customers will be encouraged to migrate.</p>
-<p><i>The entire <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> team hopes you are as excited about this release as we are and we look forward to continuing to working with you!  You can read more about this release in our <a href="../release-notes/">release notes</a>.</i></p>
+<h1>Middleware Extensibility</h1>
+<p>Middleware extensibility allows developers to implement new middleware handlers to both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. By adding custom functions, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will process and load these during server startup. The <code>loadCustomMiddleware</code> function that executes on startup can be found in <code>mps/src/server/webserver.ts</code> or <code>rps/src/index.ts</code>.</p>
+<p>Example use-cases:</p>
+<ul>
+<li>Handling Custom Authentication Tokens</li>
+<li>Adding Trace IDs</li>
+<li>Debugging Requests</li>
+</ul>
+<p>To demonstrate the execution, we'll use an example.  Let's say a custom auth token handler was implemented across all API endpoints.  When a call is then made against an API endpoint, the custom handler will execute first.  This handler might process the token.  After executing the custom function and calling <code>next()</code>, API execution will then continue as normal.</p>
+<h2 id="add-a-custom-middleware-function">Add a Custom Middleware Function<a class="headerlink" href="#add-a-custom-middleware-function" title="Permanent link">¶</a></h2>
+<p>To add a new function, create a new typescript file in <code>/src/middleware/custom/</code>. An <code>example.ts</code> file is already provided in this directory.</p>
+<p>The file <strong>must have two key parts</strong> in order to successfully load:</p>
+<ol>
+<li>The desired function must be exported as a default. <strong>Only the single, default function will be what is loaded into <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</strong> Additional functions that need to be loaded will need their own separate <code>.ts</code> files.</li>
+<li>Must call <code>next()</code>. This will allow execution to continue after processing the custom function.</li>
+</ol>
+<h3 id="multitenancy-code-example">Multitenancy Code Example<a class="headerlink" href="#multitenancy-code-example" title="Permanent link">¶</a></h3>
+<p>Implementation might vary depending on cloud provider or other 3rd party solutions. This specific example implements against Microsoft Azure and the default Open AMT components. </p>
+<p>The following code might not be a final solution, but provides a starting point and template example.</p>
+<p>The example implementation has a tenantId that is passed as part of the JWT token header when an API is called. The token is decoded and its tenantId is checked against the available tenants in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. This verifies that the user has the correct access to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> data being added, modified, or deleted.</p>
+<div class="admonition example">
+<p class="admonition-title">Multitenancy Example Code</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'express'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">devices</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../../server/mpsserver'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Environment</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'../../utils/Environment'</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tenantMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">jwtTokenHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Environment</span><span class="p">.</span><span class="nx">Config</span><span class="p">.</span><span class="nx">jwt_token_header</span><span class="w"> </span><span class="o">??</span><span class="w">     </span><span class="s1">'x-id-token'</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="nx">jwtTokenHeader</span><span class="p">]</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">tenantId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="s1">'base64'</span><span class="p">).</span><span class="w">  </span><span class="nx">toString</span><span class="w">  </span><span class="p">()</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">decodedToken</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">tenantProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Environment</span><span class="p">.</span><span class="nx">Config</span><span class="p">.</span><span class="nx">jwt_tenant_property</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">''</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">tenantId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dt</span><span class="p">[</span><span class="nx">tenantProp</span><span class="p">]</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">''</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">tenantMiddleware</span>
+</code></pre></div>
+</div>
 </article>
 </div>
 </div>
@@ -916,8 +944,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.078830c0.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </body>
 </html>
