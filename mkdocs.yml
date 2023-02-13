@@ -70,6 +70,7 @@ nav:
       - AMT Power States: Reference/powerstates.md
       - GUIDs in Intel® AMT: Reference/guids.md
       - Logging: Reference/logging.md
+      - Middleware Extensibility: Reference/middlewareExtensibility.md
       - Production Mode Vault: Reference/productionVault.md
       - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Event Monitoring (MQTT):
