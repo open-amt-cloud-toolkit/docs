@@ -114,6 +114,8 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |Error Code| Message                                 |
 | -------- | --------------------------------------- |
 |70        |RPS authentication failed                |
+|71        |AMT connection failed                    |
+|72        |OS network interfaces lookup failed      |
 
 ### AMT-Specific Errors
 
