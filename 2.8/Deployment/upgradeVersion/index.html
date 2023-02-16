@@ -365,19 +365,51 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#upgrade-from-26-to-27">
-    Upgrade from 2.6 to 2.7
+<a class="md-nav__link" href="#specific-changes-required-for-version-upgrades">
+    Specific Changes Required for Version Upgrades
   </a>
+<nav aria-label="Specific Changes Required for Version Upgrades" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upgrade-to-28-from-27">
+    Upgrade to 2.8 from 2.7
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upgrade-to-27-from-26">
+    Upgrade to 2.7 from 2.6
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#upgrade-a-minor-version-ie-2x-to-2y">
     Upgrade a Minor Version (i.e. 2.X to 2.Y)
   </a>
-</li>
+<nav aria-label="Upgrade a Minor Version (i.e. 2.X to 2.Y)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#kubernetes-upgrade">
+    Kubernetes Upgrade
+  </a>
+<nav aria-label="Kubernetes Upgrade" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#rollback-a-version">
     Rollback a Version
   </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#local-docker-upgrade">
+    Local Docker Upgrade
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -845,15 +877,15 @@
 <a class="md-content__button md-icon" href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Deployment/upgradeVersion.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">¶</a></h1>
-<h2 id="upgrade-from-26-to-27">Upgrade from 2.6 to 2.7<a class="headerlink" href="#upgrade-from-26-to-27" title="Permanent link">¶</a></h2>
-<p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
+<h1>Upgrade Toolkit Version</h1>
+<h2 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">¶</a></h2>
+<h3 id="upgrade-to-28-from-27">Upgrade to 2.8 from 2.7<a class="headerlink" href="#upgrade-to-28-from-27" title="Permanent link">¶</a></h3>
+<p>The 2.8 release of MPS requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
-<p>Run the following SQL script to add two new columns before upgrading the services:</p>
-<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+<p>Run the following SQL script to add the new column before upgrading the services:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </code></pre></div>
 <details class="example" open="open">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
@@ -863,7 +895,58 @@
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the databse, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statement.
+    <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-27-from-26">Upgrade to 2.7 from 2.6<a class="headerlink" href="#upgrade-to-27-from-26" title="Permanent link">¶</a></h3>
+<p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add two new columns before upgrading the services:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
     <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
 </code></pre></div></p>
 <details class="example">
@@ -899,6 +982,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 </ol>
 <h2 id="upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version (i.e. 2.X to 2.Y)<a class="headerlink" href="#upgrade-a-minor-version-ie-2x-to-2y" title="Permanent link">¶</a></h2>
+<h3 id="kubernetes-upgrade">Kubernetes Upgrade<a class="headerlink" href="#kubernetes-upgrade" title="Permanent link">¶</a></h3>
 <p>Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.</p>
 <details class="note">
 <summary>Note - Using Private Images</summary>
@@ -957,7 +1041,7 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 </div>
 </li>
 </ol>
-<h2 id="rollback-a-version">Rollback a Version<a class="headerlink" href="#rollback-a-version" title="Permanent link">¶</a></h2>
+<h4 id="rollback-a-version">Rollback a Version<a class="headerlink" href="#rollback-a-version" title="Permanent link">¶</a></h4>
 <p>Is the functionality not working as expected? Rollback to the previous deployment using Helm.</p>
 <ol>
 <li>
@@ -969,6 +1053,60 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <div class="highlight"><pre><span></span><code>Rollback was a success! Happy Helming!
 </code></pre></div>
 </div>
+</li>
+</ol>
+<h3 id="local-docker-upgrade">Local Docker Upgrade<a class="headerlink" href="#local-docker-upgrade" title="Permanent link">¶</a></h3>
+<p>The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.</p>
+<ol>
+<li>
+<p>From the <code>.\open-amt-cloud-toolkit\</code> directory, pull the latest branches.
+    <div class="highlight"><pre><span></span><code>git pull
+</code></pre></div></p>
+</li>
+<li>
+<p>Checkout the new release.
+    <div class="highlight"><pre><span></span><code>git checkout v2.8.0
+</code></pre></div></p>
+<details class="note">
+<summary>Note - Rebuilding New Images Locally</summary>
+<p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\open-amt-cloud-toolkit\</code>.</p>
+<ol>
+<li>
+<p>Pull the new releases of the submodules.
+    <div class="highlight"><pre><span></span><code>git submodule update --recursive
+</code></pre></div></p>
+</li>
+<li>
+<p>Checkout the release for each of the services you want to upgrade.
+    <div class="highlight"><pre><span></span><code>cd mps
+git checkout v2.8.0
+</code></pre></div></p>
+</li>
+<li>
+<p>Repeat for other services.</p>
+</li>
+<li>
+<p>Build the new images.
+    <div class="highlight"><pre><span></span><code>docker-compose up -d --build
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Pull the new release Docker Hub images.
+    <div class="highlight"><pre><span></span><code>docker-compose pull
+</code></pre></div></p>
+</li>
+<li>
+<p>Start the new containers.
+    <div class="highlight"><pre><span></span><code>docker-compose up -d --remove-orphans
+</code></pre></div></p>
+</li>
+<li>
+<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Open AMT images you wish to keep, <strong>do NOT</strong> run this command.
+    <div class="highlight"><pre><span></span><code>docker image prune -a
+</code></pre></div></p>
 </li>
 </ol>
 <!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->
