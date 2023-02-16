@@ -73,6 +73,8 @@ nav:
       - Middleware Extensibility: Reference/middlewareExtensibility.md
       - Production Mode Vault: Reference/productionVault.md
       - SSL with Local Postgres: Reference/sslpostgresLocal.md
+      - Enterprise Assistant:
+          - Overview: Reference/EA/overview.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
