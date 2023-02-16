@@ -1,7 +1,52 @@
 
-# Specific Changes Required for Version Upgrades
+## Specific Changes Required for Version Upgrades
 
-## Upgrade from 2.6 to 2.7
+### Upgrade to 2.8 from 2.7
+
+The 2.8 release of MPS requires an upgrade to the `rpsdb` database.
+
+1. Run the following SQL script to add the new column before upgrading the services:
+
+    ``` sql
+    ALTER TABLE IF EXISTS profiles
+    ADD COLUMN IF NOT EXISTS tls_signing_authority varchar(40) NULL;
+    ```
+
+    ???+ example "Example - Adding Columns to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql.
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+            ```
+            psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+            ```
+
+            ??? example "Example Commands"
+                ```
+                Azure:
+                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+                AWS:
+                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+                ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statement.
+            ``` sql
+            ALTER TABLE IF EXISTS profiles
+            ADD COLUMN IF NOT EXISTS tls_signing_authority varchar(40) NULL;
+            ```
+
+        5. Verify the column was added to the table.
+            ``` sql
+            SELECT * FROM profiles;
+            ```
+
+2. Continue with general upgrade steps below.
+
+### Upgrade to 2.7 from 2.6
 
 The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
 
@@ -13,12 +58,12 @@ The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
     ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);
     ```
 
-    ???+ example "Example - Adding Columns to PostgresDB using psql"
+    ??? example "Example - Adding Columns to PostgresDB using psql"
         This example walks through one potential option to update a Postgres Database using psql.
 
         1. Open a Command Prompt or Terminal.
 
-        2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the databse, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+        2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
             ```
             psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
             ```
@@ -50,6 +95,8 @@ The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
 
 
 ## Upgrade a Minor Version (i.e. 2.X to 2.Y)
+
+### Kubernetes Upgrade
 
 Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.
 
@@ -110,7 +157,7 @@ Upgrading from a previous minor version to a new minor version release is simple
         webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
         ```
 
-## Rollback a Version
+#### Rollback a Version
 
 Is the functionality not working as expected? Rollback to the previous deployment using Helm.
 
@@ -124,5 +171,55 @@ Is the functionality not working as expected? Rollback to the previous deploymen
         ```
         Rollback was a success! Happy Helming!
         ```
+
+### Local Docker Upgrade
+
+The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.
+
+1. From the `.\open-amt-cloud-toolkit\` directory, pull the latest branches.
+    ```
+    git pull
+    ```
+
+2. Checkout the new release.
+    ```
+    git checkout v{{ repoVersion.oamtct }}
+    ```
+
+    ??? note "Note - Rebuilding New Images Locally"
+        If building your own images, you will also have to checkout the newer release from each repo within `.\open-amt-cloud-toolkit\`.
+
+        1. Pull the new releases of the submodules.
+            ```
+            git submodule update --recursive
+            ```
+
+        2. Checkout the release for each of the services you want to upgrade.
+            ```
+            cd mps
+            git checkout v{{ repoVersion.mpsAPI }}
+            ```
+
+        3. Repeat for other services.
+
+        4. Build the new images.
+            ```
+            docker-compose up -d --build
+            ```
+
+3. Pull the new release Docker Hub images.
+    ```
+    docker-compose pull
+    ```
+
+4. Start the new containers.
+    ```
+    docker-compose up -d --remove-orphans
+    ```
+
+5. OPTIONAL. If using versioned tags rather than `latest`, you can delete older tagged images using the following. **This will delete all unused images**. If you have other non Open AMT images you wish to keep, **do NOT** run this command.
+    ```
+    docker image prune -a
+    ```
 
 <!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->
