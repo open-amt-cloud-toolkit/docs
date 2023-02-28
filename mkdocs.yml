@@ -1,18 +1,18 @@
 # Project information
-site_name: 'Open Active Management Technology Cloud Toolkit'
-site_url: 'https://open-amt-cloud-toolkit.github.io/docs'
-repo_url: 'https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit'
-repo_name: 'open-amt-cloud-toolkit/open-amt-cloud-toolkit'
-copyright: 'Copyright &copy; 2021 Intel Corporation'
+site_name: "Open Active Management Technology Cloud Toolkit"
+site_url: "https://open-amt-cloud-toolkit.github.io/docs"
+repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
+repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
+copyright: "Copyright &copy; 2021 Intel Corporation"
 site_dir: site/2.8
 # Configuration
 theme:
-  name: 'material'
-  language: 'en'
-  logo: 'assets/images/logo-white-75px.png'
+  name: "material"
+  language: "en"
+  logo: "assets/images/logo-white-75px.png"
   font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
+    text: "Roboto"
+    code: "Roboto Mono"
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -51,19 +51,19 @@ nav:
       - Secrets Management: Deployment/secrets.md
       - Upgrade Toolkit Version: Deployment/upgradeVersion.md
   - Tutorials:
-    - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
-    - REST API Call: Tutorials/apiTutorial.md
-    - Wireless Activation: Tutorials/createWiFiConfig.md
-    - Modify User Authentication: Tutorials/modifyUserAuth.md
-    - Scaling Tutorials:
-        - Overview: Tutorials/Scaling/overview.md
-        - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
-        - Kubernetes Deployments:
-            - Kubernetes (K8s): Tutorials/Scaling/Kubernetes/deployingk8s.md
-            - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
-            - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
-            - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
-    - Get Help:
+      - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
+      - REST API Call: Tutorials/apiTutorial.md
+      - Wireless Activation: Tutorials/createWiFiConfig.md
+      - Modify User Authentication: Tutorials/modifyUserAuth.md
+      - Scaling Tutorials:
+          - Overview: Tutorials/Scaling/overview.md
+          - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
+          - Kubernetes Deployments:
+              - Kubernetes (K8s): Tutorials/Scaling/Kubernetes/deployingk8s.md
+              - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
+              - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
+              - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
+      - Get Help:
           - Troubleshooting: Reference/troubleshooting.md
   - Reference:
       - Architecture Overview: Reference/architectureOverview.md
@@ -115,7 +115,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
@@ -124,11 +124,11 @@ markdown_extensions:
   - attr_list
   - pymdownx.inlinehilite
   - pymdownx.superfences:
-    # make exceptions to highlighting of code:
+      # make exceptions to highlighting of code:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -136,16 +136,13 @@ markdown_extensions:
       permalink: true
 extra_css:
   - assets/stylesheets/branding.css
-  - assets/stylesheets/mermaid.css
   - assets/stylesheets/index.css
   - assets/stylesheets/videos.css
-extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
 plugins:
   - render_swagger
   - search
   - macros
-  - mermaid2
   - img2fig
 extra:
   version:
@@ -164,4 +161,4 @@ extra:
     ltsVersion: 2.0
   analytics:
     provider: google
-    property: 'G-00QEDJW2TS'
+    property: "G-00QEDJW2TS"
