@@ -2,7 +2,10 @@
 
 # Overview
 
- **Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® Platforms.
+**Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® Platforms.
+
+??? note "Long-Term Support (LTS) Version"
+    Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
 
 <div class="home-nav-row">
   <div class="home-nav-column">
@@ -10,13 +13,6 @@
         <h4><img class="home-nav-icons" src="./assets/images/intel/blazing-performance.png"><b>Get Started</b></h4>
         <p>Jump in to the Open AMT Cloud Toolkit by deploying locally with Docker containers.</p>
         <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.rapidVersion }}/GetStarted/prerequisites/">Get Started Now</a>
-    </div>
-  </div>
-  <div class="home-nav-column">
-    <div class="home-nav-card">
-        <h4><img class="home-nav-icons" src="./assets/images/intel/document.png"><b>LTS Release</b></h4>
-        <p>Not looking for the current rapid release? See the documentation for our Long-Term Support release.</p>
-        <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }}">View LTS Documentation</a>
     </div>
   </div>
   <div class="home-nav-column">
@@ -33,7 +29,14 @@
         <a href="https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.rapidVersion }}/APIs/indexMPS/">See APIs</a>
     </div>
   </div>
+  <div class="home-nav-column">
+    <div class="home-nav-card">
+        <h4><img class="home-nav-icons" src="./assets/images/intel/message.png"><b>Join Our Community</b></h4>
+        <a target="_blank" href="https://discord.gg/yrcMp2kDWh"><img src="https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=banner4" alt="Discord Banner 4"/></a>
+    </div>
+  </div>
 </div>
+
 <p class="divider"></p>
 
 <div style="text-align:center;">
