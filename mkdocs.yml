@@ -75,6 +75,7 @@ nav:
       - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Enterprise Assistant:
           - Overview: Reference/EA/overview.md
+          - 802.1x Configuration: Reference/EA/ieee8021xconfig.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
