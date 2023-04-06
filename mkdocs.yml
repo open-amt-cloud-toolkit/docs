@@ -31,6 +31,8 @@ nav:
       - Release Notes: release-notes.md
       - Video Walkthroughs: videos.md
       - License: license.md
+      - Get Help:
+        - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
       - Prerequisites: GetStarted/prerequisites.md
       - Set Up: GetStarted/setup.md
@@ -75,6 +77,7 @@ nav:
       - SSL with Local Postgres: Reference/sslpostgresLocal.md
       - Enterprise Assistant:
           - Overview: Reference/EA/overview.md
+          - 802.1x Configuration: Reference/EA/ieee8021xconfig.md
       - Event Monitoring (MQTT):
           - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
           - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
