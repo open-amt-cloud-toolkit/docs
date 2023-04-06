@@ -2,16 +2,6 @@
 
 Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device and communicates with the Remote Provisioning Server (RPS) microservice on the development system. The RPC and RPS configure and activate Intel® AMT on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS. See Figure 1.
 
-!!! Warning "Beta Version Instructions Ahead"
-        This version of the RPC application contains functional enhancements. See [Release Notes](../../../release-notes).
-
-        However, it is a **Beta version release.** 
-        
-        If you are unable to complete the installation below or you simply require an older release of the RPC, see Open AMT Cloud Toolkit 2.0:
-
-        * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/)
-        * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
-
 !!! tip "Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 

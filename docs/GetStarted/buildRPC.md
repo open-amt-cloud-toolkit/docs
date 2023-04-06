@@ -6,17 +6,6 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
   <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../../Reference/RPC/commandsRPC">RPC Commands and Flags</a></figcaption>
 </div>
 
-!!! Warning "Beta Version Instructions Ahead"
-        This version of the RPC application contains functional enhancements. See [Release Notes](../release-notes.md).
-
-        However, it is a **Beta version release.** 
-        
-        If you are unable to complete the installation below or you simply require an older release of the RPC, see Open AMT Cloud Toolkit 2.0:
-
-        * [Build & Run RPC (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/buildRPC_Manual/)
-        * [RPC Commands (Legacy)](https://open-amt-cloud-toolkit.github.io/docs/2.0/Reference/RPC/commandsRPC/)
-
-
 !!! important "Important - Production Environment"
         In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
