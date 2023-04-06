@@ -38,8 +38,9 @@ The diagrams below illustrates the database schema and relationships.
   ```
   ``` mermaid 
   erDiagram
-      PROFILE o|--o| CIRACONFIG : has
+      PROFILE o|--o| CIRACONFIGS : has
       PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
+      PROFILE o|--o| IEEE8021XCONFIGS : has
       PROFILE {
         string profile_name
         string activation
@@ -52,8 +53,8 @@ The diagrams below illustrates the database schema and relationships.
         boolean dhcp_enabled
         string tenant_id
       }
-      CIRACONFIG 
-      CIRACONFIG {
+      CIRACONFIGS 
+      CIRACONFIGS {
         string cira_config_name
         string mps_server_address
         int mps_port
@@ -87,6 +88,19 @@ The diagrams below illustrates the database schema and relationships.
         string profile_name
         datetime creation_date
         string created_by
+        string tenant_id
+      }
+      IEEE8021XCONFIGS {
+        string profile_name
+        int auth_protocol
+        string servername
+        string domain
+        string username
+        string password
+        string roaming_identity
+        boolean active_in_s0
+        int pxe_timeout
+        boolean wired_interface
         string tenant_id
       }
   ```

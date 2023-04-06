@@ -31,6 +31,8 @@ nav:
       - Release Notes: release-notes.md
       - Video Walkthroughs: videos.md
       - License: license.md
+      - Get Help:
+        - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
       - Prerequisites: GetStarted/prerequisites.md
       - Set Up: GetStarted/setup.md
