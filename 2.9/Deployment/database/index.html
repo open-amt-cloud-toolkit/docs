@@ -2206,8 +2206,9 @@
         string tenant_id
     }</code></pre>
   <pre class="mermaid"><code>erDiagram
-    PROFILE o|--o| CIRACONFIG : has
+    PROFILE o|--o| CIRACONFIGS : has
     PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
+    PROFILE o|--o| IEEE8021XCONFIGS : has
     PROFILE {
       string profile_name
       string activation
@@ -2220,8 +2221,8 @@
       boolean dhcp_enabled
       string tenant_id
     }
-    CIRACONFIG 
-    CIRACONFIG {
+    CIRACONFIGS 
+    CIRACONFIGS {
       string cira_config_name
       string mps_server_address
       int mps_port
@@ -2255,6 +2256,19 @@
       string profile_name
       datetime creation_date
       string created_by
+      string tenant_id
+    }
+    IEEE8021XCONFIGS {
+      string profile_name
+      int auth_protocol
+      string servername
+      string domain
+      string username
+      string password
+      string roaming_identity
+      boolean active_in_s0
+      int pxe_timeout
+      boolean wired_interface
       string tenant_id
     }</code></pre></p>
 <h3 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h3>

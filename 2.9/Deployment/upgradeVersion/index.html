@@ -901,6 +901,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#upgrade-to-29-from-28" class="md-nav__link">
+    Upgrade to 2.9 from 2.8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#upgrade-to-28-from-27" class="md-nav__link">
     Upgrade to 2.8 from 2.7
   </a>
@@ -2185,13 +2192,33 @@
   <h1>Upgrade Toolkit Version</h1>
 
 <h2 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">&para;</a></h2>
-<h3 id="upgrade-to-28-from-27">Upgrade to 2.8 from 2.7<a class="headerlink" href="#upgrade-to-28-from-27" title="Permanent link">&para;</a></h3>
-<p>The 2.8 release of MPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<h3 id="upgrade-to-29-from-28">Upgrade to 2.9 from 2.8<a class="headerlink" href="#upgrade-to-29-from-28" title="Permanent link">&para;</a></h3>
+<p>The 2.9 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
-<p>Run the following SQL script to add the new column before upgrading the services:</p>
+<p>Run the following SQL script to add the new table before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth_protocol</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">servername</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="k">domain</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">password</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">roaming_identity</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">active_in_s0</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pxe_timeout</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">wired_interface</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">tenant_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">),</span>
+<span class="w">    </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">wired_interface</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Update the Profiles table.</p>
 <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021x_profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">ieee8021xconfigs_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ieee8021x_profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span><span class="w">  </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
 </code></pre></div>
 <details class="example" open="open">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
@@ -2218,10 +2245,54 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Provide your Postgres user password.</p>
 </li>
 <li>
-<p>Run the SQL Statement.
-    <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<p>Run the SQL Statements.</p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">;</span>
 </code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-28-from-27">Upgrade to 2.8 from 2.7<a class="headerlink" href="#upgrade-to-28-from-27" title="Permanent link">&para;</a></h3>
+<p>The 2.8 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add the new column before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statement.</p>
 </li>
 <li>
 <p>Verify the column was added to the table.
@@ -2239,7 +2310,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
 <ol>
 <li>
-<p>Run the following SQL script to add two new columns before upgrading the services:</p>
+<p>Run the following SQL script to add two new columns before upgrading the services.</p>
 <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
 <span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
 <span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
@@ -2269,11 +2340,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>Provide your Postgres user password.</p>
 </li>
 <li>
-<p>Run the SQL Statement.
-    <div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
-</code></pre></div></p>
+<p>Run the SQL Statement.</p>
 </li>
 <li>
 <p>Verify the columns were added to the table.
@@ -2295,6 +2362,16 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.</p>
 </details>
 <ol>
+<li>
+<p>Pull the latest release within <code>.\open-amt-cloud-toolkit</code> directory.</p>
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
+</li>
+<li>
+<p>Merge the latest changes into your existing branch.</p>
+<div class="highlight"><pre><span></span><code>git merge v2.9.0
+</code></pre></div>
+</li>
 <li>
 <p>In the values.yaml file, update the images to the new version wanted. Alternatively, you can use the <code>latest</code> tags.</p>
 <div class="admonition example">
