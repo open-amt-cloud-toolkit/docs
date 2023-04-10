@@ -152,15 +152,15 @@ extra:
     provider: mike
   repoVersion:
     mpsAPI: 2.8.0
-    rpsAPI: 2.9.0
-    oamtct: 2.9.0
-    rpc_go: 2.6.0
+    rpsAPI: 2.10.0
+    oamtct: 2.10.0
+    rpc_go: 2.7.0
     rpc_c: 2.0.0
     ui_toolkit: 2.0.8
     ui_toolkit_react: 3.0.0
     ui_toolkit_angular: 5.0.1
   docsSite:
-    rapidVersion: 2.9
+    rapidVersion: 2.10
     ltsVersion: 2.0
   analytics:
     provider: google
