@@ -88,9 +88,9 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
         <figcaption>Figure 3: Enterprise Assistant Settings Menu</figcaption>
     </figure>
 
-2. Provide the RPS Server Hostname. 
+2. Provide the RPS Server Hostname. Enterprise Assistant communicates via Websocket. 
 
-    Enterprise Assistant communicates via Websocket. Make sure to include the route `/ea` (e.g. `ws://192.168.1.34/ea`).
+    Make sure to include the route `/ea` (e.g. `wss://192.168.1.34/ea`).
 
 3. The `Device Name` is the name used to configure the domain controller for each device account. Using `Node Identifier` is more secure due to the inability to be tampered with but is less friendly to maintain as a user.
 
