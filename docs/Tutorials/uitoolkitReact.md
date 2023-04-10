@@ -26,10 +26,10 @@ The tutorial outlines how to add various controls to the sample React web applic
 - The **development system** requires the following software:
     - [git](https://git-scm.com/)
     - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE
-    - [Node.js* LTS 12.x.x or newer](https://nodejs.org/)
-  
+    - [Node.js](https://nodejs.org/)
 
 ## What You'll Do
+
 Follow the steps in these sections sequentially: 
 
 - Create a new React app
@@ -48,13 +48,16 @@ The React app can be created in any preferred development directory. The MPS can
 
 2. Run the following commands to create sample React app named `my-app`.
 
-  ``` bash
-  npx create-react-app my-app
-  ```
+    ``` bash
+    npx create-react-app my-app
+    ```
+
 3. Change to the my-app directory:
-   ``` bash
-   cd my-app
-   ```
+
+    ``` bash
+    cd my-app
+    ```
+
 ## Add UI Toolkit
 
 1. Run the following command to add the UI Toolkit and install the required dependencies:
@@ -83,9 +86,7 @@ The React app can be created in any preferred development directory. The MPS can
 
 
 ## Add a Sample Control
-The following sections outline how to add controls. To use the code snippets provided, replace what is in the `App.js` file with the provided code snippet.
-
-Refresh the web browser after adding a control if it does not update automatically after a few seconds.
+The following sections outline how to add controls.  Refresh the web browser after adding a control if it does not update automatically after a few seconds.
 
 ### Add Keyboard, Video, Mouse (KVM) Redirection 
 
@@ -93,15 +94,15 @@ The code snippet below adds KVM control to the React application.
 
 1. Open `./my-app/src/App.js` in a text editor or IDE of choice, such as Visual Studio Code or Notepad.
 
-2. Delete the current code and replace with the code snippet below.
+2. Delete the existing code and replace it with the code snippet below.
 
 3. Change the following values:
 
     | Field       |  Value   |
     | :----------- | :-------------- |
     | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Reference/guids.md). |
-    | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your Development Device or MPS Server. When using KONG, `/mps/ws/relay` must be appeneded to the IP or FQDN. |
-    | `authToken` | **Provide valid JWT.** See instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
+    | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your MPS Server. <br><br> **When using Kong**, `/mps/ws/relay` must be appended to the IP or FQDN. |
+    | `authToken` | **Provide valid JWT.** Redirection requires a redirection-specific authentication token. [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get a auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
 
 
     ``` javascript hl_lines="8 9 11"
@@ -113,9 +114,9 @@ The code snippet below adds KVM control to the React application.
         return (
             <div className="App">
                 <KVM deviceId="038d0240-045c-05f4-7706-980700080009" //Replace with AMT Device GUID
-                mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with Development System or MPS Server IP Address
+                mpsServer="https://localhost/mps/ws/relay" //Replace 'localhost' with MPS Server IP Address or FQDN
                 mouseDebounceTime="200"
-                authToken="" // Replace with a valid JWT token from 'Authorize' API Method
+                authToken="" // Replace with a valid JWT token from 'Authorize Redirection' GET API Method
                 canvasHeight="100%"
                 canvasWidth="100%"></KVM>
             </div>
@@ -130,22 +131,29 @@ The code snippet below adds KVM control to the React application.
 
 5. If the React app hasn't updated automatically, refresh the page.
 
+    You are now able to remotely control your Intel® AMT device using Keyboard, Video, Mouse control.
 
-You are now able to remotely control your Intel® AMT device using Keyboard, Video, Mouse control.
+    !!! success
+        <figure class="figure-image">
+        <img src="..\..\assets\images\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
+        <figcaption>Figure 3: Successful KVM Connection</figcaption>
+        </figure>
 
 
 You will see the errors in the following scenarios:
 
+- If your browser is IE/Edge, there might be compatibility issues.
 - Compilation errors if the ui-toolkit was not downloaded and installed to your react app.
 - MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
-- If your browser is IE/Edge, there might be compatibility issues.
 - Incorrect or invalid JWT for authToken, see instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}.
     
-    !!! example "Example authToken Format"
+    !!! example "Example authToken Format from API Call"
 
         ```json
-        {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"}
+        {
+            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"
+        }
         ```
 
 <br>
