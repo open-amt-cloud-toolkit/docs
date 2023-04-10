@@ -2259,7 +2259,7 @@
 <li>The <strong>development system</strong> requires the following software:<ul>
 <li><a href="https://git-scm.com/">git</a></li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> or any other IDE</li>
-<li><a href="https://nodejs.org/">Node.js* LTS 12.x.x or newer</a></li>
+<li><a href="https://nodejs.org/">Node.js</a></li>
 </ul>
 </li>
 </ul>
@@ -2282,13 +2282,15 @@
 </li>
 <li>
 <p>Run the following commands to create sample React app named <code>my-app</code>.</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>create-react-app<span class="w"> </span>my-app
+</code></pre></div>
+</li>
+<li>
+<p>Change to the my-app directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>my-app
+</code></pre></div>
 </li>
 </ol>
-<p><div class="highlight"><pre><span></span><code>npx<span class="w"> </span>create-react-app<span class="w"> </span>my-app
-</code></pre></div>
-3. Change to the my-app directory:
-   <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>my-app
-</code></pre></div></p>
 <h2 id="add-ui-toolkit">Add <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#add-ui-toolkit" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -2316,8 +2318,7 @@ When you make changes, you do not need to stop the application and restart. It w
 </li>
 </ol>
 <h2 id="add-a-sample-control">Add a Sample Control<a class="headerlink" href="#add-a-sample-control" title="Permanent link">&para;</a></h2>
-<p>The following sections outline how to add controls. To use the code snippets provided, replace what is in the <code>App.js</code> file with the provided code snippet.</p>
-<p>Refresh the web browser after adding a control if it does not update automatically after a few seconds.</p>
+<p>The following sections outline how to add controls.  Refresh the web browser after adding a control if it does not update automatically after a few seconds.</p>
 <h3 id="add-keyboard-video-mouse-kvm-redirection">Add Keyboard, Video, Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) Redirection<a class="headerlink" href="#add-keyboard-video-mouse-kvm-redirection" title="Permanent link">&para;</a></h3>
 <p>The code snippet below adds <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> control to the React application. </p>
 <ol>
@@ -2325,7 +2326,7 @@ When you make changes, you do not need to stop the application and restart. It w
 <p>Open <code>./my-app/src/App.js</code> in a text editor or IDE of choice, such as Visual Studio Code or Notepad.</p>
 </li>
 <li>
-<p>Delete the current code and replace with the code snippet below.</p>
+<p>Delete the existing code and replace it with the code snippet below.</p>
 </li>
 <li>
 <p>Change the following values:</p>
@@ -2343,11 +2344,11 @@ When you make changes, you do not need to stop the application and restart. It w
 </tr>
 <tr>
 <td align="left"><code>mpsServer</code></td>
-<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your Development Device or <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. When using KONG, <code>/mps/ws/relay</code> must be appeneded to the IP or FQDN.</td>
+<td align="left"><strong>Replace the localhost</strong> with the IP Address or FQDN of your <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Server. <br><br> <strong>When using Kong</strong>, <code>/mps/ws/relay</code> must be appended to the IP or FQDN.</td>
 </tr>
 <tr>
 <td align="left"><code>authToken</code></td>
-<td align="left"><strong>Provide valid JWT.</strong> See instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
+<td align="left"><strong>Provide valid JWT.</strong> Redirection requires a redirection-specific authentication token. <a href="../../APIs/indexMPS/" target="_blank">See the <code>/authorize/redirection/{guid}</code> GET API in the Auth section.</a> <br><br> For a general example on how to make an API call and how to get a auth token from <code>/authorize</code> to pass to <code>/authorize/redirection/{guid}</code>, see <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -2359,9 +2360,9 @@ When you make changes, you do not need to stop the application and restart. It w
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
 <span class="hll"><span class="w">            </span><span class="o">&lt;</span><span class="nx">KVM</span><span class="w"> </span><span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;038d0240-045c-05f4-7706-980700080009&quot;</span><span class="w"> </span><span class="c1">//Replace with AMT Device GUID</span>
-</span><span class="hll"><span class="w">            </span><span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span><span class="w"> </span><span class="c1">//Replace &#39;localhost&#39; with Development System or MPS Server IP Address</span>
+</span><span class="hll"><span class="w">            </span><span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span><span class="w"> </span><span class="c1">//Replace &#39;localhost&#39; with MPS Server IP Address or FQDN</span>
 </span><span class="w">            </span><span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-<span class="hll"><span class="w">            </span><span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1">// Replace with a valid JWT token from &#39;Authorize&#39; API Method</span>
+<span class="hll"><span class="w">            </span><span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1">// Replace with a valid JWT token from &#39;Authorize Redirection&#39; GET API Method</span>
 </span><span class="w">            </span><span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
 <span class="w">            </span><span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="o">&gt;&lt;</span><span class="err">/KVM&gt;</span>
 <span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
@@ -2376,20 +2377,29 @@ When you make changes, you do not need to stop the application and restart. It w
 </li>
 <li>
 <p>If the React app hasn't updated automatically, refresh the page.</p>
+<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using Keyboard, Video, Mouse control.</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p><figure class="figure-image">
+<img src="..\..\assets\images\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
+<figcaption>Figure 3: Successful <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Connection</figcaption>
+</figure></p>
+</div>
 </li>
 </ol>
-<p>You are now able to remotely control your <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device using Keyboard, Video, Mouse control.</p>
 <p>You will see the errors in the following scenarios:</p>
 <ul>
+<li>If your browser is IE/Edge, there might be compatibility issues.</li>
 <li>Compilation errors if the ui-toolkit was not downloaded and installed to your react app.</li>
 <li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server not running, appropriate controls will fail to work.</li>
 <li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server running and device not connected.</li>
-<li>If your browser is IE/Edge, there might be compatibility issues.</li>
 <li>
 <p>Incorrect or invalid JWT for authToken, see instructions on <a href="../apiTutorial/#generate-a-jwt" target="_blank">Generating a JWT by using an Authorize API call</a>.</p>
 <div class="admonition example">
-<p class="admonition-title">Example authToken Format</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90&quot;</span><span class="p">}</span>
+<p class="admonition-title">Example authToken Format from API Call</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 </li>
