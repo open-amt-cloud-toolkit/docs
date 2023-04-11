@@ -38,7 +38,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
     docker-compose up -d --build mps rps
     ```
 
-**View in the Sample Web UI:**
+<!-- **View in the Sample Web UI:**
 
 1. Select MQTT Events from the left-hand menu.
 
@@ -65,4 +65,4 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
         <figcaption>Figure 3: MQTT Events Connection</figcaption>
         </figure>
 
-<br><br>
+<br><br> -->
