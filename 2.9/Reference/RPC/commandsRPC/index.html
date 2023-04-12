@@ -2351,6 +2351,10 @@
 <td>Name of the profile to use</td>
 </tr>
 <tr>
+<td>-tenant string</td>
+<td>TenantID of profile. If not provided, then assumed empty string (i.e. <a href="../../middlewareExtensibility/">no Multitenancy enabled</a>)</td>
+</tr>
+<tr>
 <td>-u string</td>
 <td>WebSocket address of server to activate against</td>
 </tr>
@@ -2567,11 +2571,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux</label><label for="__tabbed_8_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>maintenance<span class="w"> </span>syncip<span class="w"> </span>-u<span class="w"> </span>wss://server/activate
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>maintenance<span class="w"> </span>syncip<span class="w"> </span>-staticip<span class="w"> </span><span class="m">192</span>.168.1.7<span class="w"> </span>-netmask<span class="w"> </span><span class="m">255</span>.255.255.0<span class="w"> </span>-gateway<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>-primarydns<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>-secondarydns<span class="w"> </span><span class="m">4</span>.4.4.4<span class="w"> </span>-u<span class="w"> </span>wss://server/activate
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance syncip -u wss://server/activate
+<div class="highlight"><pre><span></span><code>.\rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/activate
 </code></pre></div>
 </div>
 </div>

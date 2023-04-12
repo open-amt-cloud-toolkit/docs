@@ -2154,6 +2154,7 @@
 <p>Middleware extensibility allows developers to implement new middleware handlers to both <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. By adding custom functions, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will process and load these during server startup. The <code>loadCustomMiddleware</code> function that executes on startup can be found in <code>mps/src/server/webserver.ts</code> or <code>rps/src/index.ts</code>.</p>
 <p>Example use-cases:</p>
 <ul>
+<li>Multitenancy</li>
 <li>Handling Custom Authentication Tokens</li>
 <li>Adding Trace IDs</li>
 <li>Debugging Requests</li>
@@ -2198,6 +2199,21 @@
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">tenantMiddleware</span>
 </code></pre></div>
 </div>
+<p>After implementing the multitenancy code changes and starting the services, profiles and configs can be created by providing a <code>tenantID</code> as part of the <a href="../../APIs/indexRPS/">API calls</a>.</p>
+<p>Then when activating and configuring the AMT device using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, provide the <code>-tenant</code> flag with the <code>tenantID</code> of the profile. <a href="../RPC/commandsRPC/">Find all <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> flags in the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> CLI docs</a>.  See example command below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://server/activate<span class="w"> </span>-n<span class="w"> </span>-profile<span class="w"> </span>profilename<span class="w"> </span>-tenant<span class="w"> </span>profileTenantID
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><br></p>
 
 
   
