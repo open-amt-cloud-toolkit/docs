@@ -94,7 +94,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
     docker-compose up -d --build
     ```
 
-5. Unseal Vault at `https://localhost:8200` after restarting the container.
+5. Unseal Vault at `http://localhost:8200` after restarting the container.
 
 
 ## Next Steps
