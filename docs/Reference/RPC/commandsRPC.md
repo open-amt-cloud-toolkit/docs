@@ -112,6 +112,7 @@ Common Maintenance Subcommand Options:
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | Force maintenance commands even if device is not registered with a server               |
 | -json              | JSON output                                                                             |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
