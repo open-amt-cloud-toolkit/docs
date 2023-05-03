@@ -33,9 +33,11 @@ The following are requirements to configure and connect an AMT device within an 
      <figcaption>Figure 1: Create a new IEEE802.1x Config</figcaption>
      </figure>
 
-3. Specify a **Profile Name** of your choice.
+3. Select the Wired option.
 
-4. Select an **Authentication Protocol**.
+4. Specify a **Profile Name** of your choice.
+
+5. Select an **Authentication Protocol**.
 
     Four authentication protocols are supported for wired.
 
@@ -46,16 +48,16 @@ The following are requirements to configure and connect an AMT device within an 
     |EAP-FAST/GTC    | 5         | Indicates that the desired EAP type is the Flexible Authentication Extensible Authentication Protocol EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851),     with Generic Token Card (GTC) as the inner authentication method.      |
     |EAP-FAST/TLS    | 10        | Indicates that the desired EAP type is the Flexible Authentication EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851), with TLS as the inner authentication   method.      |
 
-5. Optionally, change the **PXE Timeout**.
+6. Optionally, change the **PXE Timeout**.
 
     PXE Timeout is the number of seconds in which the Intel(R) AMT will hold an authenticated 802.1X session. During the defined period, Intel(R) AMT manages the 802.1X negotiation while a PXE boot takes place. After the timeout, control of the negotiation passes to the host.
 
-6. Click **Save.**
+7. Click **Save.**
     
-    !!! example "Example IEEE802.1x Config"
+    !!! example "Example Wired IEEE802.1x Config"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example IEEE802.1x Config">
-        <figcaption>Figure 2: Example IEEE802.1x Config</figcaption>
+        <img src="..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
+        <figcaption>Figure 2: Example Wired IEEE802.1x Config</figcaption>
         </figure>
 
 #### To link to an AMT Profile:
@@ -76,5 +78,53 @@ The following are requirements to configure and connect an AMT device within an 
         <figcaption>Figure 3: Example ACM profile with IEEE802.1x</figcaption>
         </figure>
 
+## Wireless 802.1x Configuration
 
-<!-- ## Wireless 802.1x Configuration -->
+There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 8 profiles is the maximum AMT can accept. The following steps walk through how to create the required configs and profiles.
+
+1. Select the **IEEE 802.1x** tab from the left-hand menu.
+
+2. In the top-right corner, click **Add New.**
+     <figure class="figure-image">
+     <img src="..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <figcaption>Figure 4: Create a new IEEE802.1x Config</figcaption>
+     </figure>
+
+3. Select the Wireless option.
+
+4. Specify a **Profile Name** of your choice.
+
+5. Select an **Authentication Protocol**.
+
+    Two authentication protocols are supported for wireless.
+
+    |Auth Protocol          | API Value | Description                              |
+    | --------------------- | --------- | ---------------------------------------- |
+    |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
+    |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.     |
+
+6. Click **Save.**
+    
+    !!! example "Example Wireless IEEE802.1x Config"
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
+        <figcaption>Figure 5: Example Wireless IEEE802.1x Config</figcaption>
+        </figure>
+
+#### To link to a Wireless Config:
+
+1. Select the **Wireless** tab from the left-hand menu.
+
+2. Choose an existing profile or create a new one.
+
+3. Under **Authentication Method**, there should now be two new options. Select either **WPA IEEE 802.1x** or **WPA2 IEEE 802.1x**.
+
+4. Click **Save**. The new wireless config can now be included in an AMT profile.
+
+    After creating the profile and configs, AMT can now be configured for wireless 802.1x.
+
+    !!! example "Example Wireless Config with IEEE802.1x"
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
+        <figcaption>Figure 6: Example Wireless Config with IEEE802.1x</figcaption>
+        </figure>
