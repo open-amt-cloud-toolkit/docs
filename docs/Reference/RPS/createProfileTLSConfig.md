@@ -15,7 +15,7 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
 2. Under the **Profiles** tab, click **+ Add New** in the top-right corner to create a profile.
     <figure class="figure-image">
-    <img src="..\..\assets\images\RPS_NewProfile.png" alt="Figure 1: Create a new profile">
+    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 1: Create a new profile">
     <figcaption>Figure 1: Create a new profile</figcaption>
     </figure>
 
@@ -32,11 +32,13 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
 7. Leave DHCP as the default for **Network Configuration**.
 
-8. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+8. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
 
-9. Select **Connection Configuration** to **TLS (Enterprise)**
+9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-10. Under **TLS (Enterprise)**, select the **TLS Mode from** the dropdown menu. 
+10. Select **Connection Configuration** to **TLS (Enterprise)**
+
+11. Under **TLS (Enterprise)**, select the **TLS Mode from** the dropdown menu. 
     
     The toolkit offers four configuration modes to support various usage models: 
 
@@ -47,22 +49,20 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
     | Mutual TLS Authentication Only | Both client and server **must** have certs. The client cert is signed by the server cert. |
     | Mutual and Non-TLS Authentication | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   |
 
-11. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
-
 12. Click **Save.**
 
     !!! example "Example profile with TLS Config"
          <figure class="figure-image">
-         <img src="..\..\assets\images\RPS_CreateProfileTLSConfig.png" alt="Figure 2: Example profile with TLS Config">
+         <img src="..\..\..\assets\images\RPS_CreateProfileTLSConfig.png" alt="Figure 2: Example profile with TLS Config">
          <figcaption>Figure 2: Example profile with TLS Config</figcaption>
          </figure>
 
-13. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [https://localhost:8200](https://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
+13. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [http://localhost:8200](http://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
 
 14. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
 
 <figure class="figure-image">
-         <img src="..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
+         <img src="..\..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
          <figcaption>Figure 3: Login with the token</figcaption>
          </figure>
 
@@ -70,10 +70,10 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
     !!! example "Example of Certificate Storage"
         <figure class="figure-image">
-        <img src="..\..\assets\images\CertExample.png" alt="Figure 4: Digital Certificate">
+        <img src="..\..\..\assets\images\CertExample.png" alt="Figure 4: Digital Certificate">
         <figcaption>Figure 4: Digital Certificate</figcaption>
         </figure>
 
 ## Next up
-**[Build & Run RPC](../GetStarted/buildRPC.md)**
+**[Build & Run RPC](../../GetStarted/buildRPC.md)**
 
