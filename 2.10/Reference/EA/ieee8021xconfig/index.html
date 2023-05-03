@@ -1407,6 +1407,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#wireless-8021x-configuration" class="md-nav__link">
+    Wireless 802.1x Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Wireless 802.1x Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-link-to-a-wireless-config" class="md-nav__link">
+    To link to a Wireless Config:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2203,6 +2223,9 @@
      </figure></p>
 </li>
 <li>
+<p>Select the Wired option.</p>
+</li>
+<li>
 <p>Specify a <strong>Profile Name</strong> of your choice.</p>
 </li>
 <li>
@@ -2247,10 +2270,10 @@
 <li>
 <p>Click <strong>Save.</strong></p>
 <div class="admonition example">
-<p class="admonition-title">Example IEEE802.1x Config</p>
+<p class="admonition-title">Example Wired IEEE802.1x Config</p>
 <p><figure class="figure-image">
-<img src="..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example IEEE802.1x Config">
-<figcaption>Figure 2: Example IEEE802.1x Config</figcaption>
+<img src="..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
+<figcaption>Figure 2: Example Wired IEEE802.1x Config</figcaption>
 </figure></p>
 </div>
 </li>
@@ -2278,7 +2301,84 @@
 </div>
 </li>
 </ol>
-<!-- ## Wireless 802.1x Configuration -->
+<h2 id="wireless-8021x-configuration">Wireless 802.1x Configuration<a class="headerlink" href="#wireless-8021x-configuration" title="Permanent link">&para;</a></h2>
+<p>There can be a <strong>maximum of 8</strong> wireless IEEE8021x Config created (per tenant). 8 profiles is the maximum AMT can accept. The following steps walk through how to create the required configs and profiles.</p>
+<ol>
+<li>
+<p>Select the <strong>IEEE 802.1x</strong> tab from the left-hand menu.</p>
+</li>
+<li>
+<p>In the top-right corner, click <strong>Add New.</strong>
+     <figure class="figure-image">
+     <img src="..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <figcaption>Figure 4: Create a new IEEE802.1x Config</figcaption>
+     </figure></p>
+</li>
+<li>
+<p>Select the Wireless option.</p>
+</li>
+<li>
+<p>Specify a <strong>Profile Name</strong> of your choice.</p>
+</li>
+<li>
+<p>Select an <strong>Authentication Protocol</strong>.</p>
+<p>Two authentication protocols are supported for wireless.</p>
+<table>
+<thead>
+<tr>
+<th>Auth Protocol</th>
+<th>API Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EAP-TLS</td>
+<td>0</td>
+<td>Indicates that the desired EAP type is the Transport Layer Security EAP type specified in <a href="https://www.rfc-editor.org/rfc/rfc2716">RFC 2716</a>.</td>
+</tr>
+<tr>
+<td>PEAPv0/EAP-MSCHAPv2</td>
+<td>2</td>
+<td>Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in <a href="https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00">draft-kamath-pppext-peapv0</a>, with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Click <strong>Save.</strong></p>
+<div class="admonition example">
+<p class="admonition-title">Example Wireless IEEE802.1x Config</p>
+<p><figure class="figure-image">
+<img src="..\..\..\assets\images\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
+<figcaption>Figure 5: Example Wireless IEEE802.1x Config</figcaption>
+</figure></p>
+</div>
+</li>
+</ol>
+<h4 id="to-link-to-a-wireless-config">To link to a Wireless Config:<a class="headerlink" href="#to-link-to-a-wireless-config" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Select the <strong>Wireless</strong> tab from the left-hand menu.</p>
+</li>
+<li>
+<p>Choose an existing profile or create a new one.</p>
+</li>
+<li>
+<p>Under <strong>Authentication Method</strong>, there should now be two new options. Select either <strong>WPA IEEE 802.1x</strong> or <strong>WPA2 IEEE 802.1x</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>. The new wireless config can now be included in an AMT profile.</p>
+<p>After creating the profile and configs, AMT can now be configured for wireless 802.1x.</p>
+<div class="admonition example">
+<p class="admonition-title">Example Wireless Config with IEEE802.1x</p>
+<p><figure class="figure-image">
+<img src="..\..\..\assets\images\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
+<figcaption>Figure 6: Example Wireless Config with IEEE802.1x</figcaption>
+</figure></p>
+</div>
+</li>
+</ol>
 
 
   
