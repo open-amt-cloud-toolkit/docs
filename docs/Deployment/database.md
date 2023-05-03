@@ -40,18 +40,27 @@ The diagrams below illustrates the database schema and relationships.
   erDiagram
       PROFILE o|--o| CIRACONFIGS : has
       PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
-      PROFILE o|--o| IEEE8021XCONFIGS : has
+      PROFILE ||--o| IEEE8021XCONFIGS : has
       PROFILE {
         string profile_name
         string activation
         string amt_password
+        boolean generate_random_password
         string cira_config_name
         datetime creation_date
         string created_by
         string mebx_password
-        string tags
+        boolean generate_random_mebx_password
+        string[] tags
         boolean dhcp_enabled
         string tenant_id
+        int tls_mode
+        string user_consent
+        boolean ider_enabled
+        boolean kvm_enabled
+        boolean sol_enabled
+        string tls_signing_authority
+        string ieee8021x_profile_name
       }
       CIRACONFIGS 
       CIRACONFIGS {
@@ -60,8 +69,6 @@ The diagrams below illustrates the database schema and relationships.
         int mps_port
         string user_name
         string password
-        string generate_random_password
-        string random_password_length
         string common_name
         int server_address_format
         int auth_method
@@ -71,21 +78,24 @@ The diagrams below illustrates the database schema and relationships.
       }
 
       WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
+      WIRELESSCONFIGS ||--o| IEEE8021XCONFIGS : has
       WIRELESSCONFIGS {
-        string wireless_profile_name 
-        integer authentication_method 
-        integer encryption_method 
-        string ssid 
-        int psk_value 
-        string psk_passphrase 
-        int link_policy 
-        datetime creation_date 
-        string created_by 
-        string tenant_id 
+        string wireless_profile_name
+        int authentication_method
+        int encryption_method
+        string ssid
+        int psk_value
+        string psk_passphrase
+        int[] link_policy
+        datetime creation_date
+        string created_by
+        string tenant_id
+        string ieee8021x_profile_name
       }
       PROFILES_WIRELESSCONFIGS {
         string wireless_profile_name
         string profile_name
+        int priority
         datetime creation_date
         string created_by
         string tenant_id
@@ -109,7 +119,7 @@ The diagrams below illustrates the database schema and relationships.
   erDiagram
       DEVICE {
           guid uuid
-          string tags
+          string[] tags
           string hostname
           string mpsinstance
           boolean connectionstatus
