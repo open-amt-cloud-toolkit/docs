@@ -96,12 +96,13 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
 
 5. Select an **Authentication Protocol**.
 
-    Two authentication protocols are supported for wireless.
+    One authentication protocol is currently supported for wireless.
 
     |Auth Protocol          | API Value | Description                              |
     | --------------------- | --------- | ---------------------------------------- |
     |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
-    |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.     |
+
+    <!-- |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.     | -->
 
 6. Click **Save.**
     
