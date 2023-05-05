@@ -2214,65 +2214,61 @@
   <h1>Release Notes</h1>
 
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
-<div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/fpeqIevX7qw" title="Open AMT March Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <div style="text-align:center;">
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/fpeqIevX7qw" title="Open AMT April Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p><br></p>
+<br> -->
+
 <div class="admonition note">
 <p class="admonition-title">Note From the Team</p>
 <p>Hey everyone,</p>
-<p>Spring is here and so is a new <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> release!  The team continues to add new features to support enterprise customers and with this release we start to deliver support for 802.1x networks.  In addition, we also have fixed several issues as well as added some quality of life improvements.  Check out the <a href="#release-highlights">release video</a> where Madhavi talks about this release's highlights. You can find the details of this release under <a href="#whats-new">what's new</a> section.</p>
+<p>We are excited to announce the latest release of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>! As always, the team has been hard at work adding new features and fixing issues to improve the experience for our customers. This release includes support for 802.1x wireless configurations, as well as some quality of life improvements. You can find the details of this release under the <a href="#whats-new">what's new</a> section.</p>
 <p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> team has moved to <a href="https://discord.gg/yrcMp2kDWh">Discord</a>.  Come join the discussion!</p>
 <p><em>Best wishes,</em><br />
 <em>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em></p>
 </div>
 <h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27Z"/></svg></span><strong> Database update required </strong>
-An upgrade to the <code>rpsdb</code> database is required.</p>
-<p><a href="../Deployment/upgradeVersion/">See Upgrade Toolkit Version docs for SQL scripts to add the new table and columns</a>.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span><strong> New Feature: 802.1X Wired Configuration Support </strong></p>
-<p>For devices deployed in a secure enterprise network, configuring AMT to authenticate with the network is important so that connection can be maintained with the device even when the OS is not available.  With this release, we now support configuring AMT with certificate based 802.1x configurations (EAP-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, PEAPv1/EAP-GTC, EAP-FAST/GTC, EAP-FAST/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>).  <a href="../References/EA/ieee8021xconfig/">Find more information about 802.1x configuration here</a>. </p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span><strong> Fixed: AMT Activation Not Responding </strong></p>
-<p>Occasionally, AMT would not respond when we sent a command during activation.  In order to resolve this issue, we have implemented a method for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> to retry the previous request if AMT hasn't responded within 12 seconds (default).  This timing can be adjusted by changing the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <code>delay_timer</code> in the configuration file.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg></span><strong> New Route: Support for 802.1x Profiles </strong></p>
-<p>We have added new <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API calls to support CRUD operations for the new 802.1x profiles.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will support multiple wired 802.1x profiles. However, only a single 802.1x wired profile is supported in an AMT profile.  This is a limitation of AMT.  <a href="../APIs/indexRPS/">802.1x API documentation can be found here</a>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span><strong> New Feature: 802.1X Wireless Configuration Support </strong></p>
+<p>For devices deployed in a secure enterprise network, configuring AMT to authenticate with the network is important so that connection can be maintained with the device even when the OS is not available. With this release, we now support configuring AMT with certificate-based 802.1x configurations (EAP-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>) for wireless networks.  <a href="../Reference/EA/ieee8021xconfig/#wireless-8021x-configuration">Find more information about 802.1x configuration here</a>. </p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span><strong> Quality of Life Improvement: Added -f (force) flag for maintenance commands </strong></p>
+<p>We have added the -f (force) flag for maintenance commands to allow users to bypass the password check <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> performs. This will help customers who need to run a maintenance task on AMT but have not yet added the device credentials to the secret store.  <a href="../Reference/RPC/commandsRPC/#maintenance"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Maintenance Commands</a></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span><strong> Fixed: Multi-Tenancy Issues for Deactivation and WiFi Profiles </strong></p>
+<p>We have fixed an issue with multi-tenancy for deactivation and WiFi profiles, ensuring that they are properly isolated between different tenants.</p>
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
 <ul>
-<li>802.1x wired network configuration (#fba30d9) </li>
-<li>handle missing AMT activation response (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/929">#929</a>) (#5e82295) </li>
-<li>updated error message on auth failure (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/933">#933</a>) (#d6e09dc) </li>
-<li>exclude test.js files from custom middleware (#ba6afd7) </li>
-<li>required version for wirless patch (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/914">#914</a>) (#70ff74f) </li>
-<li><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> static password being saved to DB (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/909">#909</a>) (#6a03292) </li>
-<li>check cira config name for special characters (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/904">#904</a>) (#3ce906a) </li>
-<li><strong>state-machine:</strong> add retry logic to <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (#661814b) </li>
+<li>implemented configuration of 8021x wireless profiles on AMT (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/985">#985</a>) (#f4693a2)</li>
+<li>implement wireless 8021x APIs (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/950">#950</a>) (#cf9f402)</li>
+<li>maintenance: add -f (force) flag (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/977">#977</a>) (#054604d)</li>
+<li>multi-tenancy and deactivation (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/987">#987</a>) (#ca2eea6)</li>
+<li>handle multi-tenancy for profiles with wifi (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/988">#988</a>) (#dd451a3)</li>
+<li>not saving passphrase in vault (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/972">#972</a>) (#091de69)</li>
+<li>added timer on ea response calls (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/966">#966</a>) (#61fd283)</li>
+<li>address hyphen in passwordValidation to be correct (#a3849d1)</li>
+<li>db: ieee8021x foreign key violation message (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/975">#975</a>) (#74769c9)</li>
+<li>network configuration state machine (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/956">#956</a>) (#d479cd4)</li>
+<li>configurable delays and timeouts primarily for state machines (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/942">#942</a>) (#788043b)</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
 <ul>
-<li>add missing tenantid in deactivate call (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/841">#841</a>) (#7724a60) </li>
-<li>exclude test.js files from custom middleware (#fb5e1f2)</li>
+<li>update kvmConnect property on <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection close (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/888">#888</a>) (#37307fe) </li>
+<li>Device deletion request from <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/886">#886</a>) (#dd483d6) </li>
 </ul>
 <h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <ul>
+<li><strong>utils:</strong> add -f (force) flag</li>
 <li><strong>rps:</strong> rpc will exit instead of hang when connection fails to rps</li>
-<li><strong>lme:</strong> remove timer and use context</li>
 </ul>
 <h4 id="wsman-messages">WSMAN-MESSAGES<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h4>
-<p>v5.2.0</p>
+<p>v5.2.1</p>
 <ul>
-<li><strong>amt:</strong> add 802.1x configuration support to AddWiFiSettings (#1d405ea) </li>
-<li>centralized enums to a enums.ts file (#b6c932a) </li>
-</ul>
-<p>v5.1.0</p>
-<ul>
-<li><strong>amt:</strong> add support for user account management (#3151b86) </li>
+<li><strong>amt:</strong> fix wifi namespace handling (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/449">#449</a>) (#4358402) </li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>8021x:</strong> functionality for wired configuration (#5edc297)  </li>
-<li>modified project config files for clashing global test definitions (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1025">#1025</a>) (#a2a5ce8) </li>
+<li><strong>8021x:</strong> functionality for wireless configuration (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1083">#1083</a>) (#bec716d) </li>
+<li><strong>devices:</strong> add device deactivation via cira (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1001">#1001</a>) (#e4af456)</li>
 </ul>
 <h2 id="project-board">Project Board<a class="headerlink" href="#project-board" title="Permanent link">&para;</a></h2>
 <p>Check out our new <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/5">Feature Backlog</a> project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!</p>
