@@ -45,24 +45,25 @@ Activate the device with a specified profile:
     sudo ./rpc activate -u wss://server/activate -profile profilename
     ```
 === "Windows"
-    ```xx
+    ```
     .\rpc activate -u wss://server/activate -profile profilename
     ```
 
-| OPTION             | DESCRIPTION                                                                             |
-|--------------------|-----------------------------------------------------------------------------------------|
-| -d string          | DNS suffix override                                                                     |
-| -h string          | Hostname override                                                                       |
-| -json              | JSON output                                                                             |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
-| -lmsport string    | LMS port (default "16992")                                                              |
-| -n                 | Skip WebSocket server certificate verification                                          |
-| -p string          | Proxy address and port                                                                  |
-| -password          | AMT password                                                                            |
-| -profile string    | Name of the profile to use                                                              |
-| -u string          | WebSocket address of server to activate against                                         |
-| -v                 | Verbose output                                                                          |
+| OPTION             | DESCRIPTION                                                                                                                      |
+|--------------------|-----------------------------------------------------------------------------------------                                         |
+| -d string          | DNS suffix override                                                                                                              |
+| -h string          | Hostname override                                                                                                                |
+| -json              | JSON output                                                                                                                      |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
+| -lmsport string    | LMS port (default "16992")                                                                                                       |
+| -n                 | Skip WebSocket server certificate verification                                                                                   |
+| -p string          | Proxy address and port                                                                                                           |
+| -password          | AMT password                                                                                                                     |
+| -profile string    | Name of the profile to use                                                                                                       |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
+| -u string          | WebSocket address of server to activate against                                                                                  |
+| -v                 | Verbose output                                                                                                                   |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -111,6 +112,7 @@ Common Maintenance Subcommand Options:
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | Force maintenance commands even if device is not registered with a server               |
 | -json              | JSON output                                                                             |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
@@ -178,11 +180,11 @@ Sync the static IP of host OS to AMT Network Settings.
 
 === "Linux"
     ``` bash
-    sudo ./rpc maintenance syncip -u wss://server/activate
+    sudo ./rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/activate
     ```
 === "Windows"
     ```
-    .\rpc maintenance syncip -u wss://server/activate
+    .\rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/activate
     ```
 
 | OPTION        | DESCRIPTION                                                                                                         |

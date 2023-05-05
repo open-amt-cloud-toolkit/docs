@@ -1,6 +1,48 @@
 
 ## Specific Changes Required for Version Upgrades
 
+### Upgrade to 2.10 from 2.9
+
+The 2.10 release of RPS requires an upgrade to the `rpsdb` database.
+
+1. Run the following SQL script to add the new table before upgrading the services.
+
+    ``` sql
+    ALTER TABLE IF EXISTS wirelessconfigs
+    ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
+    ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);
+    ```
+
+    ???+ example "Example - Adding Columns to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql.
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+            ```
+            psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+            ```
+
+            ??? example "Example Commands"
+                ```
+                Azure:
+                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+                AWS:
+                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+                ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statements.
+
+        5. Verify the column was added to the table.
+            ``` sql
+            SELECT * FROM wirelessconfigs;
+            ```
+
+2. Continue with general upgrade steps below.
+
 ### Upgrade to 2.9 from 2.8
 
 The 2.9 release of RPS requires an upgrade to the `rpsdb` database.
@@ -21,7 +63,6 @@ The 2.9 release of RPS requires an upgrade to the `rpsdb` database.
         wired_interface BOOLEAN NOT NULL,
         tenant_id varchar(36) NOT NULL,
         PRIMARY KEY (profile_name, tenant_id),
-        UNIQUE(wired_interface, tenant_id)
     );
     ```
 
@@ -33,7 +74,7 @@ The 2.9 release of RPS requires an upgrade to the `rpsdb` database.
     ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);
     ```
 
-    ???+ example "Example - Adding Columns to PostgresDB using psql"
+    ??? example "Example - Adding Columns to PostgresDB using psql"
         This example walks through one potential option to update a Postgres Database using psql.
 
         1. Open a Command Prompt or Terminal.

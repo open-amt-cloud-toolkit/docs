@@ -49,13 +49,13 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 8. Leave DHCP as the default for **Network Configuration**.
 
-9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+9. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-10. Select **CIRA(Cloud)** for Connection Configuration.
+10. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-11. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+11. Select **CIRA(Cloud)** for Connection Configuration.
 
-12. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
+12. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
 13. Click **Save.**
 

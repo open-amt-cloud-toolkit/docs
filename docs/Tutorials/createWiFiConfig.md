@@ -71,11 +71,11 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
 
 4. Under **Authentication Method**, select **WPA PSK** or **WPA2 PSK**.
 
-5. Under **Encryption Method**, select **TKIP** or **CCMP**.
+5. Provide the **PSK Passphrase**. This is the password to the WiFi Network.
 
-6. Specify a **SSID**. This is the name of your wireless network.
+6. Under **Encryption Method**, select **TKIP** or **CCMP**.
 
-7. Provide a strong **PSK Passphrase**. This is the password to the WiFi Network.
+7. Specify the **SSID**. This is the name of your wireless network.
 
 8. Click **Save.**
 
