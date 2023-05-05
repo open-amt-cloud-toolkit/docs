@@ -19,6 +19,17 @@
 
 ## What's New?
 
+:material-star:** Database update required **
+An upgrade to the `rpsdb` database is required. Please run the following SQL script to add the new column and constraint before upgrading the services:
+
+``` sql
+ALTER TABLE IF EXISTS wirelessconfigs
+ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
+ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);
+```
+
+[More information or detailed steps can be found in Upgrade Toolkit Version](../Deployment/upgradeVersion/).
+
 :material-new-box:** New Feature: 802.1X Wireless Configuration Support **
 
 For devices deployed in a secure enterprise network, configuring AMT to authenticate with the network is important so that connection can be maintained with the device even when the OS is not available. With this release, we now support configuring AMT with certificate-based 802.1x configurations (EAP-TLS) for wireless networks.  [Find more information about 802.1x configuration here](../Reference/EA/ieee8021xconfig/#wireless-8021x-configuration). 
