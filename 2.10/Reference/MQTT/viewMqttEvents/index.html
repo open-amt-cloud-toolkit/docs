@@ -1574,20 +1574,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../RPS/networkConfig/" class="md-nav__link">
-        Network Profiles
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../RPS/securityRPS/" class="md-nav__link">
         Security Information
       </a>
@@ -2191,41 +2177,34 @@
 </code></pre></div>
 </li>
 </ol>
-<p><strong>View in the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>:</strong></p>
-<ol>
-<li>
-<p>Select <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events from the left-hand menu.</p>
-</li>
-<li>
-<p>Change the <strong>Hostname</strong>  to your IP Address from Localhost.</p>
-</li>
-<li>
-<p>Do not set a port.</p>
-</li>
-<li>
-<p>Verify the <strong>Path</strong> is <code>/mosquitto</code>.
+<!-- **View in the Sample Web UI:**
+
+1. Select MQTT Events from the left-hand menu.
+
+2. Change the **Hostname**  to your IP Address from Localhost.
+
+3. Do not set a port.
+
+4. Verify the **Path** is `/mosquitto`.
     <figure class="figure-image">
     <img src="..\..\..\assets\images\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
-    <figcaption>Figure 2: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events Connection</figcaption>
-    </figure></p>
-<div class="admonition troubleshooting">
-<p class="admonition-title">Troubleshooting</p>
-<p>If successful, the Connect circle should update to blue. If it is red, verify your Hostname and <code>.env</code> file is correct.</p>
-</div>
-</li>
-<li>
-<p>In the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, click on a different menu option, issue a command to a managed device from the <strong>Devices</strong> list, or make an API call to see an event appear in <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events.</p>
-<p><abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events can be customized to add, edit, or remove events. Read more in <a href="../customMqttEvents/">Customizing <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events</a>.</p>
-<div class="admonition example">
-<p class="admonition-title">Example <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events</p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
-<figcaption>Figure 3: <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Events Connection</figcaption>
-</figure></p>
-</div>
-</li>
-</ol>
-<p><br><br></p>
+    <figcaption>Figure 2: MQTT Events Connection</figcaption>
+    </figure>
+
+    !!! troubleshooting
+        If successful, the Connect circle should update to blue. If it is red, verify your Hostname and `.env` file is correct.
+
+5. In the Sample Web UI, click on a different menu option, issue a command to a managed device from the **Devices** list, or make an API call to see an event appear in MQTT Events.
+
+    MQTT Events can be customized to add, edit, or remove events. Read more in [Customizing MQTT Events](./customMqttEvents.md).
+
+    !!! example "Example MQTT Events"
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
+        <figcaption>Figure 3: MQTT Events Connection</figcaption>
+        </figure>
+
+<br><br> -->
 
 
   

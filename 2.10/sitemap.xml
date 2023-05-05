@@ -101,11 +101,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/amtfeatures/</loc>
-         <lastmod>2023-05-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/architectureOverview/</loc>
          <lastmod>2023-05-05</lastmod>
          <changefreq>daily</changefreq>
@@ -217,11 +212,6 @@
     </url>
     <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/createProfileTLSConfig/</loc>
-         <lastmod>2023-05-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/networkConfig/</loc>
          <lastmod>2023-05-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
