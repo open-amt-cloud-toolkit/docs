@@ -2145,7 +2145,7 @@
 
   <h1>Production Mode Vault</h1>
 
-<p>Learn how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using Vault in production server mode. The current local docker-compose file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist after the container restarts.</p>
+<p>Learn how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using Vault in production server mode. The current local docker-compose file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist on host filesystem after the container restarts.</p>
 <h2 id="configure-the-toolkit">Configure the Toolkit<a class="headerlink" href="#configure-the-toolkit" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -2154,6 +2154,7 @@
 <li>
 <p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.
     <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vault&quot;</span>
 <span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
