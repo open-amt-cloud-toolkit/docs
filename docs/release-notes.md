@@ -20,7 +20,12 @@
 ## What's New?
 
 :material-star:** Database update required **
-An upgrade to the `rpsdb` database is required. Please run the following SQL script to add the new column and constraint before upgrading the services:
+
+Upgrades to the `rpsdb` and `mpsdb` databases are required. Please run the following SQL scripts to add the new column and constraints before upgrading the services.
+
+[More information or detailed steps can be found in Upgrade Toolkit Version](../Deployment/upgradeVersion/).
+
+#### rpsdb
 
 ``` sql
 ALTER TABLE IF EXISTS wirelessconfigs
@@ -28,7 +33,12 @@ ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
 ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);
 ```
 
-[More information or detailed steps can be found in Upgrade Toolkit Version](../Deployment/upgradeVersion/).
+#### mpsdb
+
+``` sql
+ALTER TABLE IF EXISTS devices 
+ALTER COLUMN tenantid SET NOT NULL;
+```
 
 :material-new-box:** New Feature: 802.1X Wireless Configuration Support **
 

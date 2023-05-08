@@ -3,9 +3,9 @@
 
 ### Upgrade to 2.10 from 2.9
 
-The 2.10 release of RPS requires an upgrade to the `rpsdb` database.
+The 2.10 release of RPS requires an upgrade to both the `rpsdb` and `mpsdb` databases.
 
-1. Run the following SQL script to add the new table before upgrading the services.
+1. Run the following SQL script to update the table in `rpsdb`.
 
     ``` sql
     ALTER TABLE IF EXISTS wirelessconfigs
@@ -41,7 +41,14 @@ The 2.10 release of RPS requires an upgrade to the `rpsdb` database.
             SELECT * FROM wirelessconfigs;
             ```
 
-2. Continue with general upgrade steps below.
+2. Run the following SQL script to update the table in `mpsdb`.
+
+    ``` sql
+    ALTER TABLE IF EXISTS devices 
+    ALTER COLUMN tenantid SET NOT NULL;
+    ```
+
+3. Continue with general upgrade steps below.
 
 ### Upgrade to 2.9 from 2.8
 
