@@ -4,7 +4,7 @@ To deploy the Open AMT Cloud Toolkit to a production environment, replace defaul
 ## Database Selection
 The Docker-based PostgreSQL* image used in `docker-compose.yml` provides enough functionality for proof-of-concept creation and development. However, to enable the toolkit for production, leverage a managed database instance offered by a public cloud provider or a database hosted by your internal IT. 
 
-Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a native environment), managing state in your cluster comes with a higher risk of data loss than that of a managed database instance.
+Regardless of the deployment scenario (e.g. a VM, Kubernetes, Docker Swarm, or a native environment), managing state in your cluster comes with a higher risk of data loss than that of a managed database instance.
 
 ### Default Component
 
@@ -58,6 +58,6 @@ The toolkit uses Kong as its open source API gateway. Kong provides an entry poi
 ### Example Replacements
 
 - [Azure API Gateway](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway)
-- [Amazon API Gateway](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway)
+- [Amazon API Gateway](https://aws.amazon.com/api-gateway/)
 - [Google Cloud Endpoints](https://cloud.google.com/endpoints)
 - [Tyk](https://tyk.io/)
