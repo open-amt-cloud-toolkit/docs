@@ -159,7 +159,6 @@ extra:
     ui_toolkit_react: 3.0.0
     ui_toolkit_angular: 5.0.1
   docsSite:
-    rapidVersion: 2.10
     ltsVersion: 2.0
   analytics:
     provider: google
