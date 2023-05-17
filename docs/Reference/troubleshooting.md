@@ -6,7 +6,7 @@ Can't find the answer to your questions or issue below? Reach out to the team [v
 
 ## Commonly Asked Questions
 
-**How do releases work with Open AMT?**
+### How do releases work with Open AMT?
 
 Open AMT carries two releases, the Rapid ("Monthly") Release and the Long-Term Support (LTS) Release. 
 
@@ -16,7 +16,7 @@ LTS Releases occur roughly every 1 to 1.5 years. Support for security and bug fi
 
 <br>
 
-**How does versioning work with Open AMT?**
+### How does versioning work with Open AMT?
 
 Open AMT follows [SemVer](https://semver.org/) practices for versioning. This means:
 
@@ -30,19 +30,19 @@ The separate repos for microservices and libraries are versioned individually. T
 
 <br>
 
-**What versions of Intel&reg; AMT are supported?**
+### What versions of Intel&reg; AMT are supported?
 
 Open AMT aligns to the Intel Network and Edge (NEX) Group support roadmap for Intel vPro&reg; Platform and Intel&reg; AMT devices. This is currently calculated as `Latest AMT Version - 7`.
 
 <br>
 
-**How do I migrate versions to a new release?**
+### How do I migrate versions to a new release?
 
 Resources and information for migrating releases for either a Kubernetes deployment or local Docker deployment can be found in the [Upgrade Toolkit Version documentation](../Deployment/upgradeVersion.md).
 
 <br>
 
-**How do I find more information about the MPS and RPS configuration files and security details?**
+### How do I find more information about the MPS and RPS configuration files and security details?
 
 Details and descriptions of configuration options can be found in [MPS Configuration](../MPS/configuration/) and [RPS Configuration](../RPS/configuration/).
 
@@ -53,50 +53,65 @@ Security information can be found in [MPS Security Information](../MPS/securityM
 
 ## Most Common Issues
 
-???+ question "Why does an activated device show disconnected in MPS?"
-    1. Are your login credentials stale? Try to log out of the Sample Web UI and back in.
+### Why does an activated device show disconnected in MPS?
 
-    2. Is your Vault service initialized and unsealed? (Only applicable if using production mode Vault)
+1. Are your login credentials stale? Try to log out of the Sample Web UI and back in.
 
-    3. Is your CIRA certificate correct? 
+2. Is your Vault service initialized and unsealed? (Only applicable if using production mode Vault)
+
+3. Is your CIRA certificate correct? 
     
-        You can verify this by going to https://[your-stack]:4433 and looking at the certificate.  The Issued party should match either your IP Address or FQDN.  If it is incorrect, delete your Profile and CIRA Config. Delete the existing MPS Certificate from Vault and restart the MPS service.  This will generate a new, correct certificate.  Then create new CIRA Config/Profile and run RPC to reconfigure the AMT device with the new profiles.
+    You can verify this by going to https://[your-stack]:4433 and looking at the certificate.  The Issued party should match either your IP Address or FQDN.  If it is incorrect, delete your Profile and CIRA Config. Delete the existing MPS Certificate from Vault and restart the MPS service.  This will generate a new, correct certificate.  Then create new CIRA Config/Profile and run RPC to reconfigure the AMT device with the new profiles.
 
-    4. Try to unplug the ethernet or power cable of the AMT device and replug. Wait 30 seconds and refresh the Sample Web UI to see if the device has connected. Alternatively, run `amtinfo` via RPC to see if the status has changed to Connected.
+4. Try to unplug the ethernet or power cable of the AMT device and replug. Wait 30 seconds and refresh the Sample Web UI to see if the device has connected. Alternatively, run `amtinfo` via RPC to see if the status has changed to Connected.
 
-    5. Try updating the AMT device's BIOS/AMT version.
+5. Try updating the AMT device's BIOS/AMT version.
 
-???+ question "Why can't I login to the Sample Web UI?"
-    1. Have you accepted the certificate warning? If not, re-navigate to https://[your-stack] and accept the warning. 
+<br>
+
+### Why can't I login to the Sample Web UI?
+
+1. Have you accepted the certificate warning? If not, re-navigate to https://[your-stack] and accept the warning. 
     
-    2. Is the Kong service running and healthy?
+2. Is the Kong service running and healthy?
 
-    3. For local deployment, does the Kong secret match in the `.env` and the `kong.yaml` files?
+3. For local deployment, does the Kong secret match in the `.env` and the `kong.yaml` files?
 
-    4. For cloud deployment, is the Vault initialized and unsealed?  Vault will reseal itself if the pod is restarted and must be unsealed again. 
+4. For cloud deployment, is the Vault initialized and unsealed?  Vault will reseal itself if the pod is restarted and must be unsealed again. 
 
-???+ question "Why does MPS or RPS show as Unhealthy"
-    Both MPS and RPS have health API routes that they perform as part of startup for both Docker and Kubernetes. The health check verifies that the database and Vault are both available and reachable by the microservices. 
+<br>
+
+### Why does MPS or RPS show as Unhealthy
+
+Both MPS and RPS have health API routes that they perform as part of startup for both Docker and Kubernetes. The health check verifies that the database and Vault are both available and reachable by the microservices. 
     
-    If MPS or RPS return unhealthy, then one of the two, database or Vault, are unavailable.
+If MPS or RPS return unhealthy, then one of the two, database or Vault, are unavailable.
 
-???+ question "Why is there an 'Error Retrieving Device Stats' on Login?"
-    This warning typically means that the Sample Web UI and MPS is unable to reach the MPS database.
+<br>
 
-    1. Is the MPS service healthy?
+### Why is there an 'Error Retrieving Device Stats' on Login?
+    
+This warning typically means that the Sample Web UI and MPS is unable to reach the MPS database.
 
-    2. For cloud deployment, is the Kubernetes secret for the MPS DB connection string correct?
+1. Is the MPS service healthy?
 
-    3. For cloud deployment, is the database reachable? Is the IP Address whitelisted and correct?
+2. For cloud deployment, is the Kubernetes secret for the MPS DB connection string correct?
 
-???+ question "Why do 'Profiles/CIRA Configs/Domains' tabs in the Sample Web UI return errors?"
-    This warning typically means that the Sample Web UI and RPS is unable to reach the RPS database.
+3. For cloud deployment, is the database reachable? Is the IP Address whitelisted and correct?
 
-    1. Is the RPS service healthy?
+<br>
 
-    2. For cloud deployment, is the Kubernetes secret for the RPS DB connection string correct?
+### Why do 'Profiles/CIRA Configs/Domains' tabs in the Sample Web UI return errors?"
+    
+This warning typically means that the Sample Web UI and RPS is unable to reach the RPS database.
 
-    3. For cloud deployment, is the database reachable? Is the IP Address whitelisted and correct?
+1. Is the RPS service healthy?
+
+2. For cloud deployment, is the Kubernetes secret for the RPS DB connection string correct?
+
+3. For cloud deployment, is the database reachable? Is the IP Address whitelisted and correct?
+
+<br>
 
 ## Specific Microservice or Library Errors
 
