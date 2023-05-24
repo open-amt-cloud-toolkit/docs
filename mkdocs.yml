@@ -25,15 +25,15 @@ theme:
     - toc.integrate
   custom_dir: ./docs/overrides
   palette:
-      # Palette toggle for automatic mode
-    - media: "(prefers-color-schemes)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+    # Palette toggle for automatic mode
+    # - media: "(prefers-color-schemes)"
+    #   toggle:
+    #     icon: material/brightness-auto
+    #     name: Switch to dark mode
     
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: custom 
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -43,7 +43,7 @@ theme:
       scheme: slate
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference
+        name: Switch to light mode
 # Page tree
 nav:
   - Home:
