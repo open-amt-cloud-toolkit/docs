@@ -61,7 +61,9 @@ Activate the device with a specified profile:
 | -p string          | Proxy address and port                                                                                                           |
 | -password          | AMT password                                                                                                                     |
 | -profile string    | Name of the profile to use                                                                                                       |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                      |
 | -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
+| -token string      | JWT Token for Authorization                                                                                                      |
 | -u string          | WebSocket address of server to activate against                                                                                  |
 | -v                 | Verbose output                                                                                                                   |
 
@@ -71,7 +73,7 @@ To learn how to use the RPC application to transition an already activated (prov
 
 ### deactivate
 
-Deactivate the device:
+#### Deactivate the device using RPS:
 
 === "Linux"
     ``` bash
@@ -82,16 +84,32 @@ Deactivate the device:
     .\rpc deactivate -u wss://server/activate
     ```
 
+#### Deactivate the device locally (without RPS):
+
+Currently, this capability is only supported for deactivating CCM devices.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc deactivate -local
+    ```
+=== "Windows"
+    ```
+    .\rpc deactivate -local
+    ```
+
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force deactivate even if device is not registered with a server                         |
+| -f                 | Force deactivate even if device is not registered with the RPS server                   |
 | -json              | JSON output                                                                             |
-| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
 | -lmsport string    | LMS port (default "16992")                                                              |
+| -local             | Execute command to AMT directly without cloud interaction.                              |
 | -n                 | Skip WebSocket server certificate verification                                          |
 | -p string          | Proxy address and port                                                                  |
 | -password string   | AMT password                                                                            |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`             |
+| -token string      | JWT Token for Authorization                                                             |
 | -u string          | WebSocket address of server to activate against                                         |
 | -v                 | Verbose output                                                                          |
 
@@ -110,18 +128,21 @@ Execute a maintenance command for the managed device:
 
 Common Maintenance Subcommand Options:
 
-| OPTION             | DESCRIPTION                                                                             |
-|--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force maintenance commands even if device is not registered with a server               |
-| -json              | JSON output                                                                             |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
-| -lmsport string    | LMS port (default "16992")                                                              |
-| -n                 | Skip WebSocket server certificate verification                                          |
-| -p string          | Proxy address and port                                                                  |
-| -password string   | AMT password                                                                            |
-| -u string          | WebSocket address of server to activate against                                         |
-| -v                 | Verbose output                                                                          |
+| OPTION             | DESCRIPTION                                                                                                                      |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
+| -f                 | Force maintenance commands even if device is not registered with a server                                                        |
+| -json              | JSON output                                                                                                                      |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
+| -lmsport string    | LMS port (default "16992")                                                                                                       |
+| -n                 | Skip WebSocket server certificate verification                                                                                   |
+| -p string          | Proxy address and port                                                                                                           |
+| -password string   | AMT password                                                                                                                     |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                      |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
+| -token string      | JWT Token for Authorization                                                                                                      |
+| -u string          | WebSocket address of server to activate against                                                                                  |
+| -v                 | Verbose output                                                                                                                   |
 
 <br>
 
