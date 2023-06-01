@@ -31,58 +31,83 @@ ADD COLUMN IF NOT EXISTS ip_sync_enabled BOOLEAN NULL;
 
 :material-new-box:** New Feature: Local configuration via RPC **
 
-We have heard from some of our customers that they would prefer to have more direct control over configuring AMT features.  To support his request, we have added a new capability to RPC: Local Configuration.  You will now be able to configure some features of AMT without going through RPS.  This is great for configuring AMT the device is not able to connect to RPS.  The first two configuration options that make use of this feature are a new maintenance command "addwifisettings" and a new deactivate option using the "-local" flag.  
+We have heard from some of our customers that they would prefer to have more direct control over configuring AMT features.  To support his request, we have added a new capability to RPC: Local Configuration.  You will now be able to configure some features of AMT without going through RPS.  This is great for configuring AMT if the device is not able to connect to RPS.  The first two configuration options that make use of this feature are a new maintenance command `addwifisettings` and a new deactivate option using the `-local` flag.  
 
 :material-new-box:** New Feature: IP Sync option in AMT Profile **
 
 We have exposed a new option in our AMT profile to allow customers who are using static IP addresses to not have the IP address of AMT synced with the host OS during configuration of AMT.
 
-:material-hammer:** Fixed: PXE and BIOS boot control ***
+:material-hammer:** Fixed: PXE and BIOS boot control **
 
 Enabling boot control for booting to BIOS and PXE should now work again!
 
 :material-new-box:** New Feature: Delete device secrets **
 
-We've added a new query parameter to the MPS delete device API call that will instruct MPS also delete the secrets associated with the device (AMT Password, MEBx Password, etc).  Take care using this especially if you are using randomly generated passwords as once they are removed from the secret store, there is no recovery and getting access to AMT again may require clearing the system CMOS.
+We've added a new query parameter to the MPS DELETE device API call that will instruct MPS to also delete the secrets associated with the device (AMT Password, MEBx Password, etc).  Take care using this! If you are using randomly generated passwords, once they are removed from the secret store, there is no recovery and getting access to AMT. **This may require clearing the system CMOS to factory reset AMT.**
 
 ## Get the Details
 
 ### Additions, Modifications, and Removals
 
 #### RPS
+
 v2.11.0
+
 - add/expose ipSyncEnabled in amt profile for wired interface ([#890](https://github.com/open-amt-cloud-toolkit/rps/issues/890)) (#314632a)
 
 #### MPS
+
 v2.9.0
+
 - added a query param to delete device from secrets ([#854](https://github.com/open-amt-cloud-toolkit/mps/issues/854)) (#3e8512a)
+
 v2.8.4
+
 - changes to reset to PXE ([#752](https://github.com/open-amt-cloud-toolkit/mps/issues/752)) (#4da936b)
+
 v2.8.3
+
 - update kvmConnect property on CIRA connection close ([#888](https://github.com/open-amt-cloud-toolkit/mps/pull/888)) (#37307fe)
 - Device deletion request from RPS ([#886](https://github.com/open-amt-cloud-toolkit/mps/pull/886)) (#dd483d6)
 
 #### RPC
+
 v2.9.0
+
 - cli: addwifisettings directly without cloud interaction ([#117](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/117))
+
 v2.8.0
+
 - deactivate a device in CCM from RPC ([#92](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/92))
 
 #### WSMAN-MESSAGES
+
 v5.4.0
+
 - cim: enables clearing BootConfigSetting (37fd792)
+
 v5.3.2
+
 - handle empty data in protectedPut ([#466](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/466)) (efc33d3)
+
 v5.3.1
+
 - resolves issue in protectedPut default parameter ([#463](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/463)) (7ee3cee)
+
 v5.3.0
+
 - amt: adds AddKey call to PublicKeyManagementService ([#461](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/461)) (8d739c2)
 
 #### Sample Web UI
+
 v2.9.1
+
 - url encode get and delete REST path params ([#1144](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1144)) (#8262ba5)
+
 v2.9.0
+
 - add/expose ipSyncEnabled in amt profile for wired interface (#1123) (#3625bcd)
 
 ## Project Board
+
 Check out our new [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/5) project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!
