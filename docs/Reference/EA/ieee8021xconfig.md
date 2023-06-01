@@ -1,5 +1,5 @@
-!!! warning "Wired 802.1x Configuration is a Preview Feature"
-    Wired 802.1x Configuration feature is a Preview Feature. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
+!!! warning "802.1x Configuration is a Preview Feature"
+    802.1x Configuration feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
 IEEE 802.1X is an IEEE Standard for port-based network access control (PNAC). It provides an authentication mechanism to devices wishing to attach to a LAN or WLAN.
 
