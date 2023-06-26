@@ -2594,11 +2594,15 @@ mapUsers: |
 </li>
 </ul>
 <h3 id="4-database-connection-strings">4. Database connection strings<a class="headerlink" href="#4-database-connection-strings" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning - Using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with AWS RDS</p>
-<p>This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with a RDS DB instance. <strong>For production, it is recommended to use a SSL connection.</strong></p>
-<p>Find more information at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a> and also at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html">Updating applications to connect to PostgreSQL DB instances using new SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates</a>.</p>
-</div>
+<details class="warning" open="open">
+<summary>Warning - Using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with AWS RDS</summary>
+<p><strong>Postgres 14</strong></p>
+<p>By default, AWS pre-selects Postgres 14. This tutorial uses the connection string setting of <code>no-verify</code> for ease of setup. To fully configure SSL, follow the links below. <strong>For production, it is recommended to use a SSL connection.</strong></p>
+<p>Find more information at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a> and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html">Updating applications to connect to PostgreSQL DB instances using new SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates</a>.</p>
+<p><strong>Postgres 15</strong></p>
+<p>Alternatively, if Postgres 15 is preferred and selected, the <code>sslmode</code> in the connection strings <strong>must</strong> be updated from <code>no-verify</code>/<code>disable</code> to <code>require</code> for the services to be able to connect to the database.  No other work is required for a test environment.</p>
+<p><strong>Note:</strong> For a fully secured, certificate-based SSL connection, the following steps must be taken in <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a>.  It will also require updating <code>sslmode</code> to <code>verify-full</code> or <code>verify-ca</code>.  <strong>For production, it is highly recommended.</strong></p>
+</details>
 <ol>
 <li>
 <p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
@@ -2611,18 +2615,48 @@ mapUsers: |
 </li>
 <li>
 <p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Postgres 14</label><label for="__tabbed_2_2">Postgres 15</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
+</code></pre></div>
+</div>
+</div>
+</div>
 </li>
 <li>
 <p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Postgres 14</label><label for="__tabbed_3_2">Postgres 15</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+</div>
+</div>
+</div>
 </li>
 <li>
 <p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Postgres 14</label><label for="__tabbed_4_2">Postgres 15</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+</code></pre></div>
+</div>
+</div>
+</div>
 </li>
 </ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
