@@ -240,10 +240,19 @@ Where:
 
 ### 4. Database connection strings
 
-!!! warning "Warning - Using SSL/TLS with AWS RDS"
-    This tutorial uses the connection string setting of 'no-verify' for ease of setup. AWS requires additional work and provides intermediate and root certs for using SSL/TLS with a RDS DB instance. **For production, it is recommended to use a SSL connection.**
+???+ warning "Warning - Using SSL/TLS with AWS RDS"
     
-    Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and also at [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
+    **Postgres 14**
+
+    By default, AWS pre-selects Postgres 14. This tutorial uses the connection string setting of `no-verify` for ease of setup. To fully configure SSL, follow the links below. **For production, it is recommended to use a SSL connection.**
+    
+    Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
+
+    **Postgres 15**
+
+    Alternatively, if Postgres 15 is preferred and selected, the `sslmode` in the connection strings **must** be updated from `no-verify`/`disable` to `require` for the services to be able to connect to the database.  No other work is required for a test environment.
+    
+    **Note:** For a fully secured, certificate-based SSL connection, the following steps must be taken in [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html).  It will also require updating `sslmode` to `verify-full` or `verify-ca`.  **For production, it is highly recommended.**
 
 1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
 
@@ -255,22 +264,36 @@ Where:
 
 2. Create RPS connection string secret.
 
-    ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
-    ```
+    === "Postgres 14"
+        ```
+        kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
+        ```
+    === "Postgres 15"
+        ```
+        kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
+        ```
 
 3. Create MPS Router connection string secret.
 
-    ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
-    ```
+    === "Postgres 14"
+        ```
+        kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+        ```
+    === "Postgres 15"
+        ```
+        kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+        ```
 
 4. Create MPS connection string secret.   
 
-    ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
-    ```
-
+    === "Postgres 14"
+        ```
+        kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
+        ```
+    === "Postgres 15"
+        ```
+        kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
+        ```
 
 ## Update Configuration
 
