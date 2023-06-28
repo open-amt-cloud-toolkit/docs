@@ -4,7 +4,7 @@ site_url: "https://open-amt-cloud-toolkit.github.io/docs"
 repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.11
+site_dir: site/2.12
 # Configuration
 theme:
   name: "material"
@@ -172,14 +172,14 @@ extra:
   version:
     provider: mike
   repoVersion:
-    mpsAPI: 2.9.0
-    rpsAPI: 2.11.0
-    oamtct: 2.11.0
-    rpc_go: 2.9.0
+    mpsAPI: 2.10.0
+    rpsAPI: 2.13.0
+    oamtct: 2.12.0
+    rpc_go: 2.10.0
     rpc_c: 2.0.0
     ui_toolkit: 2.0.8
     ui_toolkit_react: 3.0.0
-    ui_toolkit_angular: 5.0.1
+    ui_toolkit_angular: 6.0.0
   docsSite:
     ltsVersion: 2.0
   analytics:
