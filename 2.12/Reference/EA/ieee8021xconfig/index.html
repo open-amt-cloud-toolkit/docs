@@ -2242,7 +2242,7 @@
 </li>
 <li>
 <p>Select an <strong>Authentication Protocol</strong>.</p>
-<p>Four authentication protocols are supported for wired.</p>
+<p>The following are the supported wired authentication protocols.</p>
 <table>
 <thead>
 <tr>
@@ -2256,6 +2256,11 @@
 <td>EAP-TLS</td>
 <td>0</td>
 <td>Indicates that the desired EAP type is the Transport Layer Security EAP type specified in <a href="https://www.rfc-editor.org/rfc/rfc2716">RFC 2716</a>.</td>
+</tr>
+<tr>
+<td>PEAPv0/EAP-MSCHAPv2</td>
+<td>2</td>
+<td>Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in <a href="https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00">draft-kamath-pppext-peapv0</a>, with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.</td>
 </tr>
 <tr>
 <td>PEAPv1/EAP-GTC</td>
@@ -2334,7 +2339,7 @@
 </li>
 <li>
 <p>Select an <strong>Authentication Protocol</strong>.</p>
-<p>One authentication protocol is currently supported for wireless.</p>
+<p>The following are the supported wireless authentication protocols.</p>
 <table>
 <thead>
 <tr>
@@ -2349,9 +2354,13 @@
 <td>0</td>
 <td>Indicates that the desired EAP type is the Transport Layer Security EAP type specified in <a href="https://www.rfc-editor.org/rfc/rfc2716">RFC 2716</a>.</td>
 </tr>
+<tr>
+<td>PEAPv0/EAP-MSCHAPv2</td>
+<td>2</td>
+<td>Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in <a href="https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00">draft-kamath-pppext-peapv0</a>, with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.</td>
+</tr>
 </tbody>
 </table>
-<!-- |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in <a href="https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00">draft-kamath-pppext-peapv0</a>, with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.     | -->
 </li>
 <li>
 <p>Click <strong>Save.</strong></p>
