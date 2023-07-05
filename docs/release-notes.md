@@ -2,14 +2,14 @@
 ## Release Highlights
 
 <div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/lPTgxAab0cQ" title="Open AMT May Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/GSrKSqvywtQ" title="Open AMT June Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
 !!! note "Note From the Team"
     Hey everyone,
 
-    May has flown by and we have a whole set of improvements based on issues filed by our customers! You will also notice that instead of one monthly release, each component has several releases this month.  As our team continues to improve our release process this will be the new norm: continuous releases throughout the month with a roll-up announcement at the beginning of the following month.  Check out the release video where Bryan talks about the highlights from this month and see below for changes in each component.
+    June has brought a bunch of great changes to Open AMT Cloud Toolkit.  We completed the major configuration options to support 802.1x, we made quality of life improvements for our customers, and we squashed several bugs!  Check out the release video where Bryan talks about the highlights from this month and see below for changes in each component.
 
     The Open AMT Cloud Toolkit team has moved to [Discord](https://discord.gg/yrcMp2kDWh).  Come join the discussion!
 
@@ -19,31 +19,55 @@
 
 ## What's New?
 
-:material-star:** Database update required **
-An upgrade to the `rpsdb` database is required. Please run the following SQL script to add the new column and constraint before upgrading the services:
+:material-new-box:** New Feature: PEAP-MSCHAPv2 support **
 
-``` sql
-ALTER TABLE IF EXISTS profiles
-ADD COLUMN IF NOT EXISTS ip_sync_enabled BOOLEAN NULL;
+We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 8021x profile.
+
+``` json
+{
+  "profileName": "wired8021xConfig",
+  "authenticationProtocol": 2,
+  "pxeTimeout": 120,
+  "wiredInterface": true,
+  "tenantId": ""
+}
 ```
 
-[More information or detailed steps can be found in Upgrade Toolkit Version](../Deployment/upgradeVersion/).
+:material-new-box:** New Feature: Friendly name **
 
-:material-new-box:** New Feature: Local configuration via RPC **
+All devices now support the ability to add a friendly name.  You can add this via the MPS Devices API command:
 
-We have heard from some of our customers that they would prefer to have more direct control over configuring AMT features.  To support his request, we have added a new capability to RPC: Local Configuration.  You will now be able to configure some features of AMT without going through RPS.  This is great for configuring AMT if the device is not able to connect to RPS.  The first two configuration options that make use of this feature are a new maintenance command `addwifisettings` and a new deactivate option using the `-local` flag.  
+``` json
+{
+  "guid": "123e4567-e89b-12d3-a456-426614174000",
+  "hostname": "AMTDEVICENUC1",
+  "friendlyName": "store12pos2"
+}
+```
 
-:material-new-box:** New Feature: IP Sync option in AMT Profile **
+ or during configuration by passing in the -name parameter to RPC:
 
-We have exposed a new option in our AMT profile to allow customers who are using static IP addresses to not have the IP address of AMT synced with the host OS during configuration of AMT.
+ ``` bash
+rpc activate -u wss://server/activate -profile profilename -name store12pos2
+ ```
 
-:material-hammer:** Fixed: PXE and BIOS boot control **
+friendlyName has been added as a query parameter to the MPS Devices GET call as well.
 
-Enabling boot control for booting to BIOS and PXE should now work again!
+:material-new-box:** New Feature: AMT SKU Decode:
 
-:material-new-box:** New Feature: Delete device secrets **
+RPC-Go AMTINFO command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability as well as other SKUing information.
 
-We've added a new query parameter to the MPS DELETE device API call that will instruct MPS to also delete the secrets associated with the device (AMT Password, MEBx Password, etc).  Take care using this! If you are using randomly generated passwords, once they are removed from the secret store, there is no recovery and getting access to AMT. **This may require clearing the system CMOS to factory reset AMT.**
+:material-hammer:** Fixed: Audit Log **
+
+We have reversed the order in which Audit Logs are returned, now returning the newest Audit Logs first.
+
+:material-hammer:** Fixed: MPS API Calls after Password Change **
+
+A customer reported an issue where after changing the password for an AMT device, MPS was not getting the new password and calls to AMT from MPS were failing.  This issue should now be resolved.
+
+:material-hammer:** Fixed: Wireless Profile configuration improvements **
+
+We discovered an issue where when configuring multiple wireless profiles, if one of the profiles failed to be configured in AMT, we would skip configuration of any remaining wireless profiles.  We have fixed this issue so that if a wireless profile fails to configure, we will continue to configure the remaining profiles.
 
 ## Get the Details
 
@@ -51,62 +75,55 @@ We've added a new query parameter to the MPS DELETE device API call that will in
 
 #### RPS
 
-v2.11.0
+v2.13.0
 
-- add/expose ipSyncEnabled in amt profile for wired interface ([#890](https://github.com/open-amt-cloud-toolkit/rps/issues/890)) (#314632a)
+- adds MSCHAPv2 configuration for wired and wireless ([#1070](https://github.com/open-amt-cloud-toolkit/rps/issues/1070)) (#3fd7865) 
+- upated network status message ([#1080](https://github.com/open-amt-cloud-toolkit/rps/issues/1080)) (#972293b) 
+
+v2.12.1
+
+- ensure req.tenantId is defaulted to blank (#30a5259) 
+
+v2.12.0
+
+- support device friendly name ([#1059](https://github.com/open-amt-cloud-toolkit/rps/issues/1059)) (#91376f0) 
 
 #### MPS
 
-v2.9.0
+v2.10.1
 
-- added a query param to delete device from secrets ([#854](https://github.com/open-amt-cloud-toolkit/mps/issues/854)) (#3e8512a)
+- mps audit logs now in order ([#949](https://github.com/open-amt-cloud-toolkit/mps/issues/949)) (#cc4fb04) 
+- default tenantId is now blank (#ffff3b4) 
 
-v2.8.4
+v2.10.0
 
-- changes to reset to PXE ([#752](https://github.com/open-amt-cloud-toolkit/mps/issues/752)) (#4da936b)
-
-v2.8.3
-
-- update kvmConnect property on CIRA connection close ([#888](https://github.com/open-amt-cloud-toolkit/mps/pull/888)) (#37307fe)
-- Device deletion request from RPS ([#886](https://github.com/open-amt-cloud-toolkit/mps/pull/886)) (#dd483d6)
-
-#### RPC
-
-v2.9.0
-
-- cli: addwifisettings directly without cloud interaction ([#117](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/117))
-
-v2.8.0
-
-- deactivate a device in CCM from RPC ([#92](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/92))
-
-#### WSMAN-MESSAGES
-
-v5.4.0
-
-- cim: enables clearing BootConfigSetting (37fd792)
-
-v5.3.2
-
-- handle empty data in protectedPut ([#466](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/466)) (efc33d3)
-
-v5.3.1
-
-- resolves issue in protectedPut default parameter ([#463](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/463)) (7ee3cee)
-
-v5.3.0
-
-- amt: adds AddKey call to PublicKeyManagementService ([#461](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/461)) (8d739c2)
-
-#### Sample Web UI
+- support device friendly name ([#948](https://github.com/open-amt-cloud-toolkit/mps/issues/948)) (#7a41961) 
 
 v2.9.1
 
-- url encode get and delete REST path params ([#1144](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1144)) (#8262ba5)
+- refresh amt pw after pw change ([#927](https://github.com/open-amt-cloud-toolkit/mps/issues/927)) (#ce8eee4) 
 
-v2.9.0
+#### RPC
 
-- add/expose ipSyncEnabled in amt profile for wired interface (#1123) (#3625bcd)
+v2.10.0
+
+- adds AMT Features to amtinfo
+- support device friendly name
+
+#### Sample Web UI
+
+v2.12.0
+
+- upgraded to angular 16 (#96a5e0a) 
+
+v2.11.0
+
+- add MSCHAPv2 for wired and wireless (#a15e858) 
+
+v2.10.0
+
+- support device friendly name (#170f874)
+- mps audit log now in order ([#1166](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1166)) (#be219a3) 
 
 ## Project Board
 
