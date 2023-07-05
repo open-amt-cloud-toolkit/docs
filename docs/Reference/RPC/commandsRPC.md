@@ -49,23 +49,24 @@ Activate the device with a specified profile:
     .\rpc activate -u wss://server/activate -profile profilename
     ```
 
-| OPTION             | DESCRIPTION                                                                                                                      |
-|--------------------|-----------------------------------------------------------------------------------------                                         |
-| -d string          | DNS suffix override                                                                                                              |
-| -h string          | Hostname override                                                                                                                |
-| -json              | JSON output                                                                                                                      |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
-| -lmsport string    | LMS port (default "16992")                                                                                                       |
-| -n                 | Skip WebSocket server certificate verification                                                                                   |
-| -p string          | Proxy address and port                                                                                                           |
-| -password          | AMT password                                                                                                                     |
-| -profile string    | Name of the profile to use                                                                                                       |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                      |
-| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
-| -token string      | JWT Token for Authorization                                                                                                      |
-| -u string          | WebSocket address of server to activate against                                                                                  |
-| -v                 | Verbose output                                                                                                                   |
+| OPTION             | DESCRIPTION                                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| -d string          | DNS suffix override                                                                                                             |
+| -h string          | Hostname override                                                                                                               |
+| -json              | JSON output                                                                                                                     |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
+| -lmsport string    | LMS port (default "16992")                                                                                                      |
+| -n                 | Skip WebSocket server certificate verification                                                                                  |
+| -name              | Friendly name to associate with this device                                                                                     |
+| -p string          | Proxy address and port                                                                                                          |
+| -password          | AMT password                                                                                                                    |
+| -profile string    | Name of the profile to use                                                                                                      |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
+| -token string      | JWT Token for Authorization                                                                                                     |
+| -u string          | WebSocket address of server to activate against                                                                                 |
+| -v                 | Verbose output                                                                                                                  |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
