@@ -21,7 +21,7 @@
 
 :material-new-box:** New Feature: PEAP-MSCHAPv2 support **
 
-We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 8021x profile.
+We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 802.1x profile.
 
 ``` json
 {
@@ -45,17 +45,17 @@ All devices now support the ability to add a friendly name.  You can add this vi
 }
 ```
 
- or during configuration by passing in the -name parameter to RPC:
+Or during configuration by passing in the `-name` flag to RPC:
 
- ``` bash
+``` bash
 rpc activate -u wss://server/activate -profile profilename -name store12pos2
- ```
+```
 
-friendlyName has been added as a query parameter to the MPS Devices GET call as well.
+`friendlyName` has been added as a query parameter to the MPS Devices GET call as well.
 
-:material-new-box:** New Feature: AMT SKU Decode:
+:material-new-box:** New Feature: AMT SKU Decode **
 
-RPC-Go AMTINFO command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability as well as other SKUing information.
+RPC-Go `amtinfo` command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability (ISM) as well as other SKUing information.
 
 :material-hammer:** Fixed: Audit Log **
 
