@@ -87,8 +87,6 @@ To learn how to use the RPC application to transition an already activated (prov
 
 #### Deactivate the device locally (without RPS):
 
-Currently, this capability is only supported for deactivating CCM devices.
-
 === "Linux"
     ``` bash
     sudo ./rpc deactivate -local
