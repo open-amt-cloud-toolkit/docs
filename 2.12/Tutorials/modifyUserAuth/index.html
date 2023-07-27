@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#user-authentication-flow" class="md-skip">
           Skip to content
         </a>
       
@@ -1007,6 +1007,59 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-authentication-flow" class="md-nav__link">
+    User Authentication Flow
+  </a>
+  
+    <nav class="md-nav" aria-label="User Authentication Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-api-user-authentication-flow" class="md-nav__link">
+    REST API User Authentication Flow
+  </a>
+  
+    <nav class="md-nav" aria-label="REST API User Authentication Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-authenticate-for-rest-apis" class="md-nav__link">
+    To authenticate for REST APIs:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirection-kvmsol-user-authentication-flow" class="md-nav__link">
+    Redirection (KVM/SOL) User Authentication Flow
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirection (KVM/SOL) User Authentication Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-authenticate-for-websocket-connections" class="md-nav__link">
+    To authenticate for Websocket connections:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
@@ -2171,12 +2224,48 @@
 
   <h1>Modify User Authentication</h1>
 
-<p>As part of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> reference implementation, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2<em>, Lightweight Directory Access Protocol (LDAP), Kerberos</em>, etc.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In the current release, if you choose to modify the toolkit's default authentication, no keyboard, video and mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) or serial over LAN (<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) support will be available. </p>
-</div>
+<p>As part of the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> reference implementation, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2<em>, Lightweight Directory Access Protocol (LDAP), Kerberos</em>, and more.</p>
 <p>The instructions below explain how to add an LDAP plugin to Kong.</p>
+<h2 id="user-authentication-flow">User Authentication Flow<a class="headerlink" href="#user-authentication-flow" title="Permanent link">&para;</a></h2>
+<p>The following diagrams help illustrate the typical user authentication flow. Learn more about the <code>authorize</code> API call in the <a href="../apiTutorial/"><abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API Call Tutorial</a> or directly in our <a href="../../APIs/indexMPS/">API Documentation</a>.</p>
+<h3 id="rest-api-user-authentication-flow"><abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API User Authentication Flow<a class="headerlink" href="#rest-api-user-authentication-flow" title="Permanent link">&para;</a></h3>
+<figure class="figure-image">
+<img src="..\..\assets\images\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
+</figure>
+
+<h4 id="to-authenticate-for-rest-apis">To authenticate for <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs:<a class="headerlink" href="#to-authenticate-for-rest-apis" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Call the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API <code>/api/v1/authorize</code> to receive an authentication token from the User Auth Service.</p>
+</li>
+<li>
+<p>Perform other desired API calls (e.g. Power Actions, Hardware Info, etc) using the new auth token <strong>from Step 1</strong>.</p>
+</li>
+</ol>
+<p><br></p>
+<h3 id="redirection-kvmsol-user-authentication-flow">Redirection (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) User Authentication Flow<a class="headerlink" href="#redirection-kvmsol-user-authentication-flow" title="Permanent link">&para;</a></h3>
+<figure class="figure-image">
+<img src="..\..\assets\images\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
+</figure>
+
+<h4 id="to-authenticate-for-websocket-connections">To authenticate for Websocket connections:<a class="headerlink" href="#to-authenticate-for-websocket-connections" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Call the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API <code>/api/v1/authorize</code> to receive an authentication token from the User Auth Service.</p>
+</li>
+<li>
+<p>Call the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API <code>/api/v1/authorize/redirection/{guid}</code> using the auth token <strong>from Step 1</strong> to receive a short-lived token directly from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for redirection sessions.</p>
+</li>
+<li>
+<p>Pass the short-lived token <strong>from Step 2</strong> and the device's GUID to the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> module implementation to start a redirection (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) session.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note - Additional Information</p>
+<p>When using a 3rd party auth service (e.g. Cognito, LDAP, etc), the token issued by the auth service is used to make calls to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. For non-HTTP calls like redirection, a call must be made to the <code>/api/v1/authorize/redirection/{guid}</code> API to get a separate <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>-specific token required to be passed into the <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> UI-Toolkit module.</p>
+<p>API Gateways are only able to verify tokens on HTTP requests.  Open AMT's redirection implementation uses WebSockets for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> must perform the verification of the token and it can only do that with tokens that it issues.</p>
+</div>
+<p><br></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Install and start a local LDAP server on the development system. For this tutorial, Go-lang LDAP Authentication* (GLAuth) is referenced. <a href="https://github.com/glauth/glauth">Find more info in the GLAuth Readme.</a> </p>
 <ol>
@@ -2311,6 +2400,7 @@
 </div>
 </div>
 </div>
+<p>Other APIs to test can be found in the <a href="../../APIs/indexMPS/"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Documentation</a> and <a href="../../APIs/indexRPS/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> API Documentation</a>.</p>
 <p><br>
 <br></p>
 
