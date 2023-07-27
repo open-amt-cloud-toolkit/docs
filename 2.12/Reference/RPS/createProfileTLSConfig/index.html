@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/createProfileTLSConfig/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-8.5.6">
     
     
       
@@ -2177,7 +2177,10 @@
 <p>Specify a <strong><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Name</strong> of your choice.</p>
 </li>
 <li>
-<p>Under <strong>Activation Mode</strong> from the dropdown menu.</p>
+<p>Under <strong>Activation Mode</strong>, select either <strong>Client Control Mode</strong> or <strong>Admin Control Mode</strong> from the dropdown menu.</p>
+</li>
+<li>
+<p>Enable desired redirection features for the profile under <strong>AMT Features - Enable/Disable features</strong>. </p>
 </li>
 <li>
 <p>Provide or generate a strong <strong>AMT Password</strong>. AMT will verify this password when receiving a command from a <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. This password is also required for device deactivation.</p>
@@ -2187,7 +2190,7 @@
 </div>
 </li>
 <li>
-<p>The <strong>MEBX Password</strong> field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) cannot be set when activating in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> due to the lower level of trust when compared to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</p>
+<p>If choosing to activate into <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>, provide or generate a strong <strong>MEBX Password</strong>. This password can be used to access Intel® Manageability Engine BIOS Extensions (<abbr title="Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.">Intel® MEBX</abbr>) on the AMT device.</p>
 </li>
 <li>
 <p>Leave DHCP as the default for <strong>Network Configuration</strong>.</p>
@@ -2196,10 +2199,7 @@
 <p>This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the <a href="../../../Tutorials/createWiFiConfig/">Wireless Activation Tutorial</a>.</p>
 </li>
 <li>
-<p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
-</li>
-<li>
-<p>Select <strong>Connection Configuration</strong> to <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (Enterprise)</strong></p>
+<p>Select <strong>Connection Configuration</strong> to <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (Enterprise)</strong>.</p>
 </li>
 <li>
 <p>Under <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> (Enterprise)</strong>, select the <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Mode from</strong> the dropdown menu. </p>
@@ -2207,29 +2207,32 @@
 <table>
 <thead>
 <tr>
-<th align="left">CONFIGURATION MODE</th>
-<th align="left">DESCRIPTION</th>
+<th style="text-align: left;">CONFIGURATION MODE</th>
+<th style="text-align: left;">DESCRIPTION</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Server Authentication Only</td>
-<td align="left">The client authenticates the server request and accepts only those servers with a digital certificate.</td>
+<td style="text-align: left;">Server Authentication Only</td>
+<td style="text-align: left;">The client authenticates the server request and accepts only those servers with a digital certificate.</td>
 </tr>
 <tr>
-<td align="left">Server and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
-<td align="left"><strong>Used primarily for testing.</strong> The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
+<td style="text-align: left;">Server and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
+<td style="text-align: left;"><strong>Used primarily for testing.</strong> The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
 </tr>
 <tr>
-<td align="left">Mutual <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication Only</td>
-<td align="left">Both client and server <strong>must</strong> have certs. The client cert is signed by the server cert.</td>
+<td style="text-align: left;">Mutual <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication Only</td>
+<td style="text-align: left;">Both client and server <strong>must</strong> have certs. The client cert is signed by the server cert.</td>
 </tr>
 <tr>
-<td align="left">Mutual and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
-<td align="left"><strong>Used primarily for testing.</strong> Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
+<td style="text-align: left;">Mutual and Non-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Authentication</td>
+<td style="text-align: left;"><strong>Used primarily for testing.</strong> Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled servers. However, if the server is not <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>-enabled, the client defaults to a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection.</td>
 </tr>
 </tbody>
 </table>
+</li>
+<li>
+<p>Optionally, add <strong>Tags</strong> to help in organizing and querying devices as your list of managed devices grow.</p>
 </li>
 <li>
 <p>Click <strong>Save.</strong></p>

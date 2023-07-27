@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Reference/RPS/configuration/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.5.0, mkdocs-material-8.5.6">
     
     
       
@@ -2127,66 +2127,66 @@
 <table>
 <thead>
 <tr>
-<th align="left">Environment Variable</th>
-<th align="left">Default</th>
-<th align="left">Description</th>
+<th style="text-align: left;">Environment Variable</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">RPS_IMAGE</td>
-<td align="left"><code>rps-microservice:v1</code></td>
-<td align="left">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></td>
+<td style="text-align: left;">RPS_IMAGE</td>
+<td style="text-align: left;"><code>rps-microservice:v1</code></td>
+<td style="text-align: left;">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></td>
 </tr>
 <tr>
-<td align="left">RPS_CONNECTION_STRING</td>
-<td align="left"><code>postgresql://postgresadmin@localhost:5432/rpsdb?sslmode=no-verify</code></td>
-<td align="left">The database connection string</td>
+<td style="text-align: left;">RPS_CONNECTION_STRING</td>
+<td style="text-align: left;"><code>postgresql://postgresadmin@localhost:5432/rpsdb?sslmode=no-verify</code></td>
+<td style="text-align: left;">The database connection string</td>
 </tr>
 <tr>
-<td align="left">RPS_WEB_PORT</td>
-<td align="left"><code>8081</code></td>
-<td align="left">Specifies the Web API port to listen on</td>
+<td style="text-align: left;">RPS_WEB_PORT</td>
+<td style="text-align: left;"><code>8081</code></td>
+<td style="text-align: left;">Specifies the Web API port to listen on</td>
 </tr>
 <tr>
-<td align="left">RPS_WEBSOCKETPORT</td>
-<td align="left"><code>8080</code></td>
-<td align="left">Specifies the Websocket port to listen on</td>
+<td style="text-align: left;">RPS_WEBSOCKETPORT</td>
+<td style="text-align: left;"><code>8080</code></td>
+<td style="text-align: left;">Specifies the Websocket port to listen on</td>
 </tr>
 <tr>
-<td align="left">RPS_VAULT_ADDRESS</td>
-<td align="left"><code>http://vault:8200</code></td>
-<td align="left">Address of where the vault is hosted</td>
+<td style="text-align: left;">RPS_VAULT_ADDRESS</td>
+<td style="text-align: left;"><code>http://vault:8200</code></td>
+<td style="text-align: left;">Address of where the vault is hosted</td>
 </tr>
 <tr>
-<td align="left">RPS_VAULT_TOKEN</td>
-<td align="left"><code>myroot</code></td>
-<td align="left">Token used to access the vault</td>
+<td style="text-align: left;">RPS_VAULT_TOKEN</td>
+<td style="text-align: left;"><code>myroot</code></td>
+<td style="text-align: left;">Token used to access the vault</td>
 </tr>
 <tr>
-<td align="left">RPS_SECRETS_PATH</td>
-<td align="left"><code>secret/data/</code></td>
-<td align="left">Specifies the path for where secrets are stored in the vault</td>
+<td style="text-align: left;">RPS_SECRETS_PATH</td>
+<td style="text-align: left;"><code>secret/data/</code></td>
+<td style="text-align: left;">Specifies the path for where secrets are stored in the vault</td>
 </tr>
 <tr>
-<td align="left">RPS_LOG_LEVEL</td>
-<td align="left"><code>info</code></td>
-<td align="left">Controls the level of logging provided in the service. Options are (in order of increasing detail): <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code>, and <code>silly</code></td>
+<td style="text-align: left;">RPS_LOG_LEVEL</td>
+<td style="text-align: left;"><code>info</code></td>
+<td style="text-align: left;">Controls the level of logging provided in the service. Options are (in order of increasing detail): <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code>, and <code>silly</code></td>
 </tr>
 <tr>
-<td align="left">RPS_MPS_SERVER</td>
-<td align="left"><code>http://localhost:3000</code></td>
-<td align="left">Specifies where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
+<td style="text-align: left;">RPS_MPS_SERVER</td>
+<td style="text-align: left;"><code>http://localhost:3000</code></td>
+<td style="text-align: left;">Specifies where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
 </tr>
 <tr>
-<td align="left">RPS_DELAY_TIMER</td>
-<td align="left"><code>12</code></td>
-<td align="left">Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> sends heartbeats to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to keep the connection alive.</td>
+<td style="text-align: left;">RPS_DELAY_TIMER</td>
+<td style="text-align: left;"><code>12</code></td>
+<td style="text-align: left;">Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> sends heartbeats to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to keep the connection alive.</td>
 </tr>
 <tr>
-<td align="left">RPS_MQTT_ADDRESS</td>
-<td align="left">No Value</td>
-<td align="left">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
+<td style="text-align: left;">RPS_MQTT_ADDRESS</td>
+<td style="text-align: left;">No Value</td>
+<td style="text-align: left;">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
 </tr>
 </tbody>
 </table>
