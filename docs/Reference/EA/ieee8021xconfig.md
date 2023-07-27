@@ -1,5 +1,5 @@
-!!! warning "Wired 802.1x Configuration is a Preview Feature"
-    Wired 802.1x Configuration feature is a Preview Feature. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
+!!! warning "802.1x Configuration is a Preview Feature"
+    802.1x Configuration feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
 IEEE 802.1X is an IEEE Standard for port-based network access control (PNAC). It provides an authentication mechanism to devices wishing to attach to a LAN or WLAN.
 
@@ -39,14 +39,15 @@ The following are requirements to configure and connect an AMT device within an 
 
 5. Select an **Authentication Protocol**.
 
-    Four authentication protocols are supported for wired.
+    The following are the supported wired authentication protocols.
 
-    |Auth Protocol   | API Value | Description                              |
-    | -------------- | --------- | ---------------------------------------- |
-    |EAP-TLS         | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
-    |PEAPv1/EAP-GTC  | 3         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 1 EAP type specified in [draft-josefsson-pppext-eap-tls-eap](https://tools.ietf.org/html/draft-josefsson-pppext-eap-tls-eap-10), with Generic Token Card (GTC) as the inner authentication method.                  |
-    |EAP-FAST/GTC    | 5         | Indicates that the desired EAP type is the Flexible Authentication Extensible Authentication Protocol EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851),     with Generic Token Card (GTC) as the inner authentication method.      |
-    |EAP-FAST/TLS    | 10        | Indicates that the desired EAP type is the Flexible Authentication EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851), with TLS as the inner authentication   method.      |
+    |Auth Protocol          | API Value | Description                              |
+    | --------------------- | --------- | ---------------------------------------- |
+    |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
+    |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.     |
+    |PEAPv1/EAP-GTC         | 3         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 1 EAP type specified in [draft-josefsson-pppext-eap-tls-eap](https://tools.ietf.org/html/draft-josefsson-pppext-eap-tls-eap-10), with Generic Token Card (GTC) as the inner authentication method.                  |
+    |EAP-FAST/GTC           | 5         | Indicates that the desired EAP type is the Flexible Authentication Extensible Authentication Protocol EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851),     with Generic Token Card (GTC) as the inner authentication method.      |
+    |EAP-FAST/TLS           | 10        | Indicates that the desired EAP type is the Flexible Authentication EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851), with TLS as the inner authentication   method.      |
 
 6. Optionally, change the **PXE Timeout**.
 
@@ -66,7 +67,7 @@ The following are requirements to configure and connect an AMT device within an 
 
 2. Choose an existing profile or create a new one.
 
-3. Under Network Configuration, select the **Enable Wired 802.1x Profile** checkbox.
+3. Under Network Configuration, select the Wired 802.1x Config from the **Wired 802.1x Configuration** dropdown.
 
 4. Click **Save**.
 
@@ -96,13 +97,12 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
 
 5. Select an **Authentication Protocol**.
 
-    One authentication protocol is currently supported for wireless.
+    The following are the supported wireless authentication protocols.
 
     |Auth Protocol          | API Value | Description                              |
     | --------------------- | --------- | ---------------------------------------- |
     |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
-
-    <!-- |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method. <br><br>Only available via API directly, not Sample Web UI.     | -->
+    |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.    |
 
 6. Click **Save.**
     

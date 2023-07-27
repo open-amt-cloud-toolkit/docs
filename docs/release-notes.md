@@ -1,15 +1,15 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
-<!-- <div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/fpeqIevX7qw" title="Open AMT April Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="text-align:center;">
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/GSrKSqvywtQ" title="Open AMT June Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br> -->
+<br>
 
 !!! note "Note From the Team"
     Hey everyone,
 
-    We are excited to announce the latest release of the Open AMT Cloud Toolkit! As always, the team has been hard at work adding new features and fixing issues to improve the experience for our customers. This release includes support for 802.1x wireless configurations, as well as some quality of life improvements. You can find the details of this release under the [what's new](#whats-new) section.
+    June has brought a bunch of great changes to Open AMT Cloud Toolkit.  We completed the major configuration options to support 802.1x, we made quality of life improvements for our customers, and we squashed several bugs!  Check out the release video where Bryan talks about the highlights from this month and see below for changes in each component.
 
     The Open AMT Cloud Toolkit team has moved to [Discord](https://discord.gg/yrcMp2kDWh).  Come join the discussion!
 
@@ -19,62 +19,112 @@
 
 ## What's New?
 
-:material-star:** Database update required **
-An upgrade to the `rpsdb` database is required. Please run the following SQL script to add the new column and constraint before upgrading the services:
+:material-new-box:** New Feature: PEAP-MSCHAPv2 support **
 
-``` sql
-ALTER TABLE IF EXISTS wirelessconfigs
-ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
-ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);
+We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 802.1x profile.
+
+``` json
+{
+  "profileName": "wired8021xConfig",
+  "authenticationProtocol": 2,
+  "pxeTimeout": 120,
+  "wiredInterface": true,
+  "tenantId": ""
+}
 ```
 
-[More information or detailed steps can be found in Upgrade Toolkit Version](../Deployment/upgradeVersion/).
+:material-new-box:** New Feature: Friendly name **
 
-:material-new-box:** New Feature: 802.1X Wireless Configuration Support **
+All devices now support the ability to add a friendly name.  You can add this via the MPS Devices API command:
 
-For devices deployed in a secure enterprise network, configuring AMT to authenticate with the network is important so that connection can be maintained with the device even when the OS is not available. With this release, we now support configuring AMT with certificate-based 802.1x configurations (EAP-TLS) for wireless networks.  [Find more information about 802.1x configuration here](../Reference/EA/ieee8021xconfig/#wireless-8021x-configuration). 
+``` json
+{
+  "guid": "123e4567-e89b-12d3-a456-426614174000",
+  "hostname": "AMTDEVICENUC1",
+  "friendlyName": "store12pos2"
+}
+```
 
-:material-hammer:** Quality of Life Improvement: Added -f (force) flag for maintenance commands **
+Or during configuration by passing in the `-name` flag to RPC:
 
-We have added the -f (force) flag for maintenance commands to allow users to bypass the password check RPS performs. This will help customers who need to run a maintenance task on AMT but have not yet added the device credentials to the secret store.  [RPC Maintenance Commands](../Reference/RPC/commandsRPC/#maintenance)
+``` bash
+rpc activate -u wss://server/activate -profile profilename -name store12pos2
+```
 
-:material-hammer:** Fixed: Multi-Tenancy Issues for Deactivation and WiFi Profiles **
+`friendlyName` has been added as a query parameter to the MPS Devices GET call as well.
 
-We have fixed an issue with multi-tenancy for deactivation and WiFi profiles, ensuring that they are properly isolated between different tenants.
+:material-new-box:** New Feature: AMT SKU Decode **
+
+RPC-Go `amtinfo` command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability (ISM) as well as other SKUing information.
+
+:material-hammer:** Fixed: Audit Log **
+
+We have reversed the order in which Audit Logs are returned, now returning the newest Audit Logs first.
+
+:material-hammer:** Fixed: MPS API Calls after Password Change **
+
+A customer reported an issue where after changing the password for an AMT device, MPS was not getting the new password and calls to AMT from MPS were failing.  This issue should now be resolved.
+
+:material-hammer:** Fixed: Wireless Profile configuration improvements **
+
+We discovered an issue where when configuring multiple wireless profiles, if one of the profiles failed to be configured in AMT, we would skip configuration of any remaining wireless profiles.  We have fixed this issue so that if a wireless profile fails to configure, we will continue to configure the remaining profiles.
 
 ## Get the Details
 
 ### Additions, Modifications, and Removals
 
 #### RPS
-- implemented configuration of 8021x wireless profiles on AMT ([#985](https://github.com/open-amt-cloud-toolkit/rps/issues/985)) (#f4693a2)
-- implement wireless 8021x APIs ([#950](https://github.com/open-amt-cloud-toolkit/rps/issues/950)) (#cf9f402)
-- maintenance: add -f (force) flag ([#977](https://github.com/open-amt-cloud-toolkit/rps/issues/977)) (#054604d)
-- multi-tenancy and deactivation ([#987](https://github.com/open-amt-cloud-toolkit/rps/issues/987)) (#ca2eea6)
-- handle multi-tenancy for profiles with wifi ([#988](https://github.com/open-amt-cloud-toolkit/rps/issues/988)) (#dd451a3)
-- not saving passphrase in vault ([#972](https://github.com/open-amt-cloud-toolkit/rps/issues/972)) (#091de69)
-- added timer on ea response calls ([#966](https://github.com/open-amt-cloud-toolkit/rps/issues/966)) (#61fd283)
-- address hyphen in passwordValidation to be correct (#a3849d1)
-- db: ieee8021x foreign key violation message ([#975](https://github.com/open-amt-cloud-toolkit/rps/issues/975)) (#74769c9)
-- network configuration state machine ([#956](https://github.com/open-amt-cloud-toolkit/rps/issues/956)) (#d479cd4)
-- configurable delays and timeouts primarily for state machines ([#942](https://github.com/open-amt-cloud-toolkit/rps/issues/942)) (#788043b)
+
+v2.13.0
+
+- adds MSCHAPv2 configuration for wired and wireless ([#1070](https://github.com/open-amt-cloud-toolkit/rps/issues/1070)) (#3fd7865) 
+- upated network status message ([#1080](https://github.com/open-amt-cloud-toolkit/rps/issues/1080)) (#972293b) 
+
+v2.12.1
+
+- ensure req.tenantId is defaulted to blank (#30a5259) 
+
+v2.12.0
+
+- support device friendly name ([#1059](https://github.com/open-amt-cloud-toolkit/rps/issues/1059)) (#91376f0) 
 
 #### MPS
-- update kvmConnect property on CIRA connection close ([#888](https://github.com/open-amt-cloud-toolkit/mps/issues/888)) (#37307fe) 
-- Device deletion request from RPS ([#886](https://github.com/open-amt-cloud-toolkit/mps/issues/886)) (#dd483d6) 
+
+v2.10.1
+
+- mps audit logs now in order ([#949](https://github.com/open-amt-cloud-toolkit/mps/issues/949)) (#cc4fb04) 
+- default tenantId is now blank (#ffff3b4) 
+
+v2.10.0
+
+- support device friendly name ([#948](https://github.com/open-amt-cloud-toolkit/mps/issues/948)) (#7a41961) 
+
+v2.9.1
+
+- refresh amt pw after pw change ([#927](https://github.com/open-amt-cloud-toolkit/mps/issues/927)) (#ce8eee4) 
 
 #### RPC
-- **utils:** add -f (force) flag
-- **rps:** rpc will exit instead of hang when connection fails to rps
 
-#### WSMAN-MESSAGES
-v5.2.1
+v2.10.0
 
-- **amt:** fix wifi namespace handling ([#449](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/449)) (#4358402) 
+- adds AMT Features to amtinfo
+- support device friendly name
 
 #### Sample Web UI
-- **8021x:** functionality for wireless configuration ([#1083](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1083)) (#bec716d) 
-- **devices:** add device deactivation via cira ([#1001](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1001)) (#e4af456)
+
+v2.12.0
+
+- upgraded to angular 16 (#96a5e0a) 
+
+v2.11.0
+
+- add MSCHAPv2 for wired and wireless (#a15e858) 
+
+v2.10.0
+
+- support device friendly name (#170f874)
+- mps audit log now in order ([#1166](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1166)) (#be219a3) 
 
 ## Project Board
+
 Check out our new [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/5) project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!

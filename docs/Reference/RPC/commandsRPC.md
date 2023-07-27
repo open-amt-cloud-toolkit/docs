@@ -49,21 +49,24 @@ Activate the device with a specified profile:
     .\rpc activate -u wss://server/activate -profile profilename
     ```
 
-| OPTION             | DESCRIPTION                                                                                                                      |
-|--------------------|-----------------------------------------------------------------------------------------                                         |
-| -d string          | DNS suffix override                                                                                                              |
-| -h string          | Hostname override                                                                                                                |
-| -json              | JSON output                                                                                                                      |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
-| -lmsport string    | LMS port (default "16992")                                                                                                       |
-| -n                 | Skip WebSocket server certificate verification                                                                                   |
-| -p string          | Proxy address and port                                                                                                           |
-| -password          | AMT password                                                                                                                     |
-| -profile string    | Name of the profile to use                                                                                                       |
-| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
-| -u string          | WebSocket address of server to activate against                                                                                  |
-| -v                 | Verbose output                                                                                                                   |
+| OPTION             | DESCRIPTION                                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| -d string          | DNS suffix override                                                                                                             |
+| -h string          | Hostname override                                                                                                               |
+| -json              | JSON output                                                                                                                     |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
+| -lmsport string    | LMS port (default "16992")                                                                                                      |
+| -n                 | Skip WebSocket server certificate verification                                                                                  |
+| -name              | Friendly name to associate with this device                                                                                     |
+| -p string          | Proxy address and port                                                                                                          |
+| -password          | AMT password                                                                                                                    |
+| -profile string    | Name of the profile to use                                                                                                      |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
+| -token string      | JWT Token for Authorization                                                                                                     |
+| -u string          | WebSocket address of server to activate against                                                                                 |
+| -v                 | Verbose output                                                                                                                  |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -71,7 +74,7 @@ To learn how to use the RPC application to transition an already activated (prov
 
 ### deactivate
 
-Deactivate the device:
+#### Deactivate the device using RPS:
 
 === "Linux"
     ``` bash
@@ -82,16 +85,32 @@ Deactivate the device:
     .\rpc deactivate -u wss://server/activate
     ```
 
+#### Deactivate the device locally (without RPS):
+
+Currently, this capability is only supported for deactivating CCM devices.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc deactivate -local
+    ```
+=== "Windows"
+    ```
+    .\rpc deactivate -local
+    ```
+
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force deactivate even if device is not registered with a server                         |
+| -f                 | Force deactivate even if device is not registered with the RPS server                   |
 | -json              | JSON output                                                                             |
-| -l  string         | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
 | -lmsport string    | LMS port (default "16992")                                                              |
+| -local             | Execute command to AMT directly without cloud interaction.                              |
 | -n                 | Skip WebSocket server certificate verification                                          |
 | -p string          | Proxy address and port                                                                  |
 | -password string   | AMT password                                                                            |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`             |
+| -token string      | JWT Token for Authorization                                                             |
 | -u string          | WebSocket address of server to activate against                                         |
 | -v                 | Verbose output                                                                          |
 
@@ -101,27 +120,102 @@ For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
 Execute a maintenance command for the managed device:
 
-| SUBCOMMAND                        | DESCRIPTION                                                              |
-|-----------------------------------|--------------------------------------------------------------------------|
-| [changepassword](#changepassword) | Change the AMT password. <br> A random password is generated by default. |
-| [syncclock](#syncclock)           | Sync the host OS clock to AMT.                                           |
-| [synchostname](#synchostname)     | Sync the OS hostname to AMT Network Settings.                            |
-| [syncip](#syncip)                 | Sync the static IP of host OS to AMT Network Settings.                   |
+| SUBCOMMAND                            | DESCRIPTION                                                                                           |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+| [changepassword](#changepassword)     | Change the AMT password. <br> A random password is generated by default if `-static` is not provided. |
+| [syncclock](#syncclock)               | Sync the host OS clock to AMT.                                                                        |
+| [synchostname](#synchostname)         | Sync the OS hostname to AMT Network Settings.                                                         |
+| [syncip](#syncip)                     | Sync the static IP of host OS to AMT Network Settings.                                                |
 
 Common Maintenance Subcommand Options:
 
-| OPTION             | DESCRIPTION                                                                             |
-|--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force maintenance commands even if device is not registered with a server               |
-| -json              | JSON output                                                                             |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
-| -lmsport string    | LMS port (default "16992")                                                              |
-| -n                 | Skip WebSocket server certificate verification                                          |
-| -p string          | Proxy address and port                                                                  |
-| -password string   | AMT password                                                                            |
-| -u string          | WebSocket address of server to activate against                                         |
-| -v                 | Verbose output                                                                          |
+| OPTION             | DESCRIPTION                                                                                                                      |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
+| -f                 | Force maintenance commands even if device is not registered with a server                                                        |
+| -json              | JSON output                                                                                                                      |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
+| -lmsport string    | LMS port (default "16992")                                                                                                       |
+| -n                 | Skip WebSocket server certificate verification                                                                                   |
+| -p string          | Proxy address and port                                                                                                           |
+| -password string   | AMT password                                                                                                                     |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                      |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
+| -token string      | JWT Token for Authorization                                                                                                      |
+| -u string          | WebSocket address of server to activate against                                                                                  |
+| -v                 | Verbose output                                                                                                                   |
+
+<br>
+
+#### addwifisettings
+
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
+
+On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
+
+##### via Config file
+
+1. Create a new file called `config.yaml`. Copy and paste the template below.
+
+    ```yaml
+    ieee801xConfig:
+      name: 'profileName' # profile name (i.e. friendly name)
+      authenticationMethod: 7 # wifi authentication method
+      encryptionMethod: 4 # wifi encryption method
+      clientCert: ''
+      caCert: ''
+      privateKey: ''
+      ssid: '' # wifi SSID
+      username: "" # 8021x username
+      authenticationProtocol: 0 #8021x profile protocol (e.g. EAP-TLS(0))
+      priority: 1 
+    ```
+
+2. Fill in fields with desired options.
+
+3. Provide the `config.yaml` file using the `-config` flag. 
+
+    === "Linux"
+        ``` bash
+        sudo ./rpc maintenance addwifisettings -config config.yaml
+        ```
+    === "Windows"
+        ```
+        .\rpc maintenance addwifisettings -config config.yaml
+        ```
+
+##### via CLI
+
+Alternatively, provide all options directly in the command line.
+
+!!! warning "Warning - Use Case and Security"
+    The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
+    ```
+=== "Windows"
+    ```
+    .\rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
+    ```
+
+<br>
+
+| OPTION                    | DESCRIPTION                                                                                                       |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------|
+| -authenticationMethod     | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                 |
+| -authenticationProtocol   | 802.1x profile protocol. Valid Values = {0} where `0` = EAP-TLS                                                   |
+| -caCert                   | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain                                         |
+| -clientCert               | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server |
+| -config                   | File path of a `.yaml` file with desired wireless 802.1x configuration, see [via Config File](#via-config-file)   |
+| -encryptionMethod         | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                        |
+| -name                     | Profile name (Friendly name), must be alphanumeric                                                                |
+| -priority                 | Ranked priority over other profiles                                                                               |
+| -privateKey               | Private key of the `clientCert`                                                                                   |
+| -ssid                     | Wifi SSID                                                                                                         |
+| -username                 | 802.1x username, must match the Common Name of the `clientCert`                                                   |
 
 <br>
 
@@ -179,7 +273,7 @@ Sync the OS hostname to AMT Network Settings.
 Sync the static IP of host OS to AMT Network Settings.
 
 === "Linux"
-    ``` bash
+    ```
     sudo ./rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/activate
     ```
 === "Windows"
