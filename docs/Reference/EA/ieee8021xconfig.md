@@ -67,7 +67,7 @@ The following are requirements to configure and connect an AMT device within an 
 
 2. Choose an existing profile or create a new one.
 
-3. Under Network Configuration, select the **Enable Wired 802.1x Profile** checkbox.
+3. Under Network Configuration, select the Wired 802.1x Config from the **Wired 802.1x Configuration** dropdown.
 
 4. Click **Save**.
 

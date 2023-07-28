@@ -1,12 +1,49 @@
 --8<-- "References/abbreviations.md"
 
 
-As part of the Open AMT Cloud Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, etc.
-
-!!! Warning
-    In the current release, if you choose to modify the toolkit's default authentication, no keyboard, video and mouse (KVM) or serial over LAN (SOL) support will be available. 
+As part of the Open AMT Cloud Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, and more.
 
 The instructions below explain how to add an LDAP plugin to Kong.
+
+## User Authentication Flow
+
+The following diagrams help illustrate the typical user authentication flow. Learn more about the `authorize` API call in the [REST API Call Tutorial](./apiTutorial.md) or directly in our [API Documentation](../APIs/indexMPS.md).
+
+### REST API User Authentication Flow
+
+<figure class="figure-image">
+<img src="..\..\assets\images\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
+</figure>
+
+#### To authenticate for REST APIs:
+
+1. Call the MPS REST API `/api/v1/authorize` to receive an authentication token from the User Auth Service.
+
+2. Perform other desired API calls (e.g. Power Actions, Hardware Info, etc) using the new auth token **from Step 1**.
+
+<br>
+
+### Redirection (KVM/SOL) User Authentication Flow
+
+<figure class="figure-image">
+<img src="..\..\assets\images\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
+</figure>
+
+#### To authenticate for Websocket connections:
+
+1. Call the MPS REST API `/api/v1/authorize` to receive an authentication token from the User Auth Service.
+
+2. Call the MPS REST API `/api/v1/authorize/redirection/{guid}` using the auth token **from Step 1** to receive a short-lived token directly from MPS for redirection sessions.
+
+3. Pass the short-lived token **from Step 2** and the device's GUID to the UI Toolkit module implementation to start a redirection (KVM/SOL) session.
+
+!!! note "Note - Additional Information"
+
+    When using a 3rd party auth service (e.g. Cognito, LDAP, etc), the token issued by the auth service is used to make calls to the MPS. For non-HTTP calls like redirection, a call must be made to the `/api/v1/authorize/redirection/{guid}` API to get a separate MPS-specific token required to be passed into the KVM/SOL UI-Toolkit module.
+
+    API Gateways are only able to verify tokens on HTTP requests.  Open AMT's redirection implementation uses WebSockets for KVM and SOL. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, MPS must perform the verification of the token and it can only do that with tokens that it issues.
+
+<br>
 
 ## Prerequisites
 
@@ -120,6 +157,9 @@ In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as
             -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
         ```
     See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ repoVersion.rpsAPI }}#/Profiles/GetAllProfiles) for more information and expected responses.
+
+
+Other APIs to test can be found in the [MPS API Documentation](../APIs/indexMPS.md) and [RPS API Documentation](../APIs/indexRPS.md).
 
 <br>
 <br>

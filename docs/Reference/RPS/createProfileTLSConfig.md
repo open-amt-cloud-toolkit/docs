@@ -21,22 +21,22 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
 3. Specify a **Profile Name** of your choice.
 
-4. Under **Activation Mode** from the dropdown menu.
+4. Under **Activation Mode**, select either **Client Control Mode** or **Admin Control Mode** from the dropdown menu.
 
-5. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
+5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**. 
+
+6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
 
     !!! tip
         The two buttons next to the password input are for toggling visibility and generating a new random password. Please note that **if the Vault database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
    
-6. The **MEBX Password** field is disabled, as the password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
+7. If choosing to activate into ACM, provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
-7. Leave DHCP as the default for **Network Configuration**.
+8. Leave DHCP as the default for **Network Configuration**.
 
-8. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
+9. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
 
-9. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
-
-10. Select **Connection Configuration** to **TLS (Enterprise)**
+10. Select **Connection Configuration** to **TLS (Enterprise)**.
 
 11. Under **TLS (Enterprise)**, select the **TLS Mode from** the dropdown menu. 
     
@@ -49,7 +49,9 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
     | Mutual TLS Authentication Only | Both client and server **must** have certs. The client cert is signed by the server cert. |
     | Mutual and Non-TLS Authentication | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   |
 
-12. Click **Save.**
+12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+13. Click **Save.**
 
     !!! example "Example profile with TLS Config"
          <figure class="figure-image">
@@ -57,16 +59,16 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
          <figcaption>Figure 2: Example profile with TLS Config</figcaption>
          </figure>
 
-13. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [http://localhost:8200](http://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
+14. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [http://localhost:8200](http://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
 
-14. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
+15. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
 
 <figure class="figure-image">
          <img src="..\..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
          <figcaption>Figure 3: Login with the token</figcaption>
          </figure>
 
-15. Navigate to the path `secret/TLS/[profile name]` for a local dev mode Vault deployment. Or `kv/TLS/[profile name]` for a cloud deployment.
+16. Navigate to the path `secret/TLS/[profile name]` for a local dev mode Vault deployment. Or `kv/TLS/[profile name]` for a cloud deployment.
 
     !!! example "Example of Certificate Storage"
         <figure class="figure-image">
