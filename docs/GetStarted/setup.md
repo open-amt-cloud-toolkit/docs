@@ -132,10 +132,11 @@ Set the shared secret used in Kong for JWT authentication.
         eclipse-mosquitto                   Up 2 minutes                  open-amt-cloud-toolkit_mosquitto_1
         vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
         intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
-        postgres:14                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
+        postgres:15                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
         intel/oact-webui:latest             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
-        kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
+        kong:3.1                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
         intel/oact-mps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
+        hashicorp/consul                    Up 2 minutes                  open-amt-cloud-toolkit_consul_1
         ```
   
     !!! warning "Warning - Container Issues" 
