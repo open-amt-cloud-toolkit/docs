@@ -28,9 +28,7 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 
 8. Leave the **Username** as *admin* or choose your own.
 
-9. Leave the slider set on **Auto-load**.
-
-10. Click **Save.**
+9. Click **Save.**
     
     !!! example "Example CIRA Config"
         <figure class="figure-image">
