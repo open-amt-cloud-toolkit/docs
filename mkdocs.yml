@@ -70,6 +70,7 @@ nav:
       - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
     - Overview: Deployment/overview.md
+    - Centralized Configuration: Deployment/centralizedConfiguration.md
     - Database Replacement: Deployment/database.md
     - Secrets Management: Deployment/secrets.md
     - Upgrade Toolkit Version: Deployment/upgradeVersion.md

@@ -21,7 +21,7 @@ Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a n
 - [MS SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 - [MariaDB](https://mariadb.org/)
 
-For more information about replacing the default toolkit database, see the [database guide](./database.md).
+For more information about replacing the default toolkit database, see the [Database Replacement guide](./database.md).
 
 ## Secrets Management
 
@@ -43,7 +43,7 @@ Additionally, if a secret provider is not necessary for your deployment, conside
 - [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/)
 - [AWS Key Management Service (KMS)](https://aws.amazon.com/kms/)
 
-For more information about replacing the default secret provider, see the [secrets guide](./secrets.md).
+For more information about replacing the default secret provider, see the [Secrets Management guide](./secrets.md).
 
 ## API Gateway 
 
@@ -61,3 +61,23 @@ The toolkit uses Kong as its open source API gateway. Kong provides an entry poi
 - [Amazon API Gateway](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway)
 - [Google Cloud Endpoints](https://cloud.google.com/endpoints)
 - [Tyk](https://tyk.io/)
+
+## Centralized Configuration
+
+!!! warning "Centralized Configuration (Consul) is a Preview Feature"
+    The Consul implementation feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
+
+The toolkit utilizes Consul to implement centralized configuration of the MPS and RPS services. This is an optional, opt-in service that is deployed, but not enabled by default. 
+
+### Default Component
+
+<img src="./../../assets/images/logos/consul.png" alt="kong" style="width:50px;"/>
+
+- [Hashicorp Consul](https://www.consul.io/)
+
+### Example Replacements
+
+- [etcd](https://etcd.io/)
+- [Apache Zookeeper](https://zookeeper.apache.org/)
+
+By default, Consul is deployed, but not utilized. For more information about enabling Consul, see the [Service Mesh guide](./centralizedConfiguration.md).
