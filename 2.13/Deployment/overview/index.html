@@ -957,10 +957,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#centralized-configuration" class="md-nav__link">
+    Centralized Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Centralized Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-component_3" class="md-nav__link">
+    Default Component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-replacements_3" class="md-nav__link">
+    Example Replacements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../centralizedConfiguration/" class="md-nav__link">
+        Centralized Configuration
+      </a>
     </li>
   
 
@@ -2241,7 +2282,7 @@
 <li><a href="https://www.microsoft.com/en-us/sql-server/sql-server-2019">MS SQL Server</a></li>
 <li><a href="https://mariadb.org/">MariaDB</a></li>
 </ul>
-<p>For more information about replacing the default toolkit database, see the <a href="../database/">database guide</a>.</p>
+<p>For more information about replacing the default toolkit database, see the <a href="../database/">Database Replacement guide</a>.</p>
 <h2 id="secrets-management">Secrets Management<a class="headerlink" href="#secrets-management" title="Permanent link">&para;</a></h2>
 <p>A secret is any asset requiring controlled access, such as API keys, passwords, or certificates. </p>
 <p>The toolkit enables secrets management with HashiCorp Vault*, which provides a secure repository for storing and accessing sensitive assets. Vault offers a unified interface to any secret, tight access control, and a detailed audit log. </p>
@@ -2257,7 +2298,7 @@
 <li><a href="https://docs.microsoft.com/en-us/azure/key-vault/">Azure Key Vault</a></li>
 <li><a href="https://aws.amazon.com/kms/">AWS Key Management Service (KMS)</a></li>
 </ul>
-<p>For more information about replacing the default secret provider, see the <a href="../secrets/">secrets guide</a>.</p>
+<p>For more information about replacing the default secret provider, see the <a href="../secrets/">Secrets Management guide</a>.</p>
 <h2 id="api-gateway">API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h2>
 <p>The toolkit uses Kong as its open source API gateway. Kong provides an entry point for external clients, anything not a part of the microservice system, and a comprehensive suite of plugins for various scenarios.</p>
 <h3 id="default-component_2">Default Component<a class="headerlink" href="#default-component_2" title="Permanent link">&para;</a></h3>
@@ -2272,6 +2313,23 @@
 <li><a href="https://cloud.google.com/endpoints">Google Cloud Endpoints</a></li>
 <li><a href="https://tyk.io/">Tyk</a></li>
 </ul>
+<h2 id="centralized-configuration">Centralized Configuration<a class="headerlink" href="#centralized-configuration" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Centralized Configuration (Consul) is a Preview Feature</p>
+<p>The Consul implementation feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.</p>
+</div>
+<p>The toolkit utilizes Consul to implement centralized configuration of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> services. This is an optional, opt-in service that is deployed, but not enabled by default. </p>
+<h3 id="default-component_3">Default Component<a class="headerlink" href="#default-component_3" title="Permanent link">&para;</a></h3>
+<p><img src="./../../assets/images/logos/consul.png" alt="kong" style="width:50px;"/></p>
+<ul>
+<li><a href="https://www.consul.io/">Hashicorp Consul</a></li>
+</ul>
+<h3 id="example-replacements_3">Example Replacements<a class="headerlink" href="#example-replacements_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://etcd.io/">etcd</a></li>
+<li><a href="https://zookeeper.apache.org/">Apache Zookeeper</a></li>
+</ul>
+<p>By default, Consul is deployed, but not utilized. For more information about enabling Consul, see the <a href="../centralizedConfiguration/">Service Mesh guide</a>.</p>
 
 
   

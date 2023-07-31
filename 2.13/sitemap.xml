@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Deployment/centralizedConfiguration/</loc>
+         <lastmod>2023-07-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Deployment/database/</loc>
          <lastmod>2023-07-31</lastmod>
          <changefreq>daily</changefreq>
