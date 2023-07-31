@@ -1,0 +1,2785 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Deployment/upgradeVersion/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Upgrade Toolkit Version - Open Active Management Technology Cloud Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/videos.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-00QEDJW2TS",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="custom" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#specific-changes-required-for-version-upgrades" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-header__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Active Management Technology Cloud Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Upgrade Toolkit Version
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="custom" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../GetStarted/prerequisites/" class="md-tabs__link">
+        Get Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Deployment
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Tutorials/uitoolkitReact/" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Reference/architectureOverview/" class="md-tabs__link">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../APIs/indexMPS/" class="md-tabs__link">
+        APIs
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Active Management Technology Cloud Toolkit" class="md-nav__button md-logo" aria-label="Open Active Management Technology Cloud Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+
+    </a>
+    Open Active Management Technology Cloud Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    open-amt-cloud-toolkit/open-amt-cloud-toolkit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../announcements/" class="md-nav__link">
+        Announcements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/" class="md-nav__link">
+        Release Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../videos/" class="md-nav__link">
+        Video Walkthroughs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1_6" type="checkbox" id="__nav_1_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1_6">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Get Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/prerequisites/" class="md-nav__link">
+        Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/setup/" class="md-nav__link">
+        Set Up
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Configure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configure" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configure
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/loginToUI/" class="md-nav__link">
+        Login to Sample Web UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/createCIRAConfig/" class="md-nav__link">
+        Create a CIRA Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_3">
+          Create an AMT Profile
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Create an AMT Profile" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Create an AMT Profile
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/createProfileCCM/" class="md-nav__link">
+        Create a Profile with CCM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/createProfileACM/" class="md-nav__link">
+        Create a Profile with ACM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Connect
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Connect" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/buildRPC/" class="md-nav__link">
+        Build & Run RPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GetStarted/manageDevice/" class="md-nav__link">
+        Manage AMT Device
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deployment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Database Replacement
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        Secrets Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Upgrade Toolkit Version
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Upgrade Toolkit Version
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specific-changes-required-for-version-upgrades" class="md-nav__link">
+    Specific Changes Required for Version Upgrades
+  </a>
+  
+    <nav class="md-nav" aria-label="Specific Changes Required for Version Upgrades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-to-211-from-210" class="md-nav__link">
+    Upgrade to 2.11 from 2.10
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-to-210-from-29" class="md-nav__link">
+    Upgrade to 2.10 from 2.9
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-to-29-from-28" class="md-nav__link">
+    Upgrade to 2.9 from 2.8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-to-28-from-27" class="md-nav__link">
+    Upgrade to 2.8 from 2.7
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-to-27-from-26" class="md-nav__link">
+    Upgrade to 2.7 from 2.6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade-a-minor-version-ie-2x-to-2y" class="md-nav__link">
+    Upgrade a Minor Version (i.e. 2.X to 2.Y)
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrade a Minor Version (i.e. 2.X to 2.Y)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-upgrade" class="md-nav__link">
+    Kubernetes Upgrade
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubernetes Upgrade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rollback-a-version" class="md-nav__link">
+    Rollback a Version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-docker-upgrade" class="md-nav__link">
+    Local Docker Upgrade
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/uitoolkitReact/" class="md-nav__link">
+        UI Toolkit KVM Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/apiTutorial/" class="md-nav__link">
+        REST API Call
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/createWiFiConfig/" class="md-nav__link">
+        Wireless Activation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/modifyUserAuth/" class="md-nav__link">
+        Modify User Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Scaling Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scaling Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Scaling Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/docker-swarm/" class="md-nav__link">
+        Docker Swarm*
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_5_3" type="checkbox" id="__nav_4_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_3">
+          Kubernetes Deployments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kubernetes Deployments" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes Deployments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/Kubernetes/deployingk8s/" class="md-nav__link">
+        Kubernetes (K8s)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/Kubernetes/deployingk8s-aks/" class="md-nav__link">
+        AKS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/Kubernetes/deployingk8s-eks/" class="md-nav__link">
+        EKS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/Scaling/Kubernetes/service-mesh/" class="md-nav__link">
+        KUMA Service Mesh
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/architectureOverview/" class="md-nav__link">
+        Architecture Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/powerstates/" class="md-nav__link">
+        AMT Power States
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/guids/" class="md-nav__link">
+        GUIDs in Intel® AMT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/middlewareExtensibility/" class="md-nav__link">
+        Middleware Extensibility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/productionVault/" class="md-nav__link">
+        Production Mode Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/sslpostgresLocal/" class="md-nav__link">
+        SSL with Local Postgres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8">
+          Enterprise Assistant
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Enterprise Assistant" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          Enterprise Assistant
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/EA/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/EA/ieee8021xconfig/" class="md-nav__link">
+        802.1x Configuration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_9" type="checkbox" id="__nav_5_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_9">
+          Event Monitoring (MQTT)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Event Monitoring (MQTT)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_9">
+          <span class="md-nav__icon md-icon"></span>
+          Event Monitoring (MQTT)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MQTT/customMqttEvents/" class="md-nav__link">
+        Customizing MQTT Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MQTT/viewMqttEvents/" class="md-nav__link">
+        Viewing MQTT Events
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_10" type="checkbox" id="__nav_5_10" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_10">
+          Management Presence Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Management Presence Server" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Management Presence Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MPS/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MPS/securityMPS/" class="md-nav__link">
+        Security Information
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_11" type="checkbox" id="__nav_5_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_11">
+          Remote Provisioning Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Remote Provisioning Server" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_11">
+          <span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPS/configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPS/securityRPS/" class="md-nav__link">
+        Security Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPS/createProfileTLSConfig/" class="md-nav__link">
+        Create Profile with TLS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_12" type="checkbox" id="__nav_5_12" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_12">
+          Remote Provisioning Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Remote Provisioning Client" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_12">
+          <span class="md-nav__icon md-icon"></span>
+          Remote Provisioning Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPC/buildRPC_Manual/" class="md-nav__link">
+        Build & Run RPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPC/commandsRPC/" class="md-nav__link">
+        RPC CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/RPC/libraryRPC/" class="md-nav__link">
+        RPC Library
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_13" type="checkbox" id="__nav_5_13" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_13">
+          UI Toolkit
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="UI Toolkit" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_13">
+          <span class="md-nav__icon md-icon"></span>
+          UI Toolkit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_13_1" type="checkbox" id="__nav_5_13_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_13_1">
+          Controls
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Controls" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_13_1">
+          <span class="md-nav__icon md-icon"></span>
+          Controls
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/Controls/kvmControl/" class="md-nav__link">
+        Keyboard, Video, Mouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
+        Serial Over LAN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/localization/" class="md-nav__link">
+        Localization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_13_3" type="checkbox" id="__nav_5_13_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_13_3">
+          React Bundles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="React Bundles" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          React Bundles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/Bundles/kvmReact/" class="md-nav__link">
+        Keyboard, Video, Mouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/Bundles/serialOverLANReact/" class="md-nav__link">
+        Serial Over LAN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/UIToolkit/webpackConfig/" class="md-nav__link">
+        Webpack Configuration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_14" type="checkbox" id="__nav_5_14" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_14">
+          Intel&reg; MEBX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Intel&reg; MEBX" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_14">
+          <span class="md-nav__icon md-icon"></span>
+          Intel&reg; MEBX
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MEBX/dnsSuffix/" class="md-nav__link">
+        DNS Suffix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/MEBX/unprovision/" class="md-nav__link">
+        Unprovisioning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_15" type="checkbox" id="__nav_5_15" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_15">
+          Certificates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Certificates" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_15">
+          <span class="md-nav__icon md-icon"></span>
+          Certificates
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/Certificates/remoteProvisioning/" class="md-nav__link">
+        Provisioning Certificate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/Certificates/tls/" class="md-nav__link">
+        TLS Certificate
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_16" type="checkbox" id="__nav_5_16" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_16">
+          Get Help
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_16">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reference/troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../APIs/indexMPS/" class="md-nav__link">
+        Management Presence Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../APIs/indexRPS/" class="md-nav__link">
+        Remote Provisioning Server
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/edit/master/docs/Deployment/upgradeVersion.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>Upgrade Toolkit Version</h1>
+
+<h2 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">&para;</a></h2>
+<h3 id="upgrade-to-211-from-210">Upgrade to 2.11 from 2.10<a class="headerlink" href="#upgrade-to-211-from-210" title="Permanent link">&para;</a></h3>
+<p>The 2.11 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add the new table before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ip_sync_enabled</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+<details class="example" open="open">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statements.</p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-210-from-29">Upgrade to 2.10 from 2.9<a class="headerlink" href="#upgrade-to-210-from-29" title="Permanent link">&para;</a></h3>
+<p>The 2.10 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add the new table before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">wirelessconfigs</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021x_profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">ieee8021xconfigs_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ieee8021x_profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span><span class="w">  </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statements.</p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wirelessconfigs</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-29-from-28">Upgrade to 2.9 from 2.8<a class="headerlink" href="#upgrade-to-29-from-28" title="Permanent link">&para;</a></h3>
+<p>The 2.9 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add the new table before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth_protocol</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">servername</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="k">domain</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">password</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">roaming_identity</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">active_in_s0</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pxe_timeout</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">wired_interface</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">tenant_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">),</span>
+<span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Update the Profiles table.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021x_profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">ieee8021xconfigs_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ieee8021x_profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span><span class="w">  </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statements.</p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-28-from-27">Upgrade to 2.8 from 2.7<a class="headerlink" href="#upgrade-to-28-from-27" title="Permanent link">&para;</a></h3>
+<p>The 2.8 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add the new column before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statement.</p>
+</li>
+<li>
+<p>Verify the column was added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h3 id="upgrade-to-27-from-26">Upgrade to 2.7 from 2.6<a class="headerlink" href="#upgrade-to-27-from-26" title="Permanent link">&para;</a></h3>
+<p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to add two new columns before upgrading the services.</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+</code></pre></div>
+<details class="example">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql.</p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statement.</p>
+</li>
+<li>
+<p>Verify the columns were added to the table.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with general upgrade steps below.</p>
+</li>
+</ol>
+<h2 id="upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version (i.e. 2.X to 2.Y)<a class="headerlink" href="#upgrade-a-minor-version-ie-2x-to-2y" title="Permanent link">&para;</a></h2>
+<h3 id="kubernetes-upgrade">Kubernetes Upgrade<a class="headerlink" href="#kubernetes-upgrade" title="Permanent link">&para;</a></h3>
+<p>Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.</p>
+<details class="note">
+<summary>Note - Using Private Images</summary>
+<p>The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.</p>
+</details>
+<ol>
+<li>
+<p>Pull the latest release within <code>.\open-amt-cloud-toolkit</code> directory.</p>
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
+</li>
+<li>
+<p>Merge the latest changes into your existing branch.</p>
+<div class="highlight"><pre><span></span><code>git merge v2.12.0
+</code></pre></div>
+</li>
+<li>
+<p>In the values.yaml file, update the images to the new version wanted. Alternatively, you can use the <code>latest</code> tags.</p>
+<div class="admonition example">
+<p class="admonition-title">Example - values.yaml File</p>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
+<span class="hll"><span class="w">  </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-mps:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-rps:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-webui:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-mpsrouter:latest&quot;</span>
+</span><span class="nt">mps</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.</p>
+<div class="highlight"><pre><span></span><code>cd ./YOUR-DIRECTORY-PATH/open-amt-cloud-toolkit
+</code></pre></div>
+</li>
+<li>
+<p>Use Helm to upgrade and deploy the new images.</p>
+<div class="highlight"><pre><span></span><code>helm upgrade openamtstack ./kubernetes/charts
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Successful Helm Upgrade</p>
+<div class="highlight"><pre><span></span><code>Release &quot;openamtstack&quot; has been upgraded. Happy Helming!
+NAME: openamtstack
+LAST DEPLOYED: Wed Mar 23 09:36:10 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>Verify the new pods are running. Notice the only restarted and recreated pods are MPS, RPS, and the WebUI.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example - Upgraded Running Pods</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
+mps-55f558666b-5m9bq                                 1/1     Running   0          2m47s
+mpsrouter-6975577696-wn8wm                           1/1     Running   0          27d
+openamtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
+openamtstack-vault-0                                 1/1     Running   0          27d
+openamtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
+rps-597d7894b5-mbdz5                                 1/1     Running   0          2m47s
+webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
+</code></pre></div>
+</div>
+</li>
+</ol>
+<h4 id="rollback-a-version">Rollback a Version<a class="headerlink" href="#rollback-a-version" title="Permanent link">&para;</a></h4>
+<p>Is the functionality not working as expected? Rollback to the previous deployment using Helm.</p>
+<ol>
+<li>
+<p>Use the Helm rollback command with the Revision you want to rollback to. In this example deployment, we would rollback to the original deployment revision which would be 1.</p>
+<div class="highlight"><pre><span></span><code>helm rollback openamtstack [Revision-Number]
+</code></pre></div>
+<div class="admonition success -">
+<p class="admonition-title">Successful Rollback</p>
+<div class="highlight"><pre><span></span><code>Rollback was a success! Happy Helming!
+</code></pre></div>
+</div>
+</li>
+</ol>
+<h3 id="local-docker-upgrade">Local Docker Upgrade<a class="headerlink" href="#local-docker-upgrade" title="Permanent link">&para;</a></h3>
+<p>The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.</p>
+<ol>
+<li>
+<p>From the <code>.\open-amt-cloud-toolkit\</code> directory, pull the latest branches.
+    <div class="highlight"><pre><span></span><code>git pull
+</code></pre></div></p>
+</li>
+<li>
+<p>Checkout the new release.
+    <div class="highlight"><pre><span></span><code>git checkout v2.12.0
+</code></pre></div></p>
+<details class="note">
+<summary>Note - Rebuilding New Images Locally</summary>
+<p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\open-amt-cloud-toolkit\</code>.</p>
+<ol>
+<li>
+<p>Pull the new releases of the submodules.
+    <div class="highlight"><pre><span></span><code>git submodule update --recursive
+</code></pre></div></p>
+</li>
+<li>
+<p>Checkout the release for each of the services you want to upgrade.
+    <div class="highlight"><pre><span></span><code>cd mps
+git checkout v2.10.0
+</code></pre></div></p>
+</li>
+<li>
+<p>Repeat for other services.</p>
+</li>
+<li>
+<p>Build the new images.
+    <div class="highlight"><pre><span></span><code>docker-compose up -d --build
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Pull the new release Docker Hub images.
+    <div class="highlight"><pre><span></span><code>docker-compose pull
+</code></pre></div></p>
+</li>
+<li>
+<p>Start the new containers.
+    <div class="highlight"><pre><span></span><code>docker-compose up -d --remove-orphans
+</code></pre></div></p>
+</li>
+<li>
+<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Open AMT images you wish to keep, <strong>do NOT</strong> run this command.
+    <div class="highlight"><pre><span></span><code>docker image prune -a
+</code></pre></div></p>
+</li>
+</ol>
+<!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Intel Corporation
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input type="checkbox" class="md-toggle" id="__settings">
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        <label>
+      </li>
+    
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        <label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": ["rapid", "lts"], "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>
