@@ -16,13 +16,13 @@ Run the RPC application on the command line with no arguments to see supported c
     .\rpc.exe
     ```
 
-| COMMAND     | DESCRIPTION                                                                           | EXAMPLE                                                      |
-|-------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| activate    | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate -profile profilename |
-| deactivate  | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                    |
-| maintenance | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate         |
-| amtinfo     | Display AMT status and configuration                                                  | ./rpc amtinfo                                                |
-| version     | Display the current version of RPC and the RPC Protocol version                       | ./rpc version                                                |
+| COMMAND                       | DESCRIPTION                                                                           | EXAMPLE                                                      |
+|-------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [activate](#activate)         | Activate this device with a specified profile                                         | ./rpc activate -u wss://server/activate -profile profilename |
+| [deactivate](#deactivate)     | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/activate                    |
+| [maintenance](#maintenance)   | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/activate         |
+| [amtinfo](#amtinfo)           | Display AMT status and configuration                                                  | ./rpc amtinfo                                                |
+| [version](#version)           | Display the current version of RPC and the RPC Protocol version                       | ./rpc version                                                |
 
 ##List Command Options
 
@@ -39,7 +39,10 @@ Run the application with a command to see available options for the command:
 
 ### activate
 
+#### Activate and Configure the device using RPS:
+
 Activate the device with a specified profile:
+
 === "Linux"
     ``` bash
     sudo ./rpc activate -u wss://server/activate -profile profilename
@@ -49,6 +52,23 @@ Activate the device with a specified profile:
     .\rpc activate -u wss://server/activate -profile profilename
     ```
 
+#### Activate the device locally:
+
+Currently, this capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command **only** activates AMT. It does not do profile-based configuration.
+
+=== "Linux"
+    ``` bash
+    sudo ./rpc activate -local -password NewAMTPassword
+    ```
+=== "Windows"
+    ```
+    .\rpc activate -local -password NewAMTPassword
+    ```
+
+<br>
+
+#### `activate` Options
+
 | OPTION             | DESCRIPTION                                                                                                                     |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | -d string          | DNS suffix override                                                                                                             |
@@ -57,6 +77,7 @@ Activate the device with a specified profile:
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
 | -lmsport string    | LMS port (default "16992")                                                                                                      |
+| -local             | Execute command to AMT directly without cloud interaction.                              |
 | -n                 | Skip WebSocket server certificate verification                                                                                  |
 | -name              | Friendly name to associate with this device                                                                                     |
 | -p string          | Proxy address and port                                                                                                          |
@@ -85,7 +106,7 @@ To learn how to use the RPC application to transition an already activated (prov
     .\rpc deactivate -u wss://server/activate
     ```
 
-#### Deactivate the device locally (without RPS):
+#### Deactivate the device locally:
 
 === "Linux"
     ``` bash
@@ -95,6 +116,10 @@ To learn how to use the RPC application to transition an already activated (prov
     ```
     .\rpc deactivate -local
     ```
+
+<br>
+
+#### `deactivate` Options
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
@@ -126,7 +151,9 @@ Execute a maintenance command for the managed device:
 | [synchostname](#synchostname)         | Sync the OS hostname to AMT Network Settings.                                                         |
 | [syncip](#syncip)                     | Sync the static IP of host OS to AMT Network Settings.                                                |
 
-Common Maintenance Subcommand Options:
+<br>
+
+#### Common `maintenance` Options
 
 | OPTION             | DESCRIPTION                                                                                                                      |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
