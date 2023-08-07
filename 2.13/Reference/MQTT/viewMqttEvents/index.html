@@ -2184,6 +2184,9 @@
 <p><strong>To enable support:</strong></p>
 <ol>
 <li>
+<p>This guide assumes you have completed the <a href="../../../GetStarted/setup/">Getting Started Guide</a> and have Open AMT currently running in Docker containers.  If not, follow the <a href="../../../GetStarted/setup/">Get Started Guide Setup page</a>. Stop and return here after the your services are running.</p>
+</li>
+<li>
 <p>In a text editor or IDE of choice, open the <code>.env</code> file to edit.</p>
 </li>
 <li>
@@ -2211,10 +2214,26 @@
 <p>Save and close the file.</p>
 </li>
 <li>
-<p>Rebuild the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> images and start their containers.</p>
-<p>If your stack was deployed locally using Docker:</p>
-<div class="highlight"><pre><span></span><code>docker-compose up -d --build mps rps
+<p>Recreate the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> containers to update their configuration.</p>
+<div class="highlight"><pre><span></span><code>docker compose up -d
 </code></pre></div>
+</li>
+<li>
+<p>Pull the Mosquitto image. Read more about profiles in the Docker docs at <a href="https://docs.docker.com/compose/profiles/">Using profiles with Compose</a>.</p>
+<div class="highlight"><pre><span></span><code>docker compose --profile mqtt pull
+</code></pre></div>
+</li>
+<li>
+<p>Start the Mosquitto container.</p>
+<div class="highlight"><pre><span></span><code>docker compose --profile mqtt up -d
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note - Cleaning up Mosquitto Container</p>
+<p>When stopping and cleaning up containers deployed using the <code>mqtt</code> profile, you must also use that profile when running <code>docker compose down</code> in order to remove all resources.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>mqtt<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <!-- **View in the Sample Web UI:**

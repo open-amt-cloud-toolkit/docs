@@ -2233,7 +2233,7 @@
 <h2 id="enable-consul">Enable Consul<a class="headerlink" href="#enable-consul" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Follow the <a href="../../GetStarted/setup/">Get Started Guide Setup page</a>. Return here after the <strong>Set Kong JSON Web Token (JWT)</strong> section.</p>
+<p>This guide assumes you have completed the <a href="../../GetStarted/setup/">Getting Started Guide</a> and have Open AMT currently running in Docker containers.  If not, follow the <a href="../../GetStarted/setup/">Get Started Guide Setup page</a>. Stop and return here after the your services are running.</p>
 </li>
 <li>
 <p>In the <code>.env</code>, enable Consul and Save.</p>
@@ -2244,34 +2244,19 @@
 </code></pre></div>
 </li>
 <li>
-<p>Pull the images.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker-compose pull
+<p>Recreate the MPS and RPS containers to update their configuration.</p>
+<div class="highlight"><pre><span></span><code>docker compose up -d
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker-compose pull
-</code></pre></div>
-</div>
-</div>
-</div>
 </li>
 <li>
-<p>Start the containers.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker-compose up -d
+<p>Pull the Consul image. Read more about profiles in the Docker docs at <a href="https://docs.docker.com/compose/profiles/">Using profiles with Compose</a>.</p>
+<div class="highlight"><pre><span></span><code>docker compose --profile consul pull
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker-compose up -d
+</li>
+<li>
+<p>Start the Consul container.</p>
+<div class="highlight"><pre><span></span><code>docker compose --profile consul up -d
 </code></pre></div>
-</div>
-</div>
-</div>
 </li>
 <li>
 <p>To view the Consul UI, visit <code>http://localhost:8500</code>.</p>
@@ -2292,6 +2277,13 @@
 </li>
 <li>
 <p>From here, users can make edits to the config files and save.</p>
+<div class="admonition note">
+<p class="admonition-title">Note - Cleaning up Consul Container</p>
+<p>When stopping and cleaning up containers deployed using the <code>consul</code> profile, you must also use that profile when running <code>docker compose down</code> in order to remove all resources.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>consul<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div></p>
+</div>
 </li>
 </ol>
 <p>Today, the current preview implementation does not update the MPS or RPS services realtime. They must be restarted manually to apply the new configurations.  </p>
