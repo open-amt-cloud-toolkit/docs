@@ -47,7 +47,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
         4. Build and start the container.
 
             ```
-            docker-compose  -f "docker-compose.yml" up -d db
+            docker compose  -f "docker-compose.yml" up -d db
             ```
 
         5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).

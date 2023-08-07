@@ -50,5 +50,5 @@ For production environments, using a cloud-hosted database with an SSL connectio
 1. Build the new Postgres image with SSL enabled. 
 
     ```
-    docker-compose up -d --build
+    docker compose up -d --build
     ```
