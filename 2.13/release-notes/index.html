@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/release-notes/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.5.6">
     
     
       
@@ -507,6 +507,20 @@
           <li class="md-nav__item">
   <a href="#sample-web-ui" class="md-nav__link">
     Sample Web UI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsman-messages" class="md-nav__link">
+    wsman-messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-wsman-messages" class="md-nav__link">
+    go-wsman-messages
   </a>
   
 </li>
@@ -2234,97 +2248,91 @@
 
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/GSrKSqvywtQ" title="Open AMT June Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/PUSIp2Wx9Kc" title="Open AMT July Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p><br></p>
 <div class="admonition note">
 <p class="admonition-title">Note From the Team</p>
 <p>Hey everyone,</p>
-<p>June has brought a bunch of great changes to <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>.  We completed the major configuration options to support 802.1x, we made quality of life improvements for our customers, and we squashed several bugs!  Check out the release video where Bryan talks about the highlights from this month and see below for changes in each component.</p>
+<p>We're in the depths of summer here in Arizona, so nothing to do but stay inside and write code!  This month we continue to expand our <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go activation and deactivation features and we add a new optional service to assist with configuration.  Check out the video above where Bryan talks about these new features.</p>
 <p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> team has moved to <a href="https://discord.gg/yrcMp2kDWh">Discord</a>.  Come join the discussion!</p>
 <p><em>Best wishes,</em><br />
 <em>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em></p>
 </div>
 <h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span>** New Feature: PEAP-MSCHAPv2 support **</p>
-<p>We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 802.1x profile.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;profileName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wired8021xConfig&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;authenticationProtocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;pxeTimeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;wiredInterface&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tenantId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span>** New Feature: Friendly name **</p>
-<p>All devices now support the ability to add a friendly name.  You can add this via the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Devices API command:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123e4567-e89b-12d3-a456-426614174000&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMTDEVICENUC1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;friendlyName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;store12pos2&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Or during configuration by passing in the <code>-name</code> flag to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>:</p>
-<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://server/activate<span class="w"> </span>-profile<span class="w"> </span>profilename<span class="w"> </span>-name<span class="w"> </span>store12pos2
-</code></pre></div>
-<p><code>friendlyName</code> has been added as a query parameter to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Devices GET call as well.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span>** New Feature: AMT SKU Decode **</p>
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go <code>amtinfo</code> command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability (ISM) as well as other SKUing information.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span>** Fixed: Audit Log **</p>
-<p>We have reversed the order in which Audit Logs are returned, now returning the newest Audit Logs first.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span>** Fixed: <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API Calls after Password Change **</p>
-<p>A customer reported an issue where after changing the password for an AMT device, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> was not getting the new password and calls to AMT from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> were failing.  This issue should now be resolved.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 19.63 13.43 8.2l-.71-.7 1.42-1.43L12 3.89c1.2-1.19 3.09-1.19 4.27 0l3.6 3.61-1.42 1.41h2.84l.71.71-3.55 3.59-.71-.71V9.62l-1.47 1.42-.71-.71L4.13 21.76 2 19.63Z"/></svg></span>** Fixed: Wireless <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> configuration improvements **</p>
-<p>We discovered an issue where when configuring multiple wireless profiles, if one of the profiles failed to be configured in AMT, we would skip configuration of any remaining wireless profiles.  We have fixed this issue so that if a wireless profile fails to configure, we will continue to configure the remaining profiles.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span>** New Feature: Local Activation and Deactivation **</p>
+<p>With this release, you can now activate AMT into <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> just using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> using the -local flag.  We've also expanded our deactivation feature to include devices activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.  <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can now deactivate both <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> and <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> configured devices without needing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. </p>
+<p>Local activate command
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>-local<span class="w"> </span>-password<span class="w"> </span>NewAMTPassword
+</code></pre></div></p>
+<p>Local deactivate command
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>deactivate<span class="w"> </span>-local
+</code></pre></div></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span>** New Feature: Move to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> **</p>
+<p>In addition to the activation flows above, we've also added the ability to move a device from <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> without having to first deactivate AMT.  This feature is beneficial when devices shift from a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>-only network to one that can also handle <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is required for this flow.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 6v12l8.5-6M4 18l8.5-6L4 6v12Z"/></svg></span>** New Preview Feature: Centralized Configuration **</p>
+<p>We added an optional service called <a href="https://www.consul.io/">Hashicorp Consul</a> for centralized configuration in scale deployments. When <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are first deployed with Consul enabled, they'll check for a configuration in Consul. If found, that configuration will be used to start the service. If not found, the service will use the local configuration file and save it to Consul for future use by subsequent services. <a href="../Deployment/centralizedConfiguration/">Find more info about enabling Consul in the Centralized Configuration docs.</a></p>
+<p>This is currently a preview feature so expect additional changes as we receive feedback.</p>
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
-<p>v2.13.0</p>
+<p>v2.15.0</p>
 <ul>
-<li>adds MSCHAPv2 configuration for wired and wireless (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1070">#1070</a>) (#3fd7865) </li>
-<li>upated network status message (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1080">#1080</a>) (#972293b) </li>
+<li>add consul config support (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1081">#1081</a>) (#d39edab)</li>
 </ul>
-<p>v2.12.1</p>
+<p>v2.14.0</p>
 <ul>
-<li>ensure req.tenantId is defaulted to blank (#30a5259) </li>
-</ul>
-<p>v2.12.0</p>
-<ul>
-<li>support device friendly name (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1059">#1059</a>) (#91376f0) </li>
+<li>adds capability to upgrade to admin control mode (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1098">#1098</a>) (#7a409bd)</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
-<p>v2.10.1</p>
+<p>v2.11.0</p>
 <ul>
-<li>mps audit logs now in order (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/949">#949</a>) (#cc4fb04) </li>
-<li>default tenantId is now blank (#ffff3b4) </li>
-</ul>
-<p>v2.10.0</p>
-<ul>
-<li>support device friendly name (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/948">#948</a>) (#7a41961) </li>
-</ul>
-<p>v2.9.1</p>
-<ul>
-<li>refresh amt pw after pw change (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/927">#927</a>) (#ce8eee4) </li>
+<li>add configs to consul (#982) (#b2d1dd4) </li>
 </ul>
 <h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p>v2.10.0</p>
-<ul>
-<li>adds AMT Features to amtinfo</li>
-<li>support device friendly name</li>
-</ul>
-<h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
 <p>v2.12.0</p>
 <ul>
-<li>upgraded to angular 16 (#96a5e0a) </li>
+<li>add local deactivation in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></li>
+</ul>
+<p>v2.11.1</p>
+<ul>
+<li>password not set correctly for ccm activate</li>
 </ul>
 <p>v2.11.0</p>
 <ul>
-<li>add MSCHAPv2 for wired and wireless (#a15e858) </li>
+<li>add local <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> activate</li>
+<li>allow for spaces in input parameters</li>
 </ul>
-<p>v2.10.0</p>
+<h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
+<p>v2.12.2</p>
 <ul>
-<li>support device friendly name (#170f874)</li>
-<li>mps audit log now in order (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1166">#1166</a>) (#be219a3) </li>
+<li>adds status check for domain creation test (f400ba4)</li>
+</ul>
+<p>v2.12.1</p>
+<ul>
+<li>profile creation issue (1388bfd)</li>
+</ul>
+<h4 id="wsman-messages">wsman-messages<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h4>
+<p>v5.5.0</p>
+<ul>
+<li>adds call for UpgradeClientToAdmin (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/528">#528</a>) (474e55e)</li>
+</ul>
+<h4 id="go-wsman-messages">go-wsman-messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h4>
+<p>v1.5.0</p>
+<ul>
+<li>add unprovision response type to amt.setupandconfiguration (72a4b3c)</li>
+</ul>
+<p>v1.4.1</p>
+<ul>
+<li>setup and configuration service unprovisioning action (6727e46)</li>
+</ul>
+<p>v1.4.0</p>
+<ul>
+<li>ips: adds call for UpgradeClientToAdmin (4ef31c6)</li>
+</ul>
+<p>v1.3.0</p>
+<ul>
+<li>ips: add response types for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> HostBasedSetup (7945e91)</li>
 </ul>
 <h2 id="project-board">Project Board<a class="headerlink" href="#project-board" title="Permanent link">&para;</a></h2>
 <p>Check out our new <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/5">Feature Backlog</a> project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!</p>
