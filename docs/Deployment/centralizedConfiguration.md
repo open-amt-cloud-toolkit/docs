@@ -54,7 +54,7 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 
 ## Enable Consul
 
-1. Follow the [Get Started Guide Setup page](../GetStarted/setup.md). Return here after the **Set Kong JSON Web Token (JWT)** section.
+1. This guide assumes you have completed the [Getting Started Guide](../GetStarted/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../GetStarted/setup.md). Stop and return here after the your services are running.
 
 2. In the `.env`, enable Consul and Save.
 
@@ -65,47 +65,49 @@ The Consul configurations are stored in a local volume. When cleaning up contain
     CONSUL_PORT=8500
     ```
 
-3. Pull the images.
-
-    === "Linux"
-        ```
-        sudo docker-compose pull
-        ```
+3. Recreate the MPS and RPS containers to update their configuration.
     
-    === "Windows"
-        ```
-        docker-compose pull
-        ```
+    ```
+    docker compose up -d
+    ```
 
-4.  Start the containers.
+4. Pull the Consul image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
+
+    ```
+    docker compose --profile consul pull
+    ```
+
+5.  Start the Consul container.
     
-    === "Linux"
-        ```
-        sudo docker-compose up -d
-        ```
-    
-    === "Windows"
-        ```
-        docker-compose up -d
-        ```
+    ```
+    docker compose --profile consul up -d
+    ```
 
-5. To view the Consul UI, visit `http://localhost:8500`.
+6. To view the Consul UI, visit `http://localhost:8500`.
 
-6. Click **Key/Value** from the left-hand menu.
+7. Click **Key/Value** from the left-hand menu.
 
     <figure class="figure-image">
     <img src="..\..\assets\images\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
     <figcaption>Figure 1: Consul K/V Overview Page</figcaption>
     </figure>
 
-7. Choose either the `/MPS` or `/RPS` directory, then `/config`.
+8. Choose either the `/MPS` or `/RPS` directory, then `/config`.
 
     <figure class="figure-image">
     <img src="..\..\assets\images\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
     <figcaption>Figure 2: Consul K/V MPS Configuration</figcaption>
     </figure>
 
-8. From here, users can make edits to the config files and save.
+9. From here, users can make edits to the config files and save.
+
+    !!! note "Note - Cleaning up Consul Container"
+        When stopping and cleaning up containers deployed using the `consul` profile, you must also use that profile when running `docker compose down` in order to remove all resources.
+
+        Example:
+        ``` bash
+        docker compose --profile consul down -v
+        ```
 
 Today, the current preview implementation does not update the MPS or RPS services realtime. They must be restarted manually to apply the new configurations.  
 

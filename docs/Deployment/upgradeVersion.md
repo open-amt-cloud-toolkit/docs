@@ -350,17 +350,17 @@ The following steps outline how to upgrade using the public Docker Hub images. D
 
         4. Build the new images.
             ```
-            docker-compose up -d --build
+            docker compose up -d --build
             ```
 
 3. Pull the new release Docker Hub images.
     ```
-    docker-compose pull
+    docker compose pull
     ```
 
 4. Start the new containers.
     ```
-    docker-compose up -d --remove-orphans
+    docker compose up -d --remove-orphans
     ```
 
 5. OPTIONAL. If using versioned tags rather than `latest`, you can delete older tagged images using the following. **This will delete all unused images**. If you have other non Open AMT images you wish to keep, **do NOT** run this command.
