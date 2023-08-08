@@ -2214,11 +2214,6 @@
 <p>Save and close the file.</p>
 </li>
 <li>
-<p>Recreate the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> containers to update their configuration.</p>
-<div class="highlight"><pre><span></span><code>docker compose up -d
-</code></pre></div>
-</li>
-<li>
 <p>Pull the Mosquitto image. Read more about profiles in the Docker docs at <a href="https://docs.docker.com/compose/profiles/">Using profiles with Compose</a>.</p>
 <div class="highlight"><pre><span></span><code>docker compose --profile mqtt pull
 </code></pre></div>
