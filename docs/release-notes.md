@@ -20,25 +20,25 @@
 
 ## What's New?
 
-:material-new-box:** New Feature: Local Activation and Deactivation **
+:material-new-box: **New Feature: Local Activation and Deactivation**
 
-With this release, you can now activate AMT into CCM just using RPC using the -local flag.  We've also expanded our deactivation feature to include devices activated in ACM.  RPC can now deactivate both CCM and ACM configured devices without needing RPS. 
+With this release, you can now activate AMT into CCM just using RPC using the `-local` flag.  We've also expanded our deactivation feature to include devices activated in ACM.  RPC can now deactivate both CCM and ACM configured devices without needing RPS. 
 
-Local activate command
+Local activate command:
 ``` bash
 rpc activate -local -password NewAMTPassword
 ``` 
 
-Local deactivate command
+Local deactivate command:
 ``` bash
 rpc deactivate -local
 ```
 
-:material-new-box:** New Feature: Move to ACM **
+:material-new-box: **New Feature: Move to ACM**
 
 In addition to the activation flows above, we've also added the ability to move a device from CCM to ACM without having to first deactivate AMT.  This feature is beneficial when devices shift from a CCM-only network to one that can also handle ACM activation.  RPS is required for this flow.
 
-:material-fast-forward:** New Preview Feature: Centralized Configuration **
+:material-fast-forward: **New Preview Feature: Centralized Configuration**
 
 We added an optional service called [Hashicorp Consul](https://www.consul.io/) for centralized configuration in scale deployments. When MPS or RPS are first deployed with Consul enabled, they'll check for a configuration in Consul. If found, that configuration will be used to start the service. If not found, the service will use the local configuration file and save it to Consul for future use by subsequent services. [Find more info about enabling Consul in the Centralized Configuration docs.](./Deployment/centralizedConfiguration.md)
 
