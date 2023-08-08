@@ -31,20 +31,14 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
     | MPS_MQTT_ADDRESS      | mqtt://mosquitto:8883 |
    
 4. Save and close the file.
-
-5. Recreate the MPS and RPS containers to update their configuration.
-
-    ```
-    docker compose up -d
-    ```
     
-6. Pull the Mosquitto image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
+5. Pull the Mosquitto image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
 
     ```
     docker compose --profile mqtt pull
     ```
 
-7.  Start the Mosquitto container.
+6.  Start the Mosquitto container.
     
     ```
     docker compose --profile mqtt up -d
