@@ -129,6 +129,7 @@ nav:
     - Certificates:
       - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
       - TLS Certificate: Reference/Certificates/tls.md
+      - Generating Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
     - Get Help:
       - Troubleshooting: Reference/troubleshooting.md
   - APIs:
