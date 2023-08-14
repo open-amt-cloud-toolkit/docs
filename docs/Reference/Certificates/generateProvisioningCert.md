@@ -1,20 +1,45 @@
 --8<-- "References/abbreviations.md"
 	
-## Generating a custom provisioning cert 
-
 We recommend obtaining a provisioning certificate as we have outline how to do [here](https://open-amt-cloud-toolkit.github.io/docs/2.13/GetStarted/createProfileACM/#what-youll-need). However if you are in need of a custom provisioning certificate for some reason, we outline how to generate one below. 
 
-## How to generate a custom provisioning certificate? 
+Why would I do it:
+-
+-
+-
 
-To begin generating a provisioning certificate the open source command line tool, OpenSSL, is required. OpenSSL can be used in areas of cryptography, enctyption, and digital signatures. 
+Drawbacks:
+-
+-
+-
 
-If you have already gone through and downloaded the necessary prequisites from the ["Getting Started Guide"](https://open-amt-cloud-toolkit.github.io/docs/2.13/GetStarted/prerequisites/), specifically "git*", then all you have to do is search for "git bash" on your machine and open the terminal and you will be able to access OpenSSL from there. 
+## Generate Custom Provisioning Certificate 
 
-You will also need to prepare two files, cert.conf and csr.conf file.  
+### What You'll Need
 
-**cert.conf**: This is the certificate configuration file. It is used primarily for to define specific settings for the certificate. 
+**Software** 
 
-!!! example file
+- [git](https://git-scm.com/)
+
+    This guide uses Git Bash to run OpenSSL commands. If you choose to use an alternative, install OpenSSL below.
+
+- [OpenSSL](https://www.openssl.org/)
+
+### Prepare Configuration Files
+
+We need to prepare two files:
+
+- **cert.conf** - This is the certificate configuration file. It is used primarily for to define specific settings for the certificate.
+- **csr.conf** - This is the certificate signing request configuration file. It is meant for information related to identification . 
+
+#### Update `cert.conf`
+
+1. Update these fields with your information:
+
+    ... give them what fields
+
+2. Save and close.
+
+!!! example "Example - `cert.conf`"
     ```
     basicConstraints = CA:TRUE
     subjectKeyIdentifier = random
@@ -29,9 +54,16 @@ You will also need to prepare two files, cert.conf and csr.conf file.
     IP.1 = 192.168.1.1
     IP.2 = 10.0.0.1
     ```
-**csr.conf**: This is the certificate signing request configuration file. It is meant for information related to identification . 
 
-!!! example file
+#### Update `csr.conf`
+
+1. Update these fields with your information:
+
+    ... give them what fields
+
+2. Save and close.
+
+!!! example "Example - `csr.conf`"
     ```
     [ req ]
     default_bits = 2048
@@ -58,50 +90,118 @@ You will also need to prepare two files, cert.conf and csr.conf file.
     IP.1 = 10.0.0.1
     IP.2 = 192.168.1.1
     ```
-### Steps 
+### Create the Certificate and Hash 
 
-There are 6 key commands to run when trying to generate your certificate. 
+1. Open a Git Bash terminal.
 
-1. openssl req -x509 -sha256 -days 3560 -nodes -newkey rsa:2048 -subj "//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler" -keyout rootCA.key -out rootCA.crt
+2. What does this do
 
-2. openssl genrsa -out server.key 2048
+    ``` bash
+    openssl req -x509 -sha256 -days 3560 -nodes -newkey rsa:2048 -subj "//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler" -keyout rootCA.key -out rootCA.crt
+    ```
 
-3. openssl req -new -key server.key -out server.csr -config csr.conf
+3. What does this do
 
-4. openssl x509 -req -in server.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out server.crt -days 3650 -sha256 -extfile cert.conf
+    ``` bash
+    openssl genrsa -out server.key 2048
+    ```
 
-5. winpty openssl pkcs12 -export -out vprodemo_custom.pfx -inkey server.key -in server.crt -certfile rootCA.crt  **You will be prompted to make a password, and you will use that same one when creating a domain**
+4. What does this do
 
-6. openssl x509 -noout -fingerprint -sha1 -inform pem -in rootCA.crt. **This will give you the SHA1 hash of your certificate** 
+    ``` bash
+    openssl req -new -key server.key -out server.csr -config csr.conf
+    ```
 
-## How to use the generated custom provisioning certificate? 
+5. What does this do
 
-You should now have your new certifcate in the form of .pfx file. You can check your file explorer to confirm this. 
+    ``` bash
+    openssl x509 -req -in server.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out server.crt -days 3650 -sha256 -extfile cert.conf
+    ```
 
-1. Now following the steps to activcate a profile in ACM listed out in the ["Getting Started Guide"](https://open-amt-cloud-toolkit.github.io/docs/2.13/GetStarted/loginToUI/) to login to the Sample Web UI, create a CIRA config, create a profile, and create a domain. 
+6. What does this do  You will be prompted to make a password, and you will use that same one when creating a domain
 
-2. When creating the domain, upload the .pfx file you have created and enter the password you set for it. 
+    ``` bash
+    winpty openssl pkcs12 -export -out vprodemo_custom.pfx -inkey server.key -in server.crt -certfile rootCA.crt
+    ```
 
-3. Now moving to your dev maching, make sure your device is deactivated and is in pre-proivisioning mode. You will then want to go back to the [MEBX login screen](https://open-amt-cloud-toolkit.github.io/docs/2.13/Reference/MEBX/dnsSuffix/?h=dns+suffix) and back to Remote Setup and Configuration -> TLS PKI, and in there should be an option to configure hash values.  
+7. This will give you the SHA1 hash of your certificate. 
 
-4. Insert a new SHA1 hash using the fingerprint you obtained from command 6. The hash can be named anything you like, just make sure the entering of the actual numbers follows the format shown below **(Figure 1)**
+    ``` bash
+    openssl x509 -noout -fingerprint -sha1 -inform pem -in rootCA.crt
+    ```
 
-5. Once this is done go ahead and boot up your dev machine and open a administrator command prompt window. There you can run **.\rpc.exe amtinfo -cert** and you should see your cert somewhere in the list **(Figure 2)**
+    !!! success "Success - Hash Output"
+        ```
+        my cmd line hash output
+        ```
 
-6. Then go ahead and activate your machine in admin control mode with the profile, CIRA config, and domain you've set up and it should sucessful configure. 
+## Upload Provisioning Certificate
 
-<figure class="figure-image">
-<img src="..\..\..\assets\images\MEBXHASH.jpg" alt="Figure 1: Hash Input">
-<figcaption>Figure 1: Hash Input</figcaption>
-</figure>
+!!! warning "Warning - Adding Hash in AMT 16"
+    These steps may not be exact within MEBx on AMT 16 or newer devices.
 
-<figure class="figure-image">
-<img src="..\..\..\assets\images\HASH_OUTPUT.png" alt="Figure 2: Hash Output">
-<figcaption>Figure 2: Hash Output</figcaption>
-</figure>
+There should now be a new certificate in the form of .pfx file. Check file explorer to confirm this.
 
+### Create Domain Profile
 
+1. Open the Sample Web UI.
 
+2. Create a domain profile. Upload the .pfx file and enter the password set for it. See [Create a Domain Profile](.././../GetStarted/createProfileACM.md#create-a-domain-profile) for more details. 
 
+### Inject the Hash
 
+1. Switch to the AMT device. It must be in **pre-provisioning** mode.
 
+2. Enter MEBx. Restart or power on the device.
+
+3. While the device is booting up, press **Ctrl+P** to reach the MEBX login screen. 
+
+    ??? note "Note - Other Keybinds to Enter MEBx"
+        The keystroke combination **Ctrl+P** typically invokes the BIOS to display the MEBX login screen. If this does not work, check the manufacturer's instructions or try function keys (e.g., F2, F12).
+
+3. Enter the MEBx password.
+
+    ??? note "Note - Default MEBx Password for First Time Use"
+        If it is the first time entering MEBX and the device has not been provisioned previously, the default password is `admin`. Create a new password when prompted.
+
+4. Set the DNS suffix. See [DNS Suffix](../MEBX/dnsSuffix.md) for more details. 
+
+5. Under **Remote Setup and Configuration**, choose **FIELDNAME**.
+
+    **NEW PICTURE**
+
+6. Provide a name for the new hash.
+
+7. Press **Insert** key.
+
+    Insert the new SHA1 hash using the fingerprint obtained from Step 6 in [Create the Certificate and Hash](#create-the-certificate-and-hash). 
+
+    <figure class="figure-image">
+    <img src="..\..\..\assets\images\MEBXHASH.jpg" alt="Figure 1: Hash Input">
+    <figcaption>Figure 1: Hash Input</figcaption>
+    </figure>
+
+8. Save and Exit MEBx. 
+
+9. After rebooting, open Command Prompt as Administrator.
+
+10. Verify the Hash was inserted correctly.
+
+    === "Linux"
+        ``` bash
+        sudo ./rpc amtinfo -cert
+        ```
+    === "Windows"
+        ```
+        .\rpc amtinfo -cert
+        ```
+
+    !!! success "Success - Hash Inserted Correctly"
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\HASH_OUTPUT.png" alt="Figure 2: Hash Output">
+        <figcaption>Figure 2: Hash Output</figcaption>
+        </figure>
+
+11. Activate the AMT device with an ACM Profile.
+
+<br><br>
