@@ -65,41 +65,35 @@ The Consul configurations are stored in a local volume. When cleaning up contain
     CONSUL_PORT=8500
     ```
 
-3. Recreate the MPS and RPS containers to update their configuration.
-    
-    ```
-    docker compose up -d
-    ```
-
-4. Pull the Consul image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
+3. Pull the Consul image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
 
     ```
     docker compose --profile consul pull
     ```
 
-5.  Start the Consul container.
+4.  Start the Consul container.
     
     ```
     docker compose --profile consul up -d
     ```
 
-6. To view the Consul UI, visit `http://localhost:8500`.
+5. To view the Consul UI, visit `http://localhost:8500`.
 
-7. Click **Key/Value** from the left-hand menu.
+6. Click **Key/Value** from the left-hand menu.
 
     <figure class="figure-image">
     <img src="..\..\assets\images\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
     <figcaption>Figure 1: Consul K/V Overview Page</figcaption>
     </figure>
 
-8. Choose either the `/MPS` or `/RPS` directory, then `/config`.
+7. Choose either the `/MPS` or `/RPS` directory, then `/config`.
 
     <figure class="figure-image">
     <img src="..\..\assets\images\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
     <figcaption>Figure 2: Consul K/V MPS Configuration</figcaption>
     </figure>
 
-9. From here, users can make edits to the config files and save.
+8. From here, users can make edits to the config files and save.
 
     !!! note "Note - Cleaning up Consul Container"
         When stopping and cleaning up containers deployed using the `consul` profile, you must also use that profile when running `docker compose down` in order to remove all resources.
