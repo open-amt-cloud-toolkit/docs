@@ -53,7 +53,13 @@ To use a provisioning certificate in the toolkit, purchase the certificate from 
     * You do not have to purchase a certificate for each device in a fleet. The certificate is purchased for the provisioning server. 
     * Prices vary per vendor.
 
-To get a list of participating vendors, see [Intel Developer Zone](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/tools/open-amt-cloud-toolkit.html#linklistblade-3).
+- [Comodo](https://www.intel.com/content/www/us/en/support/articles/000054981/technologies.html)
+- [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
+- [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
+- [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
+
+!!! Important "Important - Intel AMT and using CAs"
+    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 ### Upload
 After purchasing a certificate:
