@@ -174,7 +174,7 @@ The best practice example below stops Docker and then prunes all volumes.
     1. Stop Docker containers.
 
         ```
-        docker-compose down -v
+        docker compose down -v
         ```
 
     2. Prune the images and volumes.

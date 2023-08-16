@@ -84,7 +84,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features.** 
+5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
 
 6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
 
@@ -99,11 +99,11 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-11. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+11. Select **CIRA (Cloud)** for Connection Configuration.
 
-12. Select **CIRA(Cloud)** for Connection Configuration.
+12. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
-13. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
+13. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
 14. Click **Save.**
 

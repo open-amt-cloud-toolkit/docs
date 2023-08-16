@@ -19,25 +19,38 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
 **To enable support:**
 
-1. In a text editor or IDE of choice, open the `.env` file to edit.
+1. This guide assumes you have completed the [Getting Started Guide](../../GetStarted/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../../GetStarted/setup.md). Stop and return here after the your services are running.
 
-2. Update the following fields. The `mqtt:` prefix indicates an MQTT broker is being used. Kong* will now route event messages to port 8883.
+2. In a text editor or IDE of choice, open the `.env` file to edit.
+
+3. Update the following fields. The `mqtt:` prefix indicates an MQTT broker is being used. Kong* will now route event messages to port 8883.
 
     | Field Name            | Set to:               | 
     | -------------         | ------------------    |
     | RPS_MQTT_ADDRESS      | mqtt://mosquitto:8883 | 
     | MPS_MQTT_ADDRESS      | mqtt://mosquitto:8883 |
    
-3. Save and close the file.
-
-4. Rebuild the MPS and RPS images and start their containers.
-
-    If your stack was deployed locally using Docker:
+4. Save and close the file.
+    
+5. Pull the Mosquitto image. Read more about profiles in the Docker docs at [Using profiles with Compose](https://docs.docker.com/compose/profiles/).
 
     ```
-    docker-compose up -d --build mps rps
+    docker compose --profile mqtt pull
     ```
 
+6.  Start the Mosquitto container.
+    
+    ```
+    docker compose --profile mqtt up -d
+    ```        
+
+    !!! note "Note - Cleaning up Mosquitto Container"
+        When stopping and cleaning up containers deployed using the `mqtt` profile, you must also use that profile when running `docker compose down` in order to remove all resources.
+
+        Example:
+        ``` bash
+        docker compose --profile mqtt down -v
+        ```
 <!-- **View in the Sample Web UI:**
 
 1. Select MQTT Events from the left-hand menu.

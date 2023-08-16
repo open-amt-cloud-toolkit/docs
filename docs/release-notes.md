@@ -2,14 +2,15 @@
 ## Release Highlights
 
 <div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/GSrKSqvywtQ" title="Open AMT June Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/PUSIp2Wx9Kc" title="Open AMT July Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
 !!! note "Note From the Team"
+    
     Hey everyone,
 
-    June has brought a bunch of great changes to Open AMT Cloud Toolkit.  We completed the major configuration options to support 802.1x, we made quality of life improvements for our customers, and we squashed several bugs!  Check out the release video where Bryan talks about the highlights from this month and see below for changes in each component.
+    We're in the depths of summer here in Arizona, so nothing to do but stay inside and write code!  This month we continue to expand our RPC-Go activation and deactivation features and we add a new optional service to assist with configuration.  Check out the video above where Bryan talks about these new features.
 
     The Open AMT Cloud Toolkit team has moved to [Discord](https://discord.gg/yrcMp2kDWh).  Come join the discussion!
 
@@ -19,55 +20,29 @@
 
 ## What's New?
 
-:material-new-box:** New Feature: PEAP-MSCHAPv2 support **
+:material-new-box: **New Feature: Local Activation and Deactivation**
 
-We've added support for PEAP-MSCHAPv2 in our 802.1x configuration options for both wired and wireless.  To integrate PEAP-MSCHAPv2 authentication into your setup, set authentication protocol to 2, in your 802.1x profile.
+With this release, you can now activate AMT into CCM just using RPC using the `-local` flag.  We've also expanded our deactivation feature to include devices activated in ACM.  RPC can now deactivate both CCM and ACM configured devices without needing RPS. 
 
-``` json
-{
-  "profileName": "wired8021xConfig",
-  "authenticationProtocol": 2,
-  "pxeTimeout": 120,
-  "wiredInterface": true,
-  "tenantId": ""
-}
-```
-
-:material-new-box:** New Feature: Friendly name **
-
-All devices now support the ability to add a friendly name.  You can add this via the MPS Devices API command:
-
-``` json
-{
-  "guid": "123e4567-e89b-12d3-a456-426614174000",
-  "hostname": "AMTDEVICENUC1",
-  "friendlyName": "store12pos2"
-}
-```
-
-Or during configuration by passing in the `-name` flag to RPC:
-
+Local activate command:
 ``` bash
-rpc activate -u wss://server/activate -profile profilename -name store12pos2
+rpc activate -local -password NewAMTPassword
+``` 
+
+Local deactivate command:
+``` bash
+rpc deactivate -local
 ```
 
-`friendlyName` has been added as a query parameter to the MPS Devices GET call as well.
+:material-new-box: **New Feature: Move to ACM**
 
-:material-new-box:** New Feature: AMT SKU Decode **
+In addition to the activation flows above, we've also added the ability to move a device from CCM to ACM without having to first deactivate AMT.  This feature is beneficial when devices shift from a CCM-only network to one that can also handle ACM activation.  RPS is required for this flow.
 
-RPC-Go `amtinfo` command now decodes the AMT SKUing information and will output if the device is AMT or Intel Standard Manageability (ISM) as well as other SKUing information.
+:material-fast-forward: **New Preview Feature: Centralized Configuration**
 
-:material-hammer:** Fixed: Audit Log **
+We added an optional service called [Hashicorp Consul](https://www.consul.io/) for centralized configuration in scale deployments. When MPS or RPS are first deployed with Consul enabled, they'll check for a configuration in Consul. If found, that configuration will be used to start the service. If not found, the service will use the local configuration file and save it to Consul for future use by subsequent services. [Find more info about enabling Consul in the Centralized Configuration docs.](./Deployment/centralizedConfiguration.md)
 
-We have reversed the order in which Audit Logs are returned, now returning the newest Audit Logs first.
-
-:material-hammer:** Fixed: MPS API Calls after Password Change **
-
-A customer reported an issue where after changing the password for an AMT device, MPS was not getting the new password and calls to AMT from MPS were failing.  This issue should now be resolved.
-
-:material-hammer:** Fixed: Wireless Profile configuration improvements **
-
-We discovered an issue where when configuring multiple wireless profiles, if one of the profiles failed to be configured in AMT, we would skip configuration of any remaining wireless profiles.  We have fixed this issue so that if a wireless profile fails to configure, we will continue to configure the remaining profiles.
+This is currently a preview feature so expect additional changes as we receive feedback.
 
 ## Get the Details
 
@@ -75,55 +50,68 @@ We discovered an issue where when configuring multiple wireless profiles, if one
 
 #### RPS
 
-v2.13.0
+v2.15.0
 
-- adds MSCHAPv2 configuration for wired and wireless ([#1070](https://github.com/open-amt-cloud-toolkit/rps/issues/1070)) (#3fd7865) 
-- upated network status message ([#1080](https://github.com/open-amt-cloud-toolkit/rps/issues/1080)) (#972293b) 
+- add consul config support ([#1081](https://github.com/open-amt-cloud-toolkit/rps/issues/1081)) (#d39edab)
 
-v2.12.1
+v2.14.0
 
-- ensure req.tenantId is defaulted to blank (#30a5259) 
-
-v2.12.0
-
-- support device friendly name ([#1059](https://github.com/open-amt-cloud-toolkit/rps/issues/1059)) (#91376f0) 
+- adds capability to upgrade to admin control mode ([#1098](https://github.com/open-amt-cloud-toolkit/rps/issues/1098)) (#7a409bd)
 
 #### MPS
 
-v2.10.1
+v2.11.0
 
-- mps audit logs now in order ([#949](https://github.com/open-amt-cloud-toolkit/mps/issues/949)) (#cc4fb04) 
-- default tenantId is now blank (#ffff3b4) 
-
-v2.10.0
-
-- support device friendly name ([#948](https://github.com/open-amt-cloud-toolkit/mps/issues/948)) (#7a41961) 
-
-v2.9.1
-
-- refresh amt pw after pw change ([#927](https://github.com/open-amt-cloud-toolkit/mps/issues/927)) (#ce8eee4) 
+- add configs to consul (#982) (#b2d1dd4) 
 
 #### RPC
 
-v2.10.0
-
-- adds AMT Features to amtinfo
-- support device friendly name
-
-#### Sample Web UI
-
 v2.12.0
 
-- upgraded to angular 16 (#96a5e0a) 
+- add local deactivation in ACM
+
+v2.11.1
+
+- password not set correctly for ccm activate
 
 v2.11.0
 
-- add MSCHAPv2 for wired and wireless (#a15e858) 
+- add local CCM activate
+- allow for spaces in input parameters
 
-v2.10.0
+#### Sample Web UI
 
-- support device friendly name (#170f874)
-- mps audit log now in order ([#1166](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1166)) (#be219a3) 
+v2.12.2
+
+- adds status check for domain creation test (f400ba4)
+
+v2.12.1
+
+- profile creation issue (1388bfd)
+
+#### wsman-messages
+
+v5.5.0
+
+- adds call for UpgradeClientToAdmin ([#528](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/528)) (474e55e)
+
+#### go-wsman-messages
+
+v1.5.0
+
+- add unprovision response type to amt.setupandconfiguration (72a4b3c)
+
+v1.4.1
+
+- setup and configuration service unprovisioning action (6727e46)
+
+v1.4.0
+
+- ips: adds call for UpgradeClientToAdmin (4ef31c6)
+
+v1.3.0
+
+- ips: add response types for CCM HostBasedSetup (7945e91)
 
 ## Project Board
 

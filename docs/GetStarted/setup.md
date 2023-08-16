@@ -79,19 +79,17 @@ Set the shared secret used in Kong for JWT authentication.
 
 1. Pull the Docker images from [Intel's Docker Hub repository](https://hub.docker.com/search?q=oact&type=image).
 
-    === "Linux"
-        ```
-        sudo docker-compose pull
-        ```
-    
-    === "Windows"
-        ```
-        docker-compose pull
-        ```
-    ??? note "Note - Using an ARM-based Device?"
+    ??? important "Important for Linux - Using `sudo` with Docker"
+        The Docker daemon always runs as the root user and therefore requires `sudo`. If you do not want to preface all Docker commands with `sudo`, see [Linux post-installation steps for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/) in the Docker Documentation.
+
+    ```
+    docker compose pull
+    ```
+
+    ??? note "Note for ARM -  ARM-based Devices must Build Images"
         ARM-based devices (i.e. newer-generation Mac products and others) will need to build the images rather than use the prebuilt Dockerhub images.
         ```
-        docker-compose up -d --build
+        docker compose up -d --build
         ```
 
     ??? note "Note - Using SSL with Postgres Container"
@@ -99,53 +97,38 @@ Set the shared secret used in Kong for JWT authentication.
 
 2.  Start the containers.
     
-    === "Linux"
-        ```
-        sudo docker-compose up -d
-        ```
-    
-    === "Windows"
-        ```
-        docker-compose up -d
-        ```
+    ```
+    docker compose up -d
+    ```
 
 3. Check that all the containers are running and healthy.
 
-    === "Linux"
-        ```
-        {% raw %}
-        sudo docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
-        {% endraw %}
-        ```
-    
-    === "Windows"
-        ```
-        {% raw %}
-        docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
-        {% endraw %}
-        ```
+    ```
+    {% raw %}
+    docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+    {% endraw %}
+    ```
     
     !!! success
         ``` bash
         IMAGE                               STATUS                        NAMES
-        intel/oact-rps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit_rps_1      
-        eclipse-mosquitto                   Up 2 minutes                  open-amt-cloud-toolkit_mosquitto_1
-        vault                               Up 2 minutes                  open-amt-cloud-toolkit_vault_1    
-        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        open-amt-cloud-toolkit_mpsrouter_1
-        postgres:14                         Up 2 minutes (healthy)        open-amt-cloud-toolkit_db_1       
-        intel/oact-webui:latest             Up 2 minutes                  open-amt-cloud-toolkit_webui_1    
-        kong:2.3                            Up 2 minutes (healthy)        open-amt-cloud-toolkit_kong_1     
-        intel/oact-mps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit_mps_1
+        intel/oact-rps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit-rps-1      
+        hashicorp/vault                     Up 2 minutes                  open-amt-cloud-toolkit-vault-1    
+        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        open-amt-cloud-toolkit-mpsrouter-1
+        postgres:15                         Up 2 minutes (healthy)        open-amt-cloud-toolkit-db-1       
+        intel/oact-webui:latest             Up 2 minutes                  open-amt-cloud-toolkit-webui-1    
+        kong:3.1                            Up 2 minutes (healthy)        open-amt-cloud-toolkit-kong-1     
+        intel/oact-mps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit-mps-1
         ```
   
     !!! warning "Warning - Container Issues" 
 
-        If any of the above containers are not running, walk through the steps  again    or file a GitHub issue [here]( https://github.com/  open-amt-cloud-toolkit/  open-amt-cloud-toolkit/issues).
+        If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
 
         If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
 
 !!! important "Important - Losing Data without Prod Mode Vault"
-    Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker-compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker-compose up`.  To run vault in production mode, follow the guide [here](../Reference/productionVault.md).
+    Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker compose up`.  To run vault in production mode, follow the guide [here](../Reference/productionVault.md).
 
     
 
