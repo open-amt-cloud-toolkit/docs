@@ -16,13 +16,14 @@ Run the RPC application on the command line with no arguments to see supported c
     .\rpc.exe
     ```
 
-| COMMAND                       | DESCRIPTION                                                                           | EXAMPLE                                                      |
-|-------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| [activate](#activate)         | Activate this device with a specified profile.                                        | ./rpc activate -u wss://server/activate -profile profilename |
-| [deactivate](#deactivate)     | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/deactivate                  |
-| [maintenance](#maintenance)   | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/maintenance      |
-| [amtinfo](#amtinfo)           | Display AMT status and configuration.                                                 | ./rpc amtinfo                                                |
-| [version](#version)           | Display the current version of RPC and the RPC Protocol version.                      | ./rpc version                                                |
+| COMMAND                     | DESCRIPTION                                                                                 | EXAMPLE                                                      |
+|-----------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [activate](#activate)       | Activate this device with a specified profile.                                              | ./rpc activate -u wss://server/activate -profile profilename |
+| [deactivate](#deactivate)   | Deactivate this device. You will be prompted for the AMT password.                          | ./rpc deactivate -u wss://server/deactivate                  |
+| [maintenance](#maintenance) | Execute a maintenance task for the device. You will be prompted for the AMT password.       | ./rpc maintenance syncclock -u wss://server/maintenance      |
+| [configure](#configure)     | Local configuration of a feature on this device. You will be prompted for the AMT password. | ./rpc configure addwifisettings ...                          |
+| [amtinfo](#amtinfo)         | Display AMT status and configuration.                                                       | ./rpc amtinfo                                                |
+| [version](#version)         | Display the current version of RPC and the RPC Protocol version.                            | ./rpc version                                                |
 
 ##List Command Options
 
@@ -179,77 +180,6 @@ Execute a maintenance command for the managed device:
 
 <br>
 
-#### addwifisettings
-
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
-
-On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
-
-##### via Config file
-
-1. Create a new file called `config.yaml`. Copy and paste the template below.
-
-    ```yaml
-    ieee801xConfig:
-      name: 'profileName' # profile name (i.e. friendly name)
-      authenticationMethod: 7 # wifi authentication method
-      encryptionMethod: 4 # wifi encryption method
-      clientCert: ''
-      caCert: ''
-      privateKey: ''
-      ssid: '' # wifi SSID
-      username: "" # 8021x username
-      authenticationProtocol: 0 #8021x profile protocol (e.g. EAP-TLS(0))
-      priority: 1 
-    ```
-
-2. Fill in fields with desired options.
-
-3. Provide the `config.yaml` file using the `-config` flag. 
-
-    === "Linux"
-        ``` bash
-        sudo ./rpc maintenance addwifisettings -config config.yaml
-        ```
-    === "Windows"
-        ```
-        .\rpc maintenance addwifisettings -config config.yaml
-        ```
-
-##### via CLI
-
-Alternatively, provide all options directly in the command line.
-
-!!! warning "Warning - Use Case and Security"
-    The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
-
-=== "Linux"
-    ``` bash
-    sudo ./rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
-    ```
-=== "Windows"
-    ```
-    .\rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
-    ```
-
-<br>
-
-| OPTION                    | DESCRIPTION                                                                                                       |
-|---------------------------|-------------------------------------------------------------------------------------------------------------------|
-| -authenticationMethod     | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                 |
-| -authenticationProtocol   | 802.1x profile protocol. Valid Values = {0} where `0` = EAP-TLS                                                   |
-| -caCert                   | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain                                         |
-| -clientCert               | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server |
-| -config                   | File path of a `.yaml` file with desired wireless 802.1x configuration, see [via Config File](#via-config-file)   |
-| -encryptionMethod         | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                        |
-| -name                     | Profile name (Friendly name), must be alphanumeric                                                                |
-| -priority                 | Ranked priority over other profiles                                                                               |
-| -privateKey               | Private key of the `clientCert`                                                                                   |
-| -ssid                     | Wifi SSID                                                                                                         |
-| -username                 | 802.1x username, must match the Common Name of the `clientCert`                                                   |
-
-<br>
-
 #### changepassword
 
 Change the AMT password. A random password is generated by default if `static` option is not passed.
@@ -319,6 +249,144 @@ Sync the static IP of host OS to AMT Network Settings.
 | -gateway      | Gateway address to be assigned to AMT                                                                               |
 | -primarydns   | Primary DNS address to be assigned to AMT                                                                           |
 | -secondarydns | Secondary DNS address to be assigned to AMT                                                                         |
+
+<br>
+
+### configure
+
+Execute a configuration command for the managed device:
+
+| SUBCOMMAND                            | DESCRIPTION                                                                                           |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+
+<br>
+
+#### Common `configuration` Options
+
+| OPTION             | DESCRIPTION                                                                                                                      |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
+| -json              | JSON output                                                                                                                      |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
+| -password string   | AMT password                                                                                                                     |
+| -v                 | Verbose output                                                                                                                   |
+
+<br>
+
+#### addwifisettings
+
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
+
+On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
+
+##### via Config file
+
+1. Create a new file called `config.yaml`. Copy and paste the template below.
+
+    ```yaml
+    wifiConfigs:
+      - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
+        ssid: 'exampleSSID'
+        priority: 1
+        authenticationMethod: 6
+        encryptionMethod: 4
+        pskPassphrase: ''
+      - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+        ssid: 'ssid'
+        priority: 2
+        authenticationMethod: 7
+        encryptionMethod: 4
+        pskPassphrase: ''
+        ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+    ieee8021xConfigs:
+      - profileName: 'exampleIeee8021xEAP-TLS'
+        username: "exampleUserName"
+        password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+        authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+        clientCert: ''
+        caCert: ''
+        privateKey: ''
+    ```
+
+2. Fill in fields with desired options.
+
+3. Provide the `config.yaml` file using the `-configFile` flag. 
+
+    === "Linux"
+        ``` bash
+        sudo ./rpc configure addwifisettings -configFile config.yaml
+        ```
+    === "Windows"
+        ```
+        .\rpc configure addwifisettings -configFile config.yaml
+        ```
+
+###### with Secrets file
+
+If a secrets file is included with the configuration file, those secrets will be used in the matching 
+`profileName` configuration
+
+1. Create a new file called `secrets.yaml`. Copy and paste the template below.
+
+    ```yaml
+    secrets:
+    - profileName: 'wifiWPA2'
+      pskPassphrase: ''
+    - profileName: 'ieee8021xEAP-TLS'
+      privateKey: ''
+    - profileName: 'ieee8021xPEAPv0'
+      password: ''
+    ```
+
+2. Fill in fields with desired options. The profile names in the secrets file must match the corresponding WiFi or 
+   802.1x configuration(s)
+   
+3. Provide the `secret.yaml` file using the `-secretFile` flag. 
+
+    === "Linux"
+        ``` bash
+        sudo ./rpc configure addwifisettings -configFile config.yaml -secetFile secrets.yaml
+        ```
+    === "Windows"
+        ```
+        .\rpc configure addwifisettings -configFile config.yaml -secetFile secrets.yaml
+        ```
+
+##### via CLI
+
+Alternatively, provide all options directly in the command line. The user will be prompted for missing secrets 
+(password, privateKey, pskPassphrase, ieee8021xPassword)
+
+!!! warning "Warning - Use Case and Security"
+    The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
+=== "Linux"
+    ``` bash
+    sudo ./rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT}
+    ```
+=== "Windows"
+    ```
+    .\rpc configure addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT}
+    ```
+
+<br>
+
+| OPTION                  | DESCRIPTION                                                                                                                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -authenticationMethod   | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                                                                                                      |
+| -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAPMSCHAPv2                                                                                                                  |
+| -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain                                                                                                                              |
+| -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server |
+| -configFile             | File path of a `.yaml` or `.json` file with desired wireless 802.1x configuration, see [via Config File](#via-config-file)                                                                             |
+| -configJson             | Configuration as a JSON string                                                                                                                                                                         |
+| -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                             |
+| -ieee8021xPassword      | 8021x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)                                                                                                                             |
+| -profileName            | Profile name (Friendly name), must be alphanumeric                                                                                                                                                     |
+| -priority               | Ranked priority over other profiles                                                                                                                                                                    |
+| -privateKey             | 8021x profile private key of the `clientCert`                                                                                                                                                          |
+| -pskPassphrase          | Wifi pskPassphrase if `authenticationMethod` is WPA2_IEEE8021X(6)                                                                                                                                      |
+| -secretFile             | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations, see [with Secrets File](#with-secrets-file)                                                                   |
+| -ssid                   | Wifi SSID                                                                                                                                                                                              |
+| -username               | 802.1x username, must match the Common Name of the `clientCert`                                                                                                                                        |
 
 <br>
 
