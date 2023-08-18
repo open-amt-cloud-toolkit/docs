@@ -185,6 +185,9 @@ Configure wireless 802.1x settings of an existing, activated AMT device by passi
 
 On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
 
+!!! Note 
+    Adding new wifi settings will delete existing wifi settings.
+
 ##### via Config file
 
 1. Create a new file called `config.yaml`. Copy and paste the template below.
