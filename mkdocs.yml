@@ -127,6 +127,7 @@ nav:
       - DNS Suffix: Reference/MEBX/dnsSuffix.md
       - Unprovisioning: Reference/MEBX/unprovision.md
     - Certificates:
+      - Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
       - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
       - TLS Certificate: Reference/Certificates/tls.md
     - Get Help:

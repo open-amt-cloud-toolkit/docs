@@ -28,6 +28,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 !!! Important "Important - Intel AMT and using CAs"
     For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
 
+Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
 #### DNS Suffix
 The DNS suffix encompasses the domain suffix (e.g., .com) and follows the hostname. Consider the following DNS Name example:
