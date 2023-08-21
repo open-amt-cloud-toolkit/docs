@@ -2727,6 +2727,10 @@
 <h4 id="addwifisettings">addwifisettings<a class="headerlink" href="#addwifisettings" title="Permanent link">&para;</a></h4>
 <p>Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>/EA/<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>. More information on configuring AMT to use 802.1x can be found in <a href="../../EA/ieee8021xconfig/">802.1x Configuration</a>.</p>
 <p>On failure, the <code>addwifisettings</code> maintenance command will rollback any certificates added before the error occurred.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adding new wifi settings will delete existing wifi settings.</p>
+</div>
 <h5 id="via-config-file">via Config file<a class="headerlink" href="#via-config-file" title="Permanent link">&para;</a></h5>
 <ol>
 <li>
