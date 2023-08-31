@@ -278,194 +278,253 @@ Configure wireless 802.1x settings of an existing, activated AMT device by passi
 
 On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
 
-##### via Config file
 
-The Config file can be formatted as either YAML or JSON. This example shows YAML but a JSON template is provided as well.
+=== "Config File"
+    ##### via Config file
 
-1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
+    The Config file can be formatted as either YAML or JSON. This example shows YAML but a JSON template is provided as well.
 
-    These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
+    1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
 
-    === "YAML"
-        ```yaml title="config.yaml"
-        wifiConfigs:
-        - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
-            ssid: 'exampleSSID'
-            priority: 1
-            authenticationMethod: 6
-            encryptionMethod: 4
-            pskPassphrase: ''
-        - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
-            ssid: 'ssid'
-            priority: 2
-            authenticationMethod: 7
-            encryptionMethod: 4
-            pskPassphrase: ''
-            ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-        ieee8021xConfigs:
-        - profileName: 'exampleIeee8021xEAP-TLS'
-            username: "exampleUserName"
-            password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
-            authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
-            clientCert: ''
-            caCert: ''
-            privateKey: ''
-        ```
+        These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
 
-    === "JSON"
-        ```json title="config.json"
-        {
-          "wifiConfigs": [
+        === "YAML"
+            ```yaml title="config.yaml"
+            password: 'amtPassword' # optionally, you can provide the AMT password of the device in the config file
+            wifiConfigs:
+            - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
+                ssid: 'exampleSSID'
+                priority: 1
+                authenticationMethod: 6
+                encryptionMethod: 4
+                pskPassphrase: ''
+            - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 2
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+            - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+                privateKey: ''
+            ```
+
+        === "JSON"
+            ```json title="config.json"
             {
-              "profileName": "exampleWifiWPA2",
-              "ssid": "exampleSSID",
-              "priority": 1,
-              "authenticationMethod": 6,
-              "encryptionMethod": 4,
-              "pskPassphrase": ""
-            },
-            {
-              "profileName": "exampleWifi8021x",
-              "ssid": "ssid",
-              "priority": 2,
-              "authenticationMethod": 7,
-              "encryptionMethod": 4,
-              "pskPassphrase": "",
-              "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+            "password": "amtPassword",
+            "wifiConfigs": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "ssid": "exampleSSID",
+                "priority": 1,
+                "authenticationMethod": 6,
+                "encryptionMethod": 4,
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleWifi8021x",
+                "ssid": "ssid",
+                "priority": 2,
+                "authenticationMethod": 7,
+                "encryptionMethod": 4,
+                "pskPassphrase": "",
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+            ],
+            "ieee8021xConfigs": [
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "username": "exampleUserName",
+                "password": "",
+                "authenticationProtocol": 0,
+                "clientCert": "",
+                "caCert": "",
+                "privateKey": ""
+                }
+            ]
             }
-          ],
-          "ieee8021xConfigs": [
+            ```
+
+    2. Fill in fields with desired options and secrets.  If the secrets are **not** provided (e.g. secret field is an empty string or not given), the secrets will be prompted for as user input in the command line.
+
+        Alternatively, secrets can be stored and referenced in a separate file. See **Config w/ Secrets File** tab for more information.
+
+    3. Provide the `config.yaml` file using the `-configFile` flag. 
+
+        ```
+        rpc configure addwifisettings -configFile config.yaml
+        ```
+
+=== "Config w/ Secrets File"
+    ##### via Config with Secrets file
+
+    If a secrets file is included with the configuration file, those secrets will be used in the matching `profileName` configuration. These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
+
+    1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
+
+        This `config.yaml` is slightly different from the standard one as we either delete or leave blank the secret fields `pskPassphrase`, `password`, and `privateKey`.
+
+        === "YAML"
+            ```yaml title="config.yaml"
+            wifiConfigs:
+            - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
+                ssid: 'exampleSSID'
+                priority: 1
+                authenticationMethod: 6
+                encryptionMethod: 4
+            - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 2
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+            - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+            ```
+
+        === "JSON"
+            ```json title="config.json"
             {
-              "profileName": "exampleIeee8021xEAP-TLS",
-              "username": "exampleUserName",
-              "password": "",
-              "authenticationProtocol": 0,
-              "clientCert": "",
-              "caCert": "",
-              "privateKey": ""
+            "wifiConfigs": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "ssid": "exampleSSID",
+                "priority": 1,
+                "authenticationMethod": 6,
+                "encryptionMethod": 4,
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleWifi8021x",
+                "ssid": "ssid",
+                "priority": 2,
+                "authenticationMethod": 7,
+                "encryptionMethod": 4,
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+            ],
+            "ieee8021xConfigs": [
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "username": "exampleUserName",
+                "password": "",
+                "authenticationProtocol": 0,
+                "clientCert": "",
+                "caCert": "",
+                }
+            ]
             }
-          ]
-        }
-        ```
+            ```
 
-2. Fill in fields with desired options and secrets.  If the secrets are **not** provided (e.g. field is an empty string or not given), the secrets will be prompted for as user input in the command line.
+    2. Create a new file called `secrets.yaml`. Copy and paste the template below.
 
-    Alternatively, secrets can be stored and referenced in a separate file. See [with Secrets file](#with-secrets-file) for more information.
-
-3. Provide the `config.yaml` file using the `-configFile` flag. 
-
-    === "Linux"
-        ``` bash
-        sudo ./rpc configure addwifisettings -configFile config.yaml
-        ```
-    === "Windows"
-        ```
-        .\rpc configure addwifisettings -configFile config.yaml
-        ```
-
-###### with Secrets file
-
-If a secrets file is included with the configuration file, those secrets will be used in the matching `profileName` configuration.
-
-1. Create a new file called `secrets.yaml`. Copy and paste the template below.
-
-    === "YAML"
-        ```yaml title="secrets.yaml"
-        secrets:
-        - profileName: 'exampleWifiWPA2'
-          pskPassphrase: ''
-        - profileName: 'exampleIeee8021xEAP-TLS'
-          privateKey: ''
-        - profileName: 'ieee8021xPEAPv0'
-          password: ''
-        ```
-    === "JSON"
-        ```json title="secrets.json"
-        {
-          "secrets": [
+        === "YAML"
+            ```yaml title="secrets.yaml"
+            secrets:
+            - profileName: 'exampleWifiWPA2'
+              pskPassphrase: ''
+            - profileName: 'exampleIeee8021xEAP-TLS'
+              privateKey: ''
+            - profileName: 'ieee8021xPEAPv0'
+              password: ''
+            ```
+        === "JSON"
+            ```json title="secrets.json"
             {
-              "profileName": "exampleWifiWPA2",
-              "pskPassphrase": ""
-            },
-            {
-              "profileName": "exampleIeee8021xEAP-TLS",
-              "privateKey": ""
-            },
-            {
-              "profileName": "ieee8021xPEAPv0",
-              "password": ""
+            "secrets": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "privateKey": ""
+                },
+                {
+                "profileName": "ieee8021xPEAPv0",
+                "password": ""
+                }
+            ]
             }
-          ]
-        }
-        ```
+            ```
 
-2. Fill in fields with the secrets. The `profileName` given in the secrets file must match the corresponding Wireless or 802.1x configuration `profileName`.
-   
-3. Provide the `secrets.yaml` file using the `-secretFile` flag. 
+    3. Fill in fields with the secrets. The `profileName` given in the secrets file must match the corresponding Wireless or 802.1x configuration `profileName`.
+    
+    4. Provide the `secrets.yaml` file using the `-secretFile` flag. 
 
-    === "Linux"
-        ``` bash
-        sudo ./rpc configure addwifisettings -configFile config.yaml -secretFile secrets.yaml
         ```
-    === "Windows"
-        ```
-        .\rpc configure addwifisettings -configFile config.yaml -secretFile secrets.yaml
+        rpc configure addwifisettings -configFile config.yaml -secretFile secrets.yaml
         ```
 
 
-##### via CLI
+=== "Individual Options"
+    ##### via Individual Options
+    
+    Alternatively, provide all options directly in the command line. The user will be prompted for missing secrets (i.e. password, privateKey, pskPassphrase, ieee8021xPassword), if not provided.
 
-Alternatively, provide all options directly in the command line. The user will be prompted for missing secrets (i.e. password, privateKey, pskPassphrase, ieee8021xPassword), if not provided.
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
 
-This can be done two ways:
-
-- Pass individual options
-- Pass all data in a single JSON string using `-configJson` option
-
-!!! warning "Warning - Use Case and Security"
-    The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
-
-###### Pass by Individual Options
-
-=== "Linux"
-    ``` bash
-    sudo ./rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT}
     ```
-=== "Windows"
-    ```
-    .\rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT}
+    rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert "{CLIENT_CERT}" -caCert "{CA_CERT}" -privateKey "{PRIVATE_KEY}"
     ```
 
-###### Pass by JSON String
+=== "-configJson String Option"
+    ##### via -configJson Option
+    
+    Or, provide the JSON string directly in the command line. The user will be prompted for missing secrets (i.e. password, privateKey, pskPassphrase, ieee8021xPassword), if not provided.
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc configure addwifisettings -configJson "{ "profileName": "exampleWifi8021x", "authenticationMethod": 7, "encryptionMethod": 4, "ssid": "ssid", "username": "username", "authenticationProtocol": 0, "priority": 1, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}" }"
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
+
+    === "Wireless Only"
+        ```
+        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
+        ```
+
+    === "Wireless w/ 802.1x"
+        ```
+        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}", "privateKey": "{PRIVATE_KEY}" } ] }"
+        ```
+
+!!! success "Example Successful Output of Configuring Two Wireless Profiles"
     ```
-=== "Windows"
-    ```
-    .\rpc configure addwifisettings -configJson "{ "profileName": "exampleWifi8021x", "authenticationMethod": 7, "encryptionMethod": 4, "ssid": "ssid", "username": "username", "authenticationProtocol": 0, "priority": 1, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}" }"
+    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifiWPA2"
+    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifiWPA2"
+    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifi8021x"
+    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifi8021x"
     ```
 
 <br>
 
-| OPTION                  | DESCRIPTION                                                                                                                                                                                            |
-|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -authenticationMethod   | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                                                                                                      |
-| -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAPMSCHAPv2                                                                                                                  |
-| -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain                                                                                                                              |
-| -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server |
-| -configFile             | File path of a `.yaml` or `.json` file with desired wireless 802.1x configuration, see [via Config File](#via-config-file)                                                                             |
-| -configJson             | Configuration as a JSON string                                                                                                                                                                         |
-| -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                             |
-| -ieee8021xPassword      | 8021x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)                                                                                                                             |
-| -profileName            | Profile name (Friendly name), must be alphanumeric                                                                                                                                                     |
-| -priority               | Ranked priority over other profiles                                                                                                                                                                    |
-| -privateKey             | 8021x profile private key of the `clientCert`                                                                                                                                                          |
-| -pskPassphrase          | Wifi pskPassphrase if `authenticationMethod` is WPA2_IEEE8021X(6)                                                                                                                                      |
-| -secretFile             | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations, see [with Secrets File](#with-secrets-file)                                                                   |
-| -ssid                   | Wifi SSID                                                                                                                                                                                              |
-| -username               | 802.1x username, must match the Common Name of the `clientCert`                                                                                                                                        |
+| OPTION                  | DESCRIPTION                                                                                                                                                                                             |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -authenticationMethod   | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                                                                                                       |
+| -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAP/MSCHAPv2                                                                                                                   |
+| -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain.                                                                                                                              |
+| -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server. |
+| -configFile             | File path of a `.yaml` or `.json` file with desired wireless 802.1x configuration.                                                                                                                      |
+| -configJson             | Configuration as a JSON string                                                                                                                                                                          |
+| -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                              |
+| -ieee8021xPassword      | 802.1x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2).                                                                                                                            |
+| -profileName            | Profile name (Friendly name), must be alphanumeric.                                                                                                                                                     |
+| -priority               | Ranked priority over other profiles.                                                                                                                                                                    |
+| -privateKey             | 802.1x profile private key of the `clientCert`.                                                                                                                                                         |
+| -pskPassphrase          | Wifi `pskPassphrase` if `authenticationMethod` is WPA2_IEEE8021X(6).                                                                                                                                    |
+| -secretFile             | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
+| -ssid                   | Wifi SSID                                                                                                                                                                                               |
+| -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
 
 <br>
 
