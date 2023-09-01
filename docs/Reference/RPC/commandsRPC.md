@@ -54,40 +54,56 @@ Activate the device with a specified profile:
 
 #### Activate the device locally:
 
-Currently, this capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command **only** activates AMT. It does not do profile-based configuration.
+This capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command **only** activates AMT. It does not do profile-based configuration.
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc activate -local -password NewAMTPassword
+=== "CCM"
     ```
-=== "Windows"
+    rpc activate -local -ccm -amtPassword NewAMTPassword
     ```
-    .\rpc activate -local -password NewAMTPassword
+=== "ACM"
+    ```
+    rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
     ```
 
 <br>
 
-#### `activate` Options
+#### `activate` General Options
+
+| OPTION             | DESCRIPTION                                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                     |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
+| -lmsport string    | LMS port (default "16992")                                                                                                      |
+| -n                 | Skip WebSocket server certificate verification                                                                                  |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
+| -v                 | Verbose output                                                                                                                  |
+
+#### `activate` Remote-Specific Options
 
 | OPTION             | DESCRIPTION                                                                                                                     |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | -d string          | DNS suffix override                                                                                                             |
 | -h string          | Hostname override                                                                                                               |
-| -json              | JSON output                                                                                                                     |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
-| -lmsport string    | LMS port (default "16992")                                                                                                      |
-| -local             | Execute command to AMT directly without cloud interaction.                              |
 | -n                 | Skip WebSocket server certificate verification                                                                                  |
-| -name              | Friendly name to associate with this device                                                                                     |
+| -name string       | Friendly name to associate with this device                                                                                     |
 | -p string          | Proxy address and port                                                                                                          |
-| -password          | AMT password                                                                                                                    |
+| -password          | Existing set AMT password                                                                                                       |
 | -profile string    | Name of the profile to use                                                                                                      |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
 | -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
 | -token string      | JWT Token for Authorization                                                                                                     |
 | -u string          | WebSocket address of server to activate against                                                                                 |
-| -v                 | Verbose output                                                                                                                  |
+
+#### `activate` Local-Specific Options
+
+| OPTION                            | DESCRIPTION                                                     |
+|-----------------------------------|-----------------------------------------------------------------|
+| -acm                              | Flag for ACM Local Activation.                                  |
+| -amtPassword string               | New AMT Password to set on device.                              |
+| -ccm                              | Flag for CCM Local Activation.                                  |
+| -local                            | Execute command to AMT directly without cloud interaction.      |
+| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.   |
+| -provisioningCertPwd string       | Password of provisioning certificate.                           |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -100,25 +116,15 @@ To learn how to use the RPC application to transition an already activated (prov
 
 #### Deactivate the device using RPS:
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc deactivate -u wss://server/deactivate
-    ```
-=== "Windows"
-    ```
-    .\rpc deactivate -u wss://server/deactivate
-    ```
+```
+rpc deactivate -u wss://server/deactivate
+```
 
 #### Deactivate the device locally:
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc deactivate -local
-    ```
-=== "Windows"
-    ```
-    .\rpc deactivate -local
-    ```
+```
+rpc deactivate -local -password AMTPassword
+```
 
 <br>
 
@@ -126,19 +132,24 @@ To learn how to use the RPC application to transition an already activated (prov
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force deactivate even if device is not registered with the RPS server                   |
 | -json              | JSON output                                                                             |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
 | -lmsport string    | LMS port (default "16992")                                                              |
 | -local             | Execute command to AMT directly without cloud interaction.                              |
-| -n                 | Skip WebSocket server certificate verification                                          |
-| -p string          | Proxy address and port                                                                  |
 | -password string   | AMT password                                                                            |
 | -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`             |
+| -v                 | Verbose output                                                                          |
+
+#### `deactivate` Remote-Specific Options
+
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | Force deactivate even if device is not registered with the RPS server                   |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
 | -token string      | JWT Token for Authorization                                                             |
 | -u string          | WebSocket address of server to activate against                                         |
-| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
