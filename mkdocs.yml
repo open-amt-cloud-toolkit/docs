@@ -178,9 +178,9 @@ extra:
       - lts
   repoVersion:
     mpsAPI: 2.11.0
-    rpsAPI: 2.15.0
-    oamtct: 2.13.0
-    rpc_go: 2.12.0
+    rpsAPI: 2.16.0
+    oamtct: 2.14.0
+    rpc_go: 2.14.0
     rpc_c: 2.0.0
     ui_toolkit: 2.0.10
     ui_toolkit_react: 3.0.2
