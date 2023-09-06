@@ -355,10 +355,10 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
         Alternatively, secrets can be stored and referenced in a separate file. See **Config w/ Secrets File** tab for more information.
 
-    3. Provide the `config.yaml` file using the `-configFile` flag. 
+    3. Provide the `config.yaml` file using the `-config` flag. 
 
         ```
-        rpc configure addwifisettings -configFile config.yaml
+        rpc configure addwifisettings -config config.yaml
         ```
 
 === "Config w/ Secrets File"
@@ -461,10 +461,10 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
     3. Fill in fields with the secrets. The `profileName` given in the secrets file must match the corresponding Wireless or 802.1x configuration `profileName`.
     
-    4. Provide the `secrets.yaml` file using the `-secretFile` flag. 
+    4. Provide the `secrets.yaml` file using the `-secrets` flag. 
 
         ```
-        rpc configure addwifisettings -configFile config.yaml -secretFile secrets.yaml
+        rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
         ```
 
 
@@ -514,7 +514,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 | -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAP/MSCHAPv2                                                                                                                   |
 | -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain.                                                                                                                              |
 | -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server. |
-| -configFile             | File path of a `.yaml` or `.json` file with desired wireless 802.1x configuration.                                                                                                                      |
+| -config             | File path of a `.yaml` or `.json` file with desired wireless 802.1x configuration.                                                                                                                      |
 | -configJson             | Configuration as a JSON string                                                                                                                                                                          |
 | -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                              |
 | -ieee8021xPassword      | 802.1x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2).                                                                                                                            |
@@ -522,7 +522,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 | -priority               | Ranked priority over other profiles.                                                                                                                                                                    |
 | -privateKey             | 802.1x profile private key of the `clientCert`.                                                                                                                                                         |
 | -pskPassphrase          | Wifi `pskPassphrase` if `authenticationMethod` is WPA2_IEEE8021X(6).                                                                                                                                    |
-| -secretFile             | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
+| -secrets             | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
 | -ssid                   | Wifi SSID                                                                                                                                                                                               |
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
 
