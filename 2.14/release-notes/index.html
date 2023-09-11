@@ -491,13 +491,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mps" class="md-nav__link">
-    MPS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#rpc" class="md-nav__link">
     RPC
   </a>
@@ -2261,92 +2254,99 @@
   <h1>Release Notes</h1>
 
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
-<div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/PUSIp2Wx9Kc" title="Open AMT July Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<p><br></p>
 <div class="admonition note">
 <p class="admonition-title">Note From the Team</p>
-<p>Hey everyone,</p>
-<p>We're in the depths of summer here in Arizona, so nothing to do but stay inside and write code!  This month we continue to expand our <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go activation and deactivation features and we add a new optional service to assist with configuration.  Check out the video above where Bryan talks about these new features.</p>
-<p>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> team has moved to <a href="https://discord.gg/yrcMp2kDWh">Discord</a>.  Come join the discussion!</p>
+<p>Greetings everyone,</p>
+<p>While Arizona experiences a welcome cooldown, the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> team is cranking up the heat with our latest release! In this month's update, we're thrilled to announce two exciting new features added to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go. It's now more versatile than ever with <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation and Wifi configuration capabilities.</p>
+<p>With these enhancements, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go empowers users to configure AMT into either <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> or <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> without the necessity of engaging with a cloud service. This newfound autonomy provides our customers with a level of flexibility that was previously unattainable. Furthermore, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go now extends its support to configure any type of wifi profile that AMT supports locally.</p>
+<p>We're excited about these advancements and look forward to hearing your feedback.</p>
 <p><em>Best wishes,</em><br />
 <em>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em></p>
 </div>
 <h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Local Activation and Deactivation</strong></p>
-<p>With this release, you can now activate AMT into <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> just using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> using the <code>-local</code> flag.  We've also expanded our deactivation feature to include devices activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.  <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can now deactivate both <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> and <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> configured devices without needing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. </p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Local <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> Activation</strong></p>
+<p>With this release, you can now activate AMT into <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> just using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> using the <code>-local</code> flag.  Similar to local <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> activation, local <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation will require secrets to be passed to the AMT device, so users of this feature will need to have high trust in the local OS.  View full command line options in <a href="https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#activate-the-device-locally">Activate Device Locally</a></p>
 <p>Local activate command:
-<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>-local<span class="w"> </span>-password<span class="w"> </span>NewAMTPassword
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>-local<span class="w"> </span>-acm<span class="w"> </span>-amtPassword<span class="w"> </span>NewAMTPassword<span class="w"> </span>-provisioningCert<span class="w"> </span><span class="s2">&quot;{BASE64_PROV_CERT}&quot;</span><span class="w"> </span>-provivisioningCertPwd<span class="w"> </span>certPassword
 </code></pre></div></p>
-<p>Local deactivate command:
-<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>deactivate<span class="w"> </span>-local
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Local Wifi Configuration</strong></p>
+<p>In this release, we have added the ability to configure any wifi profile, not just 802.1x wifi profiles.  Users will also be able to configure multiple wifi profiles at the same time by providing the details either via the command line or by passing in a config file.  View full command line options in <a href="https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#addwifisettings"><code>addwifisettings</code> <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Configure command</a></p>
+<p>Local wifi configuration command:
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>addwifisettings<span class="w"> </span>-config<span class="w"> </span>config.yaml<span class="w"> </span>-secrets<span class="w"> </span>secrets.yaml
 </code></pre></div></p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Move to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></strong></p>
-<p>In addition to the activation flows above, we've also added the ability to move a device from <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> without having to first deactivate AMT.  This feature is beneficial when devices shift from a <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>-only network to one that can also handle <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation.  <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is required for this flow.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 6v12l8.5-6M4 18l8.5-6L4 6v12Z"/></svg></span> <strong>New Preview Feature: Centralized Configuration</strong></p>
-<p>We added an optional service called <a href="https://www.consul.io/">Hashicorp Consul</a> for centralized configuration in scale deployments. When <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> are first deployed with Consul enabled, they'll check for a configuration in Consul. If found, that configuration will be used to start the service. If not found, the service will use the local configuration file and save it to Consul for future use by subsequent services. <a href="../Deployment/centralizedConfiguration/">Find more info about enabling Consul in the Centralized Configuration docs.</a></p>
-<p>This is currently a preview feature so expect additional changes as we receive feedback.</p>
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
-<p>v2.15.0</p>
+<p>v2.16.1</p>
 <ul>
-<li>add consul config support (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1081">#1081</a>) (#d39edab)</li>
+<li>Fix: blocks AMT 11.12 system activation if build number &lt; 3000 (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1176">#1176</a>) (#a3e527b)</li>
+</ul>
+<p>v2.16.0</p>
+<ul>
+<li>Feat: support for sha1 hash added via mebx (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1155">#1155</a>) (#b630e11)</li>
+</ul>
+<h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
+<p>v2.14.2</p>
+<ul>
+<li>ensure warning for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> deactivation password flag</li>
+</ul>
+<p>v2.14.1</p>
+<ul>
+<li>addwifisettings - track added certs to prevent duplicates error</li>
 </ul>
 <p>v2.14.0</p>
 <ul>
-<li>adds capability to upgrade to admin control mode (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1098">#1098</a>) (#7a409bd)</li>
+<li>local wifi configuration</li>
 </ul>
-<h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
-<p>v2.11.0</p>
+<p>v2.13.1</p>
 <ul>
-<li>add configs to consul (#982) (#b2d1dd4) </li>
+<li>update ProjectVersion to 2.13.0</li>
 </ul>
-<h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p>v2.12.0</p>
+<p>v2.13.0</p>
 <ul>
-<li>add local deactivation in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></li>
-</ul>
-<p>v2.11.1</p>
-<ul>
-<li>password not set correctly for ccm activate</li>
-</ul>
-<p>v2.11.0</p>
-<ul>
-<li>add local <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> activate</li>
-<li>allow for spaces in input parameters</li>
+<li>activate in acm using local command</li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
-<p>v2.12.2</p>
+<p>v2.13.1</p>
 <ul>
-<li>adds status check for domain creation test (f400ba4)</li>
+<li>remove UI override of AMT feature settings (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1328">#1328</a>) (#510dff3)</li>
+<li>update status message (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1334">#1334</a>) (#bd80ebf)</li>
 </ul>
-<p>v2.12.1</p>
+<p>v2.13.0</p>
 <ul>
-<li>profile creation issue (1388bfd)</li>
+<li>display component versions (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1267">#1267</a>) (#2dbca39)</li>
+<li>fix dark theme (#cdea729)</li>
 </ul>
 <h4 id="wsman-messages">wsman-messages<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h4>
-<p>v5.5.0</p>
+<p>v5.5.1</p>
 <ul>
-<li>adds call for UpgradeClientToAdmin (<a href="https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/528">#528</a>) (474e55e)</li>
+<li>update build tasks, package.json and changelog (#9274dab)</li>
 </ul>
 <h4 id="go-wsman-messages">go-wsman-messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h4>
-<p>v1.5.0</p>
+<p>v1.8.2</p>
 <ul>
-<li>add unprovision response type to amt.setupandconfiguration (72a4b3c)</li>
+<li>AddWifiSettings check for empty client cert (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/c19c9b42d40ae15b28bfabc2b4e6daef0b489b8f">c19c9b4</a>)</li>
 </ul>
-<p>v1.4.1</p>
+<p>v1.8.1</p>
 <ul>
-<li>setup and configuration service unprovisioning action (6727e46)</li>
+<li>undo breaking changes (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/23c91ed35af23f5e940f5cd1ffdd04d22f72bb9f">23c91ed</a>)</li>
 </ul>
-<p>v1.4.0</p>
+<p>v1.8.0</p>
 <ul>
-<li>ips: adds call for UpgradeClientToAdmin (4ef31c6)</li>
+<li>Adds structs to parse xml for deleting all wifi configs (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/d64d4d402a30e36474c56260d863aabded52a092">d64d4d4</a>)</li>
+<li>amt: adds amt PublicPrivateKeyPair struct for response (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/eca5a6ec878540b8aaca44fc61d1a1fc3505ce74">eca5a6e</a>)</li>
+<li>amt: adds pull responses for publickey and publicprivate (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/10bf4a8e9e48548630d5a4555539b2d9e99331c1">10bf4a8</a>)</li>
+<li>amt: adds wifiportconfiguration.AddWiFiSettingsResponse (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/21587573d5426e575ea36ada4d1e39ec7348cc8d">2158757</a>)</li>
+<li>cim: adds concrete.dependency support (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ae8f3d3d5fdb639a4fc145d54e8c0e19b2be93f6">ae8f3d3</a>)</li>
+<li>cim: adds credential.context support (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6db69ad165329a1e4f5f73e6a62a69f27cf665ff">6db69ad</a>)</li>
 </ul>
-<p>v1.3.0</p>
+<p>v1.7.0</p>
 <ul>
-<li>ips: add response types for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> HostBasedSetup (7945e91)</li>
+<li>cim: adds responses for WiFiPortConfigurationService and WifiPort (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6cbaa36605d4855fbcf97d2fe2cfb6dd3777b6c7">6cbaa36</a>)</li>
+</ul>
+<p>v1.6.0</p>
+<ul>
+<li>ips: add additional strongly typed output for (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/90aa393b477d12dfafc00de94307f9adfb0ad42d">90aa393</a>), closes <a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/18115">#18115</a></li>
 </ul>
 <h2 id="project-board">Project Board<a class="headerlink" href="#project-board" title="Permanent link">&para;</a></h2>
 <p>Check out our new <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/5">Feature Backlog</a> project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!</p>
