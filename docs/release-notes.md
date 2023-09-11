@@ -8,11 +8,13 @@
 
 !!! note "Note From the Team"
     
-    Hey everyone,
+    Greetings everyone,
 
-    We're in the depths of summer here in Arizona, so nothing to do but stay inside and write code!  This month we continue to expand our RPC-Go activation and deactivation features and we add a new optional service to assist with configuration.  Check out the video above where Bryan talks about these new features.
+    While Arizona experiences a welcome cooldown, the Open AMT Cloud Toolkit team is cranking up the heat with our latest release! In this month's update, we're thrilled to announce two exciting new features added to RPC-Go. It's now more versatile than ever with ACM activation and Wifi configuration capabilities.
 
-    The Open AMT Cloud Toolkit team has moved to [Discord](https://discord.gg/yrcMp2kDWh).  Come join the discussion!
+    With these enhancements, RPC-Go empowers users to configure AMT into either ACM or CCM without the necessity of engaging with a cloud service. This newfound autonomy provides our customers with a level of flexibility that was previously unattainable. Furthermore, RPC-Go now extends its support to configure any type of wifi profile that AMT supports locally.
+
+    We're excited about these advancements and look forward to hearing your feedback.
 
     *Best wishes,*  
     *The Open AMT Cloud Toolkit Team*
@@ -20,29 +22,23 @@
 
 ## What's New?
 
-:material-new-box: **New Feature: Local Activation and Deactivation**
+:material-new-box: **New Feature: Local ACM Activation**
 
-With this release, you can now activate AMT into CCM just using RPC using the `-local` flag.  We've also expanded our deactivation feature to include devices activated in ACM.  RPC can now deactivate both CCM and ACM configured devices without needing RPS. 
+With this release, you can now activate AMT into ACM just using RPC using the `-local` flag.  Similar to local CCM activation, local ACM activation will require secrets to be passed to the AMT device, so users of this feature will need to have high trust in the local OS.  View full command line options [here](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#activate-the-device-locally)
 
 Local activate command:
 ``` bash
-rpc activate -local -password NewAMTPassword
+rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
 ``` 
 
-Local deactivate command:
-``` bash
-rpc deactivate -local
+:material-new-box: **New Feature: Local Wifi Configuration**
+
+In this release, we have added the ability to configured any wifi profile, not just 802.1x wifi profiles.  Users will also be able to configure multiple wifi profiles at the same time by providing the details either via the command line or by passing in a config file.  View full command line options [here](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#addwifisettings)
+
+Local wifi configuration command:
+```bash
+rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
 ```
-
-:material-new-box: **New Feature: Move to ACM**
-
-In addition to the activation flows above, we've also added the ability to move a device from CCM to ACM without having to first deactivate AMT.  This feature is beneficial when devices shift from a CCM-only network to one that can also handle ACM activation.  RPS is required for this flow.
-
-:material-fast-forward: **New Preview Feature: Centralized Configuration**
-
-We added an optional service called [Hashicorp Consul](https://www.consul.io/) for centralized configuration in scale deployments. When MPS or RPS are first deployed with Consul enabled, they'll check for a configuration in Consul. If found, that configuration will be used to start the service. If not found, the service will use the local configuration file and save it to Consul for future use by subsequent services. [Find more info about enabling Consul in the Centralized Configuration docs.](./Deployment/centralizedConfiguration.md)
-
-This is currently a preview feature so expect additional changes as we receive feedback.
 
 ## Get the Details
 
@@ -50,68 +46,80 @@ This is currently a preview feature so expect additional changes as we receive f
 
 #### RPS
 
-v2.15.0
+v2.16.1
 
-- add consul config support ([#1081](https://github.com/open-amt-cloud-toolkit/rps/issues/1081)) (#d39edab)
+- Fix: blocks AMT 11.12 system activation if build number < 3000 ([#1176](https://github.com/open-amt-cloud-toolkit/rps/issues/1176)) (#a3e527b)
 
-v2.14.0
+v2.16.0
 
-- adds capability to upgrade to admin control mode ([#1098](https://github.com/open-amt-cloud-toolkit/rps/issues/1098)) (#7a409bd)
-
-#### MPS
-
-v2.11.0
-
-- add configs to consul (#982) (#b2d1dd4) 
+- Feat: support for sha1 hash added via mebx ([#1155](https://github.com/open-amt-cloud-toolkit/rps/issues/1155)) (#b630e11)
 
 #### RPC
 
-v2.12.0
+v2.14.2
 
-- add local deactivation in ACM
+- ensure warning for CCM deactivation password flag
 
-v2.11.1
+v2.14.1
 
-- password not set correctly for ccm activate
+- addwifisettings - track added certs to prevent duplicates error
 
-v2.11.0
+v2.14.0
 
-- add local CCM activate
-- allow for spaces in input parameters
+- local wifi configuration
+
+v2.13.1
+
+- update ProjectVersion to 2.13.0
+
+v2.13.0
+
+- activate in acm using local command
 
 #### Sample Web UI
 
-v2.12.2
+v2.13.1
 
-- adds status check for domain creation test (f400ba4)
+- remove UI override of AMT feature settings ([#1328](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1328)) (#510dff3)
+- update status message ([#1334](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1334)) (#bd80ebf)
 
-v2.12.1
+v2.13.0
 
-- profile creation issue (1388bfd)
+- display component versions ([#1267](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1267)) (#2dbca39)
+- fix dark theme (#cdea729)
 
 #### wsman-messages
 
-v5.5.0
+v5.5.1
 
-- adds call for UpgradeClientToAdmin ([#528](https://github.com/open-amt-cloud-toolkit/wsman-messages/issues/528)) (474e55e)
+- update build tasks, package.json and changelog (#9274dab)
 
 #### go-wsman-messages
 
-v1.5.0
+v1.8.2
 
-- add unprovision response type to amt.setupandconfiguration (72a4b3c)
+- AddWifiSettings check for empty client cert ([c19c9b4](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/c19c9b42d40ae15b28bfabc2b4e6daef0b489b8f))
 
-v1.4.1
+v1.8.1
 
-- setup and configuration service unprovisioning action (6727e46)
+- undo breaking changes ([23c91ed](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/23c91ed35af23f5e940f5cd1ffdd04d22f72bb9f))
 
-v1.4.0
+v1.8.0
 
-- ips: adds call for UpgradeClientToAdmin (4ef31c6)
+- Adds structs to parse xml for deleting all wifi configs ([d64d4d4](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/d64d4d402a30e36474c56260d863aabded52a092))
+- amt: adds amt PublicPrivateKeyPair struct for response ([eca5a6e](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/eca5a6ec878540b8aaca44fc61d1a1fc3505ce74))
+- amt: adds pull responses for publickey and publicprivate ([10bf4a8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/10bf4a8e9e48548630d5a4555539b2d9e99331c1))
+- amt: adds wifiportconfiguration.AddWiFiSettingsResponse ([2158757](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/21587573d5426e575ea36ada4d1e39ec7348cc8d))
+- cim: adds concrete.dependency support ([ae8f3d3](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ae8f3d3d5fdb639a4fc145d54e8c0e19b2be93f6))
+- cim: adds credential.context support ([6db69ad](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6db69ad165329a1e4f5f73e6a62a69f27cf665ff))
 
-v1.3.0
+v1.7.0
 
-- ips: add response types for CCM HostBasedSetup (7945e91)
+- cim: adds responses for WiFiPortConfigurationService and WifiPort ([6cbaa36](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6cbaa36605d4855fbcf97d2fe2cfb6dd3777b6c7))
+
+v1.6.0
+
+- ips: add additional strongly typed output for ([90aa393](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/90aa393b477d12dfafc00de94307f9adfb0ad42d)), closes [#18115](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/18115)
 
 ## Project Board
 
