@@ -1,11 +1,6 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
-<div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/PUSIp2Wx9Kc" title="Open AMT July Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<br>
-
 !!! note "Note From the Team"
     
     Greetings everyone,
@@ -24,7 +19,7 @@
 
 :material-new-box: **New Feature: Local ACM Activation**
 
-With this release, you can now activate AMT into ACM just using RPC using the `-local` flag.  Similar to local CCM activation, local ACM activation will require secrets to be passed to the AMT device, so users of this feature will need to have high trust in the local OS.  View full command line options [here](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#activate-the-device-locally)
+With this release, you can now activate AMT into ACM just using RPC using the `-local` flag.  Similar to local CCM activation, local ACM activation will require secrets to be passed to the AMT device, so users of this feature will need to have high trust in the local OS.  View full command line options in [Activate Device Locally](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#activate-the-device-locally)
 
 Local activate command:
 ``` bash
@@ -33,7 +28,7 @@ rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_
 
 :material-new-box: **New Feature: Local Wifi Configuration**
 
-In this release, we have added the ability to configured any wifi profile, not just 802.1x wifi profiles.  Users will also be able to configure multiple wifi profiles at the same time by providing the details either via the command line or by passing in a config file.  View full command line options [here](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#addwifisettings)
+In this release, we have added the ability to configure any wifi profile, not just 802.1x wifi profiles.  Users will also be able to configure multiple wifi profiles at the same time by providing the details either via the command line or by passing in a config file.  View full command line options in [`addwifisettings` RPC Configure command](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#addwifisettings)
 
 Local wifi configuration command:
 ```bash
