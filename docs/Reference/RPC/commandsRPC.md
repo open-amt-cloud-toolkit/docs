@@ -16,13 +16,14 @@ Run the RPC application on the command line with no arguments to see supported c
     .\rpc.exe
     ```
 
-| COMMAND                       | DESCRIPTION                                                                           | EXAMPLE                                                      |
-|-------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| [activate](#activate)         | Activate this device with a specified profile.                                        | ./rpc activate -u wss://server/activate -profile profilename |
-| [deactivate](#deactivate)     | Deactivate this device. You will be prompted for the AMT password.                    | ./rpc deactivate -u wss://server/deactivate                  |
-| [maintenance](#maintenance)   | Execute a maintenance task for the device. You will be prompted for the AMT password. | ./rpc maintenance syncclock -u wss://server/maintenance      |
-| [amtinfo](#amtinfo)           | Display AMT status and configuration.                                                 | ./rpc amtinfo                                                |
-| [version](#version)           | Display the current version of RPC and the RPC Protocol version.                      | ./rpc version                                                |
+| COMMAND                     | DESCRIPTION                                                                                 | EXAMPLE                                                      |
+|-----------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| [activate](#activate)       | Activate this device with a specified profile.                                              | ./rpc activate -u wss://server/activate -profile profilename |
+| [deactivate](#deactivate)   | Deactivate this device. You will be prompted for the AMT password.                          | ./rpc deactivate -u wss://server/deactivate                  |
+| [maintenance](#maintenance) | Execute a maintenance task for the device. You will be prompted for the AMT password.       | ./rpc maintenance syncclock -u wss://server/maintenance      |
+| [configure](#configure)     | Local configuration of a feature on this device. You will be prompted for the AMT password. | ./rpc configure addwifisettings ...                          |
+| [amtinfo](#amtinfo)         | Display AMT status and configuration.                                                       | ./rpc amtinfo                                                |
+| [version](#version)         | Display the current version of RPC and the RPC Protocol version.                            | ./rpc version                                                |
 
 ##List Command Options
 
@@ -54,40 +55,56 @@ Activate the device with a specified profile:
 
 #### Activate the device locally:
 
-Currently, this capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command **only** activates AMT. It does not do profile-based configuration.
+This capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command **only** activates AMT. It does not do profile-based configuration.
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc activate -local -password NewAMTPassword
+=== "CCM"
     ```
-=== "Windows"
+    rpc activate -local -ccm -amtPassword NewAMTPassword
     ```
-    .\rpc activate -local -password NewAMTPassword
+=== "ACM"
+    ```
+    rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
     ```
 
 <br>
 
-#### `activate` Options
+#### `activate` General Options
+
+| OPTION             | DESCRIPTION                                                                                                                     |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                     |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
+| -lmsport string    | LMS port (default "16992")                                                                                                      |
+| -n                 | Skip WebSocket server certificate verification                                                                                  |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
+| -v                 | Verbose output                                                                                                                  |
+
+#### `activate` Remote-Specific Options
 
 | OPTION             | DESCRIPTION                                                                                                                     |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | -d string          | DNS suffix override                                                                                                             |
 | -h string          | Hostname override                                                                                                               |
-| -json              | JSON output                                                                                                                     |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
-| -lmsport string    | LMS port (default "16992")                                                                                                      |
-| -local             | Execute command to AMT directly without cloud interaction.                              |
 | -n                 | Skip WebSocket server certificate verification                                                                                  |
-| -name              | Friendly name to associate with this device                                                                                     |
+| -name string       | Friendly name to associate with this device                                                                                     |
 | -p string          | Proxy address and port                                                                                                          |
-| -password          | AMT password                                                                                                                    |
+| -password          | Existing set AMT password                                                                                                       |
 | -profile string    | Name of the profile to use                                                                                                      |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
 | -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
 | -token string      | JWT Token for Authorization                                                                                                     |
 | -u string          | WebSocket address of server to activate against                                                                                 |
-| -v                 | Verbose output                                                                                                                  |
+
+#### `activate` Local-Specific Options
+
+| OPTION                            | DESCRIPTION                                                     |
+|-----------------------------------|-----------------------------------------------------------------|
+| -acm                              | Flag for ACM Local Activation.                                  |
+| -amtPassword string               | New AMT Password to set on device.                              |
+| -ccm                              | Flag for CCM Local Activation.                                  |
+| -local                            | Execute command to AMT directly without cloud interaction.      |
+| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.   |
+| -provisioningCertPwd string       | Password of provisioning certificate.                           |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -100,25 +117,15 @@ To learn how to use the RPC application to transition an already activated (prov
 
 #### Deactivate the device using RPS:
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc deactivate -u wss://server/deactivate
-    ```
-=== "Windows"
-    ```
-    .\rpc deactivate -u wss://server/deactivate
-    ```
+```
+rpc deactivate -u wss://server/deactivate
+```
 
 #### Deactivate the device locally:
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc deactivate -local
-    ```
-=== "Windows"
-    ```
-    .\rpc deactivate -local
-    ```
+```
+rpc deactivate -local -password AMTPassword
+```
 
 <br>
 
@@ -126,19 +133,24 @@ To learn how to use the RPC application to transition an already activated (prov
 
 | OPTION             | DESCRIPTION                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------|
-| -f                 | Force deactivate even if device is not registered with the RPS server                   |
 | -json              | JSON output                                                                             |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
 | -lmsport string    | LMS port (default "16992")                                                              |
 | -local             | Execute command to AMT directly without cloud interaction.                              |
-| -n                 | Skip WebSocket server certificate verification                                          |
-| -p string          | Proxy address and port                                                                  |
 | -password string   | AMT password                                                                            |
 | -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`             |
+| -v                 | Verbose output                                                                          |
+
+#### `deactivate` Remote-Specific Options
+
+| OPTION             | DESCRIPTION                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| -f                 | Force deactivate even if device is not registered with the RPS server                   |
+| -n                 | Skip WebSocket server certificate verification                                          |
+| -p string          | Proxy address and port                                                                  |
 | -token string      | JWT Token for Authorization                                                             |
 | -u string          | WebSocket address of server to activate against                                         |
-| -v                 | Verbose output                                                                          |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
@@ -151,7 +163,6 @@ Execute a maintenance command for the managed device:
 
 | SUBCOMMAND                            | DESCRIPTION                                                                                           |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 | [changepassword](#changepassword)     | Change the AMT password. <br> A random password is generated by default if `-static` is not provided. |
 | [syncclock](#syncclock)               | Sync the host OS clock to AMT.                                                                        |
 | [synchostname](#synchostname)         | Sync the OS hostname to AMT Network Settings.                                                         |
@@ -176,80 +187,6 @@ Execute a maintenance command for the managed device:
 | -token string      | JWT Token for Authorization                                                                                                      |
 | -u string          | WebSocket address of server to activate against                                                                                  |
 | -v                 | Verbose output                                                                                                                   |
-
-<br>
-
-#### addwifisettings
-
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
-
-On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
-
-!!! Note 
-    Adding new wifi settings will delete existing wifi settings.
-
-##### via Config file
-
-1. Create a new file called `config.yaml`. Copy and paste the template below.
-
-    ```yaml
-    ieee801xConfig:
-      name: 'profileName' # profile name (i.e. friendly name)
-      authenticationMethod: 7 # wifi authentication method
-      encryptionMethod: 4 # wifi encryption method
-      clientCert: ''
-      caCert: ''
-      privateKey: ''
-      ssid: '' # wifi SSID
-      username: "" # 8021x username
-      authenticationProtocol: 0 #8021x profile protocol (e.g. EAP-TLS(0))
-      priority: 1 
-    ```
-
-2. Fill in fields with desired options.
-
-3. Provide the `config.yaml` file using the `-config` flag. 
-
-    === "Linux"
-        ``` bash
-        sudo ./rpc maintenance addwifisettings -config config.yaml
-        ```
-    === "Windows"
-        ```
-        .\rpc maintenance addwifisettings -config config.yaml
-        ```
-
-##### via CLI
-
-Alternatively, provide all options directly in the command line.
-
-!!! warning "Warning - Use Case and Security"
-    The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
-
-=== "Linux"
-    ``` bash
-    sudo ./rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
-    ```
-=== "Windows"
-    ```
-    .\rpc maintenance addwifisettings -name profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert {CLIENT_CERT} -caCert {CA_CERT} -privateKey {CLIENT_PRIVATE_KEY}
-    ```
-
-<br>
-
-| OPTION                    | DESCRIPTION                                                                                                       |
-|---------------------------|-------------------------------------------------------------------------------------------------------------------|
-| -authenticationMethod     | Wifi authentication method. Valid Values = {5, 7} where `5` = WPA_IEEE8021X, `7` = WPA2_IEEE8021X                 |
-| -authenticationProtocol   | 802.1x profile protocol. Valid Values = {0} where `0` = EAP-TLS                                                   |
-| -caCert                   | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain                                         |
-| -clientCert               | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server |
-| -config                   | File path of a `.yaml` file with desired wireless 802.1x configuration, see [via Config File](#via-config-file)   |
-| -encryptionMethod         | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                        |
-| -name                     | Profile name (Friendly name), must be alphanumeric                                                                |
-| -priority                 | Ranked priority over other profiles                                                                               |
-| -privateKey               | Private key of the `clientCert`                                                                                   |
-| -ssid                     | Wifi SSID                                                                                                         |
-| -username                 | 802.1x username, must match the Common Name of the `clientCert`                                                   |
 
 <br>
 
@@ -322,6 +259,283 @@ Sync the static IP of host OS to AMT Network Settings.
 | -gateway      | Gateway address to be assigned to AMT                                                                               |
 | -primarydns   | Primary DNS address to be assigned to AMT                                                                           |
 | -secondarydns | Secondary DNS address to be assigned to AMT                                                                         |
+
+<br>
+
+### configure
+
+Execute a configuration command for the managed device:
+
+| SUBCOMMAND                            | DESCRIPTION                                                                                           |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+
+<br>
+
+#### Common `configuration` Options
+
+| OPTION             | DESCRIPTION                                                                                                                      |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
+| -json              | JSON output                                                                                                                      |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
+| -password string   | AMT password                                                                                                                     |
+| -v                 | Verbose output                                                                                                                   |
+
+<br>
+
+#### addwifisettings
+
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
+
+On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
+
+
+=== "Config File"
+    ##### via Config file
+
+    The Config file can be formatted as either YAML or JSON. This example shows YAML but a JSON template is provided as well.
+
+    1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
+
+        These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
+
+        === "YAML"
+            ```yaml title="config.yaml"
+            password: 'amtPassword' # optionally, you can provide the AMT password of the device in the config file
+            wifiConfigs:
+            - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
+                ssid: 'exampleSSID'
+                priority: 1
+                authenticationMethod: 6
+                encryptionMethod: 4
+                pskPassphrase: ''
+            - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 2
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+            - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+                privateKey: ''
+            ```
+
+        === "JSON"
+            ```json title="config.json"
+            {
+            "password": "amtPassword",
+            "wifiConfigs": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "ssid": "exampleSSID",
+                "priority": 1,
+                "authenticationMethod": 6,
+                "encryptionMethod": 4,
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleWifi8021x",
+                "ssid": "ssid",
+                "priority": 2,
+                "authenticationMethod": 7,
+                "encryptionMethod": 4,
+                "pskPassphrase": "",
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+            ],
+            "ieee8021xConfigs": [
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "username": "exampleUserName",
+                "password": "",
+                "authenticationProtocol": 0,
+                "clientCert": "",
+                "caCert": "",
+                "privateKey": ""
+                }
+            ]
+            }
+            ```
+
+    2. Fill in fields with desired options and secrets.  If the secrets are **not** provided (e.g. secret field is an empty string or not given), the secrets will be prompted for as user input in the command line.
+
+        Alternatively, secrets can be stored and referenced in a separate file. See **Config w/ Secrets File** tab for more information.
+
+    3. Provide the `config.yaml` file using the `-config` flag. 
+
+        ```
+        rpc configure addwifisettings -config config.yaml
+        ```
+
+=== "Config w/ Secrets File"
+    ##### via Config with Secrets file
+
+    If a secrets file is included with the configuration file, those secrets will be used in the matching `profileName` configuration. These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
+
+    1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
+
+        This `config.yaml` is slightly different from the standard one as we either delete or leave blank the secret fields `pskPassphrase`, `password`, and `privateKey`.
+
+        === "YAML"
+            ```yaml title="config.yaml"
+            wifiConfigs:
+            - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
+                ssid: 'exampleSSID'
+                priority: 1
+                authenticationMethod: 6
+                encryptionMethod: 4
+            - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 2
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+            - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+            ```
+
+        === "JSON"
+            ```json title="config.json"
+            {
+            "wifiConfigs": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "ssid": "exampleSSID",
+                "priority": 1,
+                "authenticationMethod": 6,
+                "encryptionMethod": 4,
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleWifi8021x",
+                "ssid": "ssid",
+                "priority": 2,
+                "authenticationMethod": 7,
+                "encryptionMethod": 4,
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+            ],
+            "ieee8021xConfigs": [
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "username": "exampleUserName",
+                "password": "",
+                "authenticationProtocol": 0,
+                "clientCert": "",
+                "caCert": "",
+                }
+            ]
+            }
+            ```
+
+    2. Create a new file called `secrets.yaml`. Copy and paste the template below.
+
+        === "YAML"
+            ```yaml title="secrets.yaml"
+            secrets:
+            - profileName: 'exampleWifiWPA2'
+              pskPassphrase: ''
+            - profileName: 'exampleIeee8021xEAP-TLS'
+              privateKey: ''
+            - profileName: 'ieee8021xPEAPv0'
+              password: ''
+            ```
+        === "JSON"
+            ```json title="secrets.json"
+            {
+            "secrets": [
+                {
+                "profileName": "exampleWifiWPA2",
+                "pskPassphrase": ""
+                },
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "privateKey": ""
+                },
+                {
+                "profileName": "ieee8021xPEAPv0",
+                "password": ""
+                }
+            ]
+            }
+            ```
+
+    3. Fill in fields with the secrets. The `profileName` given in the secrets file must match the corresponding Wireless or 802.1x configuration `profileName`.
+    
+    4. Provide the `secrets.yaml` file using the `-secrets` flag. 
+
+        ```
+        rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
+        ```
+
+
+=== "Individual Options"
+    ##### via Individual Options
+    
+    Alternatively, provide all options directly in the command line. The user will be prompted for missing secrets (i.e. password, privateKey, pskPassphrase, ieee8021xPassword), if not provided.
+
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
+
+    ```
+    rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert "{CLIENT_CERT}" -caCert "{CA_CERT}" -privateKey "{PRIVATE_KEY}"
+    ```
+
+=== "-configJson String Option"
+    ##### via -configJson Option
+    
+    Or, provide the JSON string directly in the command line. The user will be prompted for missing secrets (i.e. password, privateKey, pskPassphrase, ieee8021xPassword), if not provided.
+
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
+
+    === "Wireless Only"
+        ```
+        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
+        ```
+
+    === "Wireless w/ 802.1x"
+        ```
+        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}", "privateKey": "{PRIVATE_KEY}" } ] }"
+        ```
+
+!!! success "Example Successful Output of Configuring Two Wireless Profiles"
+    ```
+    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifiWPA2"
+    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifiWPA2"
+    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifi8021x"
+    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifi8021x"
+    ```
+
+<br>
+
+| OPTION                  | DESCRIPTION                                                                                                                                                                                             |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -authenticationMethod   | Wifi authentication method. Valid Values = {4, 5, 6, 7} where `4` = WPA PSK, `5` = WPA_IEEE8021X, `6` = WPA2 PSK, `7` = WPA2_IEEE8021X                                                                  |
+| -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAP/MSCHAPv2                                                                                                                  |
+| -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain.                                                                                                                              |
+| -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server. |
+| -config                 | File path of a `.yaml` or `.json` file with desired wireless and/or wireless 802.1x configuration.                                                                                                      |
+| -configJson             | Configuration as a JSON string                                                                                                                                                                          |
+| -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                              |
+| -ieee8021xPassword      | 802.1x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2).                                                                                                                            |
+| -profileName            | Profile name (Friendly name), must be alphanumeric.                                                                                                                                                     |
+| -priority               | Ranked priority over other profiles.                                                                                                                                                                    |
+| -privateKey             | 802.1x profile private key of the `clientCert`.                                                                                                                                                         |
+| -pskPassphrase          | Wifi `pskPassphrase`, if `authenticationMethod` is WPA PSK(4) or WPA2 PSK(6).                                                                                                                           |
+| -secrets                | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
+| -ssid                   | Wifi SSID                                                                                                                                                                                               |
+| -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
 
 <br>
 
