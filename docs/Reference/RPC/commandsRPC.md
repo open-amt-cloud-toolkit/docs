@@ -3,7 +3,8 @@
 On the managed device, a Remote Provisioning Client (RPC) communicates with the Remote Provision Server (RPS) in the process of activating or deactivating the device. In addition to activation and deactivation, the RPC provides informational and maintenance commands.
 
 ## List Commands
-On the managed device, open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows).
+
+RPC must run with elevated privileges. Commands require `sudo` on Linux or an Administrator Command Prompt on Windows.
 
 Run the RPC application on the command line with no arguments to see supported commands:
 
