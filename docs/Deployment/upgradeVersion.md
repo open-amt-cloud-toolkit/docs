@@ -6,7 +6,7 @@
 
 The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database.
 
-1. Run the following SQL script to add the new table before upgrading the services.
+1. Run the following SQL script to alter constraints before upgrading the services.
 
     ``` sql
     ALTER TABLE domains
