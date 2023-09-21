@@ -198,14 +198,9 @@ First, we need to prepare two files:
 
     The new hash should be listed.
 
-    === "Linux"
-        ``` bash
-        sudo ./rpc amtinfo -cert
-        ```
-    === "Windows"
-        ```
-        .\rpc amtinfo -cert
-        ```
+    ```
+    rpc amtinfo -cert
+    ```
 
     !!! success "Success - Hash Inserted Correctly"
         <figure class="figure-image">

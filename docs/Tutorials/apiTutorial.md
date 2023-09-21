@@ -47,18 +47,11 @@ See the [Authorize Method in the API Documentation](https://app.swaggerhub.com/a
 2. Copy and paste the example code below into a text editor.
 3. Update the values of the `[IP-Address or FQDN]`, `[MPS_WEB_ADMIN_USER]`, and `[MPS_WEB_ADMIN_PASSWORD]` fields.
 
-    === "Linux"
-        ```bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize \
-            -H "Content-Type:application/json" \
-            -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"
-        ```
-    === "Windows"
-        ```bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize ^
-            -H "Content-Type:application/json" ^
-            -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"
-        ```
+    ```bash
+    curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize \
+        -H "Content-Type:application/json" \
+        -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"
+    ```
 
     !!!info "Info - Using the --insecure Flag"
         Because we are using self-signed certificates for MPS for development and testing purposes, we must supply this flag to bypass SSL certificate verification.
@@ -81,16 +74,10 @@ See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/
 2. Copy and paste the example code below into a text editor.
 3. Update the values of the `[IP-Address or FQDN]` and `[JWT-Token]` fields.
 
-    === "Linux"
-        ```bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
-            -H "Authorization: Bearer [JWT-Token]"
-        ```
-    === "Windows"
-        ```bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices ^
-            -H "Authorization: Bearer [JWT-Token]"
-        ```
+    ```bash
+    curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
+        -H "Authorization: Bearer [JWT-Token]"
+    ```
 
 4. Run the command.
 
@@ -125,32 +112,18 @@ See the [GetDevices Method in the API Documentation](https://app.swaggerhub.com/
 The sample GET and POST curl commands below can be adapted for other MPS and RPS methods **by changing the URL path and modifying the request body data, if applicable**.
 
 === "Power Capabilities (GET Template)"     
-    === "Linux"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/amt/powercapabilities/[AMT-Device-GUID] \
-            -H "Authorization: Bearer [JWT-Token]"
-        ```
-    === "Windows"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/amt/powercapabilities/[AMT-Device-GUID] ^
-            -H "Authorization: Bearer [JWT-Token]"
-        ```  
+    ``` bash
+    curl --insecure https://[IP-Address or FQDN]/mps/api/v1/amt/powercapabilities/[AMT-Device-GUID] \
+        -H "Authorization: Bearer [JWT-Token]"
+    ```
     See [Power Capabilities API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/get_api_v1_amt_power_capabilities__guid_) for more information and expected responses.
 === "Power Action (POST Template)"
-    === "Linux"
-        ``` bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/api/v1/amt/power/action/[AMT-Device-GUID] \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer [JWT-Token]" \
-            -d "{\"action\": [Power-Action], \"useSOL\": false}"
-        ```
-    === "Windows"
-        ``` bash
-        curl --insecure -X POST https://[IP-Address or FQDN]/mps/api/v1/amt/power/action/[AMT-Device-GUID] ^
-            -H "Content-Type: application/json" ^
-            -H "Authorization: Bearer [JWT-Token]" ^
-            -d "{\"action\": [Power-Action], \"useSOL\": false}"
-        ```
+    ``` bash
+    curl --insecure -X POST https://[IP-Address or FQDN]/mps/api/v1/amt/power/action/[AMT-Device-GUID] \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer [JWT-Token]" \
+        -d "{\"action\": [Power-Action], \"useSOL\": false}"
+    ```
     See [Power Action API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/AMT/post_api_v1_amt_power_action__guid_) for more information and expected responses.
 
 ## Other Methods
