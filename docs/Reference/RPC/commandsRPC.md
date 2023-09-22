@@ -59,7 +59,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 === "CCM"
     ```
-    rpc activate -local -ccm -amtPassword NewAMTPassword
+    rpc activate -local -ccm -password NewAMTPassword
     ```
 === "ACM"
     ```
