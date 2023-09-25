@@ -127,27 +127,27 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 
 #### (100-149) Activation and Configuration Errors
 
-|Error Code| Message                                 |
-|----------|-----------------------------------------|
-|100       |AMT authentication failed                |
-|101       |WSMAN message error                      |
-|102       |Activation failed                        |
-|103       |Network configuration failed             |
-|104       |CIRA configuration failed                |
-|105       |TLS configuration failed                 |
-|106       |WiFi configuration failed                |
-|107       |AMT features configuration failed        |
-|108       |802.1x configuration failed              |
-|109       |Unable to Deactivate                     |
-|110       |Deactivation Failed                      |
-|111       |Unable to Activate                       |
-|112       |Wifi Configuration with Warnings         |
+|Error Code| Message                                   |
+|----------|-------------------------------------------|
+|100       |AMT authentication failed                  |
+|101       |WSMAN message error                        |
+|102       |Activation failed                          |
+|103       |Network configuration failed               |
+|104       |CIRA configuration failed                  |
+|105       |TLS configuration failed                   |
+|106       |WiFi configuration failed                  |
+|107       |AMT features configuration failed          |
+|108       |802.1x configuration failed                |
+|109       |UnabletoDeactivate                         |
+|110       |DeactivationFailed                         |
+|111       |UnabletoActivate                           |
+|112       |Wifi Configuration succeeded with warnings |
 
 #### (150-199) Maintenance Errors
 
 |Error Code| Message                                 |
 |----------|-----------------------------------------|
-|150       |Clock sync failed                        |
-|151       |Hostname sync failed                     |
-|152       |Network sync failed                      |
+|150       |Clock synchronization failed             |
+|151       |Hostname synchronization failed          |
+|152       |IP synchronization failed                |
 |153       |Change Password failed                   |
