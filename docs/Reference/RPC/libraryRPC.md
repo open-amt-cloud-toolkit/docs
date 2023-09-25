@@ -108,6 +108,12 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |25        |Missing hostname                         |
 |26        |Missing proxy address and port           |
 |27        |Missing static IP information            |
+|28        |Incorrect Command Line Parameters        |
+|29        |Missing or incorrect Network Mask        |
+|30        |Missing or incorrect Gateway             |
+|31        |Missing or incorrect Primary DNS         |
+|32        |Missing or incorrect Secondary DNS       |
+|33        |Invalid Parameter Combination            |
 
 #### (70-99) Connection Errors
 
@@ -121,22 +127,31 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 
 #### (100-149) Activation and Configuration Errors
 
-|Error Code| Message                                 |
-|----------|-----------------------------------------|
-|100       |AMT authentication failed                |
-|101       |WSMAN message error                      |
-|102       |Activation failed                        |
-|103       |Network configuration failed             |
-|104       |CIRA configuration failed                |
-|105       |TLS configuration failed                 |
-|106       |WiFi configuration failed                |
-|107       |AMT features configuration failed        |
-|108       |802.1x configuration failed              |
+|Error Code| Message                                   |
+|----------|-------------------------------------------|
+|100       |AMT authentication failed                  |
+|101       |WSMAN message error                        |
+|102       |Activation failed                          |
+|103       |Network configuration failed               |
+|104       |CIRA configuration failed                  |
+|105       |TLS configuration failed                   |
+|106       |WiFi configuration failed                  |
+|107       |AMT features configuration failed          |
+|108       |802.1x configuration failed                |
+|109       |Unable to Deactivate                       |
+|110       |Deactivation Failed                        |
+|111       |Unable to Activate                         |
+|112       |Wifi Configuration succeeded with warnings |
+|113       |Unmarshal Message Failed                   |
+|114       |Delete Wifi Config Failed                  |
+|116       |Missing or incorrect Wifi Profile Name     |
+|117       |Missing IEEE 802.1x Configuration          |
 
 #### (150-199) Maintenance Errors
 
 |Error Code| Message                                 |
 |----------|-----------------------------------------|
-|150       |Clock sync failed                        |
-|151       |Hostname sync failed                     |
-|152       |Network sync failed                      |
+|150       |Clock synchronization failed             |
+|151       |Hostname synchronization failed          |
+|152       |IP synchronization failed                |
+|153       |Change Password failed                   |
