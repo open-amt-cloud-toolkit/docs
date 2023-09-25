@@ -138,10 +138,14 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |106       |WiFi configuration failed                  |
 |107       |AMT features configuration failed          |
 |108       |802.1x configuration failed                |
-|109       |UnabletoDeactivate                         |
-|110       |DeactivationFailed                         |
-|111       |UnabletoActivate                           |
+|109       |Unable to Deactivate                       |
+|110       |Deactivation Failed                        |
+|111       |Unable to Activate                         |
 |112       |Wifi Configuration succeeded with warnings |
+|113       |Unmarshal Message Failed                   |
+|114       |Delete Wifi Config Failed                  |
+|116       |Missing or incorrect Wifi Profile Name     |
+|117       |Missing IEEE 802.1x Configuration          |
 
 #### (150-199) Maintenance Errors
 
