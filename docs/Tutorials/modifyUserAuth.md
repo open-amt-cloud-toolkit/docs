@@ -104,25 +104,15 @@ Install and start a local LDAP server on the development system. For this tutori
 
 1. Open a Terminal or Powershell/Command Prompt and run the command to list the containers:
 
-    === "Linux"
-        ```
-        sudo docker ps
-        ```
-    === "Windows (Powershell)"
-        ```
-        docker ps
-        ```
+```
+docker ps
+```
 
 2. Restart the Kong container:
 
-    === "Linux"
-        ```
-        sudo docker restart <container ID>
-        ```
-    === "Windows (Powershell)"
-        ```
-        docker restart <container ID>
-        ```
+```
+docker restart <container ID>
+```
 
 
 ## Test the Configuration
@@ -134,28 +124,18 @@ Authenticate a user to test the configuration by using an API of your choice. Yo
 In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as our encoded `user:pass`. This value is `am9obmRvZTpUZXN0QXBwUHcx`. These credentials are one of the default credentials in the `sample-simple.cfg` file provided by GLAuth*.
 
 === "Get Devices (MPS Route)"     
-    === "Linux"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
-            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
-        ```
-    === "Windows"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices ^
-            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
-        ```
+
+    ``` bash
+    curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
+        -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
+    ```
     See [Devices API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices) for more information and expected responses.
 === "Get Profiles (RPS Route)"
-    === "Linux"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles \
-            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
-        ```
-    === "Windows"
-        ``` bash
-        curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles ^
-            -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
-        ```
+
+    ``` bash
+    curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles \
+        -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"
+    ```
     See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ repoVersion.rpsAPI }}#/Profiles/GetAllProfiles) for more information and expected responses.
 
 

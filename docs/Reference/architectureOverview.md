@@ -116,27 +116,15 @@ Each microservice has an associated log file which can contain helpful debug inf
 
 1. Open a Terminal or Powershell/Command Prompt and run the command to list the containers:
    
-    === "Linux"
-        ```
-        sudo docker ps
-        ```
-    
-    === "Windows (Powershell)"
-        ```
-        docker ps
-        ```
+```
+docker ps
+```
 
 2. Copy the first three digits of the container ID of interest. Run the docker logs command followed by the container ID: 
 
-    === "Linux"
-        ```
-        sudo docker logs <container ID>
-        ```
-    
-    === "Windows (Powershell)"
-        ```
-        docker logs <container ID>
-        ```
+```
+docker logs <container ID>
+```
 
 See more help options for the `docker logs` command in [Docker Documentation](https://docs.docker.com/engine/reference/commandline/logs/). 
 

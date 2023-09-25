@@ -61,13 +61,8 @@ After implementing the multitenancy code changes and starting the services, prof
 
 Then when activating and configuring the AMT device using RPC, provide the `-tenant` flag with the `tenantID` of the profile. [Find all RPC flags in the RPC CLI docs](./RPC/commandsRPC.md).  See example command below.
 
-=== "Linux"
-    ``` bash
-    sudo ./rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
-    ```
-=== "Windows"
-    ```
-    .\rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
-    ```
+```
+rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
+```
 
 <br>
