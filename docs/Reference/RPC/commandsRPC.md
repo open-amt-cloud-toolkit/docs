@@ -45,7 +45,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 === "CCM"
     ```
-    rpc activate -local -ccm -amtPassword NewAMTPassword
+    rpc activate -local -ccm -password NewAMTPassword
     ```
 === "ACM"
     ```
@@ -103,6 +103,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 | -acm                              | Flag for ACM Local Activation.                                  |
 | -amtPassword string               | New AMT Password to set on device.                              |
 | -ccm                              | Flag for CCM Local Activation.                                  |
+| -config                           | File path of a `.yaml` file with desired ACM configuration.     |
 | -local                            | Execute command to AMT directly without cloud interaction.      |
 | -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.   |
 | -provisioningCertPwd string       | Password of provisioning certificate.                           |
