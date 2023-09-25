@@ -2407,20 +2407,10 @@
 
 <p>On the managed device, a Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) communicates with the Remote Provision Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) in the process of activating or deactivating the device. In addition to activation and deactivation, the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> provides informational and maintenance commands.</p>
 <h2 id="list-commands">List Commands<a class="headerlink" href="#list-commands" title="Permanent link">&para;</a></h2>
-<p>On the managed device, open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows).</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> must run with elevated privileges. Commands require <code>sudo</code> on Linux or an Administrator Command Prompt on Windows.</p>
 <p>Run the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application on the command line with no arguments to see supported commands:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc
+<div class="highlight"><pre><span></span><code>rpc
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc.exe
-</code></pre></div>
-</div>
-</div>
-</div>
 <table>
 <thead>
 <tr>
@@ -2464,44 +2454,41 @@
 </table>
 <h2 id="list-command-options">List Command Options<a class="headerlink" href="#list-command-options" title="Permanent link">&para;</a></h2>
 <p>Run the application with a command to see available options for the command:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span><span class="o">[</span>COMMAND<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>rpc [COMMAND]
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc [COMMAND]
-</code></pre></div>
-</div>
-</div>
-</div>
 <h3 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h3>
 <h4 id="activate-and-configure-the-device-using-rps">Activate and Configure the device using <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>:<a class="headerlink" href="#activate-and-configure-the-device-using-rps" title="Permanent link">&para;</a></h4>
 <p>Activate the device with a specified profile:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://server/activate<span class="w"> </span>-profile<span class="w"> </span>profilename
+<div class="highlight"><pre><span></span><code>rpc activate -u wss://server/activate -profile profilename
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://server/activate -profile profilename
-</code></pre></div>
-</div>
-</div>
-</div>
 <h4 id="activate-the-device-locally">Activate the device locally:<a class="headerlink" href="#activate-the-device-locally" title="Permanent link">&para;</a></h4>
 <p>This capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command <strong>only</strong> activates AMT. It does not do profile-based configuration.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr></label><label for="__tabbed_4_2"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr></label><label for="__tabbed_1_2"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></label><label for="__tabbed_1_3"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> w/ Config File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>rpc activate -local -ccm -amtPassword NewAMTPassword
+<div class="highlight"><pre><span></span><code>rpc activate -local -ccm -password NewAMTPassword
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert &quot;{BASE64_PROV_CERT}&quot; -provivisioningCertPwd certPassword
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Options can be passed via a config file. This can also be combined into a single config file with <a href="#addwifisettings">addwifisettings</a> information.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">acmactivate</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">amtPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;P@ssw0rd&#39;</span>
+<span class="w">  </span><span class="nt">provisioningCert</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;BASE64_PROV_CERT&#39;</span>
+<span class="w">  </span><span class="nt">provivisioningCertPwd</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CertP@ssw0rd&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Example Command
+<div class="highlight"><pre><span></span><code>rpc activate -local -acm -config config.yaml
+</code></pre></div></p>
 </div>
 </div>
 </div>
@@ -2616,6 +2603,10 @@
 <tr>
 <td>-ccm</td>
 <td>Flag for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> Local Activation.</td>
+</tr>
+<tr>
+<td>-config</td>
+<td>File path of a <code>.yaml</code> file with desired <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> configuration.</td>
 </tr>
 <tr>
 <td>-local</td>
@@ -2819,18 +2810,8 @@
 <p><br></p>
 <h4 id="changepassword">changepassword<a class="headerlink" href="#changepassword" title="Permanent link">&para;</a></h4>
 <p>Change the AMT password. A random password is generated by default if <code>static</code> option is not passed.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>maintenance<span class="w"> </span>changepassword<span class="w"> </span>-u<span class="w"> </span>wss://server/maintenance
+<div class="highlight"><pre><span></span><code>rpc maintenance changepassword -u wss://server/maintenance
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance changepassword -u wss://server/maintenance
-</code></pre></div>
-</div>
-</div>
-</div>
 <table>
 <thead>
 <tr>
@@ -2848,48 +2829,18 @@
 <p><br></p>
 <h4 id="syncclock">syncclock<a class="headerlink" href="#syncclock" title="Permanent link">&para;</a></h4>
 <p>Syncs the host OS clock to AMT.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>maintenance<span class="w"> </span>syncclock<span class="w"> </span>-u<span class="w"> </span>wss://server/maintenance
+<div class="highlight"><pre><span></span><code>rpc maintenance syncclock -u wss://server/maintenance
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance syncclock -u wss://server/maintenance
-</code></pre></div>
-</div>
-</div>
-</div>
 <p><br></p>
 <h4 id="synchostname">synchostname<a class="headerlink" href="#synchostname" title="Permanent link">&para;</a></h4>
 <p>Sync the OS hostname to AMT Network Settings.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>maintenance<span class="w"> </span>synchostname<span class="w"> </span>-u<span class="w"> </span>wss://server/maintenance
+<div class="highlight"><pre><span></span><code>rpc maintenance synchostname -u wss://server/maintenance
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance synchostname -u wss://server/maintenance
-</code></pre></div>
-</div>
-</div>
-</div>
 <p><br></p>
 <h4 id="syncip">syncip<a class="headerlink" href="#syncip" title="Permanent link">&para;</a></h4>
 <p>Sync the static IP of host OS to AMT Network Settings.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux</label><label for="__tabbed_8_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo ./rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/maintenance
+<div class="highlight"><pre><span></span><code>rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/maintenance
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/maintenance
-</code></pre></div>
-</div>
-</div>
-</div>
 <table>
 <thead>
 <tr>
@@ -2969,7 +2920,7 @@
 <h4 id="addwifisettings">addwifisettings<a class="headerlink" href="#addwifisettings" title="Permanent link">&para;</a></h4>
 <p>Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>/EA/<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>. More information on configuring AMT to use 802.1x can be found in <a href="../../EA/ieee8021xconfig/">802.1x Configuration</a>.</p>
 <p>On failure, the <code>addwifisettings</code> maintenance command will rollback any certificates added before the error occurred.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:4"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Config File</label><label for="__tabbed_9_2">Config w/ Secrets File</label><label for="__tabbed_9_3">Individual Options</label><label for="__tabbed_9_4">-configJson String Option</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Config File</label><label for="__tabbed_3_2">Config w/ Secrets File</label><label for="__tabbed_3_3">Individual Options</label><label for="__tabbed_3_4">-configJson String Option</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h5 id="via-config-file">via Config file<a class="headerlink" href="#via-config-file" title="Permanent link">&para;</a></h5>
@@ -2978,7 +2929,7 @@
 <li>
 <p>Create a new file called <code>config.yaml</code>. Copy and paste the corresponding template below.</p>
 <p>These templates show how to create a simple Wireless profile called <strong>exampleWifiWPA2</strong> and a Wireless profile utilizing 802.1x called <strong>exampleWifi8021x</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">YAML</label><label for="__tabbed_10_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">YAML</label><label for="__tabbed_4_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;amtPassword&#39;</span><span class="w"> </span><span class="c1"># optionally, you can provide the AMT password of the device in the config file</span>
@@ -3062,7 +3013,7 @@
 <li>
 <p>Create a new file called <code>config.yaml</code>. Copy and paste the corresponding template below.</p>
 <p>This <code>config.yaml</code> is slightly different from the standard one as we either delete or leave blank the secret fields <code>pskPassphrase</code>, <code>password</code>, and <code>privateKey</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">YAML</label><label for="__tabbed_11_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">YAML</label><label for="__tabbed_5_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">wifiConfigs</span><span class="p">:</span>
@@ -3124,7 +3075,7 @@
 </li>
 <li>
 <p>Create a new file called <code>secrets.yaml</code>. Copy and paste the template below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">YAML</label><label for="__tabbed_12_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">YAML</label><label for="__tabbed_6_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">secrets.yaml</span><pre><span></span><code><span class="nt">secrets</span><span class="p">:</span>
@@ -3185,7 +3136,7 @@
 <p class="admonition-title">Warning - Use Case and Security</p>
 <p>The CLI option is intended for use as part of an integration of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a shared library. The passing of secrets directly via command line is highly insecure and <strong>NOT</strong> recommended.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Wireless Only</label><label for="__tabbed_13_2">Wireless w/ 802.1x</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Wireless Only</label><label for="__tabbed_7_2">Wireless w/ 802.1x</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>rpc configure addwifisettings -configJson &quot;{ &quot;wifiConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleWifi&quot;, &quot;authenticationMethod&quot;: 6, &quot;encryptionMethod&quot;: 4, &quot;ssid&quot;: &quot;networkSSID&quot;, &quot;username&quot;: &quot;username&quot;, &quot;authenticationProtocol&quot;: 0, &quot;priority&quot;: 1 } ] }&quot;
@@ -3282,18 +3233,8 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 <p><br></p>
 <h3 id="amtinfo">amtinfo<a class="headerlink" href="#amtinfo" title="Permanent link">&para;</a></h3>
 <p>Display AMT status and configuration:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Linux</label><label for="__tabbed_14_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>amtinfo<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>rpc amtinfo [OPTIONS]
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc amtinfo [OPTIONS]
-</code></pre></div>
-</div>
-</div>
-</div>
 <p><strong>Not passing <code>[OPTIONS]</code> will print all information.</strong></p>
 <table>
 <thead>
@@ -3422,18 +3363,8 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 see <a href="../../../Tutorials/createWiFiConfig/">Wireless Activation</a>.</p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <p>Display the current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Protocol version:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Linux</label><label for="__tabbed_15_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>version
+<div class="highlight"><pre><span></span><code>rpc version
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc version
-</code></pre></div>
-</div>
-</div>
-</div>
 
 
   

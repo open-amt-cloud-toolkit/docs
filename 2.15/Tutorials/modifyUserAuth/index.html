@@ -2355,76 +2355,32 @@
 </ol>
 <h2 id="restart-the-kong-gateway-container">Restart the Kong Gateway Container<a class="headerlink" href="#restart-the-kong-gateway-container" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows (Powershell)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker ps
-</code></pre></div>
-</div>
-<div class="tabbed-block">
+<li>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>docker ps
 </code></pre></div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Restart the Kong container:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows (Powershell)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo docker restart &lt;container ID&gt;
-</code></pre></div>
-</div>
-<div class="tabbed-block">
+<ol>
+<li>Restart the Kong container:</li>
+</ol>
 <div class="highlight"><pre><span></span><code>docker restart &lt;container ID&gt;
 </code></pre></div>
-</div>
-</div>
-</div>
-</li>
-</ol>
 <h2 id="test-the-configuration">Test the Configuration<a class="headerlink" href="#test-the-configuration" title="Permanent link">&para;</a></h2>
 <p>Authenticate a user to test the configuration by using an API of your choice. You will need to set the Authorization header to <code>ldap base64encode(user:pass)</code>.</p>
 <p><strong>Test the configuration with <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr>:</strong></p>
 <p>In the following examples, we use the base64 encoding of <code>johndoe:TestAppPw1</code> as our encoded <code>user:pass</code>. This value is <code>am9obmRvZTpUZXN0QXBwUHcx</code>. These credentials are one of the default credentials in the <code>sample-simple.cfg</code> file provided by GLAuth*.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Get Devices (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Route)</label><label for="__tabbed_3_2">Get Profiles (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Route)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Get Devices (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Route)</label><label for="__tabbed_1_2">Get Profiles (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Route)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span><span class="se">\</span>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
 </code></pre></div>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/Devices/get_api_v1_devices">Devices API Docs</a> for more information and expected responses.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span>^
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/rps/api/v1/admin/profiles<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/Devices/get_api_v1_devices">Devices API Docs</a> for more information and expected responses.</p>
-</div>
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/rps/api/v1/admin/profiles<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/rps/api/v1/admin/profiles<span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/2.16.0#/Profiles/GetAllProfiles">Get Profiles API Docs</a> for more information and expected responses.</p>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/2.16.0#/Profiles/GetAllProfiles">Get Profiles API Docs</a> for more information and expected responses.</p>
 </div>
 </div>
 </div>

@@ -2260,22 +2260,10 @@
 <li>Copy and paste the example code below into a text editor.</li>
 <li>
 <p>Update the values of the <code>[IP-Address or FQDN]</code>, <code>[MPS_WEB_ADMIN_USER]</code>, and <code>[MPS_WEB_ADMIN_PASSWORD]</code> fields.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/login/api/v1/authorize<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;username\&quot;:\&quot;[MPS_WEB_ADMIN_USER]\&quot;, \&quot;password\&quot;:\&quot; [MPS_WEB_ADMIN_PASSWORD]\&quot;}&quot;</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/login/api/v1/authorize<span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span>^
-<span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;username\&quot;:\&quot;[MPS_WEB_ADMIN_USER]\&quot;, \&quot;password\&quot;:\&quot; [MPS_WEB_ADMIN_PASSWORD]\&quot;}&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 <div class="admonition info">
 <p class="admonition-title">Info - Using the --insecure Flag</p>
 <p>Because we are using self-signed certificates for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for development and testing purposes, we must supply this flag to bypass SSL certificate verification.</p>
@@ -2300,20 +2288,9 @@
 <li>Copy and paste the example code below into a text editor.</li>
 <li>
 <p>Update the values of the <code>[IP-Address or FQDN]</code> and <code>[JWT-Token]</code> fields.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </li>
 <li>
 <p>Run the command.</p>
@@ -2343,45 +2320,21 @@ Example JSON Pretty Print:</p>
 </ol>
 <h2 id="example-getpost-templates">Example GET/POST Templates<a class="headerlink" href="#example-getpost-templates" title="Permanent link">&para;</a></h2>
 <p>The sample GET and POST <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr> commands below can be adapted for other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> methods <strong>by changing the URL path and modifying the request body data, if applicable</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Power Capabilities (GET Template)</label><label for="__tabbed_3_2">Power Action (POST Template)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Power Capabilities (GET Template)</label><label for="__tabbed_1_2">Power Action (POST Template)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
 </code></pre></div>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
-</div>
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>^
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span><span class="w"> </span>^
-<span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.11.0#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
 </div>
 </div>
 </div>

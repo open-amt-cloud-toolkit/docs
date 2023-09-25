@@ -2198,21 +2198,11 @@
 <p><strong>For devices to be activated in Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>: The managed AMT device <strong>MUST have a wired connection</strong> during the activation of AMT. After activation, devices are then able to be managed over the wireless network rather than a wired connection.</p>
 <p>Use <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>'s <code>amtinfo</code> feature to determine if your current device supports wireless functionality. For steps to obtain the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> binary, see <a href="../../Reference/RPC/buildRPC_Manual/">Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a>.</p>
 <ol>
-<li>
-<p>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>amtinfo</code> argument.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>amtinfo
+<li>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>amtinfo</code> argument.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>rpc amtinfo
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc amtinfo
-</code></pre></div>
-</div>
-</div>
-</div>
-</li>
+<ol>
 <li>
 <p>Look at the output for the LAN Interface section as highlighted below. <strong>If <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> does NOT return a section for wireless</strong>, the AMT device does not support wireless functionality. </p>
 <div class="highlight"><pre><span></span><code>Version                : 15.0.10
