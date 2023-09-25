@@ -554,22 +554,23 @@ Display AMT status and configuration:
 
 **Not passing `[OPTIONS]` will print all information.**
 
-| AMT INFO          | OPTION    | DESCRIPTION                                                                                                                                                                           | 
-|-------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                   | -json     | JSON Output                                                                                                                                                                           |
-| Version           | -ver      | Intel AMT version.                                                                                                                                                                    | 
-| Build Number      | -bld      | Intel AMT Build Number.                                                                                                                                                               |
-| Certificate       | -cert     | Certificate Hashes                                                                                                                                                                    |
-| SKU               | -sku      | Product SKU                                                                                                                                                                           | 
-| UUID              | -uuid     | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path.                                                       | 
-| Control Mode      | -mode     | Control Mode below indicates the managed device's state: <br>(a) pre-provisioning state <br>(b) activated in client control mode <br>(c) activated in admin control mode          | 
-| DNS Suffix        | -dns      | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation.                                                                      |
-| DNS Suffix (OS)   | -dns      |                                                                                                                                                                                       |
-| Hostname (OS)     | -hostname | Device's hostname as set in the Operating System.                                                                                                                                     |
-| RAS Network       | -ras      |                                                                                                                                                                                       |
-| RAS Remote Status | -ras      | Unconnected or connected. State of connection to a management server.                                                                                                                 |
-| RAS Trigger       | -ras      | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
-| RAS MPS Hostname  | -ras      | IP Address or FQDN of the MPS server.                                                                                                                                                 |
+| AMT INFO             | OPTION    | DESCRIPTION                                                                                                                                                                           | 
+|----------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                      | -json     | JSON Output                                                                                                                                                                           |
+| Version              | -ver      | Intel AMT version.                                                                                                                                                                    | 
+| Build Number         | -bld      | Intel AMT Build Number.                                                                                                                                                               |
+| System Certificates  | -cert     | System Certificate Hashes. If given `-password`, will print both System and User Certificate Hashes.                                                                                  |
+| User Certificates    | -userCert | User Certificate Hashes. Will prompt for AMT password. Or, provide `-password` flag.                                                                                                  |
+| SKU                  | -sku      | Product SKU                                                                                                                                                                           | 
+| UUID                 | -uuid     | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path.                                                       | 
+| Control Mode         | -mode     | Control Mode below indicates the managed device's state: <br>(a) pre-provisioning state <br>(b) activated in client control mode <br>(c) activated in admin control mode              | 
+| DNS Suffix           | -dns      | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation.                                                                      |
+| DNS Suffix (OS)      | -dns      |                                                                                                                                                                                       |
+| Hostname (OS)        | -hostname | Device's hostname as set in the Operating System.                                                                                                                                     |
+| RAS Network          | -ras      |                                                                                                                                                                                       |
+| RAS Remote Status    | -ras      | Unconnected or connected. State of connection to a management server.                                                                                                                 |
+| RAS Trigger          | -ras      | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
+| RAS MPS Hostname     | -ras      | IP Address or FQDN of the MPS server.                                                                                                                                                 |
 
 **---Wired/Wireless Adapters---**
 
