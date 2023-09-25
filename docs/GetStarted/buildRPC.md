@@ -63,12 +63,14 @@ If you are building an executable on a development system, you will copy the exe
 
 3. Confirm a successful build:
 
+    RPC must run with elevated privileges. Commands require `sudo` on Linux or an Administrator Command Prompt on Windows.
+
     === "Linux"
         ``` bash
         sudo ./rpc version
         ```
     === "Windows"
-        ``` bash
+        ```
         .\rpc version
         ```        
     === "Docker (On Linux Host Only)"

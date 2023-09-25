@@ -16,14 +16,9 @@ Use RPC's `amtinfo` feature to determine if your current device supports wireles
 
 1. Run RPC with the `amtinfo` argument.
 
-    === "Linux"
-        ``` bash
-        sudo ./rpc amtinfo
-        ```
-    === "Windows"
-        ```
-        .\rpc amtinfo
-        ```
+```
+rpc amtinfo
+```
 
 2. Look at the output for the LAN Interface section as highlighted below. **If RPC does NOT return a section for wireless**, the AMT device does not support wireless functionality. 
 

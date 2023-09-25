@@ -56,6 +56,8 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 2. Confirm a successful build:
 
+    RPC must run with elevated privileges. Commands require `sudo` on Linux or an Administrator Command Prompt on Windows.
+
     === "Linux"
         ``` bash
         sudo ./rpc version
