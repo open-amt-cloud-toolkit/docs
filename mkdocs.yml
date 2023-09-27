@@ -53,6 +53,7 @@ nav:
     - Video Walkthroughs: videos.md
     - License: license.md
     - Get Help:
+      - FAQ: Reference/faq.md
       - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
     - Prerequisites: GetStarted/prerequisites.md
@@ -67,6 +68,7 @@ nav:
       - Build & Run RPC: GetStarted/buildRPC.md
       - Manage AMT Device: GetStarted/manageDevice.md
     - Get Help:
+      - FAQ: Reference/faq.md
       - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
     - Overview: Deployment/overview.md
@@ -88,6 +90,7 @@ nav:
         - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
         - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
     - Get Help:
+        - FAQ: Reference/faq.md
         - Troubleshooting: Reference/troubleshooting.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
@@ -131,6 +134,7 @@ nav:
       - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
       - TLS Certificate: Reference/Certificates/tls.md
     - Get Help:
+      - FAQ: Reference/faq.md
       - Troubleshooting: Reference/troubleshooting.md
   - APIs:
     - Management Presence Server: APIs/indexMPS.md
