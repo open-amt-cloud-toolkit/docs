@@ -492,6 +492,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -783,6 +797,20 @@
           Get Help
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1185,6 +1213,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -1565,12 +1607,39 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Configuration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rps-configuration" class="md-nav__link">
+    RPS Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2048,6 +2117,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -2151,70 +2234,145 @@
   </a>
 
 
-<h1 id="rps-configuration"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration<a class="headerlink" href="#rps-configuration" title="Permanent link">&para;</a></h1>
+  <h1>Configuration</h1>
+
+<h2 id="rps-configuration"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration<a class="headerlink" href="#rps-configuration" title="Permanent link">&para;</a></h2>
+<p>The <code>.env</code> variables set have priority and overwrite the corresponding <code>.rpsrc</code> variables.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Environment Variable</th>
+<th style="text-align: left;"><code>.env</code> Variable Name</th>
+<th style="text-align: left;"><code>.rpsrc</code> Variable Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">RPS_IMAGE</td>
-<td style="text-align: left;"><code>rps-microservice:v1</code></td>
-<td style="text-align: left;">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></td>
+<td style="text-align: left;">RPS_WEBSOCKETTLS</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">Enable/disable <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> on Websocket Connection</td>
 </tr>
 <tr>
-<td style="text-align: left;">RPS_CONNECTION_STRING</td>
-<td style="text-align: left;"><code>postgresql://postgresadmin@localhost:5432/rpsdb?sslmode=no-verify</code></td>
-<td style="text-align: left;">The database connection string</td>
-</tr>
-<tr>
-<td style="text-align: left;">RPS_WEB_PORT</td>
+<td style="text-align: left;">RPSWEBPORT</td>
+<td style="text-align: left;">web_port</td>
 <td style="text-align: left;"><code>8081</code></td>
-<td style="text-align: left;">Specifies the Web API port to listen on</td>
+<td style="text-align: left;">Web API port to listen on</td>
 </tr>
 <tr>
-<td style="text-align: left;">RPS_WEBSOCKETPORT</td>
+<td style="text-align: left;">RPSWEBSOCKETPORT</td>
+<td style="text-align: left;">websocketport</td>
 <td style="text-align: left;"><code>8080</code></td>
-<td style="text-align: left;">Specifies the Websocket port to listen on</td>
-</tr>
-<tr>
-<td style="text-align: left;">RPS_VAULT_ADDRESS</td>
-<td style="text-align: left;"><code>http://vault:8200</code></td>
-<td style="text-align: left;">Address of where the vault is hosted</td>
-</tr>
-<tr>
-<td style="text-align: left;">RPS_VAULT_TOKEN</td>
-<td style="text-align: left;"><code>myroot</code></td>
-<td style="text-align: left;">Token used to access the vault</td>
-</tr>
-<tr>
-<td style="text-align: left;">RPS_SECRETS_PATH</td>
-<td style="text-align: left;"><code>secret/data/</code></td>
-<td style="text-align: left;">Specifies the path for where secrets are stored in the vault</td>
+<td style="text-align: left;">Websocket port to listen on</td>
 </tr>
 <tr>
 <td style="text-align: left;">RPS_LOG_LEVEL</td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;"><code>info</code></td>
 <td style="text-align: left;">Controls the level of logging provided in the service. Options are (in order of increasing detail): <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code>, and <code>silly</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">RPS_MPS_SERVER</td>
-<td style="text-align: left;"><code>http://localhost:3000</code></td>
-<td style="text-align: left;">Specifies where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
-</tr>
-<tr>
 <td style="text-align: left;">RPS_DELAY_TIMER</td>
+<td style="text-align: left;">delay_timer</td>
 <td style="text-align: left;"><code>12</code></td>
 <td style="text-align: left;">Sets the number of seconds to wait after activation but before proceeding with final steps. By default it is set to 12 seconds. During this waiting period, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> sends heartbeats to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to keep the connection alive.</td>
 </tr>
 <tr>
 <td style="text-align: left;">RPS_MQTT_ADDRESS</td>
+<td style="text-align: left;">mqtt_address</td>
 <td style="text-align: left;">No Value</td>
 <td style="text-align: left;">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_SECRETS_PATH</td>
+<td style="text-align: left;">secrets_path</td>
+<td style="text-align: left;"><code>secret/data/</code></td>
+<td style="text-align: left;">Path for where secrets are stored in the vault</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_VAULT_ADDRESS</td>
+<td style="text-align: left;">vault_address</td>
+<td style="text-align: left;"><code>http://localhost:8200</code></td>
+<td style="text-align: left;">Address of where the vault is hosted</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_VAULT_TOKEN</td>
+<td style="text-align: left;">vault_token</td>
+<td style="text-align: left;"><code>myroot</code></td>
+<td style="text-align: left;">Token used to access the vault</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_DB_PROVIDER</td>
+<td style="text-align: left;">db_provider</td>
+<td style="text-align: left;"><code>postgres</code></td>
+<td style="text-align: left;">Database provider used (<code>postgres</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_SECRETS_PROVIDER</td>
+<td style="text-align: left;">secrets_provider</td>
+<td style="text-align: left;"><code>vault</code></td>
+<td style="text-align: left;">Secret provider used (<code>vault</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CONNECTION_STRING</td>
+<td style="text-align: left;">connection_string</td>
+<td style="text-align: left;"><code>postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@localhost:5432/rpsdb</code></td>
+<td style="text-align: left;">The database connection string</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CORS_ORIGIN</td>
+<td style="text-align: left;">cors_origin</td>
+<td style="text-align: left;"><code>http://localhost:4200</code></td>
+<td style="text-align: left;">(NOT USED) Allowed origin for CORS policy</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CORS_HEADER</td>
+<td style="text-align: left;">cors_header</td>
+<td style="text-align: left;"><code>Origin, X-Requested-With, Accept, Content-Type, csrf-token, authorization</code></td>
+<td style="text-align: left;">(NOT USED) Allowed headers</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CORS_METHODS</td>
+<td style="text-align: left;">cors_methods</td>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">(NOT USED) Allowed methods</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_MPS_SERVER</td>
+<td style="text-align: left;">mps_server</td>
+<td style="text-align: left;"><code>http://localhost:3000</code></td>
+<td style="text-align: left;">Specifies where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> is hosted -- required for metadata registration (i.e. hostname, and tags)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_DISABLE_CIRA_DOMAIN_NAME</td>
+<td style="text-align: left;">disable_cira_domain_name</td>
+<td style="text-align: left;">No Value</td>
+<td style="text-align: left;">When AMT is on a network that matches the specified domain name, <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> is disabled. If not set, a random domain name is generated to ensure <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection on any network.</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CONSUL_ENABLED</td>
+<td style="text-align: left;">consul_enabled</td>
+<td style="text-align: left;"><code>false</code></td>
+<td style="text-align: left;">Enable/disable use of Consul for centralized configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CONSUL_HOST</td>
+<td style="text-align: left;">consul_host</td>
+<td style="text-align: left;"><code>localhost</code></td>
+<td style="text-align: left;">Address of where Consul is hosted</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CONSUL_PORT</td>
+<td style="text-align: left;">consul_port</td>
+<td style="text-align: left;"><code>8500</code></td>
+<td style="text-align: left;">Consul Port to listen on</td>
+</tr>
+<tr>
+<td style="text-align: left;">RPS_CONSUL_KEY_PREFIX</td>
+<td style="text-align: left;">consul_key_prefix</td>
+<td style="text-align: left;"><code>RPS</code></td>
+<td style="text-align: left;">Default prefix key for Consul data structure</td>
 </tr>
 </tbody>
 </table>

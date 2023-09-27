@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mps-configuration-options" class="md-skip">
+        <a href="#mps-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -492,6 +492,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -783,6 +797,20 @@
           Get Help
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -1185,6 +1213,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -1502,12 +1544,39 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Configuration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mps-configuration" class="md-nav__link">
+    MPS Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2048,6 +2117,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         Troubleshooting
       </a>
@@ -2151,115 +2234,241 @@
   </a>
 
 
-<h1 id="mps-configuration-options"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration Options<a class="headerlink" href="#mps-configuration-options" title="Permanent link">&para;</a></h1>
+  <h1>Configuration</h1>
+
+<h2 id="mps-configuration"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration<a class="headerlink" href="#mps-configuration" title="Permanent link">&para;</a></h2>
+<p>The <code>.env</code> variables set have priority and overwrite the corresponding <code>.mpsrc</code> variables.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Environment Variable</th>
+<th style="text-align: left;"><code>.env</code> Variable Name</th>
+<th style="text-align: left;"><code>.mpsrc</code> Variable Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">MPS_IMAGE</td>
-<td style="text-align: left;">mps-microservice:v1</td>
-<td style="text-align: left;">Only used when using docker-compose.yml. Specifies image to use for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></td>
-</tr>
-<tr>
-<td style="text-align: left;">MPS_USE_VAULT</td>
-<td style="text-align: left;">true</td>
-<td style="text-align: left;">Whether or not the vault should be used</td>
-</tr>
-<tr>
 <td style="text-align: left;">MPS_VAULT_ADDRESS</td>
-<td style="text-align: left;">http://vault:8200</td>
+<td style="text-align: left;">vault_address</td>
+<td style="text-align: left;"><code>http://vault:8200</code> or <code>http://localhost:8200</code></td>
 <td style="text-align: left;">Address of where the vault is hosted</td>
 </tr>
 <tr>
-<td style="text-align: left;">MPS_VAULT_TOKEN</td>
-<td style="text-align: left;">myroot</td>
-<td style="text-align: left;">Token used to access the vault</td>
-</tr>
-<tr>
-<td style="text-align: left;">MPS_SECRETS_PATH</td>
-<td style="text-align: left;">secret/data/</td>
-<td style="text-align: left;">Path to where secrets are stored in the vault</td>
-</tr>
-<tr>
 <td style="text-align: left;">MPS_GENERATE_CERTS</td>
-<td style="text-align: left;">true</td>
+<td style="text-align: left;">generate_certificates</td>
+<td style="text-align: left;"><code>true</code></td>
 <td style="text-align: left;">Enables/Disables generation of self signed certificates based on MPS_COMMON_NAME</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_COMMON_NAME</td>
-<td style="text-align: left;">localhost</td>
-<td style="text-align: left;">Development system's IP address. <br> <strong>Note:</strong> For this guide, you <strong>cannot</strong> use localhost because the managed device would be unable to reach the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers.</td>
+<td style="text-align: left;">common_name</td>
+<td style="text-align: left;"><code>localhost</code></td>
+<td style="text-align: left;">Common Name of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server. May be an IP or FQDN. Used when generating self-signed <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> certificate.</td>
 </tr>
 <tr>
-<td style="text-align: left;">MPS_PORT</td>
-<td style="text-align: left;">4433</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">MPSPORT</td>
+<td style="text-align: left;">port</td>
+<td style="text-align: left;"><code>4433</code></td>
+<td style="text-align: left;"><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection port to listen on</td>
 </tr>
 <tr>
-<td style="text-align: left;">MPS_WEB_PORT</td>
-<td style="text-align: left;">3000</td>
+<td style="text-align: left;">MPSWEBPORT</td>
+<td style="text-align: left;">web_port</td>
+<td style="text-align: left;"><code>3000</code></td>
+<td style="text-align: left;">Web API port to listen on</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_DEBUG</td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">NOT USED</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_WEB_ADMIN_USER</td>
-<td style="text-align: left;">n/a</td>
-<td style="text-align: left;">Specifies the username for API authentication</td>
+<td style="text-align: left;">web_admin_user</td>
+<td style="text-align: left;">No Value</td>
+<td style="text-align: left;">Username for <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and API authentication</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_WEB_ADMIN_PASSWORD</td>
-<td style="text-align: left;">n/a</td>
-<td style="text-align: left;">Specifies the password for API authentication</td>
-</tr>
-<tr>
-<td style="text-align: left;">MPS_WEB_AUTH_ENABLED</td>
-<td style="text-align: left;">n/a</td>
-<td style="text-align: left;">Specifies whether or not to enable <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> authentication</td>
+<td style="text-align: left;">web_admin_password</td>
+<td style="text-align: left;">No Value</td>
+<td style="text-align: left;">Password for <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and API authentication</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_HTTPS</td>
-<td style="text-align: left;">true</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>true</code></td>
 <td style="text-align: left;">Specifies whether or not to enable https</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_TLS_OFFLOAD</td>
-<td style="text-align: left;">false</td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;"><code>false</code></td>
+<td style="text-align: left;">NOT USED</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_LOG_LEVEL</td>
-<td style="text-align: left;">info</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>info</code></td>
 <td style="text-align: left;">Controls the level of logging provided in the service. Options are (in order of increasing detail): <code>error</code>, <code>warn</code>, <code>info</code>, <code>verbose</code>, <code>debug</code>, and <code>silly</code>.</td>
 </tr>
 <tr>
+<td style="text-align: left;">MPS_JWT_EXPIRATION</td>
+<td style="text-align: left;">jwt_expiration</td>
+<td style="text-align: left;"><code>1440</code></td>
+<td style="text-align: left;">The default expiration in minutes for the JWT Token. Default is 24 hours.</td>
+</tr>
+<tr>
 <td style="text-align: left;">MPS_JWT_SECRET</td>
-<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">jwt_secret</td>
+<td style="text-align: left;">No Value</td>
 <td style="text-align: left;">Secret used for generating a JWT Token. IMPORTANT: This must match the <code>secret</code> in your <code>Kong.yaml</code> file for the jwt plugin configuration.</td>
 </tr>
 <tr>
 <td style="text-align: left;">MPS_JWT_ISSUER</td>
-<td style="text-align: left;">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</td>
+<td style="text-align: left;">jwt_issuer</td>
+<td style="text-align: left;"><code>9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</code></td>
 <td style="text-align: left;">The issuer that will be populated in the token. This is a not considered a secret. IMPORTANT: This must match the <code>key:</code> property in the <code>Kong.yaml</code> file for the jwt plugin configuration.</td>
 </tr>
 <tr>
-<td style="text-align: left;">MPS_JWT_EXPIRATION</td>
-<td style="text-align: left;">1440</td>
-<td style="text-align: left;">The default expiration in minutes for the JWT Token. Default is 24 hours.</td>
-</tr>
-<tr>
 <td style="text-align: left;">MPS_MQTT_ADDRESS</td>
+<td style="text-align: left;">mqtt_address</td>
 <td style="text-align: left;">No Value</td>
 <td style="text-align: left;">Address of where the mqtt broker is hosted. Mqtt container is named <code>mosquitto</code> and is open to port <code>8883</code>. Thus unless setting are changed the value should be either empty (off) or <code>mqtt://mosquitto:8883</code> (on)</td>
 </tr>
 <tr>
+<td style="text-align: left;">MPS_COUNTRY</td>
+<td style="text-align: left;">country</td>
+<td style="text-align: left;"><code>US</code></td>
+<td style="text-align: left;">Country for Self-Signed Certificate</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_COMPANY</td>
+<td style="text-align: left;">company</td>
+<td style="text-align: left;"><code>NoCorp</code></td>
+<td style="text-align: left;">Company for Self-Signed Certificate</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_WEB_AUTH_ENABLED</td>
+<td style="text-align: left;">web_auth_enabled</td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> provides a simple auth using <code>web_admin_user</code> and <code>web_admin_password</code>. Set web_auth_enabled to <code>false</code> to disable this auth mechanism.</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_VAULT_TOKEN</td>
+<td style="text-align: left;">vault_token</td>
+<td style="text-align: left;"><code>myroot</code></td>
+<td style="text-align: left;">Token used to access the vault</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_SECRETS_PATH</td>
+<td style="text-align: left;">secrets_path</td>
+<td style="text-align: left;"><code>secret/data/</code></td>
+<td style="text-align: left;">Path for where secrets are stored in the vault</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_SECRETS_PROVIDER</td>
+<td style="text-align: left;">secrets_provider</td>
+<td style="text-align: left;"><code>vault</code></td>
+<td style="text-align: left;">Secret provider used (<code>vault</code>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CERT_FORMAT</td>
+<td style="text-align: left;">cert_format</td>
+<td style="text-align: left;"><code>file</code></td>
+<td style="text-align: left;">Format to store certificates to Vault</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_DATA_PATH</td>
+<td style="text-align: left;">data_path</td>
+<td style="text-align: left;"><code>../private/data.json</code></td>
+<td style="text-align: left;">File path to store Vault data locally</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CERT_PATH</td>
+<td style="text-align: left;">cert_path</td>
+<td style="text-align: left;"><code>../private</code></td>
+<td style="text-align: left;">File path to store certificates in Vault locally</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CORS_ORIGIN</td>
+<td style="text-align: left;">cors_origin</td>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">(NOT USED) Allowed origin for CORS policy</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CORS_HEADER</td>
+<td style="text-align: left;">cors_header</td>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">(NOT USED) Allowed headers</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CORS_METHODS</td>
+<td style="text-align: left;">cors_methods</td>
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">(NOT USED) Allowed methods</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_DB_PROVIDER</td>
+<td style="text-align: left;">db_provider</td>
+<td style="text-align: left;"><code>postgres</code></td>
+<td style="text-align: left;">Database provider used (<code>postgres</code>, <code>nosql</code>)</td>
+</tr>
+<tr>
 <td style="text-align: left;">MPS_CONNECTION_STRING</td>
-<td style="text-align: left;"><code>postgresql://postgresadmin@localhost:5432/mpsdb?sslmode=no-verify</code></td>
+<td style="text-align: left;">connection_string</td>
+<td style="text-align: left;"><code>postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@localhost:5432/mpsdb?sslmode=no-verify</code></td>
 <td style="text-align: left;">The database connection string</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_INSTANCE_NAME</td>
+<td style="text-align: left;">instance_name</td>
+<td style="text-align: left;"><code>localhost</code></td>
+<td style="text-align: left;">Value used to record and address specific mps instances. (i.e containerIp in k8s)</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_TLS_CONFIG</td>
+<td style="text-align: left;">mps_tls_config</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Used only if <code>generate_certificates = false</code> Cert settings for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_WEB_TLS_CONFIG</td>
+<td style="text-align: left;">web_tls_config</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NOT USED</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_REDIRECTION_EXPIRATION_TIME</td>
+<td style="text-align: left;">redirection_expiration_time</td>
+<td style="text-align: left;"><code>5</code></td>
+<td style="text-align: left;">Default expiration for redirection token</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CONSUL_ENABLED</td>
+<td style="text-align: left;">consul_enabled</td>
+<td style="text-align: left;"><code>false</code></td>
+<td style="text-align: left;">Enable/disable use of Consul for centralized configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CONSUL_HOST</td>
+<td style="text-align: left;">consul_host</td>
+<td style="text-align: left;"><code>localhost</code></td>
+<td style="text-align: left;">Address of where Consul is hosted</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CONSUL_PORT</td>
+<td style="text-align: left;">consul_port</td>
+<td style="text-align: left;"><code>8500</code></td>
+<td style="text-align: left;">Consul Port to listen on</td>
+</tr>
+<tr>
+<td style="text-align: left;">MPS_CONSUL_KEY_PREFIX</td>
+<td style="text-align: left;">consul_key_prefix</td>
+<td style="text-align: left;"><code>MPS</code></td>
+<td style="text-align: left;">Default prefix key for Consul data structure</td>
 </tr>
 </tbody>
 </table>
