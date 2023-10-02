@@ -1,15 +1,18 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
+<div style="text-align:center;">
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/U8D-WCgVD_4?si=23o5nqBL5X2nb1ly" title="Open AMT September Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<br>
+
 !!! note "Note From the Team"
     
     Greetings everyone,
 
-    While Arizona experiences a welcome cooldown, the Open AMT Cloud Toolkit team is cranking up the heat with our latest release! In this month's update, we're thrilled to announce two exciting new features added to RPC-Go. It's now more versatile than ever with ACM activation and Wifi configuration capabilities.
+    Fall is here and just like the changing of the seasons, this release contains the most recent changes to Open AMT Cloud Toolkit!  Make sure to checkout Bryan's video where he talks about the new changes in this release or you can get the details in the "What's New" section.  The team has some exciting new features we're working on in the month of October that we can't wait for you to see.  You can follow our day to day progress over at our new Sprint Planning project board (link at the bottom)! 
 
-    With these enhancements, RPC-Go empowers users to configure AMT into either ACM or CCM without the necessity of engaging with a cloud service. This newfound autonomy provides our customers with a level of flexibility that was previously unattainable. Furthermore, RPC-Go now extends its support to configure any type of wifi profile that AMT supports locally.
-
-    We're excited about these advancements and look forward to hearing your feedback.
+    We are genuinely excited about this release and are eager to hear your valuable feedback. Your input plays a crucial role in enhancing the Open AMT Cloud Toolkit further.
 
     *Best wishes,*  
     *The Open AMT Cloud Toolkit Team*
@@ -17,23 +20,38 @@
 
 ## What's New?
 
-:material-new-box: **New Feature: Local ACM Activation**
+:material-update: **DB Update Required**
 
-With this release, you can now activate AMT into ACM just using RPC using the `-local` flag.  Similar to local CCM activation, local ACM activation will require secrets to be passed to the AMT device, so users of this feature will need to have high trust in the local OS.  View full command line options in [Activate Device Locally](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#activate-the-device-locally)
-
-Local activate command:
-``` bash
-rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
-``` 
-
-:material-new-box: **New Feature: Local Wifi Configuration**
-
-In this release, we have added the ability to configure any wifi profile, not just 802.1x wifi profiles.  Users will also be able to configure multiple wifi profiles at the same time by providing the details either via the command line or by passing in a config file.  View full command line options in [`addwifisettings` RPC Configure command](https://open-amt-cloud-toolkit.github.io/docs/2.14/Reference/RPC/commandsRPC/#addwifisettings)
-
-Local wifi configuration command:
-```bash
-rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
+Run the following SQL script to alter constraints before upgrading the services.
+``` SQL
+ALTER TABLE domains
+DROP CONSTRAINT IF EXISTS domains_pkey;
+DROP INDEX CONCURRENTLY IF EXISTS lower_name_suffix_idx;
+ALTER TABLE domains
+ADD CONSTRAINT domainname UNIQUE (name, tenant_id);
+ALTER TABLE domains
+ADD PRIMARY KEY (name, domain_suffix, tenant_id);
 ```
+
+:material-new-box: **New Feature: NoSQL Supported in MPS**
+
+We've added NoSQL (not only SQL) DB support to MPS to aid with future unstructured device data that we'll be storing in the MPS DB.  To aid with this, we have implemented a new database interface using the MongoAPI in the src/data/mongo folder.  This has been tested against multiple MongoAPI compatible databases and works well without changes to our implementation.  We look forward to any feedback you have on this new capability
+
+:material-new-box: **New Feature: Enhanced 'amtinfo' command**
+
+We have updated RPC-Go's amtinfo command to allow users to better understand what certificates are currently in AMT.
+
+- amtinfo -userCert flag allows you to retrieve certificates associated with specific AMT configuration options.  For example, the CIRA certificate, TLS certificates, or 802.1x certificates.
+
+- amtinfo -cert flag now provides information about both system and user certificates.
+
+:material-new-box: **New Feature: Sample UI Improvements**
+
+We have made two improvements to the Sample UI in this release.
+
+- **Edit Tags** You can now efficiently manage tags for individual systems and perform bulk tag changes across multiple systems via the Sample Web UI.
+
+- **User Consent** The Sample Web UI now respects user consent settings in AMT, ensuring that it prompts for a user consent code even when the device is configured under Active Configuration Management (ACM)
 
 ## Get the Details
 
@@ -41,81 +59,69 @@ rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
 
 #### RPS
 
-v2.16.1
+v2.16.4
 
-- Fix: blocks AMT 11.12 system activation if build number < 3000 ([#1176](https://github.com/open-amt-cloud-toolkit/rps/issues/1176)) (#a3e527b)
+- fix: allow same domain suffix across tenants ([#1214](https://github.com/open-amt-cloud-toolkit/rps/issues/1214)) (#ef9cd45) 
 
-v2.16.0
+v2.16.3
 
-- Feat: support for sha1 hash added via mebx ([#1155](https://github.com/open-amt-cloud-toolkit/rps/issues/1155)) (#b630e11)
+- fix state-machine: unconfigure continues on error for TLS deletions ([#1215](https://github.com/open-amt-cloud-toolkit/rps/issues/1215)) (#b68f168)
+
+v2.16.2
+
+- fix: - adds shouldRetry guards ([#1207](https://github.com/open-amt-cloud-toolkit/rps/issues/1207)) (#f17d28a)
+
+
+#### MPS
+
+v2.12.0
+
+- feat: enable tenant check on AMT operations (#a4010b1)
+- feat: add support for mongo compatible nosql databases ([#1066](https://github.com/open-amt-cloud-toolkit/mps/issues/1066)) (#18096bc) 
+
 
 #### RPC
 
-v2.14.2
+v2.16.0
 
-- ensure warning for CCM deactivation password flag
+- feat: adds uuid flag to activate command ([bae75fe](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/bae75fea35b4faa0258447ac1b10c7e078ce1f9b)), closes [#163](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/163)
 
-v2.14.1
+v2.15.2
 
-- addwifisettings - track added certs to prevent duplicates error
+- fix: trigger ci build for release with docker ([0bbbf78](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/0bbbf78bc40abf72d7c0a2a8a98f1fd2b4b42306))
 
-v2.14.0
+v2.15.1
 
-- local wifi configuration
+- fix: add prompt for password acm local deactivation
+- fix: addwifisettings validate unique priorities
 
-v2.13.1
+v2.15.0
 
-- update ProjectVersion to 2.13.0
-
-v2.13.0
-
-- activate in acm using local command
+- feat: amtinfo display user certificates
 
 #### Sample Web UI
 
-v2.13.1
+v2.14.0
 
-- remove UI override of AMT feature settings ([#1328](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1328)) (#510dff3)
-- update status message ([#1334](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1334)) (#bd80ebf)
+- feat: edit device tags
 
-v2.13.0
+v2.13.2
 
-- display component versions ([#1267](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1267)) (#2dbca39)
-- fix dark theme (#cdea729)
+- fix: version call now occurs after login (#a80ffb0)
 
-#### wsman-messages
-
-v5.5.1
-
-- update build tasks, package.json and changelog (#9274dab)
 
 #### go-wsman-messages
 
-v1.8.2
+v1.8.4
 
-- AddWifiSettings check for empty client cert ([c19c9b4](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/c19c9b42d40ae15b28bfabc2b4e6daef0b489b8f))
+- fix: handle qop="auth-int, auth" header ([2b5a4e6](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/2b5a4e6e4d1e7412bc9f0140925701d47a56245c))
 
-v1.8.1
+v1.8.3
 
-- undo breaking changes ([23c91ed](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/23c91ed35af23f5e940f5cd1ffdd04d22f72bb9f))
+- fix wsman: authorize uri is always /wsman ([f2414f3](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/f2414f32eab5db593ceaaad8410a1a2a9e4815bb))
 
-v1.8.0
+## Project Boards
 
-- Adds structs to parse xml for deleting all wifi configs ([d64d4d4](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/d64d4d402a30e36474c56260d863aabded52a092))
-- amt: adds amt PublicPrivateKeyPair struct for response ([eca5a6e](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/eca5a6ec878540b8aaca44fc61d1a1fc3505ce74))
-- amt: adds pull responses for publickey and publicprivate ([10bf4a8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/10bf4a8e9e48548630d5a4555539b2d9e99331c1))
-- amt: adds wifiportconfiguration.AddWiFiSettingsResponse ([2158757](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/21587573d5426e575ea36ada4d1e39ec7348cc8d))
-- cim: adds concrete.dependency support ([ae8f3d3](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ae8f3d3d5fdb639a4fc145d54e8c0e19b2be93f6))
-- cim: adds credential.context support ([6db69ad](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6db69ad165329a1e4f5f73e6a62a69f27cf665ff))
+Check out our new [Sprint Planning](https://github.com/orgs/open-amt-cloud-toolkit/projects/10/views/2) project board to see what stories the dev team is actively working on, what is in our backlog, and what is planned for the next sprint.
 
-v1.7.0
-
-- cim: adds responses for WiFiPortConfigurationService and WifiPort ([6cbaa36](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/6cbaa36605d4855fbcf97d2fe2cfb6dd3777b6c7))
-
-v1.6.0
-
-- ips: add additional strongly typed output for ([90aa393](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/90aa393b477d12dfafc00de94307f9adfb0ad42d)), closes [#18115](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/18115)
-
-## Project Board
-
-Check out our new [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/5) project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!
+Check out our [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/5) project board to see issues and prioritized items we're working on across all of our repositories.  You'll also see what is coming in our next release!
