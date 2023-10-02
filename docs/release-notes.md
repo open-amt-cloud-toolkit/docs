@@ -23,6 +23,7 @@
 :material-update: **DB Update Required**
 
 Run the following SQL script to alter constraints before upgrading the services.
+
 ``` SQL
 ALTER TABLE domains
 DROP CONSTRAINT IF EXISTS domains_pkey;
@@ -33,17 +34,28 @@ ALTER TABLE domains
 ADD PRIMARY KEY (name, domain_suffix, tenant_id);
 ```
 
+[More information or detailed steps can be found in Upgrade Toolkit Version.](./Deployment/upgradeVersion.md)
+
+The goal of this change is to loosen constraints on some unique Domain fields. This will now enable identical Domain profile names and DNS suffixes to be shared across different tenants. The following is an example of what was previously restricted, but now allowed. 
+
+```
+Name          DNS Suffix     TenantId
+
+domainName1   example.com    1
+domainName1   exmaple.com    2
+```
+
 :material-new-box: **New Feature: NoSQL Supported in MPS**
 
-We've added NoSQL (not only SQL) DB support to MPS to aid with future unstructured device data that we'll be storing in the MPS DB.  To aid with this, we have implemented a new database interface using the MongoAPI in the src/data/mongo folder.  This has been tested against multiple MongoAPI compatible databases and works well without changes to our implementation.  We look forward to any feedback you have on this new capability
+We've added NoSQL (not only SQL) DB support to MPS to aid with future unstructured device data that we'll be storing in the MPS DB.  To aid with this, we have implemented a new database interface using the MongoAPI in the src/data/mongo folder.  This has been tested against multiple MongoAPI compatible databases and works well without changes to our implementation.  We look forward to any feedback you have on this new capability.
 
-:material-new-box: **New Feature: Enhanced 'amtinfo' command**
+:material-new-box: **New Feature: Enhanced `amtinfo` command**
 
-We have updated RPC-Go's amtinfo command to allow users to better understand what certificates are currently in AMT.
+We have updated RPC-Go's `amtinfo` command to allow users to better understand what certificates are currently in AMT.
 
-- amtinfo -userCert flag allows you to retrieve certificates associated with specific AMT configuration options.  For example, the CIRA certificate, TLS certificates, or 802.1x certificates.
+- The `amtinfo -userCert` flag allows you to retrieve certificates associated with specific AMT configuration options.  For example, the CIRA certificate, TLS certificates, or 802.1x certificates.
 
-- amtinfo -cert flag now provides information about both system and user certificates.
+- The `amtinfo -cert -password amtPassword` flag now provides information about both system and user certificates.
 
 :material-new-box: **New Feature: Sample UI Improvements**
 
@@ -51,7 +63,7 @@ We have made two improvements to the Sample UI in this release.
 
 - **Edit Tags** You can now efficiently manage tags for individual systems and perform bulk tag changes across multiple systems via the Sample Web UI.
 
-- **User Consent** The Sample Web UI now respects user consent settings in AMT, ensuring that it prompts for a user consent code even when the device is configured under Active Configuration Management (ACM)
+- **User Consent** The Sample Web UI now respects user consent settings in AMT, ensuring that it prompts for a user consent code even when the device is configured under Admin Control Mode (ACM).
 
 ## Get the Details
 
