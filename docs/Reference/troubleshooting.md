@@ -89,7 +89,7 @@ This can occur due to the WSMan messages being received out of order during comm
 
 ### RPC
 
-More information about specific RPC error codes can be found in the [RPC Library Documentation](../RPC/libraryRPC/#rpc-error-code-charts).
+More information about specific RPC error codes can be found in the [RPC Library Documentation](./RPC/libraryRPC.md#rpc-error-code-charts).
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |

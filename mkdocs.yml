@@ -1,6 +1,6 @@
 # Project information
 site_name: "Open Active Management Technology Cloud Toolkit"
-site_url: "https://open-amt-cloud-toolkit.github.io/docs"
+site_url: "https://open-amt-cloud-toolkit.github.io/docs/"
 repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
@@ -23,6 +23,7 @@ theme:
     - search.highlight
     - navigation.top
     - toc.integrate
+    - content.code.copy
   custom_dir: ./docs/overrides
   palette:
     # Palette toggle for automatic mode
@@ -33,7 +34,7 @@ theme:
     
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: custom 
+      primary: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -175,6 +176,16 @@ plugins:
   - macros
   - img2fig
 extra:
+  social:
+    - icon: fontawesome/brands/discord 
+      link: https://discord.gg/yrcMp2kDWh
+      name: Join Us on Discord
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/search?q=intel%2Foact
+      name: Find our Dockerhub Images
+    - icon: fontawesome/brands/github 
+      link: https://github.com/open-amt-cloud-toolkit
+      name: Open AMT Github Repository
   version:
     provider: mike
     default:
