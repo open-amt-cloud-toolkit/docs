@@ -160,7 +160,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |152       |IP synchronization failed                |
 |153       |Change Password failed                   |
 
-#### (1000-3000) Amt PT Status Code Block
+#### (1000-3000) AMT PT Status Code Block
 |Error Code| Message                                 |
 |----------|-----------------------------------------|
-|1000      |Amt Pt Status Code Base                  |
+|1000      |AMT Pt Status Code Base                  |
