@@ -4,7 +4,7 @@
 
 ### Upgrade to 2.15 (Sep 23) from 2.14 (Aug 23)
 
-The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database.
+The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database. More information about why we've made this change can be found in the [September 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.15/release-notes/#whats-new).
 
 1. Run the following SQL script to alter constraints before upgrading the services.
 
