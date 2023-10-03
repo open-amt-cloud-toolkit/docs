@@ -180,15 +180,16 @@ extra:
     default:
       - rapid
       - lts
+      - dev
   repoVersion:
-    mpsAPI: 2.11.0
+    mpsAPI: 2.12.0
     rpsAPI: 2.16.0
-    oamtct: 2.14.0
-    rpc_go: 2.14.2
+    oamtct: 2.15.0
+    rpc_go: 2.16.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.0.10
-    ui_toolkit_react: 3.0.2
-    ui_toolkit_angular: 6.0.1
+    ui_toolkit: 2.0.12
+    ui_toolkit_react: 3.0.4
+    ui_toolkit_angular: 6.0.3
   docsSite:
     ltsVersion: 2.0
   analytics:
