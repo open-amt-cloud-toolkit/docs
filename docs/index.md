@@ -2,7 +2,7 @@
 
 # Overview
 
-**Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** provides open-source, modular microservices and libraries for integration of Intel® Active Management Technology (Intel® AMT). As an open source implementation, the toolkit makes it easier for IT departments and independent software vendors (ISVs) to adopt, integrate, and customize Out-of-band Management (OOB Management) solutions for Intel vPro® Platforms.
+**Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
 
 ??? note "Long-Term Support (LTS) Version"
     Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
