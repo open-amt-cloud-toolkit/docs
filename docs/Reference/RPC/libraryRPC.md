@@ -114,6 +114,10 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |31        |Missing or incorrect Primary DNS         |
 |32        |Missing or incorrect Secondary DNS       |
 |33        |Invalid Parameter Combination            |
+|34        |Failed Reading Configuration             |
+|35        |Missing Or Invalid Configuration         |
+|36        |Invalid User Input                       |
+|37        |Invalid UUID                             |
 
 #### (70-99) Connection Errors
 
@@ -155,3 +159,8 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |151       |Hostname synchronization failed          |
 |152       |IP synchronization failed                |
 |153       |Change Password failed                   |
+
+#### (1000-3000) AMT PT Status Code Block
+|Error Code| Message                                 |
+|----------|-----------------------------------------|
+|1000      |AMT Pt Status Code Base                  |
