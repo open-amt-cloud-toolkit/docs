@@ -95,6 +95,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 | -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
 | -token string      | JWT Token for Authorization                                                                                                     |
 | -u string          | WebSocket address of server to activate against                                                                                 |
+| -uuid string       | Override AMT device UUID for use with **non-CIRA** workflow and deployments. This is for specific use cases where the hardware does not have a correctly assigned or formatted UUID. This is **NOT recommended** in other situations and could potentially break features. <br><br> Input must match standard UUID alphanumeric, hyphenated format (e.g. 4c4c4544-005a-3510-8047-b4c04f564433). |
 
 #### `activate` Local-Specific Options
 
