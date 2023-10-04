@@ -187,7 +187,7 @@ extra:
     oamtct: 2.15.0
     rpc_go: 2.16.0
     rpc_c: 2.0.0
-    ui_toolkit: 2.0.12
+    ui_toolkit: 2.0.13
     ui_toolkit_react: 3.0.4
     ui_toolkit_angular: 6.0.3
   docsSite:
