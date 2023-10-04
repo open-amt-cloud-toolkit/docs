@@ -21,7 +21,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 ##  Build the RPC
 
 !!! tip "Flexible Deployment - RPC as a Library"  
-        The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/libraryRPC/).
+        The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../Reference/RPC/libraryRPC.md).
 
 **To build the executable:**
 
