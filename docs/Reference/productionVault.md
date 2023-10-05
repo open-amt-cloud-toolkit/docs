@@ -4,7 +4,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
 
 ## Configure the Toolkit
 
-1. Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the [Get Started guide](../../GetStarted/setup).
+1. Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the [Get Started guide](../GetStarted/setup.md).
 
 2. Update the vault section in the `docker-compose.yml` file with the section below.
     ``` yaml
