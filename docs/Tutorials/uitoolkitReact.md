@@ -102,7 +102,7 @@ The code snippet below adds KVM control to the React application.
     | :----------- | :-------------- |
     | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Reference/guids.md). |
     | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your MPS Server. <br><br> **When using Kong**, `/mps/ws/relay` must be appended to the IP or FQDN. |
-    | `authToken` | **Provide valid JWT.** Redirection requires a redirection-specific authentication token. [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get a auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}. |
+    | `authToken` | **Provide valid JWT.** Redirection requires a redirection-specific authentication token. [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get a auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-jwt){target=_blank}. |
 
 
     ``` javascript hl_lines="8 9 11"
@@ -146,7 +146,7 @@ You will see the errors in the following scenarios:
 - Compilation errors if the ui-toolkit was not downloaded and installed to your react app.
 - MPS/RPS server not running, appropriate controls will fail to work.
 - MPS server running and device not connected.
-- Incorrect or invalid JWT for authToken, see instructions on [Generating a JWT by using an Authorize API call](../apiTutorial/#generate-a-jwt){target=_blank}.
+- Incorrect or invalid JWT for authToken, see instructions on [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-jwt){target=_blank}.
     
     !!! example "Example authToken Format from API Call"
 

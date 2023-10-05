@@ -44,8 +44,8 @@ Sometimes, newer features may be available as **pre-release**. These are feature
 
 ### How do I find more information about the MPS and RPS configuration files and security details?
 
-Details and descriptions of configuration options can be found in [MPS Configuration](../MPS/configuration/) and [RPS Configuration](../RPS/configuration/).
+Details and descriptions of configuration options can be found in [MPS Configuration](./MPS/configuration.md) and [RPS Configuration](./RPS/configuration.md).
 
-Security information can be found in [MPS Security Information](../MPS/securityMPS/) and [RPS Security Information](../RPS/securityRPS/).
+Security information can be found in [MPS Security Information](./MPS/securityMPS.md) and [RPS Security Information](./RPS/securityRPS.md).
 
 <br>

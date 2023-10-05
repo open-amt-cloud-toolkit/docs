@@ -115,7 +115,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **[vcpkg](https://github.com/microsoft/vcpkg):** A command-line application that helps manage package creation and C and C++ libraries on Windows*, Linux*, and MacOS*.
 
-**[Vault storage]((https://deepsource.io/blog/setup-vault-kubernetes/#:~:text=Vault%20provides%20a%20Kubernetes%20authentication,vault%20auth%20enable%20kubernetes%20Success!)):** A service that manages encryption and storage of infrastructure secrets. 
+**[Vault storage](https://www.vaultproject.io/):** A service that manages encryption and storage of infrastructure secrets. 
 
 ## W
 
