@@ -1,0 +1,111 @@
+--8<-- "References/abbreviations.md"
+
+MPS can support NoSQL databases. This is an optional alternative to the existing SQL-based reference deployment that uses Postgres. RPS will still require a relational database such as PostgreSQL.
+
+NoSQL support is integrated using the MongoDB API. This does not just limit integration options to MongoDB itself, but can utilize other providers such as:
+
+- [Azure Cosmos DB](https://azure.microsoft.com/en-us/products/cosmos-db)
+- [Amazon DocumentDB](https://aws.amazon.com/documentdb/)
+- [Oracle Autonomous JSON Database](https://www.oracle.com/autonomous-database/autonomous-json-database/)
+
+## MongoDB Docker Deployment
+
+The below steps will show how to modify the basic Open AMT Docker deployment to integrate MongoDB for MPS to store and reference device data.
+
+1. Stop any running containers.
+
+    ``` bash
+    docker compose down -v
+    ```
+  
+### Edit Environment Variables
+
+1. Open the `.env` file.
+
+2. Add a new environment variable for MPS.
+
+    ``` hl_lines="5"
+    ...
+    MPS_JWT_SECRET=secret
+    MPS_JWT_ISSUER=9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc
+    MPS_MQTT_ADDRESS=
+    MPS_DB_PROVIDER=mongo
+
+    # MPS ROUTER
+    PORT=8003
+    ...
+    ```
+
+3. Save the file.
+
+### Edit `docker-compose.yml`
+
+1. Open the `docker-compose.yml` file.
+
+2. Add the Mongo image and configuration.
+
+    ``` yaml
+      mongo:
+        image: mongo
+        restart: always
+        ports:
+          - 27017:27017
+        networks:
+          - openamtnetwork
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: ${POSTGRES_USER}
+          MONGO_INITDB_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
+    ```
+
+3. Update connection strings of `mps` and `mpsrouter`.
+
+    ``` yaml hl_lines="2" title="mpsrouter"
+    environment:
+      MPS_CONNECTION_STRING: mongodb://${POSTGRES_USER}:${POSTGRES_PASSWORD}@mongo:27017
+      PORT: ${PORT}
+      MPS_PORT: ${MPSWEBPORT}
+    ```
+
+    ``` yaml hl_lines="6" title="mps"
+    environment: 
+      MPS_INSTANCE_NAME: ''
+      MPS_SECRETS_PATH: ${SECRETS_PATH}
+      MPS_VAULT_TOKEN: ${VAULT_TOKEN}
+      MPS_VAULT_ADDRESS: ${VAULT_ADDRESS}
+      MPS_CONNECTION_STRING: mongodb://${POSTGRES_USER}:${POSTGRES_PASSWORD}@mongo:27017
+      MPS_CONSUL_ENABLED: ${CONSUL_ENABLED}
+      MPS_CONSUL_HOST: ${CONSUL_HOST} 
+      MPS_CONSUL_PORT: ${CONSUL_PORT}
+      MPS_DB_PROVIDER: ${MPS_DB_PROVIDER}
+    ```
+
+4. Save the file.
+
+### Deploy Stack
+
+1.  Start the containers.
+    
+    ```
+    docker compose up -d
+    ```
+
+2. Check that all the containers are running and healthy.
+
+    ```
+    {% raw %}
+    docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
+    {% endraw %}
+    ```
+    
+    !!! success
+        ``` bash hl_lines="9"
+        IMAGE                               STATUS                        NAMES
+        intel/oact-rps:latest               Up 19 seconds (healthy)        open-amt-cloud-toolkit-rps-1      
+        hashicorp/vault                     Up 19 seconds                  open-amt-cloud-toolkit-vault-1    
+        intel/oact-mpsrouter:latest         Up 19 seconds (healthy)        open-amt-cloud-toolkit-mpsrouter-1
+        postgres:15                         Up 19 seconds (healthy)        open-amt-cloud-toolkit-db-1       
+        intel/oact-webui:latest             Up 19 seconds                  open-amt-cloud-toolkit-webui-1    
+        kong:3.1                            Up 19 seconds (healthy)        open-amt-cloud-toolkit-kong-1     
+        intel/oact-mps:latest               Up 19 seconds (healthy)        open-amt-cloud-toolkit-mps-1
+        mongo                               Up 19 seconds                  open-amt-cloud-toolkit-mongo-1
+        ```

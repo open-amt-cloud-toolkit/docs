@@ -73,10 +73,15 @@ nav:
       - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
     - Overview: Deployment/overview.md
-    - Centralized Configuration: Deployment/centralizedConfiguration.md
-    - Database Replacement: Deployment/database.md
-    - Secrets Management: Deployment/secrets.md
     - Upgrade Toolkit Version: Deployment/upgradeVersion.md
+    - Centralized Configuration:
+      - Enable Consul: Deployment/centralizedConfiguration.md
+    - Database:
+      - Schema Overview: Deployment/Database/schema.md
+      - SQL Database Replacement: Deployment/Database/database.md
+      - NoSQL Databases: Deployment/Database/nosql.md
+    - Secrets Management:
+      - Secrets Store Replacement: Deployment/secrets.md
   - Tutorials:
     - UI Toolkit KVM Module: Tutorials/uitoolkitReact.md
     - REST API Call: Tutorials/apiTutorial.md
