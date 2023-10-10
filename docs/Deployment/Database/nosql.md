@@ -14,7 +14,7 @@ NoSQL support is integrated using the MongoDB API. This does not just limit inte
 
 The below steps will show how to modify the basic [Open AMT Getting Started Docker deployment](../../GetStarted/setup.md) to integrate MongoDB for MPS to store and reference device data.
 
-1. Stop any running containers.
+1. Stop any running containers. This will wipe all data and devices will have to be reprovisioned against the new RPS/MPS servers.
 
     ``` bash
     docker compose down -v
@@ -44,7 +44,7 @@ The below steps will show how to modify the basic [Open AMT Getting Started Dock
 
 1. Open the `docker-compose.yml` file.
 
-2. Add the Mongo image and configuration.
+2. Add the Mongo image and configuration. This guide reuses the preexisting `POSTGRES_USER` and `POSTGRES_PASSWORD` environment variables for the MongoDB credentials and connection strings for easy configuration and demonstration. 
 
     ``` yaml
     mongo:
