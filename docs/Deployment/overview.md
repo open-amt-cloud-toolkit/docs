@@ -21,7 +21,7 @@ Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a n
 - [MS SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
 - [MariaDB](https://mariadb.org/)
 
-For more information about replacing the default toolkit database, see the [Database Replacement guide](./database.md).
+For more information about replacing the default toolkit database, see the [Database Replacement guide](./Database/database.md).
 
 ## Secrets Management
 

@@ -2,6 +2,8 @@
 
 MPS can support NoSQL databases. This is an optional alternative to the existing SQL-based reference deployment that uses Postgres. RPS will still require a relational database such as PostgreSQL.
 
+NoSQL databases come in a variety of types based on their data model. The main types are document, key-value, wide-column, and graph. They provide flexible schemas and scale easily with large amounts of data and high user loads.
+
 NoSQL support is integrated using the MongoDB API. This does not just limit integration options to MongoDB itself, but can utilize other providers such as:
 
 - [Azure Cosmos DB](https://azure.microsoft.com/en-us/products/cosmos-db)
@@ -10,7 +12,7 @@ NoSQL support is integrated using the MongoDB API. This does not just limit inte
 
 ## MongoDB Docker Deployment
 
-The below steps will show how to modify the basic Open AMT Docker deployment to integrate MongoDB for MPS to store and reference device data.
+The below steps will show how to modify the basic [Open AMT Getting Started Docker deployment](../../GetStarted/setup.md) to integrate MongoDB for MPS to store and reference device data.
 
 1. Stop any running containers.
 
@@ -22,7 +24,7 @@ The below steps will show how to modify the basic Open AMT Docker deployment to 
 
 1. Open the `.env` file.
 
-2. Add a new environment variable for MPS.
+2. Add a new environment variable in the MPS section.
 
     ``` hl_lines="5"
     ...
@@ -45,16 +47,16 @@ The below steps will show how to modify the basic Open AMT Docker deployment to 
 2. Add the Mongo image and configuration.
 
     ``` yaml
-      mongo:
-        image: mongo
-        restart: always
-        ports:
-          - 27017:27017
-        networks:
-          - openamtnetwork
-        environment:
-          MONGO_INITDB_ROOT_USERNAME: ${POSTGRES_USER}
-          MONGO_INITDB_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
+    mongo:
+      image: mongo
+      restart: always
+      ports:
+        - 27017:27017
+      networks:
+        - openamtnetwork
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: ${POSTGRES_USER}
+        MONGO_INITDB_ROOT_PASSWORD: ${POSTGRES_PASSWORD}
     ```
 
 3. Update connection strings of `mps` and `mpsrouter`.
@@ -109,3 +111,7 @@ The below steps will show how to modify the basic Open AMT Docker deployment to 
         intel/oact-mps:latest               Up 19 seconds (healthy)        open-amt-cloud-toolkit-mps-1
         mongo                               Up 19 seconds                  open-amt-cloud-toolkit-mongo-1
         ```
+
+3. Now, updates will be made to the `devices` collection when actions affecting an AMT device occur (e.g. Device Provisioning/Unprovisioning).
+
+<br>
