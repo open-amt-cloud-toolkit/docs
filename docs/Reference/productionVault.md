@@ -10,7 +10,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
     ``` yaml
     vault:
         restart: always
-        image: "vault"
+        image: hashicorp/vault
         networks:
           - openamtnetwork
         ports: 
