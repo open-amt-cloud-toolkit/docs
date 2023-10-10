@@ -7,7 +7,7 @@ To replace the database, update these services:
 - RPS 
 
 ## What You'll Do
-This guide focuses on updating the RPS with an MS SQL Server (MSSQL) relational database. 
+This guide focuses on updating RPS with an Microsoft SQL Server (MSSQL) relational database. 
 
 Here are the main tasks:
 
@@ -20,115 +20,8 @@ Here are the main tasks:
     The example implementation below provides a step-by-step outline of database deployment. However, it is intended as a general guideline. You will need to write specific source code to support your custom solution. 
 
 ## Review DB Schema
-The diagrams below illustrates the database schema and relationships. 
 
-### RPS
-  ```mermaid
-  erDiagram
-      DOMAIN {
-          string name
-          string domain_suffix
-          string provisioning_cert
-          string provisioning_cert_storage_format
-          string provisioning_cert_key
-          datetime creation_date
-          string created_by
-          string tenant_id
-      }
-  ```
-  ``` mermaid 
-  erDiagram
-      PROFILE o|--o| CIRACONFIGS : has
-      PROFILE ||--|{ PROFILES_WIRELESSCONFIGS : associated
-      PROFILE ||--o| IEEE8021XCONFIGS : has
-      PROFILE {
-        string profile_name
-        string activation
-        string amt_password
-        boolean generate_random_password
-        string cira_config_name
-        datetime creation_date
-        string created_by
-        string mebx_password
-        boolean generate_random_mebx_password
-        string[] tags
-        boolean dhcp_enabled
-        string tenant_id
-        int tls_mode
-        string user_consent
-        boolean ider_enabled
-        boolean kvm_enabled
-        boolean sol_enabled
-        string tls_signing_authority
-        string ieee8021x_profile_name
-      }
-      CIRACONFIGS 
-      CIRACONFIGS {
-        string cira_config_name
-        string mps_server_address
-        int mps_port
-        string user_name
-        string password
-        string common_name
-        int server_address_format
-        int auth_method
-        string mps_root_certificate
-        string proxydetails
-        string tenant_id
-      }
-
-      WIRELESSCONFIGS ||--|{ PROFILES_WIRELESSCONFIGS : belongs
-      WIRELESSCONFIGS ||--o| IEEE8021XCONFIGS : has
-      WIRELESSCONFIGS {
-        string wireless_profile_name
-        int authentication_method
-        int encryption_method
-        string ssid
-        int psk_value
-        string psk_passphrase
-        int[] link_policy
-        datetime creation_date
-        string created_by
-        string tenant_id
-        string ieee8021x_profile_name
-      }
-      PROFILES_WIRELESSCONFIGS {
-        string wireless_profile_name
-        string profile_name
-        int priority
-        datetime creation_date
-        string created_by
-        string tenant_id
-      }
-      IEEE8021XCONFIGS {
-        string profile_name
-        int auth_protocol
-        string servername
-        string domain
-        string username
-        string password
-        string roaming_identity
-        boolean active_in_s0
-        int pxe_timeout
-        boolean wired_interface
-        string tenant_id
-      }
-  ```
-### MPS
-  ```mermaid
-  erDiagram
-      DEVICE {
-          guid uuid
-          string[] tags
-          string hostname
-          string mpsinstance
-          boolean connectionstatus
-          string mpsusername
-          string tenantid
-          string friendlyname
-          string dnssuffix
-      }
-  ```
+Schemas for both MPS and RPS can be found in [Schema Overview](schema.md).
 
 ## Add DB Client
 Add the database client library you will use to connect to your database. To support MSSQL, this example uses the Microsoft SQL Server client* for Node.js, [`node-mssql`](https://www.npmjs.com/package/mssql).
@@ -159,7 +52,7 @@ Update the connection string and a folder name for your db either in your ENV or
 1. Create a new folder in `./src/data`. The name of the new folder should be the name you supplied for the `db_provider` property, which is `mssql` in the example above.
 
      <figure class="figure-image">
-     <img src="..\..\assets\images\DbFolder.png" alt="Figure 2: New folder mssql" style="width:224px">
+     <img src="..\..\..\assets\images\DbFolder.png" alt="Figure 2: New folder mssql" style="width:224px">
      <figcaption>Figure 2: New folder mssql</figcaption>
      </figure>
 
