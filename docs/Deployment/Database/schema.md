@@ -14,6 +14,7 @@ The diagrams below illustrates the database schema and relationships for MPS and
           string tenantid
           string friendlyname
           string dnssuffix
+          json deviceInfo
       }
   ```
   
