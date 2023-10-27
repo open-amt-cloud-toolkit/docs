@@ -2562,6 +2562,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#syncdeviceinfo" class="md-nav__link">
+    syncdeviceinfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#synchostname" class="md-nav__link">
     synchostname
   </a>
@@ -3672,6 +3679,10 @@
 <td>Sync the host OS clock to AMT.</td>
 </tr>
 <tr>
+<td><a href="#syncdeviceinfo">syncdeviceinfo</a></td>
+<td>Sync the device info stored in the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database with the current local AMT device info.</td>
+</tr>
+<tr>
 <td><a href="#synchostname">synchostname</a></td>
 <td>Sync the OS hostname to AMT Network Settings.</td>
 </tr>
@@ -3768,6 +3779,11 @@
 <h4 id="syncclock">syncclock<a class="headerlink" href="#syncclock" title="Permanent link">&para;</a></h4>
 <p>Syncs the host OS clock to AMT.</p>
 <div class="highlight"><pre><span></span><code>rpc maintenance syncclock -u wss://server/maintenance
+</code></pre></div>
+<p><br></p>
+<h4 id="syncdeviceinfo">syncdeviceinfo<a class="headerlink" href="#syncdeviceinfo" title="Permanent link">&para;</a></h4>
+<p>Sync stored device info within the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database to the current, local device info. On device activation, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will store some device information as a JSON object. Some of this data may change over time like the firmware versions, activation modes, or IP address and could be outdated.</p>
+<div class="highlight"><pre><span></span><code>rpc maintenance syncdeviceinfo -u wss://server/maintenance
 </code></pre></div>
 <p><br></p>
 <h4 id="synchostname">synchostname<a class="headerlink" href="#synchostname" title="Permanent link">&para;</a></h4>
@@ -3872,20 +3888,20 @@
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;amtPassword&#39;</span><span class="w"> </span><span class="c1"># optionally, you can provide the AMT password of the device in the config file</span>
 <span class="nt">wifiConfigs</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifiWPA2&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifiWPA2&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
 <span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleSSID&#39;</span>
 <span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">    </span><span class="nt">pskPassphrase</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifi8021x&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifi8021x&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
 <span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ssid&#39;</span>
 <span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
 <span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="nt">ieee8021xConfigs</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exampleUserName&quot;</span>
 <span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)</span>
 <span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#8021x profile (ex. EAP-TLS(0))</span>
@@ -3955,19 +3971,19 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">wifiConfigs</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifiWPA2&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifiWPA2&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
 <span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleSSID&#39;</span>
 <span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifi8021x&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifi8021x&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
 <span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ssid&#39;</span>
 <span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
 <span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="nt">ieee8021xConfigs</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exampleUserName&quot;</span>
 <span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)</span>
 <span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#8021x profile (ex. EAP-TLS(0))</span>
