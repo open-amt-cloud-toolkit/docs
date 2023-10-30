@@ -9,12 +9,12 @@ The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb`
 
     ``` sql title="mpsdb"
     ALTER TABLE devices
-    ADD COLUMN IF NOT EXISTS deviceInfo json
+    ADD COLUMN IF NOT EXISTS deviceInfo json;
     ```
 
     ``` sql title="rpsdb"
     ALTER TABLE domains
-    ADD COLUMN IF NOT EXISTS expiration_date timestamp
+    ADD COLUMN IF NOT EXISTS expiration_date timestamp;
     ```
 
     ???+ example "Example - Adding Columns to PostgresDB using psql"
