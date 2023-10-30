@@ -28,6 +28,7 @@ The diagrams below illustrates the database schema and relationships for MPS and
           string provisioning_cert_storage_format
           string provisioning_cert_key
           datetime creation_date
+          datetime expiration_date
           string created_by
           string tenant_id
       }
