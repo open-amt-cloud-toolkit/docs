@@ -2,7 +2,7 @@
 ## Release Highlights
 
 <div style="text-align:center;">
- <iframe width="800" height="450" src="" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <iframe width="800" height="450" src="https://www.youtube.com/embed/mSkvJuKCQPE?si=BU4n8IcL6-woFgzM" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -22,19 +22,25 @@
 
 :material-update: **DB Update Required**
 
-Run the following SQL script to alter constraints before upgrading the services.
+Run the following SQL scripts to add the new required columns for both the `mpsdb` and `rpsdb`.
 
-``` SQL
-add new SQL update field here
+``` sql title="mpsdb"
+ALTER TABLE devices
+ADD COLUMN IF NOT EXISTS deviceInfo json;
+```
+
+The goal of this change is to allow us to cache some of the AMTINFO data that we gather while activating a device in the database and make that available to API callers when a device is not connected to the MPS. 
+
+``` sql title="rpsdb"
+ALTER TABLE domains
+ADD COLUMN IF NOT EXISTS expiration_date timestamp;
 ```
 
 [More information or detailed steps can be found in Upgrade Toolkit Version.](./Deployment/upgradeVersion.md)
 
-The goal of this change is to allow us to cache some of the AMTINFO data that we gather while activating a device in the database and make that available to API callers when a device is not connected to the MPS. 
-
 :material-new-box: **New Feature: Offline AMT Data**
 
-Along with the DB update this release, we are now storing some basic AMT data in the database.  When activating an AMT device, this data will automatically collected and stored.  We've also added a new maintenance command "-syncdeviceinfo" to RPC-Go that will collect and update this information.  Read more about this feature in our [docs](https://open-amt-cloud-toolkit.github.io/docs/2.16/Reference/RPC/commandsRPC/#syncdeviceinfo)
+Along with the DB update this release, we are now storing some basic AMT data in the database.  When activating an AMT device, this data will automatically collected and stored.  We've also added a new maintenance command `syncdeviceinfo` to RPC-Go that will collect and update this information.  Read more about this feature in our [docs](https://open-amt-cloud-toolkit.github.io/docs/2.16/Reference/RPC/commandsRPC/#syncdeviceinfo)
 
 :material-new-box: **New Feature: Certificate Expiration Checking**
 
@@ -42,7 +48,7 @@ When provisioning certificates are added to Open AMT Cloud Toolkit, the software
 
 :material-new-box: **New Feature: Fetch Provisioning Certificates During -local Activation**
 
-A new option has been provided for ACM -local activation flows.  Users can now store their provisioning certificate and credentials securely on a network share and point RPC-Go to fetch this information during activation.  
+A new option has been provided for ACM `-local` activation flows.  Users can now store their provisioning certificate and credentials securely on a network share and point RPC-Go to fetch this information during activation.  
 
 ## Get the Details
 
