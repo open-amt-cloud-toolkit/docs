@@ -33,7 +33,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          pip install mkdocs-material==9.2.7
+          pip install mkdocs-material==9.4.7
           pip install mkdocs-render-swagger-plugin
           pip install mkdocs-macros-plugin
           pip install mkdocs-mermaid2-plugin
