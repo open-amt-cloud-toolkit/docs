@@ -56,13 +56,17 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
     === "Remote Stored Provisioning Cert"
         Currently, the only supported remote network share is Server Message Block (SMB) based shares. 
 
-        Some assumptions are made:
-        
-        - The userID executing the command has access to the network share
-        - No password is required
 
+        ``` title="No Credentials Required"
+        rpc activate -local -acm -config smb://server/shareName/filePath/test.pfx -provisioningCertPwd certPassword -amtPassword amtPass
         ```
-        rpc activate -local -acm -config smb://shareName/filePath/test.pfx -provisioningCertPwd certPassword -amtPassword amtPass
+
+        ``` title="Credentials Required"
+        rpc activate -local -acm -config smb://workgroup;username:password@server/shareName/filePath/test.pfx -provisioningCertPwd certPassword -amtPassword amtPass
+        ```
+
+        ``` title="Credentials Required but Prompt for Password"
+        rpc activate -local -acm -config smb://workgroup;username:*@server/shareName/filePath/test.pfx -provisioningCertPwd certPassword -amtPassword amtPass
         ```
 
 === "ACM w/ Config File"
@@ -85,14 +89,18 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
     === "Remote Stored Config File"
         Currently, the only supported remote network share is Server Message Block (SMB) based shares.
 
-        Some assumptions are made:
-
-        - The userID executing the command has access to the network share
-        - No password is required
-
-        ```
+        ``` title="No Credentials Required"
         rpc activate -local -acm -config smb://shareName/filePath/config.yaml
         ```
+
+        ``` title="Credentials Required"
+        rpc activate -local -acm -config smb://workgroup;username:password@server/shareName/filePath/config.yaml
+        ```
+
+        ``` title="Credentials Required but Prompt for Password"
+        rpc activate -local -acm -config smb://workgroup;username:*@server/shareName/filePath/config.yaml
+        ```
+
 
 <br>
 
