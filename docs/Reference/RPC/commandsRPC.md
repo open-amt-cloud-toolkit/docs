@@ -48,9 +48,23 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
     rpc activate -local -ccm -password NewAMTPassword
     ```
 === "ACM"
-    ```
-    rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
-    ```
+
+    === "Local Stored Provisioning Cert"
+        ```
+        rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
+        ```
+    === "Remote Stored Provisioning Cert"
+        Currently, the only supported remote network share is Server Message Block (SMB) based shares. 
+
+        Some assumptions are made:
+        
+        - The userID executing the command has access to the network share
+        - No password is required
+
+        ```
+        rpc activate -local -acm -config smb://shareName/filePath/test.pfx -provisioningCertPwd certPassword -amtPassword amtPass
+        ```
+
 === "ACM w/ Config File"
     Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#addwifisettings) information.
 
@@ -62,10 +76,23 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
           provivisioningCertPwd: 'CertP@ssw0rd'
         ```
 
-    Example Command
-    ```
-    rpc activate -local -acm -config config.yaml
-    ```
+    Example Commands:
+
+    === "Local Stored Config File"
+        ```
+        rpc activate -local -acm -config config.yaml
+        ```
+    === "Remote Stored Config File"
+        Currently, the only supported remote network share is Server Message Block (SMB) based shares.
+
+        Some assumptions are made:
+
+        - The userID executing the command has access to the network share
+        - No password is required
+
+        ```
+        rpc activate -local -acm -config smb://shareName/filePath/config.yaml
+        ```
 
 <br>
 
@@ -99,15 +126,15 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 #### `activate` Local-Specific Options
 
-| OPTION                            | DESCRIPTION                                                     |
-|-----------------------------------|-----------------------------------------------------------------|
-| -acm                              | Flag for ACM Local Activation.                                  |
-| -amtPassword string               | New AMT Password to set on device.                              |
-| -ccm                              | Flag for CCM Local Activation.                                  |
-| -config                           | File path of a `.yaml` file with desired ACM configuration.     |
-| -local                            | Execute command to AMT directly without cloud interaction.      |
-| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.   |
-| -provisioningCertPwd string       | Password of provisioning certificate.                           |
+| OPTION                            | DESCRIPTION                                                                           |
+|-----------------------------------|---------------------------------------------------------------------------------------|
+| -acm                              | Flag for ACM Local Activation.                                                        |
+| -amtPassword string               | New AMT Password to set on device.                                                    |
+| -ccm                              | Flag for CCM Local Activation.                                                        |
+| -config                           | Remote `smb://` or local file path of a `.yaml` file with desired ACM configuration.  |
+| -local                            | Execute command to AMT directly without cloud interaction.                            |
+| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.                         |
+| -provisioningCertPwd string       | Password of provisioning certificate.                                                 |
 
 For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
 
