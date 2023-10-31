@@ -56,6 +56,10 @@ A new option has been provided for ACM `-local` activation flows.  Users can now
 
 #### RPS
 
+v2.19.0
+
+- feat: adds expiration date to prov cert ([#1234](https://github.com/open-amt-cloud-toolkit/rps/issues/1234))
+
 v2.18.0
 
 - feat: add device info maintenance ([#1277](https://github.com/open-amt-cloud-toolkit/rps/issues/1277))
@@ -71,24 +75,28 @@ v2.17.0
 
 #### MPS
 
-v1.12.4
+v2.12.4
 
 - fix(redir): improve data checking for redirection ([7aa1510](https://github.com/open-amt-cloud-toolkit/mps/commit/7aa151099baf43a565dae003ac45d444ea7a2b4e))
 
-v1.12.3
+v2.12.3
 
 - fix: fixed mongo device deletion ([#1100](https://github.com/open-amt-cloud-toolkit/mps/issues/1100))
 
-v1.12.2
+v2.12.2
 
 - fix: Remove data from Mongo on deactivation ([#1118](https://github.com/open-amt-cloud-toolkit/mps/issues/1118))
 
-v1.12.1
+v2.12.1
 
 - fix: redirection token expiration and device UUID check ([#1098](https://github.com/open-amt-cloud-toolkit/mps/issues/1098))
 
 
 #### RPC
+
+v2.19.0
+
+- feat: local operations read secrets from environment ([90a5a4c](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/90a5a4c1e445ede1d3e250ea090fcd6ac77c7675))
 
 v2.18.0
 
