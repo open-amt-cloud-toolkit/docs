@@ -3,17 +3,22 @@
 
 ### Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)
 
-The 2.16 release of Open AMT requires an upgrade to the `mpsdb` database. More information about why we've made this change can be found in the [October 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new).
+The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb` databases. More information about why we've made this change can be found in the [October 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new).
 
 1. Run the following SQL script to alter constraints before upgrading the services.
 
-    ``` sql
+    ``` sql title="mpsdb"
     ALTER TABLE devices
-    ADD COLUMN IF NOT EXISTS deviceInfo json
+    ADD COLUMN IF NOT EXISTS deviceInfo json;
+    ```
+
+    ``` sql title="rpsdb"
+    ALTER TABLE domains
+    ADD COLUMN IF NOT EXISTS expiration_date timestamp;
     ```
 
     ???+ example "Example - Adding Columns to PostgresDB using psql"
-        This example walks through one potential option to update a Postgres Database using psql.
+        This example walks through one potential option to update a Postgres Database using psql. Change the database passed using the `-d` flag to either `mpsdb` or `rpsdb` as needed.
 
         1. Open a Command Prompt or Terminal.
 
