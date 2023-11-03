@@ -7,7 +7,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 </div>
 
 !!! important "Important - Production Environment"
-        In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
+    In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
 
 <figure class="figure-image">
@@ -21,7 +21,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 ##  Build the RPC
 
 !!! tip "Flexible Deployment - RPC as a Library"  
-        The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../Reference/RPC/libraryRPC.md).
+    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../Reference/RPC/libraryRPC.md).
 
 **To build the executable:**
 
@@ -110,7 +110,7 @@ The toolkit provides a reference implementation called the Sample Web UI to mana
         ```
 
     !!! note "Note - RPC Arguments"
-        See more about the [flag and other arguments](../Reference/RPC/commandsRPC.md).
+        See more about the [flags used here and other arguments](../Reference/RPC/commandsRPC.md).
 
     !!! note "Note - Transition Activated Device"
         To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform device, see [Transition Activated Device](../Reference/RPC/buildRPC_Manual.md#transition-activated-device).
