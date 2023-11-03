@@ -262,11 +262,12 @@ Execute a configuration command for the managed device:
 
 | SUBCOMMAND                            | DESCRIPTION                                                                                           |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [addwifiport](#addwifiport)           | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 
 <br>
 
-#### Common `configuration` Options
+#### Common `configure` Options
 
 | OPTION             | DESCRIPTION                                                                                                                      |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
@@ -274,6 +275,16 @@ Execute a configuration command for the managed device:
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
 | -password string   | AMT password                                                                                                                     |
 | -v                 | Verbose output                                                                                                                   |
+
+<br>
+
+#### addwifiport
+
+Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
+
+```
+rpc configure enablewifiport -password AMTPassword
+```
 
 <br>
 
