@@ -3283,7 +3283,7 @@
 <p>DNS Name: cb-vending1.burgerbusiness.com</p>
 </div>
 <p>In this example, the hostname is <strong>cb-vending1</strong> and the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> is <strong>burgerbusiness.com.</strong></p>
-<p>**To set the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>: **</p>
+<p><strong>To set the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>:</strong></p>
 <ol>
 <li>
 <p>Manually set it using MEBX on the managed device. Find instructions <a href="../../Reference/MEBX/dnsSuffix/">here</a>.</p>
@@ -3292,7 +3292,7 @@
 <p>Alternately, change the DHCP Option 15 to <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> within the Router settings.</p>
 </li>
 </ol>
-<p>**To find the the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>, use the following command: **</p>
+<p><strong>To find the <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>, use the following command:</strong></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3310,12 +3310,10 @@
 <p>A <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>).</p>
 <div class="admonition important">
 <p class="admonition-title">Important - Production Environment</p>
-<pre><code>In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
-</code></pre>
+<p>In a production environment, devices are typically activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode enables <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode proves immensely helpful in these scenarios.</p>
 </div>
 <details class="note">
 <summary>Note - More Information about Passwords</summary>
-<p><strong>Passwords</strong></p>
 <p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../Reference/architectureOverview/#passwords">Reference -&gt; Architecture Overview</a>.</p>
 </details>
 <p><strong>To create an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profile:</strong></p>

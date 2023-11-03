@@ -3754,12 +3754,9 @@ TEST SUITE: None
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip - Finding the Vault UI External IP Address</p>
-<pre><code>The external IP of your Vault UI service can be found by running:
-
-```
-kubectl get services openamtstack-vault-ui
-```
-</code></pre>
+<p>The external IP of your Vault UI service can be found by running:</p>
+<div class="highlight"><pre><span></span><code>kubectl get services openamtstack-vault-ui
+</code></pre></div>
 </div>
 <ol>
 <li>
@@ -3799,12 +3796,12 @@ kubectl get services openamtstack-vault-ui
 <h3 id="update-commonname-in-valuesyml">Update commonName in values.yml<a class="headerlink" href="#update-commonname-in-valuesyml" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Get the External-IP for accessing the UI. Note and save the value under 'EXTERNAL-IP'.</p>
+<p>Get the <code>External-IP</code> for accessing the UI. Note and save the value under <code>EXTERNAL-IP</code>.</p>
 <div class="highlight"><pre><span></span><code>kubectl get service openamtstack-kong-proxy
 </code></pre></div>
 </li>
 <li>
-<p>Update the value for <code>commonName</code> in the <strong>mps</strong> section in the <code>values.yml</code> file with the External-IP from above.  Recall that <code>values.yml</code> is located in <code>./kubernetes/charts/</code>.</p>
+<p>Update the value for <code>commonName</code> in the <strong>mps</strong> section in the <code>values.yml</code> file with the <code>External-IP</code> from above.  Recall that <code>values.yml</code> is located in <code>./kubernetes/charts/</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
 <span class="hll"><span class="w">    </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># update with External-IP from `kubectl get services`</span>
 </span><span class="w">    </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
