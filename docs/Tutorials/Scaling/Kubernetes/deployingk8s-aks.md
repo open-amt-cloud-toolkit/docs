@@ -262,11 +262,11 @@ Where:
     **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
 !!! tip "Tip - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by running:
+    The external IP of your Vault UI service can be found by running:
 
-        ```
-        kubectl get services openamtstack-vault-ui
-        ```
+    ```
+    kubectl get services openamtstack-vault-ui
+    ```
 
 1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 

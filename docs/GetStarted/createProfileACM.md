@@ -38,13 +38,13 @@ The DNS suffix encompasses the domain suffix (e.g., .com) and follows the hostna
 
 In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerbusiness.com.**
 
- **To set the DNS suffix: **
+**To set the DNS suffix:**
 
 1. Manually set it using MEBX on the managed device. Find instructions [here](../Reference/MEBX/dnsSuffix.md).
 
 2. Alternately, change the DHCP Option 15 to DNS suffix within the Router settings.
 
-**To find the the DNS suffix, use the following command: **
+**To find the DNS suffix, use the following command:**
 
 === "Linux"
     ``` bash
@@ -63,11 +63,9 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
 !!! important "Important - Production Environment"
-        In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
+    In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 ??? note "Note - More Information about Passwords"
-    **Passwords**
-
     Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../Reference/architectureOverview.md#passwords).
 
 **To create an ACM profile:**
