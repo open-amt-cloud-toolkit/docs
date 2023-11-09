@@ -337,11 +337,11 @@ Where:
     **Make sure to download your Vault credentials** and save them in a secure location when unsealing Vault.  If the keys are lost, a new Vault will need to be started and any stored data will be lost.
 
 !!! tip "Tip - Finding the Vault UI External IP Address"
-        The external IP of your Vault UI service can be found by running:
+    The external IP of your Vault UI service can be found by running:
 
-        ```
-        kubectl get services openamtstack-vault-ui
-        ```
+    ```
+    kubectl get services openamtstack-vault-ui
+    ```
 
 1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
 
@@ -371,13 +371,13 @@ Where:
 
 ### Update commonName in values.yml
 
-1. Get the External-IP for accessing the UI. Note and save the value under 'EXTERNAL-IP'.
+1. Get the `External-IP` for accessing the UI. Note and save the value under `EXTERNAL-IP`.
 
     ```
     kubectl get service openamtstack-kong-proxy
     ```
 
-2. Update the value for `commonName` in the **mps** section in the `values.yml` file with the External-IP from above.  Recall that `values.yml` is located in `./kubernetes/charts/`.
+2. Update the value for `commonName` in the **mps** section in the `values.yml` file with the `External-IP` from above.  Recall that `values.yml` is located in `./kubernetes/charts/`.
 
     ``` yaml hl_lines="2"
     mps:
