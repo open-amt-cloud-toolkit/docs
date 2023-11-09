@@ -2667,8 +2667,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-configuration-options" class="md-nav__link">
-    Common configuration Options
+  <a href="#common-configure-options" class="md-nav__link">
+    Common configure Options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addwifiport" class="md-nav__link">
+    addwifiport
   </a>
   
 </li>
@@ -3959,13 +3966,17 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="#addwifiport">addwifiport</a></td>
+<td>Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.</td>
+</tr>
+<tr>
 <td><a href="#addwifisettings">addwifisettings</a></td>
 <td>Configure wireless 802.1x locally with <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> (no communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and EA)</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h4 id="common-configuration-options">Common <code>configuration</code> Options<a class="headerlink" href="#common-configuration-options" title="Permanent link">&para;</a></h4>
+<h4 id="common-configure-options">Common <code>configure</code> Options<a class="headerlink" href="#common-configure-options" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -3992,6 +4003,11 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h4 id="addwifiport">addwifiport<a class="headerlink" href="#addwifiport" title="Permanent link">&para;</a></h4>
+<p>Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.</p>
+<div class="highlight"><pre><span></span><code>rpc configure enablewifiport -password AMTPassword
+</code></pre></div>
 <p><br></p>
 <h4 id="addwifisettings">addwifisettings<a class="headerlink" href="#addwifisettings" title="Permanent link">&para;</a></h4>
 <p>Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>/EA/<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>. More information on configuring AMT to use 802.1x can be found in <a href="../../EA/ieee8021xconfig/">802.1x Configuration</a>.</p>
