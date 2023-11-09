@@ -69,7 +69,7 @@ Set the shared secret used in Kong for JWT authentication.
     jwt_secrets:
       - consumer: admin
         key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
-        secret: "Yq3t6w9z$C&E)H@McQfTjWnZr4u7x!A%" #sample secret, DO NOT use for production
+        secret: "Yq3t6w9z6CbE3HRMcQfTjWnZr4u7x6AJ" #sample secret, DO NOT use for production
     ```
 
 3. Save and close the file.
