@@ -1,6 +1,7 @@
 [
-    {"version": "2.17", "title": "2.17 (DEV)", "aliases": ["dev"]},
-    {"version": "2.16", "title": "2.16 (Oct 23)", "aliases": ["rapid"]},
+    {"version": "2.18", "title": "2.18 (DEV)", "aliases": ["dev"]},
+    {"version": "2.17", "title": "2.17 (Nov 23)", "aliases": ["rapid"]},
+    {"version": "2.16", "title": "2.16 (Oct 23)", "aliases": []},
     {"version": "2.15", "title": "2.15 (Sep 23)", "aliases": []},
     {"version": "2.14", "title": "2.14 (Aug 23)", "aliases": []},
     {"version": "2.13", "title": "2.13 (Jul 23)", "aliases": []},
