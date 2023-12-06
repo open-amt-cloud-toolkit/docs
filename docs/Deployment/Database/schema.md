@@ -15,6 +15,9 @@ The diagrams below illustrates the database schema and relationships for MPS and
           string friendlyname
           string dnssuffix
           json deviceInfo
+          datetime lastconnected
+          datetime lastseen
+          datetime lastdisconnected
       }
   ```
   
