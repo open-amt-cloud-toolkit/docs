@@ -1,20 +1,20 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
-<div style="text-align:center;">
+<!-- <div style="text-align:center;">
  <iframe width="800" height="450" src="https://www.youtube.com/embed/mSkvJuKCQPE?si=BU4n8IcL6-woFgzM" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br>
+<br> -->
 
 !!! note "Note From the Team"
+
+    As 2023 draws to a close, we're thrilled to celebrate an exceptional year together. With 39 feature releases, successful integrations of Open AMT Cloud Toolkit into new software versions by our valued customers, and the establishment of our community Discord server (reaching 99 members and aiming for 100 by December's end), it's been an incredible journey.
     
-    Happy Halloween!
+    Your continuous support has been invaluable. We deeply appreciate your involvement, feedback, and enthusiasm that have shaped our progress. Looking ahead to 2024, we're excited about delivering more innovative features and continuing our partnership.
+    
+    Thank you for being an integral part of our success this year. Here's to an even more remarkable and collaborative year ahead!
 
-    No tricks in this release, just new treats coming to Open AMT Cloud Toolkit!  Make sure to checkout Bryan's video where he talks about the new changes in this release or you can get the details in the "What's New" section.  You can follow our day to day progress over at our new Sprint Planning project board (link at the bottom)! 
-
-    We are genuinely excited about this release and are eager to hear your valuable feedback. Your input plays a crucial role in enhancing the Open AMT Cloud Toolkit further.
-
-    *Best wishes,*  
+    *Wishing you all a happy holidays,*  
     *The Open AMT Cloud Toolkit Team*
 
 
@@ -22,33 +22,36 @@
 
 :material-update: **DB Update Required**
 
-Run the following SQL scripts to add the new required columns for both the `mpsdb` and `rpsdb`.
+Run the following SQL scripts to add new columns to the `mpsdb` prior to upgrading the service.
 
 ``` sql title="mpsdb"
 ALTER TABLE devices
-ADD COLUMN IF NOT EXISTS deviceInfo json;
+ADD COLUMN IF NOT EXISTS lastconnected timestamp with time zone,
+ADD COLUMN IF NOT EXISTS lastseen timestamp with time zone,
+ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
 ```
 
-The goal of this change is to allow us to cache some of the AMTINFO data that we gather while activating a device in the database and make that available to API callers when a device is not connected to the MPS. 
-
-``` sql title="rpsdb"
-ALTER TABLE domains
-ADD COLUMN IF NOT EXISTS expiration_date timestamp;
-```
+With this release, we have added the ability to track the last time a device connected, disconnected, or was seen by the services.  This information is included when retrieving information about a device. 
 
 [More information or detailed steps can be found in Upgrade Toolkit Version.](./Deployment/upgradeVersion.md)
 
-:material-new-box: **New Feature: Offline AMT Data**
+:material-new-box: **Coming Soon: IDE Redirection**
 
-Along with the DB update this release, we are now storing some basic AMT data in the database.  When activating an AMT device, this data will automatically collected and stored.  We've also added a new maintenance command `syncdeviceinfo` to RPC-Go that will collect and update this information.  Read more about this feature in our [docs](https://open-amt-cloud-toolkit.github.io/docs/2.16/Reference/RPC/commandsRPC/#syncdeviceinfo)
+The team is getting really close to releasing the final redirection feature included with AMT, IDE-R.  This feature will allow users to remotely boot an AMT device to a remote boot image (located on the management console).
 
-:material-new-box: **New Feature: Certificate Expiration Checking**
+The core components have been implemented and are released as part of the UI Toolkit component.  Expect to see updates to the Sample Web UI very soon that will provide an example for how to integrate and use this new feature.  
 
-When provisioning certificates are added to Open AMT Cloud Toolkit, the software will now get the expiration date of the certificate and store that in the database.  This data is then returned when a GET call to Domains is made.  This information makes it easy to determine if a certificate is about to expire or already expired.  The Sample Web UI has an implementation showing this capability in this release.
+:material-new-box: **New Feature: Local wifiport enable**
 
-:material-new-box: **New Feature: Fetch Provisioning Certificates During -local Activation**
+We've added a new feature to allow customers to use RPC-Go to enable AMT on the wifi adapter as well as enabling wifi profile syncing (if LMS is present).  Customers have requested this feature to provide an easy way to enable AMT over wifi even if they aren't setting up any wifi profiles in their AMT profile.  We are exposing this as a new `configure` option.
 
-A new option has been provided for ACM `-local` activation flows.  Users can now store their provisioning certificate and credentials securely on a network share and point RPC-Go to fetch this information during activation.  
+``` bash title="Example Command"
+rpc configure enablewifiport -password AMTPassword
+```
+
+:material-new-box: **New Feature: AMT Enabled Flag**
+
+We have added "Operational State" as part of the RPC-Go `amtinfo` command.  For 13th Gen vPro (AMT 16.1) and newer devices, this will indicate if AMT is currently enabled.  If AMT is disabled, RPC-Go will automatically enable AMT during the activation process.
 
 ## Get the Details
 
@@ -56,62 +59,116 @@ A new option has been provided for ACM `-local` activation flows.  Users can now
 
 #### RPS
 
-v2.19.0
+v2.21.2
 
-- feat: adds expiration date to prov cert ([#1234](https://github.com/open-amt-cloud-toolkit/rps/issues/1234))
+- fix: update build tasks, package.json and changelog ([#1341](https://github.com/open-amt-cloud-toolkit/rps/pull/1341))
 
-v2.18.0
+v2.21.1
 
-- feat: add device info maintenance ([#1277](https://github.com/open-amt-cloud-toolkit/rps/issues/1277))
+- fix: update build tasks, package.json and changelog ([#1330](https://github.com/open-amt-cloud-toolkit/rps/pull/1330))
 
-v2.17.1
+v2.21.0
 
-- fix: store dnssuffix into db ([#1256](https://github.com/open-amt-cloud-toolkit/rps/issues/1256))
+- feat: add timestamp to device info data ([#1302](https://github.com/open-amt-cloud-toolkit/rps/pull/1302)) 
 
-v2.17.0
+v2.20.0
 
-- feat: save additional values to mps mongo db ([#1236](https://github.com/open-amt-cloud-toolkit/rps/issues/1236))
+- feat: adds release trigger to security report
 
 
 #### MPS
 
-v2.12.4
+v2.13.4
 
-- fix(redir): improve data checking for redirection ([7aa1510](https://github.com/open-amt-cloud-toolkit/mps/commit/7aa151099baf43a565dae003ac45d444ea7a2b4e))
+- fix: update build tasks, package.json and changelog
 
-v2.12.3
+v2.13.3
 
-- fix: fixed mongo device deletion ([#1100](https://github.com/open-amt-cloud-toolkit/mps/issues/1100))
+- fix: update changelog ([#1199](https://github.com/open-amt-cloud-toolkit/mps/issues/1199))
 
-v2.12.2
+v2.13.2
 
-- fix: Remove data from Mongo on deactivation ([#1118](https://github.com/open-amt-cloud-toolkit/mps/issues/1118))
+- fix: pdate build tasks, package.json and changelog ([#1198](https://github.com/open-amt-cloud-toolkit/mps/issues/1198))
 
-v2.12.1
+v2.13.1
 
-- fix: redirection token expiration and device UUID check ([#1098](https://github.com/open-amt-cloud-toolkit/mps/issues/1098))
+- fix: updates lint rules to remove unbound method check
+
+v2.13.0
+
+- feat: add cira timestamps to db ([#1153](https://github.com/open-amt-cloud-toolkit/mps/pull/1153))
+
+v2.12.6
+
+- fix: boot order for IDER ([#1143](https://github.com/open-amt-cloud-toolkit/mps/issues/1143))
 
 
 #### RPC
 
-v2.19.0
+v2.24.1
 
-- feat: local operations read secrets from environment ([90a5a4c](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/90a5a4c1e445ede1d3e250ea090fcd6ac77c7675))
+- fix: project version is updated ([88dc463](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/88dc4635a402e364665f6219c864c60794790129))
 
-v2.18.0
+v2.24.0
 
-- feat: add device info maintenance ([e302f8a](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e302f8aec00222651867b5977dafc419627ae778))
+- feat: add UUID Override flag to maintenance commands ([#294](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/294))
 
-v2.17.0
+v2.23.0
 
-- feat: add features field to message payload ([61s9829](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/61a9829a8a4303600816b6ce629b07d142d7a144))
+- feat: support AMTEnabled flag ([2547018](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2547018910c6d8d4d8dcfb8d34e7ad21d5183987))
+
+v2.22.0
+
+- feat: adds report out to code analysis action ([aa2efcf](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/aa2efcf9cfe883c6e57d313e4245e4d68afbc730))
+
+v2.21.0
+
+- feat: support smb: urls for remote .yaml or .pfx config files ([935115e](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/935115e8cd9cb4451b7002971db3837c2fb6e7c9))
+
+v2.20.0
+
+- feat: add local wifi enable and profile sync ([8ab0894](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ab08942cd6f0848faf82162d05ad8eccf43db66))
 
 #### Sample Web UI
 
-v2.15.0
+v3.1.2
 
-- feat: adds exp date to domain certs 
+- fix: update build tasks, package.json and changelog ([#1547](https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1547))
 
+v3.1.1
+
+- fix: update ci automation to correct tag to webui
+
+v3.1.0
+
+- feat: use db data when device not connected ([#1499](https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1499)) 
+
+v3.0.0
+
+- build: bump Angular to 17 ([#1491](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1491))
+- BREAKING CHANGES: Node 16 no longer supported
+
+v2.16.0
+
+- feat: adds report out to code analysis action ([68a2255](https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/68a2255c3deca55c2d8475430dca1fff990e33ba))
+
+#### UI Toolkit
+
+v3.2.0
+
+- feat: add mode query param for kvm, ider and sol ([28b9e30](https://github.com/open-amt-cloud-toolkit/ui-toolkit/commit/28b9e303bddbaa34ee004d874c64a9ca741bb620))
+
+v3.1.1
+
+- fix: separated floppy and cdrom read/writes
+
+v3.1.0
+
+- feat: added IDER support ([#781](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/781))
+
+v3.0.0
+
+- BREAKING CHANGES: AMT Redirector requires a configuration object and removed ILogger
 
 ## Project Boards
 
