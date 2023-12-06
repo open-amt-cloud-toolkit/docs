@@ -106,15 +106,16 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 #### `activate` General Options
 
-| OPTION             | DESCRIPTION                                                                                                                     |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| -json              | JSON output                                                                                                                     |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                            |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                         |
-| -lmsport string    | LMS port (default "16992")                                                                                                      |
-| -n                 | Skip WebSocket server certificate verification                                                                                  |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                     |
-| -v                 | Verbose output                                                                                                                  |
+| OPTION             | DESCRIPTION                                                                                                                       |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                       |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                              |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                           |
+| -lmsport string    | LMS port (default "16992")                                                                                                        |
+| -n                 | Skip WebSocket server certificate verification                                                                                    |
+| -skipIPRenew       | Skip DHCP renewal of the IP address if AMT becomes enabled. Only applicable for 13th Gen Raptor Lake (AMT 16.1) or newer devices. |                                                                                  |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                       |
+| -v                 | Verbose output                                                                                                                    |
 
 #### `activate` Remote-Specific Options
 
@@ -225,6 +226,7 @@ Execute a maintenance command for the managed device:
 | -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
 | -token string      | JWT Token for Authorization                                                                                                      |
 | -u string          | WebSocket address of server to activate against                                                                                  |
+| -uuid string       | Override AMT device UUID for use with **non-CIRA** workflow and deployments. This is for specific use cases where the hardware does not have a correctly assigned or formatted UUID. This is **NOT recommended** in other situations and could potentially break features. <br><br> Input must match standard UUID alphanumeric, hyphenated format (e.g. 4c4c4544-005a-3510-8047-b4c04f564433). |
 | -v                 | Verbose output                                                                                                                   |
 
 <br>
@@ -297,8 +299,8 @@ Execute a configuration command for the managed device:
 
 | SUBCOMMAND                            | DESCRIPTION                                                                                           |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [addwifiport](#addwifiport)           | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 
 <br>
 
@@ -310,16 +312,6 @@ Execute a configuration command for the managed device:
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
 | -password string   | AMT password                                                                                                                     |
 | -v                 | Verbose output                                                                                                                   |
-
-<br>
-
-#### addwifiport
-
-Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
-
-```
-rpc configure enablewifiport -password AMTPassword
-```
 
 <br>
 
@@ -559,6 +551,16 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
 <br>
 
+#### enablewifiport
+
+Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
+
+```
+rpc configure enablewifiport -password AMTPassword
+```
+
+<br>
+
 | OPTION                  | DESCRIPTION                                                                                                                                                                                             |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | -authenticationMethod   | Wifi authentication method. Valid Values = {4, 5, 6, 7} where `4` = WPA PSK, `5` = WPA_IEEE8021X, `6` = WPA2 PSK, `7` = WPA2_IEEE8021X                                                                  |
@@ -589,23 +591,24 @@ rpc amtinfo [OPTIONS]
 
 **Not passing `[OPTIONS]` will print all information.**
 
-| AMT INFO             | OPTION    | DESCRIPTION                                                                                                                                                                           | 
-|----------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                      | -json     | JSON Output                                                                                                                                                                           |
-| Version              | -ver      | Intel AMT version.                                                                                                                                                                    | 
-| Build Number         | -bld      | Intel AMT Build Number.                                                                                                                                                               |
-| System Certificates  | -cert     | System Certificate Hashes. If given `-password`, will print both System and User Certificate Hashes.                                                                                  |
-| User Certificates    | -userCert | User Certificate Hashes. Will prompt for AMT password. Or, provide `-password` flag.                                                                                                  |
-| SKU                  | -sku      | Product SKU                                                                                                                                                                           | 
-| UUID                 | -uuid     | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path.                                                       | 
-| Control Mode         | -mode     | Control Mode below indicates the managed device's state: <br>(a) pre-provisioning state <br>(b) activated in client control mode <br>(c) activated in admin control mode              | 
-| DNS Suffix           | -dns      | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Requried for ACM activation.                                                                      |
-| DNS Suffix (OS)      | -dns      |                                                                                                                                                                                       |
-| Hostname (OS)        | -hostname | Device's hostname as set in the Operating System.                                                                                                                                     |
-| RAS Network          | -ras      |                                                                                                                                                                                       |
-| RAS Remote Status    | -ras      | Unconnected or connected. State of connection to a management server.                                                                                                                 |
-| RAS Trigger          | -ras      | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
-| RAS MPS Hostname     | -ras      | IP Address or FQDN of the MPS server.                                                                                                                                                 |
+| AMT INFO             | OPTION            | DESCRIPTION                                                                                                                                                                           | 
+|----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                      | -json             | JSON Output                                                                                                                                                                           |
+| Version              | -ver              | Intel AMT version.                                                                                                                                                                    | 
+| Build Number         | -bld              | Intel AMT Build Number.                                                                                                                                                               |
+| System Certificates  | -cert             | System Certificate Hashes. If given `-password`, will print both System and User Certificate Hashes.                                                                                  |
+| User Certificates    | -userCert         | User Certificate Hashes. Will prompt for AMT password. Or, provide `-password` flag.                                                                                                  |
+| SKU                  | -sku              | Product SKU                                                                                                                                                                           | 
+| UUID                 | -uuid             | Unique Universal Identifier of the device. Used when creating device-specific MPS API calls as part of the REST API's URL path.                                                       | 
+| Control Mode         | -mode             | Control Mode below indicates the managed device's state: <br>(a) pre-provisioning state <br>(b) activated in client control mode <br>(c) activated in admin control mode              | 
+| Operational State    | -operationalState | Enabled/Disabled boolean. Returns state of AMT for 13th Gen Raptor Lake (AMT 16.1) or newer devices. N/A for earlier generation devices.                                              |
+| DNS Suffix           | -dns              | DNS Suffix set according to PKI DNS Suffix in Intel MEBX or through DHCP Option 15. Required for ACM activation.                                                                      |
+| DNS Suffix (OS)      | -dns              |                                                                                                                                                                                       |
+| Hostname (OS)        | -hostname         | Device's hostname as set in the Operating System.                                                                                                                                     |
+| RAS Network          | -ras              |                                                                                                                                                                                       |
+| RAS Remote Status    | -ras              | Unconnected or connected. State of connection to a management server.                                                                                                                 |
+| RAS Trigger          | -ras              | User initiated or periodic. When activated, periodic signifies CIRA established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain connection. |
+| RAS MPS Hostname     | -ras              | IP Address or FQDN of the MPS server.                                                                                                                                                 |
 
 **---Wired/Wireless Adapters---**
 

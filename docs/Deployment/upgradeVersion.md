@@ -1,6 +1,49 @@
 
 ## Specific Changes Required for Version Upgrades
 
+### Upgrade to 2.17 (Nov 23) from 2.16 (Oct 23)
+
+The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
+
+1. Run the following SQL script to alter constraints before upgrading the services.
+
+    ``` sql title="mpsdb"
+    ALTER TABLE devices
+    ADD COLUMN IF NOT EXISTS lastconnected timestamp with time zone,
+    ADD COLUMN IF NOT EXISTS lastseen timestamp with time zone,
+    ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
+    ```
+
+    ???+ example "Example - Adding Columns to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql. 
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+            ```
+            psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+            ```
+
+            ??? example "Example Commands"
+                ```
+                Azure:
+                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+                AWS:
+                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
+                ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statements.
+
+        5. Verify the constraints were modified correctly.
+            ``` sql
+            SELECT * FROM devices;
+            ```
+
+2. Continue with [Upgrade a Minor Version](#upgrade-a-minor-version-ie-2x-to-2y) steps below.
+
 ### Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)
 
 The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb` databases. More information about why we've made this change can be found in the [October 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new).
@@ -17,7 +60,7 @@ The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb`
     ADD COLUMN IF NOT EXISTS expiration_date timestamp;
     ```
 
-    ???+ example "Example - Adding Columns to PostgresDB using psql"
+    ??? example "Example - Adding Columns to PostgresDB using psql"
         This example walks through one potential option to update a Postgres Database using psql. Change the database passed using the `-d` flag to either `mpsdb` or `rpsdb` as needed.
 
         1. Open a Command Prompt or Terminal.
