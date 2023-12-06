@@ -1,14 +1,14 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
-<div style="text-align:center;">
+<!-- <div style="text-align:center;">
  <iframe width="800" height="450" src="https://www.youtube.com/embed/mSkvJuKCQPE?si=BU4n8IcL6-woFgzM" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<br>
+<br> -->
 
 !!! note "Note From the Team"
 
-    As 2023 draws to a close, we're thrilled to celebrate an exceptional year together. With 39 feature releases, successful integrations of Open AMT Cloud Toolkit into new software versions by our valued customers, and the establishment of our community Discord server, reaching 99 members (and aiming for 100 by December's end), it's been an incredible journey.
+    As 2023 draws to a close, we're thrilled to celebrate an exceptional year together. With 39 feature releases, successful integrations of Open AMT Cloud Toolkit into new software versions by our valued customers, and the establishment of our community Discord server (reaching 99 members and aiming for 100 by December's end), it's been an incredible journey.
     
     Your continuous support has been invaluable. We deeply appreciate your involvement, feedback, and enthusiasm that have shaped our progress. Looking ahead to 2024, we're excited about delivering more innovative features and continuing our partnership.
     
@@ -25,31 +25,33 @@
 Run the following SQL scripts to add new columns to the `mpsdb` prior to upgrading the service.
 
 ``` sql title="mpsdb"
-    ALTER TABLE devices
-    ADD COLUMN IF NOT EXISTS lastconnected timestamp with time zone,
-    ADD COLUMN IF NOT EXISTS lastseen timestamp with time zone,
-    ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
+ALTER TABLE devices
+ADD COLUMN IF NOT EXISTS lastconnected timestamp with time zone,
+ADD COLUMN IF NOT EXISTS lastseen timestamp with time zone,
+ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
 ```
 
-With this release we have added the ability to track the last time a device connected, disconnected or was seen by the services.  This information is included when retrieving information about a device. 
+With this release, we have added the ability to track the last time a device connected, disconnected, or was seen by the services.  This information is included when retrieving information about a device. 
 
 [More information or detailed steps can be found in Upgrade Toolkit Version.](./Deployment/upgradeVersion.md)
 
 :material-new-box: **Coming Soon: IDE Redirection**
 
-The team is getting really close to releasing the final redirection feature included with AMT, IDE-R.  This feature will allow users to remotely boot an AMT device to a remote boot image (located on the management console).  The core components have been implemented and are released as part of the UI Toolkit component.  Expect to see updates to the Sample Web UI very soon that will provide an example for how to integrate and use this new features.  
+The team is getting really close to releasing the final redirection feature included with AMT, IDE-R.  This feature will allow users to remotely boot an AMT device to a remote boot image (located on the management console).
+
+The core components have been implemented and are released as part of the UI Toolkit component.  Expect to see updates to the Sample Web UI very soon that will provide an example for how to integrate and use this new feature.  
 
 :material-new-box: **New Feature: Local wifiport enable**
 
-We've added a new feature to allow customers to use RPC-Go to enable AMT on the wifi adapter as well as enabling wifi profile syncing (if LMS is present).  Customers have requested this feature to provide an easy way to enable AMT over wifi even if they aren't setting up any wifi profiles in their AMT profile.  We are exposing this as a new "configure" option.
+We've added a new feature to allow customers to use RPC-Go to enable AMT on the wifi adapter as well as enabling wifi profile syncing (if LMS is present).  Customers have requested this feature to provide an easy way to enable AMT over wifi even if they aren't setting up any wifi profiles in their AMT profile.  We are exposing this as a new `configure` option.
 
-``` bash title="RPC-Go"
+``` bash title="Example Command"
 rpc configure enablewifiport -password AMTPassword
 ```
 
 :material-new-box: **New Feature: AMT Enabled Flag**
 
-We have added "Operational State" as part of AMTINFO report.  For 13th Gen vPro (AMT 16.1) and newer devices, this will indicate if AMT is currently enabled.  If AMT is disabled, RPC-Go will automatically enable AMT during the activation process.
+We have added "Operational State" as part of the RPC-Go `amtinfo` command.  For 13th Gen vPro (AMT 16.1) and newer devices, this will indicate if AMT is currently enabled.  If AMT is disabled, RPC-Go will automatically enable AMT during the activation process.
 
 ## Get the Details
 
