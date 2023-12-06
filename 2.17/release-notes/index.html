@@ -575,6 +575,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ui-toolkit" class="md-nav__link">
+    UI Toolkit
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3275,88 +3282,145 @@
   <h1>Release Notes</h1>
 
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
-<div style="text-align:center;">
+<!-- <div style="text-align:center;">
  <iframe width="800" height="450" src="https://www.youtube.com/embed/mSkvJuKCQPE?si=BU4n8IcL6-woFgzM" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<p><br></p>
+<br> -->
+
 <div class="admonition note">
 <p class="admonition-title">Note From the Team</p>
-<p>Happy Halloween!</p>
-<p>No tricks in this release, just new treats coming to <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>!  Make sure to checkout Bryan's video where he talks about the new changes in this release or you can get the details in the "What's New" section.  You can follow our day to day progress over at our new Sprint Planning project board (link at the bottom)! </p>
-<p>We are genuinely excited about this release and are eager to hear your valuable feedback. Your input plays a crucial role in enhancing the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> further.</p>
-<p><em>Best wishes,</em><br />
+<p>As 2023 draws to a close, we're thrilled to celebrate an exceptional year together. With 39 feature releases, successful integrations of <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> into new software versions by our valued customers, and the establishment of our community Discord server (reaching 99 members and aiming for 100 by December's end), it's been an incredible journey.</p>
+<p>Your continuous support has been invaluable. We deeply appreciate your involvement, feedback, and enthusiasm that have shaped our progress. Looking ahead to 2024, we're excited about delivering more innovative features and continuing our partnership.</p>
+<p>Thank you for being an integral part of our success this year. Here's to an even more remarkable and collaborative year ahead!</p>
+<p><em>Wishing you all a happy holidays,</em><br />
 <em>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em></p>
 </div>
 <h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3v7.12M12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5Z"/></svg></span> <strong>DB Update Required</strong></p>
-<p>Run the following SQL scripts to add the new required columns for both the <code>mpsdb</code> and <code>rpsdb</code>.</p>
+<p>Run the following SQL scripts to add new columns to the <code>mpsdb</code> prior to upgrading the service.</p>
 <div class="highlight"><span class="filename">mpsdb</span><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">deviceInfo</span><span class="w"> </span><span class="n">json</span><span class="p">;</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastconnected</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastseen</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastdisconnected</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">;</span>
 </code></pre></div>
-<p>The goal of this change is to allow us to cache some of the AMTINFO data that we gather while activating a device in the database and make that available to API callers when a device is not connected to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. </p>
-<div class="highlight"><span class="filename">rpsdb</span><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">domains</span>
-<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">expiration_date</span><span class="w"> </span><span class="k">timestamp</span><span class="p">;</span>
-</code></pre></div>
+<p>With this release, we have added the ability to track the last time a device connected, disconnected, or was seen by the services.  This information is included when retrieving information about a device. </p>
 <p><a href="../Deployment/upgradeVersion/">More information or detailed steps can be found in Upgrade Toolkit Version.</a></p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Offline AMT Data</strong></p>
-<p>Along with the DB update this release, we are now storing some basic AMT data in the database.  When activating an AMT device, this data will automatically collected and stored.  We've also added a new maintenance command <code>syncdeviceinfo</code> to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go that will collect and update this information.  Read more about this feature in our <a href="https://open-amt-cloud-toolkit.github.io/docs/2.16/Reference/RPC/commandsRPC/#syncdeviceinfo">docs</a></p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Certificate Expiration Checking</strong></p>
-<p>When provisioning certificates are added to <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr>, the software will now get the expiration date of the certificate and store that in the database.  This data is then returned when a GET call to Domains is made.  This information makes it easy to determine if a certificate is about to expire or already expired.  The <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> has an implementation showing this capability in this release.</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Fetch Provisioning Certificates During -local Activation</strong></p>
-<p>A new option has been provided for <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <code>-local</code> activation flows.  Users can now store their provisioning certificate and credentials securely on a network share and point <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to fetch this information during activation.  </p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Coming Soon: IDE Redirection</strong></p>
+<p>The team is getting really close to releasing the final redirection feature included with AMT, IDE-R.  This feature will allow users to remotely boot an AMT device to a remote boot image (located on the management console).</p>
+<p>The core components have been implemented and are released as part of the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> component.  Expect to see updates to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> very soon that will provide an example for how to integrate and use this new feature.  </p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: Local wifiport enable</strong></p>
+<p>We've added a new feature to allow customers to use <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to enable AMT on the wifi adapter as well as enabling wifi profile syncing (if LMS is present).  Customers have requested this feature to provide an easy way to enable AMT over wifi even if they aren't setting up any wifi profiles in their AMT profile.  We are exposing this as a new <code>configure</code> option.</p>
+<div class="highlight"><span class="filename">Example Command</span><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>enablewifiport<span class="w"> </span>-password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>New Feature: AMT Enabled Flag</strong></p>
+<p>We have added "Operational State" as part of the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go <code>amtinfo</code> command.  For 13th Gen vPro (AMT 16.1) and newer devices, this will indicate if AMT is currently enabled.  If AMT is disabled, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go will automatically enable AMT during the activation process.</p>
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
-<p>v2.19.0</p>
+<p>v2.21.2</p>
 <ul>
-<li>feat: adds expiration date to prov cert (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1234">#1234</a>)</li>
+<li>fix: update build tasks, package.json and changelog (<a href="https://github.com/open-amt-cloud-toolkit/rps/pull/1341">#1341</a>)</li>
 </ul>
-<p>v2.18.0</p>
+<p>v2.21.1</p>
 <ul>
-<li>feat: add device info maintenance (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1277">#1277</a>)</li>
+<li>fix: update build tasks, package.json and changelog (<a href="https://github.com/open-amt-cloud-toolkit/rps/pull/1330">#1330</a>)</li>
 </ul>
-<p>v2.17.1</p>
+<p>v2.21.0</p>
 <ul>
-<li>fix: store dnssuffix into db (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1256">#1256</a>)</li>
+<li>feat: add timestamp to device info data (<a href="https://github.com/open-amt-cloud-toolkit/rps/pull/1302">#1302</a>) </li>
 </ul>
-<p>v2.17.0</p>
+<p>v2.20.0</p>
 <ul>
-<li>feat: save additional values to mps mongo db (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1236">#1236</a>)</li>
+<li>feat: adds release trigger to security report</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
-<p>v2.12.4</p>
+<p>v2.13.4</p>
 <ul>
-<li>fix(redir): improve data checking for redirection (<a href="https://github.com/open-amt-cloud-toolkit/mps/commit/7aa151099baf43a565dae003ac45d444ea7a2b4e">7aa1510</a>)</li>
+<li>fix: update build tasks, package.json and changelog</li>
 </ul>
-<p>v2.12.3</p>
+<p>v2.13.3</p>
 <ul>
-<li>fix: fixed mongo device deletion (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1100">#1100</a>)</li>
+<li>fix: update changelog (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1199">#1199</a>)</li>
 </ul>
-<p>v2.12.2</p>
+<p>v2.13.2</p>
 <ul>
-<li>fix: Remove data from Mongo on deactivation (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1118">#1118</a>)</li>
+<li>fix: pdate build tasks, package.json and changelog (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1198">#1198</a>)</li>
 </ul>
-<p>v2.12.1</p>
+<p>v2.13.1</p>
 <ul>
-<li>fix: redirection token expiration and device UUID check (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1098">#1098</a>)</li>
+<li>fix: updates lint rules to remove unbound method check</li>
+</ul>
+<p>v2.13.0</p>
+<ul>
+<li>feat: add cira timestamps to db (<a href="https://github.com/open-amt-cloud-toolkit/mps/pull/1153">#1153</a>)</li>
+</ul>
+<p>v2.12.6</p>
+<ul>
+<li>fix: boot order for IDER (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1143">#1143</a>)</li>
 </ul>
 <h4 id="rpc"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p>v2.19.0</p>
+<p>v2.24.1</p>
 <ul>
-<li>feat: local operations read secrets from environment (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/90a5a4c1e445ede1d3e250ea090fcd6ac77c7675">90a5a4c</a>)</li>
+<li>fix: project version is updated (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/88dc4635a402e364665f6219c864c60794790129">88dc463</a>)</li>
 </ul>
-<p>v2.18.0</p>
+<p>v2.24.0</p>
 <ul>
-<li>feat: add device info maintenance (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e302f8aec00222651867b5977dafc419627ae778">e302f8a</a>)</li>
+<li>feat: add UUID Override flag to maintenance commands (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/294">#294</a>)</li>
 </ul>
-<p>v2.17.0</p>
+<p>v2.23.0</p>
 <ul>
-<li>feat: add features field to message payload (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/61a9829a8a4303600816b6ce629b07d142d7a144">61s9829</a>)</li>
+<li>feat: support AMTEnabled flag (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2547018910c6d8d4d8dcfb8d34e7ad21d5183987">2547018</a>)</li>
+</ul>
+<p>v2.22.0</p>
+<ul>
+<li>feat: adds report out to code analysis action (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/aa2efcf9cfe883c6e57d313e4245e4d68afbc730">aa2efcf</a>)</li>
+</ul>
+<p>v2.21.0</p>
+<ul>
+<li>feat: support smb: urls for remote .yaml or .pfx config files (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/935115e8cd9cb4451b7002971db3837c2fb6e7c9">935115e</a>)</li>
+</ul>
+<p>v2.20.0</p>
+<ul>
+<li>feat: add local wifi enable and profile sync (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ab08942cd6f0848faf82162d05ad8eccf43db66">8ab0894</a>)</li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
-<p>v2.15.0</p>
+<p>v3.1.2</p>
 <ul>
-<li>feat: adds exp date to domain certs </li>
+<li>fix: update build tasks, package.json and changelog (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1547">#1547</a>)</li>
+</ul>
+<p>v3.1.1</p>
+<ul>
+<li>fix: update ci automation to correct tag to webui</li>
+</ul>
+<p>v3.1.0</p>
+<ul>
+<li>feat: use db data when device not connected (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1499">#1499</a>) </li>
+</ul>
+<p>v3.0.0</p>
+<ul>
+<li>build: bump Angular to 17 (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1491">#1491</a>)</li>
+<li>BREAKING CHANGES: Node 16 no longer supported</li>
+</ul>
+<p>v2.16.0</p>
+<ul>
+<li>feat: adds report out to code analysis action (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/68a2255c3deca55c2d8475430dca1fff990e33ba">68a2255</a>)</li>
+</ul>
+<h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h4>
+<p>v3.2.0</p>
+<ul>
+<li>feat: add mode query param for kvm, ider and sol (<a href="https://github.com/open-amt-cloud-toolkit/ui-toolkit/commit/28b9e303bddbaa34ee004d874c64a9ca741bb620">28b9e30</a>)</li>
+</ul>
+<p>v3.1.1</p>
+<ul>
+<li>fix: separated floppy and cdrom read/writes</li>
+</ul>
+<p>v3.1.0</p>
+<ul>
+<li>feat: added IDER support (<a href="https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/781">#781</a>)</li>
+</ul>
+<p>v3.0.0</p>
+<ul>
+<li>BREAKING CHANGES: AMT Redirector requires a configuration object and removed ILogger</li>
 </ul>
 <h2 id="project-boards">Project Boards<a class="headerlink" href="#project-boards" title="Permanent link">&para;</a></h2>
 <p>Check out our new <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10/views/2">Sprint Planning</a> project board to see what stories the dev team is actively working on, what is in our backlog, and what is planned for the next sprint.</p>
