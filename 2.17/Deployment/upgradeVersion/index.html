@@ -1184,6 +1184,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#upgrade-to-217-nov-23-from-216-oct-23" class="md-nav__link">
+    Upgrade to 2.17 (Nov 23) from 2.16 (Oct 23)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#upgrade-to-216-oct-23-from-215-sep-23" class="md-nav__link">
     Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)
   </a>
@@ -3309,6 +3316,55 @@
   <h1>Upgrade Toolkit Version</h1>
 
 <h2 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">&para;</a></h2>
+<h3 id="upgrade-to-217-nov-23-from-216-oct-23">Upgrade to 2.17 (Nov 23) from 2.16 (Oct 23)<a class="headerlink" href="#upgrade-to-217-nov-23-from-216-oct-23" title="Permanent link">&para;</a></h3>
+<p>The 2.17 release of Open AMT requires an upgrade to the <code>mpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL script to alter constraints before upgrading the services.</p>
+<div class="highlight"><span class="filename">mpsdb</span><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastconnected</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastseen</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lastdisconnected</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="p">;</span>
+</code></pre></div>
+<details class="example" open="open">
+<summary>Example - Adding Columns to PostgresDB using psql</summary>
+<p>This example walks through one potential option to update a Postgres Database using psql. </p>
+<ol>
+<li>
+<p>Open a Command Prompt or Terminal.</p>
+</li>
+<li>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
+    <div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div></p>
+<details class="example">
+<summary>Example Commands</summary>
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
+psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Provide your Postgres user password.</p>
+</li>
+<li>
+<p>Run the SQL Statements.</p>
+</li>
+<li>
+<p>Verify the constraints were modified correctly.
+    <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Continue with <a href="#upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version</a> steps below.</p>
+</li>
+</ol>
 <h3 id="upgrade-to-216-oct-23-from-215-sep-23">Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)<a class="headerlink" href="#upgrade-to-216-oct-23-from-215-sep-23" title="Permanent link">&para;</a></h3>
 <p>The 2.16 release of Open AMT requires an upgrade to both the <code>mpsdb</code> and <code>rpsdb</code> databases. More information about why we've made this change can be found in the <a href="https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new">October 2023 Release Notes</a>.</p>
 <ol>
@@ -3320,7 +3376,7 @@
 <div class="highlight"><span class="filename">rpsdb</span><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">domains</span>
 <span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">expiration_date</span><span class="w"> </span><span class="k">timestamp</span><span class="p">;</span>
 </code></pre></div>
-<details class="example" open="open">
+<details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql. Change the database passed using the <code>-d</code> flag to either <code>mpsdb</code> or <code>rpsdb</code> as needed.</p>
 <ol>
