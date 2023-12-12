@@ -1,6 +1,45 @@
 
 ## Specific Changes Required for Version Upgrades
 
+### Upgrade to 2.18 (Dec 23) from 2.17 (Nov 23)
+
+The 2.17 release of Open AMT requires an upgrade to the `rpsdb` database.
+
+1. Run the following SQL script to alter constraints before upgrading the services.
+
+    ``` sql title="rpsdb"
+    ALTER TABLE IF EXISTS profiles
+    ADD COLUMN IF NOT EXISTS local_wifi_sync_enabled BOOLEAN NULL;
+    ```
+
+    ???+ example "Example - Adding Columns to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql. 
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+            ```
+            psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+            ```
+
+            ??? example "Example Commands"
+                ```
+                Azure:
+                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+                AWS:
+                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+                ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statements.
+
+        5. Verify the constraints were modified correctly.
+            ``` sql
+            SELECT * FROM profiles;
+            ```
+
 ### Upgrade to 2.17 (Nov 23) from 2.16 (Oct 23)
 
 The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
@@ -14,7 +53,7 @@ The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
     ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
     ```
 
-    ???+ example "Example - Adding Columns to PostgresDB using psql"
+    ??? example "Example - Adding Columns to PostgresDB using psql"
         This example walks through one potential option to update a Postgres Database using psql. 
 
         1. Open a Command Prompt or Terminal.
