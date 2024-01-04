@@ -11,12 +11,14 @@
 	
 2. Click the Devices tab from the menu on the left.
      <figure class="figure-image">
-     <img src="..\..\assets\images\/MPS_ConnectedDevice.png" alt="Figure 1: Devices tab">
+     <img src="..\..\assets\images\MPS_ConnectedDevice.png" alt="Figure 1: Devices tab">
      <figcaption>Figure 1: Devices tab</figcaption>
      </figure>
 
     !!! troubleshooting
         If the activated device is not listed or if it is listed as unconnected, try restarting the AMT device. After successfully restarting the device, refresh the Sample Web UI to see if the *Status* changes to *connected*.
+
+        [Additional troubleshooting steps.](../Reference/troubleshooting.md)
 
 3. Click on your connected device.
 
@@ -32,7 +34,7 @@
 
 ### User Consent
 
-  If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM) and serial-over-LAN (SOL) features require entering a user consent code, which will be displayed on the managed device.
+  If activated in Client Control Mode(CCM), the keyboard, video, mouse (KVM), serial-over-LAN (SOL), and IDE-Redirect (IDER) features require entering a user consent code, which will be displayed on the managed device.
         
   To use KVM/SOL without user consent, follow the [ACM Activation Path](createProfileACM.md) for how to configure a device into Admin Control Mode.
 
@@ -55,7 +57,7 @@ Learn how to send commands to AMT devices with the curl-based REST API tutorial.
 [Get Started with REST API Calls](../Tutorials/apiTutorial.md){: .md-button .md-button--primary }
 
 ### UI Toolkit
-Explore the Open AMT Cloud Toolkit reference implementation console by adding manageability features with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
+Explore how to add redirection features, such as Keyboard, Video, and Mouse (KVM) and IDE-Redirect (IDER), with prebuilt React components.
 
 [Get Started with the UI Toolkit](../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }
 

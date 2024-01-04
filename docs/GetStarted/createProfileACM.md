@@ -98,7 +98,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-11. Select **CIRA (Cloud)** for Connection Configuration.
+11. Select **CIRA (Cloud)** for **Connection Configuration**.
 
 12. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
