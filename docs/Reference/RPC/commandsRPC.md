@@ -51,7 +51,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
     === "Local Stored Provisioning Cert"
         ```
-        rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provivisioningCertPwd certPassword
+        rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provisioningCertPwd certPassword
         ```
     === "Remote Stored Provisioning Cert"
         Currently, the only supported remote network share is Server Message Block (SMB) based shares. 

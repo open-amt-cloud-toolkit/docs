@@ -1,6 +1,20 @@
 --8<-- "References/abbreviations.md"
 
-IDE-Redirection (IDER) allows a trusted administrator to remotely mount disk images on an Intel AMT computer over the network. The device can then reboot using this image to perform computer recovery, OS re-installation, virus scanning and more.
+!!! note "Note - Support for User Consent"
+    Currently, the implementation of IDER in Open AMT does not support User Consent. In order to use IDER, the device must be activated in ACM. To see when support for User Consent will be added, [follow our Github Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/10).
+
+IDE-Redirection (IDER) allows a trusted administrator to remotely mount disk images on an Intel AMT computer over the network. The device can then reboot using this image to perform tasks such as:
+
+- Computer Recovery
+- OS Re-installation
+- Virus Scanning and more
+
+<br>
+
+To have the best performance, it is recommended to perform a Two-Stage recovery process.
+
+- Stage 1: Load a minimal OS kernel initially through IDER
+- Stage 2: Retrieve full OS from Windows Share, HTTP, iSCSI, etc
 
 ## What You'll Need
 
@@ -8,7 +22,7 @@ IDE-Redirection (IDER) allows a trusted administrator to remotely mount disk ima
 
 A minimum network configuration must include:
 
--  A Development system with Windows® 10 or Ubuntu 18.04 or newer
+-  A Development system with Windows® 10 or Ubuntu 22.04 or newer
 -  An Activated and Configured Intel® vPro device as the managed device
 
 **Software on the Development System** 
