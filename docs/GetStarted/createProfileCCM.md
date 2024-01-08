@@ -51,7 +51,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 9. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
 
-10. Select **CIRA (Cloud)** for Connection Configuration.
+10. Select **CIRA (Cloud)** for **Connection Configuration**.
 
 11. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
 
