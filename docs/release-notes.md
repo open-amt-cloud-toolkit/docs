@@ -1,20 +1,14 @@
 --8<-- "References/abbreviations.md"
 ## Release Highlights
 
-<!-- <div style="text-align:center;">
- <iframe width="800" height="450" src="https://www.youtube.com/embed/mSkvJuKCQPE?si=BU4n8IcL6-woFgzM" title="Open AMT October Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<br> -->
 
 !!! note "Note From the Team"
 
-    As 2023 draws to a close, we're thrilled to celebrate an exceptional year together. With 39 feature releases, successful integrations of Open AMT Cloud Toolkit into new software versions by our valued customers, and the establishment of our community Discord server (reaching 99 members and aiming for 100 by December's end), it's been an incredible journey.
+    Happy New Year! 
     
-    Your continuous support has been invaluable. We deeply appreciate your involvement, feedback, and enthusiasm that have shaped our progress. Looking ahead to 2024, we're excited about delivering more innovative features and continuing our partnership.
-    
-    Thank you for being an integral part of our success this year. Here's to an even more remarkable and collaborative year ahead!
+    The team has worked hard through December to deliver IDE-R or Storage redirection.
 
-    *Wishing you all a happy holidays,*  
+    *Best Wishes,* 
     *The Open AMT Cloud Toolkit Team*
 
 
@@ -22,36 +16,34 @@
 
 :material-update: **DB Update Required**
 
-Run the following SQL scripts to add new columns to the `mpsdb` prior to upgrading the service.
+Run the following SQL scripts to add new columns to the `rpsdb` prior to upgrading the service.
 
-``` sql title="mpsdb"
-ALTER TABLE devices
-ADD COLUMN IF NOT EXISTS lastconnected timestamp with time zone,
-ADD COLUMN IF NOT EXISTS lastseen timestamp with time zone,
-ADD COLUMN IF NOT EXISTS lastdisconnected timestamp with time zone;
+``` sql title="rpsdb"
+    ALTER TABLE IF EXISTS profiles
+    ADD COLUMN IF NOT EXISTS local_wifi_sync_enabled BOOLEAN NULL;
 ```
 
-With this release, we have added the ability to track the last time a device connected, disconnected, or was seen by the services.  This information is included when retrieving information about a device. 
+We have added the ability to enable `localProfileSynchronizationEnabled` property. If this property is enabled, LMS will synchronize Windows user Wi-Fi profiles with AMT. You can find more details about the property [here](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fuserprofilesandadminprofiles1.htm)
 
 [More information or detailed steps can be found in Upgrade Toolkit Version.](./Deployment/upgradeVersion.md)
 
-:material-new-box: **Coming Soon: IDE Redirection**
+:material-new-box: **New Feature: IDE Redirection**
 
-The team is getting really close to releasing the final redirection feature included with AMT, IDE-R.  This feature will allow users to remotely boot an AMT device to a remote boot image (located on the management console).
+With this release, we've added the ability to remotely boot a CD-ROM image using AMT IDE-R. 
 
-The core components have been implemented and are released as part of the UI Toolkit component.  Expect to see updates to the Sample Web UI very soon that will provide an example for how to integrate and use this new feature.  
+[More information on how to perform IDER are here.](./Tutorials/ideRedirection.md)
 
-:material-new-box: **New Feature: Local wifiport enable**
+:material-new-box: **New API: To query Redirection status**
 
-We've added a new feature to allow customers to use RPC-Go to enable AMT on the wifi adapter as well as enabling wifi profile syncing (if LMS is present).  Customers have requested this feature to provide an easy way to enable AMT over wifi even if they aren't setting up any wifi profiles in their AMT profile.  We are exposing this as a new `configure` option.
+We've added a new API in MPS which will allow you to check if there is any redirection session running. Check out MPS API `api/v1/devices/redirectionStatus/{guid}`
 
-``` bash title="Example Command"
-rpc configure enablewifiport -password AMTPassword
+```json
+{
+  "isKVMConnected": true,
+  "isSOLConnected": false,
+  "isIDERConnected": false
+}
 ```
-
-:material-new-box: **New Feature: AMT Enabled Flag**
-
-We have added "Operational State" as part of the RPC-Go `amtinfo` command.  For 13th Gen vPro (AMT 16.1) and newer devices, this will indicate if AMT is currently enabled.  If AMT is disabled, RPC-Go will automatically enable AMT during the activation process.
 
 ## Get the Details
 
@@ -59,116 +51,71 @@ We have added "Operational State" as part of the RPC-Go `amtinfo` command.  For 
 
 #### RPS
 
-v2.21.2
+v2.22.0
 
-- fix: update build tasks, package.json and changelog ([#1341](https://github.com/open-amt-cloud-toolkit/rps/pull/1341))
+- feat: add wifi sync enable to profiles table ([#1334](https://github.com/open-amt-cloud-toolkit/rps/issues/1334))
 
-v2.21.1
-
-- fix: update build tasks, package.json and changelog ([#1330](https://github.com/open-amt-cloud-toolkit/rps/pull/1330))
-
-v2.21.0
-
-- feat: add timestamp to device info data ([#1302](https://github.com/open-amt-cloud-toolkit/rps/pull/1302)) 
-
-v2.20.0
-
-- feat: adds release trigger to security report
+- fix: message when changing password on TLS device ([#1352](https://github.com/open-amt-cloud-toolkit/rps/issues/1352))
 
 
 #### MPS
 
-v2.13.4
+v2.13.8
 
-- fix: update build tasks, package.json and changelog
+- fix: updates validation to uuid ([#1242](https://github.com/open-amt-cloud-toolkit/mps/issues/1242))
 
-v2.13.3
+v2.13.7
 
-- fix: update changelog ([#1199](https://github.com/open-amt-cloud-toolkit/mps/issues/1199))
+- fix: adds hostname length check ([#1241](https://github.com/open-amt-cloud-toolkit/mps/issues/1241))
 
-v2.13.2
+v2.13.6
 
-- fix: pdate build tasks, package.json and changelog ([#1198](https://github.com/open-amt-cloud-toolkit/mps/issues/1198))
+- fix: remove unnecessary console.log statements ([8b92598](https://github.com/open-amt-cloud-toolkit/mps/commit/8b9259817aa0a34cf2f1f4a7973509a12c88e3f3))
+- fix: validate username ([#1240](https://github.com/open-amt-cloud-toolkit/mps/issues/1240))
 
-v2.13.1
+v2.13.5
 
-- fix: updates lint rules to remove unbound method check
-
-v2.13.0
-
-- feat: add cira timestamps to db ([#1153](https://github.com/open-amt-cloud-toolkit/mps/pull/1153))
-
-v2.12.6
-
-- fix: boot order for IDER ([#1143](https://github.com/open-amt-cloud-toolkit/mps/issues/1143))
+- fix: update redirect to handle multiple connections ([#1203](https://github.com/open-amt-cloud-toolkit/mps/pull/1203))
 
 
 #### RPC
 
-v2.24.1
+v2.24.3
 
-- fix: project version is updated ([88dc463](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/88dc4635a402e364665f6219c864c60794790129))
+- fix: makes sure uuid flag warning is only shown when the flag is used ([877ccba](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/877ccbae2428f15bc635fec9c7b0d15b0b3f9495))
 
-v2.24.0
+v2.24.2
 
-- feat: add UUID Override flag to maintenance commands ([#294](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/294))
+- fix: local activation supports .pfx ([#297](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/297))
 
-v2.23.0
-
-- feat: support AMTEnabled flag ([2547018](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2547018910c6d8d4d8dcfb8d34e7ad21d5183987))
-
-v2.22.0
-
-- feat: adds report out to code analysis action ([aa2efcf](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/aa2efcf9cfe883c6e57d313e4245e4d68afbc730))
-
-v2.21.0
-
-- feat: support smb: urls for remote .yaml or .pfx config files ([935115e](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/935115e8cd9cb4451b7002971db3837c2fb6e7c9))
-
-v2.20.0
-
-- feat: add local wifi enable and profile sync ([8ab0894](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ab08942cd6f0848faf82162d05ad8eccf43db66))
 
 #### Sample Web UI
 
-v3.1.2
+v3.4.0
 
-- fix: update build tasks, package.json and changelog ([#1547](https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1547))
+- feat: enable IDER functionality ([#1548](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1548))
 
-v3.1.1
+v3.3.0
 
-- fix: update ci automation to correct tag to webui
-
-v3.1.0
-
-- feat: use db data when device not connected ([#1499](https://github.com/open-amt-cloud-toolkit/sample-web-ui/pull/1499)) 
-
-v3.0.0
-
-- build: bump Angular to 17 ([#1491](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1491))
-- BREAKING CHANGES: Node 16 no longer supported
-
-v2.16.0
-
-- feat: adds report out to code analysis action ([68a2255](https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/68a2255c3deca55c2d8475430dca1fff990e33ba))
-
-#### UI Toolkit
+- feat: about notice appears after login ([#1554](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1554))
 
 v3.2.0
 
-- feat: add mode query param for kvm, ider and sol ([28b9e30](https://github.com/open-amt-cloud-toolkit/ui-toolkit/commit/28b9e303bddbaa34ee004d874c64a9ca741bb620))
+- feat: adds Wi-Fi synchronization option ([#1537](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1537))
+- fix: test update release ([7018978](https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/701897862f5014401d5f83765bea442a9b57fb09))
 
-v3.1.1
 
-- fix: separated floppy and cdrom read/writes
+#### UI Toolkit
 
-v3.1.0
+v3.2.1
 
-- feat: added IDER support ([#781](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/781))
+- chore: update build tasks, package.json and changelog ([#823](https://github.com/open-amt-cloud-toolkit/ui-toolkit/pull/823))
 
-v3.0.0
 
-- BREAKING CHANGES: AMT Redirector requires a configuration object and removed ILogger
+#### UI Toolkit React
+
+- feat: adds IDER component ([#975](https://github.com/open-amt-cloud-toolkit/ui-toolkit-react/issues/975))
+
 
 ## Project Boards
 
