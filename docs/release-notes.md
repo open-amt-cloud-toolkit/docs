@@ -12,7 +12,7 @@
 
     It's time to get the party started with the first release of the year. And this was a big one! Thankfully, most of the team was able to find some time for a bit of rest and vacation (and hopefully you've been able to as well). IDE Redirection was a big year-end goal for us and we are thrilled to be able to deliver it. Check out the short video above for a quick intro and demo of the feature.
 
-    Looking ahead, we aren't planning on letting up the pace at all this year. Our primary goal for Q1 will be enhacing and adding local provisioning features to RPC-GO. We look forward to having you with us throughout 2024 and beyond, maintaining our partnership and collaboration for Open AMT Cloud Toolkit. There's so much to come that we are beyond excited to share with you all!
+    Looking ahead, we aren't planning on letting up the pace at all this year. Our primary goal for Q1 will be enhancing and adding local provisioning features to RPC-GO. We look forward to having you with us throughout 2024 and beyond, maintaining our partnership and collaboration for Open AMT Cloud Toolkit. There's so much to come that we are beyond excited to share with you all!
     
     *Best Wishes,* 
 
