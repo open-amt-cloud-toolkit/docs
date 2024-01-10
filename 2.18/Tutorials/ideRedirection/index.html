@@ -3263,20 +3263,24 @@
 
 <div class="admonition note">
 <p class="admonition-title">Note - Support for User Consent</p>
-<p>Currently, the implementation of IDER in Open AMT does not support User Consent. In order to use IDER, the device must be activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. To see when support for User Consent will be added, <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10">follow our Github Backlog</a>.</p>
+<p>Currently, the implementation of <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> in Open AMT does not support User Consent. In order to use <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>, the device must be activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. To see when support for User Consent will be added, <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10">follow our Github Backlog</a>.</p>
 </div>
-<p>IDE-Redirection (IDER) allows a trusted administrator to remotely mount disk images on an Intel AMT computer over the network. The device can then reboot using this image to perform tasks such as:</p>
+<p>IDE-Redirection (<abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>) allows a trusted administrator to remotely mount disk images on an Intel AMT computer over the network. The device can then reboot using this image to perform tasks such as:</p>
 <ul>
 <li>Computer Recovery</li>
 <li>OS Re-installation</li>
 <li>Virus Scanning and more</li>
 </ul>
-<p><br></p>
 <p>To have the best performance, it is recommended to perform a Two-Stage recovery process.</p>
 <ul>
-<li>Stage 1: Load a minimal OS kernel initially through IDER</li>
+<li>Stage 1: Load a minimal OS kernel initially through <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr></li>
 <li>Stage 2: Retrieve full OS from Windows Share, HTTP, iSCSI, etc</li>
 </ul>
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/N_1koCmZKbw?si=GPukyEFgUfKOxSLK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>IDE Redirection Tutorial Video</b>: Follow along to learn more about IDER, its use cases, and how to use it.</figcaption>
+</div>
+
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
 <p><strong>Hardware</strong></p>
 <p>A minimum network configuration must include:</p>
@@ -3298,11 +3302,11 @@
 <h2 id="what-youll-do">What You'll Do<a class="headerlink" href="#what-youll-do" title="Permanent link">&para;</a></h2>
 <p>The following sections describe how to:</p>
 <ul>
-<li>Start an IDER session</li>
+<li>Start an <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> session</li>
 <li>Remote Mount an ISO</li>
 <li>Reimage the AMT Device</li>
 </ul>
-<h2 id="start-an-ider-session">Start an IDER Session<a class="headerlink" href="#start-an-ider-session" title="Permanent link">&para;</a></h2>
+<h2 id="start-an-ider-session">Start an <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> Session<a class="headerlink" href="#start-an-ider-session" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>In the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, navigate to the Devices page.</p>
@@ -3317,7 +3321,7 @@
 <p>Click <strong>Attach Disk Image (.iso)</strong> button in the upper-right corner.</p>
 <p><figure class="figure-image">
 <img src="..\..\assets\images\SampleUI_StartIDER.png" alt="Figure 1: Start IDER Session">
-<figcaption>Figure 1: Start IDER Session</figcaption>
+<figcaption>Figure 1: Start <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> Session</figcaption>
 </figure></p>
 </li>
 </ol>
@@ -3356,14 +3360,14 @@
 <p class="admonition-title">Success</p>
 <p><figure class="figure-image">
 <img src="..\..\assets\images\SampleUI_IDER_netboot.png" alt="Figure 5: IDER Session">
-<figcaption>Figure 5: IDER Session</figcaption>
+<figcaption>Figure 5: <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> Session</figcaption>
 </figure></p>
 </div>
 </li>
 </ol>
 <p><br></p>
 <h2 id="learn-how-to-integrate-into-a-custom-ui">Learn How to Integrate into a Custom UI<a class="headerlink" href="#learn-how-to-integrate-into-a-custom-ui" title="Permanent link">&para;</a></h2>
-<p>Explore how to add redirection features, such as Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) and IDE-Redirect (IDER), with prebuilt React components.</p>
+<p>Explore how to add redirection features, such as Keyboard, Video, and Mouse (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>) and IDE-Redirect (<abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>), with prebuilt React components.</p>
 <p><a class="md-button md-button--primary" href="../uitoolkitReact/">Get Started with the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr></a></p>
 <p><br></p>
 
