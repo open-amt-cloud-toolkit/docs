@@ -12,8 +12,8 @@
 
     It's time to get the party started with the first release of the year. And this was a big one! Thankfully, most of the team was able to find some time for a bit of rest and vacation (and hopefully you've been able to as well). IDE Redirection was a big year-end goal for us and we are thrilled to be able to deliver it. Check out the short video above for a quick intro and demo of the feature.
 
-    Looking ahead, we aren't planning on letting up the pace at all this year. We hope you'll stick with us for all of 2024 and continue to be our partners and collaborators for Open AMT. There's so much to come that we are beyond excited to share with you all!
-
+    Looking ahead, we aren't planning on letting up the pace at all this year. Our primary goal for Q1 will be enhacing and adding local provisioning features to RPC-GO. We look forward to having you with us throughout 2024 and beyond, maintaining our partnership and collaboration for Open AMT Cloud Toolkit. There's so much to come that we are beyond excited to share with you all!
+    
     *Best Wishes,* 
 
     *The Open AMT Cloud Toolkit Team*
@@ -30,7 +30,7 @@ ALTER TABLE IF EXISTS profiles
 ADD COLUMN IF NOT EXISTS local_wifi_sync_enabled BOOLEAN NULL;
 ```
 
-We have added a new boolean, `localWifiSyncEnabled`, to our Profile APIs. If this is enabled, the Local Management Service (LMS) will synchronize Windows user Wi-Fi profiles with AMT. [In-depth details about the property can be found in the AMT SDK.](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fuserprofilesandadminprofiles1.htm)
+We have added a new boolean, `localWifiSyncEnabled`, to our RPS Profile APIs. If this is enabled, the Local Management Service (LMS) will synchronize Windows user Wi-Fi profiles with AMT. In-depth details about the property can be found in the [AMT Reference Guide](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/default.htm?turl=WordDocuments%2Fuserprofilesandadminprofiles1.htm).
 
 :material-new-box: **Feature: IDE Redirection (IDER)**
 
@@ -85,7 +85,11 @@ v2.13.5
 - fix: update redirect to handle multiple connections ([#1203](https://github.com/open-amt-cloud-toolkit/mps/pull/1203))
 
 
-#### RPC
+#### RPC-GO
+
+v2.24.4
+
+- fix: update project version ([90bd52b](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/90bd52bc8996ae71429bea5f0e3b2594fb183928))
 
 v2.24.3
 
@@ -97,6 +101,14 @@ v2.24.2
 
 
 #### Sample Web UI
+
+v3.5.1
+
+- fix: package version and changelog ([#1612](https://github.com/open-amt-cloud-toolkit/sample-web-ui/issues/1612))
+
+v3.5.0
+
+- feat: snow ([f37d707](https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/f37d70702a280ebe0df5ccac035de60c0ef22759))
 
 v3.4.0
 
