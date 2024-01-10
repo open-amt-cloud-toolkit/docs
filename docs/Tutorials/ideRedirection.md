@@ -9,12 +9,15 @@ IDE-Redirection (IDER) allows a trusted administrator to remotely mount disk ima
 - OS Re-installation
 - Virus Scanning and more
 
-<br>
-
 To have the best performance, it is recommended to perform a Two-Stage recovery process.
 
 - Stage 1: Load a minimal OS kernel initially through IDER
 - Stage 2: Retrieve full OS from Windows Share, HTTP, iSCSI, etc
+
+<div style="text-align:center;">
+  <iframe width="600" height="337" src="https://www.youtube.com/embed/N_1koCmZKbw?si=GPukyEFgUfKOxSLK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><b>IDE Redirection Tutorial Video</b>: Follow along to learn more about IDER, its use cases, and how to use it.</figcaption>
+</div>
 
 ## What You'll Need
 

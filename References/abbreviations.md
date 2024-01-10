@@ -16,6 +16,8 @@
 
 *[AKS]: Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.
 
+*[IDER]: IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.
+
 *[Intel® AMT]: Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.
 
 *[KVM]: Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.
@@ -23,6 +25,8 @@
 *[Hybrid Cloud]: Hybrid Cloud - a mixture of public and private on-premises infrastructure. 
 
 *[Intel® MEBX]: Intel® Manageability Engine BIOS Extensions - A BIOS extension that enables the configuration of Intel® AMT.
+
+*[LMS]: Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.
 
 *[microservice architecture]: microservice architecture - An architecture in which the component parts are broken into discrete services, called microservices, that perform specific, limited functions. 
 
