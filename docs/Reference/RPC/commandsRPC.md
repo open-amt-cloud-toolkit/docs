@@ -301,7 +301,7 @@ Execute a configuration command for the managed device:
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
-| [tls](#tls)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
+| [tls](#tls)                           | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 
 
 <br>
@@ -597,10 +597,10 @@ rpc configure tls -mode Server -password AMTPassword
 
 <br>
 
-| OPTION  | DESCRIPTION                                                                                                                            |
-|---------|----------------------------------------------------------------------------------------------------------------------------------------|
-| -delay  | Delay time in seconds after putting remote TLS settings. Default is 3 seconds if not provided.                                         |
-| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default is Server if not provided.  |
+| OPTION  | DESCRIPTION                                                                                                                                  |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -delay  | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
+| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is Server if not provided.  |
 
 <br>
 
