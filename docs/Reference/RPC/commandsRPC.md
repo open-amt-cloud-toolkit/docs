@@ -301,6 +301,8 @@ Execute a configuration command for the managed device:
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
+| [tls](#tls)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
+
 
 <br>
 
@@ -551,16 +553,6 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
 <br>
 
-#### enablewifiport
-
-Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
-
-```
-rpc configure enablewifiport -password AMTPassword
-```
-
-<br>
-
 | OPTION                  | DESCRIPTION                                                                                                                                                                                             |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | -authenticationMethod   | Wifi authentication method. Valid Values = {4, 5, 6, 7} where `4` = WPA PSK, `5` = WPA_IEEE8021X, `6` = WPA2 PSK, `7` = WPA2_IEEE8021X                                                                  |
@@ -578,6 +570,37 @@ rpc configure enablewifiport -password AMTPassword
 | -secrets                | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
 | -ssid                   | Wifi SSID                                                                                                                                                                                               |
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
+
+<br>
+
+#### enablewifiport
+
+Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
+
+```
+rpc configure enablewifiport -password AMTPassword
+```
+
+<br>
+
+#### tls
+
+Configures TLS in AMT. AMT password is required.
+
+!!! note "Note - Current Implementation of `configure tls`"
+    The current implementation only includes support for self-signed TLS certificates. [See our backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/10) for updates and details on expanded support for retrieving certificates and CSRs during local configuration using Enterprise Assistant.
+
+
+```
+rpc configure tls -mode Server -password AMTPassword
+```
+
+<br>
+
+| OPTION  | DESCRIPTION                                                                                                                            |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------|
+| -delay  | Delay time in seconds after putting remote TLS settings. Default is 3 seconds if not provided.                                         |
+| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default is Server if not provided.  |
 
 <br>
 
