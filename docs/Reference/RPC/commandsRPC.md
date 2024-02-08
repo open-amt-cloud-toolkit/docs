@@ -106,16 +106,16 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 #### `activate` General Options
 
-| OPTION             | DESCRIPTION                                                                                                                       |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| -json              | JSON output                                                                                                                       |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                              |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                           |
-| -lmsport string    | LMS port (default "16992")                                                                                                        |
-| -n                 | Skip WebSocket server certificate verification                                                                                    |
-| -skipIPRenew       | Skip DHCP renewal of the IP address if AMT becomes enabled. Only applicable for 13th Gen Raptor Lake (AMT 16.1) or newer devices. |                                                                                  |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                       |
-| -v                 | Verbose output                                                                                                                    |
+| OPTION             | DESCRIPTION                                                                                                                                                                              |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                                                                              |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                                                                                  |
+| -lmsport string    | LMS port (default "16992")                                                                                                                                                               |
+| -n                 | Skip WebSocket server certificate verification                                                                                                                                           |
+| -skipIPRenew       | Skip DHCP renewal of the IP address if AMT becomes enabled. Only applicable for 13th Gen Raptor Lake (AMT 16.1) or newer devices.                                                        |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                                                                              |
+| -v                 | Verbose output <br>**Caution**: Do not run in production as sensitive information may be logged to the console.                                                                          |
 
 #### `activate` Remote-Specific Options
 
@@ -170,16 +170,16 @@ rpc deactivate -local -password AMTPassword
 
 #### `deactivate` Options
 
-| OPTION             | DESCRIPTION                                                                             |
-|--------------------|-----------------------------------------------------------------------------------------|
-| -json              | JSON output                                                                             |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                    |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging. |
-| -lmsport string    | LMS port (default "16992")                                                              |
-| -local             | Execute command to AMT directly without cloud interaction.                              |
-| -password string   | AMT password                                                                            |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`             |
-| -v                 | Verbose output                                                                          |
+| OPTION             | DESCRIPTION                                                                                                                                                                              |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                                                                              |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                                                                                  |
+| -lmsport string    | LMS port (default "16992")                                                                                                                                                               |
+| -local             | Execute command to AMT directly without cloud interaction.                                                                                                                               |
+| -password string   | AMT password                                                                                                                                                                             |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                                                                              |
+| -v                 | Verbose output. <br>**Caution**: Do not run in production as sensitive information may be logged to the console.                                                                         |
 
 #### `deactivate` Remote-Specific Options
 
@@ -212,22 +212,22 @@ Execute a maintenance command for the managed device:
 
 #### Common `maintenance` Options
 
-| OPTION             | DESCRIPTION                                                                                                                      |
-|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
-| -f                 | Force maintenance commands even if device is not registered with a server                                                        |
-| -json              | JSON output                                                                                                                      |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
-| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                          |
-| -lmsport string    | LMS port (default "16992")                                                                                                       |
-| -n                 | Skip WebSocket server certificate verification                                                                                   |
-| -p string          | Proxy address and port                                                                                                           |
-| -password string   | AMT password                                                                                                                     |
-| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                      |
-| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))  |
-| -token string      | JWT Token for Authorization                                                                                                      |
-| -u string          | WebSocket address of server to activate against                                                                                  |
+| OPTION             | DESCRIPTION                                                                                                                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -f                 | Force maintenance commands even if device is not registered with a server                                                                                                               |
+| -json              | JSON output                                                                                                                                                                             |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console. |
+| -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                                                                                 |
+| -lmsport string    | LMS port (default "16992")                                                                                                                                                              |
+| -n                 | Skip WebSocket server certificate verification                                                                                                                                          |
+| -p string          | Proxy address and port                                                                                                                                                                  |
+| -password string   | AMT password                                                                                                                                                                            |
+| -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                                                                             |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))                                                         |
+| -token string      | JWT Token for Authorization                                                                                                                                                             |
+| -u string          | WebSocket address of server to activate against                                                                                                                                         |
 | -uuid string       | Override AMT device UUID for use with **non-CIRA** workflow and deployments. This is for specific use cases where the hardware does not have a correctly assigned or formatted UUID. This is **NOT recommended** in other situations and could potentially break features. <br><br> Input must match standard UUID alphanumeric, hyphenated format (e.g. 4c4c4544-005a-3510-8047-b4c04f564433). |
-| -v                 | Verbose output                                                                                                                   |
+| -v                 | Verbose output <br>**Caution**: Do not run in production as sensitive information may be logged to the console.                                                                         |
 
 <br>
 
@@ -301,19 +301,19 @@ Execute a configuration command for the managed device:
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
-| [tls](#tls)                           | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
+| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                       |
 
 
 <br>
 
 #### Common `configure` Options
 
-| OPTION             | DESCRIPTION                                                                                                                      |
-|--------------------|--------------------------------------------------------------------------------------------------------------------------------- |
-| -json              | JSON output                                                                                                                      |
-| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info")                                                             |
-| -password string   | AMT password                                                                                                                     |
-| -v                 | Verbose output                                                                                                                   |
+| OPTION             | DESCRIPTION                                                                                                                                                                              |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -json              | JSON output                                                                                                                                                                              |
+| -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
+| -password string   | AMT password                                                                                                                                                                             |
+| -v                 | Verbose output <br>**Caution**: Do not run in production as sensitive information may be logged to the console.                                                                          |
 
 <br>
 
@@ -600,7 +600,7 @@ rpc configure tls -mode Server -password AMTPassword
 | OPTION  | DESCRIPTION                                                                                                                                  |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | -delay  | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
-| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is Server if not provided.  |
+| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.  |
 
 <br>
 
