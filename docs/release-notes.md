@@ -57,6 +57,11 @@ v2.13.9
 
 #### RPC-GO
 
+v2.25.1
+
+- docs: correct tls help example command
+- build: bump go-wsman-messages to v2.0 ([#360](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/360))
+
 v2.25.0
 
 - feat: add local self-signed tls configuration ([947e134](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/947e1345ec52ababd39180e440f2152e28c0c20d))
