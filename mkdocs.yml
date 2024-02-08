@@ -201,10 +201,10 @@ extra:
   repoVersion:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
-    oamtct: 2.18.0
-    rpc_go: 2.24.4
+    oamtct: 2.19.0
+    rpc_go: 2.26.0
     rpc_c: 2.0.0
-    ui_toolkit: 3.2.1
+    ui_toolkit: 3.2.2
     ui_toolkit_react: 3.2.1
     ui_toolkit_angular: 7.2.3
   docsSite:
