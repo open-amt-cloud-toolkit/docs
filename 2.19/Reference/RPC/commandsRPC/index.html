@@ -2741,6 +2741,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    tls
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3598,7 +3605,7 @@
 </tr>
 <tr>
 <td>-l string</td>
-<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br><strong>Caution</strong>: Do not run log level <code>trace</code> in production as sensitive information may be logged to the console.</td>
 </tr>
 <tr>
 <td>-lmsaddress string</td>
@@ -3622,7 +3629,7 @@
 </tr>
 <tr>
 <td>-v</td>
-<td>Verbose output</td>
+<td>Verbose output <br><strong>Caution</strong>: Do not run in production as sensitive information may be logged to the console.</td>
 </tr>
 </tbody>
 </table>
@@ -3749,7 +3756,7 @@
 </tr>
 <tr>
 <td>-l string</td>
-<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br><strong>Caution</strong>: Do not run log level <code>trace</code> in production as sensitive information may be logged to the console.</td>
 </tr>
 <tr>
 <td>-lmsaddress string</td>
@@ -3773,7 +3780,7 @@
 </tr>
 <tr>
 <td>-v</td>
-<td>Verbose output</td>
+<td>Verbose output. <br><strong>Caution</strong>: Do not run in production as sensitive information may be logged to the console.</td>
 </tr>
 </tbody>
 </table>
@@ -3865,7 +3872,7 @@
 </tr>
 <tr>
 <td>-l string</td>
-<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br><strong>Caution</strong>: Do not run log level <code>trace</code> in production as sensitive information may be logged to the console.</td>
 </tr>
 <tr>
 <td>-lmsaddress string</td>
@@ -3909,7 +3916,7 @@
 </tr>
 <tr>
 <td>-v</td>
-<td>Verbose output</td>
+<td>Verbose output <br><strong>Caution</strong>: Do not run in production as sensitive information may be logged to the console.</td>
 </tr>
 </tbody>
 </table>
@@ -4001,6 +4008,10 @@
 <td><a href="#enablewifiport">enablewifiport</a></td>
 <td>Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.</td>
 </tr>
+<tr>
+<td><a href="#tls">tls</a></td>
+<td>Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT. AMT password is required.</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -4019,7 +4030,7 @@
 </tr>
 <tr>
 <td>-l string</td>
-<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info")</td>
+<td>Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br><strong>Caution</strong>: Do not run log level <code>trace</code> in production as sensitive information may be logged to the console.</td>
 </tr>
 <tr>
 <td>-password string</td>
@@ -4027,7 +4038,7 @@
 </tr>
 <tr>
 <td>-v</td>
-<td>Verbose output</td>
+<td>Verbose output <br><strong>Caution</strong>: Do not run in production as sensitive information may be logged to the console.</td>
 </tr>
 </tbody>
 </table>
@@ -4275,11 +4286,6 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 </code></pre></div>
 </div>
 <p><br></p>
-<h4 id="enablewifiport">enablewifiport<a class="headerlink" href="#enablewifiport" title="Permanent link">&para;</a></h4>
-<p>Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.</p>
-<div class="highlight"><pre><span></span><code>rpc configure enablewifiport -password AMTPassword
-</code></pre></div>
-<p><br></p>
 <table>
 <thead>
 <tr>
@@ -4347,6 +4353,39 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 <tr>
 <td>-username</td>
 <td>802.1x username, must match the Common Name of the <code>clientCert</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="enablewifiport">enablewifiport<a class="headerlink" href="#enablewifiport" title="Permanent link">&para;</a></h4>
+<p>Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.</p>
+<div class="highlight"><pre><span></span><code>rpc configure enablewifiport -password AMTPassword
+</code></pre></div>
+<p><br></p>
+<h4 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
+<p>Configures <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT. AMT password is required.</p>
+<div class="admonition note">
+<p class="admonition-title">Note - Current Implementation of <code>configure tls</code></p>
+<p>The current implementation only includes support for self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates. <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10">See our backlog</a> for updates and details on expanded support for retrieving certificates and CSRs during local configuration using Enterprise Assistant.</p>
+</div>
+<div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword
+</code></pre></div>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-delay</td>
+<td>Delay time in seconds after putting remote <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> settings. Default value is 3 seconds if not provided.</td>
+</tr>
+<tr>
+<td>-mode</td>
+<td><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is <code>Server</code> if not provided.</td>
 </tr>
 </tbody>
 </table>
