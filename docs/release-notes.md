@@ -2,7 +2,7 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/" title="February 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/" title="March 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -21,7 +21,17 @@
 
 ## What's New?
 
-:new: **Feature: RPC-Go Local TLS Configuration using Enterprise Assistant**
+:material-application: **Announcement: RPC-Go Prebuilt Executables Available**
+
+Starting with RPC-Go v2.25.3, executables for both Linux (Ubuntu) and Windows are available to download under Github Releases! [Check out the Assets section under each specific release to find the executables.](https://github.com/open-amt-cloud-toolkit/rpc-go/releases)
+
+!!! note "Note - Browser Preventing Download"
+
+    Depending on the browser, the download may be temporarily blocked and require manual approval to finish downloading. This typically only occurs on Chromium-based browsers on Windows machines.
+
+<br>
+
+:material-new-box: **Feature: RPC-Go Local TLS Configuration using Enterprise Assistant**
 
 This release, we have enabled support for RPC-Go to communicate with Enterprise Assistant (EA). Now, this allows the ability to pass in an EA server location to RPC-Go in order to obtain CSRs and retrieve a CA-signed certificate for TLS configuration.
 
@@ -33,7 +43,7 @@ rpc configure tls -mode Server -password AMTPassword -eaAddress http://192.160.1
 
 <br>
 
-:new: **Feature: RPC-Go Change MEBx Password**
+:material-new-box: **Feature: RPC-Go Change MEBx Password**
 
 The MEBx password can now be reconfigured by RPC-Go using the following new `configure mebx` subcommand. This is only allowed when the device is activated in ACM mode. CCM mode does not allow remote changing of the MEBx password.
 
@@ -45,7 +55,7 @@ rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 
 <br>
 
-:new: **Enhancement: RPC-Go Sync Clock**
+:material-new-box: **Enhancement: RPC-Go Sync Clock**
 
 Previously, the `syncclock` command required communication with RPS. Due to the efforts by the team with go-wsman-messages v2.0, this command can now run 100% locally on the AMT device using only RPC-Go.
 
