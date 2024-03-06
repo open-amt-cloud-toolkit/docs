@@ -108,6 +108,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 | OPTION             | DESCRIPTION                                                                                                                                                                              |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --echo-password    | Show AMT Password input in terminal. By default, password user input is hidden.                                                                                                          |
 | -json              | JSON output                                                                                                                                                                              |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                                                                                  |
@@ -172,6 +173,7 @@ rpc deactivate -local -password AMTPassword
 
 | OPTION             | DESCRIPTION                                                                                                                                                                              |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --echo-password    | Show AMT Password input in terminal. By default, password user input is hidden.                                                                                                          |
 | -json              | JSON output                                                                                                                                                                              |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
 | -lmsaddress string | LMS address (default "localhost"). Can be used to change location of LMS for debugging.                                                                                                  |
@@ -214,6 +216,7 @@ Execute a maintenance command for the managed device:
 
 | OPTION             | DESCRIPTION                                                                                                                                                                             |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --echo-password    | Show AMT Password input in terminal. By default, password user input is hidden.                                                                                                         |
 | -f                 | Force maintenance commands even if device is not registered with a server                                                                                                               |
 | -json              | JSON output                                                                                                                                                                             |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console. |
@@ -310,6 +313,7 @@ Execute a configuration command for the managed device:
 
 | OPTION             | DESCRIPTION                                                                                                                                                                              |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --echo-password    | Show AMT Password input in terminal. By default, password user input is hidden.                                                                                                          |
 | -json              | JSON output                                                                                                                                                                              |
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
 | -password string   | AMT password                                                                                                                                                                             |
