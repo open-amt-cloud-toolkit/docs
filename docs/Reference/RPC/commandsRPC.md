@@ -597,6 +597,13 @@ rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 |----------------|-------------------------------|
 | -mebxpassword  | New MEBx password to set.     |
 
+!!! important "Important - Using Strong Passwords"
+    The MEBx password must meet standard, **strong** password requirements:
+
+    - 8 to 32 characters
+
+    - At least one of each: Uppercase letter, lowercase letter, numerical digit, and special character
+
 <br>
 
 #### syncclock (configure)
