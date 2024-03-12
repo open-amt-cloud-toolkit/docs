@@ -43,7 +43,7 @@ The Enterprise Assistant repository is a codebase that needs to be compiled into
 
 2. Open the project file `OpenAMTEnterpriseAssistant.csproj` in Visual Studio.
 
-3. From the menus, choose `Build > Build Solution`.
+3. From the menus, choose `Build > Build OpenAMTEnterpriseAssistant`.
 
 4. By default after compiling, the `.exe` will be saved in `.\enterprise-assistant\bin\Debug\OpenAMTEnterpriseAssistant.exe`.
 
