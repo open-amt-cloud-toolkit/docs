@@ -1,4 +1,4 @@
-
+--8<-- "References/abbreviations.md"
 
 Enterprise Assistant is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to RPS (hosted in either the cloud or enterprise), it can be used to assist with the configuration of AMT devices using TLS. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.
 
@@ -29,6 +29,7 @@ It is suggested to run Enterprise Assistant as a normal Windows application at f
 The following services are assumed to be configured and running in your enterprise environment.
 
 - Microsoft* Certificate Authority (CA)
+    - An AMT TLS Certificate template is required. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps on creating a template.
 - Microsoft* Active Directory (AD)
 
 ## Setup
@@ -37,10 +38,10 @@ The Enterprise Assistant repository is a codebase that needs to be compiled into
 
 1. Clone the Enterprise Assistant Repository.
     ```
-    https://github.com/open-amt-cloud-toolkit/enterprise-assistant.git
+    git clone https://github.com/open-amt-cloud-toolkit/enterprise-assistant.git
     ```
 
-2. Open the project in Visual Studio.
+2. Open the project file `OpenAMTEnterpriseAssistant.csproj` in Visual Studio.
 
 3. From the menus, choose `Build > Build Solution`.
 
@@ -84,7 +85,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
 1. Open the Enterprise Assistant `File > Settings` menu to configure the RPS connection.
 
     <figure class="figure-image">
-        <img width="450" height="253" src="..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 3: Enterprise Assistant Settings Menu">
+        <img src="..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 3: Enterprise Assistant Settings Menu">
         <figcaption>Figure 3: Enterprise Assistant Settings Menu</figcaption>
     </figure>
 
@@ -98,7 +99,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
 
 5. Provide the Certificate Authority and click the checkmark.
 
-6. It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT.
+6. It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps.
 
 7. Choose how to issue the certificate. Typically, `SAM Account Name` is most commonly used as the `Common Name`.
 
@@ -108,7 +109,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
             <figcaption>Figure 4: Enterprise Assistant Settings Example</figcaption>
         </figure>
 
-8. Save the Settings.
+8. Press **OK** to save the Settings.
 
 9. Start the connection by going to `File > Local Connect`.
 

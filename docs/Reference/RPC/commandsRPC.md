@@ -624,18 +624,17 @@ rpc configure syncclock -password AMTPassword
 
 Configures TLS in AMT. AMT password is required.
 
-!!! note "Note - Current Implementation of `configure tls`"
-    The current implementation only includes support for self-signed TLS certificates. [See our backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/10) for updates and details on expanded support for retrieving certificates and CSRs during local configuration using Enterprise Assistant.
-
-
 ```
 rpc configure tls -mode Server -password AMTPassword
 ```
 
-| OPTION  | DESCRIPTION                                                                                                                                  |
-|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| -delay  | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
-| -mode   | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
+| OPTION             | DESCRIPTION                                                                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -delay int         | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
+| -eaAddress string  | IP Address or FQDN of Enterprise Assistant                                                                                                   |
+| -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
+| -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
+| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
 
 <br>
 
