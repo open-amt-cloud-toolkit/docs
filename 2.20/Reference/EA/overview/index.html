@@ -2220,6 +2220,46 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localtlsconfig/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local TLS Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tlsCertTemplate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS Certificate Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3287,7 +3327,7 @@
 
   <h1>Overview</h1>
 
-<p>Enterprise Assistant is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to RPS (hosted in either the cloud or enterprise), it can be used to assist with the configuration of AMT devices using TLS. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.</p>
+<p>Enterprise Assistant is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (hosted in either the cloud or enterprise), it can be used to assist with the configuration of AMT devices using <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.</p>
 <p>Enterprise Assistant is based off the open-source project <a href="https://github.com/Ylianst/MeshCentralSatellite">MeshCentral Satellite</a>.</p>
 <figure class="figure-image">
     <img src="..\..\..\assets\images\EA_Architecture.png" alt="Figure 1: Enterprise Assistant Architecture">
@@ -3296,7 +3336,7 @@
 
 <h2 id="details">Details<a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
 <p>Enterprise Assistant must run on a computer that is joined to your domain and with sufficient rights that it can create LDAP computer objects. It must have access to the Domain Certificate Authority so it can request that certificates be signed.</p>
-<p>RPS can be run from either the cloud or the local enterprise network.</p>
+<p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> can be run from either the cloud or the local enterprise network.</p>
 <p>It is suggested to run Enterprise Assistant as a normal Windows application at first to make sure everything works correctly before running it as a background Windows service. You can start by going in the "Settings" option in the menus. Settings are also saved in a local <code>.config</code> file that can be referenced when running as a background Windows service.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
@@ -3307,7 +3347,10 @@
 <h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <p>The following services are assumed to be configured and running in your enterprise environment.</p>
 <ul>
-<li>Microsoft* Certificate Authority (CA)</li>
+<li>Microsoft* Certificate Authority (CA)<ul>
+<li>An AMT <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Certificate template is required. See <a href="../tlsCertTemplate/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Certificate Template</a> for additional steps on creating a template.</li>
+</ul>
+</li>
 <li>Microsoft* Active Directory (AD)</li>
 </ul>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
@@ -3315,14 +3358,14 @@
 <ol>
 <li>
 <p>Clone the Enterprise Assistant Repository.
-    <div class="highlight"><pre><span></span><code>https://github.com/open-amt-cloud-toolkit/enterprise-assistant.git
+    <div class="highlight"><pre><span></span><code>git clone https://github.com/open-amt-cloud-toolkit/enterprise-assistant.git
 </code></pre></div></p>
 </li>
 <li>
-<p>Open the project in Visual Studio.</p>
+<p>Open the project file <code>OpenAMTEnterpriseAssistant.csproj</code> in Visual Studio.</p>
 </li>
 <li>
-<p>From the menus, choose <code>Build &gt; Build Solution</code>.</p>
+<p>From the menus, choose <code>Build &gt; Build OpenAMTEnterpriseAssistant</code>.</p>
 </li>
 <li>
 <p>By default after compiling, the <code>.exe</code> will be saved in <code>.\enterprise-assistant\bin\Debug\OpenAMTEnterpriseAssistant.exe</code>.</p>
@@ -3362,14 +3405,14 @@
 <h3 id="enterprise-assistant-configuration">Enterprise Assistant Configuration<a class="headerlink" href="#enterprise-assistant-configuration" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Open the Enterprise Assistant <code>File &gt; Settings</code> menu to configure the RPS connection.</p>
+<p>Open the Enterprise Assistant <code>File &gt; Settings</code> menu to configure the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection.</p>
 <p><figure class="figure-image">
-    <img width="450" height="253" src="..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 3: Enterprise Assistant Settings Menu">
+    <img src="..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 3: Enterprise Assistant Settings Menu">
     <figcaption>Figure 3: Enterprise Assistant Settings Menu</figcaption>
 </figure></p>
 </li>
 <li>
-<p>Provide the RPS Server Hostname. Enterprise Assistant communicates via Websocket. </p>
+<p>Provide the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Server Hostname. Enterprise Assistant communicates via Websocket. </p>
 <p>Make sure to include the route <code>/ea</code> (e.g. <code>wss://192.168.1.34/ea</code>).</p>
 </li>
 <li>
@@ -3382,7 +3425,7 @@
 <p>Provide the Certificate Authority and click the checkmark.</p>
 </li>
 <li>
-<p>It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT.</p>
+<p>It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT. See <a href="../tlsCertTemplate/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Certificate Template</a> for additional steps.</p>
 </li>
 <li>
 <p>Choose how to issue the certificate. Typically, <code>SAM Account Name</code> is most commonly used as the <code>Common Name</code>.</p>
@@ -3395,17 +3438,17 @@
 </div>
 </li>
 <li>
-<p>Save the Settings.</p>
+<p>Press <strong>OK</strong> to save the Settings.</p>
 </li>
 <li>
 <p>Start the connection by going to <code>File &gt; Local Connect</code>.</p>
 <p><figure class="figure-image">
     <img src="..\..\..\assets\images\EA_Connected.png" alt="Figure 5: Enterprise Assistant Connecting to RPS">
-    <figcaption>Figure 5: Enterprise Assistant Connecting to RPS</figcaption>
+    <figcaption>Figure 5: Enterprise Assistant Connecting to <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></figcaption>
 </figure></p>
 </li>
 <li>
-<p>After connecting, Enterprise Assistant will wait and listen for RPS to make requests to either add/revoke Computers or issue/revoke Certificates.</p>
+<p>After connecting, Enterprise Assistant will wait and listen for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> to make requests to either add/revoke Computers or issue/revoke Certificates.</p>
 </li>
 </ol>
 

@@ -2116,6 +2116,46 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EA/localtlsconfig/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local TLS Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EA/tlsCertTemplate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TLS Certificate Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4438,10 +4478,6 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 <p><br></p>
 <h4 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
 <p>Configures <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT. AMT password is required.</p>
-<div class="admonition note">
-<p class="admonition-title">Note - Current Implementation of <code>configure tls</code></p>
-<p>The current implementation only includes support for self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates. <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10">See our backlog</a> for updates and details on expanded support for retrieving certificates and CSRs during local configuration using Enterprise Assistant.</p>
-</div>
 <div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword
 </code></pre></div>
 <table>
@@ -4453,11 +4489,23 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 </thead>
 <tbody>
 <tr>
-<td>-delay</td>
+<td>-delay int</td>
 <td>Delay time in seconds after putting remote <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> settings. Default value is 3 seconds if not provided.</td>
 </tr>
 <tr>
-<td>-mode</td>
+<td>-eaAddress string</td>
+<td>IP Address or FQDN of Enterprise Assistant</td>
+</tr>
+<tr>
+<td>-eaPassword string</td>
+<td>Configured Enterprise Assistant Password</td>
+</tr>
+<tr>
+<td>-eaUsername</td>
+<td>Configured Enterprise Assistant Username</td>
+</tr>
+<tr>
+<td>-mode value</td>
 <td><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is <code>Server</code> if not provided.</td>
 </tr>
 </tbody>
