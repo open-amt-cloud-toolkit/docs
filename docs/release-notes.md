@@ -2,7 +2,7 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/" title="March 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/P51hfSnszEs?si=2-KxkCeoLsPG0cvG" title="March 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -39,7 +39,7 @@ This release, we have enabled support for RPC-Go to communicate with Enterprise 
 rpc configure tls -mode Server -password AMTPassword -eaAddress http://192.160.1.100:8000 -eaUsername myUser -eaPassword myPass
 ```
 
-[See the documentation for additional details](./Reference/RPC/commandsRPC.md#tls)
+[See the RPC documentation for flag details](./Reference/RPC/commandsRPC.md#tls) or [the Enterprise Assistant TLS documentation on how to configure into TLS](./Reference/EA/localtlsconfig.md)
 
 <br>
 
@@ -83,6 +83,18 @@ v2.22.2
 
 #### RPC-GO
 
+v2.28.0
+
+- feat: prompts for password in local commands activate and configure mebx ([#415](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/415)) ([e34e714](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e34e714cad96b70baa78b53bb61b215daa88fb9d))
+
+v2.27.4
+
+- fix: local acm activate properly orders certificate chain ([dbfd745](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/dbfd745502241d55f93fd30c2d4e908ca8ae790a))
+
+v2.27.3
+
+- fix: typo "AMT is alreay enabled" ([#412](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/412)) ([5cf9d1a](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5cf9d1a6e5d93880d863acf344954fdd20992e92))
+
 v2.27.2
 
 - fix: local acm activation ([2031489](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/20314898a8d26238d3dff90132cbf5da77759f32))
@@ -120,6 +132,10 @@ v2.25.2
 - fix: this releases rpc-go with go-wsman-messages v2.1.3 ([#376](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/376)) ([dba0b36](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/dba0b3600d435355f2aa6541e0906b20a3523e95))
 
 #### go-wsman-messages
+
+v2.1.8
+
+- fix: Digest hash URI for wsman must be "/wsman", not full url ([#251](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/251)) ([063246c](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/063246c0dbdde2c0185e7281869f4a12db953c01))
 
 v2.1.7
 

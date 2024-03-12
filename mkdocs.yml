@@ -202,7 +202,7 @@ extra:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
     oamtct: 2.20.0
-    rpc_go: 2.27.2
+    rpc_go: 2.28.0
     rpc_c: 2.0.0
     ui_toolkit: 3.2.3
     ui_toolkit_react: 3.2.3
