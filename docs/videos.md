@@ -4,11 +4,11 @@
 Learn the high-level basics and get familiar with the toolkit. Learn about the different microservices and their roles then get up to speed with the latest features, changes, and fixes.
 
 <div class="videoContainer">
-	<h3>What's New: February 2024 Release (v{{ repoVersion.oamtct }})</h3>
+	<h3>What's New: March 2024 Release (v{{ repoVersion.oamtct }})</h3>
 	<h3></h3>
 	<h3>Overview of Open AMT Cloud Toolkit</h3>
 	<div class="video-wrapper">
-    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/CPyts3LNGaE?si=n8CtsN2BY-Cm7FuS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/P51hfSnszEs?si=2-KxkCeoLsPG0cvG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
 	<div></div>
 	<div class="video-wrapper">
