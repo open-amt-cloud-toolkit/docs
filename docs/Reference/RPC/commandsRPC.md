@@ -302,12 +302,12 @@ Execute a configuration command for the managed device:
 
 | SUBCOMMAND                            | DESCRIPTION                                                                                           |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+| [addwifisettings](#addwifisettings)   | Configure wireless profiles and/or wireless 802.1x locally with RPC (no communication with RPS and EA)|
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 | [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                    |
 | [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                              |
 | [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                       |
-
+| [wiredsettings](#wiredsettings)       | Configure wired settings (DHCP or Static IP) locally with RPC (no communication with RPS and EA)      |
 
 <br>
 
@@ -341,7 +341,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'amtPassword' # optionally, you can provide the AMT password of the device in the config file
+            password: 'amtPassword' # alternatively, you can provide the AMT password of the device in the command line
             wifiConfigs:
               - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
                 ssid: 'exampleSSID'
@@ -635,6 +635,124 @@ rpc configure tls -mode Server -password AMTPassword
 | -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
 | -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
 | -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
+
+<br>
+
+#### wiredsettings
+
+Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA).
+
+=== "Config File"
+    ##### via Config file
+
+    1. Create a new file called `config.yaml` or `config.json`. Copy and paste the corresponding template below.
+
+        These templates show how to create a simple Wired profile for configuring a device for either DHCP or a Static IP Address.
+
+        === "DHCP"
+
+            The config file can be passed as either a `YAML` or `JSON` formatted file.
+
+            === "YAML"
+                ```yaml title="config.yaml"
+                password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+                wiredConfig:
+                  dhcp: true
+                  ipsync: true
+                ```
+            === "JSON"
+                ```json title="config.json"
+                {
+                "password": "AMTPassword",
+                "wiredConfig": {
+                  "dhcp": true,
+                  "ipsync": true
+                  }
+                }
+                ```
+
+        === "Static"
+
+            The config file can be passed as either a `YAML` or `JSON` formatted file.
+
+            === "YAML"
+                ```yaml title="config.yaml"
+                password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+                wiredConfig:
+                  static: true
+                  ipaddress: 192.168.1.50
+                  subnetmask: 255.255.255.0
+                  gateway: 192.168.1.1
+                  primarydns: 8.8.8.8
+                  secondarydns: 4.4.4.4
+                ```        
+            === "JSON"
+                ```json title="config.json"
+                {
+                "password": "AMTPassword",
+                "wiredConfig": {
+                  "static": true,
+                  "ipaddress": "192.168.1.50",
+                  "subnetmask": "255.255.255.0",
+                  "gateway": "192.168.1.1",
+                  "primarydns": "8.8.8.8",
+                  "secondarydns": "4.4.4.4"
+                  }
+                }
+                ```
+
+    2. Change the fields with your desired values.
+
+    3. Provide the `config.yaml` or `config.json` file using the `-config` flag. 
+
+        ```
+        rpc configure wiredsettings -config config.yaml
+        ```
+
+=== "Individual Options"
+    ##### via Individual Options
+    
+    Alternatively, provide all options directly in the command line.
+    
+    === "DHCP"
+        ```
+        rpc configure wiredsettings -dhcp -ipsync -password AMTPassword
+        ```
+
+    === "Static"
+        ```
+        rpc configure wiredsettings -static -ipaddress 192.168.1.50 -subnetmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -password AMTPassword
+        ```
+
+=== "-configJson String Option"
+    ##### via -configJson Option
+    
+    Or, provide the JSON string directly in the command line.
+
+    === "DHCP"
+        ```
+        rpc configure wiredsettings -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true } }"
+        ```
+
+    === "Static"
+        ```
+        rpc configure wiredsettings -configJson "{ "password": "AMTPassword", "wiredConfig": { "static": true, "ipaddress": "192.168.1.50", "subnetmask": "255.255.255.0", "gateway": "192.168.1.1", "primarydns": "8.8.8.8", "secondarydns": "4.4.4.4" } }"
+        ```
+
+<br>
+
+| OPTION                | DESCRIPTION                                                                                  |
+|-----------------------|----------------------------------------------------------------------------------------------|
+| -config string        | File path of a `.yaml` or `.json` file with desired wired DHCP or Static IP configuration.   |
+| -configJson string    | Configuration as a JSON string                                                               |
+| -dhcp                 | Configure AMT wired settings to use DHCP.                                                    |
+| -gateway value        | Gateway address to assign to AMT. For use with `-static` only.                               |
+| -ipaddress value      | IP Address to assign to AMT. For use with `-static` only.                                    |
+| -ipsync               | Sync the IP configuration of the host OS to AMT network settings.                            |
+| -primarydns value     | Primary DNS to assign to AMT. For use with `-static` only.                                   |
+| -secondarydns value   | Secondary DNS to assign to AMT. For use with `-static` only.                                 |
+| -static               | Configure AMT wired settings to use Static IP.                                               |
+| -subnetmask value     | Subnetwork mask to assign to AMT. For use with `-static` only.                               |
 
 <br>
 
