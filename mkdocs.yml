@@ -27,10 +27,10 @@ theme:
   custom_dir: ./docs/overrides
   palette:
     # Palette toggle for automatic mode
-    # - media: "(prefers-color-schemes)"
-    #   toggle:
-    #     icon: material/brightness-auto
-    #     name: Switch to dark mode
+    - media: "(prefers-color-schemes)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
     
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -44,7 +44,7 @@ theme:
       scheme: slate
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to system preference
 # Page tree
 nav:
   - Home:
@@ -183,6 +183,13 @@ plugins:
   - search
   - macros
   - img2fig
+  - git-committers:
+      repository: open-amt-cloud-toolkit/docs
+      branch: main
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
 extra:
   social:
     - icon: fontawesome/brands/discord 
