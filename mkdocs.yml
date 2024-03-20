@@ -123,9 +123,10 @@ nav:
       - Security Information: Reference/RPS/securityRPS.md
       - Create Profile with TLS: Reference/RPS/createProfileTLSConfig.md
     - Remote Provisioning Client:
-      - Build & Run RPC: Reference/RPC/buildRPC_Manual.md
+      - Build RPC-Go Manually: Reference/RPC/buildRPC_Manual.md
       - RPC CLI: Reference/RPC/commandsRPC.md
       - RPC Library: Reference/RPC/libraryRPC.md
+      - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit:
       - Controls:
         - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md
