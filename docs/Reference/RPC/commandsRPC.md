@@ -303,6 +303,7 @@ Execute a configuration command for the managed device:
 | SUBCOMMAND                            | DESCRIPTION                                                                                           |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
+| [amtfeatures](#amtfeatures)           | Enable/disable redirection features (KVM, IDER, SOL) and configure user consent.                      |
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
 | [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                    |
 | [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                              |
@@ -576,6 +577,26 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 | -secrets                | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
 | -ssid                   | Wifi SSID                                                                                                                                                                                               |
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
+
+<br>
+
+#### amtfeatures
+
+Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
+
+```
+rpc configure amtfeatures -kvm -sol -ider -userConsent all
+```
+
+<br>
+
+| OPTION               | DESCRIPTION                                    |
+|----------------------|------------------------------------------------|
+| -ider                | Enable/disable IDER (IDE Redirection)          |
+| -kvm                 | Enable/disable KVM (Keyboard, Video, Mouse)    |
+| -sol                 | Enable/disable SOL (Serial-over-LAN)     v     |
+| -userConsent string  | Configure User Consent. Valid Values = {none, kvm, all} <br> Only configurable for devices activated in ACM    |
+
 
 <br>
 
