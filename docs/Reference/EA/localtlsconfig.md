@@ -52,21 +52,27 @@ The following services are assumed to be configured and running in your enterpri
         <figcaption>Figure 1: Enterprise Assistant Settings Menu</figcaption>
     </figure>
 
-3. Under **RPC Client** section, set a **Username** of your choice.
+3. Under **RPC Client** section, for **Address**, choose the IP Address or FQDN of the EA Server.
 
-4. Set a **Password** of your choice.
+4. Set a **Username** of your choice.
 
-5. Set an alpha-numeric **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
+5. Set a **Password** of your choice.
 
-6. The `Device Name` is the name used to configure the domain controller for each device account. Using `Node Identifier` is more secure due to the inability to be tampered with but is less friendly to maintain as a user.
+6. Set a 256-bit alpha-numeric **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
 
-7. `Security Groups` will list all of the security groups of the domain controller that have been created within the Computers group. When Enterprise Assistant creates a new Computer account (like a new AMT device), it will join the selected Security Groups.
+    ??? note "Note - Security Key Length"
 
-8. Provide the Certificate Authority and click the checkmark.
+        Symmetric encryption algorithms such as AES (Advanced Encryption Standard) require keys of specific lengths, typically 128-bits (16 bytes), 192-bits (24 bytes), or 256-bits (32 bytes) for AES. **For the Security Key, a 256-bit key is required.** Providing a shorter key will not work.
 
-9. It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps on creating a template.
+7. The `Device Name` is the name used to configure the domain controller for each device account. Using `Node Identifier` is more secure due to the inability to be tampered with but is less friendly to maintain as a user.
 
-10. Choose how to issue the certificate. Typically, `SAM Account Name` is most commonly used as the `Common Name`.
+8. `Security Groups` will list all of the security groups of the domain controller that have been created within the Computers group. When Enterprise Assistant creates a new Computer account (like a new AMT device), it will join the selected Security Groups.
+
+9. Provide the Certificate Authority and click the checkmark.
+
+10. It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps on creating a template.
+
+11. Choose how to issue the certificate. Typically, `SAM Account Name` is most commonly used as the `Common Name`.
 
     !!! example "Example - Configured Settings"
         <figure class="figure-image">
@@ -74,7 +80,7 @@ The following services are assumed to be configured and running in your enterpri
             <figcaption>Figure 2: Enterprise Assistant RPC-Go Settings Example</figcaption>
         </figure>
 
-11. Press **OK** to save the Settings.
+12. Press **OK** to save the Settings.
 
     !!! success "Success - HTTP Server Started"
         <figure class="figure-image">
@@ -93,6 +99,12 @@ The following services are assumed to be configured and running in your enterpri
     ```
     rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress [IP-Address-or-FQDN] -eaUsername [myUsername] -eaPassword [myPassword]
     ```
+
+    !!! example "Example Command"
+
+        ```
+        rpc configure tls -mode Server -password AMTpassword123! -eaAddress http://192.168.2.50:8000 -eaUsername admin -eaPassword P@ssw0rd
+        ```
 
     The toolkit offers four configuration modes to support various usage models: 
 
