@@ -592,10 +592,10 @@ rpc configure amtfeatures -kvm -sol -ider -userConsent all
 
 | OPTION               | DESCRIPTION                                    |
 |----------------------|------------------------------------------------|
-| -ider                | Enable/disable IDER (IDE Redirection)          |
-| -kvm                 | Enable/disable KVM (Keyboard, Video, Mouse)    |
-| -sol                 | Enable/disable SOL (Serial-over-LAN)     v     |
-| -userConsent string  | Configure User Consent. Valid Values = {none, kvm, all} <br> Only configurable for devices activated in ACM    |
+| -ider                | Enable/disable IDER (IDE Redirection).         |
+| -kvm                 | Enable/disable KVM (Keyboard, Video, Mouse).   |
+| -sol                 | Enable/disable SOL (Serial-over-LAN).          |
+| -userConsent string  | Configure user consent. Valid Values = {none, kvm, all} <br> **Only configurable for devices activated in ACM.**    |
 
 
 <br>
