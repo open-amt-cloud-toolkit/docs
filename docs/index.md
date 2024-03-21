@@ -7,34 +7,38 @@
 ??? note "Long-Term Support (LTS) Version"
     Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
 
-<div class="home-nav-row">
-  <div class="home-nav-column">
-    <div class="home-nav-card">
-        <h4><img class="home-nav-icons" src="./assets/images/intel/blazing-performance.png"><b>Get Started</b></h4>
-        <p>Jump in to the Open AMT Cloud Toolkit by deploying locally with Docker containers.</p>
-        <a href="./GetStarted/prerequisites/">Get Started Now</a>
-    </div>
-  </div>
-  <div class="home-nav-column">
-    <div class="home-nav-card">
-        <h4><img class="home-nav-icons" src="./assets/images/intel/solutions.png"><b>Tutorials</b></h4>
-        <p>Get hands-on with tutorials for topics like the UI-Toolkit, APIs, and Scaling (Docker, Kubernetes, and more).</p>
-        <a href="./Tutorials/uitoolkitReact/">Explore Tutorials</a>
-    </div>
-  </div>
-  <div class="home-nav-column">
-    <div class="home-nav-card">
-        <h4><img class="home-nav-icons" src="./assets/images/intel/edge-compute.png"><b>APIs</b></h4>
-        <p>Check out the supported APIs for both the Management Presence Server (MPS) and the Remote Provisioning Server (RPS).</p>
-        <a href="./APIs/indexMPS/">See APIs</a>
-    </div>
-  </div>
-  <div class="home-nav-column">
-    <div class="home-nav-card">
-        <h4><img class="home-nav-icons" src="./assets/images/intel/message.png"><b>Join Our Community</b></h4>
-        <a target="_blank" href="https://discord.gg/yrcMp2kDWh"><img src="https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=banner4" alt="Discord Banner 4"/></a>
-    </div>
-  </div>
+<div class="grid cards" markdown>
+
+-   :material-clock-fast:{ .lg .middle } __Set up in 30 minutes__
+
+    ---
+
+    Jump into Open AMT Cloud Toolkit by deploying locally with Docker containers.
+
+    [:octicons-arrow-right-24: Get Started Now](./GetStarted/prerequisites.md)
+
+-   :material-lightbulb-on:{ .lg .middle } __Guided Tutorials__
+
+    ---
+
+    Get hands-on with tutorials for topics like the UI-Toolkit, APIs, and Scaling (Docker, Kubernetes, and more).
+
+    [:octicons-arrow-right-24: Explore the Tutorials](./Tutorials/uitoolkitReact.md)
+
+-   :material-cloud-cog:{ .lg .middle } __APIs__
+
+    ---
+
+    See supported APIs for both the Management Presence Server (MPS) and the Remote Provisioning Server (RPS).
+
+    [:octicons-arrow-right-24: Check out the APIs](./APIs/indexMPS.md)
+
+-   :material-message:{ .lg .middle } __Join Our Community__
+
+    ---
+
+    <a target="_blank" href="https://discord.gg/yrcMp2kDWh"><img src="https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=banner2" alt="Discord Banner 2"/></a>
+
 </div>
 
 <p class="divider"></p>
