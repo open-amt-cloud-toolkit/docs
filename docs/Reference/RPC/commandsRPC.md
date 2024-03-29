@@ -300,13 +300,14 @@ rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192
 
 Execute a configuration command for the managed device:
 
-| SUBCOMMAND                            | DESCRIPTION                                                                                           |
-|---------------------------------------|-------------------------------------------------------------------------------------------------------|
-| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
-| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
-| [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                    |
-| [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                              |
-| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                       |
+| SUBCOMMAND                            | DESCRIPTION                                                                                                |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------|
+| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                              |
+| [amtpassword](#amtpassword)           | Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for. |
+| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.             |
+| [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                         |
+| [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                                   |
+| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                            |
 
 
 <br>
@@ -578,6 +579,22 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
 
 <br>
+
+#### amtpassword
+
+Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
+
+```
+rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
+```
+
+| OPTION           | DESCRIPTION                   |
+|------------------|-------------------------------|
+| -newamtpassword  | New AMT password to set.      |
+
+<br>
+
+
 
 #### enablewifiport
 
