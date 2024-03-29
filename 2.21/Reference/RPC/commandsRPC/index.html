@@ -2775,6 +2775,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#amtpassword" class="md-nav__link">
+    amtpassword
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#enablewifiport" class="md-nav__link">
     enablewifiport
   </a>
@@ -4071,6 +4078,10 @@
 <td>Configure wireless 802.1x locally with <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> (no communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and EA)</td>
 </tr>
 <tr>
+<td><a href="#amtpassword">amtpassword</a></td>
+<td>Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for.</td>
+</tr>
+<tr>
 <td><a href="#enablewifiport">enablewifiport</a></td>
 <td>Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.</td>
 </tr>
@@ -4431,6 +4442,25 @@ time=&quot;2023-08-30T13:21:39-07:00&quot; level=info msg=&quot;successfully con
 <tr>
 <td>-username</td>
 <td>802.1x username, must match the Common Name of the <code>clientCert</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4 id="amtpassword">amtpassword<a class="headerlink" href="#amtpassword" title="Permanent link">&para;</a></h4>
+<p>Change or update the AMT password of the device. If the <code>-password</code> flag, <code>-newamtpassword</code> flag, or neither flag are provided, then the user will be prompted to input the password or passwords.</p>
+<div class="highlight"><pre><span></span><code>rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>OPTION</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-newamtpassword</td>
+<td>New AMT password to set.</td>
 </tr>
 </tbody>
 </table>
