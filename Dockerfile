@@ -1,7 +1,7 @@
 FROM squidfunk/mkdocs-material
 
 RUN pip install --no-cache-dir \
-  mkdocs-render-swagger-plugin mkdocs-macros-plugin mkdocs-img2fig-plugin
+  mkdocs-render-swagger-plugin mkdocs-macros-plugin mkdocs-img2fig-plugin mkdocs-mermaid2-plugin mkdocs-git-revision-date-localized-plugin
 
 EXPOSE 8000
 
