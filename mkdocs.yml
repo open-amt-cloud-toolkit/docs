@@ -183,9 +183,6 @@ plugins:
   - search
   - macros
   - img2fig
-  - git-committers:
-      repository: open-amt-cloud-toolkit/docs
-      branch: main
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
