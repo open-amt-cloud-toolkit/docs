@@ -44,7 +44,7 @@ Additionally, use the following instructions to transition from a previously est
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash
-        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[RPS-IPAddress-or-FQDN]/activate -n -profile [profileName] -password [AMTPassword]
+        sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profileName] -password [AMTPassword]
         ```
 
     !!! success
