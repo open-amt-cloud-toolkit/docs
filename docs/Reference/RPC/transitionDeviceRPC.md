@@ -36,11 +36,11 @@ Additionally, use the following instructions to transition from a previously est
 
     === "Linux"
         ``` bash
-        sudo ./rpc activate -u wss://[RPS-IPAddress-or-FQDN]/activate -n -profile [profileName] -password [AMTPassword]
+        sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profileName] -password [AMTPassword]
         ```
     === "Windows"
         ```
-        .\rpc activate -u wss://[RPS-IPAddress-or-FQDN]/activate -n -profile [profileName] -password [AMTPassword]
+        .\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profileName] -password [AMTPassword]
         ```        
     === "Docker (On Linux Host Only)"
         ``` bash

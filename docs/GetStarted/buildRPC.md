@@ -99,7 +99,7 @@ If you are building an executable on a development system, you will copy the exe
 
 <br>
 
-## Run RPC to Activate and Connect the AMT Device
+## Run RPC to Activate, Configure, and Connect the AMT Device
 
 1. After downloading or building RPC, copy the executable to the AMT device.
    
@@ -107,11 +107,11 @@ If you are building an executable on a development system, you will copy the exe
 
 3. Navigate to the directory containing the RPC application. 
 
-4. Run RPC with the **activate** command to activate and configure (i.e. provision) Intel® AMT. It will take 1-2 minutes to finish provisioning the device. 
+4. Run RPC with the **activate** command to activate, configure, and connect Intel® AMT to the MPS Server. It will take 1-2 minutes to finish provisioning the device. 
 
-    | REPLACE                 | WITH                                                                            |
-    |-------------------------|---------------------------------------------------------------------------------|
-    | Development-IP-Address  | Development system's IP address, where the MPS and RPS servers are running.     |
+    | REPLACE                 | WITH                                                                                  |
+    |-------------------------|---------------------------------------------------------------------------------------|
+    | Development-IP-Address  | Development system's IP address or FQDN, where the MPS and RPS servers are running.   |
     | profileName             | THe name of the profile created using the Sample Web UI.                        |
 
     === "Linux"
