@@ -26,8 +26,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       # Runs a single command using the runners shell
@@ -41,7 +43,7 @@ jobs:
           pip install mkdocs-git-revision-date-localized-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         if: ${{ github.ref == 'refs/heads/main' }}      
         with:
           path: 'to-be-published'
