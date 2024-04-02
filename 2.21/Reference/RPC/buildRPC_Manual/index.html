@@ -22,7 +22,7 @@
     
     
       
-        <title>Build & Run RPC - Open Active Management Technology Cloud Toolkit</title>
+        <title>Build RPC-Go Manually - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build & Run RPC
+              Build RPC-Go Manually
             
           </span>
         </div>
@@ -2622,7 +2622,7 @@
           
   
   <span class="md-ellipsis">
-    Build & Run RPC
+    Build RPC-Go Manually
   </span>
   
 
@@ -2633,7 +2633,7 @@
         
   
   <span class="md-ellipsis">
-    Build & Run RPC
+    Build RPC-Go Manually
   </span>
   
 
@@ -2653,6 +2653,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites
@@ -2662,9 +2671,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-rpc" class="md-nav__link">
+  <a href="#clone-the-rpc-go-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Get RPC
+      Clone the RPC-Go Repository
     </span>
   </a>
   
@@ -2674,24 +2683,6 @@
   <a href="#build-rpc" class="md-nav__link">
     <span class="md-ellipsis">
       Build RPC
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-rpc-to-activate-and-connect-the-amt-device" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run RPC to Activate and Connect the AMT Device
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#transition-activated-device" class="md-nav__link">
-    <span class="md-ellipsis">
-      Transition Activated Device
     </span>
   </a>
   
@@ -2739,6 +2730,27 @@
   
   <span class="md-ellipsis">
     RPC Library
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transitionDeviceRPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transition Activated Device
   </span>
   
 
@@ -3457,7 +3469,7 @@
   
 
 
-  <h1>Build & Run RPC</h1>
+  <h1>Build RPC-Go Manually</h1>
 
 <p>Developed in Go* programming language, the Remote Provisioning Client (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) application runs on the managed device and communicates with the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) microservice on the development system. The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> configure and activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) by establishing a Client Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>) connection with the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>. See Figure 1.</p>
 <div class="admonition tip">
@@ -3473,13 +3485,18 @@
 <p class="admonition-title">Figure 1 Details</p>
 <p>The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) interfaces. The Driver uses the Intel® MEI to talk to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> activates <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> with an AMT profile, which is associated with a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration (Step 3). The profile, which also distinguishes between Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) or Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>), and configuration were created in <a href="../../../GetStarted/createCIRAConfig/">Create a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> Config</a> or <a href="../../../GetStarted/createProfileACM/">Create an AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr></a>. After running <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with a profile, <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> will establish a <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection with the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> (Step 4) allowing <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to manage the remote device and issue AMT commands (Step 5).</p>
 </div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide details how to manually build the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go binary for development or testing purposes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Important - <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Prebuilt Binaries</p>
+<p>Just need the binary and don't want to build it manually? Download the latest <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go binary version from the <a href="https://github.com/open-amt-cloud-toolkit/rpc-go/releases"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go GitHub Repo Releases Page</a> for the Operating System of the AMT device (Windows or Linux).</p>
+</div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p><strong>Before installing and building the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, install:</strong></p>
 <ul>
+<li><a href="https://git-scm.com/downloads">Git</a></li>
 <li><a href="https://golang.org/doc/install">Go* Programming Language</a></li>
 </ul>
-<h2 id="get-rpc">Get <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#get-rpc" title="Permanent link">&para;</a></h2>
-<p><strong>To clone the repository:</strong></p>
+<h2 id="clone-the-rpc-go-repository">Clone the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Repository<a class="headerlink" href="#clone-the-rpc-go-repository" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
@@ -3497,7 +3514,6 @@
 <p class="admonition-title">Flexible Deployment - <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a Library</p>
 <p>The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. <a href="../libraryRPC/">Read more about building <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a library here</a>.</p>
 </div>
-<p><strong>To build the executable:</strong></p>
 <ol>
 <li>
 <p>Open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows):</p>
@@ -3519,7 +3535,7 @@
 </div>
 </li>
 <li>
-<p>Confirm a successful build:</p>
+<p>Confirm a successful build.</p>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> must run with elevated privileges. Commands require <code>sudo</code> on Linux or an Administrator Command Prompt on Windows.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label><label for="__tabbed_2_3">Docker (On Linux Host Only)</label></div>
 <div class="tabbed-content">
@@ -3536,119 +3552,6 @@
 </code></pre></div>
 </div>
 </div>
-</div>
-</li>
-</ol>
-<h2 id="run-rpc-to-activate-and-connect-the-amt-device">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to Activate and Connect the AMT Device<a class="headerlink" href="#run-rpc-to-activate-and-connect-the-amt-device" title="Permanent link">&para;</a></h2>
-<p>The toolkit provides a reference implementation called the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> to manage the device. After running device activation instructions below, your device will be listed on the <strong>Devices</strong> tab in the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. </p>
-<p><strong>To run the application and connect the managed device:</strong></p>
-<ol>
-<li>
-<p>After building the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, copy the executable to the managed device.</p>
-</li>
-<li>
-<p>On the managed device, open a Terminal (Linux) or Powershell/Command Prompt <strong>as Administrator</strong> (Windows).</p>
-</li>
-<li>
-<p>Navigate to the directory containing the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application. </p>
-</li>
-<li>
-<p>Running <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <strong>activate</strong> command configures or <em>provisions</em> <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. It will take 1-2 minutes to finish provisioning the device. 
-     In the instruction below:</p>
-<ul>
-<li>Replace <strong>[Development-IP-Address]</strong> with the development system's IP address, where the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> servers are running.</li>
-<li>Replace <strong>[profile-name]</strong> with your created profile in the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>. The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application command line parameters are case-sensitive.</li>
-</ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label><label for="__tabbed_3_3">Docker (On Linux Host Only)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>--profile<span class="w"> </span><span class="o">[</span>profilename<span class="o">]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://[Development-IP-Address]/activate -n --profile [profilename]
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--device<span class="o">=</span>/dev/mei0<span class="w"> </span>rpc-go:latest<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>--profile<span class="w"> </span><span class="o">[</span>profilename<span class="o">]</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note - <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Arguments</p>
-<p>Find out more information about the <a href="../commandsRPC/">flag and other arguments</a>.</p>
-</div>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>Example Output after Activating and Configuring a device into <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>:
-<figure class="figure-image">
-<img src="..\..\..\assets\images\RPC_Success.png" alt="Figure 1: RPC Success">
-<figcaption>Figure 1: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Success</figcaption>
-</figure></p>
-</div>
-<div class="admonition error">
-<p class="admonition-title">Troubleshooting</p>
-<p>Run into an issue? Try these <a href="../../troubleshooting/">troubleshooting steps</a>.</p>
-</div>
-</li>
-</ol>
-<h2 id="transition-activated-device">Transition Activated Device<a class="headerlink" href="#transition-activated-device" title="Permanent link">&para;</a></h2>
-<p>If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> control with the rpc-go application. </p>
-<p>Additionally, use the following instructions to transition from a previously established toolkit stack to a fresh installation on a new development system.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use the following instructions to transition devices to either <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> or <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profiles. You will need the AMT password.</p>
-<p><abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> increases security with multiple passwords. Find an explanation of toolkit passwords in <a href="../../architectureOverview/#Passwords">Reference -&gt; Architecture Overview</a>.</p>
-</div>
-<p><strong>To transition the activated device:</strong></p>
-<ol>
-<li>
-<p>Check the activation status with <strong>amtinfo</strong> flag:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label><label for="__tabbed_4_3">Docker (On Linux Host Only)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>amtinfo
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc amtinfo
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--device<span class="o">=</span>/dev/mei0<span class="w"> </span>rpc-go:latest<span class="w"> </span>amtinfo
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>The <strong>control mode</strong> indicates the managed device's state:</p>
-<ul>
-<li>pre-provisioning or deactivated</li>
-<li>activated in client control mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</li>
-<li>activated in admin control mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</li>
-</ul>
-</li>
-<li>
-<p>Run the rpc-go application with the <strong>activate</strong> command and the <strong>password</strong> flag:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label><label for="__tabbed_5_3">Docker (On Linux Host Only)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>-profile<span class="w"> </span><span class="o">[</span>profilename<span class="o">]</span><span class="w"> </span>-password<span class="w"> </span><span class="o">[</span>AMT<span class="w"> </span>password<span class="o">]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profilename] -password [AMT password]
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--device<span class="o">=</span>/dev/mei0<span class="w"> </span>rpc-go:latest<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>-profile<span class="w"> </span><span class="o">[</span>profilename<span class="o">]</span><span class="w"> </span>-password<span class="w"> </span><span class="o">[</span>AMT<span class="w"> </span>password<span class="o">]</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>To verify the managed devices list after transitioning, log into the <a href="../../../GetStarted/loginToUI/"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr></a> on the development system. Go to the Devices tab. Alternatively, learn how to list the managed devices via a <a href="../../../Tutorials/apiTutorial/"><abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API Call</a>. </p>
 </div>
 </li>
 </ol>
@@ -3674,7 +3577,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-29T19:37:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-02T19:21:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-02</span>
   </span>
 
     
@@ -3684,7 +3587,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-29T19:37:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-02T19:21:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-02</span>
   </span>
 
     
