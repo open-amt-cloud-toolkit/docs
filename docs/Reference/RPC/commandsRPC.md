@@ -146,9 +146,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 | -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.                         |
 | -provisioningCertPwd string       | Password of provisioning certificate.                                                 |
 
-For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
-
-To learn how to use the RPC application to transition an already activated (provisioned) Intel vPro® Platform, see [Transition Activated Device](../../Reference/RPC/buildRPC_Manual.md#TransitionDevice).
+<br>
 
 ### deactivate
 
@@ -193,7 +191,7 @@ rpc deactivate -local -password AMTPassword
 | -token string      | JWT Token for Authorization                                                             |
 | -u string          | WebSocket address of server to activate against                                         |
 
-For more information, see [Build & Run RPC](../../GetStarted/buildRPC.md).
+<br>
 
 ### maintenance
 
