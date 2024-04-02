@@ -304,11 +304,11 @@ Execute a configuration command for the managed device:
 |---------------------------------------|-------------------------------------------------------------------------------------------------------|
 | [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                         |
 | [amtfeatures](#amtfeatures)           | Enable/disable redirection features (KVM, IDER, SOL) and configure user consent.                      |
-| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.        |
-| [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                    |
-| [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                              |
-| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                       |
-
+| [amtpassword](#amtpassword)           | Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for. |
+| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.             |
+| [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                         |
+| [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                                   |
+| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                            |
 
 <br>
 
@@ -588,8 +588,6 @@ Enable or disable redirection features (KVM, IDER, SOL) and set the user consent
 rpc configure amtfeatures -kvm -sol -ider -userConsent all
 ```
 
-<br>
-
 | OPTION               | DESCRIPTION                                    |
 |----------------------|------------------------------------------------|
 | -ider                | Enable/disable IDER (IDE Redirection).         |
@@ -597,6 +595,19 @@ rpc configure amtfeatures -kvm -sol -ider -userConsent all
 | -sol                 | Enable/disable SOL (Serial-over-LAN).          |
 | -userConsent string  | Configure user consent. Valid Values = {none, kvm, all} <br> **Only configurable for devices activated in ACM.**    |
 
+<br>
+
+#### amtpassword
+
+Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
+
+```
+rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
+```
+
+| OPTION           | DESCRIPTION                   |
+|------------------|-------------------------------|
+| -newamtpassword  | New AMT password to set.      |
 
 <br>
 
