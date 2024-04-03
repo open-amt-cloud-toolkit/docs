@@ -33,11 +33,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          pip install mkdocs-material==9.4.7
+          pip install mkdocs-material==9.5.14
           pip install mkdocs-render-swagger-plugin
           pip install mkdocs-macros-plugin
           pip install mkdocs-mermaid2-plugin
           pip install mkdocs-img2fig-plugin
+          pip install mkdocs-git-revision-date-localized-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
       - uses: actions/checkout@v2
