@@ -300,13 +300,13 @@ Execute a configuration command for the managed device:
 
 | SUBCOMMAND                            | DESCRIPTION                                                                                                |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [addwifisettings](#addwifisettings)   | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                              |
 | [amtpassword](#amtpassword)           | Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for. |
 | [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.             |
 | [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                         |
 | [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                                   |
 | [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                            |
-
+| [wired](#wired) <br> wiredsettings (Deprecated)     | Configure wired settings (DHCP or Static IP) locally with RPC (no communication with RPS and EA)           |
+| [wireless](#wireless) <br> addwifisettings (Deprecated)  | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                              |
 
 <br>
 
@@ -322,11 +322,210 @@ Execute a configuration command for the managed device:
 
 <br>
 
-#### addwifisettings
+#### amtpassword
+
+Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
+
+```
+rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
+```
+
+| OPTION           | DESCRIPTION                   |
+|------------------|-------------------------------|
+| -newamtpassword  | New AMT password to set.      |
+
+<br>
+
+
+
+#### enablewifiport
+
+Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
+
+```
+rpc configure enablewifiport -password AMTPassword
+```
+
+<br>
+
+#### mebx
+
+Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode.
+
+```
+rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
+```
+
+| OPTION         | DESCRIPTION                   |
+|----------------|-------------------------------|
+| -mebxpassword  | New MEBx password to set.     |
+
+!!! important "Important - Using Strong Passwords"
+    The MEBx password must meet standard, **strong** password requirements:
+
+    - 8 to 32 characters
+
+    - At least one of each: Uppercase letter, lowercase letter, numerical digit, and special character
+
+<br>
+
+#### syncclock (configure)
+
+Syncs the host OS clock to AMT.
+
+```
+rpc configure syncclock -password AMTPassword
+```
+
+<br>
+
+#### tls
+
+Configures TLS in AMT. AMT password is required.
+
+```
+rpc configure tls -mode Server -password AMTPassword
+```
+
+| OPTION             | DESCRIPTION                                                                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -delay int         | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
+| -eaAddress string  | IP Address or FQDN of Enterprise Assistant                                                                                                   |
+| -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
+| -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
+| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
+
+<br>
+
+#### wired
+
+!!! warning "Warning - Deprecation: `wiredsettings` subcommand"
+    **`rpc configure wired` is the recommended subcommand.** The previous `rpc configure wiredsettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wired` subcommand for new development.
+
+Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA).
+
+=== "Config File"
+    ##### via Config file
+
+    1. Create a new file called `config.yaml` or `config.json`. Copy and paste the corresponding template below.
+
+        These templates show how to create a simple Wired profile for configuring a device for either DHCP or a Static IP Address.
+
+        === "DHCP"
+
+            The config file can be passed as either a `YAML` or `JSON` formatted file.
+
+            === "YAML"
+                ```yaml title="config.yaml"
+                password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+                wiredConfig:
+                  dhcp: true
+                  ipsync: true
+                ```
+            === "JSON"
+                ```json title="config.json"
+                {
+                "password": "AMTPassword",
+                "wiredConfig": {
+                  "dhcp": true,
+                  "ipsync": true
+                  }
+                }
+                ```
+
+        === "Static"
+
+            The config file can be passed as either a `YAML` or `JSON` formatted file.
+
+            === "YAML"
+                ```yaml title="config.yaml"
+                password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+                wiredConfig:
+                  static: true
+                  ipaddress: 192.168.1.50
+                  subnetmask: 255.255.255.0
+                  gateway: 192.168.1.1
+                  primarydns: 8.8.8.8
+                  secondarydns: 4.4.4.4
+                ```        
+            === "JSON"
+                ```json title="config.json"
+                {
+                "password": "AMTPassword",
+                "wiredConfig": {
+                  "static": true,
+                  "ipaddress": "192.168.1.50",
+                  "subnetmask": "255.255.255.0",
+                  "gateway": "192.168.1.1",
+                  "primarydns": "8.8.8.8",
+                  "secondarydns": "4.4.4.4"
+                  }
+                }
+                ```
+
+    2. Change the fields with your desired values.
+
+    3. Provide the `config.yaml` or `config.json` file using the `-config` flag. 
+
+        ```
+        rpc configure wired -config config.yaml
+        ```
+
+=== "Individual Options"
+    ##### via Individual Options
+    
+    Alternatively, provide all options directly in the command line.
+    
+    === "DHCP"
+        ```
+        rpc configure wired -dhcp -ipsync -password AMTPassword
+        ```
+
+    === "Static"
+        ```
+        rpc configure wired -static -ipaddress 192.168.1.50 -subnetmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -password AMTPassword
+        ```
+
+=== "-configJson String Option"
+    ##### via -configJson Option
+    
+    Or, provide the JSON string directly in the command line.
+
+    === "DHCP"
+        ```
+        rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true } }"
+        ```
+
+    === "Static"
+        ```
+        rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "static": true, "ipaddress": "192.168.1.50", "subnetmask": "255.255.255.0", "gateway": "192.168.1.1", "primarydns": "8.8.8.8", "secondarydns": "4.4.4.4" } }"
+        ```
+
+<br>
+
+| OPTION                | DESCRIPTION                                                                                  |
+|-----------------------|----------------------------------------------------------------------------------------------|
+| -config string        | File path of a `.yaml` or `.json` file with desired wired DHCP or Static IP configuration.   |
+| -configJson string    | Configuration as a JSON string                                                               |
+| -dhcp                 | Configure AMT wired settings to use DHCP.                                                    |
+| -gateway value        | Gateway address to assign to AMT. For use with `-static` only.                               |
+| -ipaddress value      | IP Address to assign to AMT. For use with `-static` only.                                    |
+| -ipsync               | Sync the IP configuration of the host OS to AMT network settings.                            |
+| -primarydns value     | Primary DNS to assign to AMT. For use with `-static` only.                                   |
+| -secondarydns value   | Secondary DNS to assign to AMT. For use with `-static` only.                                 |
+| -static               | Configure AMT wired settings to use Static IP.                                               |
+| -subnetmask value     | Subnetwork mask to assign to AMT. For use with `-static` only.                               |
+
+<br>
+
+#### wireless
+
+!!! warning "Warning - Deprecation: `addwifisettings` subcommand"
+    **`rpc configure wireless` is the recommended subcommand.** The previous `rpc configure addwifisettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wireless` subcommand for new development.
 
 Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
 
-On failure, the `addwifisettings` maintenance command will rollback any certificates added before the error occurred.
+On failure, the `wireless` configure command will rollback any certificates added before the error occurred.
 
 
 === "Config File"
@@ -340,7 +539,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'amtPassword' # optionally, you can provide the AMT password of the device in the config file
+            password: 'amtPassword' # alternatively, you can provide the AMT password of the device in the command line
             wifiConfigs:
               - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
                 ssid: 'exampleSSID'
@@ -408,7 +607,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
     3. Provide the `config.yaml` file using the `-config` flag. 
 
         ```
-        rpc configure addwifisettings -config config.yaml
+        rpc configure wireless -config config.yaml
         ```
 
 === "Config w/ Secrets File"
@@ -514,7 +713,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
     4. Provide the `secrets.yaml` file using the `-secrets` flag. 
 
         ```
-        rpc configure addwifisettings -config config.yaml -secrets secrets.yaml
+        rpc configure wireless -config config.yaml -secrets secrets.yaml
         ```
 
 
@@ -527,7 +726,7 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
         The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
 
     ```
-    rpc configure addwifisettings -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert "{CLIENT_CERT}" -caCert "{CA_CERT}" -privateKey "{PRIVATE_KEY}"
+    rpc configure wireless -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert "{CLIENT_CERT}" -caCert "{CA_CERT}" -privateKey "{PRIVATE_KEY}"
     ```
 
 === "-configJson String Option"
@@ -540,12 +739,12 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 
     === "Wireless Only"
         ```
-        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
+        rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
         ```
 
     === "Wireless w/ 802.1x"
         ```
-        rpc configure addwifisettings -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}", "privateKey": "{PRIVATE_KEY}" } ] }"
+        rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}", "privateKey": "{PRIVATE_KEY}" } ] }"
         ```
 
 !!! success "Example Successful Output of Configuring Two Wireless Profiles"
@@ -575,81 +774,6 @@ On failure, the `addwifisettings` maintenance command will rollback any certific
 | -secrets                | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
 | -ssid                   | Wifi SSID                                                                                                                                                                                               |
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
-
-<br>
-
-#### amtpassword
-
-Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
-
-```
-rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
-```
-
-| OPTION           | DESCRIPTION                   |
-|------------------|-------------------------------|
-| -newamtpassword  | New AMT password to set.      |
-
-<br>
-
-
-
-#### enablewifiport
-
-Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.
-
-```
-rpc configure enablewifiport -password AMTPassword
-```
-
-<br>
-
-#### mebx
-
-Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode.
-
-```
-rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
-```
-
-| OPTION         | DESCRIPTION                   |
-|----------------|-------------------------------|
-| -mebxpassword  | New MEBx password to set.     |
-
-!!! important "Important - Using Strong Passwords"
-    The MEBx password must meet standard, **strong** password requirements:
-
-    - 8 to 32 characters
-
-    - At least one of each: Uppercase letter, lowercase letter, numerical digit, and special character
-
-<br>
-
-#### syncclock (configure)
-
-Syncs the host OS clock to AMT.
-
-```
-rpc configure syncclock -password AMTPassword
-```
-
-<br>
-
-#### tls
-
-Configures TLS in AMT. AMT password is required.
-
-```
-rpc configure tls -mode Server -password AMTPassword
-```
-
-| OPTION             | DESCRIPTION                                                                                                                                  |
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| -delay int         | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
-| -eaAddress string  | IP Address or FQDN of Enterprise Assistant                                                                                                   |
-| -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
-| -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
-| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
 
 <br>
 
