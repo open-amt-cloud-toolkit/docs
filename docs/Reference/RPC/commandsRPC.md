@@ -298,15 +298,16 @@ rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192
 
 Execute a configuration command for the managed device:
 
-| SUBCOMMAND                            | DESCRIPTION                                                                                                |
-|---------------------------------------|------------------------------------------------------------------------------------------------------------|
-| [amtpassword](#amtpassword)           | Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for. |
-| [enablewifiport](#enablewifiport)     | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.             |
-| [mebx](#mebx)                         | Configure MEBx Password. AMT password is required.                                                         |
-| [syncclock](#syncclock-configure)     | Sync the host OS clock to AMT. AMT password is required.                                                   |
-| [tls](#tls)                           | Configure TLS in AMT. AMT password is required.                                                            |
-| [wired](#wired) <br> wiredsettings (Deprecated)     | Configure wired settings (DHCP or Static IP) locally with RPC (no communication with RPS and EA)           |
-| [wireless](#wireless) <br> addwifisettings (Deprecated)  | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                              |
+| SUBCOMMAND                                              | DESCRIPTION                                                                                                |
+|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| [amtfeatures](#amtfeatures)                             | Enable/disable redirection features (KVM, IDER, SOL) and configure user consent.                           |
+| [amtpassword](#amtpassword)                             | Update the AMT Password. If no flags are provided, the current and new AMT passwords will be prompted for. |
+| [enablewifiport](#enablewifiport)                       | Enables WiFi port and local profile synchronization settings in AMT. AMT password is required.             |
+| [mebx](#mebx)                                           | Configure MEBx Password. AMT password is required.                                                         |
+| [syncclock](#syncclock-configure)                       | Sync the host OS clock to AMT. AMT password is required.                                                   |
+| [tls](#tls)                                             | Configure TLS in AMT. AMT password is required.                                                            |
+| [wired](#wired) <br> wiredsettings (Deprecated)         | Configure wired settings (DHCP or Static IP) locally with RPC (no communication with RPS and EA)           |
+| [wireless](#wireless) <br> addwifisettings (Deprecated) | Configure wireless 802.1x locally with RPC (no communication with RPS and EA)                              |
 
 <br>
 
@@ -319,6 +320,23 @@ Execute a configuration command for the managed device:
 | -l string          | Log level (panic,fatal,error,warn,info,debug,trace) (default "info") <br>**Caution**: Do not run log level `trace` in production as sensitive information may be logged to the console.  |
 | -password string   | AMT password                                                                                                                                                                             |
 | -v                 | Verbose output <br>**Caution**: Do not run in production as sensitive information may be logged to the console.                                                                          |
+
+<br>
+
+#### amtfeatures
+
+Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
+
+```
+rpc configure amtfeatures -kvm -sol -ider -userConsent all
+```
+
+| OPTION               | DESCRIPTION                                    |
+|----------------------|------------------------------------------------|
+| -ider                | Enable/disable IDER (IDE Redirection).         |
+| -kvm                 | Enable/disable KVM (Keyboard, Video, Mouse).   |
+| -sol                 | Enable/disable SOL (Serial-over-LAN).          |
+| -userConsent string  | Configure user consent. Valid Values = {none, kvm, all} <br> **Only configurable for devices activated in ACM.**    |
 
 <br>
 
@@ -335,8 +353,6 @@ rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPas
 | -newamtpassword  | New AMT password to set.      |
 
 <br>
-
-
 
 #### enablewifiport
 
