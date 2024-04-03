@@ -46,7 +46,7 @@ Find a simple sample client in the RPC-go's [dotnet folder](https://github.com/o
 This sample code demonstrates how to import the DLL's functions:
 
 ``` c#
-    //Linux-style example (.so extenstion)
+    //Linux-style example (.so extension)
     [DllImport("rpc")]
     static extern int rpcCheckAccess();
 ```
@@ -95,6 +95,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |2         |HECI driver not detected                 |
 |3         |AMT not detected                         |
 |4         |AMT not ready                            |
+|10        |Generic Failure                          |
 
 #### (20-69) Input errors to RPC
 
@@ -118,6 +119,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |35        |Missing Or Invalid Configuration         |
 |36        |Invalid User Input                       |
 |37        |Invalid UUID                             |
+|38        |Password do not match                    |
 
 #### (70-99) Connection Errors
 
@@ -150,6 +152,9 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |114       |Delete Wifi Config Failed                  |
 |116       |Missing or incorrect Wifi Profile Name     |
 |117       |Missing IEEE 802.1x Configuration          |
+|118       |Set MEBx Password Failed                   |
+|119       |Change AMT Password Failed                 |
+|110       |Unable to Configure                        |
 
 #### (150-199) Maintenance Errors
 
@@ -159,6 +164,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 |151       |Hostname synchronization failed          |
 |152       |IP synchronization failed                |
 |153       |Change Password failed                   |
+|154       |Sync Device Info failed                  |
 
 #### (1000-3000) AMT PT Status Code Block
 |Error Code| Message                                 |
