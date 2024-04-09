@@ -9,7 +9,7 @@
 !!! note "Note From the Team"
     After dusting off some old shelves and checking every nook and cranny for Spring, we found a bunch of new features for RPC-Go for the April 2024 Release. The team is getting closer and closer now to being able to offer full activation and configuration entirely locally with RPC-Go. We aren't far away now!
 
-    For those that do not want to use a cloud deployment with CIRA, as of this release, we now can offer activation, wired/wireless configuration, TLS, redirection features, and a number of maintenance-type commands available now 100% locally utilizing only RPC-Go and it's built-in tools to communicate with AMT. Next stop, RPC-Go wired and wireless 802.1x configuration with Enterprise Assistant!
+    Some users may not want to use a cloud deployment with CIRA to connect to devices. As of this release, we can now offer activation, wired/wireless configuration, TLS, configuration of redirection features, and a number of maintenance-type commands available now 100% locally utilizing only RPC-Go and it's built-in tools to communicate with AMT. Next stop, RPC-Go wired and wireless 802.1x configuration with Enterprise Assistant!
     
     *Best Wishes,* 
 
