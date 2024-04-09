@@ -325,10 +325,13 @@ Execute a configuration command for the managed device:
 
 #### amtfeatures
 
-Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
+Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). AMT password is required.
+
+!!! note "Control Mode and User Consent"
+    User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
 
 ```
-rpc configure amtfeatures -kvm -sol -ider -userConsent all
+rpc configure amtfeatures -kvm -sol -ider -userConsent none
 ```
 
 | OPTION               | DESCRIPTION                                    |
@@ -343,6 +346,9 @@ rpc configure amtfeatures -kvm -sol -ider -userConsent all
 #### amtpassword
 
 Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
+
+!!! warning "`configure amtpassword` versus `maintenance changepassword`"
+    `configure amtpassword` is a local command. This does not communicate with a centralized database storing the new AMT passwords so make sure to take note of any changes made! To ensure the database is updated with the new passwords for deployments utilizing RPS and MPS, [see the `rpc maintenance changepassword` command.](#changepassword)
 
 ```
 rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
@@ -366,8 +372,10 @@ rpc configure enablewifiport -password AMTPassword
 
 #### mebx
 
-Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode.
+Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode. AMT password is required.
 
+!!! warning "`configure mebx` Storing Passwords"
+    `configure mebx` is a local command. This does not communicate with a centralized database storing the new MEBx passwords so make sure to take note of any changes made!
 ```
 rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 ```
@@ -387,7 +395,7 @@ rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 
 #### syncclock (configure)
 
-Syncs the host OS clock to AMT.
+Syncs the host OS clock to AMT. AMT password is required.
 
 ```
 rpc configure syncclock -password AMTPassword
@@ -418,7 +426,7 @@ rpc configure tls -mode Server -password AMTPassword
 !!! warning "Warning - Deprecation: `wiredsettings` subcommand"
     **`rpc configure wired` is the recommended subcommand.** The previous `rpc configure wiredsettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wired` subcommand for new development.
 
-Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA).
+Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA). AMT password is required.
 
 === "Config File"
     ##### via Config file
@@ -539,7 +547,7 @@ Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no comm
 !!! warning "Warning - Deprecation: `addwifisettings` subcommand"
     **`rpc configure wireless` is the recommended subcommand.** The previous `rpc configure addwifisettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wireless` subcommand for new development.
 
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md). AMT password is required.
 
 On failure, the `wireless` configure command will rollback any certificates added before the error occurred.
 

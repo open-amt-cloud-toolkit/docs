@@ -7,9 +7,9 @@
 <br>
 
 !!! note "Note From the Team"
-    After dusting off some old shelves and checking every nook and cranny for Spring, we found a bunch of new features for RPC-Go for the April 2024 Release. The team is getting closer and closer now to being able to offer full activation and configuration entirely locally with RPC-Go. We aren't far away now!
-
-    Some users may not want to use a cloud deployment with CIRA to connect to devices. As of this release, we can now offer activation, wired/wireless configuration, TLS, configuration of redirection features, and a number of maintenance-type commands available now 100% locally utilizing only RPC-Go and it's built-in tools to communicate with AMT. Next stop, RPC-Go wired and wireless 802.1x configuration with Enterprise Assistant!
+    After dusting off some old shelves and checking every nook and cranny for Spring, we found a bunch of new features for RPC-Go for the April 2024 Release. The team is getting closer and closer now to being able to offer full activation and configuration entirely locally with RPC-Go. **As of this release**, we can now offer activation, wired/wireless configuration, TLS, configuration of redirection features, and a number of maintenance-type commands available now 100% locally utilizing only RPC-Go.
+    
+    **Next stop**, RPC-Go wired and wireless 802.1x configuration using Enterprise Assistant! We aren't far away now!
     
     *Best Wishes,* 
 
@@ -40,7 +40,7 @@ Wired settings can now be configured locally using just RPC-Go. For wired connec
 
 The AMT password can now be reconfigured by RPC-Go using the following new `configure amtpassword` subcommand. This will give a quick and easy way to update AMT passwords across a large number of devices.
 
-However, because this is a local command, there is no centralized database storing the new AMT passwords so make sure to take note of any changes made! For deployments utilizing RPS and MPS, see the `rpc maintenance changepassword` command.
+However, because this is a local command, there is no centralized database storing the new AMT passwords so make sure to take note of any changes made! For deployments utilizing RPS and MPS, [see the `rpc maintenance changepassword` command.](./Reference/RPC/commandsRPC.md#changepassword)
 
 ```
 rpc configure amtpassword -newamtpassword newAMTPassword -password oldAMTPassword
@@ -52,10 +52,12 @@ rpc configure amtpassword -newamtpassword newAMTPassword -password oldAMTPasswor
 
 :material-new-box: **Feature: RPC-Go Configure AMT Features**
 
-AMT Features can be configured locally now too. For those familiar with the [AMT Features MPS API call](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/post_api_v1_amt_features__guid_), the functionality is the same. With this command, redirection features like KVM, SOL, and IDER, can be enabled or disabled. For Admin Control Mode devices, the user consent settings can also be configured.
+AMT Features can be configured locally now too. For those familiar with the [AMT Features MPS API call](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/post_api_v1_amt_features__guid_), the functionality is the same. With this command, redirection features like KVM, SOL, and IDER, can be enabled or disabled.
+
+For Admin Control Mode devices, the user consent settings can also be configured. User consent cannot be modified for CCM devices.
 
 ```
-rpc configure amtfeatures -kvm -sol -ider -userConsent All
+rpc configure amtfeatures -kvm -sol -ider -userConsent none
 ```
 
 [See the documentation for additional details](./Reference/RPC/commandsRPC.md#amtfeatures).
@@ -64,7 +66,7 @@ rpc configure amtfeatures -kvm -sol -ider -userConsent All
 
 ### Additions, Modifications, and Removals
 
-#### RPC-GO
+#### RPC-Go
 
 v2.32.1
 
