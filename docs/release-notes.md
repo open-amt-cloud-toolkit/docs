@@ -2,17 +2,14 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/P51hfSnszEs?si=2-KxkCeoLsPG0cvG" title="March 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/kqAkDXjyeoc?si=6UGZdPnzv0tqusUB" title="April 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
 !!! note "Note From the Team"
+    After dusting off some old shelves and checking every nook and cranny for Spring, we found a bunch of new features for RPC-Go for the April 2024 Release. The team is getting closer and closer now to being able to offer full activation and configuration entirely locally with RPC-Go. We aren't far away now!
 
-    A pot of gold isn't the only thing you'll find at the end of the rainbow this month! :rainbow: :four_leaf_clover:
-
-    The March release comes with a new batch of features for RPC-Go to continue to address our enterprise-centric use cases. As part of these efforts, we've established a new channel of secure communication between RPC-Go and Enterprise Assistant directly. See all the details below!
-
-    In other news, you might begin to see the term **Device Management Toolkit**. In the coming months, we are going to start transitioning to this new naming for the overarching Github project. We hope that this sets the team up for the future as we look to expand into new capabilities and features outside of just AMT. This is a ***HUGE*** topic so keep your eyes peeled for a video that'll go into greater detail soon!
+    For those that do not want to use a cloud deployment with CIRA, as of this release, we now can offer activation, wired/wireless configuration, TLS, redirection features, and a number of maintenance-type commands available now 100% locally utilizing only RPC-Go and it's built-in tools to communicate with AMT. Next stop, RPC-Go wired and wireless 802.1x configuration with Enterprise Assistant!
     
     *Best Wishes,* 
 
@@ -21,135 +18,121 @@
 
 ## What's New?
 
-:material-application: **Announcement: RPC-Go Prebuilt Executables Available**
+:material-new-box: **Feature: RPC-Go Local Wired Configuration**
 
-Starting with RPC-Go v2.25.3, executables for both Linux (Ubuntu) and Windows are available to download under Github Releases! [Check out the Assets section under each specific release to find the executables.](https://github.com/open-amt-cloud-toolkit/rpc-go/releases)
+Wired settings can now be configured locally using just RPC-Go. For wired connections, AMT supports both DHCP and Static IP environments. Configuration info can be passed two different ways, either directly via the command line or read from a config file.
 
-!!! note "Note - Browser Preventing Download"
+=== "Individual Flags"
+    ```
+    rpc configure wired -dhcp -ipsync
+    ```
 
-    Depending on the browser, the download may be temporarily blocked and require manual approval to finish downloading. This typically only occurs on Chromium-based browsers on Windows machines.
+=== "Config File"
+    ```
+    rpc configure wired -config config.yaml
+    ```
 
-<br>
-
-:material-new-box: **Feature: RPC-Go Local TLS Configuration using Enterprise Assistant**
-
-This release, we have enabled support for RPC-Go to communicate with Enterprise Assistant (EA). Now, this allows the ability to pass in an EA server location to RPC-Go in order to obtain CSRs and retrieve a CA-signed certificate for TLS configuration.
-
-```
-rpc configure tls -mode Server -password AMTPassword -eaAddress http://192.160.1.100:8000 -eaUsername myUser -eaPassword myPass
-```
-
-[See the RPC documentation for flag details](./Reference/RPC/commandsRPC.md#tls) or [the Enterprise Assistant TLS documentation on how to configure into TLS](./Reference/EA/localtlsconfig.md)
+[See the RPC documentation for flag details and config file examples](./Reference/RPC/commandsRPC.md#wired).
 
 <br>
 
-:material-new-box: **Feature: RPC-Go Change MEBx Password**
+:material-new-box: **Feature: RPC-Go Change AMT Password**
 
-The MEBx password can now be reconfigured by RPC-Go using the following new `configure mebx` subcommand. This is only allowed when the device is activated in ACM mode. CCM mode does not allow remote changing of the MEBx password.
+The AMT password can now be reconfigured by RPC-Go using the following new `configure amtpassword` subcommand. This will give a quick and easy way to update AMT passwords across a large number of devices.
+
+However, because this is a local command, there is no centralized database storing the new AMT passwords so make sure to take note of any changes made! For deployments utilizing RPS and MPS, see the `rpc maintenance changepassword` command.
 
 ```
-rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
+rpc configure amtpassword -newamtpassword newAMTPassword -password oldAMTPassword
 ```
 
-[See the documentation for additional details](./Reference/RPC/commandsRPC.md#mebx)
+[See the documentation for additional details](./Reference/RPC/commandsRPC.md#amtpassword).
 
 <br>
 
-:material-new-box: **Enhancement: RPC-Go Sync Clock**
+:material-new-box: **Feature: RPC-Go Configure AMT Features**
 
-Previously, the `syncclock` command required communication with RPS. Due to the efforts by the team with go-wsman-messages v2.0, this command can now run 100% locally on the AMT device using only RPC-Go.
-
-This `configure` subcommand will execute much faster than the older `maintenance` subcommand version. This is part of an effort to move the majority of the `maintenance` command functionality execution locally to RPC-Go. More info about official deprecation timelines of the `maintenance` command to come in the future!
+AMT Features can be configured locally now too. For those familiar with the [AMT Features MPS API call](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/post_api_v1_amt_features__guid_), the functionality is the same. With this command, redirection features like KVM, SOL, and IDER, can be enabled or disabled. For Admin Control Mode devices, the user consent settings can also be configured.
 
 ```
-rpc configure syncclock -password AMTPassword
+rpc configure amtfeatures -kvm -sol -ider -userConsent All
 ```
 
-[See the documentation for additional details](./Reference/RPC/commandsRPC.md#syncclock-configure)
+[See the documentation for additional details](./Reference/RPC/commandsRPC.md#amtfeatures).
 
 ## Get the Details
 
 ### Additions, Modifications, and Removals
 
-#### RPS
+#### RPC-GO
 
-v2.22.2
+v2.32.1
 
-- db: adds create database to init.sql ([a1eee8b](https://github.com/open-amt-cloud-toolkit/rps/commit/a1eee8b6ed12348c892edf74edc95124f0193174))
+- fix: changed optin all type ([47ba85f](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/47ba85f30dfec6e6648c1a198e77b7fbd179eeeb))
+
+v2.31.2
+
+- feat: adds configure amtpassword local command ([#442](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/442))
+- feat: adds amt features configuration ([#407](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/407))
+- fix: removes duplicate printing for -h and -help flags on maintenance commands
+- fix: use tm2 for SetHighAccuracyTimeSynch ([#460](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/460))
+- fix: configure error code
+- fix: variable names for configJson input ([#441](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/441))
+- refactor: adds wireless and wired subcommands deprecating addwifisettings and wiredsettings ([#461](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/461))
+- ci: address permissions for trivy-scan to upload ([#447](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/447))
+- docs: update badge links
+- docs: update badge styles
+
+v2.29.1
+
+- fix: local acm activate does not prompt for password when it is in the config ([#436](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/436)) ([9a6e048](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/9a6e048f4507a417eb3d0c627a904456157c07ec))
+
+v2.29.0
+
+- feat: adds addwiredsettings local configure command ([#422](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/422)) ([ba58bb5](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/ba58bb5b52b620e82e78b031cbfb33082f4ab434))
+
+v2.28.3
+
+- fix: XML messages are no longer escaped when using -json flag ([#429](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/429)) ([01c646c](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/01c646cb27a54d2f650f2fb3b02df3b850ac70d7))
+
+v2.28.2
+
+- fix: changes amtinfo output to use stdout instead of stderr ([7caa756](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/7caa7568cc1b908d1fe22413ef18db85b5b02015))
+
+v2.28.1
+
+- fix: generated binaries should not use CGO ([#426](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/426)) ([2138cfe](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2138cfea52cf15c0186c2440928c53049759ebcd))
 
 #### Enterprise Assistant (EA)
 
-- feat: adds rest api endpoints [(#13)](https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/13)
-
-#### RPC-GO
-
-v2.28.0
-
-- feat: prompts for password in local commands activate and configure mebx ([#415](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/415)) ([e34e714](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e34e714cad96b70baa78b53bb61b215daa88fb9d))
-
-v2.27.4
-
-- fix: local acm activate properly orders certificate chain ([dbfd745](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/dbfd745502241d55f93fd30c2d4e908ca8ae790a))
-
-v2.27.3
-
-- fix: typo "AMT is alreay enabled" ([#412](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/412)) ([5cf9d1a](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5cf9d1a6e5d93880d863acf344954fdd20992e92))
-
-v2.27.2
-
-- fix: local acm activation ([2031489](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/20314898a8d26238d3dff90132cbf5da77759f32))
-
-v2.27.1
-
-- fix: password read on prompt ([e1861f6](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e1861f644bccbbfe7eccc8e2b91eed9353a37b68))
-
-v2.27.0
-
-- feat: adds tls configuration with signed certificate ([71977ee](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/71977eee38303e268ea36ed1de5fad8efc206eac))
-
-v2.26.2
-
-- fix: inject version upon release in CI ([#389](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/389)) ([2fa4355](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2fa43554ba88f05b61664c8c6149ad2761994b94))
-
-v2.26.1
-
-- fix: update version to v2.26.1 ([#388](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/388)) ([16f007d](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/16f007dc140b890fcfda907892e35333f18cd2f6))
-
-v2.26.0
-
-- feat: adds an option to sync clock locally ([5c806f0](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5c806f04ab48cb4d9b194eada2149befda05d480))
-
-- fix: check error upon getting lan interface settings ([#386](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/386)) ([1341e0a](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/1341e0af3b3a0fb6902d61747ce453fad83d4dc2)), closes [#369](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/369)
-
-- fix: read AMT and SMB passwords without terminal echo unless requested ([#357](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/357)) ([5f02918](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5f02918e5a719cce8f8f7edaaef8c82be7499b14))
-
-v2.25.3
-
-- fix: test executable flows for githubrelease ([#377](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/377)) ([b1d5dcf](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/b1d5dcfd7f3a0ca42e4773d9065a0f864d509e6e))
-
-v2.25.2
-
-- fix: this releases rpc-go with go-wsman-messages v2.1.3 ([#376](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/376)) ([dba0b36](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/dba0b3600d435355f2aa6541e0906b20a3523e95))
+- fix: logs are made generic and profile request updated [#18](https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/16)
+- fix: security key and port [#16](https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/16)
 
 #### go-wsman-messages
 
-v2.1.8
+v2.2.2
 
-- fix: Digest hash URI for wsman must be "/wsman", not full url ([#251](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/251)) ([063246c](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/063246c0dbdde2c0185e7281869f4a12db953c01))
+- fix: ieee802.1x configuration ([#274](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/274)) ([4d1dd67](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/4d1dd67ec99abdd1d1ebf6578b073e63fdc1470f))
 
-v2.1.7
+v2.2.1
 
-- fix: PKCS10Request now will be accepted by AMT ([#238](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/238)) ([1de9675](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/1de967586ce3465f533270213b42b1efe0497ec5))
+- fix: changes SetAdminACLEntryEx_INPUT to SetAdminAclEntryEx_INPUT for AMT_AuthorizationService ([#269](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/269)) ([35139e2](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/35139e2c0619190cb2dc283f90546b0d562c8bf7))
 
-v2.1.6
+v2.2.0
 
-- fix: align get calls to take a string as their input ([#234](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/234)) ([3966ecf](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/3966ecf88827c62c03ec978c671ceaa2259cf9fd))
+- feat: make hash function public ([#266](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/266)) ([ce02b73](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ce02b739f54e84036875d4de564523dbc21de248))
 
-v2.1.5
+v2.1.11
 
-- revert: "docs(cim): adds code comments for mediaaccess package ([#220](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/220))" ([#224](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/224)) ([701c3ab](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/701c3ab8ea8046c006696075eed0cacaa07e8e26))
+- fix: wsman calls to set amt features ([#262](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/262)) ([de460c5](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/de460c5202a6598b7e73e604d6e9d93991970385))
 
-v2.1.4
+v2.1.10
+
+- fix: removes typo in GeneralSettingsRequest struct ([#260](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/260)) ([c33b573](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/c33b573504a2a03c18179d2e04d316a60c2cfc8e))
+
+v2.1.9
+
+- fix: updates pull call to take instanceid as a string ([#256](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/256)) ([0f2430b](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/0f2430b615d6f5ce696e25ff157954f57f27e87d))
 
 - fix: set OptInRequired to uint32 ([#221](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/221)) ([865e6d8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/865e6d80bd10d801e9d567affa8406ff8cb82614))
 
