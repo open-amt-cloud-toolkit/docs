@@ -26,8 +26,8 @@ The following steps highlight how to:
 
 The following are requirements to configure and connect an AMT device using TLS.
 
-- [Enterprise Assistant](overview.md)
-- [RPC-Go](../../GetStarted/buildRPC.md)
+- [Enterprise Assistant configured for RPC-Go](rpcgoConfiguration.md)
+- [RPC-Go](../../../GetStarted/buildRPC.md)
 - Management Tool supporting TLS (ex: [Meshcommander](https://www.meshcommander.com/meshcommander))
 
     This is not required for configuration and therefore not needed for this guide. However, a management tool will be needed if you want to manage the device post-configuration.
@@ -41,52 +41,9 @@ The following services are assumed to be configured and running in your enterpri
 
 - Microsoft* Active Directory (AD)
 
-## Configure Enterprise Assistant
+## Configure Enterprise Assistant for RPC-Go
 
-1. Run the Enterprise Assistant executable.
-
-2. Open the `File > Settings` menu to configure the RPC-Go connection.
-
-    <figure class="figure-image">
-        <img src="..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 1: Enterprise Assistant Settings Menu">
-        <figcaption>Figure 1: Enterprise Assistant Settings Menu</figcaption>
-    </figure>
-
-3. Under **RPC Client** section, for **Address**, choose the IP Address or FQDN of the EA Server.
-
-4. Set a **Username** of your choice.
-
-5. Set a **Password** of your choice.
-
-6. Set a 256-bit alpha-numeric **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
-
-    ??? note "Note - Security Key Length"
-
-        Symmetric encryption algorithms such as AES (Advanced Encryption Standard) require keys of specific lengths, typically 128-bits (16 bytes), 192-bits (24 bytes), or 256-bits (32 bytes) for AES. **For the Security Key, a 256-bit key is required.** Providing a shorter key will not work.
-
-7. The `Device Name` is the name used to configure the domain controller for each device account. Using `Node Identifier` is more secure due to the inability to be tampered with but is less friendly to maintain as a user.
-
-8. `Security Groups` will list all of the security groups of the domain controller that have been created within the Computers group. When Enterprise Assistant creates a new Computer account (like a new AMT device), it will join the selected Security Groups.
-
-9. Provide the Certificate Authority and click the checkmark.
-
-10. It will then list the available Certificate Templates to choose from. This will let you select a template specifically created for AMT. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps on creating a template.
-
-11. Choose how to issue the certificate. Typically, `SAM Account Name` is most commonly used as the `Common Name`.
-
-    !!! example "Example - Configured Settings"
-        <figure class="figure-image">
-            <img src="..\..\..\assets\images\EA_RPCSettingsFull.png" alt="Figure 2: Enterprise Assistant RPC-Go Settings Example">
-            <figcaption>Figure 2: Enterprise Assistant RPC-Go Settings Example</figcaption>
-        </figure>
-
-12. Press **OK** to save the Settings.
-
-    !!! success "Success - HTTP Server Started"
-        <figure class="figure-image">
-            <img width=400px src="..\..\..\assets\images\EA_RPCHTTPStart.png" alt="Figure 3: HTTP Server Started Example">
-            <figcaption>Figure 3: HTTP Server Started Example</figcaption>
-        </figure>
+See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to setup EA to accept a connection and request from RPC-Go.
 
 ## Configure the AMT Device
 
@@ -97,7 +54,7 @@ The following services are assumed to be configured and running in your enterpri
 3. Run the `rpc configure tls` command. Replace the [bracketed] values with your own.
 
     ```
-    rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress [IP-Address-or-FQDN] -eaUsername [myUsername] -eaPassword [myPassword]
+    rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress http://[IP-Address-or-FQDN]:8000 -eaUsername [myUsername] -eaPassword [myPassword]
     ```
 
     !!! example "Example Command"
@@ -117,8 +74,8 @@ The following services are assumed to be configured and running in your enterpri
 
     !!! success "Success - TLS Configured"
         <figure class="figure-image">
-            <img src="..\..\..\assets\images\RPC_EALocalTLSSuccess.png" alt="Figure 4: TLS Configured Example">
-            <figcaption>Figure 4: TLS Configured Example</figcaption>
+            <img src="..\..\..\..\assets\images\RPC_EALocalTLSSuccess.png" alt="Figure 1: TLS Configured Example">
+            <figcaption>Figure 1: TLS Configured Example</figcaption>
         </figure>
 
 4. Now, the device is manageable via a TLS connection using the management tool of your choice!

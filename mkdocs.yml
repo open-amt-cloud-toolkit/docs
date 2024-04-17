@@ -109,9 +109,14 @@ nav:
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
-      - 802.1x Configuration: Reference/EA/ieee8021xconfig.md
-      - Local TLS Configuration: Reference/EA/localtlsconfig.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
+      - Local Configuration:
+        - EA Configuration for RPC-Go: Reference/EA/LocalConfiguration/rpcgoConfiguration.md
+        - Local TLS Configuration: Reference/EA/LocalConfiguration/localtlsconfig.md
+        - Local 802.1x Configuration: Reference/EA/LocalConfiguration/localIEEE8021xConfig.md
+      - Remote Configuration:
+        - EA Configuration for RPS: Reference/EA/RemoteConfiguration/rpsConfiguration.md
+        - Remote 802.1x Configuration: Reference/EA/RemoteConfiguration/remoteIEEE8021xConfig.md
     - Event Monitoring (MQTT):
       - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
       - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
