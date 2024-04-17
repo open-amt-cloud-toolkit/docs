@@ -188,7 +188,6 @@ plugins:
       enable_creation_date: true
       type: timeago
       fallback_to_build_date: true
-      strict: false
 extra:
   social:
     - icon: fontawesome/brands/discord 
