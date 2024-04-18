@@ -47,9 +47,6 @@ The following are requirements to configure and connect an AMT device within an 
     | --------------------- | --------- | ---------------------------------------- |
     |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
     |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.     |
-    |PEAPv1/EAP-GTC         | 3         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 1 EAP type specified in [draft-josefsson-pppext-eap-tls-eap](https://tools.ietf.org/html/draft-josefsson-pppext-eap-tls-eap-10), with Generic Token Card (GTC) as the inner authentication method.                  |
-    |EAP-FAST/GTC           | 5         | Indicates that the desired EAP type is the Flexible Authentication Extensible Authentication Protocol EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851),     with Generic Token Card (GTC) as the inner authentication method.      |
-    |EAP-FAST/TLS           | 10        | Indicates that the desired EAP type is the Flexible Authentication EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851), with TLS as the inner authentication   method.      |
 
 6. Optionally, change the **PXE Timeout**.
 

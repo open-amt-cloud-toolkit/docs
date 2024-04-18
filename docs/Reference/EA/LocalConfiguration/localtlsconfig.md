@@ -37,7 +37,7 @@ The following are requirements to configure and connect an AMT device using TLS.
 The following services are assumed to be configured and running in your enterprise environment.
 
 - Microsoft* Certificate Authority (CA)
-    - An AMT TLS Certificate template is required. See [TLS Certificate Template](tlsCertTemplate.md) for additional steps on creating a template.
+    - An AMT TLS Certificate template is required. See [TLS Certificate Template](../tlsCertTemplate.md) for additional steps on creating a template.
 
 - Microsoft* Active Directory (AD)
 
