@@ -209,7 +209,7 @@ extra:
   repoVersion:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
-    oamtct: 2.21.0
+    oamtct: 2.21.1
     rpc_go: 2.32.1
     rpc_c: 2.0.0
     ui_toolkit: 3.2.4
