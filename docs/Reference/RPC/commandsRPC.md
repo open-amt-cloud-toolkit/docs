@@ -428,7 +428,7 @@ rpc configure tls -mode Server -password AMTPassword
 
 Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA). AMT password is required.
 
-Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) or [Remote 802.1x Configuration](../EA/RemoteConfiguration/remoteIEEE8021xConfig.md).
+Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [Remote 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md).
 
 === "Config File"
     ##### via Config file
@@ -501,7 +501,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         === "YAML"
             ```yaml title="config.yaml with 802.1x"
@@ -667,7 +667,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass -authenticationProtocol 0
@@ -701,7 +701,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"
@@ -745,7 +745,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 !!! warning "Warning - Deprecation: `addwifisettings` subcommand"
     **`rpc configure wireless` is the recommended subcommand.** The previous `rpc configure addwifisettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wireless` subcommand for new development.
 
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) or [Remote 802.1x Configuration](../EA/RemoteConfiguration/remoteIEEE8021xConfig.md). AMT password is required.
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [Remote 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md). AMT password is required.
 
 On failure, the `wireless` configure command will rollback any certificates added before the error occurred.
 
@@ -802,7 +802,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         === "YAML"
             ```yaml title="config.yaml with 802.1x"
@@ -1022,7 +1022,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1 -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
@@ -1050,7 +1050,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/LocalConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant Local 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wireless -configJson "{ "password": "AMTPassword", "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "ssid", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"

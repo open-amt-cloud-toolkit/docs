@@ -35,11 +35,7 @@ The following services are assumed to be configured and running in your enterpri
 
 5. Set a **Password** of your choice.
 
-6. Set a 16, 24, or 32-byte **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
-
-    ??? note "Note - Security Key Length"
-
-        Symmetric encryption algorithms such as AES (Advanced Encryption Standard) require keys of specific lengths, typically 128-bits (16 bytes), 192-bits (24 bytes), or 256-bits (32 bytes) for AES. **For the Security Key, a 16, 24, or 32-byte key is required.** Providing a shorter or incorrect length key will not work.
+6. Set a 24 or 32-character **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
 
 7. `Security Groups` will list all of the security groups of the domain controller that have been created within the Computers group. When Enterprise Assistant creates a new Computer account (like a new AMT device), it will join the selected Security Groups.
 

@@ -5,17 +5,19 @@
 !!! warning "Local TLS Configuration using RPC-Go is a Preview Feature"
     Local TLS Configuration using RPC-Go is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
-The TLS protocol includes the following types of authentication:
+In Open AMT, the TLS protocol supports the following types of authentication today:
 
 - Server Authentication – Only the server is authenticated (i.e., its identity is ensured) while the client remains unauthenticated. This means that the end user (whether an individual or an application, such as a Web browser) can be sure with whom they are communicating.
 
-- Mutual Authentication – The next level of security in which both ends of the “conversation” are sure with whom they are communicating.
+<!-- - Mutual Authentication – The next level of security in which both ends of the “conversation” are sure with whom they are communicating.
 
-When Intel AMT is configured for mutual authentication, it validates incoming client certificates based on the root of trust configured.
+When Intel AMT is configured for mutual authentication, it validates incoming client certificates based on the root of trust configured. -->
 
 ## Overview
 
-AMT can be configured to use TLS without the need for a remote server (i.e. RPS). RPC-Go can directly communicate with Enterprise Assistant to perform the configuration.
+AMT can be configured to use TLS without the need for a remote server (i.e. RPS). RPC-Go can configure TLS settings in AMT using Enterprise Assistant, or it can configure TLS in AMT using a self-signed certificate.
+
+This document explains how to perform the configuration using a certificate signed by the Microsoft CA with the help of Enterprise Assistant.
 
 The following steps highlight how to:
 
@@ -63,14 +65,15 @@ See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to set
         rpc configure tls -mode Server -password AMTpassword123! -eaAddress http://192.168.2.50:8000 -eaUsername admin -eaPassword P@ssw0rd
         ```
 
-    The toolkit offers four configuration modes to support various usage models: 
+    The toolkit offers two configuration modes: 
 
     | CONFIGURATION MODE    | DESCRIPTION                                                                                            |
     | :---------------------| :----------------------------------------------------------------------------------------------------- |
     | Server                | The client authenticates the server request and accepts only those servers with a digital certificate. |
     | ServerAndNonTLS       | **Used primarily for testing.** The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.|
-    | Mutual                | Both client and server **must** have certs. The client cert is signed by the server cert.              |
-    | MutualAndNonTLS       | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   |
+
+    <!-- | Mutual                | Both client and server **must** have certs. The client cert is signed by the server cert.              |
+    | MutualAndNonTLS       | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   | -->
 
     !!! success "Success - TLS Configured"
         <figure class="figure-image">
