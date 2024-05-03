@@ -40,14 +40,15 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
 
 11. Under **TLS (Enterprise)**, select the **TLS Mode from** the dropdown menu. 
     
-    The toolkit offers four configuration modes to support various usage models: 
+    The toolkit offers two configuration modes: 
 
     | CONFIGURATION MODE           | DESCRIPTION                           |
     | :--------------------------- | :------------------------------------ |
     | Server Authentication Only | The client authenticates the server request and accepts only those servers with a digital certificate. |
     | Server and Non-TLS Authentication | **Used primarily for testing.** The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.|
-    | Mutual TLS Authentication Only | Both client and server **must** have certs. The client cert is signed by the server cert. |
-    | Mutual and Non-TLS Authentication | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   |
+    
+    <!-- | Mutual TLS Authentication Only | Both client and server **must** have certs. The client cert is signed by the server cert. |
+    | Mutual and Non-TLS Authentication | **Used primarily for testing.** Both client and server certs are expected. The client authenticates the server request and accepts legitimate digital certificates from TLS-enabled servers. However, if the server is not TLS-enabled, the client defaults to a CIRA connection.   | -->
 
 12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
@@ -59,14 +60,17 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
          <figcaption>Figure 2: Example profile with TLS Config</figcaption>
          </figure>
 
-14. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at [http://localhost:8200](http://localhost:8200) for a local Docker deployment or [Cloud-FQDN]:8200 (Ex: openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment.
+14. To confirm the digital certificates generated for the profile, open a browser and navigate to the Vault service at:
 
-15. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: s.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
+    - [http://localhost:8200](http://localhost:8200) for a local Docker deployment
+    - http://[Cloud-FQDN]:8200 (Ex: http://openamt.eastus.cloudapp.azure.com:8200) for a cloud deployment
 
-<figure class="figure-image">
+15. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: hvs.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
+
+    <figure class="figure-image">
          <img src="..\..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
          <figcaption>Figure 3: Login with the token</figcaption>
-         </figure>
+    </figure>
 
 16. Navigate to the path `secret/TLS/[profile name]` for a local dev mode Vault deployment. Or `kv/TLS/[profile name]` for a cloud deployment.
 

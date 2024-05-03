@@ -4,7 +4,7 @@ site_url: "https://open-amt-cloud-toolkit.github.io/docs/"
 repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.21
+site_dir: site/2.22
 # Configuration
 theme:
   name: "material"
@@ -109,9 +109,14 @@ nav:
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
-      - 802.1x Configuration: Reference/EA/ieee8021xconfig.md
-      - Local TLS Configuration: Reference/EA/localtlsconfig.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
+      - RPC-Go Configuration:
+        - EA Configuration for RPC-Go: Reference/EA/RPCConfiguration/rpcgoConfiguration.md
+        - TLS Configuration: Reference/EA/RPCConfiguration/localtlsconfig.md
+        - 802.1x Configuration: Reference/EA/RPCConfiguration/localIEEE8021xConfig.md
+      - RPS Configuration:
+        - EA Configuration for RPS: Reference/EA/RPSConfiguration/rpsConfiguration.md
+        - 802.1x Configuration: Reference/EA/RPSConfiguration/remoteIEEE8021xConfig.md
     - Event Monitoring (MQTT):
       - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
       - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
