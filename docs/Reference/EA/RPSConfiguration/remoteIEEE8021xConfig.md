@@ -1,3 +1,5 @@
+--8<-- "References/abbreviations.md"
+
 !!! warning "802.1x Configuration is a Preview Feature"
     802.1x Configuration feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
@@ -13,7 +15,7 @@ It typically consists of three parts:
 
 The following are requirements to configure and connect an AMT device within an 802.1x environment. However, these are not required for the RPS profile creation steps below.
 
-- [Enterprise Assistant configured, running, and connected to an RPS server.](overview.md)
+- [Enterprise Assistant configured, running, and connected to an RPS server.](rpsConfiguration.md)
 - Updated to latest AMT Firmware version
 
 !!! note "Note - System Name Length"
@@ -23,13 +25,13 @@ The following are requirements to configure and connect an AMT device within an 
 
 **Only one** wired IEEE8021x Config can be created (per tenant). The following steps walk through how to create the required configs and profiles.
 
-#### To create a Wired IEEE802.1x Config:
+### Create Wired IEEE802.1x Config
 
 1. Select the **IEEE 802.1x** tab from the left-hand menu.
 
 2. In the top-right corner, click **Add New.**
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <img src="..\..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
      <figcaption>Figure 1: Create a new IEEE802.1x Config</figcaption>
      </figure>
 
@@ -45,9 +47,6 @@ The following are requirements to configure and connect an AMT device within an 
     | --------------------- | --------- | ---------------------------------------- |
     |EAP-TLS                | 0         | Indicates that the desired EAP type is the Transport Layer Security EAP type specified in [RFC 2716](https://www.rfc-editor.org/rfc/rfc2716).                |
     |PEAPv0/EAP-MSCHAPv2    | 2         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 0 EAP type specified in [draft-kamath-pppext-peapv0](https://tools.ietf.org/html/draft-kamath-pppext-peapv0-00), with Microsoft PPP CHAP Extensions, Version 2 (MSCHAPv2) as the inner authentication method.     |
-    |PEAPv1/EAP-GTC         | 3         | Indicates that the desired EAP type is the Protected Extensible Authentication Protocol (PEAP) Version 1 EAP type specified in [draft-josefsson-pppext-eap-tls-eap](https://tools.ietf.org/html/draft-josefsson-pppext-eap-tls-eap-10), with Generic Token Card (GTC) as the inner authentication method.                  |
-    |EAP-FAST/GTC           | 5         | Indicates that the desired EAP type is the Flexible Authentication Extensible Authentication Protocol EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851),     with Generic Token Card (GTC) as the inner authentication method.      |
-    |EAP-FAST/TLS           | 10        | Indicates that the desired EAP type is the Flexible Authentication EAP type specified in [IETF RFC 4851](https://www.rfc-editor.org/rfc/rfc4851), with TLS as the inner authentication   method.      |
 
 6. Optionally, change the **PXE Timeout**.
 
@@ -57,11 +56,11 @@ The following are requirements to configure and connect an AMT device within an 
     
     !!! example "Example Wired IEEE802.1x Config"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
+        <img src="..\..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
         <figcaption>Figure 2: Example Wired IEEE802.1x Config</figcaption>
         </figure>
 
-#### To link to an AMT Profile:
+### Link AMT Profile
 
 1. Select the **Profiles** tab from the left-hand menu.
 
@@ -75,19 +74,23 @@ The following are requirements to configure and connect an AMT device within an 
 
     !!! example "Example ACM Profile with IEEE802.1x"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateProfile_8021x.png" alt="Figure 3: Example ACM profile with IEEE802.1x">
+        <img src="..\..\..\..\assets\images\RPS_CreateProfile_8021x.png" alt="Figure 3: Example ACM profile with IEEE802.1x">
         <figcaption>Figure 3: Example ACM profile with IEEE802.1x</figcaption>
         </figure>
+
+<br><br>
 
 ## Wireless 802.1x Configuration
 
 There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 8 profiles is the maximum AMT can accept. The following steps walk through how to create the required configs and profiles.
 
+### Create Wireless IEEE802.1x Config
+
 1. Select the **IEEE 802.1x** tab from the left-hand menu.
 
 2. In the top-right corner, click **Add New.**
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <img src="..\..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
      <figcaption>Figure 4: Create a new IEEE802.1x Config</figcaption>
      </figure>
 
@@ -108,11 +111,11 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
     
     !!! example "Example Wireless IEEE802.1x Config"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
+        <img src="..\..\..\..\assets\images\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
         <figcaption>Figure 5: Example Wireless IEEE802.1x Config</figcaption>
         </figure>
 
-#### To link to a Wireless Config:
+### Link Wifi Config Profile
 
 1. Select the **Wireless** tab from the left-hand menu.
 
@@ -126,6 +129,6 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
 
     !!! example "Example Wireless Config with IEEE802.1x"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
+        <img src="..\..\..\..\assets\images\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
         <figcaption>Figure 6: Example Wireless Config with IEEE802.1x</figcaption>
         </figure>
