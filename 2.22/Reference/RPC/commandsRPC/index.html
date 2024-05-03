@@ -4799,8 +4799,90 @@
 <p><br></p>
 <h4 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
 <p>Configures <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT. AMT password is required.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Config File</label><label for="__tabbed_5_2">Individual Options</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Use the <code>-config</code> flag to pass either a <code>.yaml</code> or <code>.json</code> file. </p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -config config.yaml
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Using Enterprise Assistant</label><label for="__tabbed_6_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>See the <a href="../../EA/RPCConfiguration/localtlsconfig/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Configuration using Enterprise Assistant and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go</a> documentation for more details.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">YAML</label><label for="__tabbed_7_2">JSON</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
+<span class="nt">tlsConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Server&#39;</span>
+<span class="nt">enterpriseAssistant</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&#39;</span>
+<span class="w">  </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaUser&#39;</span>
+<span class="w">  </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaPass&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMTPassword&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tlsConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Server&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;enterpriseAssistant&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;eaAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eaUsername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eaUser&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;eaPassword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eaPass&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>If Enterprise Assistant is not used, a self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate will be generated and used by AMT.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">YAML</label><label for="__tabbed_8_2">JSON</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
+<span class="nt">tlsConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Server&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMTPassword&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tlsConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Server&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Alternatively, provide all options directly in the command line. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Using Enterprise Assistant</label><label for="__tabbed_9_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Provide the EA Address and configured <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Credentials. See the <a href="../../EA/RPCConfiguration/localtlsconfig/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Configuration using Enterprise Assistant and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go</a> documentation for more details.</p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>If Enterprise Assistant is not used, a self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate will be generated and used by AMT.</p>
 <div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword
 </code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
 <table>
 <thead>
 <tr>
@@ -4810,24 +4892,28 @@
 </thead>
 <tbody>
 <tr>
+<td>-config string</td>
+<td>File path of a <code>.yaml</code> or <code>.json</code> file with desired <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration.</td>
+</tr>
+<tr>
 <td>-delay int</td>
 <td>Delay time in seconds after putting remote <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> settings. Default value is 3 seconds if not provided.</td>
 </tr>
 <tr>
 <td>-eaAddress string</td>
-<td>IP Address or FQDN of Enterprise Assistant.</td>
+<td>IP Address or FQDN of Enterprise Assistant</td>
 </tr>
 <tr>
 <td>-eaPassword string</td>
-<td>Configured Enterprise Assistant Password.</td>
+<td>Configured Enterprise Assistant Password</td>
 </tr>
 <tr>
 <td>-eaUsername</td>
-<td>Configured Enterprise Assistant Username.</td>
+<td>Configured Enterprise Assistant Username</td>
 </tr>
 <tr>
 <td>-mode value</td>
-<td><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is <code>Server</code> if not provided.</td>
+<td><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> authentication usage model. Valid Values = {Server, ServerAndNonTLS}. Default value is <code>Server</code> if not provided.</td>
 </tr>
 </tbody>
 </table>
@@ -4839,7 +4925,7 @@
 </div>
 <p>Configure AMT wired settings for DHCP or Static IP locally using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (no communication with <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and EA). AMT password is required.</p>
 <p>Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> or <a href="../../EA/RPSConfiguration/remoteIEEE8021xConfig/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> 802.1x Configuration</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Config File</label><label for="__tabbed_5_2">Config w/ Secrets File</label><label for="__tabbed_5_3">Individual Options</label><label for="__tabbed_5_4">-configJson String Option</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:4"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Config File</label><label for="__tabbed_10_2">Config w/ Secrets File</label><label for="__tabbed_10_3">Individual Options</label><label for="__tabbed_10_4">-configJson String Option</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h5 id="via-config-file">via Config file<a class="headerlink" href="#via-config-file" title="Permanent link">&para;</a></h5>
@@ -4847,11 +4933,11 @@
 <li>
 <p>Create a new file called <code>config.yaml</code> or <code>config.json</code>. Copy and paste the corresponding template below.</p>
 <p>These templates show how to create a simple Wired profile for configuring a device for either DHCP or a Static IP Address.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">DHCP</label><label for="__tabbed_6_2">Static</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">DHCP</label><label for="__tabbed_11_2">Static</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The config file can be passed as either a <code>YAML</code> or <code>JSON</code> formatted file.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">YAML</label><label for="__tabbed_7_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">YAML</label><label for="__tabbed_12_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in the command line</span>
@@ -4875,7 +4961,7 @@
 </div>
 <div class="tabbed-block">
 <p>The config file can be passed as either a <code>YAML</code> or <code>JSON</code> formatted file.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">YAML</label><label for="__tabbed_8_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">YAML</label><label for="__tabbed_13_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in the command line</span>
@@ -4918,11 +5004,11 @@
 </li>
 </ol>
 <h6 id="with-8021x">with 802.1x<a class="headerlink" href="#with-8021x" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Using Enterprise Assistant</label><label for="__tabbed_9_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Using Enterprise Assistant</label><label for="__tabbed_14_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">YAML</label><label for="__tabbed_10_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">YAML</label><label for="__tabbed_15_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
@@ -4966,7 +5052,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">YAML</label><label for="__tabbed_11_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">YAML</label><label for="__tabbed_16_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in the command line</span>
@@ -5018,7 +5104,7 @@
 <li>
 <p>Create a new file called <code>config.yaml</code>. Copy and paste the corresponding template below.</p>
 <p>This <code>config.yaml</code> is slightly different from the standard one as we either delete or leave blank the secret fields <code>ieee8021xPassword</code> and <code>privateKey</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">YAML</label><label for="__tabbed_12_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">YAML</label><label for="__tabbed_17_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">wiredConfig</span><span class="p">:</span>
@@ -5042,7 +5128,7 @@
 </li>
 <li>
 <p>Create a new file called <code>secrets.yaml</code>. Copy and paste the template below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">YAML</label><label for="__tabbed_13_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">YAML</label><label for="__tabbed_18_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">secrets.yaml</span><pre><span></span><code><span class="nt">secrets</span><span class="p">:</span>
@@ -5087,7 +5173,7 @@
 <p class="admonition-title">Warning - Use Case and Security</p>
 <p>The CLI option is intended for use as part of an integration of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a shared library. The passing of secrets directly via command line is highly insecure and <strong>NOT</strong> recommended.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">DHCP</label><label for="__tabbed_14_2">Static</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">DHCP</label><label for="__tabbed_19_2">Static</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>rpc configure wired -dhcp -ipsync -password AMTPassword
@@ -5100,7 +5186,7 @@
 </div>
 </div>
 <h6 id="with-8021x_1">with 802.1x<a class="headerlink" href="#with-8021x_1" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Using Enterprise Assistant</label><label for="__tabbed_15_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Using Enterprise Assistant</label><label for="__tabbed_20_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
@@ -5121,7 +5207,7 @@
 <p class="admonition-title">Warning - Use Case and Security</p>
 <p>The CLI option is intended for use as part of an integration of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a shared library. The passing of secrets directly via command line is highly insecure and <strong>NOT</strong> recommended.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">DHCP</label><label for="__tabbed_16_2">Static</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">DHCP</label><label for="__tabbed_21_2">Static</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>rpc configure wired -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;wiredConfig&quot;: { &quot;dhcp&quot;: true, &quot;ipsync&quot;: true } }&quot;
@@ -5134,7 +5220,7 @@
 </div>
 </div>
 <h6 id="with-8021x_2">with 802.1x<a class="headerlink" href="#with-8021x_2" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Using Enterprise Assistant</label><label for="__tabbed_17_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Using Enterprise Assistant</label><label for="__tabbed_22_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
@@ -5249,7 +5335,7 @@
 </div>
 <p>Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> or <a href="../../EA/RPSConfiguration/remoteIEEE8021xConfig/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> 802.1x Configuration</a>. AMT password is required.</p>
 <p>On failure, the <code>wireless</code> configure command will rollback any certificates added before the error occurred.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:4"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><input id="__tabbed_18_3" name="__tabbed_18" type="radio" /><input id="__tabbed_18_4" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Config File</label><label for="__tabbed_18_2">Config w/ Secrets File</label><label for="__tabbed_18_3">Individual Options</label><label for="__tabbed_18_4">-configJson String Option</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:4"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><input id="__tabbed_23_3" name="__tabbed_23" type="radio" /><input id="__tabbed_23_4" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Config File</label><label for="__tabbed_23_2">Config w/ Secrets File</label><label for="__tabbed_23_3">Individual Options</label><label for="__tabbed_23_4">-configJson String Option</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h5 id="via-config-file_1">via Config file<a class="headerlink" href="#via-config-file_1" title="Permanent link">&para;</a></h5>
@@ -5258,7 +5344,7 @@
 <li>
 <p>Create a new file called <code>config.yaml</code>. Copy and paste the corresponding template below.</p>
 <p>These templates show how to create a simple Wireless profile called <strong>exampleWifiWPA2</strong>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">YAML</label><label for="__tabbed_19_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">YAML</label><label for="__tabbed_24_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in the command line</span>
@@ -5301,11 +5387,11 @@
 </li>
 </ol>
 <h6 id="with-8021x_3">with 802.1x<a class="headerlink" href="#with-8021x_3" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Using Enterprise Assistant</label><label for="__tabbed_20_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Using Enterprise Assistant</label><label for="__tabbed_25_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">YAML</label><label for="__tabbed_21_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="26:2"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><input id="__tabbed_26_2" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="__tabbed_26_1">YAML</label><label for="__tabbed_26_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
@@ -5357,7 +5443,7 @@
 </div>
 </div>
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">YAML</label><label for="__tabbed_22_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="27:2"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><input id="__tabbed_27_2" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="__tabbed_27_1">YAML</label><label for="__tabbed_27_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in the command line</span>
@@ -5417,7 +5503,7 @@
 <li>
 <p>Create a new file called <code>config.yaml</code>. Copy and paste the corresponding template below.</p>
 <p>This <code>config.yaml</code> is slightly different from the standard one as we either delete or leave blank the secret fields <code>pskPassphrase</code>, <code>password</code>, and <code>privateKey</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">YAML</label><label for="__tabbed_23_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="__tabbed_28_1" name="__tabbed_28" type="radio" /><input id="__tabbed_28_2" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="__tabbed_28_1">YAML</label><label for="__tabbed_28_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">wifiConfigs</span><span class="p">:</span>
@@ -5478,7 +5564,7 @@
 </li>
 <li>
 <p>Create a new file called <code>secrets.yaml</code>. Copy and paste the template below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">YAML</label><label for="__tabbed_24_2">JSON</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="29:2"><input checked="checked" id="__tabbed_29_1" name="__tabbed_29" type="radio" /><input id="__tabbed_29_2" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="__tabbed_29_1">YAML</label><label for="__tabbed_29_2">JSON</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">secrets.yaml</span><pre><span></span><code><span class="nt">secrets</span><span class="p">:</span>
@@ -5532,7 +5618,7 @@
 <div class="highlight"><pre><span></span><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 6 -encryptionMethod 4 -ssid &quot;networkSSID&quot; -pskPassphrase networkPass -authenticationProtocol 0 -priority 1
 </code></pre></div>
 <h6 id="with-8021x_4">with 802.1x<a class="headerlink" href="#with-8021x_4" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Using Enterprise Assistant</label><label for="__tabbed_25_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="30:2"><input checked="checked" id="__tabbed_30_1" name="__tabbed_30" type="radio" /><input id="__tabbed_30_2" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="__tabbed_30_1">Using Enterprise Assistant</label><label for="__tabbed_30_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
@@ -5556,7 +5642,7 @@
 <div class="highlight"><pre><span></span><code>rpc configure wireless -configJson &quot;{ &quot;wifiConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleWifi&quot;, &quot;authenticationMethod&quot;: 6, &quot;encryptionMethod&quot;: 4, &quot;ssid&quot;: &quot;networkSSID&quot;, &quot;username&quot;: &quot;username&quot;, &quot;authenticationProtocol&quot;: 0, &quot;priority&quot;: 1 } ] }&quot;
 </code></pre></div>
 <h6 id="with-8021x_5">with 802.1x<a class="headerlink" href="#with-8021x_5" title="Permanent link">&para;</a></h6>
-<div class="tabbed-set tabbed-alternate" data-tabs="26:2"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><input id="__tabbed_26_2" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="__tabbed_26_1">Using Enterprise Assistant</label><label for="__tabbed_26_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="31:2"><input checked="checked" id="__tabbed_31_1" name="__tabbed_31" type="radio" /><input id="__tabbed_31_2" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="__tabbed_31_1">Using Enterprise Assistant</label><label for="__tabbed_31_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
