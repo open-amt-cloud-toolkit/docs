@@ -407,17 +407,97 @@ rpc configure syncclock -password AMTPassword
 
 Configures TLS in AMT. AMT password is required.
 
-```
-rpc configure tls -mode Server -password AMTPassword
-```
+=== "Config File"
+
+    Use the `-config` flag to pass either a `.yaml` or `.json` file. 
+
+    ```
+    rpc configure tls -config config.yaml
+    ```
+
+    === "Using Enterprise Assistant"
+
+        === "YAML"
+        
+            ```yaml title="config.yaml"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            tlsConfig:
+              mode: 'Server'
+            enterpriseAssistant:
+              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
+              eaUsername: 'eaUser'
+              eaPassword: 'eaPass'
+            ```
+
+        === "JSON"
+
+            ```json title="config.json"
+            {
+              "password": "AMTPassword",
+              "tlsConfig": {
+                "mode": "Server"
+              },
+              "enterpriseAssistant": {
+                "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000",
+                "eaUsername": "eaUser",
+                "eaPassword": "eaPass"
+              }
+            }
+            ```
+
+    === "Without Enterprise Assistant"
+
+        If Enterprise Assistant is not used, a self-signed TLS certificate will be generated and used by AMT.
+
+        === "YAML"
+
+            ```yaml title="config.yaml"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            tlsConfig:
+              mode: 'Server'
+            ```
+
+        === "JSON"
+
+            ```json title="config.json"
+            {
+              "password": "AMTPassword",
+              "tlsConfig": {
+                "mode": "Server"
+              }
+            }
+            ```
+
+=== "Individual Options"
+
+    Alternatively, provide all options directly in the command line. 
+
+    === "Using Enterprise Assistant"
+
+        Provide the EA Address and configured RPC-Go Credentials.
+
+        ```
+        rpc configure tls -mode Server -password AMTPassword -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
+        ```
+
+    === "Without Enterprise Assistant"
+
+        If Enterprise Assistant is not used, a self-signed TLS certificate will be generated and used by AMT.
+
+        ```
+        rpc configure tls -mode Server -password AMTPassword
+        ```
+
+<br>
 
 | OPTION             | DESCRIPTION                                                                                                                                  |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -config string     | File path of a `.yaml` or `.json` file with desired TLS configuration.                                                                       |
 | -delay int         | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
 | -eaAddress string  | IP Address or FQDN of Enterprise Assistant                                                                                                   |
 | -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
 | -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
-| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
+| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS}. Default value is `Server` if not provided.                         |
 
 <br>
 
