@@ -417,6 +417,8 @@ Configures TLS in AMT. AMT password is required.
 
     === "Using Enterprise Assistant"
 
+        See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
+
         === "YAML"
         
             ```yaml title="config.yaml"
@@ -474,7 +476,7 @@ Configures TLS in AMT. AMT password is required.
 
     === "Using Enterprise Assistant"
 
-        Provide the EA Address and configured RPC-Go Credentials.
+        Provide the EA Address and configured RPC-Go Credentials. See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
 
         ```
         rpc configure tls -mode Server -password AMTPassword -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
