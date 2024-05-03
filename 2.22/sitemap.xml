@@ -176,22 +176,37 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/ieee8021xconfig/</loc>
-         <lastmod>2024-05-03</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/localtlsconfig/</loc>
-         <lastmod>2024-05-03</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/overview/</loc>
          <lastmod>2024-05-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/tlsCertTemplate/</loc>
+         <lastmod>2024-05-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localIEEE8021xConfig/</loc>
+         <lastmod>2024-05-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localtlsconfig/</loc>
+         <lastmod>2024-05-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/RPCConfiguration/rpcgoConfiguration/</loc>
+         <lastmod>2024-05-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/RPSConfiguration/remoteIEEE8021xConfig/</loc>
+         <lastmod>2024-05-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/EA/RPSConfiguration/rpsConfiguration/</loc>
          <lastmod>2024-05-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
