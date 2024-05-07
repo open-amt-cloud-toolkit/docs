@@ -4,7 +4,7 @@ site_url: "https://open-amt-cloud-toolkit.github.io/docs/"
 repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.21
+site_dir: site/2.22
 # Configuration
 theme:
   name: "material"
@@ -109,9 +109,14 @@ nav:
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
-      - 802.1x Configuration: Reference/EA/ieee8021xconfig.md
-      - Local TLS Configuration: Reference/EA/localtlsconfig.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
+      - RPC-Go Configuration:
+        - EA Configuration for RPC-Go: Reference/EA/RPCConfiguration/rpcgoConfiguration.md
+        - TLS Configuration: Reference/EA/RPCConfiguration/localtlsconfig.md
+        - 802.1x Configuration: Reference/EA/RPCConfiguration/localIEEE8021xConfig.md
+      - RPS Configuration:
+        - EA Configuration for RPS: Reference/EA/RPSConfiguration/rpsConfiguration.md
+        - 802.1x Configuration: Reference/EA/RPSConfiguration/remoteIEEE8021xConfig.md
     - Event Monitoring (MQTT):
       - Customizing MQTT Events: Reference/MQTT/customMqttEvents.md
       - Viewing MQTT Events: Reference/MQTT/viewMqttEvents.md
@@ -184,10 +189,6 @@ plugins:
   - search
   - macros
   - img2fig
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-      fallback_to_build_date: true
 extra:
   social:
     - icon: fontawesome/brands/discord 
@@ -208,12 +209,12 @@ extra:
   repoVersion:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
-    oamtct: 2.20.0
-    rpc_go: 2.28.0
+    oamtct: 2.21.1
+    rpc_go: 2.32.1
     rpc_c: 2.0.0
-    ui_toolkit: 3.2.3
-    ui_toolkit_react: 3.2.3
-    ui_toolkit_angular: 7.2.5
+    ui_toolkit: 3.2.4
+    ui_toolkit_react: 3.2.5
+    ui_toolkit_angular: 7.2.6
   docsSite:
     ltsVersion: 2.0
   analytics:

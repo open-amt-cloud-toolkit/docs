@@ -38,7 +38,6 @@ jobs:
           pip install mkdocs-macros-plugin
           pip install mkdocs-mermaid2-plugin
           pip install mkdocs-img2fig-plugin
-          pip install mkdocs-git-revision-date-localized-plugin
           mkdocs build --strict
       #checkout the gh-pages branch    
       - uses: actions/checkout@v4

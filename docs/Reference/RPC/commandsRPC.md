@@ -325,10 +325,13 @@ Execute a configuration command for the managed device:
 
 #### amtfeatures
 
-Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
+Enable or disable redirection features (KVM, IDER, SOL) and set the user consent type (none, kvm, all). AMT password is required.
+
+!!! note "Control Mode and User Consent"
+    User consent can only be configured if the device is activated in ACM mode. In CCM, User Consent is set to `all` and cannot be changed.
 
 ```
-rpc configure amtfeatures -kvm -sol -ider -userConsent all
+rpc configure amtfeatures -kvm -sol -ider -userConsent none
 ```
 
 | OPTION               | DESCRIPTION                                    |
@@ -343,6 +346,9 @@ rpc configure amtfeatures -kvm -sol -ider -userConsent all
 #### amtpassword
 
 Change or update the AMT password of the device. If the `-password` flag, `-newamtpassword` flag, or neither flag are provided, then the user will be prompted to input the password or passwords.
+
+!!! warning "`configure amtpassword` versus `maintenance changepassword`"
+    `configure amtpassword` is a local command. This does not communicate with a centralized database storing the new AMT passwords so make sure to take note of any changes made! To ensure the database is updated with the new passwords for deployments utilizing RPS and MPS, [see the `rpc maintenance changepassword` command.](#changepassword)
 
 ```
 rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
@@ -366,8 +372,10 @@ rpc configure enablewifiport -password AMTPassword
 
 #### mebx
 
-Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode.
+Configure the MEBx password. The MEBx password can only be configured if the device is activated in ACM mode. AMT password is required.
 
+!!! warning "`configure mebx` Storing Passwords"
+    `configure mebx` is a local command. This does not communicate with a centralized database storing the new MEBx passwords so make sure to take note of any changes made!
 ```
 rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 ```
@@ -387,7 +395,7 @@ rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
 
 #### syncclock (configure)
 
-Syncs the host OS clock to AMT.
+Syncs the host OS clock to AMT. AMT password is required.
 
 ```
 rpc configure syncclock -password AMTPassword
@@ -399,17 +407,99 @@ rpc configure syncclock -password AMTPassword
 
 Configures TLS in AMT. AMT password is required.
 
-```
-rpc configure tls -mode Server -password AMTPassword
-```
+=== "Config File"
+
+    Use the `-config` flag to pass either a `.yaml` or `.json` file. 
+
+    ```
+    rpc configure tls -config config.yaml
+    ```
+
+    === "Using Enterprise Assistant"
+
+        See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
+
+        === "YAML"
+        
+            ```yaml title="config.yaml"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            tlsConfig:
+              mode: 'Server'
+            enterpriseAssistant:
+              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
+              eaUsername: 'eaUser'
+              eaPassword: 'eaPass'
+            ```
+
+        === "JSON"
+
+            ```json title="config.json"
+            {
+              "password": "AMTPassword",
+              "tlsConfig": {
+                "mode": "Server"
+              },
+              "enterpriseAssistant": {
+                "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000",
+                "eaUsername": "eaUser",
+                "eaPassword": "eaPass"
+              }
+            }
+            ```
+
+    === "Without Enterprise Assistant"
+
+        If Enterprise Assistant is not used, a self-signed TLS certificate will be generated and used by AMT.
+
+        === "YAML"
+
+            ```yaml title="config.yaml"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            tlsConfig:
+              mode: 'Server'
+            ```
+
+        === "JSON"
+
+            ```json title="config.json"
+            {
+              "password": "AMTPassword",
+              "tlsConfig": {
+                "mode": "Server"
+              }
+            }
+            ```
+
+=== "Individual Options"
+
+    Alternatively, provide all options directly in the command line. 
+
+    === "Using Enterprise Assistant"
+
+        Provide the EA Address and configured RPC-Go Credentials. See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
+
+        ```
+        rpc configure tls -mode Server -password AMTPassword -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
+        ```
+
+    === "Without Enterprise Assistant"
+
+        If Enterprise Assistant is not used, a self-signed TLS certificate will be generated and used by AMT.
+
+        ```
+        rpc configure tls -mode Server -password AMTPassword
+        ```
+
+<br>
 
 | OPTION             | DESCRIPTION                                                                                                                                  |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| -config string     | File path of a `.yaml` or `.json` file with desired TLS configuration.                                                                       |
 | -delay int         | Delay time in seconds after putting remote TLS settings. Default value is 3 seconds if not provided.                                         |
 | -eaAddress string  | IP Address or FQDN of Enterprise Assistant                                                                                                   |
 | -eaPassword string | Configured Enterprise Assistant Password                                                                                                     |
 | -eaUsername        | Configured Enterprise Assistant Username                                                                                                     |
-| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS, Mutual, MutualAndNonTLS}. Default value is `Server` if not provided.|
+| -mode value        | TLS authentication usage model. Valid Values = {Server, ServerAndNonTLS}. Default value is `Server` if not provided.                         |
 
 <br>
 
@@ -418,7 +508,9 @@ rpc configure tls -mode Server -password AMTPassword
 !!! warning "Warning - Deprecation: `wiredsettings` subcommand"
     **`rpc configure wired` is the recommended subcommand.** The previous `rpc configure wiredsettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wired` subcommand for new development.
 
-Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA).
+Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA). AMT password is required.
+
+Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md).
 
 === "Config File"
     ##### via Config file
@@ -487,10 +579,161 @@ Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no comm
         rpc configure wired -config config.yaml
         ```
 
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
+        === "YAML"
+            ```yaml title="config.yaml with 802.1x"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            wiredConfig:
+              dhcp: true
+              ipsync: true
+              ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            enterpriseAssistant:
+              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
+              eaUsername: 'eaUser'
+              eaPassword: 'eaPass'
+            ieee8021xConfigs:
+              - profileName: 'exampleIeee8021xEAP-TLS'
+                authenticationProtocol: 0
+                # ieee8021xPassword: ''  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)
+            ```
+        === "JSON"
+            ```json title="config.json with 802.1x"
+            {
+              "password": "AMTPassword",
+              "wiredConfig": {
+                "dhcp": true,
+                "ipsync": true,
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+              },
+              "enterpriseAssistant": {
+                "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000",
+                "eaUsername": "admin",
+                "eaPassword": "P@ssw0rd"
+              },
+              "ieee8021xConfigs": [
+                {
+                  "profileName": "exampleIeee8021xEAP-TLS",
+                  "authenticationProtocol": 0
+                }
+              ]
+            }
+            ```
+
+    === "Without Enterprise Assistant"
+
+        === "YAML"
+            ```yaml title="config.yaml with 802.1x"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+            wiredConfig:
+              dhcp: true
+              ipsync: true
+              ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+              - profileName: 'exampleIeee8021xEAP-TLS'
+                username: 'exampleUserName'
+                authenticationProtocol: 0
+                # ieee8021xPassword: ''  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)
+                clientCert: ''
+                caCert: ''
+                privateKey: ''
+            ```
+        
+        === "JSON"
+            ```json title="config.json with 802.1x"
+            {
+              "password": "AMTPassword",
+              "wiredConfig": {
+                "dhcp": true,
+                "ipsync": true,
+                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+              },
+              "ieee8021xConfigs": [
+                {
+                  "profileName": "exampleIeee8021xEAP-TLS",
+                  "username": "exampleUserName",
+                  "authenticationProtocol": 0,
+                  "clientCert": "",
+                  "caCert": "",
+                  "privateKey": ""
+                }
+              ]
+            }
+            ```
+
+=== "Config w/ Secrets File"
+    ##### via Config with Secrets file
+
+    If a secrets file is included with the configuration file, those secrets will be used in the matching `ieee8021xProfileName` configuration. These templates show how to create a simple Wired profile utilizing 802.1x.
+
+    1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
+
+        This `config.yaml` is slightly different from the standard one as we either delete or leave blank the secret fields `ieee8021xPassword` and `privateKey`.
+
+        === "YAML"
+            ```yaml title="config.yaml"
+            wiredConfig:
+              dhcp: true
+              ipsync: true
+              ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+              - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+            ```
+
+        === "JSON"
+            ```json title="config.json"
+
+            ```
+
+    2. Create a new file called `secrets.yaml`. Copy and paste the template below.
+
+        === "YAML"
+            ```yaml title="secrets.yaml"
+            secrets:
+            - profileName: 'exampleIeee8021xEAP-TLS'
+              privateKey: ''
+            - profileName: 'ieee8021xPEAPv0'
+              password: ''
+            ```
+        === "JSON"
+            ```json title="secrets.json"
+            {
+            "secrets": [
+                {
+                "profileName": "exampleIeee8021xEAP-TLS",
+                "privateKey": ""
+                },
+                {
+                "profileName": "ieee8021xPEAPv0",
+                "password": ""
+                }
+            ]
+            }
+            ```
+
+    3. Fill in fields with the secrets. The `profileName` given in the secrets file must match the corresponding 802.1x configuration `iee8021xProfileName`.
+    
+    4. Provide the `secrets.yaml` file using the `-secrets` flag. 
+
+        ```
+        rpc configure wired -config config.yaml -secrets secrets.yaml
+        ```
+
 === "Individual Options"
     ##### via Individual Options
     
     Alternatively, provide all options directly in the command line.
+
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
     
     === "DHCP"
         ```
@@ -502,10 +745,29 @@ Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no comm
         rpc configure wired -static -ipaddress 192.168.1.50 -subnetmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -password AMTPassword
         ```
 
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
+        ```
+        rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass -authenticationProtocol 0
+        ```
+
+    === "Without Enterprise Assistant"
+
+        ```
+        rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -authenticationProtocol 0 -clientCert "" -caCert "" -privateKey ""
+        ```
+
 === "-configJson String Option"
     ##### via -configJson Option
     
     Or, provide the JSON string directly in the command line.
+
+    !!! warning "Warning - Use Case and Security"
+        The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
 
     === "DHCP"
         ```
@@ -517,20 +779,46 @@ Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no comm
         rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "static": true, "ipaddress": "192.168.1.50", "subnetmask": "255.255.255.0", "gateway": "192.168.1.1", "primarydns": "8.8.8.8", "secondarydns": "4.4.4.4" } }"
         ```
 
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
+        ```
+        rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"
+        ```
+
+    === "Without Enterprise Assistant"
+
+        ```
+        rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "authenticationProtocol": 0, "clientCert": "", "caCert": "", "privateKey": "" } ] }"
+        ```
+
 <br>
 
-| OPTION                | DESCRIPTION                                                                                  |
-|-----------------------|----------------------------------------------------------------------------------------------|
-| -config string        | File path of a `.yaml` or `.json` file with desired wired DHCP or Static IP configuration.   |
-| -configJson string    | Configuration as a JSON string                                                               |
-| -dhcp                 | Configure AMT wired settings to use DHCP.                                                    |
-| -gateway value        | Gateway address to assign to AMT. For use with `-static` only.                               |
-| -ipaddress value      | IP Address to assign to AMT. For use with `-static` only.                                    |
-| -ipsync               | Sync the IP configuration of the host OS to AMT network settings.                            |
-| -primarydns value     | Primary DNS to assign to AMT. For use with `-static` only.                                   |
-| -secondarydns value   | Secondary DNS to assign to AMT. For use with `-static` only.                                 |
-| -static               | Configure AMT wired settings to use Static IP.                                               |
-| -subnetmask value     | Subnetwork mask to assign to AMT. For use with `-static` only.                               |
+| OPTION                  | DESCRIPTION                                                                                  |
+|-------------------------|----------------------------------------------------------------------------------------------|
+| -authenticationProtocol | 802.1x profile protocol. Valid Values = {0, 2} where `0` = EAP-TLS, `2` = EAP/MSCHAPv2       |
+| -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain.                   |
+| -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server. |
+| -config string          | File path of a `.yaml` or `.json` file with desired wired DHCP or Static IP configuration.   |
+| -configJson string      | Configuration as a JSON string                                                               |
+| -dhcp                   | Configure AMT wired settings to use DHCP.                                                    |
+| -eaAddress string       | IP Address or FQDN of Enterprise Assistant.                                                  |
+| -eaPassword string      | Configured Enterprise Assistant Password.                                                    |
+| -eaUsername             | Configured Enterprise Assistant Username.                                                    |
+| -gateway value          | Gateway address to assign to AMT. For use with `-static` only.                               |
+| -ieee8021xPassword      | 802.1x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2).                 |
+| -ieee8021xProfileName   | IEEE 802.1x Profile name (Friendly name), must be alphanumeric.                              |
+| -ipaddress value        | IP Address to assign to AMT. For use with `-static` only.                                    |
+| -ipsync                 | Sync the IP configuration of the host OS to AMT network settings.                            |
+| -primarydns value       | Primary DNS to assign to AMT. For use with `-static` only.                                   |
+| -secondarydns value     | Secondary DNS to assign to AMT. For use with `-static` only.                                 |
+| -secrets string          | File path of a `.yaml` or `.json` file with required secrets.                                |
+| -static                 | Configure AMT wired settings to use Static IP.                                               |
+| -subnetmask value       | Subnetwork mask to assign to AMT. For use with `-static` only.                               |
+| -username               | 802.1x username, must match the Common Name of the `clientCert`.                             |
 
 <br>
 
@@ -539,7 +827,7 @@ Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no comm
 !!! warning "Warning - Deprecation: `addwifisettings` subcommand"
     **`rpc configure wireless` is the recommended subcommand.** The previous `rpc configure addwifisettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wireless` subcommand for new development.
 
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT rather than through RPS/EA/RPC. More information on configuring AMT to use 802.1x can be found in [802.1x Configuration](../EA/ieee8021xconfig.md).
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md). AMT password is required.
 
 On failure, the `wireless` configure command will rollback any certificates added before the error occurred.
 
@@ -551,11 +839,11 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     1. Create a new file called `config.yaml`. Copy and paste the corresponding template below.
 
-        These templates show how to create a simple Wireless profile called **exampleWifiWPA2** and a Wireless profile utilizing 802.1x called **exampleWifi8021x**.
+        These templates show how to create a simple Wireless profile called **exampleWifiWPA2**.
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'amtPassword' # alternatively, you can provide the AMT password of the device in the command line
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
             wifiConfigs:
               - profileName: 'exampleWifiWPA2' # friendly name (ex. Profile name)
                 ssid: 'exampleSSID'
@@ -563,26 +851,12 @@ On failure, the `wireless` configure command will rollback any certificates adde
                 authenticationMethod: 6
                 encryptionMethod: 4
                 pskPassphrase: ''
-              - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
-                ssid: 'ssid'
-                priority: 2
-                authenticationMethod: 7
-                encryptionMethod: 4
-                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-            ieee8021xConfigs:
-              - profileName: 'exampleIeee8021xEAP-TLS'
-                username: "exampleUserName"
-                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
-                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
-                clientCert: ''
-                caCert: ''
-                privateKey: ''
             ```
 
         === "JSON"
             ```json title="config.json"
             {
-            "password": "amtPassword",
+            "password": "AMTPassword",
             "wifiConfigs": [
                 {
                 "profileName": "exampleWifiWPA2",
@@ -591,26 +865,6 @@ On failure, the `wireless` configure command will rollback any certificates adde
                 "authenticationMethod": 6,
                 "encryptionMethod": 4,
                 "pskPassphrase": ""
-                },
-                {
-                "profileName": "exampleWifi8021x",
-                "ssid": "ssid",
-                "priority": 2,
-                "authenticationMethod": 7,
-                "encryptionMethod": 4,
-                "pskPassphrase": "",
-                "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
-                }
-            ],
-            "ieee8021xConfigs": [
-                {
-                "profileName": "exampleIeee8021xEAP-TLS",
-                "username": "exampleUserName",
-                "password": "",
-                "authenticationProtocol": 0,
-                "clientCert": "",
-                "caCert": "",
-                "privateKey": ""
                 }
             ]
             }
@@ -625,6 +879,108 @@ On failure, the `wireless` configure command will rollback any certificates adde
         ```
         rpc configure wireless -config config.yaml
         ```
+
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
+        === "YAML"
+            ```yaml title="config.yaml with 802.1x"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
+            enterpriseAssistant:
+              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
+              eaUsername: 'eaUser'
+              eaPassword: 'eaPass'
+            wifiConfigs:
+              - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 1
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+              - profileName: 'exampleIeee8021xEAP-TLS'
+                # password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+            ```
+        === "JSON"
+            ```json title="config.json with 802.1x"
+            {
+              "password": "AMTPassword",
+              "enterpriseAssistant": {
+                "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000",
+                "eaUsername": "admin",
+                "eaPassword": "P@ssw0rd"
+              },
+              "wifiConfigs": [
+                {
+                  "profileName": "exampleWifi8021x",
+                  "ssid": "ssid",
+                  "priority": 1,
+                  "authenticationMethod": 7,
+                  "encryptionMethod": 4,
+                  "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+              ],
+              "ieee8021xConfigs": [
+                {
+                  "profileName": "exampleIeee8021xEAP-TLS",
+                  "authenticationProtocol": 0
+                }
+              ]
+            }
+            ```
+
+    === "Without Enterprise Assistant"
+
+        === "YAML"
+            ```yaml title="config.yaml with 802.1x"
+            password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in the command line
+            wifiConfigs:
+              - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
+                ssid: 'ssid'
+                priority: 1
+                authenticationMethod: 7
+                encryptionMethod: 4
+                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
+            ieee8021xConfigs:
+              - profileName: 'exampleIeee8021xEAP-TLS'
+                username: "exampleUserName"
+                # password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
+                authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
+                clientCert: ''
+                caCert: ''
+                privateKey: ''
+            ```
+        
+        === "JSON"
+            ```json title="config.json with 802.1x"
+            {
+              "password": "AMTPassword",
+              "wifiConfigs": [
+                {
+                  "profileName": "exampleWifi8021x",
+                  "ssid": "ssid",
+                  "priority": 1,
+                  "authenticationMethod": 7,
+                  "encryptionMethod": 4,
+                  "ieee8021xProfileName": "exampleIeee8021xEAP-TLS"
+                }
+              ],
+              "ieee8021xConfigs": [
+                {
+                  "profileName": "exampleIeee8021xEAP-TLS",
+                  "username": "exampleUserName",
+                  "authenticationProtocol": 0,
+                  "clientCert": "",
+                  "caCert": "",
+                  "privateKey": ""
+                }
+              ]
+            }
+            ```
 
 === "Config w/ Secrets File"
     ##### via Config with Secrets file
@@ -652,7 +1008,6 @@ On failure, the `wireless` configure command will rollback any certificates adde
             ieee8021xConfigs:
               - profileName: 'exampleIeee8021xEAP-TLS'
                 username: "exampleUserName"
-                password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
                 authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
                 clientCert: ''
                 caCert: ''
@@ -742,8 +1097,24 @@ On failure, the `wireless` configure command will rollback any certificates adde
         The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
 
     ```
-    rpc configure wireless -profileName profileName -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -username "username" -authenticationProtocol 0 -priority 1 -clientCert "{CLIENT_CERT}" -caCert "{CA_CERT}" -privateKey "{PRIVATE_KEY}"
+    rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 6 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1
     ```
+
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
+        ```
+        rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1 -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
+        ```
+
+    === "Without Enterprise Assistant"
+
+        ```
+        rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -username "username" -authenticationProtocol 0 -priority 1 -clientCert "" -caCert "" -privateKey ""
+        ```
 
 === "-configJson String Option"
     ##### via -configJson Option
@@ -753,23 +1124,25 @@ On failure, the `wireless` configure command will rollback any certificates adde
     !!! warning "Warning - Use Case and Security"
         The CLI option is intended for use as part of an integration of RPC as a shared library. The passing of secrets directly via command line is highly insecure and **NOT** recommended.
 
-    === "Wireless Only"
+    ```
+    rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
+    ```
+
+    ###### with 802.1x
+
+    === "Using Enterprise Assistant"
+
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+
         ```
-        rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"
+        rpc configure wireless -configJson "{ "password": "AMTPassword", "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "ssid", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"
         ```
 
-    === "Wireless w/ 802.1x"
-        ```
-        rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "{CLIENT_CERT}", "caCert": "{CA_CERT}", "privateKey": "{PRIVATE_KEY}" } ] }"
-        ```
+    === "Without Enterprise Assistant"
 
-!!! success "Example Successful Output of Configuring Two Wireless Profiles"
-    ```
-    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifiWPA2"
-    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifiWPA2"
-    time="2023-08-30T13:21:39-07:00" level=info msg="configuring wifi profile: exampleWifi8021x"
-    time="2023-08-30T13:21:39-07:00" level=info msg="successfully configured: exampleWifi8021x"
-    ```
+        ```
+        rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "", "caCert": "", "privateKey": "" } ] }"
+        ```
 
 <br>
 
@@ -780,7 +1153,10 @@ On failure, the `wireless` configure command will rollback any certificates adde
 | -caCert                 | Trusted Microsoft root CA or 3rd-party root CA in Active Directory domain.                                                                                                                              |
 | -clientCert             | Client certificate chained to the `caCert`. Issued by enterprise CA or mapped to computer account in Active Directory. <br>AMT provides this certificate to authenticate itself with the Radius Server. |
 | -config                 | File path of a `.yaml` or `.json` file with desired wireless and/or wireless 802.1x configuration.                                                                                                      |
-| -configJson             | Configuration as a JSON string                                                                                                                                                                          |
+| -configJson             | Configuration as a JSON string.                                                                                                                                                                         |
+| -eaAddress string       | IP Address or FQDN of Enterprise Assistant.                                                                                                                                                             |
+| -eaPassword string      | Configured Enterprise Assistant Password.                                                                                                                                                               |
+| -eaUsername             | Configured Enterprise Assistant Username.                                                                                                                                                               |
 | -encryptionMethod       | Wifi encryption method. Valid Values = {3, 4} where `3` = TKIP, `4` = CCMP                                                                                                                              |
 | -ieee8021xPassword      | 802.1x profile password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2).                                                                                                                            |
 | -profileName            | Profile name (Friendly name), must be alphanumeric.                                                                                                                                                     |
@@ -788,7 +1164,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 | -privateKey             | 802.1x profile private key of the `clientCert`.                                                                                                                                                         |
 | -pskPassphrase          | Wifi `pskPassphrase`, if `authenticationMethod` is WPA PSK(4) or WPA2 PSK(6).                                                                                                                           |
 | -secrets                | File path of a `.yaml` or `.json` file with secrets to be applied to the configurations.                                                                                                                |
-| -ssid                   | Wifi SSID                                                                                                                                                                                               |
+| -ssid                   | Wifi SSID.                                                                                                                                                                                              |
 | -username               | 802.1x username, must match the Common Name of the `clientCert`.                                                                                                                                        |
 
 <br>

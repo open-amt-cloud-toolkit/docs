@@ -22,8 +22,8 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 There are two ways to get the RPC-Go binary:
 
-- Download from the RPC-Go GitHub Repo Releases
-- Build the RPC-Go binary using Go
+- [Download from the RPC-Go GitHub Repo Releases](#download-rpc)
+- [Build the RPC-Go binary using Go](#build-rpc)
 
 See steps below for both options.
 
@@ -33,7 +33,7 @@ See steps below for both options.
 
 Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
-After downloading, continue on to [Run RPC to Activate and Connect the AMT Device](#run-rpc-to-activate-and-connect-the-amt-device).
+After downloading, continue on to [Run RPC to Activate, Configure, and Connect the AMT Device](#run-rpc-to-activate-configure-and-connect-the-amt-device).
 
 <br>
 
