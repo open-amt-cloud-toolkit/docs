@@ -35,7 +35,7 @@ The following services are assumed to be configured and running in your enterpri
 
 5. Set a **Password** of your choice.
 
-6. Set a 24 or 32-character **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
+6. Set a 32 or 64-character **Security Key** of your choice. This key is used when generating JWT tokens for authentication between RPC-Go and EA communication.
 
 7. `Security Groups` will list all of the security groups of the domain controller that have been created within the Computers group. When Enterprise Assistant creates a new Computer account (like a new AMT device), it will join the selected Security Groups.
 
