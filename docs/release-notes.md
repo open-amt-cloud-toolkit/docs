@@ -8,7 +8,7 @@
 
 !!! note "Note From the Team"
     
-    Just before the summer heat kicks off in Arizona, we've wrapped up the last of the big features we wanted to tackle for RPC-Go. With 802.1x support added when running RPC-Go alone locally, the team has begun to pivot to our next big focus. **Console.** For a while, we've been looking at how to address the gap created by the end of support for MeshCommander. The team has been hard at work architecting and developing an alternative for a 1:1, enterprise network focused, console solution.
+    Just before the summer heat kicks off in Arizona, we've wrapped up the last of the big features we wanted to tackle for RPC-Go. With 802.1x support added when running RPC-Go alone locally, the team has begun to pivot to our next big focus. **Console.** For a while, we've been looking at how to address the gap created by the end of support for MeshCommander. The team has been hard at work architecting and developing an alternative for a 1:1 device console solution for flat, enterprise-style networks.
 
     Development is still pretty early, but the team is progressing steadily. You can follow the progress in our [Console GitHub Repo](https://github.com/open-amt-cloud-toolkit/console). Stay tuned for updates soon!
     
@@ -110,6 +110,10 @@ v2.22.5
 
 #### RPC-Go
 
+v2.34.1
+
+- fix: add delay when processing multiple wireless profiles ([#510](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/510)) ([353af73](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/353af731b6127e2ede460e31706a382774ddc871))
+
 v2.34.0
 
 - feat: add yaml support to local tls config ([8ecb612](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ecb61257d6242f9d3d9467944482df58c27bd73))
@@ -132,9 +136,16 @@ v2.32.2
 
 #### Enterprise Assistant (EA)
 
+!!! note
+    Enterprise Assistant will soon begin to have tagged releases. We will share an official announcement when the first tagged release becomes available.
+
 - fix: update security key length [#21](https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/21)
 
 #### go-wsman-messages
+
+v2.5.0
+
+- feat: **cim:** adds setbootconfigrole function ([#304](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/304)) ([9b39f90](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/9b39f900a467451202bcf2a6f352ad3b3bf603ec))
 
 v2.4.1
 
