@@ -2,7 +2,7 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/kqAkDXjyeoc?si=6UGZdPnzv0tqusUB" title="May 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/ChVfBVJ_hRY?si=SWROOueZsDWX41uU" title="May 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
