@@ -10,13 +10,15 @@ This template is used by EA to request certificates on behalf of your AMT device
 
 3. Right-click the certificate template named **Web Server** and choose **Duplicate**.
 
-4. Name the new template **AMT TLS Certificate**.
+4. Right-click and rename the new template **AMT TLS Certificate**.
 
-5. Navigate to the **Request Handling** tab, and check the box labeled **Allow private key to be exported**.
+5. Right-click the template and open the **Properties** menu.
 
-6. Navigate to the **Subject Name** tab, and ensure that the radio button **Supply in the request** is selected.
+6. Navigate to the **Request Handling** tab, and check the box labeled **Allow private key to be exported**.
 
-7. Click **OK** to save the template.
+7. Navigate to the **Subject Name** tab, and ensure that the radio button **Supply in the request** is selected.
+
+8. Click **OK** to save the template.
 
 ## Enable the Template
 
