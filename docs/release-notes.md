@@ -42,14 +42,13 @@ enterpriseAssistant:
 ieee8021xConfigs:
   - profileName: 'exampleIeee8021xEAP-TLS'
     authenticationProtocol: 0
-    # ieee8021xPassword: ''  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)
 ```
 
 <br>
 
 :material-new-box: **Feature: RPC-Go Local Wireless 802.1x Configuration**
 
-Previously, we only allowed users to directly pass in the certificates and secrets themselves on the command line. Now, just like for wired configurations, you can use Enterprise Assistant to communicate to the Microsoft services and retrieve CSRs and certs for you. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.
+Previously, we only allowed users to directly pass in the certificates and secrets themselves on the command line. Now, just like for wired configurations, you can use Enterprise Assistant to communicate to the Microsoft CA and issue certificates to AMT. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.
 
 [See the `rpc configure wireless` command documentation for additional details and examples](./Reference/RPC/commandsRPC.md#wireless).
 
@@ -72,7 +71,6 @@ wifiConfigs:
     ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
 ieee8021xConfigs:
   - profileName: 'exampleIeee8021xEAP-TLS'
-    # password: "" # 8021x password if authenticationProtocol is PEAPv0/EAP-MSCHAPv2(2)
     authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
 ```
 
