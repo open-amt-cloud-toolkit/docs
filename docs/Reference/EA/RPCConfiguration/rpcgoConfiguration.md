@@ -62,6 +62,6 @@ The following services are assumed to be configured and running in your enterpri
         <figcaption>Figure 3: Enterprise Assistant HTTP Server Started</figcaption>
     </figure>
 
-14. Enterprise Assistant will now wait and listen for RPC-Go to make requests to either add Computers or issue/revoke Certificates.
+14. Enterprise Assistant will now wait and listen for RPC-Go to make requests to issue Certificates signed by Microsoft CA.
 
 <br>
