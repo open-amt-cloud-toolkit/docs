@@ -3707,7 +3707,6 @@
 <span class="nt">ieee8021xConfigs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="w">    </span><span class="c1"># ieee8021xPassword: &#39;&#39;  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)</span>
 </code></pre></div>
 </li>
 <li>
@@ -3771,7 +3770,6 @@
 <span class="nt">ieee8021xConfigs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
 <span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#8021x profile (ex. EAP-TLS(0))</span>
-<span class="w">    </span><span class="c1"># password: &#39;&#39;  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)</span>
 </code></pre></div>
 </li>
 <li>
@@ -3806,13 +3804,10 @@
 <p>Update the <code>ssid</code> with your network SSID.</p>
 </li>
 <li>
-<p><strong>Only if using <code>authenticationProtocol: 2</code></strong>, uncomment and provide the <code>password</code> field under <code>ieee8021xConfigs:</code>.</p>
-</li>
-<li>
 <p>Save and close the file.</p>
 </li>
 <li>
-<p>On an activated AMT device, run the following <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go command to configure wired 802.1x settings.</p>
+<p>On an activated AMT device, run the following <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go command to configure wireless 802.1x settings.</p>
 <div class="highlight"><pre><span></span><code>rpc configure wireless -config config.yaml
 </code></pre></div>
 </li>
