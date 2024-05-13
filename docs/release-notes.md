@@ -8,7 +8,7 @@
 
 !!! note "Note From the Team"
     
-    Just before the summer heat kicks off in Arizona, we've wrapped up the last of the big features we wanted to tackle for RPC-Go. With 802.1x support added when running RPC-Go alone locally, the team has begun to pivot to our next big focus. **Console.** For a while, we've been looking at how to address the gap created by the end of support for MeshCommander. The team has been hard at work architecting and developing an alternative for a 1:1 device console solution for flat, enterprise-style networks.
+    Just before the summer heat kicks off in Arizona, we've wrapped up adding support for configuring 8021x in AMT using RPC-Go. With this milestone, we're nearing the completion of all the major features planned in RPC-Go for Enterprise support MVP release. That being said, we've also been looking at how to address the gap created by MeshCommander’s end of support for our Enterprise customers. The team has been hard at work architecting and developing an alternative for a 1:1 **Console application** for enterprise-style networks.
 
     Development is still pretty early, but the team is progressing steadily. You can follow the progress in our [Console GitHub Repo](https://github.com/open-amt-cloud-toolkit/console). Stay tuned for updates soon!
     
