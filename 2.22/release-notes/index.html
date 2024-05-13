@@ -573,6 +573,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rps" class="md-nav__link">
+    <span class="md-ellipsis">
+      RPS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rpc-go" class="md-nav__link">
     <span class="md-ellipsis">
       RPC-Go
@@ -3658,120 +3667,146 @@
 
 <h2 id="release-highlights">Release Highlights<a class="headerlink" href="#release-highlights" title="Permanent link">&para;</a></h2>
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/kqAkDXjyeoc?si=6UGZdPnzv0tqusUB" title="April 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/ChVfBVJ_hRY?si=SWROOueZsDWX41uU" title="May 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <p><br></p>
 <div class="admonition note">
 <p class="admonition-title">Note From the Team</p>
-<p>After dusting off some old shelves and checking every nook and cranny for Spring, we found a bunch of new features for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go for the April 2024 Release. The team is getting closer and closer now to being able to offer full activation and configuration entirely locally with <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go. <strong>As of this release</strong>, we can now offer activation, wired/wireless configuration, <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, configuration of redirection features, and a number of maintenance-type commands available now 100% locally utilizing only <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go.</p>
-<p><strong>Next stop</strong>, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go wired and wireless 802.1x configuration using Enterprise Assistant! We aren't far away now!</p>
+<p>Just before the summer heat kicks off in Arizona, we've wrapped up adding support for configuring 8021x in AMT using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go. With this milestone, we're nearing the completion of all the major features planned in <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go for Enterprise support MVP release. That being said, we've also been looking at how to address the gap created by MeshCommander’s end of support for our Enterprise customers. The team has been hard at work architecting and developing an alternative for a 1:1 <strong>Console application</strong> for enterprise-style networks.</p>
+<p>Development is still pretty early, but the team is progressing steadily. You can follow the progress in our <a href="https://github.com/open-amt-cloud-toolkit/console">Console GitHub Repo</a>. Stay tuned for updates soon!</p>
 <p><em>Best Wishes,</em> </p>
 <p><em>The <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> Team</em></p>
 </div>
 <h2 id="whats-new">What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Local Wired Configuration</strong></p>
-<p>Wired settings can now be configured locally using just <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go. For wired connections, AMT supports both DHCP and Static IP environments. Configuration info can be passed two different ways, either directly via the command line or read from a config file.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Individual Flags</label><label for="__tabbed_1_2">Config File</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>rpc configure wired -dhcp -ipsync
-</code></pre></div>
-</div>
-<div class="tabbed-block">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Local Wired 802.1x Configuration</strong></p>
+<p>The <code>configure wired</code> command now supports configuration of AMT for wired 802.1x environments. By providing the Enterprise Assistant (EA) credentials, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go can communicate securely with EA and perform the configuration. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.</p>
+<p><a href="../Reference/RPC/commandsRPC/#wired">See the <code>rpc configure wired</code> documentation for additional details and examples</a>.</p>
 <div class="highlight"><pre><span></span><code>rpc configure wired -config config.yaml
 </code></pre></div>
-</div>
-</div>
-</div>
-<p><a href="../Reference/RPC/commandsRPC/#wired">See the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> documentation for flag details and config file examples</a>.</p>
-<p><br></p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Change AMT Password</strong></p>
-<p>The AMT password can now be reconfigured by <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go using the following new <code>configure amtpassword</code> subcommand. This will give a quick and easy way to update AMT passwords across a large number of devices.</p>
-<p>However, because this is a local command, there is no centralized database storing the new AMT passwords so make sure to take note of any changes made! For deployments utilizing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <a href="../Reference/RPC/commandsRPC/#changepassword">see the <code>rpc maintenance changepassword</code> command.</a></p>
-<div class="highlight"><pre><span></span><code>rpc configure amtpassword -newamtpassword newAMTPassword -password oldAMTPassword
+<div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
+<span class="nt">wiredConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dhcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ipsync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="nt">enterpriseAssistant</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&#39;</span>
+<span class="w">  </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaUser&#39;</span>
+<span class="w">  </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaPass&#39;</span>
+<span class="nt">ieee8021xConfigs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </code></pre></div>
-<p><a href="../Reference/RPC/commandsRPC/#amtpassword">See the documentation for additional details</a>.</p>
 <p><br></p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Configure AMT Features</strong></p>
-<p>AMT Features can be configured locally now too. For those familiar with the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/post_api_v1_amt_features__guid_">AMT Features <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API call</a>, the functionality is the same. With this command, redirection features like <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, and <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>, can be enabled or disabled.</p>
-<p>For Admin Control Mode devices, the user consent settings can also be configured. User consent cannot be modified for <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> devices.</p>
-<div class="highlight"><pre><span></span><code>rpc configure amtfeatures -kvm -sol -ider -userConsent none
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Local Wireless 802.1x Configuration</strong></p>
+<p>Previously, we only allowed users to directly pass in the certificates and secrets themselves on the command line. Now, just like for wired configurations, you can use Enterprise Assistant to communicate to the Microsoft CA and issue certificates to AMT. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.</p>
+<p><a href="../Reference/RPC/commandsRPC/#wireless">See the <code>rpc configure wireless</code> command documentation for additional details and examples</a>.</p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -config config.yaml
 </code></pre></div>
-<p><a href="../Reference/RPC/commandsRPC/#amtfeatures">See the documentation for additional details</a>.</p>
+<div class="highlight"><span class="filename">config.yaml with 802.1x</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
+<span class="nt">enterpriseAssistant</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&#39;</span>
+<span class="w">  </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaUser&#39;</span>
+<span class="w">  </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaPass&#39;</span>
+<span class="nt">wifiConfigs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleWifi8021x&#39;</span><span class="w"> </span><span class="c1"># friendly name (ex. Profile name)</span>
+<span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ssid&#39;</span>
+<span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="nt">ieee8021xConfigs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;exampleIeee8021xEAP-TLS&#39;</span>
+<span class="w">    </span><span class="nt">authenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"> </span><span class="c1">#8021x profile (ex. EAP-TLS(0))</span>
+</code></pre></div>
+<p><br></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4c1.11 0 2 .89 2 2v12c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V6c0-1.11.89-2 2-2h16M8.5 15V9H7.25v3.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2m5-4.74V9h-4v6h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5m7 3.74V9h-1.25v4.5h-1.12V10h-1.25v3.5h-1.13V9H14.5v5a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"/></svg></span> <strong>Feature: <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> using a Config File</strong></p>
+<p>Configuring <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> now supports using a config <code>.yaml</code>/<code>.json</code> file. Now, you can provide the details and configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> at the same time as activation and network configuration all within the same config file.</p>
+<p><a href="../Reference/RPC/commandsRPC/#tls">See the <code>rpc configure tls</code> command documentation for additional details and examples</a>.</p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -config config.yaml
+</code></pre></div>
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AMTPassword&#39;</span><span class="w"> </span><span class="c1"># alternatively, you can provide the AMT password of the device in  the command line</span>
+<span class="nt">tlsConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Server&#39;</span>
+<span class="nt">enterpriseAssistant</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&#39;</span>
+<span class="w">  </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaUser&#39;</span>
+<span class="w">  </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eaPass&#39;</span>
+</code></pre></div>
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
+<h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
+<p>v2.22.5</p>
+<ul>
+<li>fix: edit domain api cert expiry date returning null (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1531">#1531</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rps/commit/4eee76b9e0eafac39590d17ac517503d729bfb24">4eee76b</a>)</li>
+</ul>
 <h4 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go" title="Permanent link">&para;</a></h4>
-<p>v2.32.1</p>
+<p>v2.34.1</p>
 <ul>
-<li>fix: changed optin all type (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/47ba85f30dfec6e6648c1a198e77b7fbd179eeeb">47ba85f</a>)</li>
+<li>fix: add delay when processing multiple wireless profiles (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/510">#510</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/353af731b6127e2ede460e31706a382774ddc871">353af73</a>)</li>
 </ul>
-<p>v2.31.2</p>
+<p>v2.34.0</p>
 <ul>
-<li>feat: adds configure amtpassword local command (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/442">#442</a>)</li>
-<li>feat: adds amt features configuration (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/407">#407</a>)</li>
-<li>fix: removes duplicate printing for -h and -help flags on maintenance commands</li>
-<li>fix: use tm2 for SetHighAccuracyTimeSynch (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/460">#460</a>)</li>
-<li>fix: configure error code</li>
-<li>fix: variable names for configJson input (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/441">#441</a>)</li>
-<li>refactor: adds wireless and wired subcommands deprecating addwifisettings and wiredsettings (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/461">#461</a>)</li>
-<li>ci: address permissions for trivy-scan to upload (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/447">#447</a>)</li>
-<li>docs: update badge links</li>
-<li>docs: update badge styles</li>
+<li>feat: add yaml support to local tls config (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ecb61257d6242f9d3d9467944482df58c27bd73">8ecb612</a>)</li>
 </ul>
-<p>v2.29.1</p>
+<p>v2.33.1</p>
 <ul>
-<li>fix: local acm activate does not prompt for password when it is in the config (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/436">#436</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/9a6e048f4507a417eb3d0c627a904456157c07ec">9a6e048</a>)</li>
+<li>fix: 8021x wifi config with preexisting root cert (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/55cc32939313b8709c5f4b3d86bb1cfb1dc9e79e">55cc329</a>)</li>
+<li>fix: return value on success in lib.go (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/499">#499</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/ea30d196fc51ed06501dc46b8dca09f9947037bb">ea30d19</a>)</li>
 </ul>
-<p>v2.29.0</p>
+<p>v2.33.0</p>
 <ul>
-<li>feat: adds addwiredsettings local configure command (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/422">#422</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/ba58bb5b52b620e82e78b031cbfb33082f4ab434">ba58bb5</a>)</li>
+<li>feat: adds 8021x to wired configuration (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/1e34d852d980fa0c243dd101ec57b6211175b9cf">1e34d85</a>)</li>
+<li>
+<p>fix: wifi prune (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/482">#482</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/0e2ce200d0f4c37d22f843cb4328d1b597b2635a">0e2ce20</a>)</p>
+</li>
+<li>
+<p>fix: changes amtinfo output to use stdout instead of stderr (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/7caa7568cc1b908d1fe22413ef18db85b5b02015">7caa756</a>)</p>
+</li>
 </ul>
-<p>v2.28.3</p>
+<p>v2.32.2</p>
 <ul>
-<li>fix: XML messages are no longer escaped when using -json flag (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/429">#429</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/01c646cb27a54d2f650f2fb3b02df3b850ac70d7">01c646c</a>)</li>
-</ul>
-<p>v2.28.2</p>
-<ul>
-<li>fix: changes amtinfo output to use stdout instead of stderr (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/7caa7568cc1b908d1fe22413ef18db85b5b02015">7caa756</a>)</li>
-</ul>
-<p>v2.28.1</p>
-<ul>
-<li>fix: generated binaries should not use CGO (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/426">#426</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/2138cfea52cf15c0186c2440928c53049759ebcd">2138cfe</a>)</li>
+<li>fix: read ccm password from commandline (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5a83d49aebe1b089cb8de4f33c928b2d45efa28a">5a83d49</a>)</li>
 </ul>
 <h4 id="enterprise-assistant-ea">Enterprise Assistant (EA)<a class="headerlink" href="#enterprise-assistant-ea" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Enterprise Assistant will soon begin to have tagged releases. We will share an official announcement when the first tagged release becomes available.</p>
+</div>
 <ul>
-<li>fix: logs are made generic and profile request updated <a href="https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/16">#18</a></li>
-<li>fix: security key and port <a href="https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/16">#16</a></li>
+<li>fix: update security key length <a href="https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/21">#21</a></li>
 </ul>
 <h4 id="go-wsman-messages">go-wsman-messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h4>
-<p>v2.2.2</p>
+<p>v2.5.0</p>
 <ul>
-<li>fix: ieee802.1x configuration (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/274">#274</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/4d1dd67ec99abdd1d1ebf6578b073e63fdc1470f">4d1dd67</a>)</li>
+<li>feat: <strong>cim:</strong> adds setbootconfigrole function (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/304">#304</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/9b39f900a467451202bcf2a6f352ad3b3bf603ec">9b39f90</a>)</li>
 </ul>
-<p>v2.2.1</p>
+<p>v2.4.1</p>
 <ul>
-<li>fix: changes SetAdminACLEntryEx_INPUT to SetAdminAclEntryEx_INPUT for AMT_AuthorizationService (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/269">#269</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/35139e2c0619190cb2dc283f90546b0d562c8bf7">35139e2</a>)</li>
+<li>fix: cim ieee8021x settings (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/312">#312</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/afa64e7c819e07ea9f16621d2624459341b2198b">afa64e7</a>)</li>
 </ul>
-<p>v2.2.0</p>
+<p>v2.4.0</p>
 <ul>
-<li>feat: make hash function public (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/266">#266</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ce02b739f54e84036875d4de564523dbc21de248">ce02b73</a>)</li>
+<li>feat: enable redirection (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/294">#294</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/417ca3f41876d20413eeaad2e266f384c382fc53">417ca3f</a>)</li>
 </ul>
-<p>v2.1.11</p>
+<p>v2.3.2</p>
 <ul>
-<li>fix: wsman calls to set amt features (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/262">#262</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/de460c5202a6598b7e73e604d6e9d93991970385">de460c5</a>)</li>
+<li>fix: indicator when nonsecureconnectionsupported is undefiend (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/308">#308</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/aa875c858a06a0f25d0c0b878bbca16144bdb605">aa875c8</a>)</li>
 </ul>
-<p>v2.1.10</p>
+<p>v2.3.1</p>
 <ul>
-<li>fix: removes typo in GeneralSettingsRequest struct (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/260">#260</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/c33b573504a2a03c18179d2e04d316a60c2cfc8e">c33b573</a>)</li>
+<li>fix: <strong>ips:</strong> change optinrequired to uint32 (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/302">#302</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/39865daa3e27363ab5987164231bd019b2e077d1">39865da</a>)</li>
 </ul>
-<p>v2.1.9</p>
+<p>v2.3.0</p>
 <ul>
-<li>
-<p>fix: updates pull call to take instanceid as a string (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/256">#256</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/0f2430b615d6f5ce696e25ff157954f57f27e87d">0f2430b</a>)</p>
-</li>
-<li>
-<p>fix: set OptInRequired to uint32 (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/221">#221</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/865e6d80bd10d801e9d567affa8406ff8cb82614">865e6d8</a>)</p>
-</li>
+<li>feat: adds decoding of auditlog (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/286">#286</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/e999ef7b7d570e8f9442f02409fe027f7a875c0f">e999ef7</a>)</li>
+</ul>
+<p>v2.2.4</p>
+<ul>
+<li>fix: <strong>cim:</strong> unmarshalling of CIM_CredentialContext corrected (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/287">#287</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/04a5ef4b1bab0380054b0d5e94cc4ad650d03807">04a5ef4</a>)</li>
+</ul>
+<p>v2.2.3</p>
+<ul>
+<li>fix: update cim boot constants (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/285">#285</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ccebc7723b1fdc5a76d1a469910269625c024ae9">ccebc77</a>)</li>
 </ul>
 <h2 id="project-boards">Project Boards<a class="headerlink" href="#project-boards" title="Permanent link">&para;</a></h2>
 <p>Check out our new <a href="https://github.com/orgs/open-amt-cloud-toolkit/projects/10/views/2">Sprint Planning</a> project board to see what stories the dev team is actively working on, what is in our backlog, and what is planned for the next sprint.</p>
