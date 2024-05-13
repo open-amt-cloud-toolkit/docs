@@ -59,7 +59,6 @@ These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). S
     ieee8021xConfigs:
       - profileName: 'exampleIeee8021xEAP-TLS'
         authenticationProtocol: 0
-        # ieee8021xPassword: ''  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)
     ```
 
 3. Update the `password` with your AMT Password.
@@ -107,7 +106,6 @@ These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). S
     ieee8021xConfigs:
       - profileName: 'exampleIeee8021xEAP-TLS'
         authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
-        # password: ''  # 8021x password if authenticationProtocol is 2 (PEAPv0/EAP-MSCHAPv2)
     ```
 
 3. Update the `password` with your AMT Password.
@@ -123,11 +121,9 @@ These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). S
 
 5. Update the `ssid` with your network SSID.
 
-6. **Only if using `authenticationProtocol: 2`**, uncomment and provide the `password` field under `ieee8021xConfigs:`.
+6. Save and close the file.
 
-7. Save and close the file.
-
-8. On an activated AMT device, run the following RPC-Go command to configure wired 802.1x settings.
+7. On an activated AMT device, run the following RPC-Go command to configure wireless 802.1x settings.
 
     ```
     rpc configure wireless -config config.yaml
