@@ -2,7 +2,7 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/" title="June 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="June 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -25,7 +25,7 @@
 
 An Alpha version of Console is now available for people to try out! See the video at the top for an overview and demo.
 
-Console is a 1:1 out-of-band management tool for managing Intel AMT on enterprise-style networks. After a device is added, Console communicates with AMT directly over the local network providing a quick and easy way to connect and manage all of your AMT devices.
+Console is a 1:1 out-of-band management tool for managing Intel AMT on on-premises style networks. After a device is added, Console communicates with AMT directly over the local network providing a quick and easy way to connect and manage all of your AMT devices.
 
 The Console UI is based on a modified version of our existing Sample Web UI and is packaged as a single browser application. **[See the Console Alpha Documentation for more info.](./Reference/Console/overview.md)**
 

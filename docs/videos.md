@@ -9,7 +9,7 @@ Learn the high-level basics and get familiar with the toolkit. Learn about the d
 	<h3></h3>
 	<h3>Overview of Open AMT Cloud Toolkit</h3>
 	<div class="video-wrapper">
-    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/ChVfBVJ_hRY?si=SWROOueZsDWX41uU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
 	<div></div>
 	<div class="video-wrapper">
