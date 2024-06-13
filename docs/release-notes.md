@@ -2,15 +2,17 @@
 ## Release Highlights
 
 <div style="text-align:center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/ChVfBVJ_hRY?si=SWROOueZsDWX41uU" title="May 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="June 2024 Release Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
 !!! note "Note From the Team"
     
-    Just before the summer heat kicks off in Arizona, we've wrapped up adding support for configuring 8021x in AMT using RPC-Go. With this milestone, we're nearing the completion of all the major features planned in RPC-Go for Enterprise support MVP release. That being said, we've also been looking at how to address the gap created by MeshCommander’s end of support for our Enterprise customers. The team has been hard at work architecting and developing an alternative for a 1:1 **Console application** for enterprise-style networks.
+    The team is very proud to now have a first-look ready of Console, a new alternative to the unsupported MeshCommander tool. [More details about what Console is can be found below](#whats-new).
 
-    Development is still pretty early, but the team is progressing steadily. You can follow the progress in our [Console GitHub Repo](https://github.com/open-amt-cloud-toolkit/console). Stay tuned for updates soon!
+    There is still a lot that the team wants to add and is working on, but we are making great progress. As it is in Alpha currently, expect lots of functionality and changes to come, as well as some bugs along the way, as we continue to expand and iterate on what Console can offer!
+
+    You can follow the progress of new Console features in our [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/10/views/2).
     
     *Best Wishes,* 
 
@@ -19,159 +21,88 @@
 
 ## What's New?
 
-:material-new-box: **Feature: RPC-Go Local Wired 802.1x Configuration**
+:material-new-box: **Console (Public Alpha Now Available)**
 
-The `configure wired` command now supports configuration of AMT for wired 802.1x environments. By providing the Enterprise Assistant (EA) credentials, RPC-Go can communicate securely with EA and perform the configuration. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.
+An Alpha version of Console is now available for people to try out! See the video at the top for an overview and demo.
 
-[See the `rpc configure wired` documentation for additional details and examples](./Reference/RPC/commandsRPC.md#wired).
+Console is a 1:1 out-of-band management tool for managing Intel AMT on on-premises style networks. After a device is added, Console communicates with AMT directly over the local network providing a quick and easy way to connect and manage all of your AMT devices.
 
-```
-rpc configure wired -config config.yaml
-```
+The Console UI is based on a modified version of our existing Sample Web UI and is packaged as a single browser application. **[See the Console Alpha Documentation for more info.](./Reference/Console/overview.md)**
 
-```yaml title="config.yaml with 802.1x"
-password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
-wiredConfig:
-  dhcp: true
-  ipsync: true
-  ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-enterpriseAssistant:
-  eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-  eaUsername: 'eaUser'
-  eaPassword: 'eaPass'
-ieee8021xConfigs:
-  - profileName: 'exampleIeee8021xEAP-TLS'
-    authenticationProtocol: 0
-```
+**[Download and try the latest Alpha tag of Console here](https://github.com/open-amt-cloud-toolkit/console/tags).**
 
 <br>
-
-:material-new-box: **Feature: RPC-Go Local Wireless 802.1x Configuration**
-
-Previously, we only allowed users to directly pass in the certificates and secrets themselves on the command line. Now, just like for wired configurations, you can use Enterprise Assistant to communicate to the Microsoft CA and issue certificates to AMT. Configuration info can be passed various ways, such as directly via the command line, read from a config file, or passed as a JSON string.
-
-[See the `rpc configure wireless` command documentation for additional details and examples](./Reference/RPC/commandsRPC.md#wireless).
-
-```
-rpc configure wireless -config config.yaml
-```
-
-```yaml title="config.yaml with 802.1x"
-password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
-enterpriseAssistant:
-  eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-  eaUsername: 'eaUser'
-  eaPassword: 'eaPass'
-wifiConfigs:
-  - profileName: 'exampleWifi8021x' # friendly name (ex. Profile name)
-    ssid: 'ssid'
-    priority: 1
-    authenticationMethod: 7
-    encryptionMethod: 4
-    ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-ieee8021xConfigs:
-  - profileName: 'exampleIeee8021xEAP-TLS'
-    authenticationProtocol: 0 #8021x profile (ex. EAP-TLS(0))
-```
-
-<br>
-
-:material-new-box: **Feature: RPC-Go Configure TLS using a Config File**
-
-Configuring TLS now supports using a config `.yaml`/`.json` file. Now, you can provide the details and configure TLS at the same time as activation and network configuration all within the same config file.
-
-[See the `rpc configure tls` command documentation for additional details and examples](./Reference/RPC/commandsRPC.md#tls).
-
-```
-rpc configure tls -config config.yaml
-```
-
-```yaml title="config.yaml"
-password: 'AMTPassword' # alternatively, you can provide the AMT password of the device in  the command line
-tlsConfig:
-  mode: 'Server'
-enterpriseAssistant:
-  eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-  eaUsername: 'eaUser'
-  eaPassword: 'eaPass'
-```
 
 ## Get the Details
 
 ### Additions, Modifications, and Removals
 
-#### RPS
+#### Console
 
-v2.22.5
+v1.0.0-alpha.4
 
-- fix: edit domain api cert expiry date returning null ([#1531](https://github.com/open-amt-cloud-toolkit/rps/issues/1531)) ([4eee76b](https://github.com/open-amt-cloud-toolkit/rps/commit/4eee76b9e0eafac39590d17ac517503d729bfb24))
+- fix: handles when update fails as not found ([05851f4](https://github.com/open-amt-cloud-toolkit/console/commit/05851f47a5a77e28429f71ec9c63c36b9416b95d))
+- fix: **sql:** ensure postgres inserts are working ([#201](https://github.com/open-amt-cloud-toolkit/console/issues/201)) ([f603c26](https://github.com/open-amt-cloud-toolkit/console/commit/f603c26f54a0714e05663b14222edaa11510a589))
+
+v1.0.0-alpha.3
+
+- feat: add mac builds ([2366f92](https://github.com/open-amt-cloud-toolkit/console/commit/2366f922c8f7952599b7df1b3b0d0a8f51011ebe))
+
+v1.0.0-alpha.2
+
+- fix: allows string input for userconsent code ([#167](https://github.com/open-amt-cloud-toolkit/console/issues/167)) ([9a52830](https://github.com/open-amt-cloud-toolkit/console/commit/9a52830b82fccfcc0c51ef0c62225a9e85e0bd21))
+
+v1.0.0-alpha.1
+
+- Initial Alpha tag, [see Github tag for all commits](https://github.com/open-amt-cloud-toolkit/console/releases/tag/v1.0.0-alpha.1)
 
 #### RPC-Go
 
-v2.34.1
+v2.34.2
 
-- fix: add delay when processing multiple wireless profiles ([#510](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/510)) ([353af73](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/353af731b6127e2ede460e31706a382774ddc871))
-
-v2.34.0
-
-- feat: add yaml support to local tls config ([8ecb612](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8ecb61257d6242f9d3d9467944482df58c27bd73))
-
-v2.33.1
-
-- fix: 8021x wifi config with preexisting root cert ([55cc329](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/55cc32939313b8709c5f4b3d86bb1cfb1dc9e79e))
-- fix: return value on success in lib.go ([#499](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/499)) ([ea30d19](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/ea30d196fc51ed06501dc46b8dca09f9947037bb))
-
-v2.33.0
-
-- feat: adds 8021x to wired configuration ([1e34d85](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/1e34d852d980fa0c243dd101ec57b6211175b9cf))
-- fix: wifi prune ([#482](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/482)) ([0e2ce20](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/0e2ce200d0f4c37d22f843cb4328d1b597b2635a))
-
-- fix: changes amtinfo output to use stdout instead of stderr ([7caa756](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/7caa7568cc1b908d1fe22413ef18db85b5b02015))
-
-v2.32.2
-
-- fix: read ccm password from commandline ([5a83d49](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/5a83d49aebe1b089cb8de4f33c928b2d45efa28a))
-
-#### Enterprise Assistant (EA)
-
-!!! note
-    Enterprise Assistant will soon begin to have tagged releases. We will share an official announcement when the first tagged release becomes available.
-
-- fix: update security key length [#21](https://github.com/open-amt-cloud-toolkit/enterprise-assistant/pull/21)
+- fix: resolves close call issue in go-wsman-messages ([#550](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/550)) ([af9ffdb](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/af9ffdb9e1faae44a876346b9e08e67fb88e08b4))
 
 #### go-wsman-messages
 
-v2.5.0
+v2.8.0
 
-- feat: **cim:** adds setbootconfigrole function ([#304](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/304)) ([9b39f90](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/9b39f900a467451202bcf2a6f352ad3b3bf603ec))
+- feat: decodes audit log extended data ([#350](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/350)) ([34e338d](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/34e338d2e52f57c91bf27992db2d4ca47548e2f6))
 
-v2.4.1
+v2.7.1
 
-- fix: cim ieee8021x settings ([#312](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/312)) ([afa64e7](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/afa64e7c819e07ea9f16621d2624459341b2198b))
+- fix: remove close calls when body not defined ([#342](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/342)) ([3e4cc79](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/3e4cc792233b1feb87e16f08c6beddc6e448b8d2))
 
-v2.4.0
+v2.7.0
 
-- feat: enable redirection ([#294](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/294)) ([417ca3f](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/417ca3f41876d20413eeaad2e266f384c382fc53))
+- feat: support get certificates api ([#336](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/336)) ([66b61b9](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/66b61b9b893735231835d9091c4cab02f127e3f1))
 
-v2.3.2
+v2.6.1
 
-- fix: indicator when nonsecureconnectionsupported is undefiend ([#308](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/308)) ([aa875c8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/aa875c858a06a0f25d0c0b878bbca16144bdb605))
+- fix: updates event log to be api compatible ([#335](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/335)) ([80639a1](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/80639a10bcaee9139a2512daeca5e3287de2fd5d))
 
-v2.3.1
+v2.6.0
 
-- fix: **ips:** change optinrequired to uint32 ([#302](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/302)) ([39865da](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/39865daa3e27363ab5987164231bd019b2e077d1))
+- feat: adds event log decoder ([#333](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/333)) ([53583b8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/53583b82be10552694183443602dbb5e5bb431d9))
 
-v2.3.0
+v2.5.5
 
-- feat: adds decoding of auditlog ([#286](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/286)) ([e999ef7](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/e999ef7b7d570e8f9442f02409fe027f7a875c0f))
+- fix: revert linting changes ([#332](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/332)) ([60e62db](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/60e62db5f93a92665664175f56d11eb753434d84))
 
-v2.2.4
+v2.5.4
 
-- fix: **cim:** unmarshalling of CIM_CredentialContext corrected ([#287](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/287)) ([04a5ef4](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/04a5ef4b1bab0380054b0d5e94cc4ad650d03807))
+- fix: **ips:** changes selector from name to instanceID for deletetion ([#329](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/329)) ([9365153](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/936515362d5b5201e4e62275831dbd1877045165))
 
-v2.2.3
+v2.5.3
 
-- fix: update cim boot constants ([#285](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/285)) ([ccebc77](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/ccebc7723b1fdc5a76d1a469910269625c024ae9))
+- fix: cim_credentialcontext pull returns complete results ([#326](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/326)) ([0a0052c](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/0a0052ce3a03044d558f25bccf85e9b14e19bd1d))
+
+v2.5.2
+
+- fix: completed 8021x credential context typing ([#322](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/322)) ([206eae8](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/206eae851b797e6aea3f19546b0042ae22fbf886))
+
+v2.5.1
+
+- fix: completed tls credential context typing ([#318](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/318)) ([596cd1a](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/596cd1a92117cb0f1cd4fd8d7fd2b3636e47ddb7))
 
 ## Project Boards
 
