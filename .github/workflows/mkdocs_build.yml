@@ -62,10 +62,12 @@ jobs:
       #publish it
       - name: Publish content
         if: ${{ github.ref == 'refs/heads/main' }}      
+        env:
+          MESSAGE: ${{github.event.head_commit.message}}
         run: |
           cd ./to-be-published
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m 'ci: ${{github.event.head_commit.message}}'
+          git commit -m 'ci: $MESSAGE'
           git push origin gh-pages
