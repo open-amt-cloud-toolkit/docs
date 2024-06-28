@@ -14,7 +14,7 @@ on:
     branches:
       - main
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 permissions:
@@ -25,21 +25,21 @@ jobs:
   build:
     # The type of runner that the job will run on
     permissions:
-      contents: write  # for Git to git push
+      contents: write # for Git to git push
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Harden Runner
-        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10 # v2.8.0
+        uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
@@ -49,23 +49,25 @@ jobs:
           pip install mkdocs-mermaid2-plugin
           pip install mkdocs-img2fig-plugin
           mkdocs build --strict
-      #checkout the gh-pages branch    
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
-        if: ${{ github.ref == 'refs/heads/main' }}      
+      #checkout the gh-pages branch
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          path: 'to-be-published'
-          ref: 'gh-pages'
+          path: "to-be-published"
+          ref: "gh-pages"
       #copy the built site content
-      - name: Copy 
-        if: ${{ github.ref == 'refs/heads/main' }}      
+      - name: Copy
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: cp -rlf site/* ./to-be-published/
       #publish it
       - name: Publish content
-        if: ${{ github.ref == 'refs/heads/main' }}      
+        if: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          MESSAGE: ${{github.event.head_commit.message}}
         run: |
           cd ./to-be-published
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m 'ci: ${{github.event.head_commit.message}}'
+          git commit -m 'ci: ${{env.MESSAGE}}'
           git push origin gh-pages
