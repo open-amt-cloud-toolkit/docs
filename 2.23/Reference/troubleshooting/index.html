@@ -726,6 +726,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#amt-118x-not-connecting-to-sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMT 11.8.x Not Connecting to Sample Web UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rpc-returns-failed-to-add-mps-root-certificate" class="md-nav__link">
     <span class="md-ellipsis">
       RPC Returns Failed to Add MPS Root Certificate
@@ -1370,6 +1379,15 @@
   
     <nav class="md-nav" aria-label="Known Issues">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amt-118x-not-connecting-to-sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMT 11.8.x Not Connecting to Sample Web UI
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#rpc-returns-failed-to-add-mps-root-certificate" class="md-nav__link">
@@ -2375,6 +2393,15 @@
   
     <nav class="md-nav" aria-label="Known Issues">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amt-118x-not-connecting-to-sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMT 11.8.x Not Connecting to Sample Web UI
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#rpc-returns-failed-to-add-mps-root-certificate" class="md-nav__link">
@@ -4280,6 +4307,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#amt-118x-not-connecting-to-sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMT 11.8.x Not Connecting to Sample Web UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rpc-returns-failed-to-add-mps-root-certificate" class="md-nav__link">
     <span class="md-ellipsis">
       RPC Returns Failed to Add MPS Root Certificate
@@ -4569,6 +4605,22 @@
 </ol>
 <p><br></p>
 <h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<h3 id="amt-118x-not-connecting-to-sample-web-ui">AMT 11.8.x Not Connecting to <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#amt-118x-not-connecting-to-sample-web-ui" title="Permanent link">&para;</a></h3>
+<p>There is an issue for older AMT 11.8.x firmware where the device is successfully configured, but the <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connection is unable to successfully establish between the device and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</p>
+<ol>
+<li>
+<p>Update the AMT device's BIOS firmware.</p>
+</li>
+<li>
+<p>After updating, verify with <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go the new AMT version using <code>rpc amtinfo</code>. The new version should be &gt; 11.8.9x.</p>
+</li>
+<li>
+<p>Rerun the activate command using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go.</p>
+</li>
+<li>
+<p>If the activation and configuration was successful, but the device still does not show as connected, see <a href="#why-does-an-activated-device-show-disconnected-in-mps">Step 4 of Why does an activated device show disconnected in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>?</a>.</p>
+</li>
+</ol>
 <h3 id="rpc-returns-failed-to-add-mps-root-certificate"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Returns <code>Failed to Add MPS Root Certificate</code><a class="headerlink" href="#rpc-returns-failed-to-add-mps-root-certificate" title="Permanent link">&para;</a></h3>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> may return <code>Failed to Add MPS Root Certificate</code> when running the <code>activate</code> command. The following resolution steps may help.</p>
 <ol>
