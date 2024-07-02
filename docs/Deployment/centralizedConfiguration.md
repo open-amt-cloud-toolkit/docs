@@ -105,6 +105,6 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 
 Today, the current preview implementation does not update the MPS or RPS services realtime. They must be restarted manually to apply the new configurations.  
 
-[Follow along with any new updates and features using Consul in our Feature Backlog.](https://github.com/orgs/open-amt-cloud-toolkit/projects/5)
+[Follow along with any new updates and features using Consul in our Feature Backlog.](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
 
 <br>

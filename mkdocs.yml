@@ -111,7 +111,7 @@ nav:
       - Overview: Reference/Console/overview.md
       - Get Started: 
         - Download and Run: Reference/Console/GetStarted/setup.md
-        # - Activate a Device: Reference/Console/GetStarted/activateDevice.md
+        - Activate a Device: Reference/Console/GetStarted/activateDevice.md
         - Add a Device: Reference/Console/GetStarted/addDevice.md
         - Manage a Device: Reference/Console/GetStarted/manageDevice.md
     - Enterprise Assistant:
