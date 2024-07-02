@@ -69,6 +69,18 @@ This warning typically means that the Sample Web UI and RPS is unable to reach t
 
 ## Known Issues
 
+### AMT 11.8.x Not Connecting to Sample Web UI
+
+There is an issue for older AMT 11.8.x firmware where the device is successfully configured, but the CIRA connection is unable to successfully establish between the device and MPS.
+
+1. Update the AMT device's BIOS firmware.
+
+2. After updating, verify with RPC-Go the new AMT version using `rpc amtinfo`. The new version should be > 11.8.9x.
+
+3. Rerun the activate command using RPC-Go.
+
+4. If the activation and configuration was successful, but the device still does not show as connected, see [Step 4 of Why does an activated device show disconnected in MPS?](#why-does-an-activated-device-show-disconnected-in-mps).
+
 ### RPC Returns `Failed to Add MPS Root Certificate`
 
 RPC may return `Failed to Add MPS Root Certificate` when running the `activate` command. The following resolution steps may help.
