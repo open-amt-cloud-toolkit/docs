@@ -59,4 +59,4 @@
 
 ## Next up
 
-[**Add a Device**](../GetStarted/addDevice.md)
+[**Activate a Device**](../GetStarted/activateDevice.md)

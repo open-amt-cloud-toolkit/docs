@@ -20,7 +20,6 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 
 By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities. [Find more information about Provisioning Certificates](../Reference/Certificates/remoteProvisioning.md).
 
-- [Comodo](https://www.intel.com/content/www/us/en/support/articles/000054981/technologies.html)
 - [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
 - [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
