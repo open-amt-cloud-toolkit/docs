@@ -43,11 +43,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          pip install mkdocs-material==9.5.14
-          pip install mkdocs-render-swagger-plugin
-          pip install mkdocs-macros-plugin
-          pip install mkdocs-mermaid2-plugin
-          pip install mkdocs-img2fig-plugin
+          pip install git+https://github.com/squidfunk/mkdocs-material.git@f4adebd7587ed7d38a09062ca9af29283ad3d13f
+          pip install git+https://github.com/bharel/mkdocs-render-swagger-plugin.git@e8b6996428e93dea1ddd0378ddc3e6391b078d7f
+          pip install git+https://github.com/fralau/mkdocs-macros-plugin.git@4bfda0bd7efe070439aa5cecea3d3ca2d86375d2
+          pip install git+https://github.com/fralau/mkdocs-mermaid2-plugin.git@df11b49acac82499f5c2ea4480b75ddc7ca0e427
+          pip install git+https://github.com/stuebersystems/mkdocs-img2fig-plugin.git@c618bce2dfed9a0e279dfdd5ad6930723e3fb157
           mkdocs build --strict
       #checkout the gh-pages branch
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
