@@ -43,7 +43,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          pip install -r ./requirements.txt --require-hashes
+          pip install -r ./requirements.txt
           mkdocs build --strict
       #checkout the gh-pages branch
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
