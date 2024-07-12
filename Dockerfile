@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material@sha256:badd1c2f82460953fec431cec750fdeb5853098ea9ec1e4ea6432ca3c5682a28
+FROM squidfunk/mkdocs-material@sha256:257eca88da7f42242cd05e8cebf6d10ebd079edc207b089ad3f4f1ad107b0348
 
 RUN pip install -r ./requirements.txt --require-hashes --no-cache-dir
 
