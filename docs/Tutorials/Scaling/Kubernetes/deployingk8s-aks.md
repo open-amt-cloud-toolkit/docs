@@ -51,10 +51,12 @@ This key is required by Azure to create VMs that use SSH keys for authentication
     az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
     ```
 
-4. After running the previous command, you will be prompted for 3 different strings. After the final prompt, it will take about 5 minutes to finish running.
-    - Provide a name for the AKS Cluster.
-    - Provide a name (e.g. your name) for the linux user admin name.
-    - Provide the string of the ssh key from the `.pub` file.
+4. After running the previous command, you will be prompted for 5 different strings. After the final prompt, it will take about 5-10 minutes for Azure to finish creating resources.
+    - A name for the AKS Cluster.
+    - A name (e.g. your name) for the linux user admin name.
+    - The string of the ssh key from the `.pub` file generated in [Create SSH Key](#create-ssh-key).
+    - A username for the new Postgres Database.
+    - A password for the new Postgres Database.
 
 5. Take note of the `fqdnSuffix` in the `outputs` section of the JSON response (e.g. `eastus.cloudapp.azure.com`)
 
@@ -83,70 +85,46 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 ## Create Secrets 
 
-### 1. MPS/KONG JWT
+1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
 
-This is the secret used for generating and verifying JWTs.
-```
-kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
-```
+    ??? note "Note - Additional Information about Secrets Created"
 
-Where:
+        | Secret Name        | Usage                                                                      |
+        | ------------------ | -------------------------------------------------------------------------- |
+        | mpsweb             | Provides credentials used for requesting a JWT. These credentials are also used for logging into the Sample Web UI. |
+        | rps                | RPS database connection string.                                            |
+        | mps                | MPS database connection string.                                            |
+        | mpsrouter          | MPS database connection string.                                            |
+        | open-amt-admin-jwt | Provides secret used for generating and verifying JWTs for authentication. |
+        | open-amt-admin-acl | Configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in. |
+        | vault              | Vault root token for MPS and RPS access to Vault secret store.             |
 
-- **&lt;your-secret&gt;** is your chosen strong secret.
+2. Replace the following placeholders.
 
-### 2. KONG ACL for JWT
-
-This configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
-```
-kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-```
-
-### 3. MPS Web Username and Password
-This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the Sample Web UI.
-```
-kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
-```
-
-Where:
-
-- **&lt;your-username&gt;** is a username of your choice.
-- **&lt;your-password&gt;** is a strong password of your choice.
+    | Placeholder                 | Lines | Required                           | Usage                               |
+    | --------------------------- | ----- | ---------------------------------- | ----------------------------------- |
+    | &lt;WEBUI-USERNAME&gt;      | 7     | Username of your choice            | For logging into the Sample Web UI. |
+    | &lt;WEBUI-PASSWORD&gt;      | 8     | **Strong** password of your choice | For logging into the Sample Web UI. |
+    | &lt;DATABASE-USERNAME&gt;   | 16, 24, 32 | **Username Format:** `<postgres-username>@<your-cluster-name>-sql` | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-PASSWORD&gt;   | 16, 24, 32 | Database password chosen in [Deploy AKS Step 4](#deploy-aks) | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-SERVER-URL&gt; | 16, 24, 32 | **Server URL Format:** `<your-cluster-name>-sql.postgres.database.azure.com` | Credentials for the services to connect to the database.  |
+    | &lt;SSL-MODE&gt;            | 16, 24, 32 | Set to `require` | Credentials for the services to connect to the database.  |
+    | &lt;YOUR-SECRET&gt;         | 45    | A strong secret of your choice (Example: A unique, random 256-bit string).    | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
 
     !!! important "Important - Using Strong Passwords"
-        The password must meet standard, **strong** password requirements:
+        The &lt;WEBUI-PASSWORD&gt; must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
+
         - One uppercase, one lowercase, one numerical digit, one special character
 
-### 4. Database connection strings
+3. Save the file.
 
-
-1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
-
-    Where:
-
-    - **&lt;USERNAME&gt;** is the full username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
-    - **&lt;PASSWORD&gt;** is the password for the Postgres database.
-    - **&lt;SERVERURL&gt;** is the url for the Azure-hosted Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
-
-2. Create RPS connection string secret.
+4. Apply the configuration file to create the secrets.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
+    kubectl apply -f ./kubernetes/charts/secrets.yaml
     ```
-
-3. Create MPS Router connection string secret.
-
-    ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-    ```
-
-4. Create MPS connection string secret.   
-
-    ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-    ```
-
 
 ## Update Configuration
 
@@ -163,7 +141,7 @@ Where:
           service.beta.kubernetes.io/azure-dns-label-name: "<your-subdomain-name>"
     ```
 
-3. Update the `commonName` key to your FQDN in the `mps` section.  For AKS, the format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks).
+3. Update the `commonName` key to your FQDN in the `mps` section.  For AKS, the default format is `<your-subdomain-name>.<location>.cloudapp.azure.com`. This is the `fqdnSuffix` provided in the `outputs` section when you [Deploy AKS](#deploy-aks).
 
     ``` yaml hl_lines="2"
     mps:
@@ -187,12 +165,10 @@ Where:
 
 4. Under Firewall rules, select **Add current client IP address**.
 
-5. Select Save.
-
-6. Under the Overview tab, take note of the 'Server name' and 'Admin username'. They will be needed in the next steps.
+5. Click Save.
 
     !!! note
-        Remember to delete this firewall rule when finished.
+        For security, remember to delete this firewall rule when finished.
 
 ### Create Databases
 
@@ -203,22 +179,10 @@ Where:
     - **&lt;SERVERURL&gt;** is the location of the Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
     - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
 
-2. Create the RPS database.
+2. Create the MPS and RPS database and tables. Provide the database password when prompted.
 
     ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
-    ```
-
-3. Create tables for the new 'rpsdb' database.
-
-    ```
-    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./data/init.sql
-    ```
-
-4. Create the MPS database.
-
-    ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/initMPS.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
 ## Deploy Open AMT Cloud Toolkit using Helm
@@ -272,29 +236,31 @@ Where:
 
 2. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-3. Click **Enable New Engine +**.
+3. On the left-hand side menu, select **Secrets engines**
 
-4. Choose **KV**.
+4. Click **Enable New Engine +**.
 
-5. Click **Next**.
+5. Choose **KV**.
 
-6. Leave the default path and choose **version 2** from the drop down. 
+6. Click **Next**.
 
 7. Click **Enable Engine**.
   
 ### Vault Token Secret
 
-1. Add the root token as a secret to the AKS cluster so that the services can access Vault.
+Add the root token as a secret to the AKS cluster so that the services can access Vault.
+
+1. Open the `secrets.yaml` file again in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+
+2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
+
+3. Update the Kubernetes `vault` secret.
 
     ```
-    kubectl create secret generic vault --from-literal=vaultKey=<your-root-token>
+    kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
     ```
 
-    Where:
-
-    - **&lt;your-root-token&gt;** is your `root_token` generated by Vault.
-
-2. View the pods. All pods should now be Ready and Running.
+4. View the pods. All pods should now be Ready and Running.
 
     ```
     kubectl get pods
