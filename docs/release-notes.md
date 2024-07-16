@@ -8,9 +8,9 @@
 
 !!! note "Note From the Team"
     
-    With record temps in Arizona currently, the team has been enjoying their much needed AC and working away on Console. We've made great progress over the last month and you can get all our changes and fixes in our new, latest Alpha release.
+    With record temps in Arizona currently, the team has been enjoying their much needed AC and working away on **Console**. We've made great progress over the last month and you can get all our changes and fixes in our new, **latest Alpha release**.
 
-    We are getting closer to an official Beta release! As we start to finish development on the core Console features, we'll be pivoting slightly and begin work on cleaning up the overall usability, bug fixes, and more.
+    We are getting closer to an official **Beta** release! As we start to finish development on the core Console features, we'll be pivoting slightly and begin work on cleaning up the overall usability, bug fixes, and more.
 
     You can follow the progress of new Console features in our [Feature Backlog](https://github.com/orgs/open-amt-cloud-toolkit/projects/10/views/2).
     
@@ -33,15 +33,26 @@ Don't see the WSMAN class or call you are looking for? [Submit an issue for Cons
 
 :material-new-box: **Enhancement: Local Management Service (LMS) No Longer Required**
 
-The Local Management Service (LMS) is an application that helps with communication between AMT and the OS. Previously, this was required for running any local-based commands of RPC-Go (e.g. local activation or local configuration). 
+RPC-Go now communicates directly with AMT without the need for the Local Management Service (LMS). Previously, this was already supported for remote configuration. Now, it is extended to include running local configuration commands. However, we still recommended installing and using LMS for local configuration.
 
-Now, RPC-Go utilizes a built-in, runtime service (i.e. a 'microLMS') to perform these AMT actions without requiring a separate service. While we still recommend installing and using the full LMS service, it is no longer mandatory for users who do not want LMS installed on their production systems.
+??? note "Note - Additional Information about LMS" 
+    **About**
+    
+    The Local Management Service (LMS) is an application that assists with communication between AMT and the OS. Previously, this was required for running any local-based commands of RPC-Go (e.g. local activation or local configuration). 
+    
+    **Installation**
+
+    - For **Windows**, the installer is included **in the Intel® Management Engine Drivers package**.
+    - For **Linux distributions** that support snap, LMS can be installed **via [https://snapcraft.io/lms](https://snapcraft.io/lms)**.
+    - Customers interested in building LMS, can find build instructions at [https://github.com/intel/lms](https://github.com/intel/lms).
+
+    **For additional information about LMS, visit [https://github.com/intel/lms](https://github.com/intel/lms).**
 
 <br>
 
 :material-star: **Community Contribution: `rpc amtinfo` Returns Both OS and AMT IP Addresses**
 
-:material-party-popper: Big shout out to **@tongsean9807** for this contribution! :material-party-popper:
+:material-party-popper: Big shout out to **Github user @tongsean9807** for this contribution! :material-party-popper:
 
 The `amtinfo` command in RPC-Go now differentiates between the IP address set for AMT and the IP address set for the Operating System for deployments that choose to use separate IP addresses. **[See the RPC CLI Documentation for additional info about the `amtinfo` command.](./Reference/RPC/commandsRPC.md#amtinfo)**
 
