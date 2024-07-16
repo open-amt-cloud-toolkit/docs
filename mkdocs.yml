@@ -114,6 +114,7 @@ nav:
         - Activate a Device: Reference/Console/GetStarted/activateDevice.md
         - Add a Device: Reference/Console/GetStarted/addDevice.md
         - Manage a Device: Reference/Console/GetStarted/manageDevice.md
+      - WSMAN Explorer: Reference/Console/wsmanExplorer.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
