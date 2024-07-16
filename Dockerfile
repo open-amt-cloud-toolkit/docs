@@ -1,7 +1,6 @@
-FROM squidfunk/mkdocs-material
+FROM squidfunk/mkdocs-material@sha256:badd1c2f82460953fec431cec750fdeb5853098ea9ec1e4ea6432ca3c5682a28
 
-RUN pip install --no-cache-dir \
-  mkdocs-render-swagger-plugin mkdocs-macros-plugin mkdocs-img2fig-plugin mkdocs-mermaid2-plugin mkdocs-git-revision-date-localized-plugin
+RUN pip install -r ./requirements.txt --require-hashes --no-cache-dir
 
 EXPOSE 8000
 
