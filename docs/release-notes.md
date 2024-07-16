@@ -27,7 +27,7 @@ Console now has the ability to view both the correctly formatted WSMAN input sen
 
 Don't see the WSMAN class or call you are looking for? [Submit an issue for Console.](https://github.com/open-amt-cloud-toolkit/console/issues)
 
-**[See the WSMAN Explorer Documentation for more info.](../Reference/Console/wsmanExplorer.md)**
+**[See the WSMAN Explorer Documentation for more info.](./Reference/Console/wsmanExplorer.md)**
 
 <br>
 
