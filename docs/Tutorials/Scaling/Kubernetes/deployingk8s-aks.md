@@ -105,7 +105,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
     | --------------------------- | ----- | ---------------------------------- | ----------------------------------- |
     | &lt;WEBUI-USERNAME&gt;      | 7     | Username of your choice            | For logging into the Sample Web UI. |
     | &lt;WEBUI-PASSWORD&gt;      | 8     | **Strong** password of your choice | For logging into the Sample Web UI. |
-    | &lt;DATABASE-USERNAME&gt;   | 16, 24, 32 | **Username Format:** `<postgres-username>@<your-cluster-name>-sql` | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-USERNAME&gt;   | 16, 24, 32 | Database username chosen in [Deploy AKS Step 4](#deploy-aks) | Credentials for the services to connect to the database.  |
     | &lt;DATABASE-PASSWORD&gt;   | 16, 24, 32 | Database password chosen in [Deploy AKS Step 4](#deploy-aks) | Credentials for the services to connect to the database.  |
     | &lt;DATABASE-SERVER-URL&gt; | 16, 24, 32 | **Server URL Format:** `<your-cluster-name>-sql.postgres.database.azure.com` | Credentials for the services to connect to the database.  |
     | &lt;SSL-MODE&gt;            | 16, 24, 32 | Set to `require` | Credentials for the services to connect to the database.  |
@@ -159,9 +159,9 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 1. Navigate to `Home > Resource Groups > Resource Group Name` using Microsoft Azure via online.
 
-2. Select the Postgres DB. It will have a Type of `Azure Database for PostgreSQL Server`.
+2. Select the Postgres DB. It will have a Type of `Azure Database for PostgreSQL Flexible Server`.
 
-3. Under Settings in the left-hand menu, select **Connection Security**.
+3. Under Settings in the left-hand menu, select **Networking**.
 
 4. Under Firewall rules, select **Add current client IP address**.
 
@@ -177,7 +177,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
     Where:
 
     - **&lt;SERVERURL&gt;** is the location of the Postgres database (Ex: `<your-cluster-name>-sql.postgres.database.azure.com`).
-    - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Ex: `<postgres-username>@<your-cluster-name>-sql`).
+    - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Chosen in [Deploy AKS Step 4](#deploy-aks)).
 
 2. Create the MPS and RPS database and tables. Provide the database password when prompted.
 
@@ -241,8 +241,6 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 4. Click **Enable New Engine +**.
 
 5. Choose **KV**.
-
-6. Click **Next**.
 
 7. Click **Enable Engine**.
   
