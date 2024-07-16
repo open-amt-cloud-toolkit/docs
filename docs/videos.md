@@ -4,19 +4,19 @@
 Learn the high-level basics and get familiar with the toolkit. Learn about the different microservices and their roles then get up to speed with the latest features, changes, and fixes.
 
 <div class="videoContainer">
-	<h3>What's New: June 2024 Release - Console Demo (Alpha)
 	<!-- <h3>What's New: May 2024 Release (v{{ repoVersion.oamtct }})</h3> -->
-	<h3></h3>
-	<h3>Overview of Open AMT Cloud Toolkit</h3>
-	<div class="video-wrapper">
+	<!-- <h3></h3> -->
+	<h3>Overview of Open AMT Cloud Toolkit</h3><h3></h3><h3></h3>
+	<!-- <div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
-	<div></div>
+	<div></div> -->
 	<div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/ovpvPQi7UGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
-	<p>Discover what new features and changes are in our latest rapid release. <b><a href="../release-notes"> See full Release Notes.</a></b></p>
-  	<p></p>
+	<div></div><div></div>
+	<!-- <p>Discover what new features and changes are in our latest rapid release. <b><a href="../release-notes"> See full Release Notes.</a></b></p> -->
+  	<!-- <p></p> -->
 	<p>See what Open AMT Cloud Toolkit is and what you can do with it. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview">Architecture Overview</a>, <a href="../Reference/MPS/securityMPS">MPS Security Considerations</a>, and <a href="../Reference/RPS/securityRPS">RPS Security Considerations</a></p>
 	<p></p><p></p>
 </div>
@@ -64,14 +64,17 @@ Learn more about the features of Open AMT through guided tutorials.
 <div class="videoContainer">
 	<h3>IDE-Redirection Tutorial</h3>
 	<h3></h3>
-	<h3></h3>
+	<h3>Console Demo (Alpha Version)</h3>
 	<div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/N_1koCmZKbw?si=GPukyEFgUfKOxSLK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
 	<div></div>
-	<div></div>
-	<p>Learn how to use IDE-Redirection for OS Reimaging and more using the Sample Web UI. <br><br><b>Additional Resources: </b><a href="../Tutorials/ideRedirection">IDE-Redirection Tutorial</a></p>
-	<p></p><p></p>
+	<div class="video-wrapper">
+    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<p>Learn how to use IDE-Redirection for OS Reimaging and more using the Sample Web UI. <br><br><b>Additional Resources: </b><a href="./Tutorials/ideRedirection">IDE-Redirection Tutorial</a></p>
+	<p></p>
+	<p>Check out a hands-on demo of the new web-based application, Console (currently in Alpha).<br><br><b>Additional Resources: </b><a href="./Reference/Console/overview.md">Getting Started with Console</a></p>
 </div>
 
 <br>
