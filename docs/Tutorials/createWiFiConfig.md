@@ -39,13 +39,15 @@ rpc amtinfo
     DHCP Enabled           : true
     DHCP Mode              : passive
     Link Status            : up
-    IP Address             : 0.0.0.0
+    AMT IP Address         : 0.0.0.0
+    OS IP Address          : 192.168.1.90
     MAC Address            : 80:c4:a8:58:df:e9
     ---Wireless Adapter---
     DHCP Enabled           : true
     DHCP Mode              : passive
     Link Status            : down
-    IP Address             : 0.0.0.0
+    AMT IP Address         : 0.0.0.0
+    OS IP Address          : 192.168.1.90
     MAC Address            : 00:00:00:00:00:00
     Certificate Hashes     : 
     ...

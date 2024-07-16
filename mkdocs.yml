@@ -114,6 +114,7 @@ nav:
         - Activate a Device: Reference/Console/GetStarted/activateDevice.md
         - Add a Device: Reference/Console/GetStarted/addDevice.md
         - Manage a Device: Reference/Console/GetStarted/manageDevice.md
+      - WSMAN Explorer: Reference/Console/wsmanExplorer.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
@@ -216,12 +217,12 @@ extra:
   repoVersion:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
-    oamtct: 2.23.0
-    rpc_go: 2.34.2
+    oamtct: 2.24.0
+    rpc_go: 2.36.0
     rpc_c: 2.0.0
-    ui_toolkit: 3.2.6
-    ui_toolkit_react: 3.2.6
-    ui_toolkit_angular: 8.0.1
+    ui_toolkit: 3.2.7
+    ui_toolkit_react: 3.2.7
+    ui_toolkit_angular: 8.0.2
   docsSite:
     ltsVersion: 2.0
   analytics:
