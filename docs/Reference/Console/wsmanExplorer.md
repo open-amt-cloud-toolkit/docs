@@ -2,6 +2,9 @@
 
 Console has the ability to view both the correctly formatted WSMAN input sent to AMT and the WSMAN output response of the supported classes. This can be used to help with development or to view additional AMT data that might not be displayed in the default UI.
 
+!!! note "Note - Additional Supported WSMAN Classes"
+    Console does not have support for all of the WSMAN classes that AMT supports today. The most commonly used classes have been prioritized. If you need additional support for a specific class, [log an issue for Console here](https://github.com/open-amt-cloud-toolkit/console/issues).
+
 ## To Use WSMAN Explorer
 
 1. Open Console.
