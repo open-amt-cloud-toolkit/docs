@@ -9,9 +9,9 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 ## Prerequisites
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Azure CLI (v2.24.0+)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [Helm CLI (v3.5+)](https://helm.sh/)
-- [PSQL CLI (11.13)](https://www.postgresql.org/download/)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [Helm CLI](https://helm.sh/)
+- [PSQL CLI](https://www.postgresql.org/download/)
 
 ## Get the Toolkit
 
@@ -35,9 +35,10 @@ This key is required by Azure to create VMs that use SSH keys for authentication
 ## Deploy AKS
 
 1. Login to Azure.
-  ```
-  az login
-  ``` 
+    
+    ``` bash
+    az login
+    ``` 
 
 2. Provide a name and region to create a new resource group.
 
@@ -47,7 +48,7 @@ This key is required by Azure to create VMs that use SSH keys for authentication
 
 3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json` in the `./open-amt-cloud-toolkit` directory.
 
-    ```
+    ``` bash
     az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
     ```
 
@@ -79,11 +80,11 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 1. Provide your resource group name and cluster name, respectively.
 
-    ```
+    ``` bash
     az aks get-credentials --resource-group <your-resource-group-name> --name <your-cluster-name>
     ```
 
-## Create Secrets 
+## Create Kubernetes Secrets 
 
 1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
 
@@ -112,7 +113,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
     | &lt;YOUR-SECRET&gt;         | 45    | A strong secret of your choice (Example: A unique, random 256-bit string).    | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
 
     !!! important "Important - Using Strong Passwords"
-        The &lt;WEBUI-PASSWORD&gt; must meet standard, **strong** password requirements:
+        The **&lt;WEBUI-PASSWORD&gt;** must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
 
@@ -122,7 +123,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 4. Apply the configuration file to create the secrets.
 
-    ```
+    ``` bash
     kubectl apply -f ./kubernetes/charts/secrets.yaml
     ```
 
@@ -236,7 +237,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 2. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-3. On the left-hand side menu, select **Secrets engines**
+3. On the left-hand side menu, select **Secrets engines**.
 
 4. Click **Enable New Engine +**.
 
