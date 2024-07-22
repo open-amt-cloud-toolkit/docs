@@ -2,7 +2,7 @@
 
 # Amazon Elastic Kubernetes Service (EKS)
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8s)](./deployingk8s.md).
+This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8S)](./deployingk8s.md).
 
 Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS [here](https://aws.amazon.com/eks).
 
@@ -11,8 +11,8 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [eksctl CLI](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
-- [Helm CLI (v3.5+)](https://helm.sh/)
-- [PSQL CLI (11.13)](https://www.postgresql.org/download/)
+- [Helm CLI](https://helm.sh/)
+- [PSQL CLI](https://www.postgresql.org/download/)
 
 
 ## Get the Toolkit
@@ -25,7 +25,13 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ## Create a New EKS Cluster
 
-1. Follow steps for [aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to finish configuration of AWS CLI.
+1. Login or Authenticate to AWS. See [Configure AWS CLI for SSO](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html), if not setup yet.
+
+    If your organization does not use SSO, see [Authentication and access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html) for all authentication options to choose from and how to configure the AWS CLI.
+
+    ```
+    aws sso login
+    ```
 
 2. Follow steps to [Create a key pair using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) to create a SSH key for accessing the cluster.
 
@@ -39,7 +45,7 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
     - **&lt;cluster-name&gt;** is the name of the new EKS cluster.
     - **&lt;region&gt;** is the AWS region to deploy the stack (Ex: `us-west-2`).
-    - **&lt;ssh-keypair-name&gt;** is the name of the SSH key from the previous step.
+    - **&lt;ssh-keypair-name&gt;** is the name of the SSH key from the previous step (Step 2).
 
 ## Configure EKS Instance
 
@@ -56,99 +62,38 @@ Ensure your `kubectl` is connected to the correct EKS cluster to manage.
     - **&lt;cluster-name&gt;** is the name of your EKS cluster.
     - **&lt;region&gt;** is the AWS region where the cluster is (Ex: `us-west-2`).
 
-### Update Access Permissions
-
-In order to be able to see cluster details like resources, networking, and more with the Amazon EKS console, we must configure permissions in the `ConfigMap`. More information can be found at [How do I resolve the "Your current user or role does not have access to Kubernetes objects on this EKS cluster" error in Amazon EKS?](https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/)
-
-1. Get the configuration of your AWS CLI user or role.
-
-    ```
-    aws sts get-caller-identity
-    ```
-
-2. Edit `aws-auth ConfigMap` in a text editor.
-
-    ```
-    kubectl edit configmap aws-auth -n kube-system
-    ```
-
-3. Add the IAM user **OR** IAM role to the ConfigMap. To allow superuser access for performing any action on any resource, add `system:masters` instead of `system:bootstrappers` and `system:nodes`.
-
-    === "Add a Role"
-        ```
-        # Add under existing mapRoles section
-        # Replace [ROLE-NAME] with your IAM Role
-
-        mapRoles: |
-          - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[ROLE-NAME]
-          username: [ROLE-NAME]
-          groups:
-          - system:bootstrappers
-          - system:nodes
-        ```
-    === "Add a User"
-        ```
-        # Alternatively, you can create permissions for a single User rather than a Role
-        # Create a new mapUsers section
-        # Replace [USER-NAME] with your IAM User
-
-        mapUsers: |
-          - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[USER-NAME]
-          username: [USER-NAME]
-          groups:
-          - system:bootstrappers
-          - system:nodes
-        ```
-
-4. Save and close the text editor window. A success or error message will print to the console after closing the text editor window. If an error shows, verify the correct syntax was used. Additionally, a more detailed error message will be printed within the ConfigMap text file.
-
 ### Add EBS CSI driver to Cluster
 
-The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created. This is a new requirement starting in Kubernetes 1.23 and later.
+The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created.
 
-Find additional information at [Creating the Amazon EBS CSI driver IAM role for service accounts](https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html).
+1. Create a new IAM role. Follow the steps in [Creating the Amazon EBS CSI driver IAM role for service accounts](https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html).
 
-1. Create a new IAM role and attach the required Amazon managed policy. Replace `<cluster-name>` with the name of your cluster.
-
-    ```
-    eksctl create iamserviceaccount \
-        --name ebs-csi-controller-sa \
-        --namespace kube-system \
-        --cluster <cluster-name> \
-        --attach-policy-arn arn:aws-cn:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
-        --approve \
-        --role-only \
-        --role-name AmazonEKS_EBS_CSI_DriverRole
-    ```
-
-2. Add the EBS CSI add-on to the cluster. Replace `<cluster-name>` with the name of your cluster and `<account-ID>` with your Account ID. Find more information at [Managing the Amazon EBS CSI driver as an Amazon EKS add-on](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html).
-
-    ```
-    eksctl create addon --name aws-ebs-csi-driver --cluster <cluster-name> --service-account-role-arn arn:aws:iam::<account-ID>:role/AmazonEKS_EBS_CSI_DriverRole --force
-    ```
+2. Add the EBS CSI add-on to the cluster. Follow the steps in [Managing the Amazon EBS CSI driver as an Amazon EKS add-on](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html#adding-ebs-csi-eks-add-on).
 
 ## Create Postgres DB in RDS
 
-1. Create a Postgres DB by following the steps for [Creating an Amazon RDS DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html).
+1. Create a Postgres DB by following the steps for [Creating an Amazon RDS DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateDBInstance.html).
 
     **Make sure to set the following configuration settings:**
 
-    | Field                         | Set to | 
-    | --------------------------    | ------------------      |
+    | Field                         | Set to                                     | 
+    | ----------------------------- | ------------------------------------------ |
+    | Compute Resource              | Do not connect to an EC2 compute resource  |
     | Virtual private cloud (VPC)   | Choose the VPC created from your cluster.  It should follow the format: 'eksctl-**&lt;cluster-name&gt;**-cluster/VPC' |
     | Public access                 | Yes. In the next steps, we will create Security rules to limit access.         |
     | VPC security group            | Choose existing         |
     | Existing VPC security groups  | default                 |
+    | Initial Database Name         | postgres                |
 
 
 ### Configure Virtual Private Cloud (VPC) for access
 
 1. Go to [RDS home](https://console.aws.amazon.com/rds/home).
-2. Select 'Databases' from the left-hand side menu.
+2. Select **Databases** from the left-hand side menu.
 3. Select your created database (Ex: database-1).
-4. Under **Security** in **Connectivity & security**, click on the VPC under **VPC security groups** (Ex: `default (sg-01b4767ggdcb52825)`).  
-5. Select **Inbound rules**.
-6. Select **Edit inbound rules**.
+4. Under **Security** in **Connectivity & security**, click on the VPC under **VPC security groups** (Ex: `default (sg-01b4767ggdcb52825)`).
+5. Select the Security group ID (Ex: `sg-0e41dcdede3e2e584`).
+6. Select **Edit Inbound rules**.
 
     #### Add Two New Rules
     Rule One:
@@ -167,133 +112,70 @@ Find additional information at [Creating the Amazon EBS CSI driver IAM role for 
 7. Select **Save rules**.
 
 
-### Create Databases and Schema
+### Create Databases
 
 1. Use the database schema files to initialize the hosted Postgres DB in the following steps.
-
-    !!! note
-        The following commands will prompt for the database password you chose [here](#create-postgres-db-in-rds).
 
     Where:
 
     - **&lt;SERVERURL&gt;** is the location of the Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
-    - **&lt;USERNAME&gt;** is the username for the Postgres database.
+    - **&lt;USERNAME&gt;** is the admin username for the Postgres database (Chosen in [Create Postgres DB in RDS](#create-postgres-db-in-rds)).
 
-2. Create the RPS database.
-
-    ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
-    ```
-
-3. Create tables for the new 'rpsdb'.
+2. Create the MPS and RPS database and tables. Provide the database password when prompted.
 
     ```
-    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/init.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
-4. Create the MPS database.
+## Create Kubernetes Secrets 
+1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
 
-    ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
-    ```
+    ??? note "Note - Additional Information about Secrets Created"
 
-## Create Secrets 
+        | Secret Name        | Usage                                                                      |
+        | ------------------ | -------------------------------------------------------------------------- |
+        | mpsweb             | Provides credentials used for requesting a JWT. These credentials are also used for logging into the Sample Web UI. |
+        | rps                | RPS database connection string.                                            |
+        | mps                | MPS database connection string.                                            |
+        | mpsrouter          | MPS database connection string.                                            |
+        | open-amt-admin-jwt | Provides secret used for generating and verifying JWTs for authentication. |
+        | open-amt-admin-acl | Configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in. |
+        | vault              | Vault root token for MPS and RPS access to Vault secret store.             |
 
-### 1. MPS/KONG JWT
+2. Replace the following placeholders.
 
-This is the secret used for generating and verifying JWTs.
+    ???+ warning "Warning - Using SSL/TLS with AWS RDS"
+    
+        By default, this tutorial uses the connection string setting of `no-verify` for ease of setup. To fully configure SSL, follow the links below. **For production, it is recommended to use a SSL connection.**
 
-```
-kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
-```
+        Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
+    
+        Once setup, the SSL mode in the connection strings should be set to either `verify-full` or `verify-ca`.
 
-Where:
-
-- **&lt;your-secret&gt;** is your chosen strong secret.
-
-### 2. KONG ACL for JWT
-
-This configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
-
-```
-kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-```
-
-### 3. MPS Web Username and Password
-This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the Sample Web UI.
-
-```
-kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
-```
-
-Where:
-
-- **&lt;your-username&gt;** is a username of your choice.
-- **&lt;your-password&gt;** is a strong password of your choice.
+    | Placeholder                 | Lines | Required                           | Usage                               |
+    | --------------------------- | ----- | ---------------------------------- | ----------------------------------- |
+    | &lt;WEBUI-USERNAME&gt;      | 7     | Username of your choice            | For logging into the Sample Web UI. |
+    | &lt;WEBUI-PASSWORD&gt;      | 8     | **Strong** password of your choice | For logging into the Sample Web UI. |
+    | &lt;DATABASE-USERNAME&gt;   | 16, 24, 32 | Database username chosen in [Create Postgres DB in RDS](#create-postgres-db-in-rds) | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-PASSWORD&gt;   | 16, 24, 32 | Database password chosen in [Create Postgres DB in RDS](#create-postgres-db-in-rds) | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-SERVER-URL&gt; | 16, 24, 32 | **Server URL Format:** `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com` | Credentials for the services to connect to the database.  |
+    | &lt;SSL-MODE&gt;            | 16, 24<br><br> 32 | Lines 16 and 24: Set to `no-verify`<br><br>Line 32: Set to `disable` | Credentials for the services to connect to the database.  |
+    | &lt;YOUR-SECRET&gt;         | 45    | A strong secret of your choice (Example: A unique, random 256-bit string).    | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
 
     !!! important "Important - Using Strong Passwords"
-        The password must meet standard, **strong** password requirements:
+        The **&lt;WEBUI-PASSWORD&gt;** must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
+
         - One uppercase, one lowercase, one numerical digit, one special character
 
+3. Save the file.
 
-### 4. Database connection strings
+4. Apply the configuration file to create the secrets.
 
-???+ warning "Warning - Using SSL/TLS with AWS RDS"
-    
-    **Postgres 14**
-
-    By default, AWS pre-selects Postgres 14. This tutorial uses the connection string setting of `no-verify` for ease of setup. To fully configure SSL, follow the links below. **For production, it is recommended to use a SSL connection.**
-    
-    Find more information at [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html) and [Updating applications to connect to PostgreSQL DB instances using new SSL/TLS certificates](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html).
-
-    **Postgres 15**
-
-    Alternatively, if Postgres 15 is preferred and selected, the `sslmode` in the connection strings **must** be updated from `no-verify`/`disable` to `require` for the services to be able to connect to the database.  No other work is required for a test environment.
-    
-    **Note:** For a fully secured, certificate-based SSL connection, the following steps must be taken in [Using SSL with a PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html).  It will also require updating `sslmode` to `verify-full` or `verify-ca`.  **For production, it is highly recommended.**
-
-1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
-
-    Where:
-
-    - **&lt;USERNAME&gt;** is the username for the Postgres database.
-    - **&lt;PASSWORD&gt;** is the password for the Postgres database.
-    - **&lt;SERVERURL&gt;** is the url for the AWS-hosted Postgres database (Ex: `database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com`).
-
-2. Create RPS connection string secret.
-
-    === "Postgres 14"
-        ```
-        kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=no-verify
-        ```
-    === "Postgres 15"
-        ```
-        kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=require
-        ```
-
-3. Create MPS Router connection string secret.
-
-    === "Postgres 14"
-        ```
-        kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
-        ```
-    === "Postgres 15"
-        ```
-        kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-        ```
-
-4. Create MPS connection string secret.   
-
-    === "Postgres 14"
-        ```
-        kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=no-verify
-        ```
-    === "Postgres 15"
-        ```
-        kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=require
-        ```
+    ```
+    kubectl apply -f ./kubernetes/charts/secrets.yaml
+    ```
 
 ## Update Configuration
 
@@ -310,7 +192,7 @@ Where:
           service.beta.kubernetes.io/azure-dns-label-name: "<your-domain-name>" # Delete this line
     ```
 
-3. Save and close the file.
+3. Save the file.
 
 
 ## Deploy Open AMT Cloud Toolkit using Helm
@@ -331,6 +213,24 @@ Where:
         TEST SUITE: None
         ```
 
+2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+
+    ```
+    kubectl get pods
+    ```
+
+    !!! success
+        ``` hl_lines="2 5 7"
+        NAME                                                 READY   STATUS                       RESTARTS   AGE
+        mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+        mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
+        openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
+        openamtstack-vault-0                                 0/1     Running                      0          2m6s
+        openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+        rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
+        webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
+        ```
+
 ## Initialize and Unseal Vault
 
 !!! danger - "Danger - Download and Save Vault Keys"
@@ -347,27 +247,29 @@ Where:
 
 2. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-3. Click **Enable New Engine +**.
+3. On the left-hand side menu, select **Secrets engines**.
 
-4. Choose **KV**.
+4. Click **Enable New Engine +**.
 
-5. Click **Next**.
-
-6. Leave the default path and choose **version 2** from the drop down. 
+5. Choose **KV**.
 
 7. Click **Enable Engine**.
   
 ### Vault Token Secret
 
-1. Add the root token as a secret to the EKS cluster so that the services can access Vault.
+Add the root token as a secret to the AKS cluster so that the services can access Vault.
+
+1. Open the `secrets.yaml` file again in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+
+2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
+
+3. Save the file.
+
+4. Update the Kubernetes `vault` secret.
 
     ```
-    kubectl create secret generic vault --from-literal=vaultKey=<your-root-token>
+    kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
     ```
-
-    Where:
-
-    - **&lt;your-root-token&gt;** is your `root_token` generated by Vault.
 
 ### Update commonName in values.yml
 

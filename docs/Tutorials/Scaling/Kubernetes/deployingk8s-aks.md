@@ -253,13 +253,15 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
-3. Update the Kubernetes `vault` secret.
+3. Save the file.
+
+4. Update the Kubernetes `vault` secret.
 
     ```
     kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
     ```
 
-4. View the pods. All pods should now be Ready and Running.
+5. View the pods. All pods should now be Ready and Running.
 
     ```
     kubectl get pods

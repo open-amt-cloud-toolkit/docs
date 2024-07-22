@@ -189,7 +189,8 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
         TEST SUITE: None
         ```
 
-2. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. MPS and RPS will both have a status of CreateContainerConfigError until Vault is Ready.
+2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+
     ```
     kubectl get pods
     ```
@@ -243,13 +244,15 @@ Add the root token as a secret to the cluster so that the services can access Va
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
-3. Update the Kubernetes `vault` secret.
+3. Save the file.
+
+4. Update the Kubernetes `vault` secret.
 
     ```
     kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
     ```
 
-4. View the pods. All pods should now be Ready and Running.
+5. View the pods. All pods should now be Ready and Running.
     ```
     kubectl get pods
     ```
