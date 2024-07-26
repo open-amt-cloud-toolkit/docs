@@ -1200,13 +1200,14 @@ rpc amtinfo [OPTIONS]
 
 **---Wired/Wireless Adapters---**
 
-| WIRED/WIRELESS ADAPTER | OPTION | DESCRIPTION                                                              | 
+| WIRED/WIRELESS ADAPTER | OPTION | DESCRIPTION                                                              |
 |------------------------|--------|--------------------------------------------------------------------------|
-| DHCP Enabled           | -lan   | True/False. Whether or not the network is using DHCP or Static IPs.      | 
-| DHCP Mode              | -lan   |                                                                          | 
-| Link Status            | -lan   | Up/Down. Shows whether or not this adapter is being used by Intel AMT.   | 
-| IP Address             | -lan   | If using CIRA or the device is unactivated, this field will show 0.0.0.0 | 
-| MAC Address            | -lan   | Device's MAC Address                                                     | 
+| DHCP Enabled           | -lan   | True/False. Whether or not the network is using DHCP or Static IPs.      |
+| DHCP Mode              | -lan   |                                                                          |
+| Link Status            | -lan   | Up/Down. Shows whether or not this adapter is being used by Intel AMT.   |
+| AMT IP Address         | -lan   | If using CIRA or the device is unactivated, this field will show 0.0.0.0 |
+| OS IP Address          | -lan   | IP Address of device set in Operating System                             |
+| MAC Address            | -lan   | Device's MAC Address                                                     |
 
 For more information,
 see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
