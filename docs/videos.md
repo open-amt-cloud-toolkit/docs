@@ -78,3 +78,20 @@ Learn more about the features of Open AMT through guided tutorials.
 </div>
 
 <br>
+
+## Use Cases
+
+See hands-on demos of the capabilities of Intel AMT and some of its possible use cases.
+
+<div class="videoContainer">
+	<h3>Windows BSOD Recovery</h3>
+	<h3></h3><h3></h3>
+	<div class="video-wrapper">
+    	<iframe width="1280" height="720" src="https://www.youtube.com/embed/ZB56nve-7SU?si=OxzLt_a8gukar-e2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<div></div><div></div>
+	<p>See how to recover from a 'Blue Screen of Death' (BSOD) using remote KVM. In this example, we walk through how the <b>popular CrowdStrike bug</b> that affected millions could be solved.</p>
+	<p></p><p></p>
+</div>
+
+<br>
