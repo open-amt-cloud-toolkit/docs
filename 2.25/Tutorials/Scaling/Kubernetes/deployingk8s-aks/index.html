@@ -1740,7 +1740,7 @@
         
   
   <span class="md-ellipsis">
-    Kubernetes (K8s)
+    Kubernetes (K8S)
   </span>
   
 
@@ -1848,53 +1848,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
+  <a href="#create-kubernetes-secrets" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Secrets
+      Create Kubernetes Secrets
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Create Secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-mpskong-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. MPS/KONG JWT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-kong-acl-for-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. KONG ACL for JWT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-mps-web-username-and-password" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. MPS Web Username and Password
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-connection-strings" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database connection strings
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4004,9 +3962,9 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
-<li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI (v2.24.0+)</a></li>
-<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
-<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a></li>
+<li><a href="https://helm.sh/">Helm CLI</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI</a></li>
 </ul>
 <h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">&para;</a></h2>
 <ol>
@@ -4031,9 +3989,9 @@
 <h2 id="deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr><a class="headerlink" href="#deploy-aks" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Login to Azure.
-  <div class="highlight"><pre><span></span><code>az login
-</code></pre></div></p>
+<p>Login to Azure.</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
+</code></pre></div>
 </li>
 <li>
 <p>Provide a name and region to create a new resource group.</p>
@@ -4042,15 +4000,17 @@
 </li>
 <li>
 <p>Provide the name of your new resource group from the last step and start a deployment at that resource group based on <code>aks.json</code> in the <code>./open-amt-cloud-toolkit</code> directory.</p>
-<div class="highlight"><pre><span></span><code>az deployment group create --resource-group &lt;your-resource-group-name&gt; --template-file aks.json
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>deployment<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--resource-group<span class="w"> </span>&lt;your-resource-group-name&gt;<span class="w"> </span>--template-file<span class="w"> </span>aks.json
 </code></pre></div>
 </li>
 <li>
-<p>After running the previous command, you will be prompted for 3 different strings. After the final prompt, it will take about 5 minutes to finish running.</p>
+<p>After running the previous command, you will be prompted for 5 different strings. After the final prompt, it will take about 5-10 minutes for Azure to finish creating resources.</p>
 <ul>
-<li>Provide a name for the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Cluster.</li>
-<li>Provide a name (e.g. your name) for the linux user admin name.</li>
-<li>Provide the string of the ssh key from the <code>.pub</code> file.</li>
+<li>A name for the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Cluster.</li>
+<li>A name (e.g. your name) for the linux user admin name.</li>
+<li>The string of the ssh key from the <code>.pub</code> file generated in <a href="#create-ssh-key">Create SSH Key</a>.</li>
+<li>A username for the new Postgres Database.</li>
+<li>A password for the new Postgres Database.</li>
 </ul>
 </li>
 <li>
@@ -4073,66 +4033,131 @@
 <ol>
 <li>
 <p>Provide your resource group name and cluster name, respectively.</p>
-<div class="highlight"><pre><span></span><code>az aks get-credentials --resource-group &lt;your-resource-group-name&gt; --name &lt;your-cluster-name&gt;
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span>&lt;your-resource-group-name&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;your-cluster-name&gt;
 </code></pre></div>
 </li>
 </ol>
-<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
-<h3 id="1-mpskong-jwt">1. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#1-mpskong-jwt" title="Permanent link">&para;</a></h3>
-<p>This is the secret used for generating and verifying JWTs.
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
-</code></pre></div></p>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
-</ul>
-<h3 id="2-kong-acl-for-jwt">2. KONG ACL for JWT<a class="headerlink" href="#2-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
-<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-</code></pre></div></p>
-<h3 id="3-mps-web-username-and-password">3. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#3-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
-<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
-</code></pre></div></p>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
+<h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
+<ol>
 <li>
-<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
+<p>Open the <code>secrets.yaml</code> file in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+<details class="note">
+<summary>Note - Additional Information about Secrets Created</summary>
+<table>
+<thead>
+<tr>
+<th>Secret Name</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mpsweb</td>
+<td>Provides credentials used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>rps</td>
+<td><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>mps</td>
+<td><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>mpsrouter</td>
+<td><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>open-amt-admin-jwt</td>
+<td>Provides secret used for generating and verifying JWTs for authentication.</td>
+</tr>
+<tr>
+<td>open-amt-admin-acl</td>
+<td>Configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.</td>
+</tr>
+<tr>
+<td>vault</td>
+<td>Vault root token for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> access to Vault secret store.</td>
+</tr>
+</tbody>
+</table>
+</details>
+</li>
+<li>
+<p>Replace the following placeholders.</p>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Lines</th>
+<th>Required</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;WEBUI-USERNAME&gt;</td>
+<td>7</td>
+<td>Username of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>&lt;WEBUI-PASSWORD&gt;</td>
+<td>8</td>
+<td><strong>Strong</strong> password of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-USERNAME&gt;</td>
+<td>16, 24, 32</td>
+<td>Database username chosen in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Step 4</a></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-PASSWORD&gt;</td>
+<td>16, 24, 32</td>
+<td>Database password chosen in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Step 4</a></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-SERVER-URL&gt;</td>
+<td>16, 24, 32</td>
+<td><strong>Server URL Format:</strong> <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;SSL-MODE&gt;</td>
+<td>16, 24, 32</td>
+<td>Set to <code>require</code></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;YOUR-SECRET&gt;</td>
+<td>45</td>
+<td>A strong secret of your choice (Example: A unique, random 256-bit string).</td>
+<td>Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition important">
 <p class="admonition-title">Important - Using Strong Passwords</p>
-<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
+<p>The <strong>&lt;WEBUI-PASSWORD&gt;</strong> must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
-<li>8 to 32 characters</li>
-<li>One uppercase, one lowercase, one numerical digit, one special character</li>
+<li>
+<p>8 to 32 characters</p>
+</li>
+<li>
+<p>One uppercase, one lowercase, one numerical digit, one special character</p>
+</li>
 </ul>
 </div>
 </li>
-</ul>
-<h3 id="4-database-connection-strings">4. Database connection strings<a class="headerlink" href="#4-database-connection-strings" title="Permanent link">&para;</a></h3>
-<ol>
 <li>
-<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;USERNAME&gt;</strong> is the full username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
-<li><strong>&lt;PASSWORD&gt;</strong> is the password for the Postgres database.</li>
-<li><strong>&lt;SERVERURL&gt;</strong> is the url for the Azure-hosted Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
-</ul>
+<p>Save the file.</p>
 </li>
 <li>
-<p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
-</code></pre></div>
-</li>
-<li>
-<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
-</li>
-<li>
-<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
+<p>Apply the configuration file to create the secrets.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./kubernetes/charts/secrets.yaml
 </code></pre></div>
 </li>
 </ol>
@@ -4151,7 +4176,7 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>Update the <code>commonName</code> key to your FQDN in the <code>mps</code> section.  For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
+<p>Update the <code>commonName</code> key to your FQDN in the <code>mps</code> section.  For <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>, the default format is <code>&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com</code>. This is the <code>fqdnSuffix</code> provided in the <code>outputs</code> section when you <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
 <span class="hll"><span class="w">    </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;your-subdomain-name&gt;.&lt;location&gt;.cloudapp.azure.com&quot;</span>
 </span><span class="w">    </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -4170,22 +4195,19 @@
 <p>Navigate to <code>Home &gt; Resource Groups &gt; Resource Group Name</code> using Microsoft Azure via online.</p>
 </li>
 <li>
-<p>Select the Postgres DB. It will have a Type of <code>Azure Database for PostgreSQL Server</code>.</p>
+<p>Select the Postgres DB. It will have a Type of <code>Azure Database for PostgreSQL Flexible Server</code>.</p>
 </li>
 <li>
-<p>Under Settings in the left-hand menu, select <strong>Connection Security</strong>.</p>
+<p>Under Settings in the left-hand menu, select <strong>Networking</strong>.</p>
 </li>
 <li>
 <p>Under Firewall rules, select <strong>Add current client IP address</strong>.</p>
 </li>
 <li>
-<p>Select Save.</p>
-</li>
-<li>
-<p>Under the Overview tab, take note of the 'Server name' and 'Admin username'. They will be needed in the next steps.</p>
+<p>Click Save.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Remember to delete this firewall rule when finished.</p>
+<p>For security, remember to delete this firewall rule when finished.</p>
 </div>
 </li>
 </ol>
@@ -4196,22 +4218,12 @@
 <p>Where:</p>
 <ul>
 <li><strong>&lt;SERVERURL&gt;</strong> is the location of the Postgres database (Ex: <code>&lt;your-cluster-name&gt;-sql.postgres.database.azure.com</code>).</li>
-<li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Ex: <code>&lt;postgres-username&gt;@&lt;your-cluster-name&gt;-sql</code>).</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Chosen in <a href="#deploy-aks">Deploy <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> Step 4</a>).</li>
 </ul>
 </li>
 <li>
-<p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
-</code></pre></div>
-</li>
-<li>
-<p>Create tables for the new 'rpsdb' database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./data/init.sql
-</code></pre></div>
-</li>
-<li>
-<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/initMPS.sql
+<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database and tables. Provide the database password when prompted.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql
 </code></pre></div>
 </li>
 </ol>
@@ -4269,31 +4281,34 @@ openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running            
 <p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
 </li>
 <li>
+<p>On the left-hand side menu, select <strong>Secrets engines</strong>.</p>
+</li>
+<li>
 <p>Click <strong>Enable New Engine +</strong>.</p>
 </li>
 <li>
 <p>Choose <strong>KV</strong>.</p>
 </li>
 <li>
-<p>Click <strong>Next</strong>.</p>
-</li>
-<li>
-<p>Leave the default path and choose <strong>version 2</strong> from the drop down. </p>
-</li>
-<li>
 <p>Click <strong>Enable Engine</strong>.</p>
 </li>
 </ol>
 <h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h3>
+<p>Add the root token as a secret to the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> cluster so that the services can access Vault.</p>
 <ol>
 <li>
-<p>Add the root token as a secret to the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> cluster so that the services can access Vault.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
+<p>Open the <code>secrets.yaml</code> file again in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+</li>
+<li>
+<p>Replace <code>&lt;VAULT-ROOT-TOKEN&gt;</code> in the <code>vaultKey:</code> field (line 66) with the actual Vault root token.</p>
+</li>
+<li>
+<p>Save the file.</p>
+</li>
+<li>
+<p>Update the Kubernetes <code>vault</code> secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
 </code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-root-token&gt;</strong> is your <code>root_token</code> generated by Vault.</li>
-</ul>
 </li>
 <li>
 <p>View the pods. All pods should now be Ready and Running.</p>

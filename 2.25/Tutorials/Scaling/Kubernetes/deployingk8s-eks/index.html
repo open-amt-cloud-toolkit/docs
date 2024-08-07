@@ -1740,7 +1740,7 @@
         
   
   <span class="md-ellipsis">
-    Kubernetes (K8s)
+    Kubernetes (K8S)
   </span>
   
 
@@ -1861,15 +1861,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#update-access-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update Access Permissions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#add-ebs-csi-driver-to-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       Add EBS CSI driver to Cluster
@@ -1918,9 +1909,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-databases-and-schema" class="md-nav__link">
+  <a href="#create-databases" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Databases and Schema
+      Create Databases
     </span>
   </a>
   
@@ -1932,53 +1923,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-secrets" class="md-nav__link">
+  <a href="#create-kubernetes-secrets" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Secrets
+      Create Kubernetes Secrets
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Create Secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-mpskong-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. MPS/KONG JWT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-kong-acl-for-jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. KONG ACL for JWT
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-mps-web-username-and-password" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. MPS Web Username and Password
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-connection-strings" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database connection strings
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4047,15 +3996,15 @@
 
 
 <h1 id="amazon-elastic-kubernetes-service-eks">Amazon Elastic Kubernetes Service (EKS)<a class="headerlink" href="#amazon-elastic-kubernetes-service-eks" title="Permanent link">&para;</a></h1>
-<p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See <a href="../deployingk8s/">Kubernetes (K8s)</a>.</p>
+<p>This tutorial demonstrates how to deploy the <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See <a href="../deployingk8s/">Kubernetes (K8S)</a>.</p>
 <p>Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS <a href="https://aws.amazon.com/eks">here</a>.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li><a href="https://aws.amazon.com/cli/">AWS CLI</a></li>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html">eksctl CLI</a></li>
-<li><a href="https://helm.sh/">Helm CLI (v3.5+)</a></li>
-<li><a href="https://www.postgresql.org/download/">PSQL CLI (11.13)</a></li>
+<li><a href="https://helm.sh/">Helm CLI</a></li>
+<li><a href="https://www.postgresql.org/download/">PSQL CLI</a></li>
 </ul>
 <h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">&para;</a></h2>
 <ol>
@@ -4068,7 +4017,10 @@
 <h2 id="create-a-new-eks-cluster">Create a New EKS Cluster<a class="headerlink" href="#create-a-new-eks-cluster" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Follow steps for <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">aws configure</a> to finish configuration of AWS CLI.</p>
+<p>Login or Authenticate to AWS. See <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html">Configure AWS CLI for SSO</a>, if not setup yet.</p>
+<p>If your organization does not use SSO, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html">Authentication and access credentials</a> for all authentication options to choose from and how to configure the AWS CLI.</p>
+<div class="highlight"><pre><span></span><code>aws sso login
+</code></pre></div>
 </li>
 <li>
 <p>Follow steps to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html">Create a key pair using Amazon EC2</a> to create a SSH key for accessing the cluster.</p>
@@ -4081,7 +4033,7 @@
 <ul>
 <li><strong>&lt;cluster-name&gt;</strong> is the name of the new EKS cluster.</li>
 <li><strong>&lt;region&gt;</strong> is the AWS region to deploy the stack (Ex: <code>us-west-2</code>).</li>
-<li><strong>&lt;ssh-keypair-name&gt;</strong> is the name of the SSH key from the previous step.</li>
+<li><strong>&lt;ssh-keypair-name&gt;</strong> is the name of the SSH key from the previous step (Step 2).</li>
 </ul>
 </li>
 </ol>
@@ -4099,81 +4051,20 @@
 </ul>
 </li>
 </ol>
-<h3 id="update-access-permissions">Update Access Permissions<a class="headerlink" href="#update-access-permissions" title="Permanent link">&para;</a></h3>
-<p>In order to be able to see cluster details like resources, networking, and more with the Amazon EKS console, we must configure permissions in the <code>ConfigMap</code>. More information can be found at <a href="https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/">How do I resolve the "Your current user or role does not have access to Kubernetes objects on this EKS cluster" error in Amazon EKS?</a></p>
-<ol>
-<li>
-<p>Get the configuration of your AWS CLI user or role.</p>
-<div class="highlight"><pre><span></span><code>aws sts get-caller-identity
-</code></pre></div>
-</li>
-<li>
-<p>Edit <code>aws-auth ConfigMap</code> in a text editor.</p>
-<div class="highlight"><pre><span></span><code>kubectl edit configmap aws-auth -n kube-system
-</code></pre></div>
-</li>
-<li>
-<p>Add the IAM user <strong>OR</strong> IAM role to the ConfigMap. To allow superuser access for performing any action on any resource, add <code>system:masters</code> instead of <code>system:bootstrappers</code> and <code>system:nodes</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Add a Role</label><label for="__tabbed_1_2">Add a User</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code># Add under existing mapRoles section
-# Replace [ROLE-NAME] with your IAM Role
-
-mapRoles: |
-  - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[ROLE-NAME]
-  username: [ROLE-NAME]
-  groups:
-  - system:bootstrappers
-  - system:nodes
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code># Alternatively, you can create permissions for a single User rather than a Role
-# Create a new mapUsers section
-# Replace [USER-NAME] with your IAM User
-
-mapUsers: |
-  - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/[USER-NAME]
-  username: [USER-NAME]
-  groups:
-  - system:bootstrappers
-  - system:nodes
-</code></pre></div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Save and close the text editor window. A success or error message will print to the console after closing the text editor window. If an error shows, verify the correct syntax was used. Additionally, a more detailed error message will be printed within the ConfigMap text file.</p>
-</li>
-</ol>
 <h3 id="add-ebs-csi-driver-to-cluster">Add EBS CSI driver to Cluster<a class="headerlink" href="#add-ebs-csi-driver-to-cluster" title="Permanent link">&para;</a></h3>
-<p>The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created. This is a new requirement starting in Kubernetes 1.23 and later.</p>
-<p>Find additional information at <a href="https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html">Creating the Amazon EBS CSI driver IAM role for service accounts</a>.</p>
+<p>The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs on your behalf. This is required for Vault. Without the driver, Vault will be stuck pending since its volume will be unable to be created.</p>
 <ol>
 <li>
-<p>Create a new IAM role and attach the required Amazon managed policy. Replace <code>&lt;cluster-name&gt;</code> with the name of your cluster.</p>
-<div class="highlight"><pre><span></span><code>eksctl create iamserviceaccount \
-    --name ebs-csi-controller-sa \
-    --namespace kube-system \
-    --cluster &lt;cluster-name&gt; \
-    --attach-policy-arn arn:aws-cn:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
-    --approve \
-    --role-only \
-    --role-name AmazonEKS_EBS_CSI_DriverRole
-</code></pre></div>
+<p>Create a new IAM role. Follow the steps in <a href="https://docs.amazonaws.cn/en_us/eks/latest/userguide/csi-iam-role.html">Creating the Amazon EBS CSI driver IAM role for service accounts</a>.</p>
 </li>
 <li>
-<p>Add the EBS CSI add-on to the cluster. Replace <code>&lt;cluster-name&gt;</code> with the name of your cluster and <code>&lt;account-ID&gt;</code> with your Account ID. Find more information at <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html">Managing the Amazon EBS CSI driver as an Amazon EKS add-on</a>.</p>
-<div class="highlight"><pre><span></span><code>eksctl create addon --name aws-ebs-csi-driver --cluster &lt;cluster-name&gt; --service-account-role-arn arn:aws:iam::&lt;account-ID&gt;:role/AmazonEKS_EBS_CSI_DriverRole --force
-</code></pre></div>
+<p>Add the EBS CSI add-on to the cluster. Follow the steps in <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html#adding-ebs-csi-eks-add-on">Managing the Amazon EBS CSI driver as an Amazon EKS add-on</a>.</p>
 </li>
 </ol>
 <h2 id="create-postgres-db-in-rds">Create Postgres DB in RDS<a class="headerlink" href="#create-postgres-db-in-rds" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Create a Postgres DB by following the steps for <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CreateDBInstance.html">Creating an Amazon RDS DB instance</a>.</p>
+<p>Create a Postgres DB by following the steps for <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateDBInstance.html">Creating an Amazon RDS DB instance</a>.</p>
 <p><strong>Make sure to set the following configuration settings:</strong></p>
 <table>
 <thead>
@@ -4183,6 +4074,10 @@ mapUsers: |
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Compute Resource</td>
+<td>Do not connect to an EC2 compute resource</td>
+</tr>
 <tr>
 <td>Virtual private cloud (VPC)</td>
 <td>Choose the VPC created from your cluster.  It should follow the format: 'eksctl-<strong>&lt;cluster-name&gt;</strong>-cluster/VPC'</td>
@@ -4199,6 +4094,10 @@ mapUsers: |
 <td>Existing VPC security groups</td>
 <td>default</td>
 </tr>
+<tr>
+<td>Initial Database Name</td>
+<td>postgres</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -4206,12 +4105,12 @@ mapUsers: |
 <h3 id="configure-virtual-private-cloud-vpc-for-access">Configure Virtual Private Cloud (VPC) for access<a class="headerlink" href="#configure-virtual-private-cloud-vpc-for-access" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Go to <a href="https://console.aws.amazon.com/rds/home">RDS home</a>.</li>
-<li>Select 'Databases' from the left-hand side menu.</li>
+<li>Select <strong>Databases</strong> from the left-hand side menu.</li>
 <li>Select your created database (Ex: database-1).</li>
-<li>Under <strong>Security</strong> in <strong>Connectivity &amp; security</strong>, click on the VPC under <strong>VPC security groups</strong> (Ex: <code>default (sg-01b4767ggdcb52825)</code>).  </li>
-<li>Select <strong>Inbound rules</strong>.</li>
+<li>Under <strong>Security</strong> in <strong>Connectivity &amp; security</strong>, click on the VPC under <strong>VPC security groups</strong> (Ex: <code>default (sg-01b4767ggdcb52825)</code>).</li>
+<li>Select the Security group ID (Ex: <code>sg-0e41dcdede3e2e584</code>).</li>
 <li>
-<p>Select <strong>Edit inbound rules</strong>.</p>
+<p>Select <strong>Edit Inbound rules</strong>.</p>
 <h4 id="add-two-new-rules">Add Two New Rules<a class="headerlink" href="#add-two-new-rules" title="Permanent link">&para;</a></h4>
 <p>Rule One:</p>
 <ol>
@@ -4231,132 +4130,150 @@ mapUsers: |
 <p>Select <strong>Save rules</strong>.</p>
 </li>
 </ol>
-<h3 id="create-databases-and-schema">Create Databases and Schema<a class="headerlink" href="#create-databases-and-schema" title="Permanent link">&para;</a></h3>
+<h3 id="create-databases">Create Databases<a class="headerlink" href="#create-databases" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Use the database schema files to initialize the hosted Postgres DB in the following steps.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following commands will prompt for the database password you chose <a href="#create-postgres-db-in-rds">here</a>.</p>
-</div>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;SERVERURL&gt;</strong> is the location of the Postgres database (Ex: <code>database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com</code>).</li>
-<li><strong>&lt;USERNAME&gt;</strong> is the username for the Postgres database.</li>
+<li><strong>&lt;USERNAME&gt;</strong> is the admin username for the Postgres database (Chosen in <a href="#create-postgres-db-in-rds">Create Postgres DB in RDS</a>).</li>
 </ul>
 </li>
 <li>
-<p>Create the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -c &quot;CREATE DATABASE rpsdb&quot;
-</code></pre></div>
-</li>
-<li>
-<p>Create tables for the new 'rpsdb'.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d rpsdb -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/init.sql
-</code></pre></div>
-</li>
-<li>
-<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./open-amt-cloud-toolkit/data/initMPS.sql
+<p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database and tables. Provide the database password when prompted.</p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql
 </code></pre></div>
 </li>
 </ol>
-<h2 id="create-secrets">Create Secrets<a class="headerlink" href="#create-secrets" title="Permanent link">&para;</a></h2>
-<h3 id="1-mpskong-jwt">1. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>/KONG JWT<a class="headerlink" href="#1-mpskong-jwt" title="Permanent link">&para;</a></h3>
-<p>This is the secret used for generating and verifying JWTs.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key=&quot;admin-issuer&quot; --from-literal=algorithm=HS256 --from-literal=secret=&quot;&lt;your-secret&gt;&quot;
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-secret&gt;</strong> is your chosen strong secret.</li>
-</ul>
-<h3 id="2-kong-acl-for-jwt">2. KONG ACL for JWT<a class="headerlink" href="#2-kong-acl-for-jwt" title="Permanent link">&para;</a></h3>
-<p>This configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-</code></pre></div>
-<h3 id="3-mps-web-username-and-password">3. <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Web Username and Password<a class="headerlink" href="#3-mps-web-username-and-password" title="Permanent link">&para;</a></h3>
-<p>This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsweb --from-literal=user=&lt;your-username&gt; --from-literal=password=&lt;your-password&gt;
-</code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-username&gt;</strong> is a username of your choice.</li>
-<li>
-<p><strong>&lt;your-password&gt;</strong> is a strong password of your choice.</p>
-<div class="admonition important">
-<p class="admonition-title">Important - Using Strong Passwords</p>
-<p>The password must meet standard, <strong>strong</strong> password requirements:</p>
-<ul>
-<li>8 to 32 characters</li>
-<li>One uppercase, one lowercase, one numerical digit, one special character</li>
-</ul>
-</div>
-</li>
-</ul>
-<h3 id="4-database-connection-strings">4. Database connection strings<a class="headerlink" href="#4-database-connection-strings" title="Permanent link">&para;</a></h3>
-<details class="warning" open="open">
-<summary>Warning - Using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with AWS RDS</summary>
-<p><strong>Postgres 14</strong></p>
-<p>By default, AWS pre-selects Postgres 14. This tutorial uses the connection string setting of <code>no-verify</code> for ease of setup. To fully configure SSL, follow the links below. <strong>For production, it is recommended to use a SSL connection.</strong></p>
-<p>Find more information at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a> and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html">Updating applications to connect to PostgreSQL DB instances using new SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates</a>.</p>
-<p><strong>Postgres 15</strong></p>
-<p>Alternatively, if Postgres 15 is preferred and selected, the <code>sslmode</code> in the connection strings <strong>must</strong> be updated from <code>no-verify</code>/<code>disable</code> to <code>require</code> for the services to be able to connect to the database.  No other work is required for a test environment.</p>
-<p><strong>Note:</strong> For a fully secured, certificate-based SSL connection, the following steps must be taken in <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a>.  It will also require updating <code>sslmode</code> to <code>verify-full</code> or <code>verify-ca</code>.  <strong>For production, it is highly recommended.</strong></p>
-</details>
+<h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Configure the database connection strings used by <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router.  </p>
-<p>Where:</p>
+<p>Open the <code>secrets.yaml</code> file in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+<details class="note">
+<summary>Note - Additional Information about Secrets Created</summary>
+<table>
+<thead>
+<tr>
+<th>Secret Name</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mpsweb</td>
+<td>Provides credentials used for requesting a JWT. These credentials are also used for logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>rps</td>
+<td><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>mps</td>
+<td><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>mpsrouter</td>
+<td><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database connection string.</td>
+</tr>
+<tr>
+<td>open-amt-admin-jwt</td>
+<td>Provides secret used for generating and verifying JWTs for authentication.</td>
+</tr>
+<tr>
+<td>open-amt-admin-acl</td>
+<td>Configures KONG with an Access Control List (ACL) to allow an admin user <code>open-amt-admin</code> to access endpoints using the JWT retrieved when logging in.</td>
+</tr>
+<tr>
+<td>vault</td>
+<td>Vault root token for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> access to Vault secret store.</td>
+</tr>
+</tbody>
+</table>
+</details>
+</li>
+<li>
+<p>Replace the following placeholders.</p>
+<details class="warning" open="open">
+<summary>Warning - Using SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> with AWS RDS</summary>
+<p>By default, this tutorial uses the connection string setting of <code>no-verify</code> for ease of setup. To fully configure SSL, follow the links below. <strong>For production, it is recommended to use a SSL connection.</strong></p>
+<p>Find more information at <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html">Using SSL with a PostgreSQL DB instance</a> and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/ssl-certificate-rotation-postgresql.html">Updating applications to connect to PostgreSQL DB instances using new SSL/<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificates</a>.</p>
+<p>Once setup, the SSL mode in the connection strings should be set to either <code>verify-full</code> or <code>verify-ca</code>.</p>
+</details>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Lines</th>
+<th>Required</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;WEBUI-USERNAME&gt;</td>
+<td>7</td>
+<td>Username of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>&lt;WEBUI-PASSWORD&gt;</td>
+<td>8</td>
+<td><strong>Strong</strong> password of your choice</td>
+<td>For logging into the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-USERNAME&gt;</td>
+<td>16, 24, 32</td>
+<td>Database username chosen in <a href="#create-postgres-db-in-rds">Create Postgres DB in RDS</a></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-PASSWORD&gt;</td>
+<td>16, 24, 32</td>
+<td>Database password chosen in <a href="#create-postgres-db-in-rds">Create Postgres DB in RDS</a></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;DATABASE-SERVER-URL&gt;</td>
+<td>16, 24, 32</td>
+<td><strong>Server URL Format:</strong> <code>database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com</code></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;SSL-MODE&gt;</td>
+<td>16, 24<br><br> 32</td>
+<td>Lines 16 and 24: Set to <code>no-verify</code><br><br>Line 32: Set to <code>disable</code></td>
+<td>Credentials for the services to connect to the database.</td>
+</tr>
+<tr>
+<td>&lt;YOUR-SECRET&gt;</td>
+<td>45</td>
+<td>A strong secret of your choice (Example: A unique, random 256-bit string).</td>
+<td>Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. <a href="https://jwt.io/introduction" target="_blank">Learn more about JWT</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important - Using Strong Passwords</p>
+<p>The <strong>&lt;WEBUI-PASSWORD&gt;</strong> must meet standard, <strong>strong</strong> password requirements:</p>
 <ul>
-<li><strong>&lt;USERNAME&gt;</strong> is the username for the Postgres database.</li>
-<li><strong>&lt;PASSWORD&gt;</strong> is the password for the Postgres database.</li>
-<li><strong>&lt;SERVERURL&gt;</strong> is the url for the AWS-hosted Postgres database (Ex: <code>database-1.jotd7t2abapq.us-west-2.rds.amazonaws.com</code>).</li>
+<li>
+<p>8 to 32 characters</p>
+</li>
+<li>
+<p>One uppercase, one lowercase, one numerical digit, one special character</p>
+</li>
 </ul>
-</li>
-<li>
-<p>Create <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection string secret.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Postgres 14</label><label for="__tabbed_2_2">Postgres 15</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=no-verify
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic rps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/rpsdb?sslmode=require
-</code></pre></div>
-</div>
-</div>
 </div>
 </li>
 <li>
-<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router connection string secret.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Postgres 14</label><label for="__tabbed_3_2">Postgres 15</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=disable
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
-</div>
-</div>
-</div>
+<p>Save the file.</p>
 </li>
 <li>
-<p>Create <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection string secret.   </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Postgres 14</label><label for="__tabbed_4_2">Postgres 15</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=no-verify
+<p>Apply the configuration file to create the secrets.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>kubectl create secret generic mps --from-literal=connectionString=postgresql://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;SERVERURL&gt;:5432/mpsdb?sslmode=require
-</code></pre></div>
-</div>
-</div>
-</div>
 </li>
 </ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
@@ -4374,7 +4291,7 @@ mapUsers: |
 </span></code></pre></div>
 </li>
 <li>
-<p>Save and close the file.</p>
+<p>Save the file.</p>
 </li>
 </ol>
 <h2 id="deploy-open-amt-cloud-toolkit-using-helm">Deploy <abbr title="Open Active Management Technology Cloud Toolkit - open source modular microservices and libraries for integration of Intel® Active Management Technology.">Open AMT Cloud Toolkit</abbr> using Helm<a class="headerlink" href="#deploy-open-amt-cloud-toolkit-using-helm" title="Permanent link">&para;</a></h2>
@@ -4391,6 +4308,23 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>openamtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
+<span class="hll">mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+</span>mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
+openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
+<span class="hll">openamtstack-vault-0                                 0/1     Running                      0          2m6s
+</span>openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+<span class="hll">rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
+</span>webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
 </code></pre></div>
 </div>
 </li>
@@ -4414,31 +4348,34 @@ TEST SUITE: None
 <p>After initializing and unsealing the vault, you need to enable the Key Value engine.</p>
 </li>
 <li>
+<p>On the left-hand side menu, select <strong>Secrets engines</strong>.</p>
+</li>
+<li>
 <p>Click <strong>Enable New Engine +</strong>.</p>
 </li>
 <li>
 <p>Choose <strong>KV</strong>.</p>
 </li>
 <li>
-<p>Click <strong>Next</strong>.</p>
-</li>
-<li>
-<p>Leave the default path and choose <strong>version 2</strong> from the drop down. </p>
-</li>
-<li>
 <p>Click <strong>Enable Engine</strong>.</p>
 </li>
 </ol>
 <h3 id="vault-token-secret">Vault Token Secret<a class="headerlink" href="#vault-token-secret" title="Permanent link">&para;</a></h3>
+<p>Add the root token as a secret to the <abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr> cluster so that the services can access Vault.</p>
 <ol>
 <li>
-<p>Add the root token as a secret to the EKS cluster so that the services can access Vault.</p>
-<div class="highlight"><pre><span></span><code>kubectl create secret generic vault --from-literal=vaultKey=&lt;your-root-token&gt;
+<p>Open the <code>secrets.yaml</code> file again in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+</li>
+<li>
+<p>Replace <code>&lt;VAULT-ROOT-TOKEN&gt;</code> in the <code>vaultKey:</code> field (line 66) with the actual Vault root token.</p>
+</li>
+<li>
+<p>Save the file.</p>
+</li>
+<li>
+<p>Update the Kubernetes <code>vault</code> secret.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
 </code></pre></div>
-<p>Where:</p>
-<ul>
-<li><strong>&lt;your-root-token&gt;</strong> is your <code>root_token</code> generated by Vault.</li>
-</ul>
 </li>
 </ol>
 <h3 id="update-commonname-in-valuesyml">Update commonName in values.yml<a class="headerlink" href="#update-commonname-in-valuesyml" title="Permanent link">&para;</a></h3>
