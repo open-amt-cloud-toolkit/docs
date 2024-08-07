@@ -92,7 +92,7 @@ nav:
       - Overview: Tutorials/Scaling/overview.md
       - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
       - Kubernetes Deployments:
-        - Kubernetes (K8s): Tutorials/Scaling/Kubernetes/deployingk8s.md
+        - Kubernetes (K8S): Tutorials/Scaling/Kubernetes/deployingk8s.md
         - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
         - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
         - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md

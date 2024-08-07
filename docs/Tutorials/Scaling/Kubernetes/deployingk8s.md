@@ -13,83 +13,76 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
         If deploying on a Linux machine, Docker Desktop is not available. You must use Docker Engine alongside a local Kubernetes cluster tool such as [minikube](https://minikube.sigs.k8s.io/docs/) or [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Helm CLI (v3.5+)](https://helm.sh/)
+- [Helm CLI)](https://helm.sh/)
 - PostgreSQL Docker Container or [Local PostgreSQL server](https://www.postgresql.org/download/)
 
-    !!!note "Note - Database Required"
+    !!! note "Note - Database Requirement and Setup Steps"
+        
         This guide requires a standalone database for storage. This can be done either as a Docker container or as a local Postgres server on your local IP. For production, a managed database instance, either by a cloud service provider or your enterprise IT, is highly recommended.
+  
+        ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
+    
+            ### Build and Start
+    
+            1. Clone the Open AMT Cloud Toolkit.
 
+                ```
+                git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+                ```
     
-    ??? note "Optional - How to Set up local PostgreSQL DB using Docker"
-    
-        ### Build and Start
-    
-        1. Clone the Open AMT Cloud Toolkit.
+            2. Copy the `.env.template` file to `.env`.
 
-            ```
-            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
-            ```
-    
-        2. Copy the `.env.template` file to `.env`.
-
-            === "Windows (Cmd Prompt)"
                 ```
                 copy .env.template .env
                 ```
 
-            === "Linux/Powershell"
+            3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
+
+            4. Build and start the container.
+
                 ```
-                cp .env.template .env
+                docker compose  -f "docker-compose.yml" up -d db
                 ```
 
-        3. Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.
+            5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
 
-        4. Build and start the container.
-
-            ```
-            docker compose  -f "docker-compose.yml" up -d db
-            ```
-
-        5. Continue from [Create Kubernetes Secrets](#create-kubernetes-secrets).
-
-
-    ??? note "Optional (Not Recommended) - How to Set up Local PostgreSQL server on local IP Address"
+        ??? note "Optional (Not Recommended) - How to Set up Local PostgreSQL server on local IP Address"
     
-        ### Download and Configure
+            ### Download and Configure
     
-        1. [Download and Install PostgreSQL](https://www.postgresql.org/download/). You may have to add `.\bin` and `.\lib` to your PATH on Windows.
+            1. [Download and Install PostgreSQL](https://www.postgresql.org/download/). You may have to add `.\bin` and `.\lib` to your PATH on Windows.
     
-        2. Open the `pg_hba.conf` file under `.\PostgreSQL\14\data`.
+            2. Open the `pg_hba.conf` file under `.\PostgreSQL\14\data`.
     
-        3. Add your device's IP Address under **IPv4 local connections**.
+            3. Add your device's IP Address under **IPv4 local connections**.
     
-            ???+ example "Example - pg_hba.conf File"
+                ???+ example "Example - pg_hba.conf File"
     
-                ``` hl_lines="7"
+                    ``` hl_lines="7"
     
-                # TYPE  DATABASE        USER            ADDRESS                 METHOD
+                    # TYPE  DATABASE        USER            ADDRESS                 METHOD
     
-                # "local" is for Unix domain socket connections only
-                local   all             all                                             scram-sha-256
-                # IPv4 local connections:
-                host    all             all             127.0.0.1/32                    scram-sha-256
-                host    all             all             <Your-IP-Address>/24            scram-sha-256
-                # IPv6 local connections:
-                host    all             all             ::1/128                         scram-sha-256
-                # Allow replication connections from localhost, by a user with the
-                # replication privilege.
-                local   replication     all                                             scram-sha-256
-                host    replication     all             127.0.0.1/32                    scram-sha-256
-                host    replication     all             ::1/128                         scram-sha-256
+                    # "local" is for Unix domain socket connections only
+                    local   all             all                                             scram-sha-256
+                    # IPv4 local connections:
+                    host    all             all             127.0.0.1/32                    scram-sha-256
+                    host    all             all             <Your-IP-Address>/24            scram-sha-256
+                    # IPv6 local connections:
+                    host    all             all             ::1/128                         scram-sha-256
+                    # Allow replication connections from localhost, by a user with the
+                    # replication privilege.
+                    local   replication     all                                             scram-sha-256
+                    host    replication     all             127.0.0.1/32                    scram-sha-256
+                    host    replication     all             ::1/128                         scram-sha-256
+                    ```
+    
+            4. Reload the configuration file to use the updated values.
+    
+                ```
+                psql -U <user> -p 5432 -c "SELECT pg_reload_conf();"
                 ```
     
-        4. Reload the configuration file to use the updated values.
-    
-            ```
-            psql -U <user> -p 5432 -c "SELECT pg_reload_conf();"
-            ```
-    
-        5. **From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **
+            5. **From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **
 
 ## Get the Toolkit
 
@@ -102,75 +95,48 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ## Create Kubernetes Secrets 
 
-### 1. MPS/KONG JWT
+1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
 
-This is the secret used for generating and verifying JWTs.
+    ??? note "Note - Additional Information about Secrets Created"
 
-```
-kubectl create secret generic open-amt-admin-jwt --from-literal=kongCredType=jwt --from-literal=key="admin-issuer" --from-literal=algorithm=HS256 --from-literal=secret="<your-secret>"
-```
+        | Secret Name        | Usage                                                                      |
+        | ------------------ | -------------------------------------------------------------------------- |
+        | mpsweb             | Provides credentials used for requesting a JWT. These credentials are also used for logging into the Sample Web UI. |
+        | rps                | RPS database connection string.                                            |
+        | mps                | MPS database connection string.                                            |
+        | mpsrouter          | MPS database connection string.                                            |
+        | open-amt-admin-jwt | Provides secret used for generating and verifying JWTs for authentication. |
+        | open-amt-admin-acl | Configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in. |
+        | vault              | Vault root token for MPS and RPS access to Vault secret store.             |
 
-Where:
-
-- **&lt;your-secret&gt;** is your chosen strong secret.
-
-### 2. KONG ACL for JWT
-
-This configures KONG with an Access Control List (ACL) to allow an admin user `open-amt-admin` to access endpoints using the JWT retrieved when logging in.
-
-```
-kubectl create secret generic open-amt-admin-acl --from-literal=kongCredType=acl --from-literal=group=open-amt-admin
-```
-
-### 3. MPS Web Username and Password
-
-This is the username and password that is used for requesting a JWT. These credentials are also used for logging into the Sample Web UI.
-
-```
-kubectl create secret generic mpsweb --from-literal=user=<your-username> --from-literal=password=<your-password>
-```
-
-Where:
-
-- **&lt;your-username&gt;** is a username of your choice.
-- **&lt;your-password&gt;** is a strong password of your choice.
-
-    !!! important "Important - Using Strong Passwords"
-        The password must meet standard, **strong** password requirements:
-
-        - 8 to 32 characters
-        - One uppercase, one lowercase, one numerical digit, one special character
-
-### 4. Database connection strings
-
-1. Configure the database connection strings used by MPS, RPS, and MPS Router.  
-
-
-    Where:
-
-    - **&lt;USERNAME&gt;** is the username for the Postgres database.
-    - **&lt;PASSWORD&gt;** is the password for the Postgres database.
-    - **&lt;SERVERURL&gt;** is the loction for the Postgres database.
+2. Replace the following placeholders.
 
     !!! warning "Warning - Using an SSL Connection"
         This tutorial uses the connection string setting of 'disable' for ease of setup. **For production, it is recommended to use a SSL connection.**
 
-2. Create RPS connection string secret.
+    | Placeholder                 | Lines      | Required                           | Usage                               |
+    | --------------------------- | ---------- | ---------------------------------- | ----------------------------------- |
+    | &lt;WEBUI-USERNAME&gt;      | 7          | Username of your choice            | For logging into the Sample Web UI. |
+    | &lt;WEBUI-PASSWORD&gt;      | 8          | **Strong** password of your choice | For logging into the Sample Web UI. |
+    | &lt;DATABASE-USERNAME&gt;   | 16, 24, 32 | Database username | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-PASSWORD&gt;   | 16, 24, 32 | Database password | Credentials for the services to connect to the database.  |
+    | &lt;DATABASE-SERVER-URL&gt; | 16, 24, 32 | Database server   | Credentials for the services to connect to the database.  |
+    | &lt;SSL-MODE&gt;            | 16, 24, 32 | Set to `disable`  | Credentials for the services to connect to the database.  |
+    | &lt;YOUR-SECRET&gt;         | 45         | A strong secret of your choice (Example: A unique, random 256-bit string).    | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
+
+    !!! important "Important - Using Strong Passwords"
+        The **&lt;WEBUI-PASSWORD&gt;** must meet standard, **strong** password requirements:
+
+        - 8 to 32 characters
+
+        - One uppercase, one lowercase, one numerical digit, one special character
+
+3. Save the file.
+
+4. Apply the configuration file to create the secrets.
 
     ```
-    kubectl create secret generic rps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/rpsdb?sslmode=disable
-    ```
-
-3. Create MPS Router connection string secret.
-
-    ```
-    kubectl create secret generic mpsrouter --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
-    ```
-
-4. Create MPS connection string secret.   
-
-    ```
-    kubectl create secret generic mps --from-literal=connectionString=postgresql://<USERNAME>:<PASSWORD>@<SERVERURL>:5432/mpsdb?sslmode=disable
+    kubectl apply -f ./kubernetes/charts/secrets.yaml
     ```
 
 ## Update Configuration
@@ -191,7 +157,7 @@ Where:
 
 3. Save and close the file.
 
-## Create Databases and Schema 
+## Create Databases 
 
 1. Use the database schema files to initialize the hosted Postgres DB in the following steps.
 
@@ -200,22 +166,10 @@ Where:
     - **&lt;SERVERURL&gt;** is the location of the Postgres database.
     - **&lt;USERNAME&gt;** is the username for the Postgres database.
 
-2. Create the RPS database.
+2. Create the MPS and RPS database and tables. Provide the database password when prompted.
 
     ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -c "CREATE DATABASE rpsdb"
-    ```
-
-3. Create tables for the new 'rpsdb'.
-
-    ```
-    psql -h <SERVERURL> -p 5432 -d rpsdb -U <USERNAME> -W -f ./data/init.sql
-    ```
-
-4. Create the MPS database.
-
-    ```
-    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/initMPS.sql
+    psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
 ## Deploy Open AMT Cloud Toolkit Using Helm
@@ -235,13 +189,14 @@ Where:
         TEST SUITE: None
         ```
 
-3. View the pods. You might notice `openamtstack-vault-0` is not ready. This will change after we initialize and unseal Vault. MPS and RPS will both have a status of CreateContainerConfigError until Vault is Ready.
+2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+
     ```
     kubectl get pods
     ```
 
     !!! success
-        ``` hl_lines="5"
+        ``` hl_lines="2 5 7"
         NAME                                                 READY   STATUS                       RESTARTS   AGE
         mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
         mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
@@ -273,27 +228,31 @@ Where:
 
 3. After initializing and unsealing the vault, you need to enable the Key Value engine.
 
-4. Click **Enable New Engine +**.
+4. On the left-hand side menu, select **Secrets engines**.
 
-5. Choose **KV**.
+5. Click **Enable New Engine +**.
 
-6. Click **Next**.
+6. Choose **KV**.
 
 7. Click **Enable Engine**.
   
 ### Vault Token Secret
 
-1. Add the root token as a secret to the k8s cluster so that the services can access Vault.
+Add the root token as a secret to the cluster so that the services can access Vault.
+
+1. Open the `secrets.yaml` file again in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+
+2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
+
+3. Save the file.
+
+4. Update the Kubernetes `vault` secret.
 
     ```
-    kubectl create secret generic vault --from-literal=vaultKey=<your-root-token>
+    kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
     ```
 
-    Where:
-
-    - **&lt;your-root-token&gt;** is your `root_token` generated by Vault.
-
-2. View the pods. All pods should now be Ready and Running.
+5. View the pods. All pods should now be Ready and Running.
     ```
     kubectl get pods
     ```
