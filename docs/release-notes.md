@@ -8,7 +8,7 @@
 
 !!! note "Note From the Team"
     
-    With the **Beta** release of Console right around the corner, we are heads down on validation and critical bug fixes. This release, while light, has some nice quality of life updates as well as some key requested bugfixes while we put most of our focus into Console. Check out the video above for a quick demo on how Intel AMT could have been used to solve the infamous CrowdStrike bug (or other BSOD issues) from July.
+    With the **Beta** release of Console right around the corner, we are heads down on validation and critical bug fixes. This release, while light, has some nice quality of life updates as well as some key requested bugfixes while we put most of our focus into Console. Check out the video above for a quick demo on how Intel AMT could have been used to solve the infamous BSOD issues from July using Console.
 
     **A big thanks to everyone this month for the community engagement and the submitted pull requests!**
 
