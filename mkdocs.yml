@@ -88,6 +88,9 @@ nav:
     - IDE-Redirection (IDER): Tutorials/ideRedirection.md
     - Wireless Activation: Tutorials/createWiFiConfig.md
     - Modify User Authentication: Tutorials/modifyUserAuth.md
+    - Localization:
+        - Console: Tutorials/Localization/consoleLocalization.md
+        - Sample Web UI: Tutorials/Localization/webuiLocalization.md
     - Scaling Tutorials:
       - Overview: Tutorials/Scaling/overview.md
       - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
@@ -140,11 +143,11 @@ nav:
       - RPC CLI: Reference/RPC/commandsRPC.md
       - RPC Library: Reference/RPC/libraryRPC.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
-    - UI Toolkit:
-      - Controls:
+    - UI Toolkit React:
+      - React Controls:
         - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md
         - Serial Over LAN: Reference/UIToolkit/Controls/serialOverLANControl.md
-      - Localization: Reference/UIToolkit/localization.md
+      - React Localization: Reference/UIToolkit/reactLocalization.md
       - React Bundles:
         - Keyboard, Video, Mouse: Reference/UIToolkit/Bundles/kvmReact.md
         - Serial Over LAN: Reference/UIToolkit/Bundles/serialOverLANReact.md
@@ -219,6 +222,7 @@ extra:
     rpsAPI: 2.22.0
     oamtct: 2.25.0
     rpc_go: 2.37.0
+    webui: 3.15.0
     rpc_c: 2.0.0
     ui_toolkit: 3.2.8
     ui_toolkit_react: 3.2.8
