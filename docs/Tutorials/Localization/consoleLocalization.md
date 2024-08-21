@@ -131,7 +131,7 @@ Now that the strings are translated and the deployment configurations are update
         go build -o console_linux_x64 ./cmd/app/main.go
         ```
 
-5. Open the executable/binary.
+5. Run the executable.
 
     !!! example "Example - Console Home Page"
         <figure class="figure-image">

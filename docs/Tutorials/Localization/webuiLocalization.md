@@ -80,7 +80,7 @@ Now that we have a translated `.xlf` file, we can modify the Sample Web UI confi
 
 3. Add `localize:` field to the `build:` section.
 
-    !!! note "Note - Using `localize:`" on Angular Development Server
+    !!! note "Note - Using `localize:` on Angular Development Server"
         `localize: true` will build application variants for all locales defined in the build configuration. This is ideal for production. If you want to build and serve on the Angular development server for testing, this will cause errors. Angular development server can only support localizing a single locale at a time.
 
         To build only one locale, see [Apply specific build options for just one locale](https://angular.dev/guide/i18n/merge#apply-specific-build-options-for-just-one-locale) Angular Documentation.
