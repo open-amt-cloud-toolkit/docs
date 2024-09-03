@@ -12,7 +12,7 @@ NoSQL support is integrated using the MongoDB API. This does not just limit inte
 
 ## MongoDB Docker Deployment
 
-The below steps will show how to modify the basic [Open AMT Getting Started Docker deployment](../../GetStarted/setup.md) to integrate MongoDB for MPS to store and reference device data.
+The below steps will show how to modify the basic [Open AMT Getting Started Docker deployment](../../GetStarted/Cloud/setup.md) to integrate MongoDB for MPS to store and reference device data.
 
 1. Stop any running containers. This will wipe all data and devices will have to be reprovisioned against the new RPS/MPS servers.
 
