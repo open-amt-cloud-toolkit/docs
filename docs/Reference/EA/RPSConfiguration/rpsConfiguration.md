@@ -9,7 +9,7 @@ RPS will handle communication with Enterprise Assistant (EA). Desired configurat
 ### Software
 
 - [Enterprise Assistant](../overview.md)
-- Open AMT Local or Cloud Deployment running. [See Get Started for a basic deployment option.](../../../GetStarted/prerequisites.md)
+- Open AMT Local or Cloud Deployment running. [See Get Started for a basic deployment option.](../../../GetStarted/Cloud/prerequisites.md)
 
 ### Services
 

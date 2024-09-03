@@ -7,7 +7,7 @@ Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit micro
   <figcaption>Figure 1: Deploy Open AMT Cloud Toolkit</figcaption>
 </figure>
 
-Figure 1 illustrates the high-level steps for basic deployment: 
+## Figure 1 Flow
 
 1. **Deploy Microservices** - Install the microservices on a development system as Docker* containers, which can run locally or on the cloud.
 2. **Deploy RPC Architecture** - Transfer the lightweight clients to managed devices.
@@ -16,6 +16,13 @@ Figure 1 illustrates the high-level steps for basic deployment:
 5. **Issue AMT Command** - Send power commands (e.g., power off) through the MPS.
 6. **Add AMT functionality** - Explore the additional functionality provided by Open AMT Cloud Toolkit to develop your own web console or application.
 
+## Figure 1 Component Summary
+
+1. **MPS** - A microservice that uses an Intel vPro® Platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (KVM) control.
+2. **RPS** - A microservice that activates Intel® AMT platforms using predefined profiles and connects them to the MPS for manageability use cases.
+3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
+4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
+5. **Sample Web UI** - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
 
 ## Out-of-band Management (OOB Management)
 
@@ -89,11 +96,11 @@ Intel® AMT enables remote management of a device, even when the OS isn't runnin
 
 There are five levels of passwords: 
 
-1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password: MEBX Password - ** Use this password to secure the local Intel® MEBX menu. This password is only used when physically accessing the managed device during system boot. Access the menu with Ctrl-P on most devices.
-2. **Sample Web UI Password: MPS_WEB_ADMIN_PASSWORD - ** Use this password when logging into the Sample Web UI. The Sample Web UI Password uses this default MPS user authentication credential when it triggers MPS to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. 
-3. **ACM & CCM Profiles: AMT Password - ** RPS uses this password to activate and configure Intel® AMT. When MPS requests an action of a managed device, such as a power action, it uses this password. Intel® AMT verifies this password when it gets a command from the MPS server.
-4. **Provisioning Certificate Password - **  The AMT Provisioning certificate is a special certificate used by Intel® AMT devices to establish trust with the configuration service when activating in Admin Control Mode. RPS requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform ACM activation. 
-5. **MPS CIRA Credential: MPS_USER and MPS_PASSWORD - ** This CIRA credential is used by Intel® AMT managed devices to authenticate the MPS when establishing the CIRA connection. 
+1. **Intel® Manageability Engine BIOS Extensions (MEBX) Password: MEBX Password -** Use this password to secure the local Intel® MEBX menu. This password is only used when physically accessing the managed device during system boot. Access the menu with Ctrl-P on most devices.
+2. **Sample Web UI Password: MPS_WEB_ADMIN_PASSWORD -** Use this password when logging into the Sample Web UI. The Sample Web UI Password uses this default MPS user authentication credential when it triggers MPS to issue a JWT (JSON Web Token). In most production environments, this default credential is replaced by a more rigorous authentication protocol. Examples include OAuth2, OpenID, or an authentication service that can issue an Auth Token to be validated by the API gateway. 
+3. **ACM & CCM Profiles: AMT Password -** RPS uses this password to activate and configure Intel® AMT. When MPS requests an action of a managed device, such as a power action, it uses this password. Intel® AMT verifies this password when it gets a command from the MPS server.
+4. **Provisioning Certificate Password -**  The AMT Provisioning certificate is a special certificate used by Intel® AMT devices to establish trust with the configuration service when activating in Admin Control Mode. RPS requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform ACM activation. 
+5. **MPS CIRA Credential: MPS_USER and MPS_PASSWORD -** This CIRA credential is used by Intel® AMT managed devices to authenticate the MPS when establishing the CIRA connection. 
 
 Multiple passwords enhance the security of Open AMT Cloud Toolkit.
 

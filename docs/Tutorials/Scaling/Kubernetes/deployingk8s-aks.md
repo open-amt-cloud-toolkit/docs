@@ -281,5 +281,5 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 
 ## Next Steps
 
-Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../../GetStarted/loginToUI.md)
+Visit the Sample Web UI using the FQDN name and [**Continue from the Get Started steps**](../../../GetStarted/Cloud/loginToUI.md)
 

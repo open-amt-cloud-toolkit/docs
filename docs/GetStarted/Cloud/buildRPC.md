@@ -3,7 +3,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/z9Ia317L0Kk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../../Reference/RPC/commandsRPC">RPC Commands and Flags</a></figcaption>
+  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../../../Reference/RPC/commandsRPC">RPC Commands and Flags</a></figcaption>
 </div>
 
 !!! important "Important - Production Environment"
@@ -11,12 +11,12 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 
 <figure class="figure-image">
-<img width="800" height="450" src="..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img width="800" height="450" src="..\..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC configuration</figcaption>
 </figure>
 
 !!! note "Figure 1 Details"
-    The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../GetStarted/createCIRAConfig.md) or [Create an AMT Profile](../GetStarted/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
+    The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](createCIRAConfig.md) or [Create an AMT Profile](createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
 
 ##  Get RPC
 
@@ -42,7 +42,7 @@ After downloading, continue on to [Run RPC to Activate, Configure, and Connect t
 Alternatively, the RPC-Go binaries can be manually built using Go for development purposes or personal preference.
 
 ??? tip "Flexible Deployment - RPC as a Library"  
-    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../Reference/RPC/libraryRPC.md).
+    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/libraryRPC.md).
 
 If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. 
 
@@ -128,17 +128,17 @@ If you are building an executable on a development system, you will copy the exe
         ```
 
     ??? note "Note - Other RPC Flags and Commands"
-        See more about the [flags used here and the other available commands of RPC-Go](../Reference/RPC/commandsRPC.md).
+        See more about the [flags used here and the other available commands of RPC-Go](../../Reference/RPC/commandsRPC.md).
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPC_Success.png" alt="Figure 2: Example output after configuration">
+        <img src="..\..\..\assets\images\RPC_Success.png" alt="Figure 2: Example output after configuration">
         <figcaption>Figure 2: Example output after configuration</figcaption>
         </figure>
 
     !!! error "Troubleshooting"
-        Run into an issue? Try these [troubleshooting steps](../Reference/troubleshooting.md).
+        Run into an issue? Try these [troubleshooting steps](../../Reference/troubleshooting.md).
          
 
 ## Next up
-**[Manage AMT Device](../GetStarted/manageDevice.md)**
+**[Manage AMT Device](manageDevice.md)**

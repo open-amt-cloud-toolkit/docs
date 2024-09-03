@@ -46,7 +46,7 @@ On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Re
         !!! Important "Important - Intel AMT and using CAs"
             For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
 
-            Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Certificates/generateProvisioningCert.md) for additional details.
+            Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
         
         <br>
 
@@ -61,7 +61,7 @@ On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Re
 
         **To set the DNS suffix:**
 
-        - Manually set it using MEBX on the managed device. [See MEBX Documentation](../../MEBX/dnsSuffix.md).
+        - Manually set it using MEBX on the managed device. [See MEBX Documentation](../../Reference/MEBX/dnsSuffix.md).
 
         - Alternately, change the DHCP Option 15 to the DNS suffix within the Router settings.
 
@@ -78,7 +78,7 @@ On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Re
             ```
 
             !!! Note "Note - Using Config File and/or SMB Share"
-                If you do not want to provide the base64 string of the provisioning certificate on the command line, a config file and/or SMB share can be used as a more secure method. See the [Local Activation RPC CLI Documentation](../../RPC/commandsRPC.md#activate-the-device-locally).
+                If you do not want to provide the base64 string of the provisioning certificate on the command line, a config file and/or SMB share can be used as a more secure method. See the [Local Activation RPC CLI Documentation](../../Reference/RPC/commandsRPC.md#activate-the-device-locally).
 
             !!! success
                 ```
@@ -146,7 +146,7 @@ AMT can be configured for both wired and wireless networks. **Intel AMT does not
 
     2. Fill in fields with desired options and secrets. If the secrets are **not** provided (e.g. secret field is an empty string or not given), the secrets will be prompted for as user input in the command line.
 
-        Alternatively, secrets can be stored and referenced in a separate file. See the [RPC-Go Configure Wireless documentation](../../RPC/commandsRPC.md#wireless).
+        Alternatively, secrets can be stored and referenced in a separate file. See the [RPC-Go Configure Wireless documentation](../../Reference/RPC/commandsRPC.md#wireless).
 
     3. Save the file.
 
@@ -162,4 +162,4 @@ After the device has been activated and the network configured, the device can n
 
 ## Next up
 
-[**Add a Device**](../GetStarted/addDevice.md)
+[**Add a Device**](addDevice.md)

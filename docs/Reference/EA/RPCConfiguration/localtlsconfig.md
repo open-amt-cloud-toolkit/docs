@@ -29,7 +29,7 @@ The following steps highlight how to:
 The following are requirements to configure and connect an AMT device using TLS.
 
 - [Enterprise Assistant configured for RPC-Go](rpcgoConfiguration.md)
-- [RPC-Go](../../../GetStarted/buildRPC.md)
+- [RPC-Go](../../../GetStarted/Cloud/buildRPC.md)
 - Management Tool supporting TLS (ex: [Meshcommander](https://www.meshcommander.com/meshcommander))
 
     This is not required for configuration and therefore not needed for this guide. However, a management tool will be needed if you want to manage the device post-configuration.

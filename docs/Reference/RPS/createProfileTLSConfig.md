@@ -81,5 +81,5 @@ In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Acc
         </figure>
 
 ## Next up
-**[Build & Run RPC](../../GetStarted/buildRPC.md)**
+**[Build & Run RPC](../../GetStarted/Cloud/buildRPC.md)**
 

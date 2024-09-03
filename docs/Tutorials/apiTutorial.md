@@ -14,7 +14,7 @@ Figure 1 illustrates the flow of the tutorial below.
 Consult the API documentation for the MPS APIs (Steps A and C). Use the generated JWT, the return value from the Authorize method in Step B, with any of the MPS REST API methods that require a BearerAuth, an HTTP security scheme that provides access to the bearer of a token. The GetDevices method accepts the JWT as an authentication and returns a list of devices and associated data.
 
 !!! important
-    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../GetStarted/prerequisites.md)** to install microservices locally with Docker*.
+    Successfully deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) and connect an Intel® vPro device to MPS before constructing the API call. Start [here](../GetStarted/Cloud/prerequisites.md)** to install microservices locally with Docker*.
 
 ## What You'll Need
 

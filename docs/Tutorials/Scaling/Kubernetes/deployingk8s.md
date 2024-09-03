@@ -271,4 +271,4 @@ Add the root token as a secret to the cluster so that the services can access Va
 
 ## Next Steps
 
-[**Continue from the Get Started steps**](../../../GetStarted/loginToUI.md)
+[**Continue from the Get Started steps**](../../../GetStarted/Cloud/loginToUI.md)

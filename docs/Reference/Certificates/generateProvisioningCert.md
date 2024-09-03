@@ -137,7 +137,7 @@ First, we need to prepare two files:
 
 1. Open the Sample Web UI and Login.
 
-2. Create a domain profile. Upload the `.pfx` file and enter the password set for it. See [Create a Domain Profile](../../GetStarted/createProfileACM.md#create-a-domain-profile) for more details. 
+2. Create a domain profile. Upload the `.pfx` file and enter the password set for it. See [Create a Domain Profile](../../GetStarted/Cloud/createProfileACM.md#create-a-domain-profile) for more details. 
 
 ### Insert the Hash using MEBx
 
@@ -166,7 +166,7 @@ First, we need to prepare two files:
 
 8. Set the **PKI DNS suffix** to `example.com`.
     
-    Or, if using a different DNS suffix, set it to that instead. See [DNS Suffix](../../GetStarted/createProfileACM.md#dns-suffix) for more details.
+    Or, if using a different DNS suffix, set it to that instead. See [DNS Suffix](../../GetStarted/Cloud/createProfileACM.md#dns-suffix) for more details.
 
 9. Select **Manage Hashes**.
     
@@ -208,7 +208,7 @@ First, we need to prepare two files:
         <figcaption>Figure 4: Hash Output</figcaption>
         </figure>
 
-3. Activate the AMT device with an ACM Profile. See [Create a Profile with ACM](../../GetStarted/createProfileACM.md#create-a-profile) and [Build & Run RPC](../../GetStarted/buildRPC.md#run-rpc-to-activate-and-connect-the-amt-device) for more details.
+3. Activate the AMT device with an ACM Profile. See [Create a Profile with ACM](../../GetStarted/Cloud/createProfileACM.md#create-a-profile) and [Build & Run RPC](../../GetStarted/Cloud/buildRPC.md#run-rpc-to-activate-and-connect-the-amt-device) for more details.
 
     ??? warning "Troubleshoot - Error During Activation"
     

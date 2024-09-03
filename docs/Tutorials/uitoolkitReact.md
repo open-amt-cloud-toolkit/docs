@@ -26,7 +26,7 @@ The tutorial outlines how to add various controls to the sample React web applic
 - Intel&reg; vPro device, configured and connected to MPS
 
     !!! Note
-        For instructions to setup the MPS and RPS servers to connect a managed device, see the [Get Started Guide](../GetStarted/prerequisites.md)
+        For instructions to setup the MPS and RPS servers to connect a managed device, see the [Get Started Guide](../GetStarted/Cloud/prerequisites.md)
 
 - The **development system** requires the following software:
     - [git](https://git-scm.com/)

@@ -34,7 +34,7 @@ A minimum network configuration must include:
 - An `.iso` File ([netboot.xyz](https://netboot.xyz/downloads/#x86_64-combined-legacy-and-uefi-ipxe-bootloaders) is used in this guide as a demonstration. Custom images can be used.)
 
     !!! Note
-        For instructions to setup the MPS and RPS servers to connect a managed device, see the [Get Started Guide](../GetStarted/prerequisites.md)
+        For instructions to setup the MPS and RPS servers to connect a managed device, see the [Get Started Guide](../GetStarted/Cloud/prerequisites.md)
   
 ## What You'll Do
 The following sections describe how to:
