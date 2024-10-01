@@ -112,6 +112,7 @@ nav:
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
     - Console (Alpha):
       - Overview: Reference/Console/overview.md
+      - Security Information: Reference/Console/securityConsole.md
       - Get Started: 
         - Download and Run: Reference/Console/GetStarted/setup.md
         - Activate a Device: Reference/Console/GetStarted/activateDevice.md
