@@ -47,6 +47,37 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
     ```
     rpc activate -local -ccm -password NewAMTPassword
     ```
+
+=== "CCM w/ Config File"
+    Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#addwifisettings) information.
+
+    === "YAML"
+        ```yaml title="config.yaml"
+        ccmactivate:
+          amtPassword: 'P@ssw0rd'
+        ```
+
+    Example Commands:
+
+    === "Local Stored Config File"
+        ```
+        rpc activate -local -ccm -config config.yaml
+        ```
+    === "Remote Stored Config File"
+        Currently, the only supported remote network share is Server Message Block (SMB) based shares.
+
+        ``` title="No Credentials Required"
+        rpc activate -local -ccm -config smb://shareName/filePath/config.yaml
+        ```
+
+        ``` title="Credentials Required"
+        rpc activate -local -ccm -config smb://workgroup;username:password@server/shareName/filePath/config.yaml
+        ```
+
+        ``` title="Credentials Required but Prompt for Password"
+        rpc activate -local -ccm -config smb://workgroup;username:*@server/shareName/filePath/config.yaml
+        ```
+
 === "ACM"
 
     === "Local Stored Provisioning Cert"
