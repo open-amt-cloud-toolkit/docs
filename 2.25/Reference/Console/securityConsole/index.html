@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/">
+        <link rel="canonical" href="https://open-amt-cloud-toolkit.github.io/docs/Reference/Console/securityConsole/">
       
       
-        <link rel="prev" href="../../MEBX/unprovision/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../remoteProvisioning/">
+        <link rel="next" href="../GetStarted/setup/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Custom Provisioning Certificate - Open Active Management Technology Cloud Toolkit</title>
+        <title>Security Information - Open Active Management Technology Cloud Toolkit</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generate-custom-provisioning-certificate" class="md-skip">
+        <a href="#console-security-considerations" class="md-skip">
           Skip to content
         </a>
       
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom Provisioning Certificate
+              Security Information
             
           </span>
         </div>
@@ -2210,8 +2210,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -2224,13 +2226,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
         
           
           <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
@@ -2244,7 +2244,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             Console (Alpha)
@@ -2258,7 +2258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2276,10 +2276,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Console/securityConsole/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Security Information
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2288,6 +2308,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Assets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Assets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-admin-password-for-intel-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote Admin Password for Intel&reg; AMT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mebx-password-for-intel-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      MEBX Password for Intel&reg; AMT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioning-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provisioning Certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-used-to-encrypt-provisioning-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Password used to encrypt Provisioning Certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-configuration-information-sent-to-intel-amt-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      Device configuration information sent to Intel® AMT device
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-file-that-stores-intel-amt-device-connection-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database file that stores Intel&reg; AMT device connection information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-known-security-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Known Security Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Known Security Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-enable-tls-when-configuring-intel-amt-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Enable TLS when configuring Intel&reg; AMT device
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-secure-console-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Secure Console Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2342,7 +2484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/GetStarted/setup/" class="md-nav__link">
+      <a href="../GetStarted/setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2363,7 +2505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/GetStarted/activateDevice/" class="md-nav__link">
+      <a href="../GetStarted/activateDevice/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2384,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/GetStarted/addDevice/" class="md-nav__link">
+      <a href="../GetStarted/addDevice/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2405,7 +2547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/GetStarted/manageDevice/" class="md-nav__link">
+      <a href="../GetStarted/manageDevice/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2434,7 +2576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/wsmanExplorer/" class="md-nav__link">
+      <a href="../wsmanExplorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3577,8 +3719,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3593,11 +3733,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_16" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_16" >
         
           
           <label class="md-nav__link" for="__nav_5_16" id="__nav_5_16_label" tabindex="">
@@ -3611,7 +3753,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_16">
             <span class="md-nav__icon md-icon"></span>
             Certificates
@@ -3622,28 +3764,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Custom Provisioning Certificate
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Certificates/generateProvisioningCert/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3652,132 +3776,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#generate-custom-provisioning-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generate Custom Provisioning Certificate
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Generate Custom Provisioning Certificate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-youll-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      What You'll Need
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration Files
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration Files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-certconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create cert.conf
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-csrconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create csr.conf
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-certificate-and-hash" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create the Certificate and Hash
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upload-provisioning-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upload Provisioning Certificate
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upload Provisioning Certificate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-domain-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Domain Profile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insert-the-hash-using-mebx" class="md-nav__link">
-    <span class="md-ellipsis">
-      Insert the Hash using MEBx
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-the-hash" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verify the Hash
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3790,7 +3788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../remoteProvisioning/" class="md-nav__link">
+      <a href="../../Certificates/remoteProvisioning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3811,7 +3809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tls/" class="md-nav__link">
+      <a href="../../Certificates/tls/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4044,252 +4042,42 @@
   
 
 
-  <h1>Custom Provisioning Certificate</h1>
-
-<p>For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. <a href="../remoteProvisioning/#purchase">See all available vendors here.</a> </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning - Custom Provisioning Certificates in Production Deployments</p>
-<p>The hash of custom provisioning certificates must be manually added to all devices that will be configured into <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. This can be done through MEBx or USB Configuration. Both options require manual, hands-on configuration of each AMT device. <strong>Adding the hash to AMT's trusted list is a mandatory requirement for the device to successfully activate.</strong></p>
-</div>
-<p>However, some developers opt to use a custom provisioning certificate for testing and validation purposes.</p>
-<p>The steps below outline how to generate a custom certificate based on the requirements within the <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/acquiringanintelvprocertificate.htm"><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> SDK</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note - Unprovisioning will Delete Custom Hashes</p>
-<p>When a device is unprovisioned, AMT will delete and remove all hashes inserted. If you want to then activate the device again, you will have to reinsert the certificate hash again.</p>
-</div>
-<h2 id="generate-custom-provisioning-certificate">Generate Custom Provisioning Certificate<a class="headerlink" href="#generate-custom-provisioning-certificate" title="Permanent link">&para;</a></h2>
-<p>These steps create a certificate for a domain <code>example.com</code> and walk through how to successfully activate a device using the <code>example.com</code> <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>.</p>
-<h3 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h3>
-<p><strong>Software</strong> </p>
+<h1 id="console-security-considerations">Console Security Considerations<a class="headerlink" href="#console-security-considerations" title="Permanent link">&para;</a></h1>
+<p>The Console service provides a key communication interface between the UI and and Intel&reg; AMT device.  When deploying and operating this service, there are a few key factors that should be considered in order to maintain asset security.  This document will cover those factors and the critical assets that must be protected.  The following are the assets that must be protected:</p>
 <ul>
-<li><a href="https://www.openssl.org/">OpenSSL</a></li>
+<li>Remote admin password for Intel&reg; AMT</li>
+<li>MEBX password for Intel&reg; AMT</li>
+<li>Provisioning Certificate</li>
+<li>Password used to encrypt Provisioning Certificate</li>
+<li>Device configuration information sent to Intel&reg; AMT device</li>
+<li>Database file that stores Intel&reg; AMT device connection information</li>
 </ul>
-<h3 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h3>
-<p>First, we need to prepare two files:</p>
-<ul>
-<li><strong>cert.conf</strong> - Certificate configuration file. It is used to define the specific settings for the certificate.</li>
-<li><strong>csr.conf</strong> - Certificate signing request configuration file. </li>
-</ul>
-<h4 id="create-certconf">Create <code>cert.conf</code><a class="headerlink" href="#create-certconf" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p>Create a new file named <code>cert.conf</code>.</p>
-</li>
-<li>
-<p>Copy and paste the below example into the file.</p>
-<p><strong>Do not remove the OID 2.16.840.1.113741.1.2.3 from the <em>extendedKeyUsage</em>.</strong> This is an AMT requirement.</p>
-<p><strong>Optionally</strong>, update the <strong>[alt_names]</strong> section with your own server DNS  information.</p>
-<div class="highlight"><span class="filename">cert.conf</span><pre><span></span><code>basicConstraints = CA:FALSE
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer:always
-keyUsage = digitalSignature, keyEncipherment
-extendedKeyUsage = serverAuth, 2.16.840.1.113741.1.2.3 
-subjectAltName = @alt_names
-
-[alt_names]
-DNS.1 = test.example.com
-DNS.2 = example.com
-IP.1 = 192.168.1.1
-</code></pre></div>
-</li>
-<li>
-<p>Save and close.</p>
-</li>
-</ol>
-<h4 id="create-csrconf">Create <code>csr.conf</code><a class="headerlink" href="#create-csrconf" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p>Create a new file named <code>csr.conf</code>.</p>
-</li>
-<li>
-<p>Copy and paste the below example into the file.</p>
-<p><strong>Optionally</strong>, update the <strong>[dn]</strong> section and <strong>CN</strong> field with your own server FQDN and information.</p>
-<div class="highlight"><span class="filename">csr.conf</span><pre><span></span><code>[ req ]
-default_bits = 2048
-prompt = no
-default_md = sha256
-distinguished_name = dn
-
-[ dn ]
-C = US
-ST = Arizona
-L = Chandler 
-O = Organization
-OU = Department
-CN = test.example.com
-</code></pre></div>
-</li>
-<li>
-<p>Save and close.</p>
-</li>
-</ol>
-<h3 id="create-the-certificate-and-hash">Create the Certificate and Hash<a class="headerlink" href="#create-the-certificate-and-hash" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Open a terminal and verify OpenSSL is installed.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>version
-</code></pre></div>
-</li>
-<li>
-<p>Create a self-signed CA root certificate file named <code>rootCA.crt</code> with a key file named <code>rootCA.key</code>.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">3560</span><span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler&quot;</span><span class="w"> </span>-keyout<span class="w"> </span>rootCA.key<span class="w"> </span>-out<span class="w"> </span>rootCA.crt
-</code></pre></div>
-</li>
-<li>
-<p>Generate a RSA private key named <strong>server.key</strong>.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span><span class="m">2048</span>
-</code></pre></div>
-</li>
-<li>
-<p>Generate a Certificate Signing Request using the private key and <code>cert.conf</code> file.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.csr<span class="w"> </span>-config<span class="w"> </span>csr.conf
-</code></pre></div>
-</li>
-<li>
-<p>Sign the Certificate Signing Request with the CA certificate and <code>cert.conf</code> file.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-in<span class="w"> </span>server.csr<span class="w"> </span>-CA<span class="w"> </span>rootCA.crt<span class="w"> </span>-CAkey<span class="w"> </span>rootCA.key<span class="w"> </span>-CAcreateserial<span class="w"> </span>-out<span class="w"> </span>server.crt<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span>-sha256<span class="w"> </span>-extfile<span class="w"> </span>cert.conf
-</code></pre></div>
-</li>
-<li>
-<p>Create a <code>.pfx</code> file using the private key, server certificate, and CA root certificate. It will prompt to create a password. This password will be used when creating a Domain profile.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-out<span class="w"> </span>vprodemo_custom.pfx<span class="w"> </span>-inkey<span class="w"> </span>server.key<span class="w"> </span>-in<span class="w"> </span>server.crt<span class="w"> </span>-certfile<span class="w"> </span>rootCA.crt
-</code></pre></div>
-</li>
-<li>
-<p>Get the SHA1 hash of the root certificate. </p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha1<span class="w"> </span>-inform<span class="w"> </span>pem<span class="w"> </span>-in<span class="w"> </span>rootCA.crt
-</code></pre></div>
-<div class="admonition success">
-<p class="admonition-title">Success - SHA1 Output</p>
-<div class="highlight"><pre><span></span><code>SHA1 Fingerprint=51:45:E3:A4:AE:66:88:E0:AF:85:EC:EB:06:74:6B:8D:C3:07:C1:9D
-</code></pre></div>
-</div>
-</li>
-</ol>
-<h2 id="upload-provisioning-certificate">Upload Provisioning Certificate<a class="headerlink" href="#upload-provisioning-certificate" title="Permanent link">&para;</a></h2>
-<h3 id="create-domain-profile">Create <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-domain-profile" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Open the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and Login.</p>
-</li>
-<li>
-<p>Create a domain profile. Upload the <code>.pfx</code> file and enter the password set for it. See <a href="../../../GetStarted/createProfileACM/#create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr></a> for more details. </p>
-</li>
-</ol>
-<h3 id="insert-the-hash-using-mebx">Insert the Hash using MEBx<a class="headerlink" href="#insert-the-hash-using-mebx" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning - Adding Hash for AMT 16 or Newer</p>
-<p>These steps may not be exact or available within MEBx on AMT 16 or newer devices due to OEM restrictions. USB Configuration may be required. </p>
-</div>
-<ol>
-<li>
-<p>Switch to the AMT device.</p>
-</li>
-<li>
-<p>Restart the device. While the device is booting up, press <strong>Ctrl+P</strong> to reach the MEBX login screen.</p>
-<details class="note">
-<summary>Note - Other Keybinds to Enter MEBx</summary>
-<p>The keystroke combination <strong>Ctrl+P</strong> typically invokes the BIOS to display the MEBX login screen. If this does not work, check the manufacturer's instructions or try function keys (e.g., F2, F12).</p>
-</details>
-</li>
-<li>
-<p>Enter the MEBx password.</p>
-<details class="note">
-<summary>Note - Default MEBx Password for First Time Use</summary>
-<p>If it is the first time entering MEBX and the device has not been provisioned previously, the default password is <code>admin</code>. Create a new password when prompted.</p>
-</details>
-</li>
-<li>
-<p>Select <strong>Intel(r) AMT Configuration</strong>.</p>
-</li>
-<li>
-<p>Verify that the device is in <strong>pre-provisioning</strong> mode. If not, perform a full unprovision under <strong>Unconfigure Network Access</strong>.</p>
-</li>
-<li>
-<p>Select <strong>Remote Setup and Configuration</strong>.</p>
-</li>
-<li>
-<p>Select <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> PKI</strong>.</p>
-</li>
-<li>
-<p>Set the <strong>PKI <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr></strong> to <code>example.com</code>.</p>
-<p>Or, if using a different <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>, set it to that instead. See <a href="../../../GetStarted/createProfileACM/#dns-suffix">DNS Suffix</a> for more details.</p>
-</li>
-<li>
-<p>Select <strong>Manage Hashes</strong>.</p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\Manage_Hashes.jpg" alt="Figure 1: Manage Hashes">
-<figcaption>Figure 1: Manage Hashes</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Press the <code>Insert</code> key.</p>
-</li>
-<li>
-<p>Provide a name for the new hash and press Enter.</p>
-</li>
-<li>
-<p>Insert the new SHA1 hash using the fingerprint obtained from Step 7 in <a href="#create-the-certificate-and-hash">Create the Certificate and Hash</a>. <strong>The hash must be formatted as shown in example.</strong></p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\MEBXHASH.jpg" alt="Figure 2: Hash Input">
-<figcaption>Figure 2: Hash Input</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Press the <code>Y</code> key to set the hash as active.</p>
-</li>
-<li>
-<p>Press the <code>esc</code> key repeatedly to exit MEBx and reboot the device.</p>
-</li>
-</ol>
-<h3 id="verify-the-hash">Verify the Hash<a class="headerlink" href="#verify-the-hash" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>After the device reboots, open Terminal or Command Prompt as Administrator.</p>
-</li>
-<li>
-<p>Verify the certificate hash was inserted correctly.</p>
-<p>The new hash should be listed.</p>
-<div class="highlight"><pre><span></span><code>rpc amtinfo -cert
-</code></pre></div>
-<div class="admonition success">
-<p class="admonition-title">Success - Hash Inserted Correctly</p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\HASH_OUTPUT.png" alt="Figure 4: Hash Output">
-<figcaption>Figure 4: Hash Output</figcaption>
-</figure></p>
-</div>
-</li>
-<li>
-<p>Activate the AMT device with an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>. See <a href="../../../GetStarted/createProfileACM/#create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> with <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></a> and <a href="../../../GetStarted/buildRPC/#run-rpc-to-activate-and-connect-the-amt-device">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a> for more details.</p>
-<details class="warning">
-<summary>Troubleshoot - Error During Activation</summary>
-<p>The following error may occur during the first attempt at activation.</p>
-<div class="highlight"><pre><span></span><code>time=&quot;2023-08-17T11:38:57-07:00&quot; level=trace msg=&quot;HTTP/1.1 200 OK\r\nDate: Thu, 17 Aug 2023 18:38:57 GMT\r\nServer: Intel(R) Active Management Technology 15.0.35.2039\r\nX-Frame-Options: DENY\r\nContent-Type: application/soap+xml; charset=UTF-8\r\nTransfer-Encoding: chunked\r\n\r\n043E\r\n&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;a:Envelope xmlns:a=\&quot;http://www.w3.org/2003/05/soap-envelope\&quot; xmlns:b=\&quot;http://schemas.xmlsoap.org/ws/2004/08/addressing\&quot; xmlns:c=\&quot;http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd\&quot; xmlns:d=\&quot;http://schemas.xmlsoap.org/ws/2005/02/trust\&quot; xmlns:e=\&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\&quot; xmlns:f=\&quot;http://schemas.dmtf.org/wbem/wsman/1/cimbinding.xsd\&quot; xmlns:g=\&quot;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;&gt;&lt;a:Header&gt;&lt;b:To&gt;http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous&lt;/b:To&gt;&lt;b:RelatesTo&gt;3&lt;/b:RelatesTo&gt;&lt;b:Action a:mustUnderstand=\&quot;true\&quot;&gt;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService/AdminSetupResponse&lt;/b:Acti&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;sending message to RPS&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;received messages from RPS&quot;
-<span class="hll">time=&quot;2023-08-17T11:38:57-07:00&quot; level=error msg=&quot;Unknown error has occured&quot;
-</span>time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
-</code></pre></div>
-<p><br></p>
-<ol>
-<li>
-<p>If this error occurs, verify the device was activated successfully.</p>
-<div class="highlight"><pre><span></span><code>rpc amtinfo
-</code></pre></div>
-</li>
-<li>
-<p>If the device shows it was activated into <strong>admin control mode</strong>, rerun the activate command to successfully finish AMT configuration.</p>
-</li>
-</ol>
-</details>
-</li>
-<li>
-<p>During device unprovisioning, AMT will delete any inserted hashes and will have to be manually reinserted.</p>
-</li>
-</ol>
-<p><br><br></p>
+<p>In addition to the above assets, there are best practices that are recommended to help secure these assets as they are used within the system.  The following sections will cover each asset and the recommended practices to use to protect the assets.</p>
+<hr />
+<h2 id="security-assets">Security Assets<a class="headerlink" href="#security-assets" title="Permanent link">&para;</a></h2>
+<h3 id="remote-admin-password-for-intel-amt">Remote Admin Password for Intel&reg; AMT<a class="headerlink" href="#remote-admin-password-for-intel-amt" title="Permanent link">&para;</a></h3>
+<p>This password is what is configured in the Intel&reg; AMT firmware that allows a remote user to remotely control the Intel&reg; AMT device (power actions, remote desktop, remote terminal, etc).  When a user adds a device to Console, the Intel&reg; AMT remote admin password is provided to Console and Console saves this in the database for future use.  It is highly recommended to use randomly generated passwords for the Intel&reg; AMT remote admin password so that if the password is exposed, only a single device is impacted.</p>
+<h3 id="mebx-password-for-intel-amt">MEBX Password for Intel&reg; AMT<a class="headerlink" href="#mebx-password-for-intel-amt" title="Permanent link">&para;</a></h3>
+<p>The Management Engine BIOS Extension (MEBX) password is the password that protects the pre-boot menu option that provides access to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> settings.  To use this password a user needs to have physical access to the device.  It is highly recommended to change this password from the factory default settings upon receiving a new <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device.  A Console profile provides an option for either specifying a static password that is used for all devices configured with a given profile or a randomly generated password can be assigned uniquely per device.  Console does not save the per device MEBX password in its database.
+While a randomly generated password is more secure, in this case there is risk that if the assigned password is lost, access to the MEBX for the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device could be very difficult to recover.  It is recommended to securely store and backup the Console database that holds the profiles containing the MEBX password. </p>
+<h3 id="provisioning-certificate">Provisioning Certificate<a class="headerlink" href="#provisioning-certificate" title="Permanent link">&para;</a></h3>
+<p>This certificate is unique per owned domain profile in Console where <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go needs to provision <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices.  This certificate must be derived from a root certificate whose hash matches one of the trusted provisioning root certificate hashes that is listed in the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device firmware.  Generally, the provisioning certificate is purchased from a trusted certificate authority (VeriSign, GoDaddy, Comodo, etc).  The full list of supported CAs based on <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> version are listed <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/rootcertificatehashes.htm">here</a>.  This certificate must contain the leaf certificate, root certificate, and all of the intermediate certificates to form a complete certificate chain.  Additionally, the certificate file must also include the private key for the certificate (.pfx format).  The leaf certificate for the provisioning certificate must match the <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> that the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device is connected as specified by DHCP option 15 or the Trusted <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> in the Management Engine BIOS Extensions (MEBX).  Matching this is one of the ways in which the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> firmware establishes trust with the configuration server or application. 
+The provisioning certificate is provided by the user when defining an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> profile.  Console includes the provisioning certificate information in the configuration yaml file when exporting the profile.  If users have multiple provisioning certificates, they will need to understand which profile to use when configuring an <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device based on the network to which the device is currently connected.</p>
+<h3 id="password-used-to-encrypt-provisioning-certificate">Password used to encrypt Provisioning Certificate<a class="headerlink" href="#password-used-to-encrypt-provisioning-certificate" title="Permanent link">&para;</a></h3>
+<p>This is the password that is used to encrypt the provisioning certificate .pfx file that is discussed above.  <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go uses this password to decrypt the provisioning certificate so that it can use the certificate components and the private key to activate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> devices.<br />
+Console can provide this information as part of the configuration yaml file that <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go will use to activate Intel&reg; AMT devices.</p>
+<h3 id="device-configuration-information-sent-to-intel-amt-device">Device configuration information sent to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> device<a class="headerlink" href="#device-configuration-information-sent-to-intel-amt-device" title="Permanent link">&para;</a></h3>
+<p>Intel&reg; AMT firmware uses configuration information to establish trust and then activate and configure the Intel&reg; AMT device. The information contains the hashed remote admin password, MEBX password, WiFi SSIDs and passwords, provisioning certificate information, etc. In order to protect this data when in transit to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-G, Console provides an option to encrypt the data when exporting to a configuration yaml file.  This password can then be passed into <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go along with the configuration file so that <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go can decrypt the file and use the information to activate and configure Intel&reg; AMT devices.</p>
+<h3 id="database-file-that-stores-intel-amt-device-connection-information">Database file that stores Intel&reg; AMT device connection information<a class="headerlink" href="#database-file-that-stores-intel-amt-device-connection-information" title="Permanent link">&para;</a></h3>
+<p>By default, when Console is first launched, it configures an SQLite DB file in the logged in user's personal directory (ex. C:/Users/&lt;<i>username</i>&gt;/AppData/Roaming/device-management-toolkit on Windows).  Protection for this file relies on OS level user permissions.  For more robust security, it is recommended to deploy Console as an enterprise service backed with an enterprise grade database and proper access controls to Console's APIs.</p>
+<hr />
+<h2 id="best-known-security-methods">Best Known Security Methods<a class="headerlink" href="#best-known-security-methods" title="Permanent link">&para;</a></h2>
+<h3 id="1-enable-tls-when-configuring-intel-amt-device">1 Enable <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> when configuring Intel&reg; AMT device<a class="headerlink" href="#1-enable-tls-when-configuring-intel-amt-device" title="Permanent link">&para;</a></h3>
+<p>Intel&reg; AMT supports using <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> for remote connections.  There are two options to enable <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> when configuring Intel&reg; AMT.
+* Self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate.  When creating the Intel&reg; AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, if you select self-signed certificate, when <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go sees this in the configuration yaml file it will create a self-signed certificate and provide that to Intel&reg; AMT when configuring <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>.
+* Signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate from Enterprise Assistant.  When creating the Intel&reg; AMT <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>, if you provide the Enterprise Assistant location and credentials, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go will get a Certificate Signing Request (CSR) from Intel&reg; AMT and have Enterprise Assistant request a signed certificate from the enterprise CA.  See <a href="../../EA/overview/">Enterprise Assistant</a> documentation for more information.</p>
+<h3 id="2-secure-console-deployment">2 Secure Console Deployment<a class="headerlink" href="#2-secure-console-deployment" title="Permanent link">&para;</a></h3>
+<p>By default, Console creates an SQLite database file in the protected user's directory of the OS in which Console is running.  This provides a minimal level of protection for the data stored in the database.  For production deployments, it is recommended to deploy Console as a centralized service backed up by an enterprise DB with proper data protections.  Console running as a service should have access controls enabled for the APIs.  The UI should be deployed in an enterprise web server with enterprise access controls, limiting the users who have access to the Console UI and service functionality.</p>
 
 
 
