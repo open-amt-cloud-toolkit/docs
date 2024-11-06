@@ -2,7 +2,7 @@
 
 This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: 
 
-- All images are built and tested with `docker compose`. To learn more about building the images with `docker compose`, refer to [**Express Setup**](../../GetStarted/setup.md). 
+- All images are built and tested with `docker compose`. To learn more about building the images with `docker compose`, refer to [**Express Setup**](../../GetStarted/Cloud/setup.md). 
 - Push images to the registry to make them available for deployment on other systems.  
 - Run the commands below from the `open-amt-cloud-toolkit` install directory. 
 
@@ -54,7 +54,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
         Open the swarm.yml file to check that `driver: bridge` was replaced with `driver: overlay`. If the result is incorrect or corrupted, delete the swarm.yml file, rerun Step 2, and manually replace the string.
 
 
-4. If you've run `docker compose` previously, as in the instructions in [**Express Setup**](../../GetStarted/setup.md), run `docker compose down` to stop the open-amt-cloud-toolkit services:
+4. If you've run `docker compose` previously, as in the instructions in [**Express Setup**](../../GetStarted/Cloud/setup.md), run `docker compose down` to stop the open-amt-cloud-toolkit services:
    ```
    docker compose down -v
    ```

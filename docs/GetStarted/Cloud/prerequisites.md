@@ -10,7 +10,7 @@ This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS a
 
 ## What You'll Need
 
-###Hardware
+### Hardware
 
 **Configure a network that includes:**
 
@@ -20,7 +20,7 @@ This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS a
 
 Both systems must use a wired (i.e., cable) connection on the same network.
 
-###Development System Software
+### Development System Software
 
 **Before MPS and RPS installation, install the following software on your development system:**
 
@@ -36,7 +36,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 ## What You'll Do
 
 <figure class="figure-image">
-  <img width="800" height="450" src="..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
+  <img width="800" height="450" src="..\..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
   <figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
 </figure>
 
@@ -45,7 +45,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 - Install the prerequisites.
 - Pull and deploy microservices with Docker.
 - Login to the Sample Web UI and configure profiles.
-- Build RPC.
+- Download RPC.
 - Copy RPC to a managed device.
 
 

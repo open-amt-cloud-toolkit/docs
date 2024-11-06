@@ -93,7 +93,7 @@ Set the shared secret used in Kong for JWT authentication.
         ```
 
     ??? note "Note - Using SSL with Postgres Container"
-        By default in the Getting Started Guide, we do not enable an SSL connection for Postgres for ease of development. See [SSL with Local Postgres](../Reference/sslpostgresLocal.md) for how to enable SSL in your local Postgres container. For production environments, using a cloud-hosted database with an SSL connection to MPS/RPS is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for [Azure or AWS here](../Tutorials/Scaling/overview.md).
+        By default in the Getting Started Guide, we do not enable an SSL connection for Postgres for ease of development. See [SSL with Local Postgres](../../Reference/sslpostgresLocal.md) for how to enable SSL in your local Postgres container. For production environments, using a cloud-hosted database with an SSL connection to MPS/RPS is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for [Azure or AWS here](../../Tutorials/Scaling/overview.md).
 
 2.  Start the containers.
     
@@ -108,6 +108,8 @@ Set the shared secret used in Kong for JWT authentication.
     docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
     {% endraw %}
     ```
+
+    **Because Vault is running in a dev mode, stored secrets will be lost upon a restart**, and profiles and configs must be recreated. They are not persistent in this mode. To persist data, run vault in production mode. See [Production Mode Vault](../../Reference/productionVault.md).
     
     !!! success
         ``` bash
@@ -125,12 +127,8 @@ Set the shared secret used in Kong for JWT authentication.
 
         If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
 
-        If the kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
-
-!!! important "Important - Losing Data without Prod Mode Vault"
-    Because the vault is running in a dev mode, stored secrets will be lost upon a restart, and profiles and configs must be recreated. They are not persistent in this mode. Be sure to run `docker compose down -v` when bringing down the stack, which removes the volumes, and start fresh upon `docker compose up`.  To run vault in production mode, follow the guide [here](../Reference/productionVault.md).
-
+        If the Kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
     
 
 ## Next up
-[**Login to Sample Web UI**](../GetStarted/loginToUI.md)
+[**Login to Sample Web UI**](loginToUI.md)

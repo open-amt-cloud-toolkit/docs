@@ -110,7 +110,7 @@ More information about specific RPC error codes can be found in the [RPC Library
 | "Unable to connect to Local Management Service (LMS). Please ensure LMS is running" | Check to ensure no application has bound to port 16992 |
 | "Unable to launch MicroLMS." Check that Intel ME is present, MEI Driver installed and run this executable as administrator | Check to ensure no application has bound to port 16992 |
 | "Device xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx activation failed. Error while adding the certificates to AMT."  | Unplug the device, from both network and power, let it sit for a while. If that doesn't work, file a github issue | 
-| Device xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx activation failed. Missing DNS suffix. | Run `.\rpc amtinfo` and ensure there is a DNS suffix. If it is blank, double check your router settings for DHCP. Alternatively, you can override the DNS suffix with `-d mycompany.com`. To learn more, see [DNS Suffix](../Reference/MEBX/dnsSuffix.md) and [Create a Profile with ACM](../GetStarted/createProfileACM.md).| 
+| Device xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx activation failed. Missing DNS suffix. | Run `.\rpc amtinfo` and ensure there is a DNS suffix. If it is blank, double check your router settings for DHCP. Alternatively, you can override the DNS suffix with `-d mycompany.com`. To learn more, see [DNS Suffix](../Reference/MEBX/dnsSuffix.md) and [Create a Profile with ACM](../GetStarted/Cloud/createProfileACM.md).| 
 | Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00 | Ensure you have provided the `-password` flag for the `-cmd` you are trying to execute, and that it is the password you used when provisioning the device. |
 | Unable to connect to websocket server. Please check url. | After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address. |
 | Error while activating the AMT in admin mode. | Check the logs on the RPS server. | 
@@ -132,7 +132,7 @@ Additional logging details can be enabled by modifying the `log_level` field in 
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
-| Create a profile fails or information cannot be read from vault. | Make sure both Vault and Postgres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../GetStarted/setup.md#Builddockerimages).|
+| Create a profile fails or information cannot be read from vault. | Make sure both Vault and Postgres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../GetStarted/Cloud/setup.md#Builddockerimages).|
 | An error occurred during provisioning. | (1) Verify that the correct certificate is being used. <br> (2) Verify the Domain suffix. <br> (3) Verify RPS is able to reach the AMT device. Check firewalls and pings. |
 
 
@@ -150,7 +150,7 @@ If a configuration becomes unworkable, it may be necessary to clean up the envir
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
 1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](./RPC/commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Reference/MEBX/unprovision.md).
-2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../GetStarted/setup.md#Builddockerimages).
+2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../GetStarted/Cloud/setup.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 
 
