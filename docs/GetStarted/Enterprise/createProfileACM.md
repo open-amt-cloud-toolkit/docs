@@ -7,7 +7,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 - **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<img src="..\..\..\assets\images\ConsoleProfiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
 </figure>
 
@@ -54,63 +54,9 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 <br>
 
-### Create a Profile
-
-A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
-
-!!! important "Important - Production Environment"
-    In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
-
-??? note "Note - More Information about Passwords"
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
-
-**To create an ACM profile:**
-
-1. Select the **Profiles** tab from the menu on the left.
-
-2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
-
-    <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
-    <figcaption>Figure 2: Create a new profile</figcaption>
-    </figure>
-
-3. Specify a **Profile Name** of your choice.
-
-4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
-
-5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
-
-6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
-
-7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from a MPS server. This password is also required for device deactivation.
-   
-    ??? warning "Warning - Viewing and Losing Random Passwords"
-        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the Vault database is lost or corrupted (or container stopped), all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
-   
-8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
-
-9. Leave DHCP as the default for **Network Configuration**.
-
-10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
-
-11. Select **CIRA (Cloud)** for **Connection Configuration**.
-
-12. Select the name of the **CIRA Configuration** you created previously from the drop-down menu.
-
-13. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
-
-14. Click **Save.**
-
-    !!! example "Example ACM Profile"
-        <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
-        <figcaption>Figure 3: Example ACM profile</figcaption>
-        </figure>
-
 ### Create a Domain Profile
 
-In addition to a CIRA Config and an ACM Profile, ACM requires the creation of a Domain profile.
+ACM requires the creation of a Domain profile.
 
 Intel® AMT checks the network DNS suffix against the provisioning certificate as a security check. During provisioning, the trusted certificate chain is injected into the AMT firmware.  AMT verifies that the certificate chain is complete and is signed by a trusted certificate authority.
 
@@ -141,8 +87,56 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
         </figure>
 
 
+### Create a Profile
+
+A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
+
+??? note "Note - More Information about Passwords"
+    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+
+**To create an ACM profile:**
+
+1. Select the **Profiles** tab from the menu on the left.
+
+2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
+
+    <figure class="figure-image">
+    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+    <figcaption>Figure 2: Create a new profile</figcaption>
+    </figure>
+
+3. Specify a **Profile Name** of your choice.
+
+4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
+
+5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
+
+6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
+
+7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
+   
+    ??? warning "Warning - Viewing and Losing Random Passwords"
+        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
+   
+8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
+
+9. Choose DHCP or Static based on environment for the **Network Configuration**.
+
+10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
+
+11. For quickest setup, select **Non TLS** under **Provisioned Connection Configuration**.
+
+12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+
+14. Click **Save.**
+
+    !!! example "Example ACM Profile"
+        <figure class="figure-image">
+        <img src="..\..\..\assets\images\Console_NewACMProfile.png" alt="Figure 3: Example ACM profile">
+        <figcaption>Figure 3: Example ACM profile</figcaption>
+        </figure>
+
+
 ## Next Up
 
-**[Build & Run RPC](buildRPC.md)**
-
-
+**[Activate a Device](activateDevice.md)**

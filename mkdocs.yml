@@ -72,6 +72,9 @@ nav:
         - Manage AMT Device: GetStarted/Cloud/manageDevice.md
     - Enterprise (Beta):
       - Download and Run: GetStarted/Enterprise/setup.md
+      - Create Profiles:
+        - CCM Activation: GetStarted/Enterprise/createProfileCCM.md
+        - ACM Activation: GetStarted/Enterprise/createProfileACM.md
       - Activate a Device: GetStarted/Enterprise/activateDevice.md
       - Add a Device: GetStarted/Enterprise/addDevice.md
       - Manage a Device: GetStarted/Enterprise/manageDevice.md
@@ -120,11 +123,6 @@ nav:
     - Console (Beta):
       - Overview: Reference/Console/overview.md
       - Security Information: Reference/Console/securityConsole.md
-      - Get Started: 
-        - Download and Run: Reference/Console/GetStarted/setup.md
-        - Activate a Device: Reference/Console/GetStarted/activateDevice.md
-        - Add a Device: Reference/Console/GetStarted/addDevice.md
-        - Manage a Device: Reference/Console/GetStarted/manageDevice.md
       - WSMAN Explorer: Reference/Console/wsmanExplorer.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
