@@ -8,7 +8,7 @@
 2. In the upper-right, select **Add a Device**.
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_AddDevice.png" alt="Figure 1: Add a New Device">
+        <img src="..\..\..\assets\images\Console_AddDevices.png" alt="Figure 1: Add a New Device">
         <figcaption>Figure 1: Add a New Device</figcaption>
     </figure>
 

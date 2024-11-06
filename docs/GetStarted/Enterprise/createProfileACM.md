@@ -66,7 +66,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
 2. In the top-right corner, click **Add New.**
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
+    <img src="..\..\..\assets\images\Console_NewDomain.png" alt="Figure 4: Create a new Domain profile">
     <figcaption>Figure 4: Create a new Domain profile</figcaption>
     </figure>
 
@@ -101,7 +101,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+    <img src="..\..\..\assets\images\Console_NewProfile.png" alt="Figure 2: Create a new profile">
     <figcaption>Figure 2: Create a new profile</figcaption>
     </figure>
 
