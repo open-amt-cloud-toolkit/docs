@@ -13,7 +13,7 @@ The table below describes the process:
 | 3. Add a domain profile and associated signed provisioning certificate | Upload a provisioning certificate. |
 | 4. Use the rpc-go client application to activate the remote device | Deploy and run the client as **Administrator** on the desired remote platform. Leverage the profile you created in Step 2.  |
 
-Figure 1 illustrates the steps below. Also, see [Get Started](../../GetStarted/prerequisites.md).
+Figure 1 illustrates the steps below. Also, see [Get Started](../../GetStarted/Cloud/prerequisites.md).
 
 The toolkit accomplishes secure provisioning with authentication and a secure tunnel using the Transport Layer Security (TLS) protocol. 
 

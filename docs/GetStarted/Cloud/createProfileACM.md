@@ -6,11 +6,8 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
 - **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 
-!!! Important "Important - IDE Redirection"
-    While AMT supports this feature, the toolkit doesn't natively support it.
-
 <figure class="figure-image">
-<img src="..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<img src="..\..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
 </figure>
 
@@ -18,7 +15,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 
 #### Provisioning Certificate
 
-By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities. [Find more information about Provisioning Certificates](../Reference/Certificates/remoteProvisioning.md).
+By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities. [Find more information about Provisioning Certificates](../../Reference/Certificates/remoteProvisioning.md).
 
 - [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
 - [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
@@ -27,7 +24,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 !!! Important "Important - Intel AMT and using CAs"
     For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
 
-Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../Reference/Certificates/generateProvisioningCert.md) for additional details.
+Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
 #### DNS Suffix
 The DNS suffix encompasses the domain suffix (e.g., .com) and follows the hostname. Consider the following DNS Name example:
@@ -39,7 +36,7 @@ In this example, the hostname is **cb-vending1** and the DNS suffix is **burgerb
 
 **To set the DNS suffix:**
 
-1. Manually set it using MEBX on the managed device. Find instructions [here](../Reference/MEBX/dnsSuffix.md).
+1. Manually set it using MEBX on the managed device. See [MEBx DNS Suffix](../../Reference/MEBX/dnsSuffix.md).
 
 2. Alternately, change the DHCP Option 15 to DNS suffix within the Router settings.
 
@@ -65,7 +62,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
     In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 ??? note "Note - More Information about Passwords"
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../Reference/architectureOverview.md#passwords).
+    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
 
 **To create an ACM profile:**
 
@@ -74,7 +71,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
     <figcaption>Figure 2: Create a new profile</figcaption>
     </figure>
 
@@ -95,7 +92,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 9. Leave DHCP as the default for **Network Configuration**.
 
-10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../Tutorials/createWiFiConfig.md).
+10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
 
 11. Select **CIRA (Cloud)** for **Connection Configuration**.
 
@@ -107,7 +104,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
     !!! example "Example ACM Profile"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
+        <img src="..\..\..\assets\images\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
         <figcaption>Figure 3: Example ACM profile</figcaption>
         </figure>
 
@@ -123,7 +120,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
 2. In the top-right corner, click **Add New.**
     <figure class="figure-image">
-    <img src="..\..\assets\images\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
+    <img src="..\..\..\assets\images\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
     <figcaption>Figure 4: Create a new Domain profile</figcaption>
     </figure>
 
@@ -139,13 +136,13 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
     !!! example "Example Domain"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_CreateDomain.png" alt="Figure 5: Example Domain profile">
+        <img src="..\..\..\assets\images\RPS_CreateDomain.png" alt="Figure 5: Example Domain profile">
         <figcaption>Figure 5: Example Domain profile</figcaption>
         </figure>
 
 
 ## Next Up
 
-**[Build & Run RPC](../GetStarted/buildRPC.md)**
+**[Build & Run RPC](buildRPC.md)**
 
 

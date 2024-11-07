@@ -1,14 +1,14 @@
 --8<-- "References/abbreviations.md"
 
-!!! warning "Warning - Console in Alpha Development"
-    Console is currently under development. The current available tags for download are Alpha version code. This could mean that certain features may not function yet, visual look and feel may change, or bugs/errors may occur. It is not recommended for use in Production deployments. Follow along our [Feature Backlog for future releases and feature updates](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
+!!! warning "Warning - Console in Beta Development"
+    Console is currently under development. The current available tags for download are Beta version code. This could mean that certain features may not function yet, visual look and feel may change, or bugs/errors may occur. It is not recommended for use in Production deployments. Follow along our [Feature Backlog for future releases and feature updates](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
 
 1. In the Console UI, navigate to the **Devices** page in the left-hand menu sidebar.
 
 2. In the upper-right, select **Add a Device**.
 
     <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\Console_AddDevice.png" alt="Figure 1: Add a New Device">
+        <img src="..\..\..\assets\images\Console_AddDevices.png" alt="Figure 1: Add a New Device">
         <figcaption>Figure 1: Add a New Device</figcaption>
     </figure>
 
@@ -25,7 +25,7 @@
     ??? tip "Important - TLS Requirement for AMT 16.1 and newer devices"
         Starting with AMT 16.1, TLS is required. By default, the AMT device will come with a self-signed TLS certificate as part of the firmware. By selecting both the **Use TLS** and **Allow Self-Signed Certificates** checkboxes, AMT will utilize the built-in TLS certificate. *This is the recommended path for Getting Started as it requires less initial setup*.
 
-        To use a different TLS certificate, such as a 3rd party CA signed certificate, Enterprise Assistant is required. See the [Enterprise Assistant Overview](../../EA/overview.md) and [Enterprise Assistant TLS Configuration with RPC-Go](../../EA/RPCConfiguration/localtlsconfig.md) documentation for additional details.
+        To use a different TLS certificate, such as a 3rd party CA signed certificate, Enterprise Assistant is required. See the [Enterprise Assistant Overview](../../Reference/EA/overview.md) and [Enterprise Assistant TLS Configuration with RPC-Go](../../Reference/EA/RPCConfiguration/localtlsconfig.md) documentation for additional details.
 
     !!! note "Note - Not Sure of the AMT Version?"
         If the AMT version is not known, the RPC-Go `amtinfo` command can be used. This will print out the device's AMT version as part of the response.
@@ -38,10 +38,10 @@
 
     !!! example "Example - Add a New Device"
         <figure class="figure-image">
-            <img width="50%" src="..\..\..\..\assets\images\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
+            <img width=600 src="..\..\..\assets\images\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
             <figcaption>Figure 2: Add a New Device Example</figcaption>
         </figure>
 
 ## Next up
 
-[**Manage a Device**](../GetStarted/manageDevice.md)
+[**Manage a Device**](manageDevice.md)

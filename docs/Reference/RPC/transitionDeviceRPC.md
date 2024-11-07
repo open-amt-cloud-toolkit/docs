@@ -48,4 +48,4 @@ Additionally, use the following instructions to transition from a previously est
         ```
 
     !!! success
-        To verify the managed devices list after transitioning, log into the [Sample Web UI](../../GetStarted/loginToUI.md) on the development system. Go to the Devices tab. Alternatively, learn how to list the managed devices via a [REST API Call](../../Tutorials/apiTutorial.md). 
+        To verify the managed devices list after transitioning, log into the [Sample Web UI](../../GetStarted/Cloud/loginToUI.md) on the development system. Go to the Devices tab. Alternatively, learn how to list the managed devices via a [REST API Call](../../Tutorials/apiTutorial.md). 

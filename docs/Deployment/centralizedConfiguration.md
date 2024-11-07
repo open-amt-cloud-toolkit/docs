@@ -54,7 +54,7 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 
 ## Enable Consul
 
-1. This guide assumes you have completed the [Getting Started Guide](../GetStarted/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../GetStarted/setup.md). Stop and return here after the your services are running.
+1. This guide assumes you have completed the [Getting Started Guide](../GetStarted/Cloud/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
 
 2. In the `.env`, enable Consul and Save.
 

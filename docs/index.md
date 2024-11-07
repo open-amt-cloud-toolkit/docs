@@ -1,8 +1,8 @@
 --8<-- "References/abbreviations.md"
 
-# Overview
+# Open AMT Cloud Toolkit
 
-**Open Active Management Technology Cloud Toolkit (Open AMT Cloud Toolkit)** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
+**Open Active Management Technology Cloud Toolkit** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
 
 ??? note "Long-Term Support (LTS) Version"
     Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
@@ -13,9 +13,9 @@
 
     ---
 
-    Jump into Open AMT Cloud Toolkit by deploying locally with Docker containers.
+    Jump into Open AMT Cloud Toolkit and it's offerings.
 
-    [:octicons-arrow-right-24: Get Started Now](./GetStarted/prerequisites.md)
+    [:octicons-arrow-right-24: Get Started Now](./GetStarted/overview.md)
 
 -   :material-lightbulb-on:{ .lg .middle } __Guided Tutorials__
 
@@ -43,9 +43,19 @@
 
 <p class="divider"></p>
 
+## Overview
+
+Open AMT was built with flexibility in mind. Developers can integrate APIs to enable key Intel AMT remote management features, like power control and remote Keyboard, Video, Mouse (KVM) control, into their existing management console solution. Alternatively, users can adopt Console, an application offering 1:1 direct connection of AMT devices on local networks.
+
+Our open-source services and toolkits can be adopted, customized, and used to fit your specific use cases, requirements, and network needs.
+
 <div style="text-align:center;">
   <iframe width="800" height="450" src="https://www.youtube.com/embed/ovpvPQi7UGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+-------
+
+## Out-of-Band Remote Manageability
 
 The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Management for remote devices. No matter if the device is powered off or the operating system has crashed, issue power actions and take over keyboard, video, mouse (KVM) control.
 
@@ -56,44 +66,13 @@ Reduce the need for costly on-site IT, minimize the downtime of key, business-cr
   <figcaption>Figure 1: Open AMT Cloud Toolkit features OOB Management</figcaption>
 </figure>
  
- Intel® AMT supports remote manageability with: 
+-------
 
- **OOB Management:** This hardware-based remote management solution operates below the operating system.
+## Get Started
 
-**Call Home:** This capability enables administrators to control, update, and modify remote clients with OOB Management.
+Jump in and see what Open AMT can offer for both cloud and enterprise style networks and deployments.
 
- 
-## Goals
-The toolkit guide provides instructions to:
-
-- Deploy the Management Presence Server (MPS) and Remote Provisioning Server (RPS) on the development system.
-- Build and run Remote Provisioning Client (RPC) on the managed device.
-- Connect the managed device (edge device).
-
-Additional sections provide guidance on the reference implementation UI Toolkit, REST API usage, asset security, and more. 
-
-<figure class="figure-image">
-  <img src="assets\images\HiLevelArchitecture.png" alt="Figure 2: High-level architecture consists of four major software components">
-  <figcaption>Figure 2: High-level architecture: major software components</figcaption>
-</figure>
-
-As shown in Figure 2, Open AMT Cloud Toolkit high-level architecture consists of five components:
-
-1. **MPS** - A microservice that uses an Intel vPro® Platform feature, Client Initiated Remote Access (CIRA), for enabling edge, cloud devices to maintain a persistent connection for out-of-band manageability features, such as power control or Keyboard, Video, Mouse (KVM) control.
-2. **RPS** - A microservice that activates Intel® AMT platforms using predefined profiles and connects them to the MPS for manageability use cases.
-3. **RPC** - A lightweight client application that communicates with the RPS server to activate Intel® AMT.
-4. **UI Toolkit** - A toolkit that includes prebuilt React components and a reference implementation web console. The React-based snippets simplify the task of adding complex manageability-related UI controls, such as the KVM, to a console. 
-5. **Sample Web UI** - A web based UI that demonstrates how to use the UI-Toolkit. It also provides a way to interact with the microservices and to help provide context as to how each microservice is used.
-   
-Integrate the Open AMT Cloud Toolkit into new and existing management consoles, software solutions, and more.
-
-## Toolkit Setup
-
-### Microservices as Containers
-
-Set up microservices quickly as Docker containers with this recommended method.
-
-[Get Started Now](GetStarted/prerequisites.md){: .md-button .md-button--primary }
+[Get Started Now](GetStarted/overview.md){: .md-button .md-button--primary }
 
 Estimated completion time: **Approximately 30 minutes**
 

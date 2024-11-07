@@ -94,10 +94,10 @@ rpc amtinfo
 
 Profiles provide configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC). Profiles also distinguish between activating in: 
 
-**[Client Control Mode (CCM):](../GetStarted/createProfileCCM.md)** This mode offers all manageability features, including but not limited to, power control, audit logs, and hardware info. Redirection features, such as KVM or SOL, **require user consent**. The managed device will display a 6-digit code that **must** be entered by the remote admin to access the remote device via redirection.
+**[Client Control Mode (CCM):](../GetStarted/Cloud/createProfileCCM.md)** This mode offers all manageability features, including but not limited to, power control, audit logs, and hardware info. Redirection features, such as KVM or SOL, **require user consent**. The managed device will display a 6-digit code that **must** be entered by the remote admin to access the remote device via redirection.
 
-[Create a CCM Profile](../GetStarted/createProfileCCM.md){: .md-button .md-button--primary }
+[Create a CCM Profile](../GetStarted/Cloud/createProfileCCM.md){: .md-button .md-button--primary }
 
-**[Admin Control Mode (ACM):](../GetStarted/createProfileACM.md)** ACM mode supports all manageability features **without requiring user consent**. This means it is **not necessary** to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices, such as digital signage or kiosks, may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.
+**[Admin Control Mode (ACM):](../GetStarted/Cloud/createProfileACM.md)** ACM mode supports all manageability features **without requiring user consent**. This means it is **not necessary** to have a person on-site to remote in and manage an edge device. In most IoT use cases, edge devices, such as digital signage or kiosks, may not be easily accessible or have available employees nearby. ACM mode proves immensely helpful in these scenarios.
 
-[Create an ACM Profile](../GetStarted/createProfileACM.md){: .md-button .md-button--primary }
+[Create an ACM Profile](../GetStarted/Cloud/createProfileACM.md){: .md-button .md-button--primary }

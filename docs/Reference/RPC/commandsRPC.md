@@ -167,15 +167,17 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 
 #### `activate` Local-Specific Options
 
-| OPTION                            | DESCRIPTION                                                                           |
-|-----------------------------------|---------------------------------------------------------------------------------------|
-| -acm                              | Flag for ACM Local Activation.                                                        |
-| -amtPassword string               | New AMT Password to set on device.                                                    |
-| -ccm                              | Flag for CCM Local Activation.                                                        |
-| -config                           | Remote `smb://` or local file path of a `.yaml` file with desired ACM configuration.  |
-| -local                            | Execute command to AMT directly without cloud interaction.                            |
-| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.                         |
-| -provisioningCertPwd string       | Password of provisioning certificate.                                                 |
+| OPTION                            | DESCRIPTION                                                                                              |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------|
+| -acm                              | Flag for ACM Local Activation.                                                                           |
+| -amtPassword string               | New AMT Password to set on device.                                                                       |
+| -ccm                              | Flag for CCM Local Activation.                                                                           |
+| -config                           | Remote `smb://` or local file path of a `.yaml` file with desired ACM configuration.                     |
+| -configv2                         | Remote `smb://` or local file path of an encrypted `.yaml` file exported from Console.                   |
+| -configencryptionkey              | Encryption Key provided by Console during Profile export used by RPC-Go to decode the exported Profile. |
+| -local                            | Execute command to AMT directly without cloud interaction.                                               |
+| -provisioningCert Base64 string   | Base64 Encoded String of the `.pfx` provisioning certificate.                                            |
+| -provisioningCertPwd string       | Password of provisioning certificate.                                                                    |
 
 <br>
 

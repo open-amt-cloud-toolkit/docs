@@ -15,7 +15,7 @@ In order to deploy and make changes, the following tools and application has to 
 - [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
-- [MPS Server with an AMT Device Connected](../../../GetStarted/prerequisites.md)
+- [MPS Server with an AMT Device Connected](../../../GetStarted/Cloud/prerequisites.md)
 
 
 ## Download and Install UI Toolkit
