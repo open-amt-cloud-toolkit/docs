@@ -7,8 +7,8 @@
 
 **Configure a network that includes:**
 
--  A development system 
--  An activated Intel AMT device
+-  A development system (to run Console)
+-  A provisioned or unprovisoned Intel AMT device
 
 ## What You'll Do
 
@@ -19,16 +19,24 @@
 
 **To complete a deployment:**
 
-- Download and run Console.
-- Activate and configure an Intel AMT device.
-- Add a device to Console.
-- Manage a device using Console.
+1. [Download and run Console](#get-console)
+2. [Create a CCM](createProfileCCM.md) or [ACM Profile](createProfileACM.md)
+3. [Activate and configure an Intel AMT device](activateDevice.md)
+4. [Add a device to Console](addDevice.md)
+5. [Manage a device using Console](manageDevice.md)
+
+!!! note "Note - For devices that are already activated in ACM or CCM"
+    If your Intel AMT device is already activated in CCM or ACM, you can skip steps 2 and 3 after completing step 1 and proceed directly to [Add a device to Console](addDevice.md).
+
 
 ## Get Console
 
 ### Download
 
 1. Find the latest release of Console under [Github Releases](https://github.com/open-amt-cloud-toolkit/console/releases/latest).
+
+    !!! warning "Warning - Upgrading from Alpha to **BETA**"
+        Starting from the Beta release, all sensitive data in the SQLite database will be encrypted using an encryption key. Due to this security enhancement, you'll need to delete the existing database file before upgrading. Instructions on how to delete the database can be found [here](../../Reference/Console/upgrade.md/#upgrading-from-alpha-to-beta)
 
 2. Download the appropriate binary assets for your OS and Architecture under the *Assets* dropdown section.
 
@@ -37,11 +45,11 @@
 
 ### Configure Console
 
-1. Create a new file named `config.yaml`.
+1. Create a `config` directory and a new file named `config.yml` in the same directory as *Console executable*. Alternatively, Console can automatically generate a `config.yml` file, see [here](../../Reference/Console/configuration.md/#using-configyml) for more details.
 
-2. Copy and paste the following example text into the file.
+2. Copy and paste the following example text into the `config.yml` file.
 
-    ```yaml hl_lines="6 8 9"
+    ```yml hl_lines="6 8 9"
     app:
       name: console
       repo: open-amt-cloud-toolkit/console
@@ -75,7 +83,7 @@
 
     | Field Name     | Required                              | Usage                    |
     | -------------- | ------------------------------------- | ------------------------ |
-    | jwtKey         | A strong secret of your choice (Example: A unique, random 256-bit string, e.g. `Yq3t6w9z6CbE3HRMcQfTjWnZr4u7x6AJ`). | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
+    | jwtKey         | A strong secret of your choice (Example: A unique, random 32-character string, e.g. `Yq3t6w9z6CbE3HRMcQfTjWnZr4u7x6AJ`). | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
     | adminUsername  | Username of your choice               | For logging into Console |
     | adminPassword  | **Strong** password of your choice    | For logging into Console |
 
@@ -90,18 +98,18 @@
 
 ### Run
 
-1. Set Console's configuration and run the executable. A terminal will open containing the Console process.
+1. Run the executable, and a terminal will open containing the Console process. The Console process will read the configuration from `config/config.yml`. 
 
-    ```
-    console.exe -config config.yaml
-    ```
+    !!! note "Note - Alternate Methods to Run Console"
+        You can also open a terminal session and run Console by providing a custom path to config.yml with the following command:
+        ```console.exe -config /path/to/config.yml```
 
-2. If an `encryption_key` was not set, Console will prompt to generate a new key for encryption. Type `Y` and press enter.
+2. If an `encryption_key` was not set, Console will prompt to generate a new key for encryption. Type `Y` and press **Enter**.
 
     !!! note "Note - Encryption Key Information"
-        Console automatically stores this key within the Operating System's credential manager such as Windows Credential Manager under the name *device-management-toolkit*. This key is used when interacting with the database is required.
+        Console automatically stores this 32-character key in Operating System's credential manager, such as Windows Credential Manager, under the name *device-management-toolkit*. This key is used to encrypt sensitive data before it is stored in the database.
 
-3. Console is now successfully running! A browser window will open running `localhost:8181`. The Console UI is now useable and devices can be added.
+3. Console is now successfully running! A browser window will open running `http://localhost:8181` where you can access the Console UI and start adding devices.
 
     !!! success
         <figure class="figure-image">
