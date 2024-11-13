@@ -211,12 +211,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/Console/configuration/</loc>
+         <lastmod>2024-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/Console/overview/</loc>
          <lastmod>2024-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/Console/securityConsole/</loc>
+         <lastmod>2024-11-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://open-amt-cloud-toolkit.github.io/docs/Reference/Console/upgrade/</loc>
          <lastmod>2024-11-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
