@@ -20,7 +20,7 @@
 
 6. Enter the **AMT Password** of the device set during activation.
 
-7. **For AMT 16.1 or newer devices only**, select the **Use TLS** checkbox and **Allow Self-Signed Certificates** checkbox.
+7. For AMT devices configured to use TLS, select the **Use TLS** checkbox and **Allow Self-Signed Certificates** checkbox.
 
     ??? tip "Important - TLS Requirement for AMT 16.1 and newer devices"
         Starting with AMT 16.1, TLS is required. By default, the AMT device will come with a self-signed TLS certificate as part of the firmware. By selecting both the **Use TLS** and **Allow Self-Signed Certificates** checkboxes, AMT will utilize the built-in TLS certificate. *This is the recommended path for Getting Started as it requires less initial setup*.
