@@ -20,7 +20,7 @@
 **To complete a deployment:**
 
 1. [Download and run Console](#get-console)
-2. [Create a CCM](createProfileCCM.md) or [ACM Profile](createProfileACM.md)
+2. Create a [CCM Profile](createProfileCCM.md) or [ACM Profile](createProfileACM.md)
 3. [Activate and configure an Intel AMT device](activateDevice.md)
 4. [Add a device to Console](addDevice.md)
 5. [Manage a device using Console](manageDevice.md)
