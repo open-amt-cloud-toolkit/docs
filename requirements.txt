@@ -115,10 +115,7 @@ click==8.1.7 \
 colorama==0.4.6 \
     --hash=sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44 \
     --hash=sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6
-    # via
-    #   click
-    #   mkdocs
-    #   mkdocs-material
+    # via mkdocs-material
 editorconfig==0.12.4 \
     --hash=sha256:24857fa1793917dd9ccf0c7810a07e05404ce9b823521c7dce22a4fb5d125f80
     # via jsbeautifier
@@ -130,9 +127,9 @@ idna==3.7 \
     --hash=sha256:028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc \
     --hash=sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0
     # via requests
-jinja2==3.1.4 \
-    --hash=sha256:4a3aee7acbbe7303aede8e9648d13b8bf88a429282aa6122a993f0ac800cb369 \
-    --hash=sha256:bc5dd2abb727a5319567b7a813e6a2e7318c39f4f487cfe6c89c6f9c7d25197d
+jinja2==3.1.5 \
+    --hash=sha256:8fefff8dc3034e27bb80d67c671eb8a9bc424c0ef4c0826edbff304cceff43bb \
+    --hash=sha256:aba0f4dc9ed8013c424088f68a5c226f7d6097ed89b246d7749c2ec4175c6adb
     # via
     #   mkdocs
     #   mkdocs-macros-plugin
@@ -226,15 +223,15 @@ mkdocs==1.5.3 \
     #   mkdocs-render-swagger-plugin
 mkdocs-img2fig-plugin==0.9.3 \
     --hash=sha256:61399d71bb85525d74b1b9435dc6cea747c1af4eff1eb766b98b5605bb78fe4f
-    # via -r .\requirements.in
+    # via -r requirements.in
 mkdocs-macros-plugin==1.0.5 \
     --hash=sha256:f60e26f711f5a830ddf1e7980865bf5c0f1180db56109803cdd280073c1a050a \
     --hash=sha256:fe348d75f01c911f362b6d998c57b3d85b505876dde69db924f2c512c395c328
-    # via -r .\requirements.in
+    # via -r requirements.in
 mkdocs-material==9.5.14 \
     --hash=sha256:2a1f8e67cda2587ab93ecea9ba42d0ca61d1d7b5fad8cf690eeaeb39dcd4b9af \
     --hash=sha256:a45244ac221fda46ecf8337f00ec0e5cb5348ab9ffb203ca2a0c313b0d4dbc27
-    # via -r .\requirements.in
+    # via -r requirements.in
 mkdocs-material-extensions==1.3.1 \
     --hash=sha256:10c9511cea88f568257f960358a467d12b970e1f7b2c0e5fb2bb48cab1928443 \
     --hash=sha256:adff8b62700b25cb77b53358dad940f3ef973dd6db797907c49e3c2ef3ab4e31
@@ -242,10 +239,10 @@ mkdocs-material-extensions==1.3.1 \
 mkdocs-mermaid2-plugin==1.1.1 \
     --hash=sha256:4e25876b59d1e151ca33a467207b346404b4a246f4f24af5e44c32408e175882 \
     --hash=sha256:bea5f3cbe6cb76bad21b81e49a01e074427ed466666c5d404e62fe8698bc2d7c
-    # via -r .\requirements.in
+    # via -r requirements.in
 mkdocs-render-swagger-plugin==0.1.1 \
     --hash=sha256:1b0f4f92bf69d7e0d56b13f520fdad072ddd1f4ccf031f11706d45d831d4df7b
-    # via -r .\requirements.in
+    # via -r requirements.in
 packaging==24.1 \
     --hash=sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002 \
     --hash=sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124
